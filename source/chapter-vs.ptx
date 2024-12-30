@@ -11,13 +11,13 @@
     scalar multiplication and vector addition.
     </p>
 
-    <p>In addition to vectors, we also considered 
-    matrices and their associated matrix transformations.  At times,
-    we also considered scalar multiplication and addition of
-    matrices.  For instance, when studying the eigenvalues and
-    eigenvectors of a matrix <m>A</m>, we may have constructed the
-    associated matrix <m>I-2A</m>.  In other words, we multiplied
-    <m>A</m> by the scalar <m>2</m> and then added the identity <m>I</m>.
+    <p>In addition to vectors, we also considered matrices and their
+    associated matrix transformations.  At times, we also considered
+    scalar multiplication and addition of matrices.  For instance,
+    when studying the eigenvalues and eigenvectors of a matrix
+    <m>A</m>, we may have constructed the associated matrix
+    <m>A-2I</m>.  In other words, we multiplied the matrix <m>I</m> by
+    the scalar <m>-2</m> and then added <m>A</m>.
     </p>
 
     <p>In fact, there are other types of mathematical objects for
