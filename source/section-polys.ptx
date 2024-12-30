@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-polys" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The minimal polynomial</title>
+
+  <introduction>
+    <p> This section will describe some important properties about
+    polynomials and demonstrate how they might help us understand linear
+    transformations.  
+    </p>
+    
+    <p> We will begin by studying familiar polynomials, such as you
+    saw in high school algebra.  For example, <m>p(x)=2x^2 - 3x + 7</m>
+    is a quadratic polynomial.  Eventually, we will consider polynomials
+    evaluated on an operator <m>T</m>.  For instance,
+    evaluating <m>p(x)</m> on the operator <m>T</m> produces a new
+    operator
+    <m>p(T) = 2T^2 - 3T + 7I</m>.  As a preview for how this may be
+    useful, the polynomial <m>p(x)=x-2</m> leads to the operator
+    <m>p(T) = T-2I</m> whose null space is the set of eigenvectors
+    associated to the eigenvalue <m>\lambda = 2</m>.
+    </p>
+  </introduction>
+  
+  <subsection>
+    <title>Properties of Polynomials</title>
+
+    <p>We will be interested in polynomials that depend on a single
+    variable, which will often be <m>x</m>.  
+    A general polynomial has
+    the form
+    <me>
+      p(x)=a_nx^n + a_{n-1}x^{n-1}+\ldots + a_1x+a_0
+    </me>
+    where <m>a_j</m> are the <em>coefficients</em> of <m>p(x)</m> and
+    are elements in either <m>\field=\C</m> or
+    <m>\real</m>.
+    </p>
+
+    <p>The <em>degree</em> of a polynomial is the highest power of
+    <m>x</m> whose coefficient is nonzero.  For example, the degree of
+    <me>
+      p(x)=-2x^7 + 4x^6 -x^5 + 4x^3-3x + 1
+    </me>
+    is <m>\deg(p) = 7</m>.
+    </p>
+
+    <p>There are a few operations that we can perform on polynomials.
+    Suppose that <m>p(x)=3x^2-4x+2</m> and <m>q(x)=8x-5</m>.
+    <dl>
+      <li><title>Scalar multiplication</title>
+      <p>As we saw earlier, a polynomial may be multiplied by a
+      scalar.  For instance,
+      <me>
+	(7p)(x) = 21x^2-28x+14
+      </me>
+      </p>
+      </li>
+      
+      <li><title>Addition</title>
+      <p>Polynomials may also be added in the usual way.
+      <me>
+	(p+q)(x)=3x^2+4x-3
+      </me>
+      </p>
+      </li>
+
+      <li><title>Multiplication</title>
+      <p>We multiply polynomials term by term so that
+      <me>
+	(pq)(x) = 24x^3-27x^2+36x-10
+      </me>
+      More generally, denoting the coefficients of <m>p</m> by
+      <m>a_j</m> and the coefficients of <m>q</m> by <m>b_j</m>, the
+      coefficients of <m>pq</m> are
+      <me xml:id="me-poly-mult">
+	c_k=\sum_{j=0}^k a_jb_{k-j}=\sum_{j=0}^k b_ja_{k-j}
+      </me>.
+      </p>
+
+      <p>Two important properites follow from this definition of
+      polynomial multiplication.  First, the order in which we multiply
+      polynomials is irrelevant;  that is, <m>pq = qp</m>.
+      </p>
+
+      <p>Second, the degree of the product is the sum of the degrees;
+      that is,
+      <me>
+	\deg(pq)=\deg(p)+\deg(q)
+      </me>.
+      </p>
+      </li>
+    </dl>
+    </p>
+
+    <p>Integers satisfy a property often called the <em>Division
+    Algorithm</em>.  Suppose that <m>a</m> and <m>b</m> are positive
+    integers.  Then there are integers <m>q</m> and <m>r</m> such that
+    <me>
+      a = bq + r
+    </me>
+    where <m>0\leq r \leq b-1</m>.  We say that <m>q</m> is the
+    quotient and <m>r</m> is the remainder.  For example, if
+    <m>a=17</m> and <m>b=5</m>, then
+    <me>
+      17 = 3\cdot5 + 2
+    </me>.
+    </p>
+
+    <p>Polynomials satisfy a similar property also called the Division
+    Algorithm as given in the following proposition.
+    </p>
+
+    <proposition xml:id="prop-poly-division">
+      <title>The Division Algorithm</title>
+      <statement>
+	<p>If <m>p(x)</m> and <m>s(x)</m> are polynomials, then there
+	are unique polynomials <m>q(x)</m> and <m>r(x)</m> such that
+	<me>
+	  p(x) = (qs)(x) + r(x)
+	</me>
+	where <m>\deg(r) \lt \deg(s)</m>.
+	</p>
+      </statement>
+    </proposition>
+    
+    <example>
+      <statement>
+	<p>Rather than proving the Division Algorithm for polynomials,
+	we will illustrate with an example.  Suppose that
+	<m>p(x)=6x^3 + x^2 - 17x + 8</m> and <m>s(x)=2x^2 + 2x -
+	1</m>.
+	</p>
+
+	<p>To get started, let's consider the highest degree terms in
+	both polynomials.  For <m>p(x)</m>, it is <m>6x^3</m> while
+	for <m>s(x)</m>, it is <m>2x^2</m>.  We'd like to multiply
+	<m>s(x)</m> by something to get close to <m>p(x)</m>. Since
+	the ratio of the highest degree terms is <m>3x</m>, we
+	multiply <m>s(x)</m> by <m>3x</m>, which gives
+	<me>
+	  p(x) - (3x)s(x) = -8x^2 - 14x + 8
+	</me>.
+	</p>
+
+	<p>Now we ask what we should multiply by <m>s(x)</m> to
+	realize the <m>-8x^2</m> term.  Since the highest degree term of
+	<m>s(x)</m> is <m>2x^2</m>, we multiply by <m>-4</m>.  This
+	means that
+	<me>
+	  p(x) - (3x-4)s(x) = -2x+4
+	</me>.
+	Since the highest degree term of <m>s(x)</m> is <m>2x^2</m>,
+	there is nothing we can multiply by <m>s(x)</m> to realize the
+	highest degree term of the right hand side.
+	This means that we have
+	<me>
+	  p(x) = (3x-4)s(x) + (-2x+4)
+	</me>
+	so the quotient is <m>q(x)=3x-4</m> and the remainder is
+	<m>r(x)=-2x+4</m>. 
+	</p>
+
+	<p>This algorithm is sometimes called <em>synthetic
+	division</em> and is sometimes taught in high school.  We
+	won't be actually be implementing this algorithm, but this
+	example is meant to illustrate why <xref
+	ref="prop-poly-division"/> is true.  Implementing this
+	algorithm for general polynomials will give a proof of the
+	Division Algorithm.
+	</p>
+      </statement>
+    </example>
+
+    <p>One important implication of the Division Algorithm is the
+    following fact that we will use quite a bit.  Remember that a root
+    <m>\lambda</m> of a polynomial is a value for which
+    <m>p(\lambda)=0</m>. 
+    </p>
+
+    <proposition xml:id="prop-root-factor">
+      <statement> If <m>\lambda</m> is a root of the polynomial <m>p(x)</m>,
+      then
+      <me>
+	p(x)=(x-r)q(x)
+      </me>
+      for some polynomial <m>q</m>.
+      </statement>
+
+      <proof>
+	<p>The Division Algorithm tells us that
+	<me>p(x)=(x-\lambda)q(x) + r(x)
+	</me>.
+	In the notation of the Division Algorithm,
+	<m>s(x)=x-\lambda</m> and <m>\deg(r) \lt \deg(s) = 1</m>.
+	Therefore <m>\deg(r)=0</m>, which means that <m>r(x)</m> is a
+	constant <m>r</m>.
+	</p>
+
+	<p>Now we know that <m>0=p(\lambda)=(\lambda-\lambda)q(\lambda)+r =
+	r</m>, which says that <m>r=0</m>.  Therefore, we have
+	<me>
+	  p(x)=(x-\lambda)q(x)
+	</me>.
+	</p>
+      </proof>
+    </proposition>
+
+    <p>This proposition shows that there is a relationship between the
+    factors of a polynomial <m>p(x)</m> and its roots.  Polynomials
+    with complex coefficients are special because the Fundamental
+    Theorem of Algebra tells us that every such polynomial has a
+    root.  The proof of this theorem is outside the scope of our
+    course, but students often see it in a course in complex analysis.
+    </p>
+
+    <theorem xml:id="thm-fta">
+      <title>Fundamental Theorem of Algebra</title>
+
+      <statement>
+	<p>If <m>p(x)</m> is a degree <m>n</m> polynomial having
+	complex coefficients, then there are <m>n</m> roots,
+	<m>\lambda_1, \lambda_2, \ldots, \lambda_n</m>, possibly with
+	repitition.  This means that
+	<me>p(x)=a_n(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_n)
+	</me>.
+	</p>
+      </statement>
+    </theorem>
+
+    <p>While this important theorem only holds for polynomials with
+    complex coefficients, we can deduce something about polynomials
+    with real coefficients.  For instance, if <m>p(x)</m> is a
+    polynomial with real coefficients and <m>\lambda</m> is a complex
+    root, then so is its complex conjugate <m>\overline{\lambda}</m>.
+    This follows because
+    <me>
+      0\overline{p(\lambda)} = p(\overline{\lambda})
+    </me>.
+    We have <m>(x-\lambda)(x-\overline{\lambda}) = x^2+bx + c</m> where
+    <m>b = -(\lambda+\overline{\lambda})</m> and
+    <m>c=\lambda\overline{\lambda}</m>.  Since this quadratic
+    polynomial does not have real roots, we know from the quadratic
+    formula that <m>b^2\lt 4ac</m>.  Therefore,
+    </p>
+
+    <proposition>
+      <statement>
+	<p>If <m>p(x)</m> is a polynomial with real coefficients,
+	there are real roots <m>\lambda_1,\ldots,\lambda_m</m> such
+	that 
+	<me>
+	  p(x)=a_n(x-\lambda_1)\ldots(x-\lambda_r)(x^2+b_1x+c_1^2)\ldots(x^2+b_sx+c_s)
+	  </me>.
+	</p>
+      </statement>
+    </proposition>
+  </subsection>
+
+  <subsection>
+    <title>The minimal polynomial of an operator</title>
+
+    <p>As mentioned in the introduction to this section, our interest
+    in polynomials stems from the insights we gain when we evaluate a
+    polynomial on an operator <m>T</m>.  For instance, if
+    <m>p(x)=x^2+4x-5</m>, then <m>p(T) = T^2 + 4T - 5I</m> a new
+    operator.  Notice 
+    that we consider the constant term to be multiplied by the
+    identify transformation <m>I</m>.
+    </p>
+
+    <p>Remember that the order in which we multiply polynomials is not
+    important.  In particular, <m>p(T)q(T)=q(T)p(T)</m>.  This leads
+    to the following important proposition.
+    </p>
+
+    <proposition>
+      <statement>
+	<p>If <m>p(x)</m> is a polynomial and <m>T</m> an operator,
+	then both <m>\nul(p(T))</m> and <m>\range(p(T))</m> are
+	invariant subspaces under <m>T</m>.
+	</p>
+      </statement>
+
+      <proof>
+	<p> Suppose that <m>\vvec</m> is in <m>\nul(p(T))</m>, which
+	means that <m>p(T)\vvec = \zerovec</m>.  We need to explain
+	why <m>T\vvec</m> is also in <m>\nul(p(T))</m>.  However, we
+	have
+	<me>
+	  p(T)T\vvec = Tp(T)\vvec = T\zerovec = \zerovec
+	</me>.
+	</p>
+
+	<p>Similarly, if <m>\vvec</m> is in <m>\range(p(T))</m>, then
+	there is a vector <m>\uvec</m> so that
+	<m>\vvec=p(T)\uvec</m>.  Then
+	<me>
+	  T\vvec = Tp(T)\uvec = p(T)(T\uvec)
+	</me>,
+	which shows that <m>T\vvec</m> is also in
+	<m>\range(p(T))</m>.  Therefore, <m>\range(p(T))</m> is an
+	invariant subspace of <m>T</m>.
+	</p>
+      </proof>
+    </proposition>
+
+    <p>We now come to a crucial result for our upcoming explorations.
+    First, we need to make the following definition clear.
+    </p>
+
+    <definition>
+      <statement>A <em>monic</em> polynomial is a polynomial where the
+      coefficient of the highest degree term is <m>1</m>.
+      </statement>
+    </definition>
+
+    <p>For instance, <m>x^5 - x^4 + 3x - 2</m> is a monic polynomial,
+    but <m>3x^3+2x-1</m> is not.
+    </p>
+
+    <theorem xml:id="thm-minimal-polynomial">
+      <title>The minimal polynomial of an operator</title>
+
+      <statement>
+	<p>Suppose that <m>V</m> is a finite-dimensional vector space over
+	either <m>\C</m> or <m>\R</m> and that <m>T</m> is an operator
+	on <m>V</m>.  There is a unique monic polynomial <m>p</m> of
+	smallest degree such that <m>p(T)=0</m>.  Moreover,
+	<m>\deg(p)\leq \dim(V)</m>.  We call this polynomial the
+	<em>minimal polynomial</em> of <m>T</m>.
+	</p>
+      </statement>
+
+      <proof>
+	<p>Our proof proceeds by induction on the dimension of
+	<m>V</m>.  To begin, suppose that <m>\dim(V) = 1</m>, which
+	means that <m>V=\laspan{\vvec}</m> for some vector
+	<m>\vvec</m>.  Then <m>T\vvec = \lambda\vvec</m> for some
+	<m>\lambda</m>, which is possibly <m>0</m>.  Then
+	<m>(T-\lambda I)\vvec = \zerovec</m>, which means that
+	<m>T-\lambda I = 0</m> since <m>\vvec</m> spans <m>V</m>.
+	Therefore, if <m>p(x) = x-\lambda</m>, we have <m>p(T)=0</m>.
+	</p>
+
+	<p>We now imagine that <m>\dim(V)=n</m> and that the theorem
+	has been verified for all operators on vector spaces of
+	dimension less than <m>n</m>.  We choose a vector <m>\vvec</m>
+	and consider the powers <m>T^k\vvec</m>;  that is, consider
+	the vectors
+	<me>
+	  \vvec,T\vvec,T^2\vvec,\ldots,T^n\vvec
+	</me>.
+	Since there are <m>n+1</m> vector in this set and
+	<m>\dim(V)=n</m>, we know this is a linearly independent set.
+	</p>
+
+	<p>Choose <m>m</m> to be the smallest integer such that
+	<m>T^m\vvec</m> is a linear combination of
+	<m>\vvec,T\vvec,\ldots,T^{m-1}\vvec</m>.  This means two
+	things.  First, the vectors
+	<m>\vvec,T\vvec,\ldots,T^{m-1}\vvec</m> are linearly
+	independent.  Second, there are constants
+	<me>
+	  a_0\vvec + a_1T\vvec + \ldots + a_{m-1}T^{m-1}\vvec +
+	  T^m\vvec = \zerovec
+	</me>.
+	If we define the degree <m>m</m> monic polynomial
+	<me>
+	  p(x)=a_0 + a_1x + \ldots + a_{m-1}x^{m-1}+x^m
+	</me>,
+	then <m>p(T)\vvec = \zerovec</m>.  That is, <m>\vvec</m> is in
+	<m>\nul(p(T))</m>.
+	</p>
+
+	<p>Since <m>\nul(p(T))</m> is invariant under <m>T</m> and
+	<m>\vvec</m> is in <m>\nul(p(T))</m>, we know that
+	<me>
+	  \vvec,T\vvec,\ldots,T^{m-1}\vvec
+	</me> 
+	are all in <m>\nul(p(T))</m>.  These vectors are linearly
+	independent so we know that <m>\dim(\nul(p(T)))\leq m</m>.
+	Therefore,
+	<me>
+	  \dim(\range(p(T))) = \dim(V) - \dim(\nul(p(T))) \leq n - m
+	</me>.
+	</p>
+
+	<p>For convenience, we will denote the vector space
+	<m>W=\range(p(T))</m>.  Since <m>W</m> is invariant under
+	<m>T</m>, <m>T</m> is an operator on <m>W</m>, whose dimension
+	is less than <m>\div(V)</m>.  By the induction hypothesis, we
+	know that there is a unique monic polynomial <m>q(x)</m> such
+	that <m>q(T|_W)=0</m>.  Again by the induction hypothesis, it
+	also follows that <m>\deg(q) \leq \dim(W) \leq n - m</m>.
+	</p>
+
+	<p>Now consider the polynomial <m>pq</m> whose degree is
+	<me>
+	  \deg(qp) = \deg(q)+\deg(p) \leq n - m + m \leq n = \dim(V)
+	</me>.
+	Moreover, both <m>p</m> and <m>q</m> are monic so <m>pq</m> is
+	also monic.  Finally, for any vector <m>\vvec</m> in <m>V</m>,
+	we have 
+	<me>
+	  (qp)(T)\vvec = q(T)p(T)\vvec = q(T)(p(T)\vvec) = \zerovec
+	</me>
+	where the last equality holds because <m>p(T)\vvec</m> is in
+	<m>W=\range(p(T))</m> and <m>q(T)\uvec=\zerovec</m> for any
+	vector <m>\uvec</m> in <m>W</m>.  Since
+	<m>(qp)(T)\vvec=\zerovec</m> for every vector <m>\vvec</m>,
+	this means that <m>(qp)(T)=0</m>.
+	</p>
+
+	<p>This shows that there is a
+	monic polynomial <m>s</m> such that <m>s(T)=0</m> on
+	<m>V</m>.  Therefore, there is some possibly different
+	polynomial having the smallest degree among all such
+	polynomials, and this is the minimal
+	polynomial of the operator <m>T</m> on <m>V</m>.
+	</p>
+
+	<p>To see that this polynomial is unique, suppose there are
+	two monic polynomials <m>s_1</m> and <m>s_2</m> having
+	smallest degree and <m>s_1(T)=0</m> and <m>s_2(T)=0</m>.
+	If we consider <m>s_1-s_2</m>, we see that <m>\deg(s_1-s_2)\lt
+	\deg(s_1)=\deg(s_2)</m> since the highest degree terms of
+	<m>s_1</m> and <m>s_2</m> have coefficients <m>1</m> and
+	therefore cancel.  Also,
+	<me>
+	  (s_1-s_2)(T) = s_1(T) - s_2(T) = 0
+	</me>.
+	However, this is impossible since <m>s_1</m> and <m>s_2</m>
+	had the smallest possible degree among all polynomials that
+	vanish when evaluated on <m>T</m>.  This means that
+	<m>s_1=s_2</m>, which guarantees the uniqueness of the minimal
+	polynomial. 
+	</p>
+      </proof>
+    </theorem>
+
+    <example xml:id="example-min-poly-1">
+      <statement>
+	<p> Consider the <m>2\times2</m> matrix 
+	<m>A=\begin{bmatrix}
+	2 \amp 0 \\
+	0 \amp 2
+	\end{bmatrix}</m> and the linear operator <m>T</m> that it
+	defines.  Notice that <m>A-2I = 0</m> so if <m>p(x)=x-2</m>,
+	then <m>p(T)=0</m>.  The minimal polynomial of <m>T</m> is
+	therefore <m>p(x)=x-2</m>.
+	</p>
+
+	<p> More generally, suppose that the minimal polynomial of an
+	operator <m>T</m> has degree <m>1</m>.  Since the minimal
+	polynomial is monic, this means that <m>p(x)=x-\lambda</m>.
+	Because <m>p(T)=T-\lambda I = 0</m>, we see that <m>T=\lambda
+	I</m>, a multiple of the identity.
+	</p>
+      </statement>
+    </example>
+
+    <example xml:id="example-min-poly-2">
+      <statement>
+	<p> By contrast, consider the <m>2\times2</m> matrix 
+	<m>B=\begin{bmatrix}
+	2 &amp; 1 \\
+	0 &amp; 2
+	\end{bmatrix}</m> and the linear operator <m>S</m> that it
+	defines with respect to some basis.  The degree of the minimal
+	polynomial must be at least 2 since <m>B</m> is not a multiple
+	of the identity matrix.  Notice, however, that 
+	<m>B-2I = \begin{bmatrix}
+	0 &amp; 1 \\
+	0 &amp; 0 \\
+	\end{bmatrix}
+	</m> and <m>(B-2I)^2 = 0</m>.  This says that <m>(S-2I)^2 =
+	0</m> and so the minimal polynomial of <m>S</m> is
+	<m>q(x)=(x-2)^2</m>.
+	</p>
+      </statement>
+    </example>
+
+    <p> Both of the matrices in the two previous examples are
+    upper triangular.  Remembering that the eigenvalues of an upper
+    triangular matrix are the entries on the diagonal, we see that the
+    roots of the minimal polynomials in both cases are the eigenvalues
+    of the operator.  This gives some indication of the importance of
+    the minimal polynomial, as we will see now.
+    </p>
+
+    <p>The fact that the minimal polynomial has the smallest degree
+    among all polynomials for which <m>p(T)=0</m> has some important
+    consequences. </p>
+
+    <proposition xml:id="prop-min-poly-roots">
+      <statement>
+	<p>The set of roots of the minimal polynomial of <m>T</m>
+	equals the set of eigenvalues of <m>T</m>.
+	</p>
+      </statement>
+
+      <proof>
+	<p>Suppose that <m>p</m> is the minimal polynomial of
+	<m>T</m>.  We need to explain two things: that any eigenvalue
+	of <m>T</m> is a root of <m>p</m> and that any root of
+	<m>p</m> is an eigenvalue of <m>T</m>.
+	</p>
+
+	<p>Suppose that <m>\lambda</m> is an eigenvalue of <m>T</m>.
+	This means that there is a nonzero vector <m>\vvec</m> such
+	that <m>T\vvec = \lambda\vvec</m> and therefore <m>T^j\vvec =
+	\lambda^j\vvec</m> for every <m>j</m>.  This means that
+	<me>
+	  0 = p(T)\vvec = p(\lambda)\vvec
+	</me>,
+	which implies that <m>p(\lambda) = 0</m>.  Therefore,
+	<m>\lambda</m> is a root of <m>p</m>, the minimal polynomial
+	of <m>T</m>.
+	</p>
+
+	<p>Conversely, suppose that <m>\lambda</m> is a root of
+	<m>p</m>.  By <xref ref="prop-root-factor"/>, this means that
+	<me>
+	  p(x) = (x-\lambda)q(x)
+	</me>.
+	This says that
+	<me>
+	  0 = p(T) = (T-\lambda I)q(T)
+	</me>
+	However, <m>q(T)\neq 0</m> since <m>\deg(q) \lt \deg(p)</m>,
+	there is some vector <m>\vvec</m> for which <m>q(T)\vvec\neq
+	0</m>.  Therefore,
+	<me>
+	  0 = p(T)\vvec = (T-\lambda I)q(T)\vvec
+	</me>,
+	which shows that <m>q(T)\vvec</m> is an eigenvector <m>T</m>
+	with associated eigenvalue <m>\lambda</m>.
+	</p>
+      </proof>
+    </proposition>
+
+    <p>This is the most significant fact about the minimal polynomial:
+    that its roots are the eigenvalues of the operator.  We'll put
+    this to use in the next section.  Before that, however, here are
+    two other useful facts.
+    </p>
+    
+    <proposition xml:id="prop-min-poly-div">
+      <statement>
+	<p>If <m>s</m> is a polynomial for which <m>s(T)=0</m>, then
+	<m>s</m> is a multiple of the minimal polynomial of <m>T</m>.
+	</p>
+      </statement>
+      <proof>
+	<p>If <m>p</m> is the minimal polynomial of <m>T</m>, then 
+	we can apply the Division Algorithm to write <m>s = pq + r</m>
+	where <m>\deg(r) \lt \deg(p)</m>.  Furthermore,
+	<me>
+	  0 = s(T) = p(T)q(T) + r(T) = r(T)
+	</me>,
+	which implies that <m>r(T)=0</m>.  Since <m>p</m> has the
+	smallest degree among all polynomials that vanish when
+	evaluated on <m>T</m> and <m>r</m> has a smaller degree than
+	<m>p</m>, we know that <m>r=0</m>.  Therefore, <m>s=pq</m>.
+	</p>
+      </proof>
+    </proposition>
+
+    <proposition xml:id="prop-min-poly-subspace">
+      <statement>
+	<p>If <m>T</m> is an operator on the vector space <m>V</m> and
+	<m>W</m> is a subspace of <m>V</m> that is invariant under
+	<m>T</m>, then the minimal polynomial of <m>T</m> is a
+	multiple of the minimal polynomial of <m>T|_W</m>.
+	</p>
+      </statement>
+      <proof>
+	<p>Suppose that <m>s</m> is the minimal polynomial of
+	<m>T|_W</m> and <m>p</m> is the minimal polynomial of <m>T</m>
+	on <m>V</m>.  This means that <m>p(T)\wvec=0</m> 
+	for every vector <m>\wvec</m> in <m>W</m> and so <m>p(T|_W) =
+	0</m>.  We also know that <m>s</m> is the minimal polynomial
+	of <m>T|_W</m> so by <xref ref="prop-min-poly-div"/>, we know
+	that <m>p</m> is a multiple of <m>s</m>.
+	</p>
+      </proof>
+    </proposition>
+
+  </subsection>
+</section>

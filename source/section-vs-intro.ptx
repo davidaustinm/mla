@@ -1,0 +1,874 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-vs-intro" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Vector spaces</title>
+
+  <introduction>
+    <p>A vector space is simply a mathematical set on which we can
+    perform addition and scalar multiplication.  We already have some
+    familiarity with vector spaces since <m>\real^n</m> is a good
+    example.  However, as mentioned in the introduction to this
+    chapter, polynomials have similar operations so we would like to
+    create a mathematical structure that allows us to study vectors
+    and polynomials as equals.  This is why the concept of a vector
+    space is so useful.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title> Vector spaces </title>
+
+    <p>The usual place to get started would be with a general
+    definition of a vector space.  However, this is one place in
+    mathematics, among others, where a general definition can obscure
+    the underlying 
+    idea.  For that reason, let's just start with some examples.
+    </p>
+
+    <example xml:id="example-vs-matrices">
+      <title>Matrices</title>
+      <statement>
+        <p>Let's look at the set of all <m>3\times 2</m> matrices,
+        which include the matrices
+        <me>
+          A=\begin{bmatrix}
+          3 \amp -1 \\
+          0 \amp 2 \\
+          4 \amp -3 \\
+          \end{bmatrix},
+          \hspace{0.5in}
+          B=\begin{bmatrix}
+          1 \amp 3 \\
+          -1 \amp 0 \\
+          2 \amp 4 \\
+          \end{bmatrix}
+        </me>.
+        As we saw in our earlier course, we can multiply a matrix by a
+        scalar and we can add matrices:
+        <me>
+          -3A=\begin{bmatrix}
+          -9 \amp 3 \\
+          0 \amp -6 \\
+          -12 \amp 9 \\
+          \end{bmatrix},
+          \hspace{24pt}
+          A+B=\begin{bmatrix}
+          4 \amp 2 \\
+          -1 \amp 2 \\
+          6 \amp 1 \\
+          \end{bmatrix}
+        </me>.
+        Notice that both operations produce a new object that is also
+        a <m>3\times2</m> matrix.  We say that that the set is
+        <em>closed</em> under these operations.
+        </p>
+
+        <p>With these operations, the set of <m>3\times2</m> matrices
+        becomes a vector space.
+        </p>
+      </statement>
+    </example>
+
+    <p>Notice that the entries in our matrices are real numbers
+    <m>\real</m>.  We 
+    could instead change the example so that we consider <m>3\times
+    2</m> matrices whose entries are in the complex numbers
+    <m>\complex</m>.
+    </p>
+
+    <example xml:id="example-vs-complex-matrices">
+      <title>Complex matrices</title>
+      <statement>
+        <p>Consider now the set of <m>1\times2</m> matrices with
+        complex entries.  For example,
+        <me>
+          A=\begin{bmatrix}
+          2-3i \amp 4 \\
+          \end{bmatrix},\hspace{24pt}
+          B=\begin{bmatrix}
+          i \amp 1+i \\
+          \end{bmatrix}
+        </me>.
+        Scalar multiplication includes multiplication by complex
+        numbers so we have
+        <me>
+          (3+i)A = \begin{bmatrix}
+          9-7i \amp 12+4i \\
+          \end{bmatrix},\hspace{24pt}
+          A+B = \begin{bmatrix}
+          2-2i \amp 5+i
+          \end{bmatrix}
+        </me>.
+        </p>
+      </statement>
+    </example>
+
+    <p>These examples show that vector spaces have an underlying
+    <em>field</em>, which is the set of scalars by which we can
+    multiply.  You may or may not know about fields depending on
+    whether you have studied abstract algebra.  In either case, the
+    underlying field of our vector spaces will always be either the
+    real numbers or the complex numbers, which we will write as
+    <m>\field=\real</m> or <m>\field=\complex</m>.
+    </p>
+
+    <p>Having seen some examples, we offer a general definition of a
+    vector space.
+    </p>
+
+    <definition>
+      <title>Vector space</title>
+      <statement>
+        <p>A vector space over a field <m>\field</m> is a set <m>V</m>
+        with two operations, scalar multiplication by elements of
+        <m>\field</m> and addition, under which <m>V</m> is closed.
+        Moreover, these operations 
+        satisfy the following natural properties:
+        <ul>
+          <li><p>Addition is commutative; that is
+          <m>\vvec+\wvec=\wvec+\vvec</m> for 
+          every pair of <m>\vvec,\wvec\in V</m>.</p></li>
+
+          <li><p>There is an additive identity;  that is, there is an
+          element <m>0\in V</m> such that <m>0+\vvec = \vvec</m> for any
+          element in <m>V</m>.</p></li>
+
+          <li><p>Every element <m>\vvec</m> has an additive inverse
+          <m>\wvec</m> such that <m>\vvec + \wvec = 0</m>.  We will
+          usually write the additive identity as <m>-\vvec</m>.
+          </p></li>
+
+          <li><p>Addition is associative, which means that we can
+          regroup a sum in the following way:
+          <me>
+            (\uvec+\vvec) + \wvec = \uvec + (\vvec+\wvec)
+          </me>.
+          </p></li>
+
+          <li><p>For every <m>\vvec\in V</m>, we have <m>1\vvec =
+          \vvec</m>.</p></li>
+
+          <li><p>Scalar multiplication is distributive in the sense
+          that
+          <me>
+            s(\vvec+\wvec) = s\vvec + s\wvec
+          </me>.
+          </p></li>
+        </ul>
+        </p>
+      </statement>
+    </definition>
+
+    <p>That is a long list of properties.  Technically speaking, if we
+    want to check that some set is a vector space, we need to check
+    each one of those properties.  In practice, however, we will know
+    a vector space when we see one, and we will be fairly loose with
+    these details.  </p>
+
+    <example>
+      <title>Polynomials</title>
+      <statement>
+        <p>If <m>\field=\real</m> or <m>\field=\complex</m>, 
+        the set of polynomials whose coefficients are in
+        <m>\field</m> form a vector space <m>\pbb</m>.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <title>Polynomials of degree <m>n</m></title>
+      <statement>
+        <p>Rather than the set of all polynomials, we define the set
+        <m>\pbb_n</m> to be the set of all polynomials whose degree is
+        <m>n</m> or less.  For example, <m>\pbb_2</m> contains all
+        polynomials of degree two or less:
+        <me>
+          p(x) = a_2x^2 + a_1x + a_0
+        </me>
+        where the coefficients <m>a_j</m> are assumed to be either
+        real or complex, as will be either specified or clear from the
+        context.
+        </p>
+      </statement>
+    </example>
+
+    <p>Of course, the set of all polynomials is larger than the set of
+    quadratic polynomials, and we have <m>\pbb_2\subset \pbb</m>.
+    We say that <m>\pbb_2</m> is a vector subspace of <m>\pbb</m>.
+    </p>
+
+    <definition>
+      <title>Vector subspace</title>
+      <statement>
+        <p>A subset <m>W</m> of a vector space <m>V</m> is called a
+        <em>subspace</em> of <m>V</m> if <m>W</m> is closed under the
+        operations of scalar multiplication and addition that it
+        inherits from <m>V</m>.  
+        </p>
+      </statement>
+    </definition>
+
+    <p>Notice that a subspace is itself a vector space and that the
+    underlying fields of <m>V</m> and <m>W</m> are the same.
+    </p>
+
+    <p>Every vector space <m>V</m> has two subspaces that we will
+    frequently need to consider.  Namely, the subspace consisting of
+    only the zero vector <m>W=\{0\}</m> and the entire vector space
+    <m>W=V</m> itself.
+    </p>
+
+    <example>
+      <title>Function spaces</title>
+      <statement>
+        <p>Let <m>\fcal</m> be the set of functions whose domain is
+        <m>\real</m> and whose codomain is <m>\complex</m>;  that is,
+        functions of the form <m>f:\real\to\complex</m>.  It follows
+        that <m>\fcal</m> is a complex vector space.
+        </p>
+      </statement>
+    </example>
+
+    <p> If we were to consider functions <m>f:\real\to\real</m>, we
+    would obtain a real vector space.  This is <em>not</em> a subspace
+    of <m>\fcal</m>, however, since the underlying fields are
+    different.  Rather, here are some natural subspaces of
+    <m>\fcal</m>.
+    </p>
+
+    <example>
+      <statement>
+        <p>The following are subspaces of <m>\fcal</m>:
+        <ul>
+          <li><p>The set of functions
+          <m>f:\real\to\complex</m> for 
+          which <m>f(17)=0</m>. </p></li>
+
+          <li><p>The set of periodic functions whose period is 7;
+          that is functions that satisfy <m>f(x+7)=f(x)</m> for all
+          <m>x</m>.
+          </p></li>
+
+          <li><p>The set of continous functions.</p></li>
+        </ul>
+        </p>
+
+        <p>The set of functions that satisfy <m>f(17)=1</m> is,
+        however, not a subspace since it is not closed under scalar
+        multiplication or vector addition. </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>If <m>V</m> is a vector space and <m>V_1</m> and <m>V_2</m>
+        are subspaces, then <m>V_1\cap V_2</m> is also a subspace of
+        <m>V</m> as it can be seen that the interection is closed
+        under scalar multiplication and addition.
+        </p>
+      </statement>
+    </example>
+
+    <p>When working with a vector space <m>V</m>, we will frequently
+    refer to the elements of <m>V</m> as <em>vectors</em> even though
+    they may be polynomials, matrices, functions, or even something
+    entirely different. </p>
+
+  </subsection>
+
+  <subsection>
+    <title>Linear combinations</title>
+
+    <p>Our study of linear algebra really began once we introduced
+    linear combinations.  Of course, linear combinations are defined
+    purely in terms of scalar multiplication and addition so we can
+    form linear combinations of elements in a vector space.</p>
+
+    <definition>
+      <statement>
+        <p>Suppose that <m>\vvec_1,\ldots,\vvec_n</m> is a set of
+        vectors in a vector space <m>V</m> over a field
+        <m>\field</m>.  A <em>linear combination</em> of these vectors
+        is a vector of the form
+        <me>
+          a_1\vvec_1 + a_2\vvec_2 + \ldots + a_n\vvec_n
+        </me>
+        where the scalars <m>a_j</m> belong to the field
+        <m>\field</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <example>
+      <statement>
+        <p>Consider the vector space <m>\pbb_2</m> consisting of
+        polynomials having degree two or less and the polynomials
+        <m>p_1(x)=3x+4</m> and <m>p_2(x)=7x^2-2x+1</m>.  We can form
+        the linear combination
+        <me>
+          2p_1(x)-3p_2(x) = -21x^2 +5
+        </me>.
+        </p>
+      </statement>
+    </example>
+
+    <p>We can also think about concepts like span and linear
+    independence.</p>
+
+    <definition>
+      <title>Span</title>
+      <statement>
+        <p>The <em>span</em> of a set of vectors in a vector space is
+        the set of all linear combinations that can be formed from the
+        set. 
+        </p>
+      </statement>
+    </definition>
+
+    <p>It's not hard to see that the span of a set of vectors
+    <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> in <m>V</m> forms a
+    subspace.  We just have to check that the span is closed under
+    scalar multiplication and addition.  So we will consider vectors 
+    <md>
+      <mrow>
+        \uvec \amp = a_1\vvec_1 + a_2 \vvec_2 + \ldots + a_n\vvec_n
+      </mrow>
+      <mrow>
+        \wvec \amp = b_1\vvec_1 + b_2 \vvec_2 + \ldots + b_n\vvec_n
+      </mrow>
+    </md>.
+    If we multiply <m>\uvec</m> by the scalar <m>s</m>, we have
+    <me>
+      s\uvec = (sa_1)\vvec_1 + (sa_2) \vvec_2 + \ldots + (sa_n)\vvec_n
+    </me>,
+    which is in the span of the set of vectors.  Similarly,
+    <me>
+      \uvec+\wvec = (a_1+b_1)\vvec_1 + (a_2+b_2) \vvec_2 + \ldots + 
+      (a_n+b_n)\vvec_n
+    </me>,
+    which is also in the span.  This demonstrates the following
+    proposition. 
+    </p>
+
+    <proposition>
+      <statement>
+        <p>The span of a set of vectors in <m>V</m> is a subspace of
+        <m>V</m>.
+        </p>
+      </statement>
+    </proposition>
+
+    <p>We can also define linear dependence as before.</p>
+
+    <definition>
+      <title>Linear independence</title>
+      <statement>
+        <p>A set of vectors in <m>V</m> is linearly dependent if one
+        of the vectors can be written as a linear combination of the
+        others.
+        </p>
+      </statement>
+    </definition>
+
+    <example>
+      <statement>
+        <p>In <m>\pbb_2</m>, consider the polynomials
+        <me>
+          p_1(x)=x^2-x+2,\hspace{24pt}
+          p_2(x)=3x^2+4x-1,\hspace{24pt}
+          p_3(x)=-7x+7
+        </me>.
+        This set of polynomials is linear dependent because
+        <m>p_3=3p_1-p_2</m>.
+        </p>
+
+        <p>Notice that this also says that
+        <me>
+          3p_1 - p_2 - p_3 = 0
+        </me>,
+        which leads to the next proposition.
+        </p>
+      </statement>
+    </example>
+
+    <proposition>
+      <statement>
+        <p>A set of vectors <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> in a
+        vector space <m>V</m> is linearly dependent if and only if
+        <me>
+          a_1\vvec_1+a_2\vvec_2+\ldots+a_n\vvec_n = 0
+        </me>
+        for some set of scalars <m>a_1,a_2,\ldots,a_n</m> with at
+        least one being nonzero.
+        </p>
+
+        <p>Equivalently, the set of
+        vectors is linearly independent if and only if
+        <me>
+          a_1\vvec_1+a_2\vvec_2+\ldots+a_n\vvec_n = 0
+        </me>
+        implies that all the scalars <m>a_j=0</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>Our proof will focus on the first statement.  Suppose that 
+        <me>
+          a_1\vvec_1+a_2\vvec_2+\ldots+a_n\vvec_n = 0
+        </me>
+        and that <m>a_j\neq 0</m>.  Then we can rewrite
+        <me>
+          \vvec_j = -a_1/a_j\vvec_1 - \ldots -\widehat{\vvec_j} -
+          \ldots-a_n/a_j\vvec_n 
+        </me>
+        where the sum on the right does not include the
+        <m>\vvec_j</m> term.  This shows that the set of vectors is
+        linear dependent.
+        </p>
+        
+        <p>Conversely, suppose that
+        <me>
+          \vvec_j = a_1\vvec_1 + \ldots + \widehat{a_j\vvec_j} +
+          \ldots + 
+          + a_n\vvec_n
+        </me>
+        where the sum on the right does not include
+        the <m>\vvec_j</m> term.  Then
+        <me>
+          a_1\vvec_1 + \ldots + \vvec_j + \ldots
+          + a_n\vvec_n = 0
+          </me>,
+          which verifies the condition of the proposition.
+        </p>
+      </proof>
+    </proposition>
+
+    <proposition xml:id="prop-lin-dep-span">
+      <statement>
+        <p>Suppose that <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> is a
+        linear dependent set of vectors and that <m>\vvec_k</m> can be
+        written as a linear combination of the other vectors.
+        Removing <m>\vvec_k</m> from the set does not change the span;
+        that is, 
+        <me>
+          \laspan{\vvec_1,\vvec_2,\ldots,\vvec_m}=
+          \laspan{\vvec_1,\vvec_2,\ldots,\widehat{\vvec_k},\ldots,\vvec_m}
+        </me>.
+        </p>
+      </statement>
+      <proof>
+        <p>If <m>\wvec = a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m</m>,
+        then we can replace <m>\vvec_j</m> in this expression with a
+        linear combination of the other vectors.  This shows that
+        <m>\wvec</m> can be written as a linear combination of the set
+        of vectors with <m>\vvec_j</m> removed.
+        </p>
+      </proof>
+    </proposition>
+  </subsection>
+
+  <subsection>
+    <title>Bases</title>
+
+    <definition>
+      <statement>
+        <p>A set of vectors in a vector space <m>V</m> forms a basis
+        for <m>V</m> is the set is linearly independent and its span
+        is <m>V</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <example xml:id="ex-poly-basis-1">
+      <statement>
+        <p>The polynomials
+        <me>
+          p_1(x)=1,\hspace{12pt}
+          p_2(x)=x,\hspace{12pt}
+          p_3(x)=x^2
+        </me>
+        form a basis of <m>\pbb_2</m>.  Notice that this statement is
+        true for both <m>\field=\real</m> and <m>\field=\complex</m>.
+        </p>
+      </statement>
+    </example>
+    
+    <example xml:id="ex-poly-basis-2">
+      <statement>
+        <p>The polynomials
+        <me>
+          q_1(x)=x^2+3x,\hspace{24pt}
+          q_2(x)=-x+x,\hspace{24pt}
+          q_3(x)=2x^2+4x+2
+        </me>
+        form a basis of <m>\pbb_2</m>.  
+        </p>
+      </statement>
+    </example>
+    
+    <example>
+      <statement>
+        <p>There is no finite set that forms a basis for <m>\pbb</m>,
+        the set of all polynomials.  Given any finite set, there is a
+        polynomial having a highest degree <m>m</m>.  Therefore, the
+        polynomial <m>x^{m+1}</m> is not in the span of the set so it
+        cannot be a basis.
+        </p>
+      </statement>
+    </example>
+
+    <definition>
+      <statement>
+        <p>We say that a vector space <m>V</m> is finite dimensional
+        if there is a finite set whose span is <m>V</m>.  Otherwise,
+        we say that <m>V</m> is infinite dimensional.</p>
+      </statement>
+    </definition>
+
+    <p>Notice that any finite dimensional vector space must have a
+    basis.</p>
+
+    <proposition>
+      <statement>
+        <p>Any finite dimensional vector space has a basis.
+        </p>
+      </statement>
+      <proof>
+        <p>If <m>V</m> is a finite dimensional vector space, there is
+        a finite set of vectors whose span is <m>V</m>.  If this set
+        of vectors is linearly independent, then it forms a basis.  It
+        not, we can remove one vector that is a linear combination of
+        the others.  The span of the remaining vectors is still
+        <m>V</m> so we continue removing vectors one at a time until
+        we obtain a linear independent set, which must be a basis.
+        </p>
+      </proof>
+    </proposition>
+    
+    <p>Notice that the two bases for
+    <m>\pbb_2</m> in <xref ref="ex-poly-basis-1"/> and <xref
+    ref="ex-poly-basis-2"/> both consist of three polynomials.  This is
+    generally true as stated in the next proposition.
+    </p>
+    
+    <proposition>
+      <statement>
+        <p>If <m>V</m> is a finite dimensional vector space, then any
+        two bases have the same number of vectors.
+        </p>
+      </statement>
+      <proof>
+        <p>We will give two proofs, beginning with the outline of a
+        proof that should seem familiar.  Suppose that
+        <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> and
+        <m>\wvec_1,\wvec_2,\ldots,\wvec_n</m> define bases
+        <m>\bcal</m> and <m>\ccal</m> respectively.  Then we
+        can write
+        <me>
+          \wvec_j = A_{1,j}\vvec_1 + A_{2,j}\vvec_2 + \ldots +
+          A_{m,j}\vvec_m 
+        </me>,
+        which defines a matrix <m>A</m>.  Similarly, we define a
+        matrix <m>B</m> by writing <m>\vvec_k</m> in terms of the
+        basis <m>\ccal</m>.  We can now verify that <m>AB=I</m> and
+        <m>BA=I</m>, which says that <m>A</m> and <m>B</m> are
+        inverses and hence square.  Therefore, <m>m=n</m>.
+        </p>
+      </proof>
+      <proof>
+        <p>We will present another proof illustrating the type of
+        thinking 
+        that will be useful as we move forward.  Suppose again that we
+        have two bases <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> and
+        <m>\wvec_1,\wvec_2,\ldots,\wvec_n</m>.  Our goal is to show
+        that <m>m=n</m>.
+        </p>
+
+        <p>We first append <m>\vvec_m</m> to the vectors in
+        the other basis to obtain the list
+        <me>
+          \vvec_m,\wvec_1,\wvec_2,\ldots,\wvec_n
+        </me>.
+        Since <m>\laspan{\wvec_1,\wvec_2,\ldots,\wvec_n} = V</m>, we
+        know that the span of this set is also <m>V</m>.
+        Furthermore, since <m>\vvec_1</m> is a linear combination of
+        the other 
+        vectors, we know that this is a linearly dependent set.  We
+        remove the first vector <m>\wvec_j</m> that is a linear
+        combination of the vectors before it.  By <xref
+        ref="prop-lin-dep-span"/>, the span of the remaining <m>n</m>
+        vectors is <m>V</m>.
+        </p>
+
+        <p>Now we append <m>\vvec_{m-1}</m> to the front of the list:
+        <me>
+          \vvec_{m-1},\vvec_m,\wvec_1,\wvec_2,\ldots,\widehat{\wvec_j},
+          \ldots,\wvec_n
+        </me>.
+        Once again, the span of this set is still <m>V</m> and the set
+        is linearly dependent since <m>\vvec_{m-1}</m> is a linear
+        combination of the other vectors.  We remove the first vector
+        in the list that is a linear combination of the others.  Since
+        the set of vectors <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m>
+        is linearly independent, the vector that we remove must be one
+        of the <m>\wvec</m> vectors.  The span of the resulting list
+        must still be <m>V</m> by <xref ref="prop-lin-dep-span"/>.
+        </p>
+
+        <p>We can repeat this process until we have added all of the
+        vectors in the set <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m>.
+        Each time we add a vector from this set, we remove one of the
+        vectors in the set
+        <m>\wvec_1,\wvec_2,\ldots,\wvec_n</m>.  This tells us that
+        <m>m\leq n</m>.
+        </p>
+
+        <p>We can repeat this argument after interchanging the roles
+        of the two bases to also conclude that <m>n\leq m</m>, which
+        tells us that <m>m=n</m>.
+        </p>
+      </proof>
+    </proposition>
+
+    <p>Contained within the previous proof is the proof of this
+    proposition.
+    </p>
+
+    <proposition xml:id="prop-lin-indep-num">
+      <statement>
+        <p>The number of vectors in a linearly independent set in the
+        vector space <m>V</m> is less
+        than or equal to the number of vectors in any set whose span
+        is <m>V</m>.
+        </p>
+      </statement>
+    </proposition>
+
+    <p>Assuming there is a finite basis, we define the dimension of
+    a vector space to be the number of vectors in a basis. In this case,
+    the number of vectors in any basis is the same so this definition
+    does not depend on which basis we choose.
+    </p>
+
+    <definition>
+      <statement>
+        <p>If a vector space <m>V</m> has a basis with <m>n</m>
+        vectors, we say that the <em>dimension</em> of <m>V</m> is
+        <m>n</m> and write <m>\dim V = n</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>Because of <xref ref="prop-lin-indep-num"/>, we have the
+    following proposition.</p>
+    
+    <proposition>
+      <statement>
+        <p>If <m>W</m> is a subspace of the finite dimensional vector
+        space <m>V</m>, then <m>W</m> is also finite dimensional and
+        <me>
+          \dim W \leq \dim V
+          </me>.
+        </p>
+      </statement>
+    </proposition>
+    
+    <proposition xml:id="prop-basis-extend">
+      <statement>
+        <p>Any linearly independent set in a vector space <m>V</m> can
+        be extended to a basis for <m>V</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>Suppose that <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> is a
+        linearly independent set in <m>V</m> and that
+        <m>\wvec_1,\wvec_2,\ldots,\wvec_n</m> is a basis for <m>V</m>.
+        Join the two lists together to obtain
+        <me>
+          \vvec_1,\ldots,\vvec_m,\wvec_1,\ldots,\wvec_n
+          </me>.
+          We are guaranteed that the span of this set is <m>V</m>.  If it
+          is not a linear independent set, then we remove the first vector
+          that is a linear combination of the others.  Since the
+          <m>\vvec</m> vectors are linearly independent, the vector that
+          is removed must be one of the <m>\wvec</m> vectors.  Continuing
+          in this way, we eventually obtain a basis that includes the
+          vectors <m>\vvec_1,\ldots,\vvec_m</m>.
+        </p>
+      </proof>
+    </proposition>
+    
+    <p>As a conseqence, we obtain</p>
+    <proposition>
+      <statement>
+        <p>If <m>W</m> is a subspace of <m>V</m> and <m>\dim W = \dim
+        V</m>, then <m>W=V</m>.
+        </p>
+      </statement>
+    </proposition>
+
+    <p>Some further conseqences of these ideas follow.</p>
+
+    <proposition>
+      <statement>
+        <p>If <m>V</m> is a finite dimensional vector space of
+        dimension <m>n</m> and <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m>
+        is a set of vectors in <m>V</m>, then
+        <ul>
+          <li>
+            <p>if the set of vectors is linearly independent, then it
+            is a basis.</p>
+          </li>
+          <li>
+            <p>if the span of the set of vectors is <m>V</m>, then it
+            is a basis.</p>
+          </li>
+        </ul>
+        </p>
+      </statement>
+    </proposition>
+  </subsection>
+
+  <subsection>
+    <title>Sums of subspaces</title>
+
+    <p>Here is a construction whose usefulness will become more clear
+    over time as it helps us to break vector spaces into simpler
+    pieces.  Suppose that we have a vector space <m>V</m> and that 
+    <m>V_1</m> and <m>V_2</m> are subspaces.  We can define a new
+    subspace <m>V_1+V_2</m>.
+    </p>
+
+    <definition>
+      <statement>
+        <p>Given subspaces <m>V_1</m> and <m>V_2</m> of <m>V</m>, we form 
+        <m>V_1+V_2</m> as the subset of <m>V</m> whose elements can be
+        written in the form <m>\vvec_1+\vvec_2</m> where <m>\vvec_1\in
+        V_1</m> and <m>\vvec_2\in V_2</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <example>
+      <statement>
+        <p>Suppose that <m>V=\real^3</m>, <m>V_1</m> is the
+        1-dimensional subspace whose vectors are <m>\threevec x00</m>,
+        and <m>V_2</m> is the 1-dimensional subspace whose vectors are
+        <m>\threevec 0y0</m>.  Then <m>V_1+V_2</m> is the
+        2-dimensional subspace whose vectors have the form
+        <m>\threevec xy0</m>.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>Suppose that <m>V=\real^4</m>, <m>V_1</m> is the
+        2-dimensional subspace having vectors <m>\fourvec xy00</m>,
+        and <m>V_2</m> is the 2-dimensional subspace having vectors
+        <m>\fourvec 0yz0</m>.  Then <m>V_1+V_2</m> is the
+        three-dimensional subspace consisting of vectors <m>\fourvec
+        xyz0</m>.
+        </p>
+      </statement>
+    </example>
+
+    <proposition xml:id="prop-dim-sum">
+      <statement>
+        <p>If <m>V_1</m> and <m>V_2</m> are subspaces of <m>V</m>,
+        then <m>V_1+V_2</m> is also a subspace of <m>V</m> and
+        <me>
+          \dim (V_1+V_2) = \dim V_1 + \dim V_2 - \dim (V_1\cap V_2)
+        </me>.
+        </p>
+      </statement>
+      <proof>
+        <p>One can verify that <m>V_1+V_2</m> is closed under scalar
+        multiplication and addition, which means that it forms a
+        subspace of <m>V</m>.
+        </p>
+
+        <p>Suppose that <m>V_1\cap V_2</m> has a basis
+        <m>\uvec_1,\ldots,\uvec_m</m>.  Since <m>V_1\cap V_2</m> is a
+        subspace of <m>V_1</m>, this basis can be extended to a basis
+        for <m>V_1</m> by adding vectors
+        <m>\vvec_1,\ldots,\vvec_j</m>.  Similarly, the basis for
+        <m>V_1\cap V_2</m> can be extended to a basis for <m>V_2</m>
+        by adding vectors <m>\wvec_1,\ldots,\wvec_k</m>.  Putting all
+        these vectors together gives the set
+        <me>
+          \bcal=\{\uvec_1,\ldots,\uvec_m,\vvec_1,\ldots,\vvec_j,\wvec_1,
+          \ldots, \wvec_k\}
+        </me>,
+        which we claim is a basis for <m>V_1+V_2</m>.
+        </p>
+
+        <p>Any vector in <m>V_1+V_2</m> can be written as the sum of a
+        vector in <m>V_1</m> and a vector in <m>V_2</m>.  Therefore,
+        the span of the vectors in <m>\bcal</m> is <m>V_1+V_2</m>
+        since contained within <m>\bcal</m> is a basis for
+        <m>V_1</m>and a basis for <m>V_2</m>.
+        </p>
+
+        <p>Moreover, the set of vectors <m>\bcal</m> is linearly
+        independent.  Suppose that
+        <me>
+          a_1\uvec_1+\ldots + a_m\uvec_m + b_1\vvec_1 + \ldots +
+          b_j\vvec_j + c_1\wvec_1 +\ldots+ c_k\wvec_k = 0
+        </me>.
+        Rearranging this gives
+        <me>
+          c_1\wvec_1 +\ldots+ c_k\wvec_k = -a_1\uvec_1-\ldots -
+          a_m\uvec_m - b_1\vvec_1 - \ldots - b_j\vvec_j
+        </me>.
+        The vector on the left is in <m>V_2</m> but not <m>V_1\cap
+        V_2</m>, while the vector on the right is in <m>V_1</m>.  The
+        only way this can happen is for both vectors to be zero, which
+        means that all the coefficients must be zero.
+        </p>
+      </proof>
+      
+    </proposition>
+
+    <definition>
+      <statement>
+        <p>If <m>V_1\cap V_2 = \{0\}</m>, we say that <m>V_1+V_2</m>
+        is the <em>direct sum</em> of <m>V_1</m> and <m>V_2</m> and
+        denote it as <m>V_1\oplus V_2</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>As a consequence of <xref ref="prop-dim-sum"/>, we have that
+    </p>
+
+    <proposition>
+      <statement>
+        <p>
+        <me>\dim(V_1\oplus V_2)= \dim V_1 + \dim V_2</me>.
+        </p>
+      </statement>
+    </proposition>
+
+    <p>As a consequence of <xref ref="prop-basis-extend"/>, we have
+    </p>
+
+    <proposition>
+      <statement>
+        <p>If <m>W</m> is a subspace of <m>V</m>, then there is
+        another subspace <m>U</m> such that <m>V=W\oplus U</m>.
+        </p>
+      </statement>
+    </proposition>
+
+    <definition>
+      <statement>
+        <p>If <m>V = W\oplus U</m>, we say that <m>U</m> is a
+        complement of <m>W</m>.
+        </p>
+      </statement>
+    </definition>
+  </subsection>
+    
+    
+</section>
+  

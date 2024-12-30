@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="chap-std-forms" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The spectral theorem</title>
+
+  <introduction>
+    <p> In our earlier course, we investigated diagonalizable matrices
+    and used them to simplify a variety of problems.  Remember we said
+    that the matrix <m>A</m> is <em>diagonalizable</em> if there is a
+    diagonal matrix <m>D</m> and an invertible matrix <m>P</m> such
+    that <m>A=PDP^{-1}</m>.  We would now say that <m>A</m> is similar
+    to the diagonal matrix <m>D</m>.
+    </p>
+
+    <p>We also saw that not every matrix is diagonalizable.  However,
+    when <m>A</m> is symmetric, then <m>A</m> is not only
+    diagonalizable, but it is <em>orthogonally diagonalizable</em>,
+    meaning there is an orthogonal matrix <m>Q</m> such that
+    <m>A=QDQ^T</m>.  This was an important fact that led to many
+    interesting investigations, and we called it the <em>Spectral
+    Theorem</em>.
+    </p>
+
+    <p>We can rephrase the Spectral Theorem now that we are
+    investigating vector spaces and linear 
+    transformations.  In particular, if <m>T</m> is an operator
+    that is represented by a symmetric matrix <m>A</m>
+    in some basis, then there is another basis for which the matrix
+    representing <m>T</m> is diagonal.
+    </p>
+
+    <p>This chapter presents a proof of the Spectral Theorem.
+    Furthermore, we will go further and study operators to which the
+    Spectral Theorem does not apply.  In this case, can we find a
+    basis such that the matrix representing the transformation has a
+    simple form?  For example, if we cannot represent <m>T</m> with a
+    diagonal matrix, perhaps we can represent it with an
+    upper-triangular one.
+    </p>
+  </introduction>
+
+  <!-- include sections -->
+  <xi:include href="section-polys.ptx" />
+  <xi:include href="section-upper.ptx" />
+  <xi:include href="section-orthogonal.ptx" />
+  <xi:include href="section-nilpotent.ptx" />
+  <xi:include href="section-jordan.ptx" />
+</chapter>

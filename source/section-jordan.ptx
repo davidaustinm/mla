@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-jordan" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Generalized eigenvectors</title>
+
+  <introduction>
+    <p>Up to this point, eigenvalues and eigenvectors have helped us
+    find some standard forms of operators.  In particular, we have
+    seen that if an operator <m>T</m> on <m>V</m>, an
+    <m>n</m>-dimensional vector space has <m>n</m> linearly
+    independent eigenvectors, then <m>T</m> is diagonalizable.  We
+    also know that this condition holds if <m>T</m> has <m>n</m>
+    distinct eigenvalues or if the operator is self-adjoint.</p>
+
+    <p>However, there are examples where this does not apply.  For
+    instance, the matrix
+    <m>A=\begin{bmatrix}
+    2 \amp 1 \\
+    0 \amp 2 \\
+    \end{bmatrix}
+    </m>
+    has a single eigenvalue <m>\lambda=2</m> and the associated
+    eigenspace <m>E_2</m> is one-dimensional.  In this case, the
+    characteristic polynomial is <m>(\lambda-2)^2</m> so the
+    eigenvalue <m>\lambda=2</m> is a root with multiplicity two.
+    </p>
+
+    <p>This example show that just looking at eigenvalues and
+    eigenvectors will not be enough to always find a standard form.
+    So instead, we do something that mathematicians love to do:
+    generalize an idea that has already proven useful.  In this
+    case, the eigenvalue/eigenvector condition is given by the
+    equation
+    <me>
+      (T-\lambda I)\vvec = \zerovec
+    </me>.
+    We will generalize this equation to
+    <me>
+      (T-\lambda I)^k\vvec = \zerovec
+    </me>
+    for some <m>k</m> and call the solutions <em>generalized
+    eigenvectors</em>.
+    </p>
+    
+
+  </introduction>
+
+  <subsection>
+    <title> Generalized eigenvectors </title>
+
+    <definition>
+      <statement>
+	<p>If <m>T</m> is an operator on <m>V</m>, we say that a
+	nonzero vector
+	<m>\vvec</m> is a <em>generalized eigenvector</em> if
+	<m>(T-\lambda I)^k\vvec=\zerovec</m> for some <m>k</m>.  The
+	set of such vectors, the <em>generalized eigenspace</em> is
+	denoted <m>G_\lambda</m>.
+	</p>
+      </statement>
+    </definition>
+
+    <p>Notice that eigenvectors are also generalized eigenvectors.
+    </p>
+
+    <p>First notice that <m>G_k</m> is an invariant subspace of
+    <m>V</m> because <m>G_k=\nul(p(T))</m> for a polynomial
+    <m>p(x)=(x-\lambda)^k</m>.  Moreover, the minimal polynomial of
+    <m>T|_{G_k}</m> is <m>p(x)=(x-\lambda)^k</m>.  Since the minimal
+    polynomial of <m>T|_{G_k}</m> divides the minimal polynomial of
+    <m>T</m>, we know that <m>(x-\lambda)^k</m> divides minimal
+    polynomial of <m>T</m>.  This means that <m>\lambda</m> is an
+    eigenvalue of <m>T</m>.  So while we have generalized the notion
+    of eigenvector, the values of <m>\lambda</m> for which we have
+    generalized eigenvectors and still eigenvalues of <m>T</m>.
+    </p>
+
+    <proposition>
+      <statement>
+	<p>A nonzero vector cannot belong to generalized eigenspaces
+	corresponding to two different eigenvalues.
+	</p>
+      </statement>
+      <proof>
+	<p>Suppose that <m>\lambda</m> and <m>\mu</m> are eigenvalues
+	and that <m>(T-\lambda I)^k\vvec=\zerovec</m> for some
+	<m>k</m>.  Suppose also that <m>(T-\mu I)^j\vvec=\zerovec</m>
+	for some other <m>m</m>.  Then
+	<me>
+	  \begin{aligned}
+	  \zerovec=(T-\mu I)^m\vvec \amp = (T-\lambda I +
+	  (\lambda-\mu)I)^m\vvec \\
+	  \amp = \sum_{j=0}^m{m \choose
+	  j}(\lambda-\mu)^{m-j}(T-\lambda I)^j\vvec \\
+	  \end{aligned}
+	</me>.
+	For this vector <m>\vvec</m>, there is a smallest value of
+	<m>k</m> such that <m>(T-\lambda I)^k\vvec=\zerovec</m>, but
+	<m>(T-\lambda I)^{k-1}\vvec\neq\zerovec</m>.  We therefore
+	multiply both sides of the previous expression by
+	<m>(T-\lambda I)^{k-1}</m> so that
+	<me>
+	  (T-\lambda I)^{k-1}\zerovec =
+	  \sum_{j=0}^m(\lambda-\mu)^{m-j} (T-\lambda I)^{k-1+j}\vvec =
+	  (\lambda - \mu)^m(T-\lambda I)^{k-1}\vvec
+	</me>,
+	which says that <m>\lambda - \mu = 0</m>.
+	</p>
+      </proof>
+    </proposition>
+
+    <p>Moreover, a set of nonzero vectors <m>\vvec_j\in
+    G_{\lambda_j}</m> for a different set of eigenvalues is linearly
+    independent.
+    </p>
+
+    <proposition>
+      <statement>
+        <p>A set of
+        generalized eigenvectors, each associated to a different
+        eigenvalue, is linearly independent.
+        </p>
+      </statement>
+
+      <proof>
+        <p>Suppose that <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> is a set
+        of generalized eigenvectors associated to different
+        eigenvalues.  We will proceed using induction on the number of
+        vectors <m>m</m> in the set.  If <m>m=1</m>, we know that
+        <me>
+          a_1\vvec_1 = \zerovec
+        </me>
+        implies that <m>a_1=0</m>.
+        </p>
+        
+        <p>Now suppose that <m>m\gt 1</m> and that the result is true
+        for all smaller values of <m>m</m>.
+        Suppose that
+        <m>(T-\lambda_jI)^{k_j}\vvec_j=\zerovec</m> and that 
+        <me>
+          a_1\vvec_1+a_2\vvec_2 + \ldots + a_m\vvec_m = \zerovec
+        </me>.
+        Multiply by <m>(T-\lambda_m)^{k_m}</m> so that the last term
+        on the left size becomes zero.  Then we have
+        <me>
+          a_1(T-\lambda_m)^{k_m}\vvec_1+ \ldots +
+          a_m(T-\lambda_m)^{k_m}\vvec_{m-1} = \zerovec
+        </me>.
+        Since a generalized eigenvector can only be associated to one
+        eigenvalue, each vector <m>(T-\lambda_m)^{k_m}\vvec_j</m> is
+        nonzero.  In addition, each of these vectors is still a
+        generalized eigenvector because
+        <me>
+          (T-\lambda_j)^{k_j}(T-\lambda_m)^{k_m)\vvec_j =
+          (T-\lambda_m)^{k_m)(T-\lambda_j)^{k_j}\vvec_j = \zerovec
+        </me>.
+        </p>
+
+        <p>Therefore we have a linear combination of <m>m-1</m>
+        generalized eigenvectors with
+        <me>
+          a_1(T-\lambda_m)^{k_m}\vvec_1+ \ldots +
+          a_m(T-\lambda_m)^{k_m}\vvec_{m-1} = \zerovec
+        </me>.
+        By induction <m>a_1=a_2=\ldots=a_{m-1} = 0</m>, which also
+        implies that <m>a_m=0</m>.  The original set of <m>m</m>
+        generalized eigenvectors is then seen to be linearly
+        independent.
+        </p>
+      </proof>
+    </proposition>
+  </subsection>
+
+  <subsection>
+    <title>Complex Vector Spaces</title>
+
+    <p>Because of the Fundamental Theorem of Algebra, operators on
+    complex vector spaces have special properties.  In the rest of
+    this section, we will focus on complex vector spaces.
+    </p>
+
+    <proposition>
+      <statement>
+        <p>If <m>T</m> is an operator on <m>V</m>, a complex vector space,
+        then there is a basis of <m>V</m> consisting of generalized
+        eigenvectors of <m>T</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>Once again we proceed by induction on <m>n</m>, the
+        dimension of <m>V</m>.  The result is certainly true if
+        <m>n=1</m> because every nonzero vector is an eigenvector of
+        <m>T</m>.
+        </p>
+
+        <p>Now assume that <m>n\gt 1 </m> and that the result holds
+        for all smaller values of <m>n</m>.  Suppose that
+        <m>\lambda</m> is an eigenvalue of <m>T</m> and consider the
+        operator <m>(T-\lambda I)^n</m>.  We will first explain why
+        <me>
+          V = \nul(T-\lambda I)^n \oplus \range(T-\lambda I)^n
+        </me>.
+        </p>
+
+        <p>First, we can see that these subspaces of <m>V</m>
+        intersect only in the zero vector.  Suppose that
+        <m>\vvec\in\range(T-\lambda I)^n</m>, which means there is a
+        vector <m>\uvec</m> such that <m>(T-\lambda I)^n\uvec =
+        \vvec</m>.  If <m>\vvec</m> is also in <m>\nul(T-\lambda
+        I)^n</m>, then
+        <me>
+          (T-\lambda I)^n\vvec = (T-\lambda I)^{2n}\uvec = \zerovec
+        </me>.
+        Because <m>\dim V = n</m>, remember that
+        <m>\nul(T-\lambda)^n =\nul(T-\lambda I)^{n+k}</m> for any
+        positive <m>k</m>.  Since <m>\uvec\in\nul(T-\lambda
+        I)^{2n}</m>, we also have <m>\uvec\in\nul(T-\lambda I)^n</m>,
+        which means that
+        <me>
+          \vvec = (T-\lambda I)^n\uvec = \zerovec
+        </me>.
+        Therefore, these two subspaces only intersect in the zero
+        vector.
+        </p>
+
+        <p>In the usual way, the dimensions of these subspaces add to
+        <m>\dim V =n</m> so we have
+        <me>
+          V = \nul(T-\lambda I)^n \oplus \range(T-\lambda I)^n
+        </me>.
+        If <m>\nul(T-\lambda I)^n = V</m>, then every vector in
+        <m>V</m> is a generalized eigenvector of <m>T</m> and the
+        conclusion of the theorem holds.  Suppose instead that
+        <me>\{\zerovec\} \subsetneq \nul(T-\lambda I)^n \subsetneq V
+        </me>
+        where the first inclusion holds because <m>\lambda</m> is an
+        eigenvalue of <m>T</m>.  This means that
+        <me>
+          0 \lt \dim \range(T-\lambda I)^n \lt n
+        </me>.
+        </p>
+        
+        <p>Now <m>\range(T-\lambda I)^n</m> is invariant under
+        <m>T</m>.  By induction, there is a basis of
+        <m>\range(T-\lambda I)^n</m> consisting of generalized
+        eigenvectors of <m>T</m>.  Putting this together with a basis
+        of <m>\nul(T-\lambda I)^n</m> gives a basis of <m>V</m>
+        consisting of generalized eigenvectors of <m>T</m>.
+        </p>
+      </proof>
+    </proposition>
+
+    <proposition>
+      <statement>
+        <p>If <m>T</m> is an operator on the complex vector space
+        <m>V</m> and the set of eigenvalues of <m>T</m> is
+        <m>\lambda_1,\lambda_2,\ldots,\lambda_m</m>, then
+        <me>
+          V = G_{\lambda_1}\oplus G_{\lambda_2}\oplus\ldots
+          \oplus G_{\lambda_m}
+        </me>.
+        </p>
+      </statement>
+
+      <proof>
+        <p> We have seen that there is a basis of <m>V</m> consisting
+        of generalized eigenvectors.  Therefore, every vector in
+        <m>V</m> can be written as a linear combination of generalized
+        eigenvectors.  </p>
+
+        <p>We have further seen a set of generalized eigenvectors
+        associated to different eigenvalues is linear independent.
+        </p>
+
+        <p>These two facts are enough to establish the theorem.
+        </p>
+      </proof>
+    </proposition>
+  </subsection>
+
+  <subsection>
+    <title>Jordan form</title>
+
+    <p>We are now ready to proof the main structure theorem, again
+    assuming that <m>V</m> is a complex vector space.  By a Jordan
+    block, we mean a matrix <m>J</m> whose diagonal entries are
+    all <m>\lambda</m>, whose entries directly above the diagonal are
+    1, and whose other entries are all zero.  That is,
+    <me>
+      J = 
+      \begin{bmatrix}
+      \lambda \amp 1 \amp 0 \amp \ldots \amp 0 \\
+      0 \amp \lambda \amp 1 \amp \ldots \amp 0 \\
+      \vdots \amp \vdots \amp \ddots \amp \ldots \amp \vdots \\
+      0 \amp 0 \amp 0 \amp \ldots \amp \lambda \\
+      \end{bmatrix}
+    </me>.
+    </p>
+
+    <theorem>
+      <title>Jordan canonical form</title>
+      <statement>
+        <p>If <m>T</m> is an operator on a complex vector space
+        <m>V</m>, then there is a basis for <m>V</m> such that the
+        matrix associated to <m>T</m> consists only of Jordan blocks
+        on the diagonal.  That is,
+        <me>
+          \begin{bmatrix}
+          J_1 \amp 0 \amp \ldots \amp 0 \\
+          0 \amp J_2 \amp \ldots \amp 0 \\
+          \vdots \amp \vdots \amp \ddots \amp 0 \\
+          0 \amp 0 \amp \ldots \amp J_m \\
+          \end{bmatrix}
+        </me>.
+        </p>
+      </statement>
+
+      <proof>
+        <p>We know that
+        <me>
+          V = G_{\lambda_1}\oplus G_{\lambda_2}\oplus\ldots
+          \oplus G_{\lambda_m}
+        </me>.
+        Moreover, on <m>G_{\lambda_j}</m>, the operator
+        <m>(T-\lambda_j I)^{k_j}</m> is nilpotent, which means there is
+        a basis for <m>G_{\lambda_j}</m> such that the matrix
+        associated to <m>T-\lambda_j</m> conists of nilpotent
+        blocks.  The matrix associated to <m>T</m> therefore has
+        consists of Jordan blocks.  Because each generalized
+        eigenspace is invariant under <m>T</m>, the theorem
+        holds. </p>
+      </proof>
+    </theorem>
+
+    <p>Notice that the characteristic polynomial of <m>T</m>, which
+    can easily be found using this matrix, has the form
+    <me>
+      p(x)=(x-\lambda_1)^{m_1}(x-\lambda_2)^{m_2}\ldots(x-\lambda_k)^{m_k}
+    </me>
+    where the multiplicity of each eigenvalue equals the dimension
+    <m>\dim G_{\lambda_j}</m>.  We earlier called <m>m_j</m> the
+    algebraic multiplicity of the eigenvalue <m>\lambda_j</m>.
+    Because the eigenspace <m>E_{\lambda_j}\subset G_{\lambda_j}</m>, 
+    have therefore shown that the multiplicity of the eigenvalue is at
+    least as large as the dimension of the eigenspace:
+    <me>
+      0\lt \dim E^{\lambda_j} \leq m_j
+    </me>.
+    </p>
+  </subsection>
+</section>

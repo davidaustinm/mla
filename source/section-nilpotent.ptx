@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-nilpotent" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Nilpotent operators</title>
+
+  <introduction>
+    <p>Eigenvectors of an operator <m>T</m> are found through the
+    equation <m>(T-\lambda I)\vvec=\zerovec</m>.  Now that we
+    have developed some conditions under which operators are
+    diagonalizable, we would like to understand what happens when
+    operators are not diagonalizable.  To this end, we will generalize
+    the eigenvector condition by considering
+    <me>
+      (T-\lambda I)^k\vvec=\zerovec
+    </me>.
+    To get started, however, we will first consider a related class of
+    operators. 
+    </p>
+  </introduction>
+
+  <subsection>
+    <title> Null spaces of powers </title>
+
+    <p>Suppose that <m>T</m> is an operator. If
+    <m>T^k\vvec=\zerovec</m>, then it also happens that
+    <me>
+      T^{k+1}\vvec=T(T^k\vvec)=\zerovec
+    </me>.
+    This means that  <m>\nul(T^k)\subset\nul(T^{k+1})</m>, and we
+    therefore have 
+    <me>
+      \nul(T)\subset\nul(T^2)\subset\nul(T^3)\subset\ldots
+    </me>.
+    </p>
+
+    <p>
+      The next propositions say that this process stabilizes so that the
+      inclusions eventually become equalities.  First we show that
+      when we reach an equality, then all the following are inclusions.
+    </p>
+
+    <proposition>
+      <statement>
+	If <m>\nul(T^m)=\nul(T^{m+1})</m>, then <m>\nul(T^{m+k}) =
+	\nul(T^m)</m> for any <m>k\gt 0</m>.
+      </statement>
+
+      <proof>
+	<p> We will proof this fact using induction on <m>k</m>.
+	Notice that the result is true for <m>k=1</m> by the
+	assumption.
+	</p>
+
+	<p>We now assume that <m>\nul(T^{m+j})=\nul(T^m)</m> for every
+	<m>j\lt k</m> and that we have a vector
+	<m>\vvec\in\nul(T^{m+k})</m>.  We need to show that
+	<m>\vvec\in\nul(T^m)</m>.
+	</p>
+
+	<p>
+	We know that
+	<me>
+	  T^{m+k}\vvec = T^{m+1}(T^{k-1}\vvec) = \zerovec
+	</me>.
+	Therefore, <m>T^{k-1}\vvec</m> is in <m>\nul(T^{m+1}) =
+	\nul(T^m)</m>, which means that
+	<me>
+	  T^{m+k-1}\vvec=T^m(T^{k-1}\vvec)=\zerovec
+	</me>.
+	This means that <m>\vvec\in\nul(T^{m+k-1}) = \nul(T^m)</m> by
+	induction.
+	</p>
+      </proof>
+    </proposition>
+
+    <p> The next result says that this process will always stablize by
+    the time we reach the dimension of <m>V</m>.
+    </p>
+
+    <proposition>
+      <statement>
+	<p>For any operator <m>T</m> on a vector space <m>V</m> of
+	dimension <m>n</m>,
+	<me>
+	  \nul(T^n)=\nul(T^{n+1})
+	</me>.
+	</p>
+      </statement>
+
+      <proof>
+	<p>If <m>\nul(T)=\{\zerovec\}</m>, then <m>T</m> is invertible
+	as is every power of <m>T</m>.  Therefore
+	<m>\nul(T^k)=\{\zerovec\}</m> for every power, including
+	<m>n</m> and <m>n+1</m>.
+	</p>
+
+	<p>Now suppose that <m>\nul(T)</m> has positive dimension so
+	that <m>\dim\nul(T) \geq 1</m> and that the null spaces
+	continue to grow
+	<me>
+	  \nul(T)\subsetneq\nul(T^2)\ldots\subsetneq\nul(T^m)
+	</me>.
+	In this case,
+	<me>
+	  n=\dim(V)\geq\dim\nul(T^m)\geq m
+	</me>.
+	This shows that the null spaces cannot grow beyond <m>T^n</m>
+	so we have <m>\nul(T^n)=\nul(T^{n+1})</m>.
+	</p>
+      </proof>
+    </proposition>
+  </subsection>
+  
+  <subsection>
+    <title>Nilpotent operators</title>
+
+    <p> We will say that an operator is nilpotent if some power of the
+    operator is zero.
+    </p>
+
+    <definition>
+      <title>Nilpotent operator</title>
+      <p>An operator <m>T</m> is nilpotent if some power <m>T^m=0</m>.
+      </p>
+    </definition>
+
+    <p>Notice that the operator <m>T=0</m> is nilpotent but we will
+    often consider nonzero nilpotent operators.
+    </p>
+      
+    <example>
+      <p> Consider the matrix
+      <m>A = \begin{bmatrix}
+      0 \amp 1 \\
+      0 \amp 0 \\
+      \end{bmatrix}
+      </m>
+      and notice that <m>A^2=0</m>.  An operator <m>T</m> whose
+      associated matrix is <m>A</m> with respect to some basis is
+      nilpotent since <m>T^2=0</m>.
+      </p>
+    </example>
+
+    <p>Suppose <m>T</m> is nilpotent and that <m>m</m> is the smallest
+    power for which <m>T^m=0</m>.  This means
+    that <m>p(T)=0</m> if <m>p(x)=x^m</m> and hence <m>p</m> is the
+    minimal polynomial of <m>T</m>.  We could view
+    <me>
+      p(x) = x^m = (x-0)^m
+    </me>,
+    which says that there is a basis for which the matrix associated
+    to <m>T</m> is upper triangular
+    <me>
+      \begin{bmatrix}
+      0 \amp * \amp * \amp \ldots \amp * \\
+      0 \amp 0 \amp * \amp \ldots \amp * \\
+      \vdots \amp \vdots \amp \vdots \amp \ddots \amp * \\
+      0 \amp 0 \amp 0 \amp 0 \amp 0 \\
+      \end{bmatrix}
+    </me>.
+    </p>
+
+    <p>In fact, we will see that there is a basis so that the matrix
+    associated to a nilpotent operator has an especially nice form.
+    </p>
+
+    <definition>
+      <statement>
+	<p>A <em>nilpotent block</em> matrix is a matrix having the form
+	<me>
+	  \begin{bmatrix}
+	  0 \amp 1 \amp 0 \amp \ldots \amp 0 \\
+	  0 \amp 0 \amp 1 \amp \ldots \amp 0 \\
+	  \vdots \amp \vdots \amp \vdots \amp \ddots \amp 1 \\
+	  0 \amp 0 \amp 0 \amp 0 \amp 0 \\
+	  \end{bmatrix}
+	</me>.
+	This is, all the entries are zero except for the entries
+	directly above the diagonal, which are 1.
+	</p>
+      </statement>
+    </definition>
+
+    <example>
+      <p>The following matrix consists of three nilpotent blocks on
+      the diagonal, a <m>2\times2</m> block, a <m>3\times3</m> block,
+      and a <m>1\times1</m> block.
+      <me>
+	\begin{bmatrix}
+	0 \amp 1 \amp 0 \amp 0 \amp 0 \amp 0 \\
+	0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
+	0 \amp 0 \amp 0 \amp 1 \amp 0 \amp 0 \\
+	0 \amp 0 \amp 0 \amp 0 \amp 1 \amp 0 \\
+	0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
+	0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
+	\end{bmatrix}
+	</me>.
+      </p>
+    </example>
+
+    <p>In fact, every nilpotent operator has basis whose associated
+    matrix consists of a set of nilpotent blocks on the diagonal.
+    </p>
+
+    <proposition>
+      <statement>
+	<p>If <m>T</m> is a nilpotent operator on <m>V</m>, then there
+	is a basis for <m>V</m> such that the matrix associated to
+	<m>T</m> has the form
+	<me>
+	  \begin{bmatrix}
+	  A_1 \amp 0 \amp \ldots \amp 0 \\
+	  0 \amp A_2 \amp \ldots \amp 0 \\
+	  0 \amp \vdots \amp \ddots \amp 0 \\
+	  0 \amp 0 \amp 0 \amp A_k \\
+	  \end{bmatrix}
+	</me>
+	where each <m>A_j</m> is a nilpotent block.
+	</p>
+      </statement>
+
+      <proof>
+	<p>We will prove this result using induction on <m>n=\dim
+	V</m>.  To begin, if <m>n=\dim V = 1</m>, then <m>T=0</m> so
+	the matrix associated to <m>T</m> in any basis is
+	<m>\begin{bmatrix}0\end{bmatrix}</m>, a <m>1\times1</m>
+	nilpotent block.
+	</p>
+
+	<p>Now suppose that the result is true for every dimension less
+	than <m>n</m> and suppose that <m>m</m> is the smallest
+	integer for which <m>T^m=0</m> but <m>T^{m-1}\neq 0</m>.  If
+	<m>m=1</m>, then <m>T=0</m> and the matrix associated to
+	<m>T</m> is the zero matrix, which is a collection of
+	<m>1\times 1</m> nilpotent blocks</p>.
+
+	<p> Now suppose that <m>m\gt 1</m> and notice
+	that our assumption implies that
+	<m>\nul(T^{m-1})\subsetneq\nul(T^m)</m>.  Therefore, there is 
+	a vector <m>\vvec_m</m> such that <m>T^m\vvec_m=\zerovec</m> but
+	<m>T^{m-1}\vvec_m \neq \zerovec</m>.
+	</p>
+
+	<p>We define <m>\vvec_j = T^{m-j}\vvec_m</m> and note that
+	<m>T^j\vvec_j=\zerovec</m> but <m>T^{j-1}\vvec_j\neq
+	\zerovec</m>.  Notice that the vectors <m>\vvec_j</m> form a
+	linearly independent set. To see why, suppose we can find
+	coefficients <m>a_j</m> such that
+	<me>
+	  a_1\vvec_1 + a_2\vvec_2 + \ldots + a_m\vvec_m = \zerovec.
+	</me>.
+	If we apply <m>T^{m-1}</m> to this vector, we have
+	<me>
+	  a_m\vvec_1 = \zerovec
+	</me>
+	which says that <m>a_m=0</m>.  Continuing in this way, shows
+	that each <m>a_j=0</m>, which shows that the vectors are
+	linearly independent.  We define the <m>m</m>-dimensional
+	subspace <m>W</m> to be the span of these vectors.
+	</p>
+
+	<p>  Notice that <m>W</m> is invariant under <m>T</m> and
+	that the matrix associated to <m>T|_W</m> in this basis is an
+	<m>m\times m</m> nilpotent block.  If
+	<m>W=V</m>, then the matrix associated to <m>T</m> in this
+	basis is a single <m>n\times n</m> nilpotent block, and the
+	conclusion of the theorem is true.
+	</p>
+
+	<p>So now suppose that <m>\dim W \lt \dim V = n</m>.  We also
+	know that <m>\dim W = m \gt 1</m> so we have
+	<me>
+	  1 \lt \dim W \lt \dim V = n
+	</me>.
+	Notice that <m>W</m> is invariant under <m>T</m> and that the
+	matrix associated to <m>T|_W</m> in the basis
+	<m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> is a <m>m\times m</m>
+	nilpotent block.  To finish the proof, we need to find a
+	complement to <m>W</m> inside <m>V</m> that is invariant under
+	<m>T</m>. 
+	</p>
+
+	<p>To do so, we choose a linear functional <m>\phi\in V'</m>
+	satisfying <m>\phi(\vvec_1)= 1</m> and <m>\phi(\vvec_j)=0</m>
+	for <m>j \gt 1</m>.  We use <m>\phi</m> to define the
+	linear transformation <m>\Phi:V\to\real^m</m> by
+	<me>
+	  \Phi(\vvec) = (\phi(\vvec),
+	  \phi(T\vvec),\ldots,\phi(T^{m-1}\vvec))
+	</me>.
+	For a vector <m>\wvec\in W</m>, we can write
+	<me>
+	  \wvec = a_1\vvec_1 + a_2\vvec_2 + \ldots + a_m\vvec_m
+	</me>.
+	Notice that
+	<me>
+	  \begin{aligned}
+	  \wvec \amp = a_1\vvec_1 + a_2\vvec_2 + \ldots + a_m\vvec_m \\
+	  T\wvec \amp = a_2\vvec_1 + a_3\vvec_2 + \ldots + a_m\vvec_{m-1} \\
+	  T^2\wvec \amp = a_3\vvec_1 + a_4\vvec_2 + \ldots +
+	  a_m\vvec_{m-2} \\
+	  \end{aligned}
+	</me>
+	so that
+	<me>
+	  \Phi(\wvec) = (a_1,a_2,\ldots,a_m)
+	</me>.
+	From this, we see that <m>\Phi</m> is surjective.
+	</p>
+
+	<p>We define the subspace
+	<m>U=\nul(\Phi)</m> and note that <m>U\cap W =
+	\{\zerovec\}</m> since 	<m>\Phi(\wvec) \neq \zerovec</m> if
+	<m>\wvec</m> is a nonzero 
+	vector in <m>W</m>.  Moreover, <m>\dim U + \dim W = \dim V</m>
+	since <m>\Phi</m> is surjective.  Therefore <m>V = U\oplus
+	W</m>. 
+	</p>
+
+	<p> All that remains is to show that <m>U</m> is invariant
+	under <m>T</m>.  Suppose that
+	<me>
+	  \Phi(\vvec) =
+	  (\phi(\vvec),\phi(T\vvec),\ldots,\phi(T^{m-1}\vvec)) =
+	  (a_1,a_2,\ldots,a_m)
+	</me>.
+	Then it follows that
+	<me>
+	  \Phi(T\vvec) =
+	  (\phi(T\vvec),\phi(T^2\vvec),\ldots,\phi(T^{m}\vvec)) =
+	  (a_2,a_3,\ldots,a_m,0)
+	</me>.
+	Therefore, if <m>\Phi(\uvec) = \zerovec</m>, then
+	<m>\Phi(T\uvec)=\zerovec</m>, which says that <m>U</m> is
+	invariant under <m>T</m>.  Moreover, <m>T|_U</m> is still
+	nilpotent so we know that the there is a basis for <m>U</m>
+	for which the matrix of <m>T|_U</m> consists of nilpotent
+	blocks.  Combining this basis with the basis of <m>W</m> we
+	have constructed gives a basis of <m>V</m> for which the
+	matrix associated to <m>T</m> consists of nilpotent blocks.
+	</p>
+      </proof>
+    </proposition>
+	
+  </subsection>
+</section>

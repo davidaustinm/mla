@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-orthogonal" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Orthogonaliaty</title>
+
+  <introduction>
+    <p>As we've seen in our earlier studies, the dot product and
+    orthogonality lead to many simplifications.  For instance, the
+    inverse of a matrix whose columns form an orthonormal basis of
+    <m>\real^n</m> is just the transpose of that matrix.  Since we are
+    now looking to find bases that represent a given linear
+    transformation with a simple form, it makes sense to start to
+    consider orthogonal bases.
+    </p>
+  </introduction>
+  
+  <subsection>
+    <title>The adjoint of an operator</title>
+
+    <p>We suppose now that <m>V</m> is a vector space over either
+    <m>\field=\real</m> or <m>\complex</m> having an inner product
+    denoted by <m>\inner{\cdot}{\cdot}</m>.  If <m>T</m> is an
+    operator on <m>V</m>, we can define its adjoint <m>T^*</m> through
+    the following relationship
+    <me>
+      \inner{T\vvec}{\wvec}=\inner{\vvec}{T^*\wvec}
+    </me>
+    for every <m>\vvec</m> and <m>\wvec</m> in <m>V</m>.  Notice that 
+    this also means that
+    <me>
+      \inner{T^*\wvec}{\vvec} = \inner{\wvec}{T\vvec}
+    </me>.
+    The first thing to establish is that <m>T^*</m> is itself an
+    operator.
+    </p>
+
+    <proposition>
+      <statement> The adjoint <m>T^*:V\to V</m> is an operator on
+      <m>V</m>.
+      </statement>
+
+      <proof>
+        <p>We first need to establish that <m>T^*\wvec</m> is a vector
+        in <m>V</m> for every <m>\wvec</m> in <m>V</m>.
+        </p>
+
+        <p> Beginning with an orthonormal basis
+        <m>\uvec_1,\uvec_2,\ldots,\uvec_n</m> for <m>V</m>, we have
+        <me>
+          \uvec = \inner{\uvec}{\uvec_1}\uvec_1 + \ldots +
+          \inner{\uvec}{\uvec_n}\uvec_n 
+        </me>
+        for all vectors <m>\uvec</m>.  We then define
+        <me>
+          T^*\wvec =
+          \inner{T^*\wvec}{\uvec_1}\uvec_1 + \ldots +
+          \inner{T^*\wvec}{\uvec_n}\uvec_n =
+          \inner{\wvec}{T\uvec_1}\uvec_1 + \ldots +
+          \inner{\wvec}{T\uvec_n}\uvec_n
+        </me>,
+        which gives a definition of the vector <m>T^*\wvec</m>.
+        </p>
+
+        <!-- TODO:  use Reisz representation theorem -->
+
+        <p>Finally, we need to show that <m>T^*</m> satisfies the two
+        linearity properties.  Suppose that <m>\wvec_1</m> and
+        <m>\wvec_2</m> are vectors in <m>V</m>.  Then
+        <me>
+          \inner{\vvec}{T^*(\wvec_1+\wvec_2)} =
+          \inner{T\vvec}{\wvec_1+\wvec_2} =
+          \inner{T\vvec}{\wvec_1} + 
+          \inner{T\vvec}{\wvec_2}
+          =\inner{\vvec}{T^*\wvec_1 + T^*\wvec_2}
+        </me>.
+        Since this holds for any vector <m>\vvec</m>, we have
+        <me>
+          T^*(\wvec_1+\wvec_2) = T^*\wvec_1 + T^*\wvec_2
+        </me>.
+        </p>
+
+        <p>In the same way, we see that <m>T^*(s\wvec) =
+        sT^*\wvec</m>, which verifies that <m>T^*</m> is an operator
+        on <m>T</m>.
+        </p>
+      </proof>
+    </proposition>
+
+    <p>We now investigate the matrices associated to <m>T</m> and
+    <m>T^*</m> with respect to an orthonormal basis of <m>V</m>.  As
+    before, we use <m>\uvec_1,\ldots,\uvec_n</m> to denote an
+    orthonormal basis of <m>V</m>.
+    </p>
+
+    <proposition>
+      <statement>
+        <p>If <m>M</m> is the matrix associated to <m>T</m>, then
+        <m>M^*</m>, the matrix associated to <m>T^*</m> is
+        <me>
+          A^* = \conjugate{A}^T
+        </me>,
+        the conjugate transpose of <m>A</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>Remember how the matrix <m>A</m> is defined:
+        <me>
+          T\uvec_j = \sum A_{i,j}\uvec_i
+        </me>,
+        which says that
+        <me>A_{i,j}=\inner{T\uvec_j}{\uvec_i}=\inner{\uvec_j}{T^*\uvec_i}
+        = \conjugate{inner{T^*\uvec_i}{\uvec_j} = \conjugate{B_{j,i}}
+        </me>
+        if <m>B</m> is the matrix defined by <m>T^*</m>.
+        </p>
+      </proof>
+    </proposition>
+
+  </subsection>
+
+  <subsection>
+    <title>Self-adjoint operators</title>
+
+    <p>We that <m>T</m> is a <em>self-adjoint</em> operator if
+    <m>T^*=T</m>.  Notice that if <m>V</m> is a real vector space,
+    this means that the matrix associated to <m>T</m> with respect to
+    an orthonormal basis is symmetric.  Here is a useful fact about
+    self-adjoint operators.
+    </p>
+
+    <lemma xml:id="lemma-self-ad-quadratic">
+      <statement>
+        <p>If <m>T</m> is a self-adjoint operator on <m>V</m> and
+        <m>b</m> and <m>c</m> are real numbers for which <m>b^2 \lt
+        4c</m>, then the operator
+        <me>
+          T^2 + bT + cI
+        </me>
+        is invertible.
+        </p>
+      </statement>
+      <proof>
+        <p>We only need to show that <m>\nul(T)=\{\zerovec\}</m>.
+        Therefore, we suppose that <m>\vvec</m> is a nonzero vector
+        and consider
+        <me>
+          \begin{aligned}
+          \inner{(T^2+bT+cI)\vvec}{\vvec} \amp =
+          \inner{T^2\vvec}{\vvec}+
+          \inner{bT\vvec}{\vvec}+c\inner{\vvec}{\vvec} \\
+          \amp = 
+          \inner{T\vvec}{T\vvec}+
+          b\inner{T\vvec}{\vvec}+c\inner{\vvec}{\vvec}\\
+          \amp =
+          \len{T\vvec}^2 + b\inner{T\vvec}{\vvec}+c\len{\vvec}^2 \\
+          \amp \geq
+          \len{T\vvec}^2 - b\len{T\vvec}\len{\vvec} + c\len{\vvec} \\
+          \amp \geq
+          \left(\len{T\vvec} - \frac b2\len{\vvec}\right)^2 +
+          \left(c-\frac{b^2}{4}\right)\len{\vvec}^2 \\
+          \amp \gt 0 \\
+          \end{aligned}
+        </me>.
+        This shows that <m>(T^2+bT+cI)\vvec</m> is also nonzero so the
+        operator is invertible.
+        </p>
+      </proof>
+    </lemma>
+
+    <p>If <m>\field=\complex</m> and <m>T</m> is an operator on
+    <m>V</m>, we know from the <xref ref="thm-fta" 
+    text="Fundamental Theorem of Algebra"/> that the minimal
+    polynomial of <m>T</m> has the form
+    <me>
+      p(x)=(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)
+    </me>
+    where each <m>\lambda_j\in\complex</m>.
+    </p>
+
+    <p>Now suppose that <m>\field=\real</m> and <m>T</m> is a
+    self-adjoint operator on <m>V</m>.  We can make a similar
+    conclusion.
+    </p>
+
+    <proposition xml:id="prop-self-ad-min-poly">
+      <statement>
+        <p>If <m>V</m> is a real inner produce space and <m>T</m> is a
+        self-adjoint operator on <m>T</m>, then the minimal polynomial
+        of <m>T</m> has the form
+        <me>
+          p(x)=(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)
+        </me>
+        where <m>\lambda_j\in\real</m>.
+        </p>
+      </statement>
+
+      <proof>
+        <p>We know that the minimal polynomial has the form
+        <me>
+          p(x)=(x-\lambda_1)\ldots(x-\lambda_s)(x^2+b_1x+c_1)\ldots
+          (x^2+b_tx+c_t)
+        </me>
+        where <m>b_i^2 \lt 4c-i</m> for each <m>i</m>.
+        However, since <m>p(T)=0</m>, we know that
+        <me>
+          p(T)=(T-\lambda_1)\ldots(T-\lambda_s)(T^2+b_1T+c_1I)\ldots
+          (T^2+b_tT+c_tI)
+        </me>.
+        If <m>t\gt 0</m>, then <m>T^2+b_1T+c_1I</m> is invertible by
+        <xref ref="lemma-self-ad-quadratic"/>.  If
+        we multiply <m>p(T)</m> by its inverse, we obtain another
+        polynomial <m>q</m> of smaller degree for which <m>q(T)=0</m>.
+        </p>
+
+        <p>Since the minimal polynomial <m>p</m> is the polynomial
+        having the smallest degree among all polynomials for which
+        <m>p(T)=0</m>, we conclude that <m>t=0</m> and therefore
+        <me>
+          p(x)=(x-\lambda_1)\ldots(x-\lambda_m)
+        </me>.
+        </p>
+      </proof>
+    </proposition>
+
+    <theorem xml:id="thm-spectral-thm">
+      <title>The Spectral Theorem</title>
+      <statement>
+        <p>If <m>T</m> is a self-adjoint operator on a vector space
+        <m>V</m>, then there is an orthonormal basis such that the
+        matrix associated to <m>T</m> is diagonal.
+        </p>
+      </statement>
+
+      <proof>
+        <p>By <xref ref="thm-upper-minimal"/> and <xref
+        ref="prop-self-ad-min-poly"/>, we know that there is a basis
+        <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> of <m>V</m> for which
+        the matrix associated to <m>T</m> is upper triangular.
+        </p>
+
+        <p>If we let <m>V_j=\laspan{\vvec_1,\ldots,\vvec_j}</m>, we
+        know that <m>V_j</m> is invariant under <m>T</m>.  We now
+        apply the Gram-Schmidt algorithm to this basis to produce an
+        orthonormal basis <m>\uvec_1,\uvec_2,\ldots,\uvec_n</m> for
+        <m>V</m>.  By the Gram-Schmidt algorithm, we know that
+        <me>
+          V_j=\laspan{\vvec_1,\ldots,\vvec_j}=
+          \laspan{\uvec_1,\ldots,\uvec_j}
+        </me>,
+        which says that <m>\uvec_1,\ldots,\uvec_n</m> is an
+        orthonormal basis for <m>V</m> for which the matrix associated
+        to <m>T</m> is upper triangular.
+        </p>
+
+        <p>However, if <m>A</m> is this matrix, we know that
+        <m>A^*</m> is the matrix associated to <m>T^*</m>. Since
+        <m>T=T^*</m>, we have <m>A=A^*</m>, which says that <m>A</m>
+        is diagonal</p>
+      </proof>
+    </theorem>
+
+    <p>Notice that we have given a number of proofs that all the
+    eigenvalues of <m>T</m> are real.  This also shows that the
+    eigenspaces associated with different eigenvalues are orthogonal
+    to one another.
+    </p>
+  </subsection>
+</section>

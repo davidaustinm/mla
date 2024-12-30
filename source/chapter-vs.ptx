@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="chap-vs" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Vector spaces</title>
+
+  <introduction>
+    <p>Our previous linear algebra course focused on vectors in
+    <m>\real^n</m>, which we thought of as a list of <m>n</m> real
+    numbers, such as <m>\vvec=\threevec2{-1}4</m>.  An essential part
+    of our study were two algebraic operations performed on vectors:
+    scalar multiplication and vector addition.
+    </p>
+
+    <p>In addition to vectors, we also considered 
+    matrices and their associated matrix transformations.  More
+    specifically, an <m>m\times n</m> matrix <m>A</m> defined a matrix
+    transformation <m>T:\real^n\to\real^m</m> by <m>T(\xvec) =
+    A\xvec</m>.  Of particular interest were square matrices and their
+    eigenvalues and eigenvectors.
+    </p>
+
+    <p>But there are other types of mathematical objects for which we
+    can define operations like scalar multiplication and vector
+    addition.  Polynomials are a good example.  If <m>p(x)=2x^2 -
+    4</m> and <m>q(x)=x+7</m>, then we can multiply <m>p(x)</m> by a
+    scalar and add two polynomials:
+    <md>
+      <mrow>3p(x)\amp=6x^2 - 12 </mrow>
+      <mrow>p(x)+q(x)\amp=2x^2+x+3 </mrow>
+    </md>
+    </p>
+
+    <p>Our first task in this course is to generalize our earlier
+    work with vectors in <m>\real^n</m> and matrices to things like
+    polynomials.  This leads us to the idea of a vector space.
+    </p>
+      
+  </introduction>
+
+  <!-- include sections -->
+  <xi:include href="section-vs-intro.ptx" />
+  <xi:include href="section-lt-intro.ptx" />
+  <!--
+  <xi:include href="section-operators.ptx" />
+  <xi:include href="section-polynomials.ptx" />
+  <xi:include href="section-inner-products.ptx" />
+  <xi:include href="section-dual.ptx" />
+  -->
+</chapter>

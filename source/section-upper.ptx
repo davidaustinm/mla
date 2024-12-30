@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-upper" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Upper triangular matrices</title>
+
+  <introduction>
+    <p> In this section, we will use our understanding of the minimal
+    polynomial to find some standard forms for matrices of operators.
+    First, we will consider upper triangular matrices.
+    </p>
+  </introduction>
+  
+  <subsection>
+    <title>Upper triangular matrices</title>
+
+    <p>As we have seen in the past, upper triangular matrices have
+    some simple properties.  For one, the eigenvalues of the
+    associated operator equal the diagonal elements of the matrix.  We
+    have also seen that linear systems formed by triangular matrices
+    are relatively easy to solve.  All told, they form a pleasant set
+    of matrices.
+    </p>
+
+    <p>Reember that an upper triangular matrix is one whose entries
+    are zero below the diagonal;  that is, they have a form like this:
+    <me>
+      \begin{bmatrix}
+      * \amp * \amp \ldots \amp * \amp * \\
+      0 \amp * \amp \ldots \amp * \amp * \\
+      \vdots \amp 0 \amp \ddots \amp * \amp * \\
+      0 \amp 0 \amp \ldots \amp 0 \amp * \\
+      \end{bmatrix}
+    </me>.
+    Suppose that <m>T</m> is an operator and that there is a basis
+    <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> for which the associated
+    matrix <m>A</m> for <m>T</m> is upper triangular.  Since
+    <m>A_{k,j} = 0</m> if <m>k \gt j</m>, we have
+    <me xml:id="me-upper-triang">
+      T\vvec_j = \sum_{k=1}^n A_{k,j} \vvec_k = \sum_{k=1}^j
+      A_{k,j}\vvec_k
+    </me>.
+    In particular, this says that <m>T\vvec_1 = A_{1,1}\vvec_1</m> so
+    that <m>\vvec_1</m> is an eigenvector with associated eigenvalue
+    <m>A_{1,1}</m>.
+    </p>
+
+    <p>But <xref ref="me-upper-triang"/> tells us more.  Notice that
+    <me>
+      T\vvec_2 = A_{2,1}\vvec_1 + A_{2,2}\vvec_2
+    </me>,
+    which implies that <m>\laspan{\vvec_1,\vvec_2}</m> is invariant
+    under <m>T</m>.
+    </p>
+
+    <p>More generally,
+    <me>
+      T\vvec_j = A_{j,1}\vvec_1 + A_{j,2}\vvec_2 + \ldots +
+      A_{k,k}\vvec_k
+    </me>,
+    which says that, for every <m>j</m>,
+    <m>\laspan{\vvec_1,\vvec_2,\ldots,\vvec_j}</m> is 
+    invariant under <m>T</m>.
+    </p>
+
+    <p>Let's record this as a proposition.
+    </p>
+
+    <proposition xml:id="prop-upper-invariant">
+      <statement>
+	<p>Suppose that <m>T</m> is an operator on the vector space
+	<m>V</m>.  Then there is a basis
+	<m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> for <m>V</m> in which
+	the associated matrix of <m>T</m> is upper triangular if and
+	only if <m>\laspan{\vvec_1,\vvec_2,\ldots,\vvec_j}</m> is
+	invariant under <m>T</m> for each <m>j</m>.
+	</p>
+      </statement>
+      <proof>
+	<p>The discussion above explains why an operator with an upper
+	triangular matrix forms invariant subspaces.  Conversely,
+	suppose that <m>\laspan{\vvec_1,\vvec_2,\ldots,\vvec_j}</m> is
+	invariant for every <m>j</m>.  The matrix <m>A</m> associated
+	to <m>T</m> satisfies
+	<me>
+	  T\vvec_j = \sum_{k=1}^n A_{k,j}\vvec_k =
+	  \sum_{k=1}^jA_{k,j}\vvec_k
+	</me>,
+	which shows that <m>A_{k,j}=0</m> if <m>k\gt j</m> and that
+	<m>A</m> is therefore upper triangular.
+	</p>
+      </proof>
+    </proposition>
+
+    <p>We can rephrase this in terms of polynomials.</p>
+
+    <proposition xml:id="prop-upper-min">
+      <statement>
+	<p>Suppose that <m>T</m> is an operator on <m>V</m> and that
+	there is a basis <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> of
+	<m>V</m> such that the matrix <m>A</m> of <m>T</m> is upper
+	triangular.  Then
+	<me>
+	  (T-A_{1,1}I)
+	  (T-A_{2,2}I)
+	  \ldots
+	  (T-A_{n,n}I) = 0
+	</me>.
+	</p>
+      </statement>
+      <proof>
+	<p> We will use <m>q</m> to denote the polynomial
+	<me>
+	  q(x)=(x-A_{1,1})(x-A_{2,2})\ldots(x-A_{n,n})
+	</me>.
+	</p>
+
+	<p>First consider <m>\vvec_1</m>.  Since <m>A</m> is upper
+	triangular, we know that <m>T\vvec_1=A_{1,1}\vvec_1</m>, which
+	means that <m>(T-A_{1,1}I)\vvec_1 = 0</m>.  Therefore,
+	<m>q(T)\vvec_1 = 0</m>.
+	</p>
+
+	<p>Next consider <m>\vvec_2</m> for <m>T\vvec_2 =
+	A_{1,2}\vvec_1 + A_{2,2}\vvec_2</m>.  Rearranging gives
+	<me>
+	  (T-A_{2,2})\vvec_2 = A_{1,2}\vvec_1
+	</me>.
+	Therefore,
+	<me>
+	  (T-A_{1,1})(T-A_{2,2})\vvec_2 = A_{1,2}(T-A_{1,1)}\vvec_1 = 0
+	</me>,
+	which tells us that <m>q(T)\vvec_2=0</m>.
+	</p>
+
+	<p>Continuing in this way, we see that
+	<me>
+	  (T-A_{1,1})(T-A_{2,2)}\ldots (T-A_{j,j})\vvec_j = 0
+	</me>
+	and hence that <m>q(T)\vvec_j=0</m>.  This means that
+	<m>q(T)\vvec=0</m> for every vector <m>\vvec</m> and so we
+	know that <m>q(T)=0</m> as claimed.
+	</p>
+      </proof>
+    </proposition>
+
+    <p>This leads to the following crucial result.
+    </p>
+
+    <theorem xml:id="thm-upper-minimal">
+      <statement>
+	<p>Suppose that <m>T</m> is an operator on <m>V</m> over the
+	field <m>\field</m>.  There is
+	a basis for <m>V</m> for which the matrix of <m>T</m> is upper
+	triangular if and only if the minimal polynomial of <m>T</m>
+	has the form
+	<me>
+	  p(x) = (x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)
+	</me>
+	where the roots <m>\lambda_j</m> are in <m>\field</m>.
+	</p>
+      </statement>
+
+      <proof>
+	<p>One direction is a natural consequence of <xref
+	ref="prop-upper-min"/>.  Suppose that there is a basis for
+	which the matrix <m>A</m> of <m>T</m> is upper triangular.  That
+	proposition tells us that <m>q(T) = 0</m> for
+	<me>
+	  q(x)=(x-A_{1,1})(x-A_{2,2})\ldots(x-A_{n,n})
+	</me>.
+	Since <m>q(T) = 0</m>, we know that <m>q</m> is a multiple of
+	the minimal polynomial of <m>T</m>, which says that the
+	minimal polynomial has the form given in the statement of this
+	theorem.
+	</p>
+
+	<p>Now suppose that the minimal polynomial <m>p</m> has the
+	form given.  We will prove by induction that there is a basis
+	for the matrix of <m>T</m> is upper triangular.
+	</p>
+
+	<p>First suppose that <m>m=1</m> so that <m>T-\lambda_1I =
+	0</m>.  This means that <m>T=\lambda_1 I</m> so that the
+	matrix of <m>T</m> in any basis is diagonal and hence upper
+	triangular.
+	</p>
+
+	<p>Let's now suppose that the result is true for any operator
+	and vector space for which the minimal polynomial has the form
+	<me>
+	  p(x) = (x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_k)
+	</me>
+	where <m>k\lt m</m>.  Consider the subspace
+	<m>W=\range(T-\lambda_mI)</m>, which we know is invariant under
+	<m>T</m>.  Since any vector <m>\wvec</m> in <m>W</m> has the
+	form <m>\wvec = (T-\lambda_mI)\uvec</m>, we know that
+	<me>
+	  (T-\lambda_1I)(T-\lambda_2I)\ldots(T-\lambda_{m-1}I)\wvec = \zerovec
+	</me>. 
+	Therefore, if
+	<me>q(x)=
+	(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_{m-1})
+	</me>,
+	then <m>q(T|_W) = 0</m>.  As a result, <m>q</m> is a multiple
+	of the minimal polynomial of <m>T|_W</m> and so the minimal
+	polynomial of <m>T|_W</m> is a product of fewer than <m>m</m>
+	terms having the form <m>x-\alpha_j</m>.  By the induction
+	hypothesis, we know there is a basis
+	<m>\wvec_1,\wvec_2,\ldots,\wvec_k</m> for <m>W</m> so that the
+	basis of <m>T|_W</m> is upper triangular.
+	</p>
+
+	<p>We will now extend the basis of <m>W</m> by vectors
+	<m>\vvec_1,\vvec_2,\ldots,\vvec_{n-k}</m>.  Since
+	<m>T\vvec_j</m> is in <m>W</m>, we have
+	<me>
+	  T\vvec_j = (T-\lambda_mI)\vvec_j + \lambda_m\vvec_j
+	</me>
+	or
+	<me>
+	  T\vvec_j = A_{j,k}\wvec_k + \lambda_m\vvec_j
+	</me>,
+	which shows that the matrix of <m>T</m> is upper triangular.
+	</p>
+      </proof>
+    </theorem>
+
+    <p>Notice that the <xref ref="thm-fta" text="Fundamental Theorem of
+    Algebra" /> tells us that any polynomial with complex
+    coefficients has the form given in <xref
+    ref="thm-upper-minimal"/>.  As a result, any operator on a complex
+    vector space <m>V</m> has a basis for which the associated matrix
+    is upper triangular. 
+    </p>
+  </subsection>
+</section>
