@@ -12,17 +12,18 @@
     </p>
 
     <p>In addition to vectors, we also considered 
-    matrices and their associated matrix transformations.  More
-    specifically, an <m>m\times n</m> matrix <m>A</m> defined a matrix
-    transformation <m>T:\real^n\to\real^m</m> by <m>T(\xvec) =
-    A\xvec</m>.  Of particular interest were square matrices and their
-    eigenvalues and eigenvectors.
+    matrices and their associated matrix transformations.  At times,
+    we also considered scalar multiplication and addition of
+    matrices.  For instance, when studying the eigenvalues and
+    eigenvectors of a matrix <m>A</m>, we may have constructed the
+    associated matrix <m>I-2A</m>.  In other words, we multiplied
+    <m>A</m> by the scalar <m>2</m> and then added the identity <m>I</m>.
     </p>
 
-    <p>But there are other types of mathematical objects for which we
-    can define operations like scalar multiplication and vector
-    addition.  Polynomials are a good example.  If <m>p(x)=2x^2 -
-    4</m> and <m>q(x)=x+7</m>, then we can multiply <m>p(x)</m> by a
+    <p>In fact, there are other types of mathematical objects for
+    which we can define operations like scalar multiplication and
+    vector addition.  Polynomials are a good example.  If <m>p(x)=2x^2
+    - 4</m> and <m>q(x)=x+7</m>, then we can multiply <m>p(x)</m> by a
     scalar and add two polynomials:
     <md>
       <mrow>3p(x)\amp=6x^2 - 12 </mrow>
@@ -39,8 +40,8 @@
 
   <!-- include sections -->
   <xi:include href="section-vs-intro.ptx" />
-  <xi:include href="section-lt-intro.ptx" />
   <!--
+  <xi:include href="section-lt-intro.ptx" />
   <xi:include href="section-operators.ptx" />
   <xi:include href="section-polynomials.ptx" />
   <xi:include href="section-inner-products.ptx" />

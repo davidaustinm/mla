@@ -165,6 +165,7 @@
     a vector space when we see one, and we will be fairly loose with
     these details.  </p>
 
+    <!--
     <example>
       <title>Polynomials</title>
       <statement>
@@ -867,6 +868,7 @@
         </p>
       </statement>
     </definition>
+-->
   </subsection>
     
     

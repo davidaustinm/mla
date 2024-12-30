@@ -41,14 +41,16 @@
     <!-- https://pretextbook.org/doc/guide/html/publication-file-online.html#online-style-options -->
     <css
         theme="denver"
-        palette="ice-fire"
+        palette="leaves"
+    />
+        <!--
         style="default"
         colors="ruby_turquoise"
         knowls="default"
         toc="default"
         banner="default"
         navbar="default"
-    />
+        -->
   </html>
 
   <common>

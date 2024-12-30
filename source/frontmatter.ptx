@@ -32,5 +32,33 @@
     <shortlicense> This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <url href="http://creativecommons.org/licenses/by-sa/4.0/" visual="creativecommons.org/licenses/by-sa/4.0"> CreativeCommons.org</url>
     </shortlicense>
   </copyright>
+
+  <preface>
+    <title>Preface</title>
+    <p>These notes are meant for a specific audience, namely the
+    students in MTH 406 taught at Grand Valley State University in
+    Winter 2025.  Nevertheless, they are publicly available on the
+    web, and anyone can use them in whatever way they wish.
+    </p>
+
+    <p>This course is a third-semester course in linear algebra, where
+    the first two semesters cover the content in
+    <url href="https://understandinglinearalgebra.org">
+      Understanding Linear Algebra
+    </url>.  Our aim will be to generalize some of that content by
+    introducing vector spaces and to provide a more rigorous
+    underpinning for some of the essential results we saw earlier.
+    </p>
+
+    <p>The exposition somewhat follows that of Sheldon Axler's
+    <url href="https://linear.axler.net/">Linear Algebra Done
+    Right</url>.  An additional reference is Rob Beezer's
+    <url href="http://linear.ups.edu/">A First Course in Linear
+    Algebra
+    </url>.  Of course, any errors or inconsistencies are mine so
+    please feel free to point them out.
+    </p>
+  </preface>
+         
 </frontmatter>
 
