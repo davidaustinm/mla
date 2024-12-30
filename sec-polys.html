@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The minimal polynomial</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Understanding More Linear Algebra">
+<meta property="book:author" content="David Austin">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><link href="_static/pretext/css/pretext_search.css" rel="stylesheet" type="text/css">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.5.0';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.917314eae5e3ab90.bundle.js"></script><script src="_static/prefix-347.8328b60515045466.bundle.js"></script><script src="_static/prefix-runestone.b5027876c2f06108.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-347.f9add1ca35d5ad93.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.97f3ae4f7a71ba18.css">
+<style>
+</style>
+</head>
+<body id="umla" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""></a><div class="title-container">
+<h1 class="heading"><a href="my-great-book.html"><span class="title">Understanding More Linear Algebra</span></a></h1>
+<p class="byline">David Austin</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
+<div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="chap-std-forms.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="chap-std-forms.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec-upper.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\nul}{\text{nul}}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\avec}{{\mathbf a}}
+\newcommand{\bvec}{{\mathbf b}}
+\newcommand{\cvec}{{\mathbf c}}
+\newcommand{\dvec}{{\mathbf d}}
+\newcommand{\dtil}{\widetilde{\mathbf d}}
+\newcommand{\evec}{{\mathbf e}}
+\newcommand{\fvec}{{\mathbf f}}
+\newcommand{\nvec}{{\mathbf n}}
+\newcommand{\pvec}{{\mathbf p}}
+\newcommand{\qvec}{{\mathbf q}}
+\newcommand{\svec}{{\mathbf s}}
+\newcommand{\tvec}{{\mathbf t}}
+\newcommand{\uvec}{{\mathbf u}}
+\newcommand{\vvec}{{\mathbf v}}
+\newcommand{\wvec}{{\mathbf w}}
+\newcommand{\xvec}{{\mathbf x}}
+\newcommand{\yvec}{{\mathbf y}}
+\newcommand{\zvec}{{\mathbf z}}
+\newcommand{\rvec}{{\mathbf r}}
+\newcommand{\mvec}{{\mathbf m}}
+\newcommand{\zerovec}{{\mathbf 0}}
+\newcommand{\onevec}{{\mathbf 1}}
+\newcommand{\real}{{\mathbb R}}
+\newcommand{\complex}{\mathbb C}
+\newcommand{\field}{\mathbb F}
+\newcommand{\pbb}{\mathbb P}
+\newcommand{\conjugate}[1]{\overline{#1}}
+\newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
+\end{array}\right]}
+\newcommand{\ctwovec}[2]{\left[\begin{array}{c}#1 \\ #2
+\end{array}\right]}
+\newcommand{\threevec}[3]{\left[\begin{array}{r}#1 \\ #2 \\ #3
+\end{array}\right]}
+\newcommand{\cthreevec}[3]{\left[\begin{array}{c}#1 \\ #2 \\ #3
+\end{array}\right]}
+\newcommand{\fourvec}[4]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\ #4
+\end{array}\right]}
+\newcommand{\cfourvec}[4]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\ #4
+\end{array}\right]}
+\newcommand{\fivevec}[5]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\
+#4 \\ #5 \\ \end{array}\right]}
+\newcommand{\cfivevec}[5]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\
+#4 \\ #5 \\ \end{array}\right]}
+\newcommand{\mattwo}[4]{\left[\begin{array}{rr}#1 \amp #2 \\ #3 \amp #4 \\ \end{array}\right]}
+\newcommand{\laspan}[1]{\text{Span}\{#1\}}
+\newcommand{\bcal}{{\cal B}}
+\newcommand{\ccal}{{\cal C}}
+\newcommand{\scal}{{\cal S}}
+\newcommand{\wcal}{{\cal W}}
+\newcommand{\ecal}{{\cal E}}
+\newcommand{\fcal}{{\cal F}}
+\newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
+\newcommand{\gray}[1]{\color{gray}{#1}}
+\newcommand{\lgray}[1]{\color{lightgray}{#1}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\row}{\text{Row}}
+\newcommand{\col}{\text{Col}}
+\renewcommand{\deg}{\text{deg}}
+\newcommand{\range}{\text{range}}
+\newcommand{\var}{\text{Var}}
+\newcommand{\corr}{\text{corr}}
+\newcommand{\len}[1]{\left|#1\right|}
+\newcommand{\bbar}{\overline{\bvec}}
+\newcommand{\bhat}{\widehat{\bvec}}
+\newcommand{\bperp}{\bvec^\perp}
+\newcommand{\xhat}{\widehat{\xvec}}
+\newcommand{\vhat}{\widehat{\vvec}}
+\newcommand{\uhat}{\widehat{\uvec}}
+\newcommand{\what}{\widehat{\wvec}}
+\newcommand{\Sighat}{\widehat{\Sigma}}
+\newcommand{\inner}[2]{\langle #1,#2\rangle}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-vs.html" class="internal"><span class="codenumber">1</span> <span class="title">Vector spaces</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-vs-intro.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Vector spaces</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Vector spaces</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-4" class="internal"><span class="codenumber">1.1.2</span> <span class="title">Linear combinations</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-5" class="internal"><span class="codenumber">1.1.3</span> <span class="title">Bases</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-6" class="internal"><span class="codenumber">1.1.4</span> <span class="title">Sums of subspaces</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-lt-intro.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Linear transformations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-3" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Linear transformations</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-4" class="internal"><span class="codenumber">1.2.2</span> <span class="title">The null space and range</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-5" class="internal"><span class="codenumber">1.2.3</span> <span class="title">Representing linear transformations with matrices</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-6" class="internal"><span class="codenumber">1.2.4</span> <span class="title">Dual spaces</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="chap-std-forms.html" class="internal"><span class="codenumber">2</span> <span class="title">The spectral theorem</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec-polys.html" class="internal"><span class="codenumber">2.1</span> <span class="title">The minimal polynomial</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-3" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Properties of Polynomials</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-4" class="internal"><span class="codenumber">2.1.2</span> <span class="title">The minimal polynomial of an operator</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-upper.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Upper triangular matrices</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-upper.html#sec-upper-3" class="internal"><span class="codenumber">2.2.1</span> <span class="title">Upper triangular matrices</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-orthogonal.html" class="internal"><span class="codenumber">2.3</span> <span class="title">Orthogonaliaty</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-3" class="internal"><span class="codenumber">2.3.1</span> <span class="title">The adjoint of an operator</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-4" class="internal"><span class="codenumber">2.3.2</span> <span class="title">Self-adjoint operators</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-nilpotent.html" class="internal"><span class="codenumber">2.4</span> <span class="title">Nilpotent operators</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-nilpotent.html#sec-nilpotent-3" class="internal"><span class="codenumber">2.4.1</span> <span class="title">Null spaces of powers</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-nilpotent.html#sec-nilpotent-4" class="internal"><span class="codenumber">2.4.2</span> <span class="title">Nilpotent operators</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-jordan.html" class="internal"><span class="codenumber">2.5</span> <span class="title">Generalized eigenvectors</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-jordan.html#sec-jordan-3" class="internal"><span class="codenumber">2.5.1</span> <span class="title">Generalized eigenvectors</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-jordan.html#sec-jordan-4" class="internal"><span class="codenumber">2.5.2</span> <span class="title">Complex Vector Spaces</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-jordan.html#sec-jordan-5" class="internal"><span class="codenumber">2.5.3</span> <span class="title">Jordan form</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-polys"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">2.1</span><span class="space"> </span><span class="title">The minimal polynomial</span>
+</h2>
+<section class="introduction" id="sec-polys-2"><div class="para" id="sec-polys-2-1">This section will describe some important properties about polynomials and demonstrate how they might help us understand linear transformations.</div>
+<div class="para" id="sec-polys-2-2">We will begin by studying familiar polynomials, such as you saw in high school algebra.  For example, <span class="process-math">\(p(x)=2x^2 - 3x + 7\)</span> is a quadratic polynomial.  Eventually, we will consider polynomials evaluated on an operator <span class="process-math">\(T\text{.}\)</span>  For instance, evaluating <span class="process-math">\(p(x)\)</span> on the operator <span class="process-math">\(T\)</span> produces a new operator <span class="process-math">\(p(T) = 2T^2 - 3T + 7I\text{.}\)</span>  As a preview for how this may be useful, the polynomial <span class="process-math">\(p(x)=x-2\)</span> leads to the operator <span class="process-math">\(p(T) = T-2I\)</span> whose null space is the set of eigenvectors associated to the eigenvalue <span class="process-math">\(\lambda = 2\text{.}\)</span>
+</div></section><section class="subsection" id="sec-polys-3"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.1.1</span><span class="space"> </span><span class="title">Properties of Polynomials</span>
+</h3>
+<div class="para logical" id="sec-polys-3-2">
+<div class="para">We will be interested in polynomials that depend on a single variable, which will often be <span class="process-math">\(x\text{.}\)</span> A general polynomial has the form</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x)=a_nx^n + a_{n-1}x^{n-1}+\ldots + a_1x+a_0
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(a_j\)</span> are the <em class="emphasis">coefficients</em> of <span class="process-math">\(p(x)\)</span> and are elements in either <span class="process-math">\(\field=\C\)</span> or <span class="process-math">\(\real\text{.}\)</span>
+</div>
+</div>
+<div class="para logical" id="sec-polys-3-3">
+<div class="para">The <em class="emphasis">degree</em> of a polynomial is the highest power of <span class="process-math">\(x\)</span> whose coefficient is nonzero.  For example, the degree of</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x)=-2x^7 + 4x^6 -x^5 + 4x^3-3x + 1
+\end{equation*}
+</div>
+<div class="para">is <span class="process-math">\(\deg(p) = 7\text{.}\)</span>
+</div>
+</div>
+<div class="para logical" id="sec-polys-3-4">
+<div class="para">There are a few operations that we can perform on polynomials. Suppose that <span class="process-math">\(p(x)=3x^2-4x+2\)</span> and <span class="process-math">\(q(x)=8x-5\text{.}\)</span>
+</div>
+<dl class="description-list">
+<dt id="sec-polys-3-4-3-1">Scalar multiplication</dt>
+<dd><div class="para logical" id="sec-polys-3-4-3-1-2">
+<div class="para">As we saw earlier, a polynomial may be multiplied by a scalar.  For instance,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(7p)(x) = 21x^2-28x+14
+\end{equation*}
+</div>
+</div></dd>
+<dt id="sec-polys-3-4-3-2">Addition</dt>
+<dd><div class="para logical" id="sec-polys-3-4-3-2-2">
+<div class="para">Polynomials may also be added in the usual way.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(p+q)(x)=3x^2+4x-3
+\end{equation*}
+</div>
+</div></dd>
+<dt id="sec-polys-3-4-3-3">Multiplication</dt>
+<dd>
+<div class="para logical" id="sec-polys-3-4-3-3-2">
+<div class="para">We multiply polynomials term by term so that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(pq)(x) = 24x^3-27x^2+36x-10
+\end{equation*}
+</div>
+<div class="para">More generally, denoting the coefficients of <span class="process-math">\(p\)</span> by <span class="process-math">\(a_j\)</span> and the coefficients of <span class="process-math">\(q\)</span> by <span class="process-math">\(b_j\text{,}\)</span> the coefficients of <span class="process-math">\(pq\)</span> are</div>
+<div class="displaymath process-math">
+\begin{equation*}
+c_k=\sum_{j=0}^k a_jb_{k-j}=\sum_{j=0}^k b_ja_{k-j}\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" id="sec-polys-3-4-3-3-3">Two important properites follow from this definition of polynomial multiplication.  First, the order in which we multiply polynomials is irrelevant;  that is, <span class="process-math">\(pq = qp\text{.}\)</span>
+</div>
+<div class="para logical" id="sec-polys-3-4-3-3-4">
+<div class="para">Second, the degree of the product is the sum of the degrees; that is,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\deg(pq)=\deg(p)+\deg(q)\text{.}
+\end{equation*}
+</div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="para logical" id="sec-polys-3-5">
+<div class="para">Integers satisfy a property often called the <em class="emphasis">Division Algorithm</em>.  Suppose that <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> are positive integers.  Then there are integers <span class="process-math">\(q\)</span> and <span class="process-math">\(r\)</span> such that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+a = bq + r
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(0\leq r \leq b-1\text{.}\)</span>  We say that <span class="process-math">\(q\)</span> is the quotient and <span class="process-math">\(r\)</span> is the remainder.  For example, if <span class="process-math">\(a=17\)</span> and <span class="process-math">\(b=5\text{,}\)</span> then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+17 = 3\cdot5 + 2\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" id="sec-polys-3-6">Polynomials satisfy a similar property also called the Division Algorithm as given in the following proposition.</div>
+<article class="proposition theorem-like" id="prop-poly-division"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.1.1</span><span class="period">.</span><span class="space"> </span><span class="title">The Division Algorithm.</span>
+</h4>
+<div class="para logical" id="prop-poly-division-2-1">
+<div class="para">If <span class="process-math">\(p(x)\)</span> and <span class="process-math">\(s(x)\)</span> are polynomials, then there are unique polynomials <span class="process-math">\(q(x)\)</span> and <span class="process-math">\(r(x)\)</span> such that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x) = (qs)(x) + r(x)
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(\deg(r) \lt \deg(s)\text{.}\)</span>
+</div>
+</div></article><article class="example example-like" id="sec-polys-3-8"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.1.2</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-polys-3-8-1-1">Rather than proving the Division Algorithm for polynomials, we will illustrate with an example.  Suppose that <span class="process-math">\(p(x)=6x^3 + x^2 - 17x + 8\)</span> and <span class="process-math">\(s(x)=2x^2 + 2x -
+1\text{.}\)</span>
+</div> <div class="para logical" id="sec-polys-3-8-1-2">
+<div class="para">To get started, let’s consider the highest degree terms in both polynomials.  For <span class="process-math">\(p(x)\text{,}\)</span> it is <span class="process-math">\(6x^3\)</span> while for <span class="process-math">\(s(x)\text{,}\)</span> it is <span class="process-math">\(2x^2\text{.}\)</span>  We’d like to multiply <span class="process-math">\(s(x)\)</span> by something to get close to <span class="process-math">\(p(x)\text{.}\)</span> Since the ratio of the highest degree terms is <span class="process-math">\(3x\text{,}\)</span> we multiply <span class="process-math">\(s(x)\)</span> by <span class="process-math">\(3x\text{,}\)</span> which gives</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x) - (3x)s(x) = -8x^2 - 14x + 8\text{.}
+\end{equation*}
+</div>
+</div> <div class="para logical" id="sec-polys-3-8-1-3">
+<div class="para">Now we ask what we should multiply by <span class="process-math">\(s(x)\)</span> to realize the <span class="process-math">\(-8x^2\)</span> term.  Since the highest degree term of <span class="process-math">\(s(x)\)</span> is <span class="process-math">\(2x^2\text{,}\)</span> we multiply by <span class="process-math">\(-4\text{.}\)</span>  This means that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x) - (3x-4)s(x) = -2x+4\text{.}
+\end{equation*}
+</div>
+<div class="para">Since the highest degree term of <span class="process-math">\(s(x)\)</span> is <span class="process-math">\(2x^2\text{,}\)</span> there is nothing we can multiply by <span class="process-math">\(s(x)\)</span> to realize the highest degree term of the right hand side. This means that we have</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x) = (3x-4)s(x) + (-2x+4)
+\end{equation*}
+</div>
+<div class="para">so the quotient is <span class="process-math">\(q(x)=3x-4\)</span> and the remainder is <span class="process-math">\(r(x)=-2x+4\text{.}\)</span>
+</div>
+</div> <div class="para" id="sec-polys-3-8-1-4">This algorithm is sometimes called <em class="emphasis">synthetic division</em> and is sometimes taught in high school.  We won’t be actually be implementing this algorithm, but this example is meant to illustrate why <a href="sec-polys.html#prop-poly-division" class="xref" data-knowl="./knowl/xref/prop-poly-division.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 2.1.1: The Division Algorithm">Proposition 2.1.1</a> is true.  Implementing this algorithm for general polynomials will give a proof of the Division Algorithm.</div></article><div class="para" id="sec-polys-3-9">One important implication of the Division Algorithm is the following fact that we will use quite a bit.  Remember that a root <span class="process-math">\(\lambda\)</span> of a polynomial is a value for which <span class="process-math">\(p(\lambda)=0\text{.}\)</span>
+</div>
+<article class="proposition theorem-like" id="prop-root-factor"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.1.3</span><span class="period">.</span>
+</h4>If <span class="process-math">\(\lambda\)</span> is a root of the polynomial <span class="process-math">\(p(x)\text{,}\)</span> then<div class="displaymath process-math">
+\begin{equation*}
+p(x)=(x-r)q(x)
+\end{equation*}
+</div>for some polynomial <span class="process-math">\(q\text{.}\)</span></article><article class="proof" id="prop-root-factor-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para logical" id="prop-root-factor-2-1">
+<div class="para">The Division Algorithm tells us that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x)=(x-\lambda)q(x) + r(x)\text{.}
+\end{equation*}
+</div>
+<div class="para">In the notation of the Division Algorithm, <span class="process-math">\(s(x)=x-\lambda\)</span> and <span class="process-math">\(\deg(r) \lt \deg(s) = 1\text{.}\)</span> Therefore <span class="process-math">\(\deg(r)=0\text{,}\)</span> which means that <span class="process-math">\(r(x)\)</span> is a constant <span class="process-math">\(r\text{.}\)</span>
+</div>
+</div>
+<div class="para logical" id="prop-root-factor-2-2">
+<div class="para">Now we know that <span class="process-math">\(0=p(\lambda)=(\lambda-\lambda)q(\lambda)+r =
+r\text{,}\)</span> which says that <span class="process-math">\(r=0\text{.}\)</span>  Therefore, we have</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x)=(x-\lambda)q(x)\text{.}
+\end{equation*}
+</div>
+</div></article><div class="para" id="sec-polys-3-11">This proposition shows that there is a relationship between the factors of a polynomial <span class="process-math">\(p(x)\)</span> and its roots.  Polynomials with complex coefficients are special because the Fundamental Theorem of Algebra tells us that every such polynomial has a root.  The proof of this theorem is outside the scope of our course, but students often see it in a course in complex analysis.</div>
+<article class="theorem theorem-like" id="thm-fta"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.1.4</span><span class="period">.</span><span class="space"> </span><span class="title">Fundamental Theorem of Algebra.</span>
+</h4>
+<div class="para logical" id="thm-fta-2-1">
+<div class="para">If <span class="process-math">\(p(x)\)</span> is a degree <span class="process-math">\(n\)</span> polynomial having complex coefficients, then there are <span class="process-math">\(n\)</span> roots, <span class="process-math">\(\lambda_1, \lambda_2, \ldots, \lambda_n\text{,}\)</span> possibly with repitition.  This means that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x)=a_n(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_n)\text{.}
+\end{equation*}
+</div>
+</div></article><div class="para logical" id="sec-polys-3-13">
+<div class="para">While this important theorem only holds for polynomials with complex coefficients, we can deduce something about polynomials with real coefficients.  For instance, if <span class="process-math">\(p(x)\)</span> is a polynomial with real coefficients and <span class="process-math">\(\lambda\)</span> is a complex root, then so is its complex conjugate <span class="process-math">\(\overline{\lambda}\text{.}\)</span> This follows because</div>
+<div class="displaymath process-math">
+\begin{equation*}
+0\overline{p(\lambda)} = p(\overline{\lambda})\text{.}
+\end{equation*}
+</div>
+<div class="para">We have <span class="process-math">\((x-\lambda)(x-\overline{\lambda}) = x^2+bx + c\)</span> where <span class="process-math">\(b = -(\lambda+\overline{\lambda})\)</span> and <span class="process-math">\(c=\lambda\overline{\lambda}\text{.}\)</span>  Since this quadratic polynomial does not have real roots, we know from the quadratic formula that <span class="process-math">\(b^2\lt 4ac\text{.}\)</span>  Therefore,</div>
+</div>
+<article class="proposition theorem-like" id="sec-polys-3-14"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.1.5</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="sec-polys-3-14-1-1">
+<div class="para">If <span class="process-math">\(p(x)\)</span> is a polynomial with real coefficients, there are real roots <span class="process-math">\(\lambda_1,\ldots,\lambda_m\)</span> such that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x)=a_n(x-\lambda_1)\ldots(x-\lambda_r)(x^2+b_1x+c_1^2)\ldots(x^2+b_sx+c_s)\text{.}
+\end{equation*}
+</div>
+</div></article></section><section class="subsection" id="sec-polys-4"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.1.2</span><span class="space"> </span><span class="title">The minimal polynomial of an operator</span>
+</h3>
+<div class="para" id="sec-polys-4-2">As mentioned in the introduction to this section, our interest in polynomials stems from the insights we gain when we evaluate a polynomial on an operator <span class="process-math">\(T\text{.}\)</span>  For instance, if <span class="process-math">\(p(x)=x^2+4x-5\text{,}\)</span> then <span class="process-math">\(p(T) = T^2 + 4T - 5I\)</span> a new operator.  Notice that we consider the constant term to be multiplied by the identify transformation <span class="process-math">\(I\text{.}\)</span>
+</div>
+<div class="para" id="sec-polys-4-3">Remember that the order in which we multiply polynomials is not important.  In particular, <span class="process-math">\(p(T)q(T)=q(T)p(T)\text{.}\)</span>  This leads to the following important proposition.</div>
+<article class="proposition theorem-like" id="sec-polys-4-4"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.1.6</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-polys-4-4-1-1">If <span class="process-math">\(p(x)\)</span> is a polynomial and <span class="process-math">\(T\)</span> an operator, then both <span class="process-math">\(\nul(p(T))\)</span> and <span class="process-math">\(\range(p(T))\)</span> are invariant subspaces under <span class="process-math">\(T\text{.}\)</span>
+</div></article><article class="proof" id="sec-polys-4-4-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para logical" id="sec-polys-4-4-2-1">
+<div class="para">Suppose that <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(\nul(p(T))\text{,}\)</span> which means that <span class="process-math">\(p(T)\vvec = \zerovec\text{.}\)</span>  We need to explain why <span class="process-math">\(T\vvec\)</span> is also in <span class="process-math">\(\nul(p(T))\text{.}\)</span>  However, we have</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(T)T\vvec = Tp(T)\vvec = T\zerovec = \zerovec\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-polys-4-4-2-2">
+<div class="para">Similarly, if <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(\range(p(T))\text{,}\)</span> then there is a vector <span class="process-math">\(\uvec\)</span> so that <span class="process-math">\(\vvec=p(T)\uvec\text{.}\)</span>  Then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+T\vvec = Tp(T)\uvec = p(T)(T\uvec)\text{,}
+\end{equation*}
+</div>
+<div class="para">which shows that <span class="process-math">\(T\vvec\)</span> is also in <span class="process-math">\(\range(p(T))\text{.}\)</span>  Therefore, <span class="process-math">\(\range(p(T))\)</span> is an invariant subspace of <span class="process-math">\(T\text{.}\)</span>
+</div>
+</div></article><div class="para" id="sec-polys-4-5">We now come to a crucial result for our upcoming explorations. First, we need to make the following definition clear.</div>
+<article class="definition definition-like" id="sec-polys-4-6"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.1.7</span><span class="period">.</span>
+</h4>A <em class="emphasis">monic</em> polynomial is a polynomial where the coefficient of the highest degree term is <span class="process-math">\(1\text{.}\)</span></article><div class="para" id="sec-polys-4-7">For instance, <span class="process-math">\(x^5 - x^4 + 3x - 2\)</span> is a monic polynomial, but <span class="process-math">\(3x^3+2x-1\)</span> is not.</div>
+<article class="theorem theorem-like" id="thm-minimal-polynomial"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.1.8</span><span class="period">.</span><span class="space"> </span><span class="title">The minimal polynomial of an operator.</span>
+</h4>
+<div class="para" id="thm-minimal-polynomial-2-1">Suppose that <span class="process-math">\(V\)</span> is a finite-dimensional vector space over either <span class="process-math">\(\C\)</span> or <span class="process-math">\(\R\)</span> and that <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(V\text{.}\)</span>  There is a unique monic polynomial <span class="process-math">\(p\)</span> of smallest degree such that <span class="process-math">\(p(T)=0\text{.}\)</span>  Moreover, <span class="process-math">\(\deg(p)\leq \dim(V)\text{.}\)</span>  We call this polynomial the <em class="emphasis">minimal polynomial</em> of <span class="process-math">\(T\text{.}\)</span>
+</div></article><article class="proof" id="thm-minimal-polynomial-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="thm-minimal-polynomial-3-1">Our proof proceeds by induction on the dimension of <span class="process-math">\(V\text{.}\)</span>  To begin, suppose that <span class="process-math">\(\dim(V) = 1\text{,}\)</span> which means that <span class="process-math">\(V=\laspan{\vvec}\)</span> for some vector <span class="process-math">\(\vvec\text{.}\)</span>  Then <span class="process-math">\(T\vvec = \lambda\vvec\)</span> for some <span class="process-math">\(\lambda\text{,}\)</span> which is possibly <span class="process-math">\(0\text{.}\)</span>  Then <span class="process-math">\((T-\lambda I)\vvec = \zerovec\text{,}\)</span> which means that <span class="process-math">\(T-\lambda I = 0\)</span> since <span class="process-math">\(\vvec\)</span> spans <span class="process-math">\(V\text{.}\)</span> Therefore, if <span class="process-math">\(p(x) = x-\lambda\text{,}\)</span> we have <span class="process-math">\(p(T)=0\text{.}\)</span>
+</div>
+<div class="para logical" id="thm-minimal-polynomial-3-2">
+<div class="para">We now imagine that <span class="process-math">\(\dim(V)=n\)</span> and that the theorem has been verified for all operators on vector spaces of dimension less than <span class="process-math">\(n\text{.}\)</span>  We choose a vector <span class="process-math">\(\vvec\)</span> and consider the powers <span class="process-math">\(T^k\vvec\text{;}\)</span>  that is, consider the vectors</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\vvec,T\vvec,T^2\vvec,\ldots,T^n\vvec\text{.}
+\end{equation*}
+</div>
+<div class="para">Since there are <span class="process-math">\(n+1\)</span> vector in this set and <span class="process-math">\(\dim(V)=n\text{,}\)</span> we know this is a linearly independent set.</div>
+</div>
+<div class="para logical" id="thm-minimal-polynomial-3-3">
+<div class="para">Choose <span class="process-math">\(m\)</span> to be the smallest integer such that <span class="process-math">\(T^m\vvec\)</span> is a linear combination of <span class="process-math">\(\vvec,T\vvec,\ldots,T^{m-1}\vvec\text{.}\)</span>  This means two things.  First, the vectors <span class="process-math">\(\vvec,T\vvec,\ldots,T^{m-1}\vvec\)</span> are linearly independent.  Second, there are constants</div>
+<div class="displaymath process-math">
+\begin{equation*}
+a_0\vvec + a_1T\vvec + \ldots + a_{m-1}T^{m-1}\vvec +
+T^m\vvec = \zerovec\text{.}
+\end{equation*}
+</div>
+<div class="para">If we define the degree <span class="process-math">\(m\)</span> monic polynomial</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x)=a_0 + a_1x + \ldots + a_{m-1}x^{m-1}+x^m\text{,}
+\end{equation*}
+</div>
+<div class="para">then <span class="process-math">\(p(T)\vvec = \zerovec\text{.}\)</span>  That is, <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(\nul(p(T))\text{.}\)</span>
+</div>
+</div>
+<div class="para logical" id="thm-minimal-polynomial-3-4">
+<div class="para">Since <span class="process-math">\(\nul(p(T))\)</span> is invariant under <span class="process-math">\(T\)</span> and <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(\nul(p(T))\text{,}\)</span> we know that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\vvec,T\vvec,\ldots,T^{m-1}\vvec
+\end{equation*}
+</div>
+<div class="para">are all in <span class="process-math">\(\nul(p(T))\text{.}\)</span>  These vectors are linearly independent so we know that <span class="process-math">\(\dim(\nul(p(T)))\leq m\text{.}\)</span> Therefore,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\dim(\range(p(T))) = \dim(V) - \dim(\nul(p(T))) \leq n - m\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" id="thm-minimal-polynomial-3-5">For convenience, we will denote the vector space <span class="process-math">\(W=\range(p(T))\text{.}\)</span>  Since <span class="process-math">\(W\)</span> is invariant under <span class="process-math">\(T\text{,}\)</span> <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(W\text{,}\)</span> whose dimension is less than <span class="process-math">\(\div(V)\text{.}\)</span>  By the induction hypothesis, we know that there is a unique monic polynomial <span class="process-math">\(q(x)\)</span> such that <span class="process-math">\(q(T|_W)=0\text{.}\)</span>  Again by the induction hypothesis, it also follows that <span class="process-math">\(\deg(q) \leq \dim(W) \leq n - m\text{.}\)</span>
+</div>
+<div class="para logical" id="thm-minimal-polynomial-3-6">
+<div class="para">Now consider the polynomial <span class="process-math">\(pq\)</span> whose degree is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\deg(qp) = \deg(q)+\deg(p) \leq n - m + m \leq n = \dim(V)\text{.}
+\end{equation*}
+</div>
+<div class="para">Moreover, both <span class="process-math">\(p\)</span> and <span class="process-math">\(q\)</span> are monic so <span class="process-math">\(pq\)</span> is also monic.  Finally, for any vector <span class="process-math">\(\vvec\)</span> in <span class="process-math">\(V\text{,}\)</span> we have</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(qp)(T)\vvec = q(T)p(T)\vvec = q(T)(p(T)\vvec) = \zerovec
+\end{equation*}
+</div>
+<div class="para">where the last equality holds because <span class="process-math">\(p(T)\vvec\)</span> is in <span class="process-math">\(W=\range(p(T))\)</span> and <span class="process-math">\(q(T)\uvec=\zerovec\)</span> for any vector <span class="process-math">\(\uvec\)</span> in <span class="process-math">\(W\text{.}\)</span>  Since <span class="process-math">\((qp)(T)\vvec=\zerovec\)</span> for every vector <span class="process-math">\(\vvec\text{,}\)</span> this means that <span class="process-math">\((qp)(T)=0\text{.}\)</span>
+</div>
+</div>
+<div class="para" id="thm-minimal-polynomial-3-7">This shows that there is a monic polynomial <span class="process-math">\(s\)</span> such that <span class="process-math">\(s(T)=0\)</span> on <span class="process-math">\(V\text{.}\)</span>  Therefore, there is some possibly different polynomial having the smallest degree among all such polynomials, and this is the minimal polynomial of the operator <span class="process-math">\(T\)</span> on <span class="process-math">\(V\text{.}\)</span>
+</div>
+<div class="para logical" id="thm-minimal-polynomial-3-8">
+<div class="para">To see that this polynomial is unique, suppose there are two monic polynomials <span class="process-math">\(s_1\)</span> and <span class="process-math">\(s_2\)</span> having smallest degree and <span class="process-math">\(s_1(T)=0\)</span> and <span class="process-math">\(s_2(T)=0\text{.}\)</span> If we consider <span class="process-math">\(s_1-s_2\text{,}\)</span> we see that <span class="process-math">\(\deg(s_1-s_2)\lt
+\deg(s_1)=\deg(s_2)\)</span> since the highest degree terms of <span class="process-math">\(s_1\)</span> and <span class="process-math">\(s_2\)</span> have coefficients <span class="process-math">\(1\)</span> and therefore cancel.  Also,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(s_1-s_2)(T) = s_1(T) - s_2(T) = 0\text{.}
+\end{equation*}
+</div>
+<div class="para">However, this is impossible since <span class="process-math">\(s_1\)</span> and <span class="process-math">\(s_2\)</span> had the smallest possible degree among all polynomials that vanish when evaluated on <span class="process-math">\(T\text{.}\)</span>  This means that <span class="process-math">\(s_1=s_2\text{,}\)</span> which guarantees the uniqueness of the minimal polynomial.</div>
+</div></article><article class="example example-like" id="example-min-poly-1"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.1.9</span><span class="period">.</span>
+</h4>
+<div class="para" id="example-min-poly-1-1-1">Consider the <span class="process-math">\(2\times2\)</span> matrix <span class="process-math">\(A=\begin{bmatrix}
+2 \amp 0 \\
+0 \amp 2
+\end{bmatrix}\)</span> and the linear operator <span class="process-math">\(T\)</span> that it defines.  Notice that <span class="process-math">\(A-2I = 0\)</span> so if <span class="process-math">\(p(x)=x-2\text{,}\)</span> then <span class="process-math">\(p(T)=0\text{.}\)</span>  The minimal polynomial of <span class="process-math">\(T\)</span> is therefore <span class="process-math">\(p(x)=x-2\text{.}\)</span>
+</div> <div class="para" id="example-min-poly-1-1-2">More generally, suppose that the minimal polynomial of an operator <span class="process-math">\(T\)</span> has degree <span class="process-math">\(1\text{.}\)</span>  Since the minimal polynomial is monic, this means that <span class="process-math">\(p(x)=x-\lambda\text{.}\)</span> Because <span class="process-math">\(p(T)=T-\lambda I = 0\text{,}\)</span> we see that <span class="process-math">\(T=\lambda
+I\text{,}\)</span> a multiple of the identity.</div></article><article class="example example-like" id="example-min-poly-2"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.1.10</span><span class="period">.</span>
+</h4>
+<div class="para" id="example-min-poly-2-1-1">By contrast, consider the <span class="process-math">\(2\times2\)</span> matrix <span class="process-math">\(B=\begin{bmatrix}
+2 &amp; 1 \\
+0 &amp; 2
+\end{bmatrix}\)</span> and the linear operator <span class="process-math">\(S\)</span> that it defines with respect to some basis.  The degree of the minimal polynomial must be at least 2 since <span class="process-math">\(B\)</span> is not a multiple of the identity matrix.  Notice, however, that <span class="process-math">\(B-2I = \begin{bmatrix}
+0 &amp; 1 \\
+0 &amp; 0 \\
+\end{bmatrix}\)</span> and <span class="process-math">\((B-2I)^2 = 0\text{.}\)</span>  This says that <span class="process-math">\((S-2I)^2 =
+0\)</span> and so the minimal polynomial of <span class="process-math">\(S\)</span> is <span class="process-math">\(q(x)=(x-2)^2\text{.}\)</span>
+</div></article><div class="para" id="sec-polys-4-11">Both of the matrices in the two previous examples are upper triangular.  Remembering that the eigenvalues of an upper triangular matrix are the entries on the diagonal, we see that the roots of the minimal polynomials in both cases are the eigenvalues of the operator.  This gives some indication of the importance of the minimal polynomial, as we will see now.</div>
+<div class="para" id="sec-polys-4-12">The fact that the minimal polynomial has the smallest degree among all polynomials for which <span class="process-math">\(p(T)=0\)</span> has some important consequences.</div>
+<article class="proposition theorem-like" id="prop-min-poly-roots"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.1.11</span><span class="period">.</span>
+</h4>
+<div class="para" id="prop-min-poly-roots-1-1">The set of roots of the minimal polynomial of <span class="process-math">\(T\)</span> equals the set of eigenvalues of <span class="process-math">\(T\text{.}\)</span>
+</div></article><article class="proof" id="prop-min-poly-roots-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="prop-min-poly-roots-2-1">Suppose that <span class="process-math">\(p\)</span> is the minimal polynomial of <span class="process-math">\(T\text{.}\)</span>  We need to explain two things: that any eigenvalue of <span class="process-math">\(T\)</span> is a root of <span class="process-math">\(p\)</span> and that any root of <span class="process-math">\(p\)</span> is an eigenvalue of <span class="process-math">\(T\text{.}\)</span>
+</div>
+<div class="para logical" id="prop-min-poly-roots-2-2">
+<div class="para">Suppose that <span class="process-math">\(\lambda\)</span> is an eigenvalue of <span class="process-math">\(T\text{.}\)</span> This means that there is a nonzero vector <span class="process-math">\(\vvec\)</span> such that <span class="process-math">\(T\vvec = \lambda\vvec\)</span> and therefore <span class="process-math">\(T^j\vvec =
+\lambda^j\vvec\)</span> for every <span class="process-math">\(j\text{.}\)</span>  This means that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+0 = p(T)\vvec = p(\lambda)\vvec\text{,}
+\end{equation*}
+</div>
+<div class="para">which implies that <span class="process-math">\(p(\lambda) = 0\text{.}\)</span>  Therefore, <span class="process-math">\(\lambda\)</span> is a root of <span class="process-math">\(p\text{,}\)</span> the minimal polynomial of <span class="process-math">\(T\text{.}\)</span>
+</div>
+</div>
+<div class="para logical" id="prop-min-poly-roots-2-3">
+<div class="para">Conversely, suppose that <span class="process-math">\(\lambda\)</span> is a root of <span class="process-math">\(p\text{.}\)</span>  By <a href="sec-polys.html#prop-root-factor" class="xref" data-knowl="./knowl/xref/prop-root-factor.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 2.1.3">Proposition 2.1.3</a>, this means that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-root-factor.html">
+\begin{equation*}
+p(x) = (x-\lambda)q(x)\text{.}
+\end{equation*}
+</div>
+<div class="para">This says that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-root-factor.html">
+\begin{equation*}
+0 = p(T) = (T-\lambda I)q(T)
+\end{equation*}
+</div>
+<div class="para">However, <span class="process-math">\(q(T)\neq 0\)</span> since <span class="process-math">\(\deg(q) \lt \deg(p)\text{,}\)</span> there is some vector <span class="process-math">\(\vvec\)</span> for which <span class="process-math">\(q(T)\vvec\neq
+0\text{.}\)</span>  Therefore,</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-root-factor.html">
+\begin{equation*}
+0 = p(T)\vvec = (T-\lambda I)q(T)\vvec\text{,}
+\end{equation*}
+</div>
+<div class="para">which shows that <span class="process-math">\(q(T)\vvec\)</span> is an eigenvector <span class="process-math">\(T\)</span> with associated eigenvalue <span class="process-math">\(\lambda\text{.}\)</span>
+</div>
+</div></article><div class="para" id="sec-polys-4-14">This is the most significant fact about the minimal polynomial: that its roots are the eigenvalues of the operator.  We’ll put this to use in the next section.  Before that, however, here are two other useful facts.</div>
+<article class="proposition theorem-like" id="prop-min-poly-div"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.1.12</span><span class="period">.</span>
+</h4>
+<div class="para" id="prop-min-poly-div-1-1">If <span class="process-math">\(s\)</span> is a polynomial for which <span class="process-math">\(s(T)=0\text{,}\)</span> then <span class="process-math">\(s\)</span> is a multiple of the minimal polynomial of <span class="process-math">\(T\text{.}\)</span>
+</div></article><article class="proof" id="prop-min-poly-div-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para logical" id="prop-min-poly-div-2-1">
+<div class="para">If <span class="process-math">\(p\)</span> is the minimal polynomial of <span class="process-math">\(T\text{,}\)</span> then we can apply the Division Algorithm to write <span class="process-math">\(s = pq + r\)</span> where <span class="process-math">\(\deg(r) \lt \deg(p)\text{.}\)</span>  Furthermore,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+0 = s(T) = p(T)q(T) + r(T) = r(T)\text{,}
+\end{equation*}
+</div>
+<div class="para">which implies that <span class="process-math">\(r(T)=0\text{.}\)</span>  Since <span class="process-math">\(p\)</span> has the smallest degree among all polynomials that vanish when evaluated on <span class="process-math">\(T\)</span> and <span class="process-math">\(r\)</span> has a smaller degree than <span class="process-math">\(p\text{,}\)</span> we know that <span class="process-math">\(r=0\text{.}\)</span>  Therefore, <span class="process-math">\(s=pq\text{.}\)</span>
+</div>
+</div></article><article class="proposition theorem-like" id="prop-min-poly-subspace"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.1.13</span><span class="period">.</span>
+</h4>
+<div class="para" id="prop-min-poly-subspace-1-1">If <span class="process-math">\(T\)</span> is an operator on the vector space <span class="process-math">\(V\)</span> and <span class="process-math">\(W\)</span> is a subspace of <span class="process-math">\(V\)</span> that is invariant under <span class="process-math">\(T\text{,}\)</span> then the minimal polynomial of <span class="process-math">\(T\)</span> is a multiple of the minimal polynomial of <span class="process-math">\(T|_W\text{.}\)</span>
+</div></article><article class="proof" id="prop-min-poly-subspace-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="prop-min-poly-subspace-2-1">Suppose that <span class="process-math">\(s\)</span> is the minimal polynomial of <span class="process-math">\(T|_W\)</span> and <span class="process-math">\(p\)</span> is the minimal polynomial of <span class="process-math">\(T\)</span> on <span class="process-math">\(V\text{.}\)</span>  This means that <span class="process-math">\(p(T)\wvec=0\)</span> for every vector <span class="process-math">\(\wvec\)</span> in <span class="process-math">\(W\)</span> and so <span class="process-math">\(p(T|_W) =
+0\text{.}\)</span>  We also know that <span class="process-math">\(s\)</span> is the minimal polynomial of <span class="process-math">\(T|_W\)</span> so by <a href="sec-polys.html#prop-min-poly-div" class="xref" data-knowl="./knowl/xref/prop-min-poly-div.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 2.1.12">Proposition 2.1.12</a>, we know that <span class="process-math">\(p\)</span> is a multiple of <span class="process-math">\(s\text{.}\)</span>
+</div></article></section></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="chap-std-forms.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-upper.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>

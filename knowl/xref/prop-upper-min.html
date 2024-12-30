@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="proposition theorem-like"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.2.2</span><span class="period">.</span>
+</h4>
+<div class="para logical">
+<div class="para">Suppose that <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(V\)</span> and that there is a basis <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</span> of <span class="process-math">\(V\)</span> such that the matrix <span class="process-math">\(A\)</span> of <span class="process-math">\(T\)</span> is upper triangular.  Then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(T-A_{1,1}I)
+(T-A_{2,2}I)
+\ldots
+(T-A_{n,n}I) = 0\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proof"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para logical">
+<div class="para">We will use <span class="process-math">\(q\)</span> to denote the polynomial</div>
+<div class="displaymath process-math">
+\begin{equation*}
+q(x)=(x-A_{1,1})(x-A_{2,2})\ldots(x-A_{n,n})\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para">First consider <span class="process-math">\(\vvec_1\text{.}\)</span>  Since <span class="process-math">\(A\)</span> is upper triangular, we know that <span class="process-math">\(T\vvec_1=A_{1,1}\vvec_1\text{,}\)</span> which means that <span class="process-math">\((T-A_{1,1}I)\vvec_1 = 0\text{.}\)</span>  Therefore, <span class="process-math">\(q(T)\vvec_1 = 0\text{.}\)</span>
+</div>
+<div class="para logical">
+<div class="para">Next consider <span class="process-math">\(\vvec_2\)</span> for <span class="process-math">\(T\vvec_2 =
+A_{1,2}\vvec_1 + A_{2,2}\vvec_2\text{.}\)</span>  Rearranging gives</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(T-A_{2,2})\vvec_2 = A_{1,2}\vvec_1\text{.}
+\end{equation*}
+</div>
+<div class="para">Therefore,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(T-A_{1,1})(T-A_{2,2})\vvec_2 = A_{1,2}(T-A_{1,1)}\vvec_1 = 0\text{,}
+\end{equation*}
+</div>
+<div class="para">which tells us that <span class="process-math">\(q(T)\vvec_2=0\text{.}\)</span>
+</div>
+</div>
+<div class="para logical">
+<div class="para">Continuing in this way, we see that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(T-A_{1,1})(T-A_{2,2)}\ldots (T-A_{j,j})\vvec_j = 0
+\end{equation*}
+</div>
+<div class="para">and hence that <span class="process-math">\(q(T)\vvec_j=0\text{.}\)</span>  This means that <span class="process-math">\(q(T)\vvec=0\)</span> for every vector <span class="process-math">\(\vvec\)</span> and so we know that <span class="process-math">\(q(T)=0\)</span> as claimed.</div>
+</div></article><span class="incontext"><a class="internal" href="sec-upper.html#prop-upper-min">in-context</a></span>
+</body>
+</html>

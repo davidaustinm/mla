@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Linear transformations</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Understanding More Linear Algebra">
+<meta property="book:author" content="David Austin">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><link href="_static/pretext/css/pretext_search.css" rel="stylesheet" type="text/css">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.5.0';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.917314eae5e3ab90.bundle.js"></script><script src="_static/prefix-347.8328b60515045466.bundle.js"></script><script src="_static/prefix-runestone.b5027876c2f06108.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-347.f9add1ca35d5ad93.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.97f3ae4f7a71ba18.css">
+<style>
+</style>
+</head>
+<body id="umla" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""></a><div class="title-container">
+<h1 class="heading"><a href="my-great-book.html"><span class="title">Understanding More Linear Algebra</span></a></h1>
+<p class="byline">David Austin</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
+<div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-vs-intro.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="chap-vs.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="chap-std-forms.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\nul}{\text{nul}}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\avec}{{\mathbf a}}
+\newcommand{\bvec}{{\mathbf b}}
+\newcommand{\cvec}{{\mathbf c}}
+\newcommand{\dvec}{{\mathbf d}}
+\newcommand{\dtil}{\widetilde{\mathbf d}}
+\newcommand{\evec}{{\mathbf e}}
+\newcommand{\fvec}{{\mathbf f}}
+\newcommand{\nvec}{{\mathbf n}}
+\newcommand{\pvec}{{\mathbf p}}
+\newcommand{\qvec}{{\mathbf q}}
+\newcommand{\svec}{{\mathbf s}}
+\newcommand{\tvec}{{\mathbf t}}
+\newcommand{\uvec}{{\mathbf u}}
+\newcommand{\vvec}{{\mathbf v}}
+\newcommand{\wvec}{{\mathbf w}}
+\newcommand{\xvec}{{\mathbf x}}
+\newcommand{\yvec}{{\mathbf y}}
+\newcommand{\zvec}{{\mathbf z}}
+\newcommand{\rvec}{{\mathbf r}}
+\newcommand{\mvec}{{\mathbf m}}
+\newcommand{\zerovec}{{\mathbf 0}}
+\newcommand{\onevec}{{\mathbf 1}}
+\newcommand{\real}{{\mathbb R}}
+\newcommand{\complex}{\mathbb C}
+\newcommand{\field}{\mathbb F}
+\newcommand{\pbb}{\mathbb P}
+\newcommand{\conjugate}[1]{\overline{#1}}
+\newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
+\end{array}\right]}
+\newcommand{\ctwovec}[2]{\left[\begin{array}{c}#1 \\ #2
+\end{array}\right]}
+\newcommand{\threevec}[3]{\left[\begin{array}{r}#1 \\ #2 \\ #3
+\end{array}\right]}
+\newcommand{\cthreevec}[3]{\left[\begin{array}{c}#1 \\ #2 \\ #3
+\end{array}\right]}
+\newcommand{\fourvec}[4]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\ #4
+\end{array}\right]}
+\newcommand{\cfourvec}[4]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\ #4
+\end{array}\right]}
+\newcommand{\fivevec}[5]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\
+#4 \\ #5 \\ \end{array}\right]}
+\newcommand{\cfivevec}[5]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\
+#4 \\ #5 \\ \end{array}\right]}
+\newcommand{\mattwo}[4]{\left[\begin{array}{rr}#1 \amp #2 \\ #3 \amp #4 \\ \end{array}\right]}
+\newcommand{\laspan}[1]{\text{Span}\{#1\}}
+\newcommand{\bcal}{{\cal B}}
+\newcommand{\ccal}{{\cal C}}
+\newcommand{\scal}{{\cal S}}
+\newcommand{\wcal}{{\cal W}}
+\newcommand{\ecal}{{\cal E}}
+\newcommand{\fcal}{{\cal F}}
+\newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
+\newcommand{\gray}[1]{\color{gray}{#1}}
+\newcommand{\lgray}[1]{\color{lightgray}{#1}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\row}{\text{Row}}
+\newcommand{\col}{\text{Col}}
+\renewcommand{\deg}{\text{deg}}
+\newcommand{\range}{\text{range}}
+\newcommand{\var}{\text{Var}}
+\newcommand{\corr}{\text{corr}}
+\newcommand{\len}[1]{\left|#1\right|}
+\newcommand{\bbar}{\overline{\bvec}}
+\newcommand{\bhat}{\widehat{\bvec}}
+\newcommand{\bperp}{\bvec^\perp}
+\newcommand{\xhat}{\widehat{\xvec}}
+\newcommand{\vhat}{\widehat{\vvec}}
+\newcommand{\uhat}{\widehat{\uvec}}
+\newcommand{\what}{\widehat{\wvec}}
+\newcommand{\Sighat}{\widehat{\Sigma}}
+\newcommand{\inner}[2]{\langle #1,#2\rangle}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="chap-vs.html" class="internal"><span class="codenumber">1</span> <span class="title">Vector spaces</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-vs-intro.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Vector spaces</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Vector spaces</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-4" class="internal"><span class="codenumber">1.1.2</span> <span class="title">Linear combinations</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-5" class="internal"><span class="codenumber">1.1.3</span> <span class="title">Bases</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-6" class="internal"><span class="codenumber">1.1.4</span> <span class="title">Sums of subspaces</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec-lt-intro.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Linear transformations</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-3" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Linear transformations</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-4" class="internal"><span class="codenumber">1.2.2</span> <span class="title">The null space and range</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-5" class="internal"><span class="codenumber">1.2.3</span> <span class="title">Representing linear transformations with matrices</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-6" class="internal"><span class="codenumber">1.2.4</span> <span class="title">Dual spaces</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-std-forms.html" class="internal"><span class="codenumber">2</span> <span class="title">The spectral theorem</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-polys.html" class="internal"><span class="codenumber">2.1</span> <span class="title">The minimal polynomial</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-3" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Properties of Polynomials</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-4" class="internal"><span class="codenumber">2.1.2</span> <span class="title">The minimal polynomial of an operator</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-upper.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Upper triangular matrices</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-upper.html#sec-upper-3" class="internal"><span class="codenumber">2.2.1</span> <span class="title">Upper triangular matrices</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-orthogonal.html" class="internal"><span class="codenumber">2.3</span> <span class="title">Orthogonaliaty</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-3" class="internal"><span class="codenumber">2.3.1</span> <span class="title">The adjoint of an operator</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-4" class="internal"><span class="codenumber">2.3.2</span> <span class="title">Self-adjoint operators</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-nilpotent.html" class="internal"><span class="codenumber">2.4</span> <span class="title">Nilpotent operators</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-nilpotent.html#sec-nilpotent-3" class="internal"><span class="codenumber">2.4.1</span> <span class="title">Null spaces of powers</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-nilpotent.html#sec-nilpotent-4" class="internal"><span class="codenumber">2.4.2</span> <span class="title">Nilpotent operators</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-jordan.html" class="internal"><span class="codenumber">2.5</span> <span class="title">Generalized eigenvectors</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-jordan.html#sec-jordan-3" class="internal"><span class="codenumber">2.5.1</span> <span class="title">Generalized eigenvectors</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-jordan.html#sec-jordan-4" class="internal"><span class="codenumber">2.5.2</span> <span class="title">Complex Vector Spaces</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-jordan.html#sec-jordan-5" class="internal"><span class="codenumber">2.5.3</span> <span class="title">Jordan form</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-lt-intro"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">1.2</span><span class="space"> </span><span class="title">Linear transformations</span>
+</h2>
+<section class="introduction" id="sec-lt-intro-2"><div class="para logical" id="sec-lt-intro-2-1">
+<div class="para">We earlier viewed an <span class="process-math">\(m\times n\)</span> matrix <span class="process-math">\(A\)</span> as defining a matrix transformation <span class="process-math">\(T:\real^m\to\real^n\)</span> by <span class="process-math">\(T(\vvec)=A\vvec\text{.}\)</span>  Due to the linearity of matrix multiplication, this meant that</div>
+<div class="displaymath process-math" id="sec-lt-intro-2-1-5">
+\begin{align*}
+T(s\vvec)\amp=sT(\vvec)\\
+T(\vvec_1+\vvec_2)\amp =T(\vvec_1)+T(\vvec_2)\text{.}
+\end{align*}
+</div>
+<div class="para">Now that we are working with vector spaces, we can define linear transformations, which are functions between vector spaces that satisfy these properties.</div>
+</div></section><section class="subsection" id="sec-lt-intro-3"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.2.1</span><span class="space"> </span><span class="title">Linear transformations</span>
+</h3>
+<div class="para" id="sec-lt-intro-3-2">Given two vector spaces, <span class="process-math">\(V\)</span> and <span class="process-math">\(W\text{,}\)</span> we can define a linear transformation between them by generalizing our earlier notion of matrix transformation.</div>
+<article class="definition definition-like" id="sec-lt-intro-3-3"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.1</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="sec-lt-intro-3-3-1-1">
+<div class="para">If <span class="process-math">\(V\)</span> and <span class="process-math">\(W\)</span> are vector spaces, then a <em class="emphasis">linear transformation</em> is a function <span class="process-math">\(T:V\to W\)</span> such that, for every scalar <span class="process-math">\(s\)</span> and pair of vectors <span class="process-math">\(\vvec_1,\vvec_2\in V\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="sec-lt-intro-3-3-1-1-7">
+\begin{align*}
+T(s\vvec)\amp=sT(\vvec)\\
+T(\vvec_1+\vvec_2)\amp =T(\vvec_1)+T(\vvec_2)\text{.}
+\end{align*}
+</div>
+</div></article><article class="example example-like" id="sec-lt-intro-3-4"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.2</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-3-4-1-1">Suppose that <span class="process-math">\(A=\begin{bmatrix}
+2 \amp 0 \\
+-1 \amp 2 \\
+2 \amp 1 \\
+\end{bmatrix}
+\text{.}\)</span>  Then <span class="process-math">\(T:\real^2\to\real^3\)</span> defined by <span class="process-math">\(T(\vvec)=A\vvec\)</span> is a linear transformation.</div></article><article class="example example-like" id="sec-lt-intro-3-5"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.3</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-3-5-1-1">Suppose that <span class="process-math">\(V=\fcal\text{,}\)</span> the set of functions <span class="process-math">\(f:\real\to\complex\text{.}\)</span>  Then <span class="process-math">\(T(f)=\threevec{f(-3)}{f(0)}{f(3)}\)</span> is a linear transformation <span class="process-math">\(T:\fcal\to \complex^3\text{.}\)</span>
+</div></article><article class="example example-like" id="sec-lt-intro-3-6"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.4</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-3-6-1-1">Suppose that <span class="process-math">\(V=\pbb_3\)</span> and <span class="process-math">\(W=\pbb_2\text{.}\)</span>  If <span class="process-math">\(p\)</span> is a polynomial in <span class="process-math">\(\pbb_3\text{,}\)</span> define the function <span class="process-math">\(T(p) = p'\)</span> where <span class="process-math">\(p'\)</span> is the derivative of <span class="process-math">\(p\text{.}\)</span>  Two common rules of differentiation, the constant multiplier rule and the addition rule, imply that <span class="process-math">\(T\)</span> is a linear transformation.</div></article><article class="example example-like" id="sec-lt-intro-3-7"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.5</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-3-7-1-1">If <span class="process-math">\(V=\pbb_3\)</span> and <span class="process-math">\(W=\real\text{,}\)</span> then <span class="process-math">\(T(p)=\int_0^5 p(x)~dx\)</span> is a linear transformation.</div></article><article class="example example-like" id="sec-lt-intro-3-8"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.6</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-3-8-1-1">Suppose that <span class="process-math">\(V\)</span> is the vector space of <span class="process-math">\(3\times3\)</span> matrices.  Then <span class="process-math">\(T:V\to\real\)</span> by <span class="process-math">\(T(A)=\det(A)\)</span> is not a linear transformation because <span class="process-math">\(T(sA)=s^3T(A)\text{.}\)</span>
+</div></article><article class="definition definition-like" id="sec-lt-intro-3-9"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.7</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-3-9-1-1">Given two vector spaces, <span class="process-math">\(V\)</span> and <span class="process-math">\(W\text{,}\)</span> the set of linear transformations <span class="process-math">\(T:V\to W\)</span> will be denoted as <span class="process-math">\(L(V,W)\text{.}\)</span>
+</div></article><article class="proposition theorem-like" id="sec-lt-intro-3-10"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.8</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="sec-lt-intro-3-10-1-1">
+<div class="para">Given two vector spaces <span class="process-math">\(V\)</span> and <span class="process-math">\(W\text{,}\)</span> the set <span class="process-math">\(L(V,W)\)</span> is a vector spaces having</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\dim L(V,W) = \dim(V)\dim(W)\text{.}
+\end{equation*}
+</div>
+</div></article><article class="assemblage assemblage-like" id="sec-lt-intro-3-11"><h4 class="heading"><span class="title">Notation.</span></h4>
+<div class="para" id="sec-lt-intro-3-11-2">While a linear transformation <span class="process-math">\(T:V\to W\)</span> is a function, we will frequently write <span class="process-math">\(T\vvec\text{,}\)</span> without parentheses, when we mean <span class="process-math">\(T(\vvec)\text{.}\)</span>  This is similar to how we often write <span class="process-math">\(\sin x\)</span> rather than <span class="process-math">\(\sin(x)\)</span> in other courses.</div></article></section><section class="subsection" id="sec-lt-intro-4"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.2.2</span><span class="space"> </span><span class="title">The null space and range</span>
+</h3>
+<div class="para" id="sec-lt-intro-4-2">A linear transformation <span class="process-math">\(T:V\to W\)</span> creates a subspace of <span class="process-math">\(V\)</span> and a subspace of <span class="process-math">\(W\text{.}\)</span>
+</div>
+<article class="definition definition-like" id="sec-lt-intro-4-3"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.9</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="sec-lt-intro-4-3-1-1">
+<div class="para">If <span class="process-math">\(T:V\to W\)</span> is a linear transformation, we define the <em class="emphasis">null space</em> and <em class="emphasis">range</em> of <span class="process-math">\(T\)</span> to be</div>
+<div class="displaymath process-math" id="sec-lt-intro-4-3-1-1-5">
+\begin{align*}
+\nul(T)\amp = \{\vvec|T\vvec=0\}\subset V\\
+\range(T)\amp = \{\wvec|\wvec=T\vvec \text{ for some
+}\vvec\}\subset W\text{.}
+\end{align*}
+</div>
+</div></article><article class="example example-like" id="sec-lt-intro-4-4"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.10</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="sec-lt-intro-4-4-1-1">
+<div class="para">Consider the linear transformation <span class="process-math">\(T:\real^4\to\real^3\)</span> defined by the matrix</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\begin{bmatrix}
+2 \amp -1 \amp 2 \amp 3 \\
+1 \amp 0 \amp 0 \amp 2 \\
+-2 \amp 2 \amp -4 \amp -2 \\
+\end{bmatrix}
+\sim
+\begin{bmatrix}
+1 \amp 0 \amp 0 \amp 2 \\
+0 \amp 1 \amp -2 \amp 1 \\
+0 \amp 0 \amp 0 \amp 0 \\
+\end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">The null space is the set of vectors for which <span class="process-math">\(T\vvec=A\vvec=\zerovec\text{.}\)</span> We earlier called this <span class="process-math">\(\nul(A)\text{,}\)</span> the mull space of <span class="process-math">\(A\text{,}\)</span> and here we see that it is the subspace of <span class="process-math">\(\real^4\)</span> spanned by <span class="process-math">\(\fourvec0210\)</span> and <span class="process-math">\(\fourvec{-2}{-1}01\text{.}\)</span>
+</div>
+</div> <div class="para" id="sec-lt-intro-4-4-1-2">Similarly, the range, <span class="process-math">\(\range(T)\text{,}\)</span> is the subspace of <span class="process-math">\(\real^3\)</span> that we formerly called <span class="process-math">\(\col(A)\text{,}\)</span> the column space of <span class="process-math">\(A\text{.}\)</span>  As such, a basis for <span class="process-math">\(\range(T)\)</span> is given by <span class="process-math">\(\threevec21{-2}\)</span> and <span class="process-math">\(\threevec{-1}02\text{.}\)</span>
+</div></article><article class="example example-like" id="sec-lt-intro-4-5"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.11</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="sec-lt-intro-4-5-1-1">
+<div class="para">Suppose that <span class="process-math">\(V=\pbb_3\)</span> and <span class="process-math">\(W=\real^2\)</span> and that <span class="process-math">\(T:V\to\real^2\)</span> where <span class="process-math">\(T(p)=\twovec{p(0)}{p'(0)}\text{.}\)</span> A general polynomial in <span class="process-math">\(V\)</span> has the form</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x)=a_3x^3+a_2x^2+a_1x+a_0
+\end{equation*}
+</div>
+<div class="para">so that <span class="process-math">\(T(p)=\twovec{a_0}{a_1}\text{.}\)</span>  Therefore, <span class="process-math">\(\nul(T)\)</span> is the set of polynomials for which <span class="process-math">\(a_0=a_0=0\)</span> so that <span class="process-math">\(p(x)=a_3x^3+a_2x^2\text{.}\)</span>  We also see that <span class="process-math">\(\range(T) = \real^2\)</span>
+</div>
+</div></article><div class="para" id="sec-lt-intro-4-6">We will frequently make use of the next proposition.</div>
+<article class="proposition theorem-like" id="prop-nul-range-dims"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.12</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="prop-nul-range-dims-1-1">
+<div class="para">If <span class="process-math">\(T:V\to W\)</span> is a linear transformation, then <span class="process-math">\(\nul(T)\)</span> is a subspace of <span class="process-math">\(V\)</span> and <span class="process-math">\(\range(T)\)</span> is a subspace of <span class="process-math">\(W\text{.}\)</span>  Moreover,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\dim \nul(T) + \dim \range(T) = \dim V\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proof" id="prop-nul-range-dims-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para logical" id="prop-nul-range-dims-2-1">
+<div class="para">First, suppose that <span class="process-math">\(\vvec_1\)</span> and <span class="process-math">\(\vvec_2\)</span> are in <span class="process-math">\(\nul(T)\text{.}\)</span>  Then</div>
+<div class="displaymath process-math" id="prop-nul-range-dims-2-1-4">
+\begin{align*}
+T(s\vvec_1) \amp = sT\vvec_1 = 0\\
+T(\vvec_1+\vvec_2) \amp = T\vvec_1 +T\vvec_2=
+0\text{,}
+\end{align*}
+</div>
+<div class="para">which shows that <span class="process-math">\(\nul(T)\)</span> is closed under scalar multiplication and addition and is therefore a subspace.</div>
+</div>
+<div class="para logical" id="prop-nul-range-dims-2-2">
+<div class="para">In the same way, suppose that <span class="process-math">\(\wvec_1\)</span> and <span class="process-math">\(\wvec_2\)</span> are in <span class="process-math">\(\range(T)\text{.}\)</span>  We must have vectors <span class="process-math">\(\vvec_1\)</span> and <span class="process-math">\(\vvec_2\)</span> such that <span class="process-math">\(T\vvec_1=\wvec_1\)</span> and <span class="process-math">\(T\vvec_2=\wvec_2\text{.}\)</span>  It then follows that</div>
+<div class="displaymath process-math" id="prop-nul-range-dims-2-2-8">
+\begin{align*}
+T(s\vvec_1) \amp = sT\vvec_1 = s\wvec\\
+T(\vvec_1+\vvec_2) \amp = T\vvec_1 + T\vvec_2=
+\wvec_1+\wvec_2\text{,}
+\end{align*}
+</div>
+<div class="para">which shows that <span class="process-math">\(\range(T)\)</span> is a subspace of <span class="process-math">\(W\text{.}\)</span>
+</div>
+</div>
+<div class="para" id="prop-nul-range-dims-2-3">Now suppose that <span class="process-math">\(\uvec_1,\ldots,\uvec_j\)</span> is a basis for <span class="process-math">\(\nul(T)\text{,}\)</span> which we extend to a basis for <span class="process-math">\(V\)</span> by adding vectors <span class="process-math">\(\vvec_1,\ldots,\vvec_k\text{.}\)</span> We also define <span class="process-math">\(\wvec_i=T\vvec_i\text{.}\)</span>
+</div>
+<div class="para logical" id="prop-nul-range-dims-2-4">
+<div class="para">Given a vector <span class="process-math">\(\vvec\)</span> in <span class="process-math">\(V\text{,}\)</span> we can write</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\vvec=a_1\uvec_1 + \ldots + a_j\uvec_j + b_1\vvec_1 +
+\ldots + b_k\vvec_k
+\end{equation*}
+</div>
+<div class="para">so that</div>
+<div class="displaymath process-math" id="prop-nul-range-dims-2-4-4">
+\begin{align*}
+T\vvec\amp=a_1T\uvec_1 + \ldots + a_jT\uvec_j + b_1T\vvec_1 +
+\ldots + b_k\vvec_k\\
+\amp=b_1\wvec_1+\ldots+b_k\wvec_k\text{.}
+\end{align*}
+</div>
+<div class="para">This shows that <span class="process-math">\(\wvec_1,\ldots,\wvec_k\)</span> span <span class="process-math">\(\range(T)\text{.}\)</span>
+</div>
+</div>
+<div class="para logical" id="prop-nul-range-dims-2-5">
+<div class="para">We also claim that <span class="process-math">\(\wvec_1,\ldots,\wvec_k\)</span> forms a linearly independent set.  Suppose that</div>
+<div class="displaymath process-math" id="prop-nul-range-dims-2-5-2">
+\begin{align*}
+b_1\wvec_1 + \ldots b_k\wvec_k \amp = 0\\
+T(b_1\vvec_1+\ldots+b_k\vvec_k) \amp = 0\text{,}
+\end{align*}
+</div>
+<div class="para">which means that <span class="process-math">\(b_1\vvec_1+\ldots+b_k\vvec_k\)</span> is in <span class="process-math">\(\nul(T)\)</span> so that this vector is a linear combination of <span class="process-math">\(\uvec_1,\ldots,\uvec_j\text{.}\)</span>  This can only happen if the vector is zero, showing that <span class="process-math">\(b_1=\ldots=b_k=0\)</span> and the <span class="process-math">\(\wvec\)</span> vectors are linearly independent.</div>
+</div>
+<div class="para logical" id="prop-nul-range-dims-2-6">
+<div class="para">We conclude that <span class="process-math">\(\wvec_1,\ldots,\wvec_k\)</span> is a basis for <span class="process-math">\(\range(T)\)</span> and we have</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\dim \nul(T) + \dim \range(T) = j + k = \dim V\text{.}
+\end{equation*}
+</div>
+</div></article><article class="definition definition-like" id="sec-lt-intro-4-8"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.13</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-4-8-1-1">Suppose <span class="process-math">\(T:V\to W\text{.}\)</span> If <span class="process-math">\(\range(T)=W\text{,}\)</span> we say that <span class="process-math">\(T\)</span> is <em class="emphasis">surjective</em>.  If <span class="process-math">\(\nul(T)=\{0\}\text{,}\)</span> we say that <span class="process-math">\(T\)</span> is <em class="emphasis">injective</em>.</div></article><div class="para" id="sec-lt-intro-4-9">If <span class="process-math">\(T\)</span> is surjective, notice that every vector <span class="process-math">\(\wvec\in
+W\)</span> has a vector <span class="process-math">\(\vvec\)</span> for which <span class="process-math">\(T\vvec=\wvec\text{.}\)</span>
+</div>
+<div class="para" id="sec-lt-intro-4-10">If <span class="process-math">\(T\)</span> is injective and <span class="process-math">\(T\vvec_1=T\vvec_2\text{,}\)</span> then <span class="process-math">\(\vvec_1=\vvec_2\)</span> since <span class="process-math">\(T(\vvec_1-\vvec_2)=0\)</span> meaning <span class="process-math">\(\vvec_1-\vvec_2\in \nul(T)\text{.}\)</span>
+</div>
+<div class="para" id="sec-lt-intro-4-11">The following proposition follows immediately from <a href="sec-lt-intro.html#prop-nul-range-dims" class="xref" data-knowl="./knowl/xref/prop-nul-range-dims.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.12">Proposition 1.2.12</a>.</div>
+<article class="proposition theorem-like" id="sec-lt-intro-4-12"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.14</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-4-12-1-1">If <span class="process-math">\(T:V\to W\)</span> is surjective, then <span class="process-math">\(\dim V \geq \dim
+W\text{.}\)</span>
+</div> <div class="para" id="sec-lt-intro-4-12-1-2">Similarly, if <span class="process-math">\(T:V\to W\)</span> is injective, then <span class="process-math">\(\dim V
+\leq \dim W\text{.}\)</span>
+</div></article><article class="definition definition-like" id="sec-lt-intro-4-13"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.15</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-4-13-1-1">A linear transformation <span class="process-math">\(T:V\to W\)</span> is called an <em class="emphasis">isomorphism</em> if <span class="process-math">\(T\)</span> is both surjective and injective.</div></article><article class="proposition theorem-like" id="sec-lt-intro-4-14"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.16</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-4-14-1-1">If <span class="process-math">\(T:V\to W\)</span> is an isomorphism, then <span class="process-math">\(\dim V = \dim
+W\text{.}\)</span>  Moreover, for every <span class="process-math">\(\wvec\in W\text{,}\)</span> there is a unique <span class="process-math">\(\vvec\)</span> such that <span class="process-math">\(\wvec=T\vvec\text{.}\)</span>
+</div></article><article class="example example-like" id="sec-lt-intro-4-15"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.17</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-4-15-1-1">The linear transformation <span class="process-math">\(T:\pbb_2\to\real^3\)</span> defined by <span class="process-math">\(T(p)=\threevec{p(0)}{p'(0)}{p''(0)}\)</span> is an isomorphism, which shows that <span class="process-math">\(\dim \pbb_2=3\text{.}\)</span>  In general, <span class="process-math">\(\dim \pbb_n=n+1\text{.}\)</span>
+</div></article><article class="example example-like" id="sec-lt-intro-4-16"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.18</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-4-16-1-1">The linear transformation <span class="process-math">\(T:\pbb\to\pbb\)</span> defined by <span class="process-math">\(T(p)(x)=xp(x)\)</span> is injective but not surjective.</div> <div class="para" id="sec-lt-intro-4-16-1-2">However, if <span class="process-math">\(V\)</span> is a finite dimensional vector space and <span class="process-math">\(T:V\to V\)</span> is injective, it is also an isomorphism by <a href="sec-lt-intro.html#prop-nul-range-dims" class="xref" data-knowl="./knowl/xref/prop-nul-range-dims.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.12">Proposition 1.2.12</a> Similarly, if <span class="process-math">\(T\)</span> is surjective, it is also an isomorphism.</div></article></section><section class="subsection" id="sec-lt-intro-5"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.2.3</span><span class="space"> </span><span class="title">Representing linear transformations with matrices</span>
+</h3>
+<div class="para logical" id="sec-lt-intro-5-2">
+<div class="para">We began this section by recalling our earlier study of matrix transformations and used that as motivation for introducing linear transformations.  However, the connection is closer than just that. Suppose that <span class="process-math">\(T:V\to W\)</span> is a linear transformation and that we have a basis <span class="process-math">\(\bcal=\{\vvec_1,\ldots,\vvec_n\}\)</span> for <span class="process-math">\(V\)</span> and a basis <span class="process-math">\(\ccal=\{\wvec_1,\ldots,\wvec_m\}\)</span> for <span class="process-math">\(W\text{.}\)</span>  We then have</div>
+<div class="displaymath process-math">
+\begin{equation*}
+T\vvec_j = A_{1,j}\wvec_1 + A_{2,j}\wvec_2 + \ldots + A_{m,j}\wvec_m\text{,}
+\end{equation*}
+</div>
+<div class="para">which defines an <span class="process-math">\(m\times n\)</span> matrix <span class="process-math">\(A\text{.}\)</span>
+</div>
+</div>
+<article class="definition definition-like" id="sec-lt-intro-5-3"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.19</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-5-3-1-1">If <span class="process-math">\(T:V\to W\)</span> is a linear transformation, <span class="process-math">\(\bcal\)</span> a basis for <span class="process-math">\(V\)</span> and <span class="process-math">\(\ccal\)</span> a basis for <span class="process-math">\(W\text{,}\)</span> we say that this matrix <span class="process-math">\(M_T^{\bcal,\ccal}\)</span> is the matrix associated to <span class="process-math">\(T\)</span> with respect to these bases.  We will frequently drop the subscript when the transformation is clear from context.</div></article><article class="example example-like" id="sec-lt-intro-5-4"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.20</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="sec-lt-intro-5-4-1-1">
+<div class="para">Consider <span class="process-math">\(T:\pbb_3\to\pbb_2\)</span> where <span class="process-math">\(T(p)=p'\text{.}\)</span>  If we choose the bases <span class="process-math">\(\bcal=\{x^3,x^2,x,1\}\)</span> and <span class="process-math">\(\ccal=\{x^2,x,1\}\text{,}\)</span> then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+M^{\bcal,\ccal}=\begin{bmatrix}
+3 \amp 0 \amp 0 \amp 0 \\
+0 \amp 2 \amp 0 \amp 0 \\
+0 \amp 0 \amp 1 \amp 0 \\
+\end{bmatrix}\text{.}
+\end{equation*}
+</div>
+</div></article></section><section class="subsection" id="sec-lt-intro-6"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.2.4</span><span class="space"> </span><span class="title">Dual spaces</span>
+</h3></section></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="sec-vs-intro.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="chap-std-forms.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>
