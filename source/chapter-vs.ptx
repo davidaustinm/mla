@@ -46,5 +46,6 @@
   <xi:include href="section-polynomials.ptx" />
   <xi:include href="section-inner-products.ptx" />
   <xi:include href="section-dual.ptx" />
+
   -->
 </chapter>

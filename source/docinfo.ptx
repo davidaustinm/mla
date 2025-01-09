@@ -52,6 +52,7 @@
     \newcommand{\complex}{\mathbb C}
     \newcommand{\field}{\mathbb F}
     \newcommand{\pbb}{\mathbb P}
+    \newcommand{\basis}[2]{#1_1,#1_2,\ldots,#1_#2}
     \newcommand{\conjugate}[1]{\overline{#1}}
     \newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
     \end{array}\right]}

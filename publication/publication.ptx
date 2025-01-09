@@ -41,7 +41,7 @@
     <!-- https://pretextbook.org/doc/guide/html/publication-file-online.html#online-style-options -->
     <css
         theme="denver"
-        palette="leaves"
+        palette="ice-fire"
     />
         <!--
         style="default"

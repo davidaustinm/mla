@@ -95,7 +95,8 @@
 
     <definition>
       <statement>
-        <p>Given two vector spaces, <m>V</m> and <m>W</m>, the set of
+        <p>Given two vector spaces, <m>V</m> and
+        <m>W</m>, the set of 
         linear transformations <m>T:V\to W</m> will be denoted as
         <m>L(V,W)</m>.</p>
       </statement>
@@ -103,13 +104,51 @@
 
     <proposition>
       <statement>
-        <p>Given two vector spaces <m>V</m> and <m>W</m>, the set
-        <m>L(V,W)</m> is a vector spaces having
+        <p>Given two vector spaces <m>V</m> and <m>W</m> over
+        <m>\field</m>, the set
+        <m>L(V,W)</m> is a vector space over <m>\field</m> having
         <me>
           \dim L(V,W) = \dim(V)\dim(W)
         </me>.
         </p>
       </statement>
+
+      <proof>
+        <p>First, notice that we may define scalar multiplication and
+        vector addition on
+        <m>L(V,W)</m>.  In particular, if <m>T</m> and <m>S</m> are in
+        <m>L(V,W)</m>, then
+        <md>
+          <mrow>
+            (sT)(\vvec) \amp = s(T(\vvec))
+          </mrow>
+          <mrow>
+            (T+S)(\vvec) \amp = T(\vvec)+S(\vvec)
+          </mrow>
+        </md>.
+        With these operations, <m>L(V,W)</m> becomes a vector space.
+        </p>
+        
+        <p>Let <m>\basis{\vvec}{n}</m> be a basis for <m>V</m> and
+        <m>\basis{\wvec}{m}</m> be a basis for <m>W</m>.  If <m>T:V\to
+        W</m> is a linear transformation, then there is an <m>m\times
+        n</m> matrix <m>A</m> such that
+        <me>
+          T(\vvec_j) = A_{1,j}\wvec_1 + A_{2,j}\wvec_2 + \ldots +
+          A_{m,j}\wvec_m
+        </me>.
+        We choose <m>j</m> and <m>k</m> and define the linear
+        transformation <m>T_{k,j}</m> by
+        <me>
+          T_{k,j}(\vvec_i)= \begin{cases}
+          \wvec_k \amp \text{if } \ i=j \\
+          0 \amp \text{otherwise}
+          \end{cases}
+        </me>.
+        Then every linear transformation is a linear combination of
+        the <m>T_{j,k}</m> and this set is linearly independent.
+        </p>
+      </proof>
     </proposition>
 
     <assemblage>

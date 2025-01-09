@@ -165,7 +165,6 @@
     a vector space when we see one, and we will be fairly loose with
     these details.  </p>
 
-    <!--
     <example>
       <title>Polynomials</title>
       <statement>
@@ -292,7 +291,7 @@
         <m>\field</m>.  A <em>linear combination</em> of these vectors
         is a vector of the form
         <me>
-          a_1\vvec_1 + a_2\vvec_2 + \ldots + a_n\vvec_n
+          a_1\vvec_1 + a_2\vvec_2 + \ldots + a_m\vvec_m
         </me>
         where the scalars <m>a_j</m> belong to the field
         <m>\field</m>.
@@ -327,25 +326,25 @@
     </definition>
 
     <p>It's not hard to see that the span of a set of vectors
-    <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> in <m>V</m> forms a
+    <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> in <m>V</m> forms a
     subspace.  We just have to check that the span is closed under
     scalar multiplication and addition.  So we will consider vectors 
     <md>
       <mrow>
-        \uvec \amp = a_1\vvec_1 + a_2 \vvec_2 + \ldots + a_n\vvec_n
+        \uvec \amp = a_1\vvec_1 + a_2 \vvec_2 + \ldots + a_m\vvec_m
       </mrow>
       <mrow>
-        \wvec \amp = b_1\vvec_1 + b_2 \vvec_2 + \ldots + b_n\vvec_n
+        \wvec \amp = b_1\vvec_1 + b_2 \vvec_2 + \ldots + b_m\vvec_m
       </mrow>
     </md>.
     If we multiply <m>\uvec</m> by the scalar <m>s</m>, we have
     <me>
-      s\uvec = (sa_1)\vvec_1 + (sa_2) \vvec_2 + \ldots + (sa_n)\vvec_n
+      s\uvec = (sa_1)\vvec_1 + (sa_2) \vvec_2 + \ldots + (sa_m)\vvec_m
     </me>,
     which is in the span of the set of vectors.  Similarly,
     <me>
       \uvec+\wvec = (a_1+b_1)\vvec_1 + (a_2+b_2) \vvec_2 + \ldots + 
-      (a_n+b_n)\vvec_n
+      (a_m+b_m)\vvec_m
     </me>,
     which is also in the span.  This demonstrates the following
     proposition. 
@@ -364,7 +363,8 @@
     <definition>
       <title>Linear independence</title>
       <statement>
-        <p>A set of vectors in <m>V</m> is linearly dependent if one
+        <p>A set of vectors in <m>V</m> is <em>linearly dependent</em>
+        if one 
         of the vectors can be written as a linear combination of the
         others.
         </p>
@@ -394,55 +394,67 @@
 
     <proposition>
       <statement>
-        <p>A set of vectors <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> in a
+        <p>A set of vectors <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> in a
         vector space <m>V</m> is linearly dependent if and only if
         <me>
-          a_1\vvec_1+a_2\vvec_2+\ldots+a_n\vvec_n = 0
+          a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0
         </me>
-        for some set of scalars <m>a_1,a_2,\ldots,a_n</m> with at
+        for some set of scalars <m>a_1,a_2,\ldots,a_m</m> with at
         least one being nonzero.
         </p>
 
         <p>Equivalently, the set of
         vectors is linearly independent if and only if
         <me>
-          a_1\vvec_1+a_2\vvec_2+\ldots+a_n\vvec_n = 0
+          a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0
         </me>
         implies that all the scalars <m>a_j=0</m>.
         </p>
       </statement>
+      <!--
       <proof>
-        <p>Our proof will focus on the first statement.  Suppose that 
+        <p>The second statement is logically equivalent to the first
+        so our proof will focus on the first statement.  Suppose that
+        the set <m>\vvec_1,\ldots,\vvec_m</m> is linearly dependent
+        and that <m>\vvec_k</m> is the first vector that is a linear
+        combination of vectors that occur previously in the list.
+        This means that there are scalars <m>c_1,c_2,\ldots,c_{k-1}</m>
+        such that
         <me>
-          a_1\vvec_1+a_2\vvec_2+\ldots+a_n\vvec_n = 0
-        </me>
-        and that <m>a_j\neq 0</m>.  Then we can rewrite
+          \vvec_j = c_1\vvec_1+c_2\vvec_2+\ldots+c_{k-1}\vvec_{k-1}
+        </me>.
+        We can rewrite this expression as
         <me>
-          \vvec_j = -a_1/a_j\vvec_1 - \ldots -\widehat{\vvec_j} -
-          \ldots-a_n/a_j\vvec_n 
+          c_1\vvec_1+c_2\vvec_2+\ldots+c_{k-1}\vvec_{k-1}-\vvec_k = 0
+        </me>,
+        which means that there are scalars <m>a_j</m> with
+        <me>
+          a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0
+        </me>.
+        </p>
+
+        <p>Conversely, suppose that 
+        <me>
+          a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0
         </me>
-        where the sum on the right does not include the
-        <m>\vvec_j</m> term.  This shows that the set of vectors is
-        linear dependent.
+        for some set of scalars
+        and that <m>a_k</m> be the last nonzero scalar.
+        We can rewrite this expression as
+        <me>
+          \vvec_k = -\frac{a_1}{a_k}\vvec_1 
+          -\frac{a_2}{a_k}\vvec_2 -\ldots
+          -\frac{a_{k-1}}{a_k}\vvec_{k-1}
+        </me>.
+        This shows that <m>\vvec_k</m> is a linear combination of the
+        other vectors and that the set of vectors is therefore
+        linearly dependent.
         </p>
         
-        <p>Conversely, suppose that
-        <me>
-          \vvec_j = a_1\vvec_1 + \ldots + \widehat{a_j\vvec_j} +
-          \ldots + 
-          + a_n\vvec_n
-        </me>
-        where the sum on the right does not include
-        the <m>\vvec_j</m> term.  Then
-        <me>
-          a_1\vvec_1 + \ldots + \vvec_j + \ldots
-          + a_n\vvec_n = 0
-          </me>,
-          which verifies the condition of the proposition.
-        </p>
       </proof>
+      -->
     </proposition>
 
+    <!--
     <proposition xml:id="prop-lin-dep-span">
       <statement>
         <p>Suppose that <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> is a
@@ -465,8 +477,9 @@
         </p>
       </proof>
     </proposition>
+    -->
   </subsection>
-
+  <!--
   <subsection>
     <title>Bases</title>
 
@@ -530,7 +543,8 @@
 
     <proposition>
       <statement>
-        <p>Any finite dimensional vector space has a basis.
+        <p>Any finite dimensional vector space has a basis consisting
+        of a finite number of vectors.
         </p>
       </statement>
       <proof>
@@ -538,9 +552,10 @@
         a finite set of vectors whose span is <m>V</m>.  If this set
         of vectors is linearly independent, then it forms a basis.  It
         not, we can remove one vector that is a linear combination of
-        the others.  The span of the remaining vectors is still
-        <m>V</m> so we continue removing vectors one at a time until
-        we obtain a linear independent set, which must be a basis.
+        the others.  <xref ref="prop-lin-dep-span"/> says that the
+        span of the remaining vectors is still <m>V</m> so we continue
+        removing vectors one at a time until we obtain a linearly
+        independent set, which must be a basis.
         </p>
       </proof>
     </proposition>
@@ -548,90 +563,8 @@
     <p>Notice that the two bases for
     <m>\pbb_2</m> in <xref ref="ex-poly-basis-1"/> and <xref
     ref="ex-poly-basis-2"/> both consist of three polynomials.  This is
-    generally true as stated in the next proposition.
-    </p>
-    
-    <proposition>
-      <statement>
-        <p>If <m>V</m> is a finite dimensional vector space, then any
-        two bases have the same number of vectors.
-        </p>
-      </statement>
-      <proof>
-        <p>We will give two proofs, beginning with the outline of a
-        proof that should seem familiar.  Suppose that
-        <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> and
-        <m>\wvec_1,\wvec_2,\ldots,\wvec_n</m> define bases
-        <m>\bcal</m> and <m>\ccal</m> respectively.  Then we
-        can write
-        <me>
-          \wvec_j = A_{1,j}\vvec_1 + A_{2,j}\vvec_2 + \ldots +
-          A_{m,j}\vvec_m 
-        </me>,
-        which defines a matrix <m>A</m>.  Similarly, we define a
-        matrix <m>B</m> by writing <m>\vvec_k</m> in terms of the
-        basis <m>\ccal</m>.  We can now verify that <m>AB=I</m> and
-        <m>BA=I</m>, which says that <m>A</m> and <m>B</m> are
-        inverses and hence square.  Therefore, <m>m=n</m>.
-        </p>
-      </proof>
-      <proof>
-        <p>We will present another proof illustrating the type of
-        thinking 
-        that will be useful as we move forward.  Suppose again that we
-        have two bases <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> and
-        <m>\wvec_1,\wvec_2,\ldots,\wvec_n</m>.  Our goal is to show
-        that <m>m=n</m>.
-        </p>
-
-        <p>We first append <m>\vvec_m</m> to the vectors in
-        the other basis to obtain the list
-        <me>
-          \vvec_m,\wvec_1,\wvec_2,\ldots,\wvec_n
-        </me>.
-        Since <m>\laspan{\wvec_1,\wvec_2,\ldots,\wvec_n} = V</m>, we
-        know that the span of this set is also <m>V</m>.
-        Furthermore, since <m>\vvec_1</m> is a linear combination of
-        the other 
-        vectors, we know that this is a linearly dependent set.  We
-        remove the first vector <m>\wvec_j</m> that is a linear
-        combination of the vectors before it.  By <xref
-        ref="prop-lin-dep-span"/>, the span of the remaining <m>n</m>
-        vectors is <m>V</m>.
-        </p>
-
-        <p>Now we append <m>\vvec_{m-1}</m> to the front of the list:
-        <me>
-          \vvec_{m-1},\vvec_m,\wvec_1,\wvec_2,\ldots,\widehat{\wvec_j},
-          \ldots,\wvec_n
-        </me>.
-        Once again, the span of this set is still <m>V</m> and the set
-        is linearly dependent since <m>\vvec_{m-1}</m> is a linear
-        combination of the other vectors.  We remove the first vector
-        in the list that is a linear combination of the others.  Since
-        the set of vectors <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m>
-        is linearly independent, the vector that we remove must be one
-        of the <m>\wvec</m> vectors.  The span of the resulting list
-        must still be <m>V</m> by <xref ref="prop-lin-dep-span"/>.
-        </p>
-
-        <p>We can repeat this process until we have added all of the
-        vectors in the set <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m>.
-        Each time we add a vector from this set, we remove one of the
-        vectors in the set
-        <m>\wvec_1,\wvec_2,\ldots,\wvec_n</m>.  This tells us that
-        <m>m\leq n</m>.
-        </p>
-
-        <p>We can repeat this argument after interchanging the roles
-        of the two bases to also conclude that <m>n\leq m</m>, which
-        tells us that <m>m=n</m>.
-        </p>
-      </proof>
-    </proposition>
-
-    <p>Contained within the previous proof is the proof of this
-    proposition.
+    generally true as we will begin to explain.  First, we will prove
+    a more technical, but still useful, result.
     </p>
 
     <proposition xml:id="prop-lin-indep-num">
@@ -642,12 +575,86 @@
         is <m>V</m>.
         </p>
       </statement>
+      <proof>
+        <p>Suppose that <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> is a
+        linear independent set in the vector space <m>V</m> and that
+        <m>\wvec_1,\wvec_2,\ldots,\wvec_n</m> is a set whose span is
+        <m>V</m>.  We wish to show that <m>m\leq n</m>.
+        </p>
+
+        <p>We first construct a new list
+        <me>
+          \vvec_m,\wvec_1,\wvec_2,\ldots,\wvec_n
+        </me>
+        whose span is <m>V</m>.  Notice that this set is linearly
+        dependent since <m>\vvec_m</m> is a linear combination of the
+        <m>\wvec</m> vectors, whose span is <m>V</m>.  We let
+        <m>\uvec</m> be the first vector in the list that is a linear
+        combination of vectors that occur previously in the list.
+        Since the set of <m>\vvec</m> vectors is linearly independent,
+        <m>\vvec_m</m> is nonzero, which means that <m>\uvec</m> must
+        be one of the <m>\wvec</m> vectors.  If we remove <m>\uvec</m>,
+        we have a new list
+        <me>
+          \vvec_m,\wvec_1,\ldots,\widehat{\wvec_j},\ldots,\wvec_n
+        </me>
+        whose span is <m>V</m> by <xref ref="prop-lin-dep-span"/>.
+        Notice that the cardinality of this new list is <m>n</m>.
+        </p>
+
+        <p>We can repeat this process.  We prepend <m>\vvec_{m-1}</m>
+        to the list to obtain
+        <me>
+          \vvec_{m-1},\vvec_m,\wvec_1,\ldots,\widehat{\wvec_j},\ldots,\wvec_n, 
+        </me>
+        which must be linearly dependent.  Let <m>\uvec</m> be the
+        first vector in the list that is a linear combination of
+        vectors that occur previously in the list.  Once again, since
+        the <m>\vvec</m> vectors form a linearly independent set, we
+        know that <m>\uvec</m> is one of the <m>\wvec</m> vectors.  We
+        can remove <m>\uvec</m> to obtain a new list of vectors whose
+        span is <m>V</m>.  Again, the cardinality of this new list is
+        <m>n</m>. 
+        </p>
+
+        <p>We continue this process until all the <m>\vvec</m> vectors
+        have been added to the beginning of the list.  At each step,
+        the vector we remove is one of the <m>\wvec</m> vectors since
+        the <m>\vvec</m> vectors are linearly independent.  Therefore,
+        we have a list of <m>n</m> vectors that contains
+        <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m>, which says that
+        <m>m\leq n</m>.
+        </p>
+      </proof>
+
     </proposition>
 
-    <p>Assuming there is a finite basis, we define the dimension of
-    a vector space to be the number of vectors in a basis. In this case,
-    the number of vectors in any basis is the same so this definition
-    does not depend on which basis we choose.
+    <proposition>
+      <statement>
+        <p>If <m>V</m> is a finite dimensional vector space, then any
+        two bases have the same number of vectors.
+        </p>
+      </statement>
+      <proof>
+        <p>Suppose that <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> is one
+        basis and that <m>\wvec_1,\wvec_2,\ldots,\wvec_n</m> is
+        another.  The set of <m>\vvec</m> vectors forms a
+        linearly independent set and the set of <m>\wvec</m> vectors
+        spans <m>V</m>.  By <xref ref="prop-lin-indep-num"/>, we know
+        that <m>m\leq n</m>.
+        </p>
+
+        <p>We can repeat this argument interchanging the two bases to
+        conclude that <m>n\leq m</m>.  Put together, these two facts
+        mean that <m>m=n</m>.
+        </p>
+      </proof>
+    </proposition>
+
+    <p>If <m>V</m> is a finite dimensional vector space, we define its
+    dimension to be the number of vectors in a
+    basis. In this case, the number of vectors in any basis is the
+    same so this definition does not depend on which basis we choose.
     </p>
 
     <definition>
@@ -659,23 +666,104 @@
       </statement>
     </definition>
 
-    <p>Because of <xref ref="prop-lin-indep-num"/>, we have the
-    following proposition.</p>
-    
+    <p>We may informally think of the dimension of a vector space as a
+    measure of its size.  Therefore, it should follow that the
+    dimension of a subspace cannot be larger than the dimension of the
+    vector space in which it resides.  We first call attention to
+    a useful fact.</p>
+
+    <proposition xml:id="prop-lin-indep-add">
+      <statement>
+        <p>If <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> is a linearly
+        independent subset of the vector space <m>V</m> whose span is
+        not <m>V</m>, then there is a vector <m>\uvec</m> in <m>V</m>
+        such that <m>\vvec_1,\vvec_2,\ldots,\vvec_m,\uvec</m> is a
+        linearly independent subset of <m>V</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>Under the assumptions of this proposition, the span of
+        <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> is not <m>V</m> so there
+        is a vector <m>\uvec</m> that is not in the span of the
+        <m>\vvec</m> vectors.  This means that it is not a linear
+        combination of the <m>\vvec</m> vectors and therefore
+        <me>\vvec_1,\vvec_2,\ldots,\vvec_m,\uvec</me> is a linearly
+        independent set.
+        </p>
+      </proof>
+    </proposition>
+
+    <proposition xml:id="prop-lin-dep-full">
+      <statement>
+        <p>
+          If <m>V</m> is a vector space whose dimension <m>\dim V =
+          n</m> and <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> is a
+          linearly independent set in <m>V</m>, then
+          <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> also spans <m>V</m>
+          and is therefore a basis of <m>V</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>Any linear independent subset of <m>V</m> can have no more
+        than <m>n</m> vectors by <xref ref="prop-lin-indep-num"/>.  If
+        this linearly independent set of 
+        <m>n</m> vectors does not span <m>V</m>, then by 
+        <xref ref="prop-lin-indep-add"/>, we can add a vector
+        <m>\uvec</m> so that
+        <me>
+          \vvec_1,\vvec_2,\ldots,\vvec_n,\uvec
+        </me>
+        is a linearly independent subset of <m>V</m>.  This is
+        impossible, however, since this set has <m>n+1</m> vectors.
+        Therefore, <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> must span
+        <m>V</m>. 
+        </p>
+      </proof>
+    </proposition>
+
     <proposition>
       <statement>
         <p>If <m>W</m> is a subspace of the finite dimensional vector
-        space <m>V</m>, then <m>W</m> is also finite dimensional and
+        space <m>V</m>, then <m>W</m> is also a finite dimensional
+        vector space and
         <me>
           \dim W \leq \dim V
           </me>.
         </p>
       </statement>
+
+      <proof>
+        <p> We will first explain why <m>W</m> is a finite dimensional
+        vector space, which means we need to explain why there is a
+        finite set <m>W</m> that spans <m>W</m>.  We begin with any
+        set of vectors 
+        <m>\wvec_1,\wvec_2,\ldots,\wvec_m</m> in <m>W</m>.  By
+        <xref ref="prop-lin-dep-span"/>, we can remove vectors one at
+        a time until we obtain a linearly independent set in
+        <m>W</m>.  If this set does not span <m>W</m>, then we can add
+        vectors in <m>W</m> one at a time to obtain new linearly
+        independent sets in <m>W</m>.  This process must stop at some
+        point since any linearly independent set in <m>V</m> can have
+        no more than <m>\dim V</m> vectors.  Therefore, we have
+        obtained a finite set that spans
+        <m>W</m>, which says that <m>W</m> is finite dimensional.
+        </p>
+
+        <p>Since any basis for <m>W</m> is also a linearly independent
+        subset of <m>V</m>, it can contain no more vectors than a
+        basis of <m>V</m>.  This tells us that
+        <me>
+          \dim W \leq \dim V
+        </me>.
+        </p>    
+
+      </proof>
     </proposition>
-    
+
     <proposition xml:id="prop-basis-extend">
       <statement>
-        <p>Any linearly independent set in a vector space <m>V</m> can
+        <p>Any linearly independent set in a finite dimensional vector
+        space <m>V</m> can 
         be extended to a basis for <m>V</m>.
         </p>
       </statement>
@@ -698,7 +786,9 @@
       </proof>
     </proposition>
     
-    <p>As a conseqence, we obtain</p>
+    <p>The following is a consequence of <xref
+    ref="prop-lin-dep-full"/>. </p>
+    
     <proposition>
       <statement>
         <p>If <m>W</m> is a subspace of <m>V</m> and <m>\dim W = \dim
@@ -864,13 +954,11 @@
     <definition>
       <statement>
         <p>If <m>V = W\oplus U</m>, we say that <m>U</m> is a
-        complement of <m>W</m>.
+        <em>complement</em> of <m>W</m>.
         </p>
       </statement>
     </definition>
--->
   </subsection>
-    
-    
+  -->
 </section>
   

@@ -109,7 +109,7 @@
         </me>,
         which says that
         <me>A_{i,j}=\inner{T\uvec_j}{\uvec_i}=\inner{\uvec_j}{T^*\uvec_i}
-        = \conjugate{inner{T^*\uvec_i}{\uvec_j} = \conjugate{B_{j,i}}
+        = \conjugate{inner{T^*\uvec_i}{\uvec_j}} = \conjugate{B_{j,i}}
         </me>
         if <m>B</m> is the matrix defined by <m>T^*</m>.
         </p>
