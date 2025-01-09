@@ -97,14 +97,14 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.5.0';
+eBookConfig.runestone_version = '7.5.1';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.917314eae5e3ab90.bundle.js"></script><script src="_static/prefix-347.8328b60515045466.bundle.js"></script><script src="_static/prefix-runestone.b5027876c2f06108.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-347.f9add1ca35d5ad93.css">
+<script src="_static/prefix-runtime.87cabc2515250052.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.630d5c4fb4b681eb.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
 <link rel="stylesheet" type="text/css" href="_static/prefix-runestone.97f3ae4f7a71ba18.css">
 <style>
 </style>
@@ -161,6 +161,7 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\complex}{\mathbb C}
 \newcommand{\field}{\mathbb F}
 \newcommand{\pbb}{\mathbb P}
+\newcommand{\basis}[2]{#1_1,#1_2,\ldots,#1_#2}
 \newcommand{\conjugate}[1]{\overline{#1}}
 \newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
 \end{array}\right]}
@@ -341,12 +342,43 @@ T(\vvec_1+\vvec_2)\amp =T(\vvec_1)+T(\vvec_2)\text{.}
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.8</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-lt-intro-3-10-1-1">
-<div class="para">Given two vector spaces <span class="process-math">\(V\)</span> and <span class="process-math">\(W\text{,}\)</span> the set <span class="process-math">\(L(V,W)\)</span> is a vector spaces having</div>
+<div class="para">Given two vector spaces <span class="process-math">\(V\)</span> and <span class="process-math">\(W\)</span> over <span class="process-math">\(\field\text{,}\)</span> the set <span class="process-math">\(L(V,W)\)</span> is a vector space over <span class="process-math">\(\field\)</span> having</div>
 <div class="displaymath process-math">
 \begin{equation*}
 \dim L(V,W) = \dim(V)\dim(W)\text{.}
 \end{equation*}
 </div>
+</div></article><article class="proof" id="sec-lt-intro-3-10-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para logical" id="sec-lt-intro-3-10-2-1">
+<div class="para">First, notice that we may define scalar multiplication and vector addition on <span class="process-math">\(L(V,W)\text{.}\)</span>  In particular, if <span class="process-math">\(T\)</span> and <span class="process-math">\(S\)</span> are in <span class="process-math">\(L(V,W)\text{,}\)</span> then</div>
+<div class="displaymath process-math" id="sec-lt-intro-3-10-2-1-5">
+\begin{align*}
+(sT)(\vvec) \amp = s(T(\vvec))\\
+(T+S)(\vvec) \amp = T(\vvec)+S(\vvec)\text{.}
+\end{align*}
+</div>
+<div class="para">With these operations, <span class="process-math">\(L(V,W)\)</span> becomes a vector space.</div>
+</div>
+<div class="para logical" id="sec-lt-intro-3-10-2-2">
+<div class="para">Let <span class="process-math">\(\basis{\vvec}{n}\)</span> be a basis for <span class="process-math">\(V\)</span> and <span class="process-math">\(\basis{\wvec}{m}\)</span> be a basis for <span class="process-math">\(W\text{.}\)</span>  If <span class="process-math">\(T:V\to
+W\)</span> is a linear transformation, then there is an <span class="process-math">\(m\times
+n\)</span> matrix <span class="process-math">\(A\)</span> such that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+T(\vvec_j) = A_{1,j}\wvec_1 + A_{2,j}\wvec_2 + \ldots +
+A_{m,j}\wvec_m\text{.}
+\end{equation*}
+</div>
+<div class="para">We choose <span class="process-math">\(j\)</span> and <span class="process-math">\(k\)</span> and define the linear transformation <span class="process-math">\(T_{k,j}\)</span> by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+T_{k,j}(\vvec_i)= \begin{cases}
+\wvec_k \amp \text{if } \ i=j \\
+0 \amp \text{otherwise}
+\end{cases}\text{.}
+\end{equation*}
+</div>
+<div class="para">Then every linear transformation is a linear combination of the <span class="process-math">\(T_{j,k}\)</span> and this set is linearly independent.</div>
 </div></article><article class="assemblage assemblage-like" id="sec-lt-intro-3-11"><h4 class="heading"><span class="title">Notation.</span></h4>
 <div class="para" id="sec-lt-intro-3-11-2">While a linear transformation <span class="process-math">\(T:V\to W\)</span> is a function, we will frequently write <span class="process-math">\(T\vvec\text{,}\)</span> without parentheses, when we mean <span class="process-math">\(T(\vvec)\text{.}\)</span>  This is similar to how we often write <span class="process-math">\(\sin x\)</span> rather than <span class="process-math">\(\sin(x)\)</span> in other courses.</div></article></section><section class="subsection" id="sec-lt-intro-4"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.2.2</span><span class="space"> </span><span class="title">The null space and range</span>

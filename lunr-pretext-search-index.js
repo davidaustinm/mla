@@ -25,7 +25,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.1",
   "title": "Vector spaces",
-  "body": " Vector spaces   A vector space is simply a mathematical set on which we can perform addition and scalar multiplication. We already have some familiarity with vector spaces since is a good example. However, as mentioned in the introduction to this chapter, polynomials have similar operations so we would like to create a mathematical structure that allows us to study vectors and polynomials as equals. This is why the concept of a vector space is so useful.    Vector spaces  The usual place to get started would be with a general definition of a vector space. However, this is one place in mathematics, among others, where a general definition can obscure the underlying idea. For that reason, let's just start with some examples.   Matrices   Let's look at the set of all matrices, which include the matrices . As we saw in our earlier course, we can multiply a matrix by a scalar and we can add matrices: . Notice that both operations produce a new object that is also a matrix. We say that that the set is closed under these operations.  With these operations, the set of matrices becomes a vector space.    Notice that the entries in our matrices are real numbers . We could instead change the example so that we consider matrices whose entries are in the complex numbers .   Complex matrices   Consider now the set of matrices with complex entries. For example, . Scalar multiplication includes multiplication by complex numbers so we have .    These examples show that vector spaces have an underlying field , which is the set of scalars by which we can multiply. You may or may not know about fields depending on whether you have studied abstract algebra. In either case, the underlying field of our vector spaces will always be either the real numbers or the complex numbers, which we will write as or .  Having seen some examples, we offer a general definition of a vector space.   Vector space   A vector space over a field is a set with two operations, scalar multiplication by elements of and addition, under which is closed. Moreover, these operations satisfy the following natural properties:  Addition is commutative; that is for every pair of .  There is an additive identity; that is, there is an element such that for any element in .  Every element has an additive inverse such that . We will usually write the additive identity as .  Addition is associative, which means that we can regroup a sum in the following way: .  For every , we have .  Scalar multiplication is distributive in the sense that .      That is a long list of properties. Technically speaking, if we want to check that some set is a vector space, we need to check each one of those properties. In practice, however, we will know a vector space when we see one, and we will be fairly loose with these details.    "
+  "body": " Vector spaces   A vector space is simply a mathematical set on which we can perform addition and scalar multiplication. We already have some familiarity with vector spaces since is a good example. However, as mentioned in the introduction to this chapter, polynomials have similar operations so we would like to create a mathematical structure that allows us to study vectors and polynomials as equals. This is why the concept of a vector space is so useful.    Vector spaces  The usual place to get started would be with a general definition of a vector space. However, this is one place in mathematics, among others, where a general definition can obscure the underlying idea. For that reason, let's just start with some examples.   Matrices   Let's look at the set of all matrices, which include the matrices . As we saw in our earlier course, we can multiply a matrix by a scalar and we can add matrices: . Notice that both operations produce a new object that is also a matrix. We say that that the set is closed under these operations.  With these operations, the set of matrices becomes a vector space.    Notice that the entries in our matrices are real numbers . We could instead change the example so that we consider matrices whose entries are in the complex numbers .   Complex matrices   Consider now the set of matrices with complex entries. For example, . Scalar multiplication includes multiplication by complex numbers so we have .    These examples show that vector spaces have an underlying field , which is the set of scalars by which we can multiply. You may or may not know about fields depending on whether you have studied abstract algebra. In either case, the underlying field of our vector spaces will always be either the real numbers or the complex numbers, which we will write as or .  Having seen some examples, we offer a general definition of a vector space.   Vector space   A vector space over a field is a set with two operations, scalar multiplication by elements of and addition, under which is closed. Moreover, these operations satisfy the following natural properties:  Addition is commutative; that is for every pair of .  There is an additive identity; that is, there is an element such that for any element in .  Every element has an additive inverse such that . We will usually write the additive identity as .  Addition is associative, which means that we can regroup a sum in the following way: .  For every , we have .  Scalar multiplication is distributive in the sense that .      That is a long list of properties. Technically speaking, if we want to check that some set is a vector space, we need to check each one of those properties. In practice, however, we will know a vector space when we see one, and we will be fairly loose with these details.   Polynomials   If or , the set of polynomials whose coefficients are in form a vector space .     Polynomials of degree   Rather than the set of all polynomials, we define the set to be the set of all polynomials whose degree is or less. For example, contains all polynomials of degree two or less: where the coefficients are assumed to be either real or complex, as will be either specified or clear from the context.    Of course, the set of all polynomials is larger than the set of quadratic polynomials, and we have . We say that is a vector subspace of .   Vector subspace   A subset of a vector space is called a subspace of if is closed under the operations of scalar multiplication and addition that it inherits from .    Notice that a subspace is itself a vector space and that the underlying fields of and are the same.  Every vector space has two subspaces that we will frequently need to consider. Namely, the subspace consisting of only the zero vector and the entire vector space itself.   Function spaces   Let be the set of functions whose domain is and whose codomain is ; that is, functions of the form . It follows that is a complex vector space.    If we were to consider functions , we would obtain a real vector space. This is not a subspace of , however, since the underlying fields are different. Rather, here are some natural subspaces of .    The following are subspaces of :  The set of functions for which .  The set of periodic functions whose period is 7; that is functions that satisfy for all .  The set of continous functions.    The set of functions that satisfy is, however, not a subspace since it is not closed under scalar multiplication or vector addition.      If is a vector space and and are subspaces, then is also a subspace of as it can be seen that the interection is closed under scalar multiplication and addition.    When working with a vector space , we will frequently refer to the elements of as vectors even though they may be polynomials, matrices, functions, or even something entirely different.    Linear combinations  Our study of linear algebra really began once we introduced linear combinations. Of course, linear combinations are defined purely in terms of scalar multiplication and addition so we can form linear combinations of elements in a vector space.    Suppose that is a set of vectors in a vector space over a field . A linear combination of these vectors is a vector of the form where the scalars belong to the field .      Consider the vector space consisting of polynomials having degree two or less and the polynomials and . We can form the linear combination .    We can also think about concepts like span and linear independence.   Span   The span of a set of vectors in a vector space is the set of all linear combinations that can be formed from the set.    It's not hard to see that the span of a set of vectors in forms a subspace. We just have to check that the span is closed under scalar multiplication and addition. So we will consider vectors . If we multiply by the scalar , we have , which is in the span of the set of vectors. Similarly, , which is also in the span. This demonstrates the following proposition.    The span of a set of vectors in is a subspace of .    We can also define linear dependence as before.   Linear independence   A set of vectors in is linearly dependent if one of the vectors can be written as a linear combination of the others.      In , consider the polynomials . This set of polynomials is linear dependent because .  Notice that this also says that , which leads to the next proposition.      A set of vectors in a vector space is linearly dependent if and only if for some set of scalars with at least one being nonzero.  Equivalently, the set of vectors is linearly independent if and only if implies that all the scalars .        "
 },
 {
   "id": "example-vs-matrices",
@@ -53,6 +53,123 @@ var ptx_lunr_docs = [
   "number": "1.1.3",
   "title": "Vector space.",
   "body": " Vector space   A vector space over a field is a set with two operations, scalar multiplication by elements of and addition, under which is closed. Moreover, these operations satisfy the following natural properties:  Addition is commutative; that is for every pair of .  There is an additive identity; that is, there is an element such that for any element in .  Every element has an additive inverse such that . We will usually write the additive identity as .  Addition is associative, which means that we can regroup a sum in the following way: .  For every , we have .  Scalar multiplication is distributive in the sense that .     "
+},
+{
+  "id": "sec-vs-intro-3-10",
+  "level": "2",
+  "url": "sec-vs-intro.html#sec-vs-intro-3-10",
+  "type": "Example",
+  "number": "1.1.4",
+  "title": "Polynomials.",
+  "body": " Polynomials   If or , the set of polynomials whose coefficients are in form a vector space .   "
+},
+{
+  "id": "sec-vs-intro-3-11",
+  "level": "2",
+  "url": "sec-vs-intro.html#sec-vs-intro-3-11",
+  "type": "Example",
+  "number": "1.1.5",
+  "title": "Polynomials of degree <span class=\"process-math\">\\(n\\)<\/span>.",
+  "body": " Polynomials of degree   Rather than the set of all polynomials, we define the set to be the set of all polynomials whose degree is or less. For example, contains all polynomials of degree two or less: where the coefficients are assumed to be either real or complex, as will be either specified or clear from the context.   "
+},
+{
+  "id": "sec-vs-intro-3-13",
+  "level": "2",
+  "url": "sec-vs-intro.html#sec-vs-intro-3-13",
+  "type": "Definition",
+  "number": "1.1.6",
+  "title": "Vector subspace.",
+  "body": " Vector subspace   A subset of a vector space is called a subspace of if is closed under the operations of scalar multiplication and addition that it inherits from .   "
+},
+{
+  "id": "sec-vs-intro-3-16",
+  "level": "2",
+  "url": "sec-vs-intro.html#sec-vs-intro-3-16",
+  "type": "Example",
+  "number": "1.1.7",
+  "title": "Function spaces.",
+  "body": " Function spaces   Let be the set of functions whose domain is and whose codomain is ; that is, functions of the form . It follows that is a complex vector space.   "
+},
+{
+  "id": "sec-vs-intro-3-18",
+  "level": "2",
+  "url": "sec-vs-intro.html#sec-vs-intro-3-18",
+  "type": "Example",
+  "number": "1.1.8",
+  "title": "",
+  "body": "  The following are subspaces of :  The set of functions for which .  The set of periodic functions whose period is 7; that is functions that satisfy for all .  The set of continous functions.    The set of functions that satisfy is, however, not a subspace since it is not closed under scalar multiplication or vector addition.   "
+},
+{
+  "id": "sec-vs-intro-3-19",
+  "level": "2",
+  "url": "sec-vs-intro.html#sec-vs-intro-3-19",
+  "type": "Example",
+  "number": "1.1.9",
+  "title": "",
+  "body": "  If is a vector space and and are subspaces, then is also a subspace of as it can be seen that the interection is closed under scalar multiplication and addition.   "
+},
+{
+  "id": "sec-vs-intro-4-3",
+  "level": "2",
+  "url": "sec-vs-intro.html#sec-vs-intro-4-3",
+  "type": "Definition",
+  "number": "1.1.10",
+  "title": "",
+  "body": "  Suppose that is a set of vectors in a vector space over a field . A linear combination of these vectors is a vector of the form where the scalars belong to the field .   "
+},
+{
+  "id": "sec-vs-intro-4-4",
+  "level": "2",
+  "url": "sec-vs-intro.html#sec-vs-intro-4-4",
+  "type": "Example",
+  "number": "1.1.11",
+  "title": "",
+  "body": "  Consider the vector space consisting of polynomials having degree two or less and the polynomials and . We can form the linear combination .   "
+},
+{
+  "id": "sec-vs-intro-4-6",
+  "level": "2",
+  "url": "sec-vs-intro.html#sec-vs-intro-4-6",
+  "type": "Definition",
+  "number": "1.1.12",
+  "title": "Span.",
+  "body": " Span   The span of a set of vectors in a vector space is the set of all linear combinations that can be formed from the set.   "
+},
+{
+  "id": "sec-vs-intro-4-8",
+  "level": "2",
+  "url": "sec-vs-intro.html#sec-vs-intro-4-8",
+  "type": "Proposition",
+  "number": "1.1.13",
+  "title": "",
+  "body": "  The span of a set of vectors in is a subspace of .   "
+},
+{
+  "id": "sec-vs-intro-4-10",
+  "level": "2",
+  "url": "sec-vs-intro.html#sec-vs-intro-4-10",
+  "type": "Definition",
+  "number": "1.1.14",
+  "title": "Linear independence.",
+  "body": " Linear independence   A set of vectors in is linearly dependent if one of the vectors can be written as a linear combination of the others.   "
+},
+{
+  "id": "sec-vs-intro-4-11",
+  "level": "2",
+  "url": "sec-vs-intro.html#sec-vs-intro-4-11",
+  "type": "Example",
+  "number": "1.1.15",
+  "title": "",
+  "body": "  In , consider the polynomials . This set of polynomials is linear dependent because .  Notice that this also says that , which leads to the next proposition.   "
+},
+{
+  "id": "sec-vs-intro-4-12",
+  "level": "2",
+  "url": "sec-vs-intro.html#sec-vs-intro-4-12",
+  "type": "Proposition",
+  "number": "1.1.16",
+  "title": "",
+  "body": "  A set of vectors in a vector space is linearly dependent if and only if for some set of scalars with at least one being nonzero.  Equivalently, the set of vectors is linearly independent if and only if implies that all the scalars .    "
 },
 {
   "id": "backmatter-2",
