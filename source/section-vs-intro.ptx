@@ -411,7 +411,6 @@
         implies that all the scalars <m>a_j=0</m>.
         </p>
       </statement>
-      <!--
       <proof>
         <p>The second statement is logically equivalent to the first
         so our proof will focus on the first statement.  Suppose that
@@ -421,7 +420,7 @@
         This means that there are scalars <m>c_1,c_2,\ldots,c_{k-1}</m>
         such that
         <me>
-          \vvec_j = c_1\vvec_1+c_2\vvec_2+\ldots+c_{k-1}\vvec_{k-1}
+          \vvec_k = c_1\vvec_1+c_2\vvec_2+\ldots+c_{k-1}\vvec_{k-1}
         </me>.
         We can rewrite this expression as
         <me>
@@ -451,7 +450,6 @@
         </p>
         
       </proof>
-      -->
     </proposition>
 
     <!--
