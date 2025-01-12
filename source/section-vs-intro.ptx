@@ -392,7 +392,7 @@
       </statement>
     </example>
 
-    <proposition>
+    <proposition xml:id="prop-lin-indep-scalars">
       <statement>
         <p>A set of vectors <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> in a
         vector space <m>V</m> is linearly dependent if and only if
@@ -452,7 +452,6 @@
       </proof>
     </proposition>
 
-    <!--
     <proposition xml:id="prop-lin-dep-span">
       <statement>
         <p>Suppose that <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> is a
@@ -475,9 +474,7 @@
         </p>
       </proof>
     </proposition>
-    -->
   </subsection>
-  <!--
   <subsection>
     <title>Bases</title>
 
@@ -492,7 +489,7 @@
 
     <example xml:id="ex-poly-basis-1">
       <statement>
-        <p>The polynomials
+        <p>We can see that the polynomials
         <me>
           p_1(x)=1,\hspace{12pt}
           p_2(x)=x,\hspace{12pt}
@@ -501,18 +498,126 @@
         form a basis of <m>\pbb_2</m>.  Notice that this statement is
         true for both <m>\field=\real</m> and <m>\field=\complex</m>.
         </p>
+        <p>First, every polynomial <m>p</m> in <m>\pbb_2</m> can be
+        written as
+        <me>
+          p(x)=a_0 + a_1x + a_2x^2
+        </me>,
+        showing that <m>p_1</m>, <m>p_2</m>, and <m>p_3</m> span
+        <m>\pbb_2</m>.  To see that these polynomials are linearly
+        independent, suppose that
+        <me>
+          a_1 p_1(x) + a_2p_2(x) + a_3p_3(x) = 0
+        </me>,
+        the additivity identiy in <m>\pbb_2</m>.  We therefore have
+        <me>
+          a_1 + a_2x + a_3x^2 = 0 + 0x+0x^2
+        </me>
+        from which we conclude that <m>a_1=0</m>, <m>a_2=0</m>, and
+        <m>a_3=0</m>.  Therefore, <m>p_1</m>, <m>p_2</m>, and
+        <m>p_3</m> are linearly indepedent by <xref
+        ref="prop-lin-indep-scalars"/> and hence form a basis for
+        <m>\pbb_2</m>.
+        </p>
       </statement>
     </example>
-    
+
     <example xml:id="ex-poly-basis-2">
       <statement>
         <p>The polynomials
         <me>
           q_1(x)=x^2+3x,\hspace{24pt}
-          q_2(x)=-x+x,\hspace{24pt}
+          q_2(x)=-x^2+x,\hspace{24pt}
           q_3(x)=2x^2+4x+2
         </me>
         form a basis of <m>\pbb_2</m>.  
+        </p>
+        <p>To see this, suppose that <m>p(x)=a_0 + a_1x + a_2x^2</m> is a
+        polynomial in <m>\pbb_</m>.  We wish to see that <m>p</m> can
+        be written as a linear combination of <m>q_1</m>, <m>q_2</m>,
+        and <m>q_3</m>.  This means that there are scalars <m>c_1</m>,
+        <m>c_2</m>, and <m>c_3</m> such that
+        <md>
+          <mrow>c_1q_1 + c_2q_2 +c_3q_3 \amp = p </mrow>
+          <mrow>c_1(x^2+3x) + c_2(-x^2+x) + c_3(2x^2 + 4x + 2) \amp
+          = a_0 + a_1x + a_2x^2</mrow>
+          <mrow>(c_1-c_2+2c_2)x^2 + (3c_1+c_2+4c_3) + 2c_3 \amp
+          = a_0 + a_1x + a_2x^2</mrow>
+        </md>
+        This is a linear system of three equations in the three
+        variables <m>c_1</m>, <m>c_2</m>, and <m>c_3</m>, which may be
+        written as
+        <me>
+          \begin{bmatrix}
+          1 \amp -1 \amp 2 \\
+          3 \amp 1 \amp 4 \\
+          0 \amp 0 \amp 2 \\
+          \end{bmatrix}
+          \threevec{c_1}{c_2}{c_3}
+          =
+          \threevec{a_0}{a_1}{a_2}
+        </me>,
+        which has a unique solution for every vector
+        <m>\threevec{a_0}{a_1}{a_2}</m>.  This says that
+        <m>\laspan{q_1,q_2,q_3} = \pbb_2</m> and that these
+        polynomials are linearly independent.
+        </p>
+      </statement>
+    </example>
+    
+    <example>
+      <statement>
+        <p>Consider the set of polynomials
+        <md>
+          <mrow> p_0 \amp = 1 </mrow>
+          <mrow> p_1 \amp = 1 +x </mrow>
+          <mrow> p_2 \amp = 1 +x + x^2</mrow>
+          <mrow> \amp \vdots </mrow>
+          <mrow> p_n \amp = 1 +x+x^2+\ldots+x^n</mrow>
+        </md>
+        in <m>\pbb_n</m>.  We claim that these polynomials form a
+        basis for <m>\pbb_n</m>.
+        </p>
+
+        <p>To see that they are linearly independent, we will suppose
+        that they are linearly dependent and derive a contradiction.
+        Suppose that
+        <me>
+          c_0p_0 + c_1p_1 + \ldots c_np_n = 0
+        </me>
+        and that some of the scalars are nonzero.
+        Let <m>c_k</m> be the last nonzero scalar so that
+        <me>
+          c_0p_0 + c_1p_1 + \ldots + c_kp_k =
+          c_kx^k + \text{ lower order terms}
+        </me>.
+        That is, <m>c_kx^k</m> is the only term involving <m>x^k</m>.
+        Therefore, <m>c_k=0</m>, which contradicts our assumption that
+        <m>c_k\neq 0</m>.
+        </p>
+
+        <p>To see that these polynomials span <m>\pbb_n</m>, we 
+        offer a proof by induction.  When <m>n=0</m>, we see that
+        <m>p_0 = 1</m> spans <m>\pbb_0</m>.  Now suppose that
+        <m>p_0,p_1,\ldots,p_{n-1}</m> span <m>\pbb_{n-1}</m> and that
+        <m>p(x)=a_0+a_1x+a_2x^2 + \ldots + a_nx^n</m> is a polynomial
+        in <m>\pbb_n</m>.  Notice that the polynomials <m>p(x)</m> and
+        <m>a_np_n(x)</m> have the same coefficient of <m>x^n</m>.
+        Therefore, 
+        <me>
+          p(x) - a_np_n(x)
+        </me>
+        is a polynomial in <m>\pbb_{n-1}</m> and can be written as a
+        linear combination of <m>p_0,p_1,\ldots,p_{n-1}</m>.  This
+        means that
+        <md>
+          <mrow>
+            p - a_np_n \amp = c_0p_0+c_1p_1+\ldots+c_{n-1}p_{n-1}
+          </mrow>
+          <mrow>
+            p \amp = c_0p_0+c_1p_1+\ldots+c_{n-1}p_{n-1} + a_np_n
+          </mrow>
+        </md>
         </p>
       </statement>
     </example>
@@ -527,6 +632,8 @@
         </p>
       </statement>
     </example>
+
+    <!--
 
     <definition>
       <statement>
@@ -815,8 +922,9 @@
         </p>
       </statement>
     </proposition>
+    -->
   </subsection>
-
+  <!--
   <subsection>
     <title>Sums of subspaces</title>
 
