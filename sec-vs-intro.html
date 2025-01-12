@@ -228,6 +228,7 @@ eBookConfig.enable_chatcodes =  false;
 <ul class="structural toc-item-list active">
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Vector spaces</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-4" class="internal"><span class="codenumber">1.1.2</span> <span class="title">Linear combinations</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-5" class="internal"><span class="codenumber">1.1.3</span> <span class="title">Bases</span></a></div></li>
 </ul>
 </li></ul>
 </li>
@@ -469,10 +470,10 @@ p_3(x)=-7x+7\text{.}
 \end{equation*}
 </div>
 <div class="para">which leads to the next proposition.</div>
-</div></article><article class="proposition theorem-like" id="sec-vs-intro-4-12"><h4 class="heading">
+</div></article><article class="proposition theorem-like" id="prop-lin-indep-scalars"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.16</span><span class="period">.</span>
 </h4>
-<div class="para logical" id="sec-vs-intro-4-12-1-1">
+<div class="para logical" id="prop-lin-indep-scalars-1-1">
 <div class="para">A set of vectors <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\)</span> in a vector space <span class="process-math">\(V\)</span> is linearly dependent if and only if</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -480,7 +481,7 @@ a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0
 \end{equation*}
 </div>
 <div class="para">for some set of scalars <span class="process-math">\(a_1,a_2,\ldots,a_m\)</span> with at least one being nonzero.</div>
-</div> <div class="para logical" id="sec-vs-intro-4-12-1-2">
+</div> <div class="para logical" id="prop-lin-indep-scalars-1-2">
 <div class="para">Equivalently, the set of vectors is linearly independent if and only if</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -489,8 +490,8 @@ a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0
 </div>
 <div class="para">implies that all the scalars <span class="process-math">\(a_j=0\text{.}\)</span>
 </div>
-</div></article><article class="proof" id="sec-vs-intro-4-12-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para logical" id="sec-vs-intro-4-12-2-1">
+</div></article><article class="proof" id="prop-lin-indep-scalars-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para logical" id="prop-lin-indep-scalars-2-1">
 <div class="para">The second statement is logically equivalent to the first so our proof will focus on the first statement.  Suppose that the set <span class="process-math">\(\vvec_1,\ldots,\vvec_m\)</span> is linearly dependent and that <span class="process-math">\(\vvec_k\)</span> is the first vector that is a linear combination of vectors that occur previously in the list. This means that there are scalars <span class="process-math">\(c_1,c_2,\ldots,c_{k-1}\)</span> such that</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -510,7 +511,7 @@ a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0\text{.}
 \end{equation*}
 </div>
 </div>
-<div class="para logical" id="sec-vs-intro-4-12-2-2">
+<div class="para logical" id="prop-lin-indep-scalars-2-2">
 <div class="para">Conversely, suppose that</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -526,7 +527,149 @@ a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0
 \end{equation*}
 </div>
 <div class="para">This shows that <span class="process-math">\(\vvec_k\)</span> is a linear combination of the other vectors and that the set of vectors is therefore linearly dependent.</div>
-</div></article></section></section></div>
+</div></article><article class="proposition theorem-like" id="prop-lin-dep-span"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.17</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="prop-lin-dep-span-1-1">
+<div class="para">Suppose that <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\)</span> is a linear dependent set of vectors and that <span class="process-math">\(\vvec_k\)</span> can be written as a linear combination of the other vectors. Removing <span class="process-math">\(\vvec_k\)</span> from the set does not change the span; that is,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\laspan{\vvec_1,\vvec_2,\ldots,\vvec_m}=
+\laspan{\vvec_1,\vvec_2,\ldots,\widehat{\vvec_k},\ldots,\vvec_m}\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proof" id="prop-lin-dep-span-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="prop-lin-dep-span-2-1">If <span class="process-math">\(\wvec = a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m\text{,}\)</span> then we can replace <span class="process-math">\(\vvec_j\)</span> in this expression with a linear combination of the other vectors.  This shows that <span class="process-math">\(\wvec\)</span> can be written as a linear combination of the set of vectors with <span class="process-math">\(\vvec_j\)</span> removed.</div></article></section><section class="subsection" id="sec-vs-intro-5"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.1.3</span><span class="space"> </span><span class="title">Bases</span>
+</h3>
+<article class="definition definition-like" id="sec-vs-intro-5-2"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.1.18</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-vs-intro-5-2-1-1">A set of vectors in a vector space <span class="process-math">\(V\)</span> forms a basis for <span class="process-math">\(V\)</span> is the set is linearly independent and its span is <span class="process-math">\(V\text{.}\)</span>
+</div></article><article class="example example-like" id="ex-poly-basis-1"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.19</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="ex-poly-basis-1-1-1">
+<div class="para">We can see that the polynomials</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p_1(x)=1,\hspace{12pt}
+p_2(x)=x,\hspace{12pt}
+p_3(x)=x^2
+\end{equation*}
+</div>
+<div class="para">form a basis of <span class="process-math">\(\pbb_2\text{.}\)</span>  Notice that this statement is true for both <span class="process-math">\(\field=\real\)</span> and <span class="process-math">\(\field=\complex\text{.}\)</span>
+</div>
+</div> <div class="para logical" id="ex-poly-basis-1-1-2">
+<div class="para">First, every polynomial <span class="process-math">\(p\)</span> in <span class="process-math">\(\pbb_2\)</span> can be written as</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-lin-indep-scalars.html">
+\begin{equation*}
+p(x)=a_0 + a_1x + a_2x^2\text{,}
+\end{equation*}
+</div>
+<div class="para">showing that <span class="process-math">\(p_1\text{,}\)</span> <span class="process-math">\(p_2\text{,}\)</span> and <span class="process-math">\(p_3\)</span> span <span class="process-math">\(\pbb_2\text{.}\)</span>  To see that these polynomials are linearly independent, suppose that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-lin-indep-scalars.html">
+\begin{equation*}
+a_1 p_1(x) + a_2p_2(x) + a_3p_3(x) = 0\text{,}
+\end{equation*}
+</div>
+<div class="para">the additivity identiy in <span class="process-math">\(\pbb_2\text{.}\)</span>  We therefore have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-lin-indep-scalars.html">
+\begin{equation*}
+a_1 + a_2x + a_3x^2 = 0 + 0x+0x^2
+\end{equation*}
+</div>
+<div class="para">from which we conclude that <span class="process-math">\(a_1=0\text{,}\)</span> <span class="process-math">\(a_2=0\text{,}\)</span> and <span class="process-math">\(a_3=0\text{.}\)</span>  Therefore, <span class="process-math">\(p_1\text{,}\)</span> <span class="process-math">\(p_2\text{,}\)</span> and <span class="process-math">\(p_3\)</span> are linearly indepedent by <a href="sec-vs-intro.html#prop-lin-indep-scalars" class="xref" data-knowl="./knowl/xref/prop-lin-indep-scalars.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.16">Proposition 1.1.16</a> and hence form a basis for <span class="process-math">\(\pbb_2\text{.}\)</span>
+</div>
+</div></article><article class="example example-like" id="ex-poly-basis-2"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.20</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="ex-poly-basis-2-1-1">
+<div class="para">The polynomials</div>
+<div class="displaymath process-math">
+\begin{equation*}
+q_1(x)=x^2+3x,\hspace{24pt}
+q_2(x)=-x^2+x,\hspace{24pt}
+q_3(x)=2x^2+4x+2
+\end{equation*}
+</div>
+<div class="para">form a basis of <span class="process-math">\(\pbb_2\text{.}\)</span>
+</div>
+</div> <div class="para logical" id="ex-poly-basis-2-1-2">
+<div class="para">To see this, suppose that <span class="process-math">\(p(x)=a_0 + a_1x + a_2x^2\)</span> is a polynomial in <span class="process-math">\(\pbb_\text{.}\)</span>  We wish to see that <span class="process-math">\(p\)</span> can be written as a linear combination of <span class="process-math">\(q_1\text{,}\)</span> <span class="process-math">\(q_2\text{,}\)</span> and <span class="process-math">\(q_3\text{.}\)</span>  This means that there are scalars <span class="process-math">\(c_1\text{,}\)</span> <span class="process-math">\(c_2\text{,}\)</span> and <span class="process-math">\(c_3\)</span> such that</div>
+<div class="displaymath process-math" id="ex-poly-basis-2-1-2-10">
+\begin{align*}
+c_1q_1 + c_2q_2 +c_3q_3 \amp = p \\
+c_1(x^2+3x) + c_2(-x^2+x) + c_3(2x^2 + 4x + 2) \amp
+= a_0 + a_1x + a_2x^2\\
+(c_1-c_2+2c_2)x^2 + (3c_1+c_2+4c_3) + 2c_3 \amp
+= a_0 + a_1x + a_2x^2
+\end{align*}
+</div>
+<div class="para">This is a linear system of three equations in the three variables <span class="process-math">\(c_1\text{,}\)</span> <span class="process-math">\(c_2\text{,}\)</span> and <span class="process-math">\(c_3\text{,}\)</span> which may be written as</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{bmatrix}
+1 \amp -1 \amp 2 \\
+3 \amp 1 \amp 4 \\
+0 \amp 0 \amp 2 \\
+\end{bmatrix}
+\threevec{c_1}{c_2}{c_3}
+=
+\threevec{a_0}{a_1}{a_2}\text{,}
+\end{equation*}
+</div>
+<div class="para">which has a unique solution for every vector <span class="process-math">\(\threevec{a_0}{a_1}{a_2}\text{.}\)</span>  This says that <span class="process-math">\(\laspan{q_1,q_2,q_3} = \pbb_2\)</span> and that these polynomials are linearly independent.</div>
+</div></article><article class="example example-like" id="sec-vs-intro-5-5"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.21</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="sec-vs-intro-5-5-1-1">
+<div class="para">Consider the set of polynomials</div>
+<div class="displaymath process-math" id="sec-vs-intro-5-5-1-1-1">
+\begin{align*}
+p_0 \amp = 1 \\
+p_1 \amp = 1 +x \\
+p_2 \amp = 1 +x + x^2\\
+\amp \vdots \\
+p_n \amp = 1 +x+x^2+\ldots+x^n
+\end{align*}
+</div>
+<div class="para">in <span class="process-math">\(\pbb_n\text{.}\)</span>  We claim that these polynomials form a basis for <span class="process-math">\(\pbb_n\text{.}\)</span>
+</div>
+</div> <div class="para logical" id="sec-vs-intro-5-5-1-2">
+<div class="para">To see that they are linearly independent, we will suppose that they are linearly dependent and derive a contradiction. Suppose that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+c_0p_0 + c_1p_1 + \ldots c_np_n = 0
+\end{equation*}
+</div>
+<div class="para">and that some of the scalars are nonzero. Let <span class="process-math">\(c_k\)</span> be the last nonzero scalar so that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+c_0p_0 + c_1p_1 + \ldots + c_kp_k =
+c_kx^k + \text{ lower order terms}\text{.}
+\end{equation*}
+</div>
+<div class="para">That is, <span class="process-math">\(c_kx^k\)</span> is the only term involving <span class="process-math">\(x^k\text{.}\)</span> Therefore, <span class="process-math">\(c_k=0\text{,}\)</span> which contradicts our assumption that <span class="process-math">\(c_k\neq 0\text{.}\)</span>
+</div>
+</div> <div class="para logical" id="sec-vs-intro-5-5-1-3">
+<div class="para">To see that these polynomials span <span class="process-math">\(\pbb_n\text{,}\)</span> we offer a proof by induction.  When <span class="process-math">\(n=0\text{,}\)</span> we see that <span class="process-math">\(p_0 = 1\)</span> spans <span class="process-math">\(\pbb_0\text{.}\)</span>  Now suppose that <span class="process-math">\(p_0,p_1,\ldots,p_{n-1}\)</span> span <span class="process-math">\(\pbb_{n-1}\)</span> and that <span class="process-math">\(p(x)=a_0+a_1x+a_2x^2 + \ldots + a_nx^n\)</span> is a polynomial in <span class="process-math">\(\pbb_n\text{.}\)</span>  Notice that the polynomials <span class="process-math">\(p(x)\)</span> and <span class="process-math">\(a_np_n(x)\)</span> have the same coefficient of <span class="process-math">\(x^n\text{.}\)</span> Therefore,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x) - a_np_n(x)
+\end{equation*}
+</div>
+<div class="para">is a polynomial in <span class="process-math">\(\pbb_{n-1}\)</span> and can be written as a linear combination of <span class="process-math">\(p_0,p_1,\ldots,p_{n-1}\text{.}\)</span>  This means that</div>
+<div class="displaymath process-math" id="sec-vs-intro-5-5-1-3-15">
+\begin{align*}
+p - a_np_n \amp = c_0p_0+c_1p_1+\ldots+c_{n-1}p_{n-1}\\
+p \amp = c_0p_0+c_1p_1+\ldots+c_{n-1}p_{n-1} + a_np_n
+\end{align*}
+</div>
+</div></article><article class="example example-like" id="sec-vs-intro-5-6"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.22</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-vs-intro-5-6-1-1">There is no finite set that forms a basis for <span class="process-math">\(\pbb\text{,}\)</span> the set of all polynomials.  Given any finite set, there is a polynomial having a highest degree <span class="process-math">\(m\text{.}\)</span>  Therefore, the polynomial <span class="process-math">\(x^{m+1}\)</span> is not in the span of the set so it cannot be a basis.</div></article></section></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="chap-vs.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>

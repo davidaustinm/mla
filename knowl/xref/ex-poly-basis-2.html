@@ -19,12 +19,37 @@
 <div class="displaymath process-math">
 \begin{equation*}
 q_1(x)=x^2+3x,\hspace{24pt}
-q_2(x)=-x+x,\hspace{24pt}
+q_2(x)=-x^2+x,\hspace{24pt}
 q_3(x)=2x^2+4x+2
 \end{equation*}
 </div>
 <div class="para">form a basis of <span class="process-math">\(\pbb_2\text{.}\)</span>
 </div>
+</div> <div class="para logical">
+<div class="para">To see this, suppose that <span class="process-math">\(p(x)=a_0 + a_1x + a_2x^2\)</span> is a polynomial in <span class="process-math">\(\pbb_\text{.}\)</span>  We wish to see that <span class="process-math">\(p\)</span> can be written as a linear combination of <span class="process-math">\(q_1\text{,}\)</span> <span class="process-math">\(q_2\text{,}\)</span> and <span class="process-math">\(q_3\text{.}\)</span>  This means that there are scalars <span class="process-math">\(c_1\text{,}\)</span> <span class="process-math">\(c_2\text{,}\)</span> and <span class="process-math">\(c_3\)</span> such that</div>
+<div class="displaymath process-math">
+\begin{align*}
+c_1q_1 + c_2q_2 +c_3q_3 \amp = p \\
+c_1(x^2+3x) + c_2(-x^2+x) + c_3(2x^2 + 4x + 2) \amp
+= a_0 + a_1x + a_2x^2\\
+(c_1-c_2+2c_2)x^2 + (3c_1+c_2+4c_3) + 2c_3 \amp
+= a_0 + a_1x + a_2x^2
+\end{align*}
+</div>
+<div class="para">This is a linear system of three equations in the three variables <span class="process-math">\(c_1\text{,}\)</span> <span class="process-math">\(c_2\text{,}\)</span> and <span class="process-math">\(c_3\text{,}\)</span> which may be written as</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{bmatrix}
+1 \amp -1 \amp 2 \\
+3 \amp 1 \amp 4 \\
+0 \amp 0 \amp 2 \\
+\end{bmatrix}
+\threevec{c_1}{c_2}{c_3}
+=
+\threevec{a_0}{a_1}{a_2}\text{,}
+\end{equation*}
+</div>
+<div class="para">which has a unique solution for every vector <span class="process-math">\(\threevec{a_0}{a_1}{a_2}\text{.}\)</span>  This says that <span class="process-math">\(\laspan{q_1,q_2,q_3} = \pbb_2\)</span> and that these polynomials are linearly independent.</div>
 </div></article><span class="incontext"><a class="internal" href="sec-vs-intro.html#ex-poly-basis-2">in-context</a></span>
 </body>
 </html>
