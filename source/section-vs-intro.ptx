@@ -633,8 +633,6 @@
       </statement>
     </example>
 
-    <!--
-
     <definition>
       <statement>
         <p>We say that a vector space <m>V</m> is finite dimensional
@@ -675,8 +673,8 @@
     <proposition xml:id="prop-lin-indep-num">
       <statement>
         <p>The number of vectors in a linearly independent set in the
-        vector space <m>V</m> is less
-        than or equal to the number of vectors in any set whose span
+        vector space <m>V</m> is no more
+        than the number of vectors in any set whose span
         is <m>V</m>.
         </p>
       </statement>
@@ -691,9 +689,11 @@
         <me>
           \vvec_m,\wvec_1,\wvec_2,\ldots,\wvec_n
         </me>
-        whose span is <m>V</m>.  Notice that this set is linearly
-        dependent since <m>\vvec_m</m> is a linear combination of the
-        <m>\wvec</m> vectors, whose span is <m>V</m>.  We let
+        whose span is <m>V</m>.  Because the span of the <m>\wvec</m>
+        vectors is <m>V</m>, <m>\vvec_m</m> is a linear combination of
+        the <m>\wvec</m> vectors, which means that this set of vectors
+        is linearly
+        dependent.  We let
         <m>\uvec</m> be the first vector in the list that is a linear
         combination of vectors that occur previously in the list.
         Since the set of <m>\vvec</m> vectors is linearly independent,
@@ -818,8 +818,8 @@
         <me>
           \vvec_1,\vvec_2,\ldots,\vvec_n,\uvec
         </me>
-        is a linearly independent subset of <m>V</m>.  This is
-        impossible, however, since this set has <m>n+1</m> vectors.
+        is a linearly independent subset of <m>V</m>.  This cannot
+        happen, however, since this set would have <m>n+1</m> vectors.
         Therefore, <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> must span
         <m>V</m>. 
         </p>
@@ -922,7 +922,6 @@
         </p>
       </statement>
     </proposition>
-    -->
   </subsection>
   <!--
   <subsection>
