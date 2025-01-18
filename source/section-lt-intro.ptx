@@ -220,14 +220,39 @@
         <p>If <m>T:V\to W</m> is a linear transformation, we define
         the <em>null space</em> and <em>range</em> of <m>T</m> to be
         <md>
-          <mrow>\nul(T)\amp = \{\vvec|T\vvec=0\}\subset V</mrow>
-          <mrow>\range(T)\amp = \{\wvec|\wvec=T\vvec \text{ for some
+          <mrow>\nul(T)\amp = \{\vvec~|~T\vvec=0\}\subset V</mrow>
+          <mrow>\range(T)\amp = \{\wvec~|~\wvec=T\vvec \text{ for some
           }\vvec\}\subset W</mrow>
         </md>.
         </p>
       </statement>
     </definition>
 
+    <p>In our earlier linear algebra courses, we considered the null
+    space and column space of a matrix.  The null space and range of a
+    linear transformation is the same concept generalized to vector
+    spaces.
+    </p>
+
+    <example>
+      <statement>
+        <p>Suppose that <m>A</m> is a <m>10\times 17</m> matrix and
+        consider the 
+        linear transformation <m>T:\real^{17}\to\real^{10}</m>.  Then
+        <m>\nul(A)</m> is the set of solutions to the equation
+        <m>A\xvec=T(\xvec)=\zerovec</m>, which is the same as the null
+        space <m>\nul(T)</m>.
+        </p>
+        <p>Similarly, the column space is the set of vectors
+        <m>\bvec</m> for which <m>A\xvec = \bvec</m> is consistent.
+        In other words, <m>\bvec</m> is in <m>\col(A)</m> if and only
+        if there is a vector <m>\xvec</m> such that <m>T(\xvec)=A\xvec
+        = \bvec</m>.  This is precisely the definition of
+        <m>\range(T)</m>.
+        </p>
+      </statement>
+    </example>
+    
     <example>
       <statement>
         <p>Consider the linear transformation
@@ -246,16 +271,14 @@
           \end{bmatrix}
         </me>.
         The null space is the set of vectors for which
-        <m>T\vvec=A\vvec=\zerovec</m>. We earlier called this
-        <m>\nul(A)</m>, the mull space of <m>A</m>, and here we see that
-        it is the subspace of <m>\real^4</m> spanned by
+        <m>T\vvec=A\vvec=\zerovec</m>, which we see
+        is the subspace of <m>\real^4</m> spanned by
         <m>\fourvec0210</m> and <m>\fourvec{-2}{-1}01</m>.
         </p>
 
-        <p>Similarly, the range, <m>\range(T)</m>, is the subspace of
-        <m>\real^3</m> that we formerly called <m>\col(A)</m>, the
-        column space of <m>A</m>.  As such, a basis for
-        <m>\range(T)</m> is given by <m>\threevec21{-2}</m> and
+        <p>Similarly, <m>\range(T)</m> is the subspace of
+        <m>\real^3</m> having a basis 
+        given by <m>\threevec21{-2}</m> and
         <m>\threevec{-1}02</m>. 
         </p>
       </statement>
@@ -278,7 +301,102 @@
       </statement>
     </example>
 
+    <proposition>
+      <statement>
+        <p>If <m>T:V\to W</m>, then <m>\nul(T)</m> is a subspace of
+        <m>V</m> and <m>\range(T)</m> is a subspace of <m>W</m>.
+        </p>
+      </statement>
+
+      <proof>
+        <p>Suppose that <m>\vvec_1</m> and <m>\vvec_2</m> are in
+        <m>\nul(T)</m>.  Then we have
+        <md>
+          <mrow>
+            T(s\vvec_1) = \amp s(T\vvec_1) = s0 = 0
+          </mrow>
+          <mrow>
+            T(\vvec_1+\vvec_2) = \amp T(\vvec_1) + T(\vvec_2) = 0 + 0
+            = 0.
+          </mrow>
+        </md>
+        This shows that <m>\nul(T)</m> is closed under scalar
+        multiplication and vector addition and is therefore a subspace
+        of <m>V</m>.
+        </p>
+        <p>Now suppose the <m>\wvec_1</m> and <m>\wvec_2</m> are in
+        <m>\range(T)</m>.  We know that there are vectors
+        <m>\vvec_1</m> and <m>\vvec_2</m> in <m>V</m> such that
+        <m>T(\vvec_1) = \wvec_1</m> and <m>T(\vvec_2)=\wvec_2</m>.
+        Therefore,
+        <md>
+          <mrow>
+            s\wvec_1\amp = sT(\vvec_1) = T(s\vvec_1)
+          </mrow>
+          <mrow>
+            \wvec_1+\wvec_2 \amp = T(\vvec_1)+T(\vvec_2) =
+            T(\vvec_1+\vvec_2).
+          </mrow>
+        </md>
+        This shows that <m>\range(T)</m> is closed under scalar
+        multiplication and vector addition so <m>\range(T)</m> is a
+        subspace of <m>W</m>.
+        </p>
+      </proof>
+    </proposition>
+    
+  </subsection>
+
+  <subsection>
+    <title>Vector space isomorphisms</title>
+
+    <definition>
+      <statement>
+        <p>Suppose <m>T:V\to W</m>. If <m>\range(T)=W</m>, we say that
+        <m>T</m> is <em>surjective</em>.  If <m>\nul(T)=\{0\}</m>, we
+        say that 
+        <m>T</m> is <em>injective</em>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>If <m>T</m> is surjective, notice that every vector <m>\wvec\in
+    W</m> has a vector <m>\vvec</m> for which <m>T\vvec=\wvec</m>.
+    </p>
+
+    <p>If <m>T</m> is injective and <m>T\vvec_1=T\vvec_2</m>, then
+    <m>\vvec_1=\vvec_2</m> since <m>T(\vvec_1-\vvec_2)=0</m> meaning
+    <m>\vvec_1-\vvec_2\in \nul(T)</m>.
+    </p>
+
+    <example>
+      <statement>
+        <p>Once again, these are familiar notions.  Suppose that
+        <m>A</m> is an <m>m\times n</m> matrix that defines a 
+        linear transformation <m>T:\real^n\to\real^m</m>.  Then
+        <m>T</m> is injective if <m>\nul(A) = \{\zerovec\}</m>.  This
+        happens when the columns of <m>A</m> are linearly independent.
+        </p>
+        <p> The transformation
+        <m>T</m> is surjective if <m>\col(A) = \real^m</m>, which
+        happens when the columns of <m>A</m> span <m>\real^m</m>.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>The linear transformation <m>T:\pbb\to\pbb</m> defined by
+        <m>T(p)(x)=xp(x)</m> is injective but not surjective because
+        the constant polynomials are not in <m>\range(T)</m>.
+        </p>
+      </statement>
+    </example>
+  
+    
+
     <!--
+
     <p>We will frequently make use of the next proposition.</p>
     <proposition xml:id="prop-nul-range-dims">
       <statement>
@@ -364,27 +482,6 @@
         </p>
       </proof>
     </proposition>
-    -->
-    <definition>
-      <statement>
-        <p>Suppose <m>T:V\to W</m>. If <m>\range(T)=W</m>, we say that
-        <m>T</m> is <em>surjective</em>.  If <m>\nul(T)=\{0\}</m>, we
-        say that 
-        <m>T</m> is <em>injective</em>.
-        </p>
-      </statement>
-    </definition>
-
-    <p>If <m>T</m> is surjective, notice that every vector <m>\wvec\in
-    W</m> has a vector <m>\vvec</m> for which <m>T\vvec=\wvec</m>.
-    </p>
-
-    <p>If <m>T</m> is injective and <m>T\vvec_1=T\vvec_2</m>, then
-    <m>\vvec_1=\vvec_2</m> since <m>T(\vvec_1-\vvec_2)=0</m> meaning
-    <m>\vvec_1-\vvec_2\in \nul(T)</m>.
-    </p>
-
-    <!--
 
     <p>The following proposition follows immediately from <xref
     ref="prop-nul-range-dims"/>. 
@@ -401,6 +498,7 @@
         </p>
       </statement>
     </proposition>
+    -->
 
     <definition>
       <statement>
@@ -411,6 +509,8 @@
       </statement>
     </definition>
 
+    <!--
+
     <proposition>
       <statement>
         <p>If <m>T:V\to W</m> is an isomorphism, then <m>\dim V = \dim
@@ -420,32 +520,98 @@
       </statement>
     </proposition>
 
-    <example>
-      <statement>
-        <p>The linear transformation <m>T:\pbb_2\to\real^3</m> defined
-        by <m>T(p)=\threevec{p(0)}{p'(0)}{p''(0)}</m> is an
-        isomorphism, which shows that <m>\dim \pbb_2=3</m>.  In
-        general, <m>\dim \pbb_n=n+1</m>.
-        </p>
-      </statement>
-    </example>
-
-    <example>
-      <statement>
-        <p>The linear transformation <m>T:\pbb\to\pbb</m> defined by
-        <m>T(p)(x)=xp(x)</m> is injective but not surjective.
-        </p>
-
-        <p>However, if <m>V</m> is a finite dimensional vector space
-        and <m>T:V\to V</m> is injective, it is also an isomorphism by
-        <xref ref="prop-nul-range-dims"/>
-        Similarly, if <m>T</m> is surjective, it is also an
-        isomorphism.
-        </p>
-      </statement>
-    </example>
     -->
-  
+
+    <example>
+      <statement>
+        <p>Consider the linear transformation <m>T:\pbb_2\to\real^3</m>
+        defined by <m>T(p)=\threevec{p(0)}{p'(0)}{p''(0)}</m>.
+        If <m>p(x)=a_0+a_1x+a_2x^2</m>, then
+        <m>T(p) = \threevec{a_0}{a_1}{2a_2}</m>.  This shows that
+        <m>\nul(T) = \{0\}</m> and <m>\range(T)=\real^3</m>.
+        Therefore, <m>T</m> is a vector space isomorphism.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>If <m>V</m> is a vector space, then <m>I:V\to V</m> defined
+        by <m>I(\vvec) = \vvec</m> is a
+        linear transformation called the <em>identity</em>
+        transformation.
+        </p>
+      </statement>
+    </example>
+
+    <p>Suppose that <m>T:V\to W</m> is an isomorphism, then every
+    vector <m>\wvec</m> in <m>W</m> has a vector <m>\vvec</m> in
+    <m>V</m> such that <m>T(\vvec) = \wvec</m>.  In fact, there is
+    exactly once such vector since if <m>T(\vvec_1)=T(\vvec_2) =
+    \wvec</m>, we know that <m>\vvec_1=\vvec_2</m> because <m>T</m> is
+    injective.  In this case, we can define a function <m>S:W\to V</m>
+    where <m>S(\wvec)</m> is the vector <m>\vvec</m> for which
+    <m>T(\vvec) = \wvec</m>.
+    </p>
+
+    <p>Notice that <m>S:W\to V</m> is a linear transformation.  For
+    instance, if <m>T(\vvec) = \wvec</m>, then <m>T(s\vvec) =
+    s\wvec</m>, which says that
+    <me>
+      S(s\wvec) = s\vvec = sS(\wvec)
+    </me>.
+    In the same way, we have
+    <me>
+      S(\wvec_1+\wvec_2) = \vvec_1+\vvec_2 = S(\wvec_1)+S(\wvec_2)
+    </me>.
+    </p>
+
+    <p>Therefore, we have the following proposition.
+    </p>
+
+    <proposition>
+      <statement>
+        <p>If <m>T:V\to W</m> is an ismorphism, there is a linear
+        transformation <m>S:W\to V</m> such that <m>ST=I_V</m>, the
+        identity transformation on <m>V</m>, and <m>TS=I_W</m>, the
+        identity transformation on <m>W</m>.  We will typically denote
+        <m>S</m> as <m>T^{-1}</m>.
+        </p>
+      </statement>
+    </proposition>
+
+    <proposition xml:id="prop-fin-dim-isom">
+      <statement>
+        <p>If <m>V</m> is a finite dimensional vector space of
+        dimension <m>n</m> over the
+        field <m>\field</m>, then there is an isomorphism
+        <m>T:\field^n\to V</m>.
+        </p>
+      </statement>
+
+      <proof>
+        <p>We choose a basis <m>\basis{\vvec}{n}</m> and define
+        <me>
+          T\left(\threevec{c_1}{\vdots}{c_n}\right) = c_1\vvec_1 +
+          c_2\vvec_2 + \ldots + c_n\vvec_n
+        </me>.
+        By the linear independence of the basis, we see that <m>T</m>
+        is injective.  Since the span of the basis vectors is
+        <m>V</m>, we see that <m>T</m> is surjective.
+        </p>
+      </proof>
+    </proposition>
+
+    <p>The term <em>isomorphism</em> means <q>having the same shape or
+    structure.</q>  In other words, isomorphic vector spaces have the
+    same structure.  In our earlier courses, we considered only the
+    vector spaces <m>\real^n</m>.  The previous proposition, <xref
+    ref="prop-fin-dim-isom"/>, shows us that every finite dimensional
+    real vector space has the same structure as <m>\real^n</m>.
+    This means that, technically speaking, we were also studying
+    finite dimensional real vector spaces at the same time.
+    </p>
+
   </subsection>
   <!--
   <subsection>
