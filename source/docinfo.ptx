@@ -74,6 +74,7 @@
     \newcommand{\laspan}[1]{\text{Span}\{#1\}}
     \newcommand{\bcal}{{\cal B}}
     \newcommand{\ccal}{{\cal C}}
+    \newcommand{\dcal}{{\cal D}}
     \newcommand{\scal}{{\cal S}}
     \newcommand{\wcal}{{\cal W}}
     \newcommand{\ecal}{{\cal E}}

@@ -50,6 +50,18 @@
         </m>.  Then <m>T:\real^2\to\real^3</m> defined by
         <m>T(\vvec)=A\vvec</m> is a linear transformation.
         </p>
+        <p>This follows because matrix multiplication is a linear
+        operation:
+        <md>
+          <mrow>
+            T(s\vvec) \amp = A(s\vvec) = sA\vvec = sT(\vvec)
+          </mrow>
+          <mrow>
+            T(\vvec_1+\vvec_2) \amp = A(\vvec_1+\vvec_2) = A\vvec_1 +
+            A\vvec_2 = T(\vvec_1) +T(\vvec_2)
+          </mrow>
+        </md>
+        </p>
       </statement>
     </example>
 
@@ -60,6 +72,37 @@
         <m>T(f)=\threevec{f(-3)}{f(0)}{f(3)}</m> is a linear 
         transformation <m>T:\fcal\to \complex^3</m>.
         </p>
+        <p>To see this, we need to remember how scalar multiplication
+        and vector addition work in <m>V</m>.  If <m>s</m> is a scalar
+        and <m>f_1</m> and <m>f_2</m> are functions, then
+        <md>
+          <mrow>
+            (sf)(x) \amp = s(f(x))
+          </mrow>
+          <mrow>
+            (f_1+f_2)(x) \amp = f_1(x) + f_2(x)
+          </mrow>
+        </md>
+        Therefore,
+        <md>
+          <mrow>
+            T(sf) \amp = \threevec{(sf)(-3)}{(sf)(0)}{(sf)(3)}
+            = \threevec{sf(-3)}{sf(0)}{sf(3)}
+            = s\threevec{f(-3)}{f(0)}{f(3)} = sT(f)
+          </mrow>
+          <mrow>
+            T(f_1+f_2) \amp = \threevec{(f_1+f_2)(-3)}
+            {(f_1+f_2)(0)}{(f_1+f_2)(3)}
+            = \threevec{f_1(-3)+f_2(-3)}{f_1(0)+f_2(0)}{f_1(3)+f_2(3)}
+          </mrow>
+          <mrow>\amp
+            =
+            \threevec{f_1(-3)}{f_1(0)}{f_1(3)}+\threevec{f_2(-3)}{f_2(0)}
+            {f_2(3)}=T(f_1)+T(f_2)
+          </mrow>
+        </md>
+        </p>
+        
       </statement>
     </example>
 
@@ -101,6 +144,8 @@
         <m>L(V,W)</m>.</p>
       </statement>
     </definition>
+
+    <!--
 
     <proposition>
       <statement>
@@ -150,6 +195,7 @@
         </p>
       </proof>
     </proposition>
+    -->
 
     <assemblage>
       <title>Notation</title>
@@ -232,6 +278,7 @@
       </statement>
     </example>
 
+    <!--
     <p>We will frequently make use of the next proposition.</p>
     <proposition xml:id="prop-nul-range-dims">
       <statement>
@@ -317,7 +364,7 @@
         </p>
       </proof>
     </proposition>
-
+    -->
     <definition>
       <statement>
         <p>Suppose <m>T:V\to W</m>. If <m>\range(T)=W</m>, we say that
@@ -336,6 +383,8 @@
     <m>\vvec_1=\vvec_2</m> since <m>T(\vvec_1-\vvec_2)=0</m> meaning
     <m>\vvec_1-\vvec_2\in \nul(T)</m>.
     </p>
+
+    <!--
 
     <p>The following proposition follows immediately from <xref
     ref="prop-nul-range-dims"/>. 
@@ -395,10 +444,10 @@
         </p>
       </statement>
     </example>
-
+    -->
   
   </subsection>
-    
+  <!--
   <subsection>
     <title>Representing linear transformations with matrices</title>
 
@@ -419,7 +468,7 @@
       <statement>
         <p>If <m>T:V\to W</m> is a linear transformation, <m>\bcal</m>
         a basis for <m>V</m> and <m>\ccal</m> a basis for <m>W</m>, we
-        say that this matrix <m>M_T^{\bcal,\ccal}</m> is the matrix
+        say that this matrix <m>M_T^{\ccal,\bcal}</m> is the matrix
         associated to <m>T</m> with respect to these bases.  We will
         frequently drop the subscript when the transformation is clear
         from context.</p>
@@ -441,13 +490,94 @@
         </p>
       </statement>
     </example>
+
+    <proposition>
+      <statement>
+        <p>If <m>\bcal</m> and <m>\ccal</m> are
+        bases for <m>V</m> and <m>W</m> respectively, then
+        the map that assigns <m>T\to M_T^{\ccal,\bcal}</m> is a linear
+        transformation.  More specifically,
+        <md>
+          <mrow>
+            M_{cT}^{\ccal,\bcal} \amp = cM_T^{\ccal,\bcal}
+          </mrow>
+          <mrow>
+            M_{T+S}^{\ccal,\bcal} \amp = M_T^{\ccal,\bcal} +
+            M_S^{\ccal,\bcal}.
+          </mrow>
+        </md>
+        </p>
+      </statement>
+    </proposition>
+
+    <p> The next proposition says that the composition of linear
+    transformations corresponds to matrix multiplication.</p>
+
+    <proposition>
+      <statement>
+        <p>If <m>T:V\to W</m> and <m>S:W\to U</m> are linear
+        transformations and <m>\bcal</m>, <m>\ccal</m>, and
+        <m>\dcal</m> are bases for <m>V</m>, <m>W</m>, and <m>U</m>,
+        respectively, then
+        <me>
+          M_{ST}^{\dcal, \bcal} = M_S^{\dcal,\ccal}M_T^{\ccal,\bcal}
+        </me>.
+        </p>
+      </statement>
+
+      <proof>
+        <p>We denote the vectors in the bases by
+        <m>\basis{\vvec}{m}</m>, <m>\basis{\wvec}{n}</m>, and
+        <m>\basis{\uvec}{p}</m>, respectively.  Similarly, we use the
+        shorthand 
+        <sidebyside widths="10% 10% 10%" margins="5% 5%">
+          <p><m> A = M_T^{\ccal,\bcal}</m></p>
+          <p><m> B = M_S^{\dcal,\ccal}</m></p>
+          <p><m> C = M_{ST}^{\dcal,\bcal}</m></p>
+        </sidebyside>
+        </p>
+        <p> We have
+        <md>
+          <mrow>
+            T\vvec_j \amp = \sum_k A_{k,j} \wvec_k
+          </mrow>
+          <mrow>
+            S\wvec_k \amp = \sum_l B_{l,k} \uvec_l
+          </mrow>
+        </md>,
+        which implies that
+        <md>
+          <mrow>
+            (ST)\vvec_j \amp = S\left(\sum_kA_{k,j}\wvec_k\right)
+          </mrow>
+          <mrow>
+            \amp = \sum_k A_{k,j} S(\wvec_k)
+          </mrow>
+          <mrow>
+            \amp = \sum_k A_{k,j} \sum_l B_{l,k}\uvec_l
+          </mrow>
+          <mrow>
+            \amp = \sum_l \sum_k B_{l,k}A_{k,j} \uvec_l
+          </mrow>
+          <mrow>
+            \amp = \sum_l C_{l,j} \uvec_l.
+          </mrow>
+        </md>
+        Therefore, <m>C_{l,j} = \sum_kB_{l,k}A_{k,j}</m>, which says
+        that <m>C=BA</m> as expected.
+        </p>
+      </proof>
+          
+    </proposition>
   </subsection>
+
+  
 
       
   <subsection>
     <title>Dual spaces</title>
 
   </subsection>
-
+  -->
       
 </section>
