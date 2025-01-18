@@ -325,6 +325,114 @@ var ptx_lunr_docs = [
   "body": "  If is a finite dimensional vector space of dimension and is a set of vectors in , then   if the set of vectors is linearly independent, then it is a basis.    if the span of the set of vectors is , then it is a basis.      "
 },
 {
+  "id": "sec-lt-intro",
+  "level": "1",
+  "url": "sec-lt-intro.html",
+  "type": "Section",
+  "number": "1.2",
+  "title": "Linear transformations",
+  "body": " Linear transformations   We earlier viewed an matrix as defining a matrix transformation by . Due to the linearity of matrix multiplication, this meant that . Now that we are working with vector spaces, we can define linear transformations, which are functions between vector spaces that satisfy these properties.    Linear transformations  Given two vector spaces, and , we can define a linear transformation between them by generalizing our earlier notion of matrix transformation.    If and are vector spaces, then a linear transformation is a function such that, for every scalar and pair of vectors , we have .      Suppose that . Then defined by is a linear transformation.  This follows because matrix multiplication is a linear operation:       Suppose that , the set of functions . Then is a linear transformation .  To see this, we need to remember how scalar multiplication and vector addition work in . If is a scalar and and are functions, then Therefore,       Suppose that and . If is a polynomial in , define the function where is the derivative of . Two common rules of differentiation, the constant multiplier rule and the addition rule, imply that is a linear transformation.      If and , then is a linear transformation.      Suppose that is the vector space of matrices. Then by is not a linear transformation because .      Given two vector spaces, and , the set of linear transformations will be denoted as .      Notation  While a linear transformation is a function, we will frequently write , without parentheses, when we mean . This is similar to how we often write rather than in other courses.     The null space and range  A linear transformation creates a subspace of and a subspace of .    If is a linear transformation, we define the null space and range of to be .      Consider the linear transformation defined by the matrix . The null space is the set of vectors for which . We earlier called this , the mull space of , and here we see that it is the subspace of spanned by and .  Similarly, the range, , is the subspace of that we formerly called , the column space of . As such, a basis for is given by and .      Suppose that and and that where . A general polynomial in has the form so that . Therefore, is the set of polynomials for which so that . We also see that        Suppose . If , we say that is surjective . If , we say that is injective .    If is surjective, notice that every vector has a vector for which .  If is injective and , then since meaning .     "
+},
+{
+  "id": "sec-lt-intro-3-3",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-3-3",
+  "type": "Definition",
+  "number": "1.2.1",
+  "title": "",
+  "body": "  If and are vector spaces, then a linear transformation is a function such that, for every scalar and pair of vectors , we have .   "
+},
+{
+  "id": "sec-lt-intro-3-4",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-3-4",
+  "type": "Example",
+  "number": "1.2.2",
+  "title": "",
+  "body": "  Suppose that . Then defined by is a linear transformation.  This follows because matrix multiplication is a linear operation:    "
+},
+{
+  "id": "sec-lt-intro-3-5",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-3-5",
+  "type": "Example",
+  "number": "1.2.3",
+  "title": "",
+  "body": "  Suppose that , the set of functions . Then is a linear transformation .  To see this, we need to remember how scalar multiplication and vector addition work in . If is a scalar and and are functions, then Therefore,    "
+},
+{
+  "id": "sec-lt-intro-3-6",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-3-6",
+  "type": "Example",
+  "number": "1.2.4",
+  "title": "",
+  "body": "  Suppose that and . If is a polynomial in , define the function where is the derivative of . Two common rules of differentiation, the constant multiplier rule and the addition rule, imply that is a linear transformation.   "
+},
+{
+  "id": "sec-lt-intro-3-7",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-3-7",
+  "type": "Example",
+  "number": "1.2.5",
+  "title": "",
+  "body": "  If and , then is a linear transformation.   "
+},
+{
+  "id": "sec-lt-intro-3-8",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-3-8",
+  "type": "Example",
+  "number": "1.2.6",
+  "title": "",
+  "body": "  Suppose that is the vector space of matrices. Then by is not a linear transformation because .   "
+},
+{
+  "id": "sec-lt-intro-3-9",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-3-9",
+  "type": "Definition",
+  "number": "1.2.7",
+  "title": "",
+  "body": "  Given two vector spaces, and , the set of linear transformations will be denoted as .   "
+},
+{
+  "id": "sec-lt-intro-4-3",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-4-3",
+  "type": "Definition",
+  "number": "1.2.8",
+  "title": "",
+  "body": "  If is a linear transformation, we define the null space and range of to be .   "
+},
+{
+  "id": "sec-lt-intro-4-4",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-4-4",
+  "type": "Example",
+  "number": "1.2.9",
+  "title": "",
+  "body": "  Consider the linear transformation defined by the matrix . The null space is the set of vectors for which . We earlier called this , the mull space of , and here we see that it is the subspace of spanned by and .  Similarly, the range, , is the subspace of that we formerly called , the column space of . As such, a basis for is given by and .   "
+},
+{
+  "id": "sec-lt-intro-4-5",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-4-5",
+  "type": "Example",
+  "number": "1.2.10",
+  "title": "",
+  "body": "  Suppose that and and that where . A general polynomial in has the form so that . Therefore, is the set of polynomials for which so that . We also see that    "
+},
+{
+  "id": "sec-lt-intro-4-6",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-4-6",
+  "type": "Definition",
+  "number": "1.2.11",
+  "title": "",
+  "body": "  Suppose . If , we say that is surjective . If , we say that is injective .   "
+},
+{
   "id": "backmatter-2",
   "level": "1",
   "url": "backmatter-2.html",
