@@ -238,6 +238,7 @@ eBookConfig.enable_chatcodes =  false;
 <ul class="structural toc-item-list active">
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-3" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Linear transformations</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-4" class="internal"><span class="codenumber">1.2.2</span> <span class="title">The null space and range</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-5" class="internal"><span class="codenumber">1.2.3</span> <span class="title">Vector space isomorphisms</span></a></div></li>
 </ul>
 </li>
 </ul>
@@ -342,15 +343,22 @@ T(f_1+f_2) \amp = \threevec{(f_1+f_2)(-3)}
 <div class="para">If <span class="process-math">\(T:V\to W\)</span> is a linear transformation, we define the <em class="emphasis">null space</em> and <em class="emphasis">range</em> of <span class="process-math">\(T\)</span> to be</div>
 <div class="displaymath process-math" id="sec-lt-intro-4-3-1-1-5">
 \begin{align*}
-\nul(T)\amp = \{\vvec|T\vvec=0\}\subset V\\
-\range(T)\amp = \{\wvec|\wvec=T\vvec \text{ for some
+\nul(T)\amp = \{\vvec~|~T\vvec=0\}\subset V\\
+\range(T)\amp = \{\wvec~|~\wvec=T\vvec \text{ for some
 }\vvec\}\subset W\text{.}
 \end{align*}
 </div>
-</div></article><article class="example example-like" id="sec-lt-intro-4-4"><h4 class="heading">
+</div></article><div class="para" id="sec-lt-intro-4-4">In our earlier linear algebra courses, we considered the null space and column space of a matrix.  The null space and range of a linear transformation is the same concept generalized to vector spaces.</div>
+<article class="example example-like" id="sec-lt-intro-4-5"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.9</span><span class="period">.</span>
 </h4>
-<div class="para logical" id="sec-lt-intro-4-4-1-1">
+<div class="para" id="sec-lt-intro-4-5-1-1">Suppose that <span class="process-math">\(A\)</span> is a <span class="process-math">\(10\times 17\)</span> matrix and consider the linear transformation <span class="process-math">\(T:\real^{17}\to\real^{10}\text{.}\)</span>  Then <span class="process-math">\(\nul(A)\)</span> is the set of solutions to the equation <span class="process-math">\(A\xvec=T(\xvec)=\zerovec\text{,}\)</span> which is the same as the null space <span class="process-math">\(\nul(T)\text{.}\)</span>
+</div> <div class="para" id="sec-lt-intro-4-5-1-2">Similarly, the column space is the set of vectors <span class="process-math">\(\bvec\)</span> for which <span class="process-math">\(A\xvec = \bvec\)</span> is consistent. In other words, <span class="process-math">\(\bvec\)</span> is in <span class="process-math">\(\col(A)\)</span> if and only if there is a vector <span class="process-math">\(\xvec\)</span> such that <span class="process-math">\(T(\xvec)=A\xvec
+= \bvec\text{.}\)</span>  This is precisely the definition of <span class="process-math">\(\range(T)\text{.}\)</span>
+</div></article><article class="example example-like" id="sec-lt-intro-4-6"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.10</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="sec-lt-intro-4-6-1-1">
 <div class="para">Consider the linear transformation <span class="process-math">\(T:\real^4\to\real^3\)</span> defined by the matrix</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -367,13 +375,13 @@ A=\begin{bmatrix}
 \end{bmatrix}\text{.}
 \end{equation*}
 </div>
-<div class="para">The null space is the set of vectors for which <span class="process-math">\(T\vvec=A\vvec=\zerovec\text{.}\)</span> We earlier called this <span class="process-math">\(\nul(A)\text{,}\)</span> the mull space of <span class="process-math">\(A\text{,}\)</span> and here we see that it is the subspace of <span class="process-math">\(\real^4\)</span> spanned by <span class="process-math">\(\fourvec0210\)</span> and <span class="process-math">\(\fourvec{-2}{-1}01\text{.}\)</span>
+<div class="para">The null space is the set of vectors for which <span class="process-math">\(T\vvec=A\vvec=\zerovec\text{,}\)</span> which we see is the subspace of <span class="process-math">\(\real^4\)</span> spanned by <span class="process-math">\(\fourvec0210\)</span> and <span class="process-math">\(\fourvec{-2}{-1}01\text{.}\)</span>
 </div>
-</div> <div class="para" id="sec-lt-intro-4-4-1-2">Similarly, the range, <span class="process-math">\(\range(T)\text{,}\)</span> is the subspace of <span class="process-math">\(\real^3\)</span> that we formerly called <span class="process-math">\(\col(A)\text{,}\)</span> the column space of <span class="process-math">\(A\text{.}\)</span>  As such, a basis for <span class="process-math">\(\range(T)\)</span> is given by <span class="process-math">\(\threevec21{-2}\)</span> and <span class="process-math">\(\threevec{-1}02\text{.}\)</span>
-</div></article><article class="example example-like" id="sec-lt-intro-4-5"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.10</span><span class="period">.</span>
+</div> <div class="para" id="sec-lt-intro-4-6-1-2">Similarly, <span class="process-math">\(\range(T)\)</span> is the subspace of <span class="process-math">\(\real^3\)</span> having a basis given by <span class="process-math">\(\threevec21{-2}\)</span> and <span class="process-math">\(\threevec{-1}02\text{.}\)</span>
+</div></article><article class="example example-like" id="sec-lt-intro-4-7"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.11</span><span class="period">.</span>
 </h4>
-<div class="para logical" id="sec-lt-intro-4-5-1-1">
+<div class="para logical" id="sec-lt-intro-4-7-1-1">
 <div class="para">Suppose that <span class="process-math">\(V=\pbb_3\)</span> and <span class="process-math">\(W=\real^2\)</span> and that <span class="process-math">\(T:V\to\real^2\)</span> where <span class="process-math">\(T(p)=\twovec{p(0)}{p'(0)}\text{.}\)</span> A general polynomial in <span class="process-math">\(V\)</span> has the form</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -382,14 +390,100 @@ p(x)=a_3x^3+a_2x^2+a_1x+a_0
 </div>
 <div class="para">so that <span class="process-math">\(T(p)=\twovec{a_0}{a_1}\text{.}\)</span>  Therefore, <span class="process-math">\(\nul(T)\)</span> is the set of polynomials for which <span class="process-math">\(a_0=a_0=0\)</span> so that <span class="process-math">\(p(x)=a_3x^3+a_2x^2\text{.}\)</span>  We also see that <span class="process-math">\(\range(T) = \real^2\)</span>
 </div>
-</div></article><article class="definition definition-like" id="sec-lt-intro-4-6"><h4 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.11</span><span class="period">.</span>
+</div></article><article class="proposition theorem-like" id="sec-lt-intro-4-8"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.12</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-4-6-1-1">Suppose <span class="process-math">\(T:V\to W\text{.}\)</span> If <span class="process-math">\(\range(T)=W\text{,}\)</span> we say that <span class="process-math">\(T\)</span> is <em class="emphasis">surjective</em>.  If <span class="process-math">\(\nul(T)=\{0\}\text{,}\)</span> we say that <span class="process-math">\(T\)</span> is <em class="emphasis">injective</em>.</div></article><div class="para" id="sec-lt-intro-4-7">If <span class="process-math">\(T\)</span> is surjective, notice that every vector <span class="process-math">\(\wvec\in
+<div class="para" id="sec-lt-intro-4-8-1-1">If <span class="process-math">\(T:V\to W\text{,}\)</span> then <span class="process-math">\(\nul(T)\)</span> is a subspace of <span class="process-math">\(V\)</span> and <span class="process-math">\(\range(T)\)</span> is a subspace of <span class="process-math">\(W\text{.}\)</span>
+</div></article><article class="proof" id="sec-lt-intro-4-8-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para logical" id="sec-lt-intro-4-8-2-1">
+<div class="para">Suppose that <span class="process-math">\(\vvec_1\)</span> and <span class="process-math">\(\vvec_2\)</span> are in <span class="process-math">\(\nul(T)\text{.}\)</span>  Then we have</div>
+<div class="displaymath process-math" id="sec-lt-intro-4-8-2-1-4">
+\begin{align*}
+T(s\vvec_1) = \amp s(T\vvec_1) = s0 = 0\\
+T(\vvec_1+\vvec_2) = \amp T(\vvec_1) + T(\vvec_2) = 0 + 0
+= 0.
+\end{align*}
+</div>
+<div class="para">This shows that <span class="process-math">\(\nul(T)\)</span> is closed under scalar multiplication and vector addition and is therefore a subspace of <span class="process-math">\(V\text{.}\)</span>
+</div>
+</div>
+<div class="para logical" id="sec-lt-intro-4-8-2-2">
+<div class="para">Now suppose the <span class="process-math">\(\wvec_1\)</span> and <span class="process-math">\(\wvec_2\)</span> are in <span class="process-math">\(\range(T)\text{.}\)</span>  We know that there are vectors <span class="process-math">\(\vvec_1\)</span> and <span class="process-math">\(\vvec_2\)</span> in <span class="process-math">\(V\)</span> such that <span class="process-math">\(T(\vvec_1) = \wvec_1\)</span> and <span class="process-math">\(T(\vvec_2)=\wvec_2\text{.}\)</span> Therefore,</div>
+<div class="displaymath process-math" id="sec-lt-intro-4-8-2-2-9">
+\begin{align*}
+s\wvec_1\amp = sT(\vvec_1) = T(s\vvec_1)\\
+\wvec_1+\wvec_2 \amp = T(\vvec_1)+T(\vvec_2) =
+T(\vvec_1+\vvec_2).
+\end{align*}
+</div>
+<div class="para">This shows that <span class="process-math">\(\range(T)\)</span> is closed under scalar multiplication and vector addition so <span class="process-math">\(\range(T)\)</span> is a subspace of <span class="process-math">\(W\text{.}\)</span>
+</div>
+</div></article></section><section class="subsection" id="sec-lt-intro-5"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.2.3</span><span class="space"> </span><span class="title">Vector space isomorphisms</span>
+</h3>
+<article class="definition definition-like" id="sec-lt-intro-5-2"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.13</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-5-2-1-1">Suppose <span class="process-math">\(T:V\to W\text{.}\)</span> If <span class="process-math">\(\range(T)=W\text{,}\)</span> we say that <span class="process-math">\(T\)</span> is <em class="emphasis">surjective</em>.  If <span class="process-math">\(\nul(T)=\{0\}\text{,}\)</span> we say that <span class="process-math">\(T\)</span> is <em class="emphasis">injective</em>.</div></article><div class="para" id="sec-lt-intro-5-3">If <span class="process-math">\(T\)</span> is surjective, notice that every vector <span class="process-math">\(\wvec\in
 W\)</span> has a vector <span class="process-math">\(\vvec\)</span> for which <span class="process-math">\(T\vvec=\wvec\text{.}\)</span>
 </div>
-<div class="para" id="sec-lt-intro-4-8">If <span class="process-math">\(T\)</span> is injective and <span class="process-math">\(T\vvec_1=T\vvec_2\text{,}\)</span> then <span class="process-math">\(\vvec_1=\vvec_2\)</span> since <span class="process-math">\(T(\vvec_1-\vvec_2)=0\)</span> meaning <span class="process-math">\(\vvec_1-\vvec_2\in \nul(T)\text{.}\)</span>
-</div></section></section></div>
+<div class="para" id="sec-lt-intro-5-4">If <span class="process-math">\(T\)</span> is injective and <span class="process-math">\(T\vvec_1=T\vvec_2\text{,}\)</span> then <span class="process-math">\(\vvec_1=\vvec_2\)</span> since <span class="process-math">\(T(\vvec_1-\vvec_2)=0\)</span> meaning <span class="process-math">\(\vvec_1-\vvec_2\in \nul(T)\text{.}\)</span>
+</div>
+<article class="example example-like" id="sec-lt-intro-5-5"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.14</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-5-5-1-1">Once again, these are familiar notions.  Suppose that <span class="process-math">\(A\)</span> is an <span class="process-math">\(m\times n\)</span> matrix that defines a linear transformation <span class="process-math">\(T:\real^n\to\real^m\text{.}\)</span>  Then <span class="process-math">\(T\)</span> is injective if <span class="process-math">\(\nul(A) = \{\zerovec\}\text{.}\)</span>  This happens when the columns of <span class="process-math">\(A\)</span> are linearly independent.</div> <div class="para" id="sec-lt-intro-5-5-1-2">The transformation <span class="process-math">\(T\)</span> is surjective if <span class="process-math">\(\col(A) = \real^m\text{,}\)</span> which happens when the columns of <span class="process-math">\(A\)</span> span <span class="process-math">\(\real^m\text{.}\)</span>
+</div></article><article class="example example-like" id="sec-lt-intro-5-6"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.15</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-5-6-1-1">The linear transformation <span class="process-math">\(T:\pbb\to\pbb\)</span> defined by <span class="process-math">\(T(p)(x)=xp(x)\)</span> is injective but not surjective because the constant polynomials are not in <span class="process-math">\(\range(T)\text{.}\)</span>
+</div></article><article class="definition definition-like" id="sec-lt-intro-5-7"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.16</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-5-7-1-1">A linear transformation <span class="process-math">\(T:V\to W\)</span> is called an <em class="emphasis">isomorphism</em> if <span class="process-math">\(T\)</span> is both surjective and injective.</div></article><article class="example example-like" id="sec-lt-intro-5-8"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.17</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-5-8-1-1">Consider the linear transformation <span class="process-math">\(T:\pbb_2\to\real^3\)</span> defined by <span class="process-math">\(T(p)=\threevec{p(0)}{p'(0)}{p''(0)}\text{.}\)</span> If <span class="process-math">\(p(x)=a_0+a_1x+a_2x^2\text{,}\)</span> then <span class="process-math">\(T(p) = \threevec{a_0}{a_1}{2a_2}\text{.}\)</span>  This shows that <span class="process-math">\(\nul(T) = \{0\}\)</span> and <span class="process-math">\(\range(T)=\real^3\text{.}\)</span> Therefore, <span class="process-math">\(T\)</span> is a vector space isomorphism.</div></article><article class="example example-like" id="sec-lt-intro-5-9"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.18</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-5-9-1-1">If <span class="process-math">\(V\)</span> is a vector space, then <span class="process-math">\(I:V\to V\)</span> defined by <span class="process-math">\(I(\vvec) = \vvec\)</span> is a linear transformation called the <em class="emphasis">identity</em> transformation.</div></article><div class="para" id="sec-lt-intro-5-10">Suppose that <span class="process-math">\(T:V\to W\)</span> is an isomorphism, then every vector <span class="process-math">\(\wvec\)</span> in <span class="process-math">\(W\)</span> has a vector <span class="process-math">\(\vvec\)</span> in <span class="process-math">\(V\)</span> such that <span class="process-math">\(T(\vvec) = \wvec\text{.}\)</span>  In fact, there is exactly once such vector since if <span class="process-math">\(T(\vvec_1)=T(\vvec_2) =
+\wvec\text{,}\)</span> we know that <span class="process-math">\(\vvec_1=\vvec_2\)</span> because <span class="process-math">\(T\)</span> is injective.  In this case, we can define a function <span class="process-math">\(S:W\to V\)</span> where <span class="process-math">\(S(\wvec)\)</span> is the vector <span class="process-math">\(\vvec\)</span> for which <span class="process-math">\(T(\vvec) = \wvec\text{.}\)</span>
+</div>
+<div class="para logical" id="sec-lt-intro-5-11">
+<div class="para">Notice that <span class="process-math">\(S:W\to V\)</span> is a linear transformation.  For instance, if <span class="process-math">\(T(\vvec) = \wvec\text{,}\)</span> then <span class="process-math">\(T(s\vvec) =
+s\wvec\text{,}\)</span> which says that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+S(s\wvec) = s\vvec = sS(\wvec)\text{.}
+\end{equation*}
+</div>
+<div class="para">In the same way, we have</div>
+<div class="displaymath process-math">
+\begin{equation*}
+S(\wvec_1+\wvec_2) = \vvec_1+\vvec_2 = S(\wvec_1)+S(\wvec_2)\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" id="sec-lt-intro-5-12">Therefore, we have the following proposition.</div>
+<article class="proposition theorem-like" id="sec-lt-intro-5-13"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.19</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lt-intro-5-13-1-1">If <span class="process-math">\(T:V\to W\)</span> is an ismorphism, there is a linear transformation <span class="process-math">\(S:W\to V\)</span> such that <span class="process-math">\(ST=I_V\text{,}\)</span> the identity transformation on <span class="process-math">\(V\text{,}\)</span> and <span class="process-math">\(TS=I_W\text{,}\)</span> the identity transformation on <span class="process-math">\(W\text{.}\)</span>  We will typically denote <span class="process-math">\(S\)</span> as <span class="process-math">\(T^{-1}\text{.}\)</span>
+</div></article><article class="proposition theorem-like" id="prop-fin-dim-isom"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.20</span><span class="period">.</span>
+</h4>
+<div class="para" id="prop-fin-dim-isom-1-1">If <span class="process-math">\(V\)</span> is a finite dimensional vector space of dimension <span class="process-math">\(n\)</span> over the field <span class="process-math">\(\field\text{,}\)</span> then there is an isomorphism <span class="process-math">\(T:\field^n\to V\text{.}\)</span>
+</div></article><article class="proof" id="prop-fin-dim-isom-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para logical" id="prop-fin-dim-isom-2-1">
+<div class="para">We choose a basis <span class="process-math">\(\basis{\vvec}{n}\)</span> and define</div>
+<div class="displaymath process-math">
+\begin{equation*}
+T\left(\threevec{c_1}{\vdots}{c_n}\right) = c_1\vvec_1 +
+c_2\vvec_2 + \ldots + c_n\vvec_n\text{.}
+\end{equation*}
+</div>
+<div class="para">By the linear independence of the basis, we see that <span class="process-math">\(T\)</span> is injective.  Since the span of the basis vectors is <span class="process-math">\(V\text{,}\)</span> we see that <span class="process-math">\(T\)</span> is surjective.</div>
+</div></article><div class="para" id="sec-lt-intro-5-15">The term <em class="emphasis">isomorphism</em> means “having the same shape or structure.”  In other words, isomorphic vector spaces have the same structure.  In our earlier courses, we considered only the vector spaces <span class="process-math">\(\real^n\text{.}\)</span>  The previous proposition, <a href="sec-lt-intro.html#prop-fin-dim-isom" class="xref" data-knowl="./knowl/xref/prop-fin-dim-isom.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.20">Proposition 1.2.20</a>, shows us that every finite dimensional real vector space has the same structure as <span class="process-math">\(\real^n\text{.}\)</span> This means that, technically speaking, we were also studying finite dimensional real vector spaces at the same time.</div></section></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="sec-vs-intro.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
