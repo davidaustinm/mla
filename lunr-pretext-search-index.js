@@ -331,7 +331,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.2",
   "title": "Linear transformations",
-  "body": " Linear transformations   We earlier viewed an matrix as defining a matrix transformation by . Due to the linearity of matrix multiplication, this meant that . Now that we are working with vector spaces, we can define linear transformations, which are functions between vector spaces that satisfy these properties.    Linear transformations  Given two vector spaces, and , we can define a linear transformation between them by generalizing our earlier notion of matrix transformation.    If and are vector spaces, then a linear transformation is a function such that, for every scalar and pair of vectors , we have .      Suppose that . Then defined by is a linear transformation.  This follows because matrix multiplication is a linear operation:       Suppose that , the set of functions . Then is a linear transformation .  To see this, we need to remember how scalar multiplication and vector addition work in . If is a scalar and and are functions, then Therefore,       Suppose that and . If is a polynomial in , define the function where is the derivative of . Two common rules of differentiation, the constant multiplier rule and the addition rule, imply that is a linear transformation.      If and , then is a linear transformation.      Suppose that is the vector space of matrices. Then by is not a linear transformation because .      Given two vector spaces, and , the set of linear transformations will be denoted as .      Notation  While a linear transformation is a function, we will frequently write , without parentheses, when we mean . This is similar to how we often write rather than in other courses.     The null space and range  A linear transformation creates a subspace of and a subspace of .    If is a linear transformation, we define the null space and range of to be .    In our earlier linear algebra courses, we considered the null space and column space of a matrix. The null space and range of a linear transformation is the same concept generalized to vector spaces.    Suppose that is a matrix and consider the linear transformation . Then is the set of solutions to the equation , which is the same as the null space .  Similarly, the column space is the set of vectors for which is consistent. In other words, is in if and only if there is a vector such that . This is precisely the definition of .      Consider the linear transformation defined by the matrix . The null space is the set of vectors for which , which we see is the subspace of spanned by and .  Similarly, is the subspace of having a basis given by and .      Suppose that and and that where . A general polynomial in has the form so that . Therefore, is the set of polynomials for which so that . We also see that       If , then is a subspace of and is a subspace of .    Suppose that and are in . Then we have This shows that is closed under scalar multiplication and vector addition and is therefore a subspace of .  Now suppose the and are in . We know that there are vectors and in such that and . Therefore, This shows that is closed under scalar multiplication and vector addition so is a subspace of .      Vector space isomorphisms    Suppose . If , we say that is surjective . If , we say that is injective .    If is surjective, notice that every vector has a vector for which .  If is injective and , then since meaning .    Once again, these are familiar notions. Suppose that is an matrix that defines a linear transformation . Then is injective if . This happens when the columns of are linearly independent.  The transformation is surjective if , which happens when the columns of span .      The linear transformation defined by is injective but not surjective because the constant polynomials are not in .       A linear transformation is called an isomorphism if is both surjective and injective.       Consider the linear transformation defined by . If , then . This shows that and . Therefore, is a vector space isomorphism.      If is a vector space, then defined by is a linear transformation called the identity transformation.    Suppose that is an isomorphism, then every vector in has a vector in such that . In fact, there is exactly once such vector since if , we know that because is injective. In this case, we can define a function where is the vector for which .  Notice that is a linear transformation. For instance, if , then , which says that . In the same way, we have .  Therefore, we have the following proposition.    If is an ismorphism, there is a linear transformation such that , the identity transformation on , and , the identity transformation on . We will typically denote as .      If is a finite dimensional vector space of dimension over the field , then there is an isomorphism .    We choose a basis and define . By the linear independence of the basis, we see that is injective. Since the span of the basis vectors is , we see that is surjective.    The term isomorphism means having the same shape or structure. In other words, isomorphic vector spaces have the same structure. In our earlier courses, we considered only the vector spaces . The previous proposition, , shows us that every finite dimensional real vector space has the same structure as . This means that, technically speaking, we were also studying finite dimensional real vector spaces at the same time.    "
+  "body": " Linear transformations   We earlier viewed an matrix as defining a matrix transformation by . Due to the linearity of matrix multiplication, this meant that . Now that we are working with vector spaces, we can define linear transformations, which are functions between vector spaces that satisfy these properties.    Linear transformations  Given two vector spaces, and , we can define a linear transformation between them by generalizing our earlier notion of matrix transformation.    If and are vector spaces, then a linear transformation is a function such that, for every scalar and pair of vectors , we have .      Suppose that . Then defined by is a linear transformation.  This follows because matrix multiplication is a linear operation:       Suppose that , the set of functions . Then is a linear transformation .  To see this, we need to remember how scalar multiplication and vector addition work in . If is a scalar and and are functions, then Therefore,       Suppose that and . If is a polynomial in , define the function where is the derivative of . Two common rules of differentiation, the constant multiplier rule and the addition rule, imply that is a linear transformation.      If and , then is a linear transformation.      Suppose that is the vector space of matrices. Then by is not a linear transformation because .      Given two vector spaces, and , the set of linear transformations will be denoted as .      Notation  While a linear transformation is a function, we will frequently write , without parentheses, when we mean . This is similar to how we often write rather than in other courses.     The null space and range  A linear transformation creates a subspace of and a subspace of .    If is a linear transformation, we define the null space and range of to be .    In our earlier linear algebra courses, we considered the null space and column space of a matrix. The null space and range of a linear transformation is the same concept generalized to vector spaces.    Suppose that is a matrix and consider the linear transformation . Then is the set of solutions to the equation , which is the same as the null space .  Similarly, the column space is the set of vectors for which is consistent. In other words, is in if and only if there is a vector such that . This is precisely the definition of .      Consider the linear transformation defined by the matrix . The null space is the set of vectors for which , which we see is the subspace of spanned by and .  Similarly, is the subspace of having a basis given by and .      Suppose that and and that where . A general polynomial in has the form so that . Therefore, is the set of polynomials for which so that . We also see that       If , then is a subspace of and is a subspace of .    Suppose that and are in . Then we have This shows that is closed under scalar multiplication and vector addition and is therefore a subspace of .  Now suppose the and are in . We know that there are vectors and in such that and . Therefore, This shows that is closed under scalar multiplication and vector addition so is a subspace of .    We will frequently make use of the next proposition.    If is a finite dimensional vector space and is a linear transformation, then .    Now suppose that is a basis for , which we extend to a basis for by adding vectors . We also define .  Given a vector in , we can write so that . This shows that span .  We also claim that forms a linearly independent set. Suppose that , which means that is in so that this vector is a linear combination of . This can only happen if the vector is zero, showing that and the vectors are linearly independent.  We conclude that is a basis for and we have .      Suppose . If , we say that is surjective . If , we say that is injective .    If is surjective, notice that every vector has a vector for which .  If is injective and , then since meaning .    Once again, these are familiar notions. Suppose that is an matrix that defines a linear transformation . Then is injective if . This happens when the columns of are linearly independent.  The transformation is surjective if , which happens when the columns of span .      The linear transformation defined by is injective but not surjective because the constant polynomials are not in .      A linear transformation is called an isomorphism if is both surjective and injective.    The following proposition follows immediately from .    If is surjective, then .  If is injective, then .  If is an isomorphism, then .      Vector space isomorphisms    Consider the linear transformation defined by . If , then . This shows that and . Therefore, is a vector space isomorphism.      If is a vector space, then defined by is a linear transformation called the identity transformation.    Suppose that is an isomorphism, then every vector in has a vector in such that . In fact, there is exactly once such vector since if , we know that because is injective. In this case, we can define a function where is the vector for which .  Notice that is a linear transformation. For instance, if , then , which says that . In the same way, we have .  Therefore, we have the following proposition.    If is an ismorphism, there is a linear transformation such that , the identity transformation on , and , the identity transformation on . We will typically denote as .      If is a finite dimensional vector space of dimension over the field , then there is an isomorphism .    We choose a basis and define . By the linear independence of the basis, we see that is injective. Since the span of the basis vectors is , we see that is surjective.    The term isomorphism means having the same shape or structure. In other words, isomorphic vector spaces have the same structure. In our earlier courses, we considered only the vector spaces . The previous proposition, , shows us that every finite dimensional real vector space has the same structure as . This means that, technically speaking, we were also studying finite dimensional real vector spaces at the same time.  Notice, however, that the isomorphism in depends on a choice of basis. If two people choose different bases, then they will produce different isomorphisms. In fact, as we move forward, some of our work will be motivated by choosing a basis that creates a particularly nice isomorphism. Our next discussion of matrices will lay that foundation.    Representing linear transformations with matrices  says that every finite dimensional vector space is essentially the same as . Therefore, we are able to represent elements in a vector space as more typical vectors in and linear transformations as matrices. Let us make this more clear now.  Suppose that we have a basis for a finite dimensional vector space . If is an element of , then we can uniquely write . As shorthand, we will write . This should be familiar from our earlier work when we used a basis of to form a new coordinate system.    Consider the vector space with the basis . Then we have . We may think of this as a coordinate system in the vector space of polynomials.    In a similar way, we can represent linear transformations using matrices. Suppose that is a linear transformation and that we have a basis for and a basis for . We then have , which defines an matrix . In the same way we denoted the coordinates of a vector in terms of a basis, we can denote the matrix of the linear transformation . Notice that meaning that the columns of are the coordinates : .  At first glance, this notation may seem a little intimidating, but it will become clear with a little practice.    If is a linear transformation, a basis for and a basis for , we say that the matrix is the matrix associated to with respect to these bases.      Consider where . If we choose the bases and , then .     The next proposition says that the composition of linear transformations corresponds to matrix multiplication.    If and are linear transformations and , , and are bases for , , and , respectively, then .    We denote the vectors in the bases by , , and , respectively. Similarly, we use the shorthand   We have , which implies that Therefore, , which says that as expected.    A similar result holds for the coordinate representations of vectors.    Suppose that is a linear transformation and is a basis for and is a basis for . If is a vector in , then .    An important example is when the linear transformation is the identity and we have two bases and for . In this case, . This matrix then represents the change of coordinates .    Suppose that and that and . Then This matrix converts the coordinate representation of a polynomials in the basis into the coordinate representation of the same polynomial in the basis.  The inverse of this matrix will convert the -coordinate representation of a polynomial into the -coordinate representation: .  Consider the polynomial . We then have and . This means that as is easily checked.    We will often be interested in linear transformations in which the codomain and the domain are the same vector space. Given a basis for , we can then represent in terms of this basis as where the same basis is used for the codomain and domain. The following shows how the matrices representing the same transformation are represented in two bases.    Suppose that is a linear transformation and that and are two bases for . Then .    Here is a simpler way to represent this statement. If , , and , then we have . This should remind you of the kind of expression we saw when we were diagonalizing matrices and gives some idea for where we are heading.    Two square matrices and are called similar if there is a matrix such that .    Notice that a matrix is diagonalizable precisely when it is similar to a diagonal matrix.    Similarity is an equivalence relation on the set of matrices.      Suppose that and are similar matrices. If is a basis for and , then for some other basis .    In other words, two similar matrices represent the same linear transformations in two different bases. This is why we should expect that similar matrices should share important properties, such as determinants, eigenvalues, and more.  We close this section by noting that the set of linear transformations is itself a vector space.    If and are two vector spaces, then is the set of linear transformations .      If and are two vector spaces, then is a vector space. Moreover, if is a finite basis for and is a finite basis for , then the function by is an isomorphism. It then follows that .      "
 },
 {
   "id": "sec-lt-intro-3-3",
@@ -442,65 +442,83 @@ var ptx_lunr_docs = [
   "body": "  If , then is a subspace of and is a subspace of .    Suppose that and are in . Then we have This shows that is closed under scalar multiplication and vector addition and is therefore a subspace of .  Now suppose the and are in . We know that there are vectors and in such that and . Therefore, This shows that is closed under scalar multiplication and vector addition so is a subspace of .   "
 },
 {
-  "id": "sec-lt-intro-5-2",
+  "id": "prop-nul-range-dims",
   "level": "2",
-  "url": "sec-lt-intro.html#sec-lt-intro-5-2",
-  "type": "Definition",
+  "url": "sec-lt-intro.html#prop-nul-range-dims",
+  "type": "Proposition",
   "number": "1.2.13",
+  "title": "",
+  "body": "  If is a finite dimensional vector space and is a linear transformation, then .    Now suppose that is a basis for , which we extend to a basis for by adding vectors . We also define .  Given a vector in , we can write so that . This shows that span .  We also claim that forms a linearly independent set. Suppose that , which means that is in so that this vector is a linear combination of . This can only happen if the vector is zero, showing that and the vectors are linearly independent.  We conclude that is a basis for and we have .   "
+},
+{
+  "id": "sec-lt-intro-4-11",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-4-11",
+  "type": "Definition",
+  "number": "1.2.14",
   "title": "",
   "body": "  Suppose . If , we say that is surjective . If , we say that is injective .   "
 },
 {
-  "id": "sec-lt-intro-5-5",
+  "id": "sec-lt-intro-4-14",
   "level": "2",
-  "url": "sec-lt-intro.html#sec-lt-intro-5-5",
+  "url": "sec-lt-intro.html#sec-lt-intro-4-14",
   "type": "Example",
-  "number": "1.2.14",
+  "number": "1.2.15",
   "title": "",
   "body": "  Once again, these are familiar notions. Suppose that is an matrix that defines a linear transformation . Then is injective if . This happens when the columns of are linearly independent.  The transformation is surjective if , which happens when the columns of span .   "
 },
 {
-  "id": "sec-lt-intro-5-6",
+  "id": "sec-lt-intro-4-15",
   "level": "2",
-  "url": "sec-lt-intro.html#sec-lt-intro-5-6",
+  "url": "sec-lt-intro.html#sec-lt-intro-4-15",
   "type": "Example",
-  "number": "1.2.15",
+  "number": "1.2.16",
   "title": "",
   "body": "  The linear transformation defined by is injective but not surjective because the constant polynomials are not in .   "
+},
+{
+  "id": "sec-lt-intro-4-16",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-4-16",
+  "type": "Definition",
+  "number": "1.2.17",
+  "title": "",
+  "body": "  A linear transformation is called an isomorphism if is both surjective and injective.   "
+},
+{
+  "id": "sec-lt-intro-4-18",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-4-18",
+  "type": "Proposition",
+  "number": "1.2.18",
+  "title": "",
+  "body": "  If is surjective, then .  If is injective, then .  If is an isomorphism, then .   "
+},
+{
+  "id": "sec-lt-intro-5-2",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-5-2",
+  "type": "Example",
+  "number": "1.2.19",
+  "title": "",
+  "body": "  Consider the linear transformation defined by . If , then . This shows that and . Therefore, is a vector space isomorphism.   "
+},
+{
+  "id": "sec-lt-intro-5-3",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-5-3",
+  "type": "Example",
+  "number": "1.2.20",
+  "title": "",
+  "body": "  If is a vector space, then defined by is a linear transformation called the identity transformation.   "
 },
 {
   "id": "sec-lt-intro-5-7",
   "level": "2",
   "url": "sec-lt-intro.html#sec-lt-intro-5-7",
-  "type": "Definition",
-  "number": "1.2.16",
-  "title": "",
-  "body": "  A linear transformation is called an isomorphism if is both surjective and injective.   "
-},
-{
-  "id": "sec-lt-intro-5-8",
-  "level": "2",
-  "url": "sec-lt-intro.html#sec-lt-intro-5-8",
-  "type": "Example",
-  "number": "1.2.17",
-  "title": "",
-  "body": "  Consider the linear transformation defined by . If , then . This shows that and . Therefore, is a vector space isomorphism.   "
-},
-{
-  "id": "sec-lt-intro-5-9",
-  "level": "2",
-  "url": "sec-lt-intro.html#sec-lt-intro-5-9",
-  "type": "Example",
-  "number": "1.2.18",
-  "title": "",
-  "body": "  If is a vector space, then defined by is a linear transformation called the identity transformation.   "
-},
-{
-  "id": "sec-lt-intro-5-13",
-  "level": "2",
-  "url": "sec-lt-intro.html#sec-lt-intro-5-13",
   "type": "Proposition",
-  "number": "1.2.19",
+  "number": "1.2.21",
   "title": "",
   "body": "  If is an ismorphism, there is a linear transformation such that , the identity transformation on , and , the identity transformation on . We will typically denote as .   "
 },
@@ -509,9 +527,117 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "sec-lt-intro.html#prop-fin-dim-isom",
   "type": "Proposition",
-  "number": "1.2.20",
+  "number": "1.2.22",
   "title": "",
   "body": "  If is a finite dimensional vector space of dimension over the field , then there is an isomorphism .    We choose a basis and define . By the linear independence of the basis, we see that is injective. Since the span of the basis vectors is , we see that is surjective.   "
+},
+{
+  "id": "sec-lt-intro-6-4",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-6-4",
+  "type": "Example",
+  "number": "1.2.23",
+  "title": "",
+  "body": "  Consider the vector space with the basis . Then we have . We may think of this as a coordinate system in the vector space of polynomials.   "
+},
+{
+  "id": "sec-lt-intro-6-7",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-6-7",
+  "type": "Definition",
+  "number": "1.2.24",
+  "title": "",
+  "body": "  If is a linear transformation, a basis for and a basis for , we say that the matrix is the matrix associated to with respect to these bases.   "
+},
+{
+  "id": "sec-lt-intro-6-8",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-6-8",
+  "type": "Example",
+  "number": "1.2.25",
+  "title": "",
+  "body": "  Consider where . If we choose the bases and , then .   "
+},
+{
+  "id": "sec-lt-intro-6-10",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-6-10",
+  "type": "Proposition",
+  "number": "1.2.26",
+  "title": "",
+  "body": "  If and are linear transformations and , , and are bases for , , and , respectively, then .    We denote the vectors in the bases by , , and , respectively. Similarly, we use the shorthand   We have , which implies that Therefore, , which says that as expected.   "
+},
+{
+  "id": "sec-lt-intro-6-12",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-6-12",
+  "type": "Proposition",
+  "number": "1.2.27",
+  "title": "",
+  "body": "  Suppose that is a linear transformation and is a basis for and is a basis for . If is a vector in , then .   "
+},
+{
+  "id": "sec-lt-intro-6-14",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-6-14",
+  "type": "Example",
+  "number": "1.2.28",
+  "title": "",
+  "body": "  Suppose that and that and . Then This matrix converts the coordinate representation of a polynomials in the basis into the coordinate representation of the same polynomial in the basis.  The inverse of this matrix will convert the -coordinate representation of a polynomial into the -coordinate representation: .  Consider the polynomial . We then have and . This means that as is easily checked.   "
+},
+{
+  "id": "sec-lt-intro-6-16",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-6-16",
+  "type": "Proposition",
+  "number": "1.2.29",
+  "title": "",
+  "body": "  Suppose that is a linear transformation and that and are two bases for . Then .   "
+},
+{
+  "id": "sec-lt-intro-6-18",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-6-18",
+  "type": "Definition",
+  "number": "1.2.30",
+  "title": "",
+  "body": "  Two square matrices and are called similar if there is a matrix such that .   "
+},
+{
+  "id": "sec-lt-intro-6-20",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-6-20",
+  "type": "Proposition",
+  "number": "1.2.31",
+  "title": "",
+  "body": "  Similarity is an equivalence relation on the set of matrices.   "
+},
+{
+  "id": "sec-lt-intro-6-21",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-6-21",
+  "type": "Proposition",
+  "number": "1.2.32",
+  "title": "",
+  "body": "  Suppose that and are similar matrices. If is a basis for and , then for some other basis .   "
+},
+{
+  "id": "sec-lt-intro-6-24",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-6-24",
+  "type": "Definition",
+  "number": "1.2.33",
+  "title": "",
+  "body": "  If and are two vector spaces, then is the set of linear transformations .   "
+},
+{
+  "id": "sec-lt-intro-6-25",
+  "level": "2",
+  "url": "sec-lt-intro.html#sec-lt-intro-6-25",
+  "type": "Proposition",
+  "number": "1.2.34",
+  "title": "",
+  "body": "  If and are two vector spaces, then is a vector space. Moreover, if is a finite basis for and is a finite basis for , then the function by is an isomorphism. It then follows that .   "
 },
 {
   "id": "backmatter-2",
