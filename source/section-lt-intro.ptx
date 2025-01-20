@@ -344,95 +344,18 @@
         </p>
       </proof>
     </proposition>
-    
-  </subsection>
-
-  <subsection>
-    <title>Vector space isomorphisms</title>
-
-    <definition>
-      <statement>
-        <p>Suppose <m>T:V\to W</m>. If <m>\range(T)=W</m>, we say that
-        <m>T</m> is <em>surjective</em>.  If <m>\nul(T)=\{0\}</m>, we
-        say that 
-        <m>T</m> is <em>injective</em>.
-        </p>
-      </statement>
-    </definition>
-
-    <p>If <m>T</m> is surjective, notice that every vector <m>\wvec\in
-    W</m> has a vector <m>\vvec</m> for which <m>T\vvec=\wvec</m>.
-    </p>
-
-    <p>If <m>T</m> is injective and <m>T\vvec_1=T\vvec_2</m>, then
-    <m>\vvec_1=\vvec_2</m> since <m>T(\vvec_1-\vvec_2)=0</m> meaning
-    <m>\vvec_1-\vvec_2\in \nul(T)</m>.
-    </p>
-
-    <example>
-      <statement>
-        <p>Once again, these are familiar notions.  Suppose that
-        <m>A</m> is an <m>m\times n</m> matrix that defines a 
-        linear transformation <m>T:\real^n\to\real^m</m>.  Then
-        <m>T</m> is injective if <m>\nul(A) = \{\zerovec\}</m>.  This
-        happens when the columns of <m>A</m> are linearly independent.
-        </p>
-        <p> The transformation
-        <m>T</m> is surjective if <m>\col(A) = \real^m</m>, which
-        happens when the columns of <m>A</m> span <m>\real^m</m>.
-        </p>
-      </statement>
-    </example>
-
-    <example>
-      <statement>
-        <p>The linear transformation <m>T:\pbb\to\pbb</m> defined by
-        <m>T(p)(x)=xp(x)</m> is injective but not surjective because
-        the constant polynomials are not in <m>\range(T)</m>.
-        </p>
-      </statement>
-    </example>
-  
-    
-
-    <!--
 
     <p>We will frequently make use of the next proposition.</p>
     <proposition xml:id="prop-nul-range-dims">
       <statement>
-        <p>If <m>T:V\to W</m> is a linear transformation, then
-        <m>\nul(T)</m> is a subspace of <m>V</m> and
-        <m>\range(T)</m> is a subspace of <m>W</m>.  Moreover,
+        <p>If <m>V</m> is a finite dimensional vector space and
+        <m>T:V\to W</m> is a linear transformation, then 
         <me>
           \dim \nul(T) + \dim \range(T) = \dim V
           </me>.
         </p>
       </statement>
       <proof>
-        <p>First, suppose that <m>\vvec_1</m> and <m>\vvec_2</m> are
-        in <m>\nul(T)</m>.  Then
-        <md>
-          <mrow>T(s\vvec_1) \amp = sT\vvec_1 = 0</mrow>
-          <mrow>T(\vvec_1+\vvec_2) \amp = T\vvec_1 +T\vvec_2=
-          0</mrow>
-          </md>,
-          which shows that <m>\nul(T)</m> is closed under scalar
-          multiplication and addition and is therefore a subspace.
-        </p>
-        
-        <p>In the same way, suppose that <m>\wvec_1</m> and
-        <m>\wvec_2</m> are in <m>\range(T)</m>.  We must have vectors
-        <m>\vvec_1</m> and <m>\vvec_2</m> such that
-        <m>T\vvec_1=\wvec_1</m> and <m>T\vvec_2=\wvec_2</m>.  It
-        then follows that
-        <md>
-          <mrow>T(s\vvec_1) \amp = sT\vvec_1 = s\wvec</mrow>
-          <mrow>T(\vvec_1+\vvec_2) \amp = T\vvec_1 + T\vvec_2=
-          \wvec_1+\wvec_2</mrow>
-          </md>,
-          which shows that <m>\range(T)</m> is a subspace of <m>W</m>.
-        </p>
-        
         <p>Now suppose that <m>\uvec_1,\ldots,\uvec_j</m> is a
         basis for <m>\nul(T)</m>, which we extend to a basis for
         <m>V</m> by adding vectors <m>\vvec_1,\ldots,\vvec_k</m>.
@@ -483,22 +406,49 @@
       </proof>
     </proposition>
 
-    <p>The following proposition follows immediately from <xref
-    ref="prop-nul-range-dims"/>. 
-    </p>
-    
-    <proposition>
+    <definition>
       <statement>
-        <p>If <m>T:V\to W</m> is surjective, then <m>\dim V \geq \dim
-        W</m>.
-        </p>
-
-        <p>Similarly, if <m>T:V\to W</m> is injective, then <m>\dim V
-        \leq \dim W</m>.
+        <p>Suppose <m>T:V\to W</m>. If <m>\range(T)=W</m>, we say that
+        <m>T</m> is <em>surjective</em>.  If <m>\nul(T)=\{0\}</m>, we
+        say that 
+        <m>T</m> is <em>injective</em>.
         </p>
       </statement>
-    </proposition>
-    -->
+    </definition>
+
+    <p>If <m>T</m> is surjective, notice that every vector <m>\wvec\in
+    W</m> has a vector <m>\vvec</m> for which <m>T\vvec=\wvec</m>.
+    </p>
+
+    <p>If <m>T</m> is injective and <m>T\vvec_1=T\vvec_2</m>, then
+    <m>\vvec_1=\vvec_2</m> since <m>T(\vvec_1-\vvec_2)=0</m> meaning
+    <m>\vvec_1-\vvec_2\in \nul(T)</m>.
+    </p>
+
+    <example>
+      <statement>
+        <p>Once again, these are familiar notions.  Suppose that
+        <m>A</m> is an <m>m\times n</m> matrix that defines a 
+        linear transformation <m>T:\real^n\to\real^m</m>.  Then
+        <m>T</m> is injective if <m>\nul(A) = \{\zerovec\}</m>.  This
+        happens when the columns of <m>A</m> are linearly independent.
+        </p>
+        <p> The transformation
+        <m>T</m> is surjective if <m>\col(A) = \real^m</m>, which
+        happens when the columns of <m>A</m> span <m>\real^m</m>.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>The linear transformation <m>T:\pbb\to\pbb</m> defined by
+        <m>T(p)(x)=xp(x)</m> is injective but not surjective because
+        the constant polynomials are not in <m>\range(T)</m>.
+        </p>
+      </statement>
+    </example>
+  
 
     <definition>
       <statement>
@@ -509,18 +459,30 @@
       </statement>
     </definition>
 
-    <!--
-
+    <p>The following proposition follows immediately from <xref
+    ref="prop-nul-range-dims"/>. 
+    </p>
+    
     <proposition>
       <statement>
-        <p>If <m>T:V\to W</m> is an isomorphism, then <m>\dim V = \dim
-        W</m>.  Moreover, for every <m>\wvec\in W</m>, there is a
-        unique <m>\vvec</m> such that <m>\wvec=T\vvec</m>.
+        <p>If <m>T:V\to W</m> is surjective, then <m>\dim V \geq \dim
+        W</m>.
+        </p>
+
+        <p>If <m>T:V\to W</m> is injective, then <m>\dim V
+        \leq \dim W</m>.
+        </p>
+
+        <p>If <m>T:V\to W</m> is an isomorphism, then <m>\dim V
+        = \dim W</m>.
         </p>
       </statement>
     </proposition>
+    
+  </subsection>
 
-    -->
+  <subsection>
+    <title>Vector space isomorphisms</title>
 
     <example>
       <statement>
@@ -612,32 +574,103 @@
     finite dimensional real vector spaces at the same time.
     </p>
 
+    <p> Notice, however, that the 
+    isomorphism in <xref ref="prop-fin-dim-isom"/> depends on a choice
+    of basis.  If two people choose different bases, then they will
+    produce different isomorphisms.  In fact, as we move forward, some
+    of our work will be motivated by choosing a basis that creates a
+    particularly nice isomorphism.  Our next discussion of matrices
+    will lay that foundation.
+    </p>
   </subsection>
-  <!--
+
   <subsection>
     <title>Representing linear transformations with matrices</title>
 
-    <p>We began this section by recalling our earlier study of matrix
-    transformations and used that as motivation for introducing linear
-    transformations.  However, the connection is closer than just that.
+    <p><xref ref="prop-fin-dim-isom"/> says that every finite
+    dimensional vector space is
+    essentially the same as <m>\field^n</m>.  Therefore, we are
+    able to represent elements in a vector space as more typical
+    vectors in <m>\field^n</m> and linear transformations as
+    matrices.  Let us make this more clear now.
+    </p>
+
+    <p>Suppose that we have a basis <m>\bcal=\{\basis{\vvec}{n}\}</m>
+    for a 
+    finite dimensional vector space <m>V</m>.  If <m>\vvec</m> is an
+    element of <m>V</m>, then we can uniquely write
+    <me>
+      \vvec = c_1\vvec_1 + c_2\vvec_2 + \ldots + c_n\vvec_n
+    </me>.
+    As shorthand, we will write
+    <me>
+      \coords{\vvec}{\bcal} = \fourvec{c_1}{c_2}{\vdots}{c_n}
+    </me>.
+    This should be familiar from our
+    <url
+        href="https://understandinglinearalgebra.org/sec-bases.html#sec-bases-4">
+      earlier work
+    </url> when we used a basis of <m>\real^m</m> to form a new
+    coordinate system.
+    </p>
+
+    <example>
+      <statement>
+        <p>Consider the vector space <m>V=\pbb_2</m> with the basis
+        <m>\bcal=\{1,x,x^2\}</m>.  Then we have
+        <me>
+          \coords{a_0+a_1x+a_2x^2}{\bcal} = \threevec{a_0}{a_1}{a_2}
+        </me>.
+        We may think of this as a coordinate system in the vector
+        space of polynomials.
+        </p>
+      </statement>
+    </example>
+
+    <p>In a similar way, we can represent linear transformations using
+    matrices.  
     Suppose that <m>T:V\to W</m> is a linear transformation and that
     we have a basis <m>\bcal=\{\vvec_1,\ldots,\vvec_n\}</m> for
     <m>V</m> and a basis <m>\ccal=\{\wvec_1,\ldots,\wvec_m\}</m> for
     <m>W</m>.  We then have
     <me>
-      T\vvec_j = A_{1,j}\wvec_1 + A_{2,j}\wvec_2 + \ldots + A_{m,j}\wvec_m
+      T(\vvec_j) = A_{1,j}\wvec_1 + A_{2,j}\wvec_2 + \ldots +
+      A_{m,j}\wvec_m 
     </me>,
-    which defines an <m>m\times n</m> matrix <m>A</m>.
+    which defines an <m>m\times n</m> matrix <m>A</m>.  In the same
+    way we denoted the coordinates of a vector in terms of a basis, we
+    can denote the matrix of the linear transformation
+    <m>\coords{T}{\ccal,\bcal} = A</m>.  Notice that
+    <me>
+      \coords{T(\vvec_j)}{\ccal} =
+      \fourvec{A_{1,j}}{A_{2,j}}{\vdots}{A_{n,j}}
+    </me>
+    meaning that the columns of <m>\coords{T}{\ccal,\bcal}</m> are the
+    coordinates <m>\coords{T(\vvec_j)}{\ccal}</m>:
+    <me>
+      \coords{T}{\ccal,\bcal} =
+      \left[
+      \begin{array}{cccc}
+      \coords{T(\vvec_1)}{\ccal} \amp
+      \coords{T(\vvec_2)}{\ccal} \amp
+      \ldots
+      \coords{T(\vvec_m)}{\ccal}
+      \end{array}
+      \right]
+    </me>.
+    </p>
+
+    <p>At first glance, this notation may seem a little intimidating,
+    but it will become clear with a little practice.
     </p>
 
     <definition>
       <statement>
         <p>If <m>T:V\to W</m> is a linear transformation, <m>\bcal</m>
         a basis for <m>V</m> and <m>\ccal</m> a basis for <m>W</m>, we
-        say that this matrix <m>M_T^{\ccal,\bcal}</m> is the matrix
-        associated to <m>T</m> with respect to these bases.  We will
-        frequently drop the subscript when the transformation is clear
-        from context.</p>
+        say that the matrix <m>\coords{T}{\ccal,\bcal}</m> is the matrix
+        associated to <m>T</m> with respect to these bases.  
+        </p>
       </statement>
     </definition>
 
@@ -647,7 +680,7 @@
         we choose the bases <m>\bcal=\{x^3,x^2,x,1\}</m> and
         <m>\ccal=\{x^2,x,1\}</m>, then
         <me>
-          M^{\bcal,\ccal}=\begin{bmatrix}
+          \coords{T}{\bcal,\ccal}=\begin{bmatrix}
           3 \amp 0 \amp 0 \amp 0 \\
           0 \amp 2 \amp 0 \amp 0 \\
           0 \amp 0 \amp 1 \amp 0 \\
@@ -657,6 +690,7 @@
       </statement>
     </example>
 
+    <!--
     <proposition>
       <statement>
         <p>If <m>\bcal</m> and <m>\ccal</m> are
@@ -675,6 +709,7 @@
         </p>
       </statement>
     </proposition>
+    -->
 
     <p> The next proposition says that the composition of linear
     transformations corresponds to matrix multiplication.</p>
@@ -686,7 +721,8 @@
         <m>\dcal</m> are bases for <m>V</m>, <m>W</m>, and <m>U</m>,
         respectively, then
         <me>
-          M_{ST}^{\dcal, \bcal} = M_S^{\dcal,\ccal}M_T^{\ccal,\bcal}
+          \coords{ST}{\dcal, \bcal} = \coords{S}{\dcal,\ccal}
+          \coords{T}{\ccal,\bcal} 
         </me>.
         </p>
       </statement>
@@ -696,11 +732,17 @@
         <m>\basis{\vvec}{m}</m>, <m>\basis{\wvec}{n}</m>, and
         <m>\basis{\uvec}{p}</m>, respectively.  Similarly, we use the
         shorthand 
-        <sidebyside widths="10% 10% 10%" margins="5% 5%">
-          <p><m> A = M_T^{\ccal,\bcal}</m></p>
-          <p><m> B = M_S^{\dcal,\ccal}</m></p>
-          <p><m> C = M_{ST}^{\dcal,\bcal}</m></p>
-        </sidebyside>
+        <md>
+          <mrow>
+            A \amp = \coords{T}{\ccal,\bcal}
+          </mrow>
+          <mrow>
+            B \amp = \coords{S}{\dcal,\ccal}
+          </mrow>
+          <mrow>
+            C \amp = \coords{ST}{\dcal,\bcal}
+          </mrow>
+        </md>
         </p>
         <p> We have
         <md>
@@ -735,11 +777,232 @@
       </proof>
           
     </proposition>
+
+    <p>A similar result holds for the coordinate representations of
+    vectors.
+    </p>
+    <proposition>
+      <statement>
+        <p>Suppose that <m>T:V\to W</m> is a linear transformation and
+        <m>\bcal</m> is a basis for <m>V</m> and <m>\ccal</m> is a
+        basis for <m>W</m>.  If <m>\vvec</m> is a vector in <m>V</m>,
+        then
+        <me>
+          \coords{T(\vvec)}{\ccal} = \coords{T}{\ccal,\bcal}
+          \coords{v}{\bcal}
+        </me>.
+        </p>
+      </statement>
+    </proposition>
+
+    <p>An important example is when the linear transformation is
+    the identity <m>I:V\to V</m> and we have two bases
+    <m>\bcal</m> and <m>\ccal</m> for <m>V</m>.  In this case,
+    <me>
+      \coords{I}{\ccal,\bcal} =
+      \left[
+      \begin{array}{ccc}
+      \coords{\vvec_1}{\ccal} \amp \ldots \amp
+      \coords{\vvec_n}{\ccal}
+      \end{array}
+      \right]
+    </me>.
+    This matrix then represents the change of coordinates
+    <me>
+      \coords{\vvec}{\ccal} = \coords{I}{\ccal,\bcal}
+      \coords{\vvec}{\bcal}
+    </me>.
+    </p>
+
+    <example>
+      <statement>
+        <p>Suppose that <m>V = \pbb_2</m> and that
+        <m>\bcal=\{1+x,x-x^2,x^2-1\}</m> and
+        <m>\ccal=\{1,x,x^2\}</m>.  Then
+        <md>
+          <mrow>
+            \coords{I}{\ccal,\bcal}\amp =
+            \begin{bmatrix}
+            \coords{1+x}{\ccal} \amp
+            \coords{x-x^2}{\ccal} \amp
+            \coords{x^2-1}{\ccal}
+            \end{bmatrix}
+          </mrow>
+          <mrow>
+            \amp =
+            \begin{bmatrix}
+            1 \amp 0 \amp -1 \\
+            1 \amp 1 \amp 0 \\
+            0 \amp -1 \amp 1
+            \end{bmatrix}.
+          </mrow>
+        </md>
+        This matrix converts the coordinate representation of a
+        polynomials in the <m>\bcal</m> basis into the coordinate
+        representation of the same polynomial in the <m>\ccal</m>
+        basis. 
+        </p>
+
+        <p>The inverse of this matrix will convert the
+        <m>\ccal</m>-coordinate representation of a polynomial into
+        the <m>\bcal</m>-coordinate representation:
+        <me>
+          \coords{I}{\bcal,\ccal} = \coords{I}{\ccal,\bcal}^{-1} =
+          \begin{bmatrix}
+          1/2 \amp 1/2 \amp 1/2 \\
+          -1/2 \amp 1/2 \amp -1/2 \\
+          -1/2 \amp 1/2 \amp 1/2 \\
+          \end{bmatrix}
+        </me>.
+        </p>
+
+        <p>Consider the polynomial <m>p(x)=4-2x+8x^2</m>.  We then
+        have
+        <me>
+          \coords{p}{\ccal} = \threevec4{-2}8
+        </me>
+        and
+        <me>
+          \coords{p}{\bcal} = 
+          \begin{bmatrix}
+          1/2 \amp 1/2 \amp 1/2 \\
+          -1/2 \amp 1/2 \amp -1/2 \\
+          -1/2 \amp 1/2 \amp 1/2 \\
+          \end{bmatrix}
+          \threevec4{-2}8
+          = \threevec5{-7}1
+        </me>.
+        This means that
+        <me>
+          p(x) = 4-2x+8x^2 = 5(x+1)-7(x-x^2)+1(x^2-1)
+        </me>
+        as is easily checked.
+        </p>
+      </statement>
+    </example>
+
+    <p>We will often be interested in linear transformations <m>T:V\to
+    V</m> in which the codomain and the domain are the same vector
+    space.  Given a basis <m>\bcal</m> for <m>V</m>, we can then
+    represent <m>T</m> in terms of this basis as
+    <m>\coords{T}{\bcal,\bcal}</m> where the same basis is used for
+    the codomain and domain.
+    The following shows how the matrices representing the same
+    transformation are represented in two bases.
+    </p>
+
+    <proposition>
+      <statement>
+        <p>Suppose that <m>T:V\to V</m> is a linear transformation and
+        that <m>\bcal</m> and <m>\ccal</m> are two bases for
+        <m>V</m>.  Then
+        <me>
+          \coords{T}{\ccal,\ccal} =
+          \coords{I}{\ccal,\bcal}
+          \coords{T}{\bcal,\bcal}
+          \coords{I}{\bcal,\ccal}
+          =
+          \coords{I}{\ccal,\bcal}
+          \coords{T}{\bcal,\bcal}
+          \coords{I}{\ccal,\bcal}^{-1}
+        </me>.
+        </p>
+      </statement>
+    </proposition>
+
+    <p>Here is a simpler way to represent this statement.  If <m>B =
+    \coords{T}{\ccal,\ccal}</m>, <m>A=\coords{T}{\bcal,\bcal}</m>, and
+    <m>P=\coords{I}{\ccal,\bcal}</m>, then we have
+    <me>
+      B = PAP^{-1}
+    </me>.
+    This should remind you of the kind of expression we saw when we
+    were diagonalizing matrices and gives some idea for where we are
+    heading.
+    </p>
+
+    <definition>
+      <statement>
+        <p>Two square <m>n\times n</m> matrices <m>A</m> and <m>B</m>
+        are called 
+        <em>similar</em> if there is a matrix <m>P</m> such that
+        <me>
+          B = PAP^{-1}
+        </me>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>Notice that a matrix is diagonalizable precisely when it is
+    similar to a diagonal matrix.
+    </p>
+
+    <proposition>
+      <statement>
+        <p>Similarity is an equivalence relation on the set of
+        <m>n\times n</m> matrices.
+        </p>
+      </statement>
+    </proposition>
+
+    <proposition>
+      <statement>
+        <p>Suppose that <m>A</m> and <m>B</m> are similar <m>n\times
+        n</m> matrices.  If <m>\bcal</m> is a basis for <m>V</m> and
+        <m>A=\coords{T}{\bcal,\bcal}</m>,
+        then <m>B=\coords{T}{\ccal,\ccal}</m> for
+        some other basis <m>\ccal</m>.
+        </p>
+      </statement>
+    </proposition>
+
+    <p>In other words, two similar matrices represent the same linear
+    transformations in two different bases.  This is why we should
+    expect that similar matrices should share important properties,
+    such as determinants, eigenvalues, and more.
+    </p>
+
+    <p>We close this section by noting that the set of linear
+    transformations is itself a vector space.
+    </p>
+
+    <definition>
+      <statement>
+        <p>If <m>V</m> and <m>W</m> are two vector spaces, then
+        <m>L(V,W)</m> is the set of linear transformations <m>T:V\to
+        W</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <proposition>
+      <statement>
+        <p>If <m>V</m> and <m>W</m> are two vector spaces, then
+        <m>L(V,W)</m> is a vector space.  Moreover, if <m>\bcal</m> is
+        a finite basis for <m>V</m> and <m>\ccal</m> is a finite basis
+        for <m>W</m>, then the function <m>S:L(V,W)\to
+        \field^{m,n}</m> by 
+        <me>
+          S(T) = \coords{T}{\ccal,\bcal}
+        </me>
+        is an isomorphism. It then follows that
+        <me>
+          \dim L(V,W) = \dim V \dim W
+        </me>.
+        </p>
+      </statement>
+    </proposition>
+      
+    
   </subsection>
 
   
 
-      
+  
+
+  
+
+  <!--
   <subsection>
     <title>Dual spaces</title>
 

@@ -75,6 +75,7 @@
     \newcommand{\bcal}{{\cal B}}
     \newcommand{\ccal}{{\cal C}}
     \newcommand{\dcal}{{\cal D}}
+    \newcommand{\ecal}{{\cal E}}
     \newcommand{\scal}{{\cal S}}
     \newcommand{\wcal}{{\cal W}}
     \newcommand{\ecal}{{\cal E}}
