@@ -128,7 +128,7 @@ eBookConfig.enable_chatcodes =  false;
 </div>
 </div>
 <span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><span class="previous-button button disabled"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></span><span class="up-button button disabled"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></span><a class="next-button button" href="frontmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
-</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\nul}{\text{nul}}
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\nul}{\operatorname{nul}}
 \newcommand{\N}{\mathbb N}
 \newcommand{\Z}{\mathbb Z}
 \newcommand{\Q}{\mathbb Q}
@@ -160,8 +160,10 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\complex}{\mathbb C}
 \newcommand{\field}{\mathbb F}
 \newcommand{\pbb}{\mathbb P}
-\newcommand{\basis}[2]{#1_1,#1_2,\ldots,#1_#2}
+\newcommand{\poly}{\mathbb P}
+\newcommand{\basis}[2]{#1_1,#1_2,\ldots,#1_{#2}}
 \newcommand{\conjugate}[1]{\overline{#1}}
+\newcommand{\conj}[1]{\overline{#1}}
 \newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
 \end{array}\right]}
 \newcommand{\ctwovec}[2]{\left[\begin{array}{c}#1 \\ #2
@@ -179,7 +181,7 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\cfivevec}[5]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\
 #4 \\ #5 \\ \end{array}\right]}
 \newcommand{\mattwo}[4]{\left[\begin{array}{rr}#1 \amp #2 \\ #3 \amp #4 \\ \end{array}\right]}
-\newcommand{\laspan}[1]{\text{Span}\{#1\}}
+\newcommand{\laspan}[1]{\operatorname{Span}\{#1\}}
 \newcommand{\bcal}{{\cal B}}
 \newcommand{\ccal}{{\cal C}}
 \newcommand{\dcal}{{\cal D}}
@@ -192,10 +194,11 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\gray}[1]{\color{gray}{#1}}
 \newcommand{\lgray}[1]{\color{lightgray}{#1}}
 \newcommand{\rank}{\operatorname{rank}}
-\newcommand{\row}{\text{Row}}
-\newcommand{\col}{\text{Col}}
-\renewcommand{\deg}{\text{deg}}
-\newcommand{\range}{\text{range}}
+\newcommand{\row}{\operatorname{Row}}
+\newcommand{\col}{\operatorname{Col}}
+\renewcommand{\deg}{\operatorname{deg}}
+\newcommand{\range}{\operatorname{range}}
+\newcommand{\tr}{\operatorname{tr}}
 \newcommand{\var}{\text{Var}}
 \newcommand{\corr}{\text{corr}}
 \newcommand{\len}[1]{\left|#1\right|}
@@ -241,6 +244,14 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-4" class="internal"><span class="codenumber">1.2.2</span> <span class="title">The null space and range</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-5" class="internal"><span class="codenumber">1.2.3</span> <span class="title">Vector space isomorphisms</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-6" class="internal"><span class="codenumber">1.2.4</span> <span class="title">Representing linear transformations with matrices</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-orthogonal.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Inner products</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-3" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Inner products</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-4" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Orthogonality</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-5" class="internal"><span class="codenumber">1.3.3</span> <span class="title">The adjoint of a linear transformation</span></a></div></li>
 </ul>
 </li>
 </ul>

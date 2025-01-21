@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="proposition theorem-like"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.17</span><span class="period">.</span><span class="space"> </span><span class="title">Riesz represenation theorem.</span>
+</h4>
+<div class="para logical">
+<div class="para">Suppose that <span class="process-math">\(V\)</span> is an inner product space and <span class="process-math">\(\phi:V\to \field\)</span> is a linear transformation.  Then there is a unique vector <span class="process-math">\(\uvec\)</span> such that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\phi(\vvec) = \inner{\vvec}{\uvec}\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proof"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para">If <span class="process-math">\(\phi = 0\text{,}\)</span> then we can take <span class="process-math">\(\uvec=0\)</span> as well.</div>
+<div class="para">So suppose that <span class="process-math">\(\phi\neq 0\text{,}\)</span> which means that there is a vector <span class="process-math">\(\vvec\)</span> such that <span class="process-math">\(\phi(\vvec) \neq
+0\text{.}\)</span>  Therefore, <span class="process-math">\(\phi\)</span> is onto and <span class="process-math">\(\range(\phi)=\field\text{.}\)</span>
+</div>
+<div class="para logical">
+<div class="para">If <span class="process-math">\(\dim V = n\text{,}\)</span> we know that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-ortho-extend.html">
+\begin{equation*}
+\dim \nul(\phi) = \dim V - \dim \range(\phi) = n-1\text{.}
+\end{equation*}
+</div>
+<div class="para">Choose an orthonormal basis <span class="process-math">\(\basis{\vvec}{n-1}\)</span> for <span class="process-math">\(\nul(\phi)\text{.}\)</span>  We know by <a href="sec-orthogonal.html#prop-ortho-extend" class="xref" data-knowl="./knowl/xref/prop-ortho-extend.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.3.16">Proposition 1.3.16</a> that we can add a vector <span class="process-math">\(\wvec\)</span> to obtain an orthonormal basis.  Let <span class="process-math">\(\uvec=\phi(\wvec)\wvec\text{.}\)</span>
+</div>
+</div>
+<div class="para logical">
+<div class="para">If <span class="process-math">\(\vvec\)</span> is a vector in <span class="process-math">\(V\text{,}\)</span> then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\vvec=c_1\vvec_1+\ldots+c_{n-1}\vvec_{n-1} + c_n\wvec\text{.}
+\end{equation*}
+</div>
+<div class="para">Then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\phi(\vvec) = c_n\phi(\wvec) = \inner{\vvec}{\uvec}\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical">
+<div class="para">To see that <span class="process-math">\(\uvec\)</span> is unique, suppose that there are two such vectors <span class="process-math">\(\uvec_1\)</span> and <span class="process-math">\(\uvec_1\)</span> such that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\phi(\vvec) = 
+\inner{\vvec}{\uvec_1}=
+\inner{\vvec}{\uvec_2}
+\end{equation*}
+</div>
+<div class="para">for every vector <span class="process-math">\(\vvec\text{.}\)</span>  In particular, we have <span class="process-math">\(\inner{\vvec}{\uvec_1-\uvec_2} = 0\)</span> for every <span class="process-math">\(\vvec\)</span> including <span class="process-math">\(\vvec=\uvec_1-\uvec_2\text{.}\)</span> Therefore,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\inner{\uvec_1-\uvec_2}{\uvec_1-\uvec_2} = 0\text{,}
+\end{equation*}
+</div>
+<div class="para">which implies that <span class="process-math">\(\uvec_1=\uvec_2\text{.}\)</span>
+</div>
+</div></article><span class="incontext"><a class="internal" href="sec-orthogonal.html#prop-riesz">in-context</a></span>
+</body>
+</html>

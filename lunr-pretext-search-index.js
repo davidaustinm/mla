@@ -640,6 +640,195 @@ var ptx_lunr_docs = [
   "body": "  If and are two vector spaces, then is a vector space. Moreover, if is a finite basis for and is a finite basis for , then the function by is an isomorphism. It then follows that .   "
 },
 {
+  "id": "sec-orthogonal",
+  "level": "1",
+  "url": "sec-orthogonal.html",
+  "type": "Section",
+  "number": "1.3",
+  "title": "Inner products",
+  "body": " Inner products   In our earlier studies, we introduced the dot product to introduce a richer geometric perspective on some key ideas. In particular, we could use the dot product to detect when vectors are orthogonal, and this led to many simplifications. For instance, the inverse of a matrix whose columns form an orthonormal basis of is just the transpose of that matrix.  As we expand our study to consider more general vector spaces, we need to introduce a concept like the dot product for vector spaces. This leads us to the concept of an inner product.    Inner products  On the vector space , we introduced the dot product between two vectors: . One important property is that .  More generally, we had the following properties:   Positivity  with if and only if .   Symmetry  .   Linearity   .     Things are a little different when we are using complex numbers. If is a general complex number, then is not guaranteed to be real, much less nonnegative. To preserve the positivity condition above, remember that the complex conjugate is defined by so that if , we have . We leads us to define the dot product on so that , which means . With this definition, the three properties above still hold except that the symmetry condition is modified to .    If is a vector space, we call an inner product provided that  Positivity  and if and only if .   Conjugate symmetry  .   Linearity  .         If , then is an inner product.  In fact, this is true if as well. If is real, then so the conjugate symmetry condition is the same as the symmetry condition above.      If is the vector space of all polynomials over , then is an inner product.  This may seem strange when you first see it, but it is just an extension of the usual dot product in some sense. For instance, think of a three-dimensional vector as a function from the set into . The dot product between two vectors is then , so that we multiply the the value of and at each point and add. If we interpret the integral as an infinite sum, this is what the inner product defined above is doing.      Suppose , the vector space of matrices. If is such a matrix, we define to be its conjugate transpose. That is, . Then is an inner product, where represents the trace of a matrix, the sum of its diagonal entries.  It's relatively straightforward to show that .    It may be useful to note the following consequence of the conjugate symmetry and linearity properties: .    We typically refer to a vector space with an inner product as an inner product space .      The length or norm of a vector in an inner product space is .    With this definition, it follows that .    If and are inner product spaces and is a vector space isomorphism such that for all vectors and , we say that is an isometry of vector spaces.      Orthogonality  Since an inner product is the same concept as the dot product extended to vector spaces, we have access to many similar concepts, such as orthogonality.    Two vectors and in an inner product space are orthogonal if .      If , the set of all polynomials, with the inner product given in , then is orthogonal to . This follows because each term in is an odd power of whose integral on the interval will be zero by symmetry.  More generally, any polynomial whose terms are all of odd degree is orthogonal to any polynomials whose terms are all of even degree.     Pythagorean theorem   If and are two orthogonal vectors in an inner product space, then .    The follows from the linearity of the inner product:       In an inner product space, we say that is an orthogonal set if each vector is nonzero and each pair of vectors is orthogonal to one another.      In an inner product space, an orthogonal set is linearly independent.    Suppose that is an orthogonal set and that . If we take the inner product with for any , we have which says that .    From this, we conclude that an orthogonal set forms a basis for a subspace of the inner product space.   Projection formula   Suppose that is an orthogonal set in an inner product space and that is a vector in . The closest vector in to is called the orthogonal projection of onto and is given by .    This is the same expression as the Projection Formula that we frequently used in our previous classes and its found by the same argument.  We first find the vector so that is orthogonal to and then explain why it is the closest vector.  Notice that, by linearity, if a vector is orthogonal to each , then it is orthogonal to every vector in . This is because any vector in is a linear combination of so that and therefore .  We require that be orthogonal to so that or for all . Since is in , it can be expressed as a linear combination of : so that we have , which gives the expression for in the statement of the proposition.  Now suppose that is any other vector in . Then is in and hence orthogonal to . Therefore, by the Pythagoren theorem and hence , which shows that is closer to than any other vector in .    The Projection Formula was key to a wide range of useful concepts. In particular, we can apply the Gram-Schmidt algorithm as we did earlier.    A set of vectors is called orthonormal if each pair of vectors is orthogonal and each vector has unit length.      If is a finite dimensional subspace of an inner product space , then there is an orthonormal basis for .    We choose any basis for and then define and so on. This produces an orthogonal basis for since, at every step, .  Finally, we define to obtain an orthonormal basis for .    Notice that a vector space is a subspace of itself so the previous proposition implies that every finite dimensional subspace has an orthonormal basis.  Also, remember that any linearly independent set in can be extended to a basis of by . If we begin with an orthonormal set of vectors in , we can extend it to a basis of , and apply the Gram-Schmidt algorithm to the added basis vectors to obtain an orthonormal basis of . In other words,    Any orthonormal set in can be extended to an orthonormal basis for .      The adjoint of a linear transformation  We suppose now that and are inner product spaces over a field . If is a linear transformation, we can define its adjoint through the following relationship for every in and in . We can also write this expression as by applying the conjugate symmetry condition twice. The first thing to establish is that is itself an linear transformation.  We will first prove a useful result in the simple case that .   Riesz represenation theorem   Suppose that is an inner product space and is a linear transformation. Then there is a unique vector such that .    If , then we can take as well.  So suppose that , which means that there is a vector such that . Therefore, is onto and .  If , we know that . Choose an orthonormal basis for . We know by that we can add a vector to obtain an orthonormal basis. Let .  If is a vector in , then . Then .  To see that is unique, suppose that there are two such vectors and such that for every vector . In particular, we have for every including . Therefore, , which implies that .      If and are inner product spaces and a linear transformation, the adjoint of is defined by by or equivalently .    There are a number of things implied by this definition so we need to check that they are satisfied. The following proposition will take care of this for us.    The adjoint is a linear transformation.    We first need to establish that is a vector in for every in . For a fixed in , define the linear transformation by . By , we know there is a vector in such that so we define , which gives . We have now defined a function such that for all and . We just need to show that is a linear transformation.   We need to show that satisfies the two linearity properties. Suppose that and are vectors in . Then Since this holds for any vector , we have .  In the same way, we see that , which verifies that is an operator on .    We now relate the matrices associated to and with respect to an orthonormal basis of . As before, we use to denote an orthonormal basis of .    Suppose that and are inner product spaces with orthonormal bases and , respectively. If is a linear transformation, , and , then , the conjugate transpose of .    If and , then which says that .     Real adjoints  If the underlying field , then the matrix associated to the adjoint is just the transpose of the matrix associated to . In other words, in the notation of .     "
+},
+{
+  "id": "sec-orthogonal-3-5",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-3-5",
+  "type": "Definition",
+  "number": "1.3.1",
+  "title": "",
+  "body": "  If is a vector space, we call an inner product provided that  Positivity  and if and only if .   Conjugate symmetry  .   Linearity  .      "
+},
+{
+  "id": "sec-orthogonal-3-6",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-3-6",
+  "type": "Example",
+  "number": "1.3.2",
+  "title": "",
+  "body": "  If , then is an inner product.  In fact, this is true if as well. If is real, then so the conjugate symmetry condition is the same as the symmetry condition above.   "
+},
+{
+  "id": "example-inner-poly",
+  "level": "2",
+  "url": "sec-orthogonal.html#example-inner-poly",
+  "type": "Example",
+  "number": "1.3.3",
+  "title": "",
+  "body": "  If is the vector space of all polynomials over , then is an inner product.  This may seem strange when you first see it, but it is just an extension of the usual dot product in some sense. For instance, think of a three-dimensional vector as a function from the set into . The dot product between two vectors is then , so that we multiply the the value of and at each point and add. If we interpret the integral as an infinite sum, this is what the inner product defined above is doing.   "
+},
+{
+  "id": "sec-orthogonal-3-8",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-3-8",
+  "type": "Example",
+  "number": "1.3.4",
+  "title": "",
+  "body": "  Suppose , the vector space of matrices. If is such a matrix, we define to be its conjugate transpose. That is, . Then is an inner product, where represents the trace of a matrix, the sum of its diagonal entries.  It's relatively straightforward to show that .   "
+},
+{
+  "id": "sec-orthogonal-3-10",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-3-10",
+  "type": "Definition",
+  "number": "1.3.5",
+  "title": "",
+  "body": "  We typically refer to a vector space with an inner product as an inner product space .   "
+},
+{
+  "id": "sec-orthogonal-3-11",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-3-11",
+  "type": "Definition",
+  "number": "1.3.6",
+  "title": "",
+  "body": "  The length or norm of a vector in an inner product space is .   "
+},
+{
+  "id": "sec-orthogonal-3-13",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-3-13",
+  "type": "Definition",
+  "number": "1.3.7",
+  "title": "",
+  "body": "  If and are inner product spaces and is a vector space isomorphism such that for all vectors and , we say that is an isometry of vector spaces.   "
+},
+{
+  "id": "sec-orthogonal-4-3",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-4-3",
+  "type": "Definition",
+  "number": "1.3.8",
+  "title": "",
+  "body": "  Two vectors and in an inner product space are orthogonal if .   "
+},
+{
+  "id": "sec-orthogonal-4-4",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-4-4",
+  "type": "Example",
+  "number": "1.3.9",
+  "title": "",
+  "body": "  If , the set of all polynomials, with the inner product given in , then is orthogonal to . This follows because each term in is an odd power of whose integral on the interval will be zero by symmetry.  More generally, any polynomial whose terms are all of odd degree is orthogonal to any polynomials whose terms are all of even degree.   "
+},
+{
+  "id": "sec-orthogonal-4-5",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-4-5",
+  "type": "Proposition",
+  "number": "1.3.10",
+  "title": "Pythagorean theorem.",
+  "body": " Pythagorean theorem   If and are two orthogonal vectors in an inner product space, then .    The follows from the linearity of the inner product:    "
+},
+{
+  "id": "sec-orthogonal-4-6",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-4-6",
+  "type": "Definition",
+  "number": "1.3.11",
+  "title": "",
+  "body": "  In an inner product space, we say that is an orthogonal set if each vector is nonzero and each pair of vectors is orthogonal to one another.   "
+},
+{
+  "id": "sec-orthogonal-4-7",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-4-7",
+  "type": "Proposition",
+  "number": "1.3.12",
+  "title": "",
+  "body": "  In an inner product space, an orthogonal set is linearly independent.    Suppose that is an orthogonal set and that . If we take the inner product with for any , we have which says that .   "
+},
+{
+  "id": "sec-orthogonal-4-9",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-4-9",
+  "type": "Proposition",
+  "number": "1.3.13",
+  "title": "Projection formula.",
+  "body": " Projection formula   Suppose that is an orthogonal set in an inner product space and that is a vector in . The closest vector in to is called the orthogonal projection of onto and is given by .    This is the same expression as the Projection Formula that we frequently used in our previous classes and its found by the same argument.  We first find the vector so that is orthogonal to and then explain why it is the closest vector.  Notice that, by linearity, if a vector is orthogonal to each , then it is orthogonal to every vector in . This is because any vector in is a linear combination of so that and therefore .  We require that be orthogonal to so that or for all . Since is in , it can be expressed as a linear combination of : so that we have , which gives the expression for in the statement of the proposition.  Now suppose that is any other vector in . Then is in and hence orthogonal to . Therefore, by the Pythagoren theorem and hence , which shows that is closer to than any other vector in .   "
+},
+{
+  "id": "sec-orthogonal-4-11",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-4-11",
+  "type": "Definition",
+  "number": "1.3.14",
+  "title": "",
+  "body": "  A set of vectors is called orthonormal if each pair of vectors is orthogonal and each vector has unit length.   "
+},
+{
+  "id": "sec-orthogonal-4-12",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-4-12",
+  "type": "Proposition",
+  "number": "1.3.15",
+  "title": "",
+  "body": "  If is a finite dimensional subspace of an inner product space , then there is an orthonormal basis for .    We choose any basis for and then define and so on. This produces an orthogonal basis for since, at every step, .  Finally, we define to obtain an orthonormal basis for .   "
+},
+{
+  "id": "prop-ortho-extend",
+  "level": "2",
+  "url": "sec-orthogonal.html#prop-ortho-extend",
+  "type": "Proposition",
+  "number": "1.3.16",
+  "title": "",
+  "body": "  Any orthonormal set in can be extended to an orthonormal basis for .   "
+},
+{
+  "id": "prop-riesz",
+  "level": "2",
+  "url": "sec-orthogonal.html#prop-riesz",
+  "type": "Proposition",
+  "number": "1.3.17",
+  "title": "Riesz represenation theorem.",
+  "body": " Riesz represenation theorem   Suppose that is an inner product space and is a linear transformation. Then there is a unique vector such that .    If , then we can take as well.  So suppose that , which means that there is a vector such that . Therefore, is onto and .  If , we know that . Choose an orthonormal basis for . We know by that we can add a vector to obtain an orthonormal basis. Let .  If is a vector in , then . Then .  To see that is unique, suppose that there are two such vectors and such that for every vector . In particular, we have for every including . Therefore, , which implies that .   "
+},
+{
+  "id": "sec-orthogonal-5-5",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-5-5",
+  "type": "Definition",
+  "number": "1.3.18",
+  "title": "",
+  "body": "  If and are inner product spaces and a linear transformation, the adjoint of is defined by by or equivalently .   "
+},
+{
+  "id": "sec-orthogonal-5-7",
+  "level": "2",
+  "url": "sec-orthogonal.html#sec-orthogonal-5-7",
+  "type": "Proposition",
+  "number": "1.3.19",
+  "title": "",
+  "body": "  The adjoint is a linear transformation.    We first need to establish that is a vector in for every in . For a fixed in , define the linear transformation by . By , we know there is a vector in such that so we define , which gives . We have now defined a function such that for all and . We just need to show that is a linear transformation.   We need to show that satisfies the two linearity properties. Suppose that and are vectors in . Then Since this holds for any vector , we have .  In the same way, we see that , which verifies that is an operator on .   "
+},
+{
+  "id": "prop-adjoint-matrix",
+  "level": "2",
+  "url": "sec-orthogonal.html#prop-adjoint-matrix",
+  "type": "Proposition",
+  "number": "1.3.20",
+  "title": "",
+  "body": "  Suppose that and are inner product spaces with orthonormal bases and , respectively. If is a linear transformation, , and , then , the conjugate transpose of .    If and , then which says that .   "
+},
+{
   "id": "backmatter-2",
   "level": "1",
   "url": "backmatter-2.html",
