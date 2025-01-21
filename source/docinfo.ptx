@@ -20,7 +20,7 @@
   <!-- to define these semantically, so that the macro relates to what-->
   <!-- it defines. -->
   <macros>
-    \newcommand{\nul}{\text{nul}}
+    \newcommand{\nul}{\operatorname{nul}}
     \newcommand{\N}{\mathbb N}
     \newcommand{\Z}{\mathbb Z}
     \newcommand{\Q}{\mathbb Q}
@@ -52,8 +52,10 @@
     \newcommand{\complex}{\mathbb C}
     \newcommand{\field}{\mathbb F}
     \newcommand{\pbb}{\mathbb P}
-    \newcommand{\basis}[2]{#1_1,#1_2,\ldots,#1_#2}
+    \newcommand{\poly}{\mathbb P}
+    \newcommand{\basis}[2]{#1_1,#1_2,\ldots,#1_{#2}}
     \newcommand{\conjugate}[1]{\overline{#1}}
+    \newcommand{\conj}[1]{\overline{#1}}
     \newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
     \end{array}\right]}
     \newcommand{\ctwovec}[2]{\left[\begin{array}{c}#1 \\ #2
@@ -71,7 +73,7 @@
     \newcommand{\cfivevec}[5]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\
     #4 \\ #5 \\ \end{array}\right]}
     \newcommand{\mattwo}[4]{\left[\begin{array}{rr}#1 \amp #2 \\ #3 \amp #4 \\ \end{array}\right]}
-    \newcommand{\laspan}[1]{\text{Span}\{#1\}}
+    \newcommand{\laspan}[1]{\operatorname{Span}\{#1\}}
     \newcommand{\bcal}{{\cal B}}
     \newcommand{\ccal}{{\cal C}}
     \newcommand{\dcal}{{\cal D}}
@@ -84,10 +86,11 @@
     \newcommand{\gray}[1]{\color{gray}{#1}}
     \newcommand{\lgray}[1]{\color{lightgray}{#1}}
     \newcommand{\rank}{\operatorname{rank}}
-    \newcommand{\row}{\text{Row}}
-    \newcommand{\col}{\text{Col}}
-    \renewcommand{\deg}{\text{deg}}
-    \newcommand{\range}{\text{range}}
+    \newcommand{\row}{\operatorname{Row}}
+    \newcommand{\col}{\operatorname{Col}}
+    \renewcommand{\deg}{\operatorname{deg}}
+    \newcommand{\range}{\operatorname{range}}
+    \newcommand{\tr}{\operatorname{tr}}
     \newcommand{\var}{\text{Var}}
     \newcommand{\corr}{\text{corr}}
     \newcommand{\len}[1]{\left|#1\right|}

@@ -1,49 +1,636 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="sec-orthogonal" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>Orthogonaliaty</title>
+  <title>Inner products</title>
 
   <introduction>
-    <p>As we've seen in our earlier studies, the dot product and
-    orthogonality lead to many simplifications.  For instance, the
-    inverse of a matrix whose columns form an orthonormal basis of
-    <m>\real^n</m> is just the transpose of that matrix.  Since we are
-    now looking to find bases that represent a given linear
-    transformation with a simple form, it makes sense to start to
-    consider orthogonal bases.
+    <p>In our earlier studies, we introduced the dot product to
+    introduce a richer geometric perspective on some key ideas.  In
+    particular, we could use the dot product to detect when vectors
+    are orthogonal, and this led to many simplifications.  For
+    instance, the inverse of a matrix whose columns form an
+    orthonormal basis of <m>\real^n</m> is just the transpose of that
+    matrix.
+    </p>
+    <p> As we expand our study to consider more general vector spaces,
+    we need to introduce a concept like the dot product for vector
+    spaces.  This leads us to the concept of an inner product.
     </p>
   </introduction>
-  
-  <subsection>
-    <title>The adjoint of an operator</title>
 
-    <p>We suppose now that <m>V</m> is a vector space over either
-    <m>\field=\real</m> or <m>\complex</m> having an inner product
-    denoted by <m>\inner{\cdot}{\cdot}</m>.  If <m>T</m> is an
-    operator on <m>V</m>, we can define its adjoint <m>T^*</m> through
-    the following relationship
+  <subsection>
+    <title> Inner products</title>
+
+    <p>On the vector space <m>\real^n</m>, we introduced the dot
+    product between two vectors:
     <me>
-      \inner{T\vvec}{\wvec}=\inner{\vvec}{T^*\wvec}
-    </me>
-    for every <m>\vvec</m> and <m>\wvec</m> in <m>V</m>.  Notice that 
-    this also means that
-    <me>
-      \inner{T^*\wvec}{\vvec} = \inner{\wvec}{T\vvec}
+      \vvec\cdot\wvec = v_1w_1+v_2w_2 + \ldots+v_nw_n
     </me>.
-    The first thing to establish is that <m>T^*</m> is itself an
-    operator.
+    One important property is that
+    <me>
+      \vvec\cdot\vvec = v_1^2 + v_2^2 + \ldots + v_n^2 = \len{\vvec}^2
+    </me>.
     </p>
 
+    <p>More generally, we had the following properties:
+    <ul>
+      <li>
+        <title>Positivity</title>
+        <p><m>\vvec\cdot\vvec \geq 0</m> with <m>\vvec\cdot\vvec=0</m>
+        if and only if <m>\vvec=\zerovec</m>.
+        </p>
+      </li>
+      <li><title>Symmetry</title>
+        <p><m>\vvec\cdot\wvec = \wvec\cdot\vvec</m>.
+        </p>
+      </li>
+      <li><title>Linearity</title>
+        <p>
+          <m>(c_1\vvec_1+c_2\vvec_2)\cdot\wvec = c_1\vvec_1\cdot\wvec
+          + c_2\vvec_2\cdot\wvec</m>.
+        </p>
+      </li>
+    </ul>
+    </p>
+
+    <p>Things are a little different when we are using complex
+    numbers.  If <m>z</m> is a general complex number, then <m>z^2</m>
+    is not guaranteed to be real, much less nonnegative.  To preserve
+    the positivity condition above, remember that the complex
+    conjugate is defined by 
+    <me>
+      \conj{a+bi} = a-bi
+    </me>
+    so that if <m>z=a+bi</m>, we have
+    <me>
+      z\conj{z}=a^2+b^2=\len{z}^2\geq 0
+    </me>.
+    We leads us to define the dot product on <m>\complex^n</m> so that
+    <me>
+      \vvec\cdot\vvec = |v_1|^2 + |v_2|^2 + \ldots + |v_n|^2 =
+      \len{\vvec}^2 \geq 0
+    </me>,
+    which means 
+    <me>
+      \vvec\cdot\wvec = v_1\conj{w_1}+v_2\conj{w_2} + \ldots+v_n\conj{w_n}
+    </me>.
+    With this definition, the three properties above still hold except
+    that the symmetry condition is modified to <m>\vvec\cdot\wvec =
+    \conj{\wvec\cdot\vvec}</m>. 
+    </p>
+
+    <definition>
+      <statement>
+        <p>If <m>V</m> is a vector space, we call
+        <m>\inner{}{}</m> an <em>inner product</em> provided that
+        <ul>
+          <li><title>Positivity</title>
+          <p><m>\inner{\vvec}{\vvec}\geq 0</m> and
+          <m>\inner{\vvec}{\vvec} = 0</m> if and only if
+          <m>\vvec=0</m>.
+          </p>
+          </li>
+          <li><title>Conjugate symmetry</title>
+          <p><m>\conj{\inner{\vvec}{\wvec}} =
+          \inner{\wvec}{\vvec}</m>.
+          </p>
+          </li>
+          <li><title>Linearity</title>
+          <p><m>\inner{c_1\vvec_1+c_2\vvec_2}{\wvec} =
+          c_1\inner{\vvec_1}{\wvec} + c_2\inner{\vvec_2}{\wvec}</m>.
+          </p>
+          </li>
+        </ul>
+        </p>
+      </statement>
+    </definition>
+
+    <example>
+      <statement>
+        <p>If <m>V=\complex^n</m>, then <m>\inner{\vvec}{\wvec} =
+        \vvec\cdot\wvec</m> is an inner product.
+        </p>
+
+        <p>In fact, this is true if <m>V=\real^n</m> as well.  If
+        <m>x</m> is real, then <m>\conj{x} = x</m> so the conjugate
+        symmetry condition is the same as the symmetry condition
+        above.
+        </p>
+      </statement>
+    </example>
+    
+    <example xml:id="example-inner-poly">
+      <statement>
+        <p>If <m>\poly</m> is the vector space of all polynomials over
+        <m>\field</m>, then
+        <me>
+          \inner{p}{q}=\int_{-1}^1 p(x)\conj{q(x)}~dx
+        </me>
+        is an inner product.
+        </p>
+
+        <p>This may seem strange when you first see it, but it is just
+        an extension of the usual dot product in some sense.  For
+        instance, think of a three-dimensional vector as a function
+        from the set <m>\{-1,0,1\}</m> into <m>\real</m>.  The dot
+        product between two vectors is then
+        <me>
+          \vvec\cdot\wvec = \vvec(-1)\conj{\wvec(-1)} +
+          \vvec(0)\conj{\wvec(0)}
+          + \vvec(1)\conj{\wvec(1)}
+        </me>,
+        so that we multiply the the value of <m>v</m> and
+        <m>\conj{\wvec}</m> at each point and add.  If we interpret
+        the integral as an infinite sum, this is what the
+        inner product defined above is doing.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>Suppose <m>V=\field^{m,n}</m>, the vector space of <m>m\times
+        n</m> matrices.  If <m>A</m> is such a matrix, we define
+        <m>A^*</m> to be its conjugate transpose.  That is,
+        <m>A^*=\conj{A^T}</m>.  Then
+        <me>
+          \inner{A}{B} = \tr(AB^*)
+        </me>
+        is an inner product, where <m>\tr</m> represents the
+        <em>trace</em> of 
+        a matrix, the sum of its diagonal entries.
+        </p>
+
+        <p>It's relatively straightforward to show that
+        <me>
+          \inner{A}{A} = \sum_{i,j}\len{A_{i,j}}^2
+        </me>.
+        </p>
+      </statement>
+    </example>
+
+    <p> It may be useful to note the following consequence of the
+    conjugate symmetry and linearity properties:
+    <me>
+      \inner{\vvec}{c_1\wvec_1+c_2\wvec_2}
+      =\conj{c_1}\inner{\vvec}{\wvec_1} +
+      \conj{c_2}\inner{\vvec}{\wvec_2}
+    </me>.
+    </p>
+
+    <definition>
+      <statement>
+        <p>We typically refer to a vector space <m>V</m> with an inner
+        product as an <em>inner product space</em>.
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <statement>
+        <p>The <em>length</em> or <em>norm</em> of a vector
+        <m>\vvec</m> in an inner product space is
+        <me>
+          \len{\vvec} = \sqrt{\inner{\vvec}{\vvec}}
+        </me>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>With this definition, it follows that <m>\len{s\vvec} =
+    \len{s}\len{\vvec}</m>.
+    </p>
+
+    <definition>
+      <statement>
+        <p>If <m>V</m> and <m>W</m> are inner product spaces and
+        <m>T:V\to W</m> is a vector space isomorphism such that
+        <me>
+          \inner{T(\vvec_1)}{T(\vvec_2)} = \inner{\vvec_1}{\vvec_2}
+        </me>
+        for all vectors <m>\vvec_1</m> and <m>\vvec_2</m>, we say that
+        <m>T</m> is an <em>isometry</em> of vector spaces.
+        </p>
+      </statement>
+    </definition>
+    
+  </subsection>
+
+  <subsection>
+    <title>Orthogonality</title>
+
+    <p>Since an inner product is the same concept as the dot product
+    extended to vector spaces, we have access to many similar
+    concepts, such as orthogonality.
+    </p>
+
+    <definition>
+      <statement>
+        <p>Two vectors <m>\vvec</m> and <m>\wvec</m> in an inner
+        product space are <em>orthogonal</em> if
+        <m>\inner{\vvec}{\wvec} = 
+        0</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <example>
+      <statement>
+        <p>If <m>V=\poly</m>, the set of all polynomials, with the
+        inner product given in <xref ref="example-inner-poly"/>, then
+        <m>p(x)=x-x^3</m> is orthogonal to <m>q(x)=x^2+7x^8</m>.  This
+        follows because each term in <m>p(x)\conj{q(x)}</m> is an odd
+        power of <m>x</m> whose integral on the interval <m>[-1,1]</m>
+        will be zero by symmetry.
+        </p>
+
+        <p>More generally, any polynomial whose terms are all of odd
+        degree is orthogonal to any polynomials whose terms are all of
+        even degree.
+        </p>
+      </statement>
+    </example>
+
     <proposition>
-      <statement> The adjoint <m>T^*:V\to V</m> is an operator on
-      <m>V</m>.
+      <title>Pythagorean theorem</title>
+      <statement>
+        <p>If <m>\vvec</m> and <m>\wvec</m> are two orthogonal vectors
+        in an inner product space, then
+        <me>
+          \len{\vvec+\wvec}^2 = \len{\vvec}^2+\len{\wvec}^2
+        </me>.
+        </p>
       </statement>
 
       <proof>
-        <p>We first need to establish that <m>T^*\wvec</m> is a vector
-        in <m>V</m> for every <m>\wvec</m> in <m>V</m>.
+        <p>The follows from the linearity of the inner product:
+        <md>
+          <mrow>
+            \len{\vvec+\wvec}^2 \amp =
+            \inner{\vvec+\wvec}{\vvec+\wvec}
+          </mrow>
+          <mrow>
+            \amp =
+            \inner{\vvec}{\vvec}+\inner{\vvec}{\wvec}+\inner{\wvec}{\vvec}
+            + \inner{\wvec}{\wvec}
+          </mrow>
+          <mrow>
+            \amp =
+            \len{\vvec}^2 + \len{\wvec}^2
+          </mrow>
+        </md>
+        </p>
+      </proof>
+    </proposition>
+
+    <definition>
+      <statement>
+        <p>In an inner product space, we say that
+        <m>\basis{\vvec}{m}</m> is an <em>orthogonal</em> set if each
+        vector is nonzero and each
+        pair of vectors is orthogonal to one another.
+        </p>
+      </statement>
+    </definition>
+
+    <proposition>
+      <statement>
+        <p>In an inner product space, an orthogonal set is linearly
+        independent. </p>
+      </statement>
+
+      <proof>
+        <p>Suppose that <m>\basis{\vvec}{m}</m> is an orthogonal set
+        and that
+        <me>
+          a_1\vvec_1 + a_2\vvec_2 + \ldots + a_m\vvec_m = 0
+        </me>.
+        If we take the inner product with <m>\vvec_j</m> for any
+        <m>j</m>, we have
+        <md>
+          <mrow>
+            \inner
+            {a_1\vvec_1 + a_2\vvec_2 + \ldots + a_m\vvec_m}
+            {\vvec_j} \amp = 0
+          </mrow>
+          <mrow>
+            a_1\inner{\vvec_1}{\vvec_j} + a_2 \inner{\vvec_2}{\vvec_j}
+            + \ldots + a_m\inner{\vvec_m}{\vvec_j} \amp = 0
+          </mrow>
+          <mrow>
+            a_j\len{\vvec_j}^2 \amp = 0
+          </mrow>
+        </md>
+        which says that <m>a_j=0</m>.
+        </p>
+      </proof>
+    </proposition>
+
+    <p>From this, we conclude that an orthogonal set forms a basis for
+    a subspace of the inner product space.
+    </p>
+
+    <proposition>
+      <title>Projection formula</title>
+      <statement>
+        <p>Suppose that <m>\basis{\wvec}{m}</m> is an orthogonal set
+        in an inner product space <m>V</m> and that <m>\bvec</m> is a
+        vector in <m>V</m>.  The closest vector in <m>W</m> to
+        <m>\bvec</m> is called the <em>orthogonal projection</em> of
+        <m>\bvec</m> onto <m>W</m> and is given by
+        <me>
+          \bhat=
+          \frac{\inner{\bvec}{\wvec_1}}{\inner{\wvec_1}{\wvec_1}}\wvec_1
+          +
+          \frac{\inner{\bvec}{\wvec_2}}{\inner{\wvec_2}{\wvec_2}}\wvec_2
+          + \ldots + 
+          \frac{\inner{\bvec}{\wvec_m}}{\inner{\wvec_m}{\wvec_m}}\wvec_m
+        </me>.
+        </p>
+      </statement>
+
+      <proof>
+        <p>This is the same expression as the
+        <url
+            href="https://understandinglinearalgebra.org/sec-orthogonal-bases.html#prop-proj-formula">Projection
+        Formula</url> that we frequently used in our previous classes
+        and its found by the same argument.
         </p>
 
+        <p>We first find the vector <m>\bhat</m> so that
+        <m>\bvec-\bhat</m> is orthogonal to <m>W</m> and then explain
+        why it is the closest vector.
+        </p>
+
+        <p>Notice that, by linearity, if a vector <m>\uvec</m> is
+        orthogonal to each <m>\wvec_j</m>, then it is orthogonal to
+        every vector in <m>W</m>.  This is because any vector in
+        <m>W</m> is a linear combination of <m>\basis{\wvec}{m}</m> so
+        that
+        <me>
+          \wvec = c_1\wvec_1 + c_2\wvec_2+\ldots+c_n\wvec_m
+        </me>
+        and therefore
+        <me>
+          \inner{\wvec}{\uvec} = c_1\inner{\wvec_1}{\uvec} + \ldots +
+          c_n\inner{\wvec_m}{\uvec} = 0
+        </me>.
+        </p>
+
+        <p>
+        We require that <m>\bvec-\bhat</m> be orthogonal to <m>W</m>
+        so that 
+        <me>
+          \inner{\bvec-\bhat}{\wvec_j} = 0
+        </me>
+        or
+        <me>
+          \inner{\bvec}{\wvec_j} = \inner{\bhat}{\wvec_j}
+        </me>
+        for all <m>j</m>.  Since <m>\bhat</m> is in <m>W</m>, it can
+        be expressed as a 
+        linear combination of <m>\wvec_j</m>:
+        <me>
+          \bhat=c_1\wvec_j+\ldots+c_m\wvec_m
+        </me>
+        so that we have
+        <me>
+          \inner{\bvec}{\wvec_j}=\inner{c_1\wvec_1}{\wvec_j}+\ldots+
+          \inner{c_m\wvec_m}{\wvec_j}
+        </me>,
+        which gives the expression for <m>\bhat</m> in the statement
+        of the proposition.
+        </p>
+
+        <p>Now suppose that <m>\wvec</m> is any other vector in
+        <m>W</m>.  Then <m>\bhat - \wvec</m> is in <m>W</m> and hence
+        orthogonal to <m>\bvec-\bhat</m>.  Therefore,
+        <me>
+          \len{\bvec-\wvec}^2 = \len{(\bvec-\bhat)+(\bhat-\wvec)}^2 =
+          \len{\bvec-\bhat}^2 + \len{\bhat-\wvec}^2
+        </me>
+        by the Pythagoren theorem and hence
+        <me>
+          \len{\bvec-\wvec}^2 \geq \len{\bvec-\bhat}^2
+        </me>,
+        which shows that <m>\bhat</m> is closer to <m>\bvec</m> than
+        any other vector in <m>W</m>.
+        </p>
+      </proof>
+    </proposition>
+
+    <p>The Projection Formula was key to a wide range of useful
+    concepts.  In particular, we can apply the Gram-Schmidt algorithm
+    as we did earlier.
+    </p>
+
+    <definition>
+      <statement>
+        <p>A set of vectors is called <em>orthonormal</em> if each
+        pair of vectors is orthogonal and each vector has unit length.
+        </p>
+      </statement>
+    </definition>
+
+    <proposition>
+      <statement>
+        <p>If <m>W</m> is a finite dimensional subspace of
+        an inner product space <m>V</m>, then there is an orthonormal
+        basis for <m>W</m>.
+        </p>
+      </statement>
+
+      <proof>
+        <p>We choose any basis <m>\basis{\vvec}{m}</m> for <m>W</m>
+        and then define
+        <md>
+          <mrow>
+            \wvec_1\amp=\vvec_1
+          </mrow>
+          <mrow>
+            \wvec_2\amp = \vvec_2 -
+            \frac{\inner{\vvec_2}{\wvec_1}}{\inner{\wvec_1}{\wvec_1}}
+          </mrow>
+          <mrow>
+            \wvec_3\amp = \vvec_3 -
+            \frac{\inner{\vvec_3}{\wvec_1}}{\inner{\wvec_1}{\vvec_1}}
+            -\frac{\inner{\vvec_3}{\wvec_2}}{\inner{\wvec_2}{\vvec_2}}
+          </mrow>
+        </md>
+        and so on.  This produces an orthogonal basis for <m>W</m>
+        since, at every step, <m>\laspan{\basis{\wvec}{j}} =
+        \laspan{\basis{\vvec}{j}}</m>.
+        </p>
+
+        <p>Finally, we define <m>\uvec_j =
+        \frac{\wvec_j}{\len{\wvec_j}}</m> to obtain an orthonormal
+        basis for <m>W</m>.
+        </p>
+      </proof>
+    </proposition>
+
+    <p>Notice that a vector space <m>V</m> is a subspace of itself so
+    the previous proposition implies that every finite dimensional
+    subspace has an orthonormal basis.
+    </p>
+
+    <p>Also, remember that any linearly independent set in <m>V</m>
+    can be extended to a basis of <m>V</m> by <xref
+    ref="prop-basis-extend"/>.  If we begin with an orthonormal set of
+    vectors in <m>V</m>, we can extend it to a basis of <m>V</m>, and 
+    apply the Gram-Schmidt algorithm to the added basis vectors to
+    obtain an orthonormal basis of <m>V</m>.  In other words,
+    </p>
+
+    <proposition xml:id="prop-ortho-extend">
+      <statement>
+        <p>Any orthonormal set in <m>V</m> can be extended to an
+        orthonormal basis for <m>V</m>.
+        </p>
+      </statement>
+    </proposition>
+    
+  </subsection>
+
+
+  <subsection>
+    <title>The adjoint of a linear transformation</title>
+
+    <p>We suppose now that <m>V</m> and <m>W</m> are inner product
+    spaces over a field <m>\field</m>.  If <m>T:V\to W</m> is a linear
+    transformation, we can define its adjoint <m>T^*</m> through the
+    following relationship
+    <me>
+      \inner{T\vvec}{\wvec}=\inner{\vvec}{T^*\wvec}
+    </me>
+    for every <m>\vvec</m> in <m>V</m> and <m>\wvec</m> in <m>W</m>.
+    We can also write this expression as
+    <me>
+      \inner{T^*\wvec}{\vvec} = \inner{\wvec}{T\vvec}
+    </me>
+    by applying the conjugate symmetry condition twice.
+    The first thing to establish is that <m>T^*</m> is itself an
+    linear transformation.
+    </p>
+
+    <p>We will first prove a useful result in the simple case that
+    <m>T:V\to \field</m>.
+    </p>
+
+    <proposition xml:id="prop-riesz">
+      <title>Riesz represenation theorem</title>
+      <statement>
+        <p>Suppose that <m>V</m> is an inner product space and
+        <m>\phi:V\to \field</m> is a linear transformation.  Then
+        there is a unique vector 
+        <m>\uvec</m> such that
+        <me>
+          \phi(\vvec) = \inner{\vvec}{\uvec}
+        </me>.
+        </p>
+      </statement>
+
+      <proof>
+        <p>If <m>\phi = 0</m>, then we can take <m>\uvec=0</m> as
+        well.
+        </p>
+
+        <p>So suppose that <m>\phi\neq 0</m>, which means that
+        there is a vector <m>\vvec</m> such that <m>\phi(\vvec) \neq
+        0</m>.  Therefore, <m>\phi</m> is onto and
+        <m>\range(\phi)=\field</m>.</p>
+
+        <p>If <m>\dim V = n</m>, we know that
+        <me>
+          \dim \nul(\phi) = \dim V - \dim \range(\phi) = n-1
+        </me>.
+        Choose an orthonormal basis <m>\basis{\vvec}{n-1}</m> for
+        <m>\nul(\phi)</m>.  We know by <xref ref="prop-ortho-extend"/>
+        that we can add a vector <m>\wvec</m> to obtain an orthonormal
+        basis.  Let <m>\uvec=\phi(\wvec)\wvec</m>.
+        </p>
+
+        <p>If <m>\vvec</m> is a vector in <m>V</m>, then
+        <me>
+          \vvec=c_1\vvec_1+\ldots+c_{n-1}\vvec_{n-1} + c_n\wvec
+        </me>.
+        Then
+        <me>
+          \phi(\vvec) = c_n\phi(\wvec) = \inner{\vvec}{\uvec}
+        </me>.
+        </p>
+
+        <p>To see that <m>\uvec</m> is unique, suppose that there are
+        two such vectors <m>\uvec_1</m> and <m>\uvec_1</m> such that
+        <me>
+          \phi(\vvec) = 
+          \inner{\vvec}{\uvec_1}=
+          \inner{\vvec}{\uvec_2}
+        </me>
+        for every vector <m>\vvec</m>.  In particular, we have
+        <m>\inner{\vvec}{\uvec_1-\uvec_2} = 0</m> for every
+        <m>\vvec</m> including <m>\vvec=\uvec_1-\uvec_2</m>.
+        Therefore,
+        <me>
+          \inner{\uvec_1-\uvec_2}{\uvec_1-\uvec_2} = 0
+        </me>,
+        which implies that <m>\uvec_1=\uvec_2</m>.
+        </p>
+      </proof>
+    </proposition>
+
+    <definition>
+      <statement>
+        <p>If <m>V</m> and <m>W</m> are inner product spaces and
+        <m>T:V\to W</m> a linear transformation, the <em>adjoint</em>
+        of <m>T</m> is defined by
+        <m>T^*:W\to V</m>
+        by
+        <me>
+          \inner{T\vvec}{\wvec} = \inner{\vvec}{T^*(\wvec)}
+        </me>
+        or equivalently
+        <me>
+          \inner{T^*\wvec}{\vvec} = \inner{\wvec}{T(\vvec)}
+        </me>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>There are a number of things implied by this definition so we
+    need to check that they are satisfied.  The following proposition
+    will take care of this for us.
+    </p>
+        
+    <proposition>
+      <statement>
+        <p>The adjoint <m>T^*:W\to V</m> is a linear transformation.
+        </p>
+      </statement>
+
+      <proof>
+        <p>We first need to establish that <m>T^*(\wvec)</m> is a vector
+        in <m>V</m> for every <m>\wvec</m> in <m>V</m>.  For a fixed
+        <m>\wvec</m> in <m>W</m>, define the linear transformation
+        <m>\phi:V\to \field</m> by
+        <me>
+          \phi(\vvec) = \inner{T(\vvec)}{\wvec}
+        </me>.
+        By <xref ref="prop-riesz"/>, we know there is a vector
+        <m>\uvec</m> in <m>V</m> such that <m>\phi(\vvec) =
+        \inner{\vvec}{\uvec}</m> so we define <m>T^*(\wvec) =
+        \uvec</m>, which gives
+        <me>
+          \phi(\vvec) = \inner{T(\vvec)}{\wvec} =
+          \inner{\vvec}{\uvec} = \inner{\vvec}{T^*(\wvec)}
+        </me>.
+        We have now defined a function <m>T^*:W\to V</m> such that
+        <m>\inner{T(\vvec)}{\wvec} = \inner{\vvec}{T^*(\wvec)}</m> for
+        all <m>\vvec</m> and <m>\wvec</m>.  We just need to show that
+        <m>T^*</m> is a linear transformation.
+        </p>  
+
+        <!--
         <p> Beginning with an orthonormal basis
         <m>\uvec_1,\uvec_2,\ldots,\uvec_n</m> for <m>V</m>, we have
         <me>
@@ -60,63 +647,87 @@
         </me>,
         which gives a definition of the vector <m>T^*\wvec</m>.
         </p>
+        -->
 
-        <!-- TODO:  use Reisz representation theorem -->
-
-        <p>Finally, we need to show that <m>T^*</m> satisfies the two
+        <p>We need to show that <m>T^*</m> satisfies the two
         linearity properties.  Suppose that <m>\wvec_1</m> and
         <m>\wvec_2</m> are vectors in <m>V</m>.  Then
-        <me>
-          \inner{\vvec}{T^*(\wvec_1+\wvec_2)} =
+        <md>
+          <mrow>
+          \inner{\vvec}{T^*(\wvec_1+\wvec_2)} \amp =
           \inner{T\vvec}{\wvec_1+\wvec_2} =
           \inner{T\vvec}{\wvec_1} + 
           \inner{T\vvec}{\wvec_2}
-          =\inner{\vvec}{T^*\wvec_1 + T^*\wvec_2}
-        </me>.
+          </mrow>
+          <mrow>
+            \amp =\inner{\vvec}{T^*(\wvec_1) + T^*(\wvec_2)}
+          </mrow>
+        </md>
         Since this holds for any vector <m>\vvec</m>, we have
         <me>
-          T^*(\wvec_1+\wvec_2) = T^*\wvec_1 + T^*\wvec_2
+          T^*(\wvec_1+\wvec_2) = T^*(\wvec_1) + T^*(\wvec_2)
         </me>.
         </p>
 
         <p>In the same way, we see that <m>T^*(s\wvec) =
-        sT^*\wvec</m>, which verifies that <m>T^*</m> is an operator
+        sT^*(\wvec)</m>, which verifies that <m>T^*</m> is an operator
         on <m>T</m>.
         </p>
       </proof>
     </proposition>
 
-    <p>We now investigate the matrices associated to <m>T</m> and
+    <p>We now relate the matrices associated to <m>T</m> and
     <m>T^*</m> with respect to an orthonormal basis of <m>V</m>.  As
     before, we use <m>\uvec_1,\ldots,\uvec_n</m> to denote an
     orthonormal basis of <m>V</m>.
     </p>
 
-    <proposition>
+    <proposition xml:id="prop-adjoint-matrix">
       <statement>
-        <p>If <m>M</m> is the matrix associated to <m>T</m>, then
-        <m>M^*</m>, the matrix associated to <m>T^*</m> is
+        <p> Suppose that <m>V</m> and <m>W</m> are inner product
+        spaces with orthonormal bases <m>\bcal</m> and <m>\ccal</m>,
+        respectively.  If <m>T:V\to W</m> is a linear transformation,
+        <m>A=\coords{T}{\ccal,\bcal}</m>, and
+        <m>B=\coords{T^*}{\bcal,\ccal}</m>, then
         <me>
-          A^* = \conjugate{A}^T
+          B= A^* = \conjugate{A}^T
         </me>,
         the conjugate transpose of <m>A</m>.
         </p>
       </statement>
       <proof>
-        <p>Remember how the matrix <m>A</m> is defined:
-        <me>
-          T\uvec_j = \sum A_{i,j}\uvec_i
-        </me>,
+        <p>If <m>\bcal=\{\basis{\vvec}{n}\}</m> and
+        <m>\ccal=\{\basis{\wvec}{m}\}</m>, then
+        <md>
+          <mrow>
+            T(\vvec_j) \amp = A_{1,j}\wvec_1 + \ldots + A_{m,j}\wvec_m
+          </mrow>
+          <mrow>
+            T^*(\wvec_i) \amp = B_{1,i}\vvec_1 + \ldots +
+            B_{n,i}\vvec_n
+          </mrow>
+        </md>
         which says that
-        <me>A_{i,j}=\inner{T\uvec_j}{\uvec_i}=\inner{\uvec_j}{T^*\uvec_i}
-        = \conjugate{inner{T^*\uvec_i}{\uvec_j}} = \conjugate{B_{j,i}}
-        </me>
-        if <m>B</m> is the matrix defined by <m>T^*</m>.
+        <me>
+          A_{i,j} = \inner{T(\vvec_j)}{\wvec_i} =
+          \inner{\vvec_j}{T^*(\wvec_i)} =
+          \conj{\inner{T^*(\wvec_i)}{\vvec_j}} = \conj{B_{j,i}}
+        </me>.
         </p>
       </proof>
     </proposition>
 
+    <assemblage>
+      <title>Real adjoints</title>
+      <p>If the underlying field <m>\field=\real</m>, then the matrix
+      associated to the adjoint <m>T^*</m> is just the transpose of
+      the matrix associated to <m>T</m>.  In other words, <m>B=A^T</m>
+      in the notation of <xref ref="prop-adjoint-matrix"/>.
+      </p>
+    </assemblage>
+
   </subsection>
+  <!--
 
   <subsection>
     <title>Self-adjoint operators</title>
@@ -265,4 +876,6 @@
     to one another.
     </p>
   </subsection>
+  -->
+
 </section>

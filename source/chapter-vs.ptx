@@ -41,8 +41,8 @@
   <!-- include sections -->
   <xi:include href="section-vs-intro.ptx" />
   <xi:include href="section-lt-intro.ptx" />
+  <xi:include href="section-orthogonal.ptx" />
   <!--
-  <xi:include href="section-operators.ptx" />
   <xi:include href="section-polynomials.ptx" />
   <xi:include href="section-inner-products.ptx" />
   <xi:include href="section-dual.ptx" />
