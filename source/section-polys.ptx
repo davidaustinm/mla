@@ -45,54 +45,48 @@
     is <m>\deg(p) = 7</m>.
     </p>
 
-    <p>There are a few operations that we can perform on polynomials.
-    Suppose that <m>p(x)=3x^2-4x+2</m> and <m>q(x)=8x-5</m>.
-    <dl>
-      <li><title>Scalar multiplication</title>
-      <p>As we saw earlier, a polynomial may be multiplied by a
-      scalar.  For instance,
-      <me>
-	(7p)(x) = 21x^2-28x+14
-      </me>
+    <p> We have already seen that the set of polynomials form a vector
+    space, which means we can multiply polynomials by scalars
+    and we can add them.  An additional operation allows us to
+    multiply two polynomials 
+    together.
+    </p>
+
+    <example xml:id="example-poly-product">
+      <statement>
+        <p>Suppose that <m>p(x)=3x^2-4x+2</m> and <m>q(x)=8x-5</m>.
+        We multiply polynomials term by term so that
+        <me>
+	  (pq)(x) = 24x^3-27x^2+36x-10
+        </me>
+        More generally, denoting the coefficients of <m>p</m> by
+        <m>a_j</m> and the coefficients of <m>q</m> by <m>b_j</m>, the
+        coefficients of <m>pq</m> are
+        <me xml:id="me-poly-mult">
+	  c_k=\sum_{j=0}^k a_jb_{k-j}=\sum_{j=0}^k b_ja_{k-j}
+          </me>.
+        </p>
+      </statement>
+    </example>
+
+    <assemblage>
+      <title>Properties of polynomial multiplication</title>
+      <p>Two important properties follow from the general expression
+      for the coefficients of the product given in
+      <xref ref="example-poly-product"/>.
+      First, the order in which we multiply
+      polynomials is irrelevant;  that is,
+      <me>pq = qp</me>.
       </p>
-      </li>
       
-      <li><title>Addition</title>
-      <p>Polynomials may also be added in the usual way.
-      <me>
-	(p+q)(x)=3x^2+4x-3
-      </me>
-      </p>
-      </li>
-
-      <li><title>Multiplication</title>
-      <p>We multiply polynomials term by term so that
-      <me>
-	(pq)(x) = 24x^3-27x^2+36x-10
-      </me>
-      More generally, denoting the coefficients of <m>p</m> by
-      <m>a_j</m> and the coefficients of <m>q</m> by <m>b_j</m>, the
-      coefficients of <m>pq</m> are
-      <me xml:id="me-poly-mult">
-	c_k=\sum_{j=0}^k a_jb_{k-j}=\sum_{j=0}^k b_ja_{k-j}
-      </me>.
-      </p>
-
-      <p>Two important properites follow from this definition of
-      polynomial multiplication.  First, the order in which we multiply
-      polynomials is irrelevant;  that is, <m>pq = qp</m>.
-      </p>
-
       <p>Second, the degree of the product is the sum of the degrees;
       that is,
       <me>
-	\deg(pq)=\deg(p)+\deg(q)
-      </me>.
+        \deg(pq)=\deg(p)+\deg(q)
+        </me>.
       </p>
-      </li>
-    </dl>
-    </p>
-
+    </assemblage>
+      
     <p>Integers satisfy a property often called the <em>Division
     Algorithm</em>.  Suppose that <m>a</m> and <m>b</m> are positive
     integers.  Then there are integers <m>q</m> and <m>r</m> such that
@@ -100,7 +94,8 @@
       a = bq + r
     </me>
     where <m>0\leq r \leq b-1</m>.  We say that <m>q</m> is the
-    quotient and <m>r</m> is the remainder.  For example, if
+    <em>quotient</em> and <m>r</m> is the <em>remainder</em>.  For
+    example, if 
     <m>a=17</m> and <m>b=5</m>, then
     <me>
       17 = 3\cdot5 + 2
@@ -231,11 +226,12 @@
     <p>While this important theorem only holds for polynomials with
     complex coefficients, we can deduce something about polynomials
     with real coefficients.  For instance, if <m>p(x)</m> is a
-    polynomial with real coefficients and <m>\lambda</m> is a complex
+    polynomial with real coefficients and <m>\lambda</m> is a complex,
+    non-real 
     root, then so is its complex conjugate <m>\overline{\lambda}</m>.
     This follows because
     <me>
-      0\overline{p(\lambda)} = p(\overline{\lambda})
+      0=\overline{p(\lambda)} = p(\overline{\lambda})
     </me>.
     We have <m>(x-\lambda)(x-\overline{\lambda}) = x^2+bx + c</m> where
     <m>b = -(\lambda+\overline{\lambda})</m> and
@@ -269,6 +265,16 @@
     identify transformation <m>I</m>.
     </p>
 
+    <definition>
+      <statement>
+        <p>If <m>W</m> is a vector subspace of <m>V</m> and <m>T:V\to
+        V</m> an operator, we say that <m>W</m> is <em>invariant</em>
+        under <m>T</m> if <m>T(\wvec)\in W</m> for all <m>\wvec\in
+        W</m>.
+        </p>
+      </statement>
+    </definition>
+
     <p>Remember that the order in which we multiply polynomials is not
     important.  In particular, <m>p(T)q(T)=q(T)p(T)</m>.  This leads
     to the following important proposition.
@@ -285,8 +291,8 @@
       <proof>
 	<p> Suppose that <m>\vvec</m> is in <m>\nul(p(T))</m>, which
 	means that <m>p(T)\vvec = \zerovec</m>.  We need to explain
-	why <m>T\vvec</m> is also in <m>\nul(p(T))</m>.  However, we
-	have
+	why <m>T\vvec</m> is also in <m>\nul(p(T))</m>, which leads us
+        to 
 	<me>
 	  p(T)T\vvec = Tp(T)\vvec = T\zerovec = \zerovec
 	</me>.
@@ -389,7 +395,7 @@
 	<p>For convenience, we will denote the vector space
 	<m>W=\range(p(T))</m>.  Since <m>W</m> is invariant under
 	<m>T</m>, <m>T</m> is an operator on <m>W</m>, whose dimension
-	is less than <m>\div(V)</m>.  By the induction hypothesis, we
+	is less than <m>\dim(V)</m>.  By the induction hypothesis, we
 	know that there is a unique monic polynomial <m>q(x)</m> such
 	that <m>q(T|_W)=0</m>.  Again by the induction hypothesis, it
 	also follows that <m>\deg(q) \leq \dim(W) \leq n - m</m>.
