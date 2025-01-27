@@ -829,6 +829,150 @@ var ptx_lunr_docs = [
   "body": "  Suppose that and are inner product spaces with orthonormal bases and , respectively. If is a linear transformation, , and , then , the conjugate transpose of .    If and , then which says that .   "
 },
 {
+  "id": "sec-polys",
+  "level": "1",
+  "url": "sec-polys.html",
+  "type": "Section",
+  "number": "1.4",
+  "title": "The minimal polynomial",
+  "body": " The minimal polynomial   This section will describe some important properties about polynomials and demonstrate how they might help us understand linear transformations.  We will begin by studying familiar polynomials, such as you saw in high school algebra. For example, is a quadratic polynomial. Eventually, we will consider polynomials evaluated on an operator . For instance, evaluating on the operator produces a new operator . As a preview for how this may be useful, the polynomial leads to the operator whose null space is the set of eigenvectors associated to the eigenvalue .    Properties of Polynomials  We will be interested in polynomials that depend on a single variable, which will often be . A general polynomial has the form where are the coefficients of and are elements in either or .  The degree of a polynomial is the highest power of whose coefficient is nonzero. For example, the degree of is .  We have already seen that the set of polynomials form a vector space, which means we can multiply polynomials by scalars and we can add them. An additional operation allows us to multiply two polynomials together.    Suppose that and . We multiply polynomials term by term so that More generally, denoting the coefficients of by and the coefficients of by , the coefficients of are .     Properties of polynomial multiplication  Two important properties follow from the general expression for the coefficients of the product given in . First, the order in which we multiply polynomials is irrelevant; that is, .  Second, the degree of the product is the sum of the degrees; that is, .   Integers satisfy a property often called the Division Algorithm . Suppose that and are positive integers. Then there are integers and such that where . We say that is the quotient and is the remainder . For example, if and , then .  Polynomials satisfy a similar property also called the Division Algorithm as given in the following proposition.   The Division Algorithm   If and are polynomials, then there are unique polynomials and such that where .      Rather than proving the Division Algorithm for polynomials, we will illustrate with an example. Suppose that and .  To get started, let's consider the highest degree terms in both polynomials. For , it is while for , it is . We'd like to multiply by something to get close to . Since the ratio of the highest degree terms is , we multiply by , which gives .  Now we ask what we should multiply by to realize the term. Since the highest degree term of is , we multiply by . This means that . Since the highest degree term of is , there is nothing we can multiply by to realize the highest degree term of the right hand side. This means that we have so the quotient is and the remainder is .  This algorithm is sometimes called synthetic division and is sometimes taught in high school. We won't be actually be implementing this algorithm, but this example is meant to illustrate why is true. Implementing this algorithm for general polynomials will give a proof of the Division Algorithm.    One important implication of the Division Algorithm is the following fact that we will use quite a bit. Remember that a root of a polynomial is a value for which .   If is a root of the polynomial , then for some polynomial .   The Division Algorithm tells us that . In the notation of the Division Algorithm, and . Therefore , which means that is a constant .  Now we know that , which says that . Therefore, we have .    This proposition shows that there is a relationship between the factors of a polynomial and its roots. Polynomials with complex coefficients are special because the Fundamental Theorem of Algebra tells us that every such polynomial has a root. The proof of this theorem is outside the scope of our course, but students often see it in a course in complex analysis.   Fundamental Theorem of Algebra   If is a degree polynomial having complex coefficients, then there are roots, , possibly with repitition. This means that .    While this important theorem only holds for polynomials with complex coefficients, we can deduce something about polynomials with real coefficients. For instance, if is a polynomial with real coefficients and is a complex, non-real root, then so is its complex conjugate . This follows because . We have where and . Since this quadratic polynomial does not have real roots, we know from the quadratic formula that . Therefore,    If is a polynomial with real coefficients, there are real roots such that .      The minimal polynomial of an operator  As mentioned in the introduction to this section, our interest in polynomials stems from the insights we gain when we evaluate a polynomial on an operator . For instance, if , then a new operator. Notice that we consider the constant term to be multiplied by the identify transformation .    If is a vector subspace of and an operator, we say that is invariant under if for all .    Remember that the order in which we multiply polynomials is not important. In particular, . This leads to the following important proposition.    If is a polynomial and an operator, then both and are invariant subspaces under .    Suppose that is in , which means that . We need to explain why is also in , which leads us to .  Similarly, if is in , then there is a vector so that . Then , which shows that is also in . Therefore, is an invariant subspace of .    We now come to a crucial result for our upcoming explorations. First, we need to make the following definition clear.   A monic polynomial is a polynomial where the coefficient of the highest degree term is .   For instance, is a monic polynomial, but is not.   The minimal polynomial of an operator   Suppose that is a finite-dimensional vector space over either or and that is an operator on . There is a unique monic polynomial of smallest degree such that . Moreover, . We call this polynomial the minimal polynomial of .    Our proof proceeds by induction on the dimension of . To begin, suppose that , which means that for some vector . Then for some , which is possibly . Then , which means that since spans . Therefore, if , we have .  We now imagine that and that the theorem has been verified for all operators on vector spaces of dimension less than . We choose a vector and consider the powers ; that is, consider the vectors . Since there are vector in this set and , we know this is a linearly independent set.  Choose to be the smallest integer such that is a linear combination of . This means two things. First, the vectors are linearly independent. Second, there are constants . If we define the degree monic polynomial , then . That is, is in .  Since is invariant under and is in , we know that are all in . These vectors are linearly independent so we know that . Therefore, .  For convenience, we will denote the vector space . Since is invariant under , is an operator on , whose dimension is less than . By the induction hypothesis, we know that there is a unique monic polynomial such that . Again by the induction hypothesis, it also follows that .  Now consider the polynomial whose degree is . Moreover, both and are monic so is also monic. Finally, for any vector in , we have where the last equality holds because is in and for any vector in . Since for every vector , this means that .  This shows that there is a monic polynomial such that on . Therefore, there is some possibly different polynomial having the smallest degree among all such polynomials, and this is the minimal polynomial of the operator on .  To see that this polynomial is unique, suppose there are two monic polynomials and having smallest degree and and . If we consider , we see that since the highest degree terms of and have coefficients and therefore cancel. Also, . However, this is impossible since and had the smallest possible degree among all polynomials that vanish when evaluated on . This means that , which guarantees the uniqueness of the minimal polynomial.      Consider the matrix and the linear operator that it defines. Notice that so if , then . The minimal polynomial of is therefore .  More generally, suppose that the minimal polynomial of an operator has degree . Since the minimal polynomial is monic, this means that . Because , we see that , a multiple of the identity.      By contrast, consider the matrix and the linear operator that it defines with respect to some basis. The degree of the minimal polynomial must be at least 2 since is not a multiple of the identity matrix. Notice, however, that and . This says that and so the minimal polynomial of is .    Both of the matrices in the two previous examples are upper triangular. Remembering that the eigenvalues of an upper triangular matrix are the entries on the diagonal, we see that the roots of the minimal polynomials in both cases are the eigenvalues of the operator. This gives some indication of the importance of the minimal polynomial, as we will see now.  The fact that the minimal polynomial has the smallest degree among all polynomials for which has some important consequences.    The set of roots of the minimal polynomial of equals the set of eigenvalues of .    Suppose that is the minimal polynomial of . We need to explain two things: that any eigenvalue of is a root of and that any root of is an eigenvalue of .  Suppose that is an eigenvalue of . This means that there is a nonzero vector such that and therefore for every . This means that , which implies that . Therefore, is a root of , the minimal polynomial of .  Conversely, suppose that is a root of . By , this means that . This says that However, since , there is some vector for which . Therefore, , which shows that is an eigenvector with associated eigenvalue .    This is the most significant fact about the minimal polynomial: that its roots are the eigenvalues of the operator. We'll put this to use in the next section. Before that, however, here are two other useful facts.    If is a polynomial for which , then is a multiple of the minimal polynomial of .    If is the minimal polynomial of , then we can apply the Division Algorithm to write where . Furthermore, , which implies that . Since has the smallest degree among all polynomials that vanish when evaluated on and has a smaller degree than , we know that . Therefore, .      If is an operator on the vector space and is a subspace of that is invariant under , then the minimal polynomial of is a multiple of the minimal polynomial of .    Suppose that is the minimal polynomial of and is the minimal polynomial of on . This means that for every vector in and so . We also know that is the minimal polynomial of so by , we know that is a multiple of .     "
+},
+{
+  "id": "example-poly-product",
+  "level": "2",
+  "url": "sec-polys.html#example-poly-product",
+  "type": "Example",
+  "number": "1.4.1",
+  "title": "",
+  "body": "  Suppose that and . We multiply polynomials term by term so that More generally, denoting the coefficients of by and the coefficients of by , the coefficients of are .   "
+},
+{
+  "id": "prop-poly-division",
+  "level": "2",
+  "url": "sec-polys.html#prop-poly-division",
+  "type": "Proposition",
+  "number": "1.4.2",
+  "title": "The Division Algorithm.",
+  "body": " The Division Algorithm   If and are polynomials, then there are unique polynomials and such that where .   "
+},
+{
+  "id": "sec-polys-3-10",
+  "level": "2",
+  "url": "sec-polys.html#sec-polys-3-10",
+  "type": "Example",
+  "number": "1.4.3",
+  "title": "",
+  "body": "  Rather than proving the Division Algorithm for polynomials, we will illustrate with an example. Suppose that and .  To get started, let's consider the highest degree terms in both polynomials. For , it is while for , it is . We'd like to multiply by something to get close to . Since the ratio of the highest degree terms is , we multiply by , which gives .  Now we ask what we should multiply by to realize the term. Since the highest degree term of is , we multiply by . This means that . Since the highest degree term of is , there is nothing we can multiply by to realize the highest degree term of the right hand side. This means that we have so the quotient is and the remainder is .  This algorithm is sometimes called synthetic division and is sometimes taught in high school. We won't be actually be implementing this algorithm, but this example is meant to illustrate why is true. Implementing this algorithm for general polynomials will give a proof of the Division Algorithm.   "
+},
+{
+  "id": "prop-root-factor",
+  "level": "2",
+  "url": "sec-polys.html#prop-root-factor",
+  "type": "Proposition",
+  "number": "1.4.4",
+  "title": "",
+  "body": " If is a root of the polynomial , then for some polynomial .   The Division Algorithm tells us that . In the notation of the Division Algorithm, and . Therefore , which means that is a constant .  Now we know that , which says that . Therefore, we have .   "
+},
+{
+  "id": "thm-fta",
+  "level": "2",
+  "url": "sec-polys.html#thm-fta",
+  "type": "Theorem",
+  "number": "1.4.5",
+  "title": "Fundamental Theorem of Algebra.",
+  "body": " Fundamental Theorem of Algebra   If is a degree polynomial having complex coefficients, then there are roots, , possibly with repitition. This means that .   "
+},
+{
+  "id": "sec-polys-3-16",
+  "level": "2",
+  "url": "sec-polys.html#sec-polys-3-16",
+  "type": "Proposition",
+  "number": "1.4.6",
+  "title": "",
+  "body": "  If is a polynomial with real coefficients, there are real roots such that .   "
+},
+{
+  "id": "sec-polys-4-3",
+  "level": "2",
+  "url": "sec-polys.html#sec-polys-4-3",
+  "type": "Definition",
+  "number": "1.4.7",
+  "title": "",
+  "body": "  If is a vector subspace of and an operator, we say that is invariant under if for all .   "
+},
+{
+  "id": "sec-polys-4-5",
+  "level": "2",
+  "url": "sec-polys.html#sec-polys-4-5",
+  "type": "Proposition",
+  "number": "1.4.8",
+  "title": "",
+  "body": "  If is a polynomial and an operator, then both and are invariant subspaces under .    Suppose that is in , which means that . We need to explain why is also in , which leads us to .  Similarly, if is in , then there is a vector so that . Then , which shows that is also in . Therefore, is an invariant subspace of .   "
+},
+{
+  "id": "sec-polys-4-7",
+  "level": "2",
+  "url": "sec-polys.html#sec-polys-4-7",
+  "type": "Definition",
+  "number": "1.4.9",
+  "title": "",
+  "body": " A monic polynomial is a polynomial where the coefficient of the highest degree term is .  "
+},
+{
+  "id": "thm-minimal-polynomial",
+  "level": "2",
+  "url": "sec-polys.html#thm-minimal-polynomial",
+  "type": "Theorem",
+  "number": "1.4.10",
+  "title": "The minimal polynomial of an operator.",
+  "body": " The minimal polynomial of an operator   Suppose that is a finite-dimensional vector space over either or and that is an operator on . There is a unique monic polynomial of smallest degree such that . Moreover, . We call this polynomial the minimal polynomial of .    Our proof proceeds by induction on the dimension of . To begin, suppose that , which means that for some vector . Then for some , which is possibly . Then , which means that since spans . Therefore, if , we have .  We now imagine that and that the theorem has been verified for all operators on vector spaces of dimension less than . We choose a vector and consider the powers ; that is, consider the vectors . Since there are vector in this set and , we know this is a linearly independent set.  Choose to be the smallest integer such that is a linear combination of . This means two things. First, the vectors are linearly independent. Second, there are constants . If we define the degree monic polynomial , then . That is, is in .  Since is invariant under and is in , we know that are all in . These vectors are linearly independent so we know that . Therefore, .  For convenience, we will denote the vector space . Since is invariant under , is an operator on , whose dimension is less than . By the induction hypothesis, we know that there is a unique monic polynomial such that . Again by the induction hypothesis, it also follows that .  Now consider the polynomial whose degree is . Moreover, both and are monic so is also monic. Finally, for any vector in , we have where the last equality holds because is in and for any vector in . Since for every vector , this means that .  This shows that there is a monic polynomial such that on . Therefore, there is some possibly different polynomial having the smallest degree among all such polynomials, and this is the minimal polynomial of the operator on .  To see that this polynomial is unique, suppose there are two monic polynomials and having smallest degree and and . If we consider , we see that since the highest degree terms of and have coefficients and therefore cancel. Also, . However, this is impossible since and had the smallest possible degree among all polynomials that vanish when evaluated on . This means that , which guarantees the uniqueness of the minimal polynomial.   "
+},
+{
+  "id": "example-min-poly-1",
+  "level": "2",
+  "url": "sec-polys.html#example-min-poly-1",
+  "type": "Example",
+  "number": "1.4.11",
+  "title": "",
+  "body": "  Consider the matrix and the linear operator that it defines. Notice that so if , then . The minimal polynomial of is therefore .  More generally, suppose that the minimal polynomial of an operator has degree . Since the minimal polynomial is monic, this means that . Because , we see that , a multiple of the identity.   "
+},
+{
+  "id": "example-min-poly-2",
+  "level": "2",
+  "url": "sec-polys.html#example-min-poly-2",
+  "type": "Example",
+  "number": "1.4.12",
+  "title": "",
+  "body": "  By contrast, consider the matrix and the linear operator that it defines with respect to some basis. The degree of the minimal polynomial must be at least 2 since is not a multiple of the identity matrix. Notice, however, that and . This says that and so the minimal polynomial of is .   "
+},
+{
+  "id": "prop-min-poly-roots",
+  "level": "2",
+  "url": "sec-polys.html#prop-min-poly-roots",
+  "type": "Proposition",
+  "number": "1.4.13",
+  "title": "",
+  "body": "  The set of roots of the minimal polynomial of equals the set of eigenvalues of .    Suppose that is the minimal polynomial of . We need to explain two things: that any eigenvalue of is a root of and that any root of is an eigenvalue of .  Suppose that is an eigenvalue of . This means that there is a nonzero vector such that and therefore for every . This means that , which implies that . Therefore, is a root of , the minimal polynomial of .  Conversely, suppose that is a root of . By , this means that . This says that However, since , there is some vector for which . Therefore, , which shows that is an eigenvector with associated eigenvalue .   "
+},
+{
+  "id": "prop-min-poly-div",
+  "level": "2",
+  "url": "sec-polys.html#prop-min-poly-div",
+  "type": "Proposition",
+  "number": "1.4.14",
+  "title": "",
+  "body": "  If is a polynomial for which , then is a multiple of the minimal polynomial of .    If is the minimal polynomial of , then we can apply the Division Algorithm to write where . Furthermore, , which implies that . Since has the smallest degree among all polynomials that vanish when evaluated on and has a smaller degree than , we know that . Therefore, .   "
+},
+{
+  "id": "prop-min-poly-subspace",
+  "level": "2",
+  "url": "sec-polys.html#prop-min-poly-subspace",
+  "type": "Proposition",
+  "number": "1.4.15",
+  "title": "",
+  "body": "  If is an operator on the vector space and is a subspace of that is invariant under , then the minimal polynomial of is a multiple of the minimal polynomial of .    Suppose that is the minimal polynomial of and is the minimal polynomial of on . This means that for every vector in and so . We also know that is the minimal polynomial of so by , we know that is a multiple of .   "
+},
+{
   "id": "backmatter-2",
   "level": "1",
   "url": "backmatter-2.html",
