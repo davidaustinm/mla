@@ -385,7 +385,7 @@
 	  \vvec,T\vvec,\ldots,T^{m-1}\vvec
 	</me> 
 	are all in <m>\nul(p(T))</m>.  These vectors are linearly
-	independent so we know that <m>\dim(\nul(p(T)))\leq m</m>.
+	independent so we know that <m>\dim(\nul(p(T)))\geq m</m>.
 	Therefore,
 	<me>
 	  \dim(\range(p(T))) = \dim(V) - \dim(\nul(p(T))) \leq n - m
