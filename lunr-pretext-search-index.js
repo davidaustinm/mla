@@ -973,6 +973,42 @@ var ptx_lunr_docs = [
   "body": "  If is an operator on the vector space and is a subspace of that is invariant under , then the minimal polynomial of is a multiple of the minimal polynomial of .    Suppose that is the minimal polynomial of and is the minimal polynomial of on . This means that for every vector in and so . We also know that is the minimal polynomial of so by , we know that is a multiple of .   "
 },
 {
+  "id": "sec-upper",
+  "level": "1",
+  "url": "sec-upper.html",
+  "type": "Section",
+  "number": "2.1",
+  "title": "Upper triangular matrices",
+  "body": " Upper triangular matrices   In this section, we will use our understanding of the minimal polynomial to find some standard forms for matrices of operators. First, we will consider upper triangular matrices.    Upper triangular matrices  As we have seen in the past, upper triangular matrices have some simple properties. For one, the eigenvalues of the associated operator equal the diagonal elements of the matrix. We have also seen that linear systems formed by triangular matrices are relatively easy to solve. All told, they form a pleasant set of matrices.  Reember that an upper triangular matrix is one whose entries are zero below the diagonal; that is, they have a form like this: . Suppose that is an operator and that there is a basis for which the associated matrix for is upper triangular. Since if , we have and so forth.  Notice that says that so that is an eigenvector with associated eigenvalue .  In addition, tells us that , which implies that is invariant under .  More generally, , which says that, for every , is invariant under .  Let's record this as a proposition.    Suppose that is an operator on the vector space . Then there is a basis for in which the associated matrix of is upper triangular if and only if is invariant under for each .    The discussion above explains why an operator with an upper triangular matrix forms invariant subspaces. Conversely, suppose that is invariant for every . The matrix associated to satisfies , which shows that if and that is therefore upper triangular.    We can rephrase this in terms of polynomials.    Suppose that is an operator on and that there is a basis of such that the matrix of is upper triangular. Then .    We will use to denote the polynomial .  First consider . Since is upper triangular, we know that , which means that . Therefore, .  Next consider for . Rearranging gives . Therefore, , which tells us that .  Continuing in this way, we see that and hence that . This means that for every vector and so we know that as claimed.    This leads to the following crucial result.    Suppose that is an operator on over the field . There is a basis for for which the matrix of is upper triangular if and only if the minimal polynomial of has the form where the roots are in .    One direction is a natural consequence of . Suppose that there is a basis for which the matrix of is upper triangular. That proposition tells us that for . Since , we know that is a multiple of the minimal polynomial of , which says that the minimal polynomial has the form given in the statement of this theorem.  Now suppose that the minimal polynomial has the form given. We will prove by induction that there is a basis for the matrix of is upper triangular.  First suppose that so that . This means that so that the matrix of in any basis is diagonal and hence upper triangular.  Let's now suppose that the result is true for any operator and vector space for which the minimal polynomial has the form where . Consider the subspace , which we know is invariant under . Since any vector in has the form , we know that . Therefore, if , then . As a result, is a multiple of the minimal polynomial of and so the minimal polynomial of is a product of fewer than terms having the form . By the induction hypothesis, we know there is a basis for so that the basis of is upper triangular.  We will now extend the basis of by vectors . Since is in , we have or , which shows that the matrix of is upper triangular.    Notice that the tells us that any polynomial with complex coefficients has the form given in . As a result, any operator on a complex vector space has a basis for which the associated matrix is upper triangular.   "
+},
+{
+  "id": "prop-upper-invariant",
+  "level": "2",
+  "url": "sec-upper.html#prop-upper-invariant",
+  "type": "Proposition",
+  "number": "2.1.1",
+  "title": "",
+  "body": "  Suppose that is an operator on the vector space . Then there is a basis for in which the associated matrix of is upper triangular if and only if is invariant under for each .    The discussion above explains why an operator with an upper triangular matrix forms invariant subspaces. Conversely, suppose that is invariant for every . The matrix associated to satisfies , which shows that if and that is therefore upper triangular.   "
+},
+{
+  "id": "prop-upper-min",
+  "level": "2",
+  "url": "sec-upper.html#prop-upper-min",
+  "type": "Proposition",
+  "number": "2.1.2",
+  "title": "",
+  "body": "  Suppose that is an operator on and that there is a basis of such that the matrix of is upper triangular. Then .    We will use to denote the polynomial .  First consider . Since is upper triangular, we know that , which means that . Therefore, .  Next consider for . Rearranging gives . Therefore, , which tells us that .  Continuing in this way, we see that and hence that . This means that for every vector and so we know that as claimed.   "
+},
+{
+  "id": "thm-upper-minimal",
+  "level": "2",
+  "url": "sec-upper.html#thm-upper-minimal",
+  "type": "Theorem",
+  "number": "2.1.3",
+  "title": "",
+  "body": "  Suppose that is an operator on over the field . There is a basis for for which the matrix of is upper triangular if and only if the minimal polynomial of has the form where the roots are in .    One direction is a natural consequence of . Suppose that there is a basis for which the matrix of is upper triangular. That proposition tells us that for . Since , we know that is a multiple of the minimal polynomial of , which says that the minimal polynomial has the form given in the statement of this theorem.  Now suppose that the minimal polynomial has the form given. We will prove by induction that there is a basis for the matrix of is upper triangular.  First suppose that so that . This means that so that the matrix of in any basis is diagonal and hence upper triangular.  Let's now suppose that the result is true for any operator and vector space for which the minimal polynomial has the form where . Consider the subspace , which we know is invariant under . Since any vector in has the form , we know that . Therefore, if , then . As a result, is a multiple of the minimal polynomial of and so the minimal polynomial of is a product of fewer than terms having the form . By the induction hypothesis, we know there is a basis for so that the basis of is upper triangular.  We will now extend the basis of by vectors . Since is in , we have or , which shows that the matrix of is upper triangular.   "
+},
+{
   "id": "backmatter-2",
   "level": "1",
   "url": "backmatter-2.html",
