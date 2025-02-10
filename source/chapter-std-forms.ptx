@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <chapter xml:id="chap-std-forms" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>The spectral theorem</title>
+  <title>Standard forms</title>
 
   <introduction>
     <p> In our earlier course, we investigated diagonalizable matrices
@@ -17,7 +17,7 @@
     diagonalizable, but it is <em>orthogonally diagonalizable</em>,
     meaning there is an orthogonal matrix <m>Q</m> such that
     <m>A=QDQ^T</m>.  This was an important fact that led to many
-    interesting investigations, and we called it the <em>Spectral
+    interesting ideas, and we called it the <em>Spectral
     Theorem</em>.
     </p>
 
@@ -40,9 +40,9 @@
   </introduction>
 
   <!-- include sections -->
-  <xi:include href="section-polys.ptx" />
   <xi:include href="section-upper.ptx" />
-  <xi:include href="section-orthogonal.ptx" />
+  <!--
   <xi:include href="section-nilpotent.ptx" />
   <xi:include href="section-jordan.ptx" />
+  -->
 </chapter>

@@ -35,16 +35,28 @@
     <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> for which the associated
     matrix <m>A</m> for <m>T</m> is upper triangular.  Since
     <m>A_{k,j} = 0</m> if <m>k \gt j</m>, we have
-    <me xml:id="me-upper-triang">
-      T\vvec_j = \sum_{k=1}^n A_{k,j} \vvec_k = \sum_{k=1}^j
-      A_{k,j}\vvec_k
-    </me>.
-    In particular, this says that <m>T\vvec_1 = A_{1,1}\vvec_1</m> so
+    <mdn>
+      <mrow xml:id="me-upper-triang-1">
+        T\vvec_1 \amp = A_{1,1}\vvec_1
+      </mrow>
+      <mrow xml:id="me-upper-triang-2">
+        T\vvec_2 \amp = A_{1,2}\vvec_1 + A_{2,2}\vvec_2
+      </mrow>
+      <mrow>
+        T\vvec_3 \amp = A_{1,3}\vvec_1 + A_{2,3}\vvec_2 + A_{3,3}\vvec_3
+      </mrow>
+    </mdn>
+    and so forth.
+    </p>
+
+    <p>
+    Notice that <xref ref="me-upper-triang-1"/> says that <m>T\vvec_1
+    = A_{1,1}\vvec_1</m> so
     that <m>\vvec_1</m> is an eigenvector with associated eigenvalue
     <m>A_{1,1}</m>.
     </p>
 
-    <p>But <xref ref="me-upper-triang"/> tells us more.  Notice that
+    <p>In addition, <xref ref="me-upper-triang-2"/> tells us that
     <me>
       T\vvec_2 = A_{2,1}\vvec_1 + A_{2,2}\vvec_2
     </me>,

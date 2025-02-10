@@ -12,8 +12,9 @@
 
     <!-- Include chapters -->
     <xi:include href="./chapter-vs.ptx" />
-    <!--
+
     <xi:include href="./chapter-std-forms.ptx" />
+    <!--
     -->
     <!-- Include backmatter -->
     <xi:include href="./backmatter.ptx" />
