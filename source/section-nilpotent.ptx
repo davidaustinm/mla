@@ -18,7 +18,7 @@
     </p>
   </introduction>
 
-  <subsection>
+  <subsection xml:id="subsec-nul-powers">
     <title> Null spaces of powers </title>
 
     <p>Suppose that <m>T</m> is an operator. If
@@ -36,40 +36,37 @@
     <p>
       The next propositions say that this process stabilizes so that the
       inclusions eventually become equalities.  First we show that
-      when we reach an equality, then all the following are inclusions.
+      when we reach an equality, then all the following inclusions are
+      equalities as well.
     </p>
 
-    <proposition>
+    <proposition xml:id="prop-nil-nul-incl">
       <statement>
 	If <m>\nul(T^m)=\nul(T^{m+1})</m>, then <m>\nul(T^{m+k}) =
 	\nul(T^m)</m> for any <m>k\gt 0</m>.
       </statement>
 
       <proof>
-	<p> We will proof this fact using induction on <m>k</m>.
-	Notice that the result is true for <m>k=1</m> by the
-	assumption.
-	</p>
+	<p>Suppose that <m>\nul(T^n) = \nul(T^{n+1})</m> for some
+        <m>n</m> and that <m>\vvec</m> is a vector in
+        <m>\nul(T^{n+2})</m>.  It follows that
+        <me>
+          T^{n+2}\vvec = T^{n+1}(T\vvec) = 0
+        </me>,
+        which means that <m>T\vvec</m> is in <m>\nul(T^{n+1})</m>.
+        Because <m>\nul(T^{n+1}) = \nul(T^n)</m>, it follows that
+        <m>T\vvec</m> is in <m>\nul(T^n)</m>, which says that
+        <me>
+          T^{n}(T\vvec) = T^{n+1}\vvec = 0
+        </me>.
+        </p>
 
-	<p>We now assume that <m>\nul(T^{m+j})=\nul(T^m)</m> for every
-	<m>j\lt k</m> and that we have a vector
-	<m>\vvec\in\nul(T^{m+k})</m>.  We need to show that
-	<m>\vvec\in\nul(T^m)</m>.
-	</p>
+        <p>We then see that
+        <me>\nul(T^m)=\nul(T^{m+1})=\nul(T^{m+2}) = \nul(T^{m+3}) =
+        \ldots
+        </me>.
+        </p>
 
-	<p>
-	We know that
-	<me>
-	  T^{m+k}\vvec = T^{m+1}(T^{k-1}\vvec) = \zerovec
-	</me>.
-	Therefore, <m>T^{k-1}\vvec</m> is in <m>\nul(T^{m+1}) =
-	\nul(T^m)</m>, which means that
-	<me>
-	  T^{m+k-1}\vvec=T^m(T^{k-1}\vvec)=\zerovec
-	</me>.
-	This means that <m>\vvec\in\nul(T^{m+k-1}) = \nul(T^m)</m> by
-	induction.
-	</p>
       </proof>
     </proposition>
 
@@ -114,8 +111,8 @@
   <subsection>
     <title>Nilpotent operators</title>
 
-    <p> We will say that an operator is nilpotent if some power of the
-    operator is zero.
+    <p> We will now focus on a particular type of operator known as
+    nilpotent. 
     </p>
 
     <definition>
@@ -166,7 +163,8 @@
 
     <definition>
       <statement>
-	<p>A <em>nilpotent block</em> matrix is a matrix having the form
+	<p>A <em>nilpotent block</em> matrix is a square matrix having
+        the form 
 	<me>
 	  \begin{bmatrix}
 	  0 \amp 1 \amp 0 \amp \ldots \amp 0 \\
@@ -178,29 +176,171 @@
 	This is, all the entries are zero except for the entries
 	directly above the diagonal, which are 1.
 	</p>
+
       </statement>
     </definition>
 
-    <example>
+    <example xml:id="example-nilpotent">
       <p>The following matrix consists of three nilpotent blocks on
-      the diagonal, a <m>2\times2</m> block, a <m>3\times3</m> block,
+      the diagonal, a <m>3\times3</m> block, a <m>2\times2</m> block,
       and a <m>1\times1</m> block.
       <me>
 	\begin{bmatrix}
 	0 \amp 1 \amp 0 \amp 0 \amp 0 \amp 0 \\
+	0 \amp 0 \amp 1 \amp 0 \amp 0 \amp 0 \\
 	0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
-	0 \amp 0 \amp 0 \amp 1 \amp 0 \amp 0 \\
 	0 \amp 0 \amp 0 \amp 0 \amp 1 \amp 0 \\
 	0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
 	0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
 	\end{bmatrix}
 	</me>.
       </p>
+        <p>Let's look a little more closely at how the linear
+        transformation acts on basis vectors, which we'll denote as
+        <m>\basis{\vvec}{6}</m>.  We have
+        <md>
+          <mrow> T\vvec_1 \amp = 0 </mrow>
+          <mrow> T\vvec_2 \amp = \vvec_1 </mrow>
+          <mrow> T\vvec_3 \amp = \vvec_2 </mrow>
+          <mrow> T\vvec_4 \amp = 0 </mrow>
+          <mrow> T\vvec_5 \amp = \vvec_4 </mrow>
+          <mrow> T\vvec_6 \amp = 0 </mrow>
+        </md>.
+        This transformation satisfies <m>T^3=0</m>, but <m>T^2\neq
+        0</m> so we have null spaces
+        <me>
+          \{0\}\subset\nul(T)\subset\nul(T^2)\subset(T^3) = V
+        </me>.
+        Within these null spaces, we have bases
+        <md>
+          <mrow>
+            \nul(T) \amp = \laspan{\vvec_1,\vvec_4, \vvec_6}
+          </mrow>
+          <mrow>
+            \nul(T^2) \amp =\nul(T)\oplus \laspan{\vvec_2,\vvec_5}
+          </mrow>
+          <mrow>
+            \nul(T^3) \amp =\nul(T^2)\oplus \laspan{\vvec_3}
+          </mrow>          
+        </md>.
+        For each <m>j</m>, we have
+        <me>
+          \nul(T^{j+1}) = \nul(T^j) \oplus W_j
+        </me>.
+        </p>
+        <p>
+        Notice that the <m>3\times3</m> block is formed by a vector
+        <m>\vvec_3</m> that is in <m>\nul(T^3)</m> but not
+        <m>\nul(T^2)</m>.  
+        Once we have identified <m>\vvec_3</m>, we
+        obtain new basis vectors as <m>\vvec_2=T\vvec_3</m> and
+        <m>\vvec_1=T\vvec_2=T^2\vvec_3</m>.
+        </p>
+
     </example>
 
-    <p>In fact, every nilpotent operator has basis whose associated
-    matrix consists of a set of nilpotent blocks on the diagonal.
+    <p>In fact, every nilpotent operator has a basis whose associated
+    matrix consists of a set of nilpotent blocks on the diagonal.  We
+    will state this as a proposition momentarily, but we'll first
+    present a few results that lead up to it.  <xref
+    ref="example-nilpotent"/> will guide our strategy to it could be
+    helpful to make sure that's clear.
     </p>
+
+    <p> First, notice that if <m>T</m> is
+    nilpotent, then its minimal polynomial is <m>p(x)=x^m</m> for some
+    <m>m</m>.  In particular, this means that <m>T^m=0</m> but
+    <m>T^{m-1}\neq 0</m>.  As we saw in <xref
+    ref="subsec-nul-powers"/>, we have the inclusion of null spaces:
+    <men xml:id="eq-nil-inclusions">
+      \{0\}\subsetneq\nul(T)\subsetneq\nul(T^2) \subsetneq \ldots
+      \subsetneq \nul(T^m) = V
+    </men>
+    where the inclusion of each null space into the other is a proper
+    inclusion.
+    </p>
+
+    <proposition>
+      <statement>
+        <p>Suppose that <m>T:V\to V</m> is nilpotent with minimal
+        polynomial <m>p(x)=x^m</m>.  For each <m>j</m> with <m>1\leq
+        j \lt m</m>, there is a subspace <m>W_j</m> so that
+        <me>
+          \nul(T^{j+1}) = \nul(T^j)\oplus W_j
+        </me>.
+        Moreover, <m>T|_{W_j}:W_j \to \nul(T^{j})</m> is injective
+        with <m>T(W_j)\subset W_{j-1}</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>Suppose that <m>1\leq j\lt m</m> and that <m>\vvec</m> is
+        in <m>\nul(T^{j+1})</m> but 
+        not in <m>\nul(T^j)</m>.  This
+        means that
+        <mdn>
+          <mrow xml:id="eq-nil-tj-1">
+            0 \amp = T^{j+1}\vvec = T^j(T\vvec)
+          </mrow>
+          <mrow xml:id="eq-nil-tj-2">
+            0 \amp \neq T^{j}\vvec = T^{j-1}(T\vvec)
+          </mrow>
+        </mdn>.
+        Notice that <xref ref="eq-nil-tj-1"/> says that
+        <m>T\vvec</m> is in <m>\nul(T^j)</m>.  In other words,
+        <m>T</m> pushes vectors to the left in 
+        the set of inclusions represented by <xref
+        ref="eq-nil-inclusions"/>.
+        </p>
+
+        <p>Also, <xref ref="eq-nil-tj-2"/> says that <m>\vvec</m> is
+        not in <m>\nul(T^{j-1})</m>.  This means that <m>T</m> pushes
+        vectors to the left in 
+        <xref ref="eq-nil-inclusions"/> one step at a time.
+        </p>
+
+        <p>Now we will construct the subspaces <m>W_j</m> beginning
+        with <m>W_{m-1}</m>.  We have <m>\nul(T^{m-1})\subsetneq
+        \nul(T^m)</m>.  If we have a basis for <m>\nul(T^{m-1})</m>,
+        we can extend it to a basis for <m>\nul(T^m)</m> by adding
+        vectors <m>\basis{\wvec}{k}</m>.  We define
+        <me>
+          W_{m-1} = \laspan{\basis{\wvec}{k}}
+        </me>
+        so that
+        <me>
+          \nul(T^m) = \nul(T^{m-1}) \oplus W_{m-1}
+        </me>.
+        </p>
+
+        <p>Since <m>W_{m-1}\cap\nul(T) = \{0\}</m>,
+        <m>T|_{W_{m-1}}:W_{m-1}\to \nul(T^{m-1})</m> is injective.
+        This means that <m>T(\wvec_1),\ldots,T(\wvec_k)</m> is a
+        linearly independent set in <m>\nul(T^{m-1})</m> that is not
+        contained in <m>\nul(T^{m-2})</m>.
+        </p>
+
+        <p>If we were to choose a basis for <m>\nul(T^{m-2})</m>, we
+        add the vectors <m>T(\wvec_1),\ldots,\T(\wvec_k)</m> to obtain
+        a linearly independent set in <m>\nul(T^{m-1})</m>.  We can
+        then extend this basis by adding vectors
+        <m>\vvec_1,\ldots,\vvec_l</m> to give a basis for
+        <m>\nul(T^{m-1})</m>.  We then define
+        <me>
+          W_{m-2} =
+          \laspan{T\wvec_1,\ldots,T\wvec_k,\vvec_1,\ldots,\vvec_l}
+        </me>.
+        Notice that <m>T|_{W_{m-1}}\to\nul(T^{m-1})</m> is injective
+        and <m>T(W_{m-1})\subset W_{m-2}</m>.
+        </p>
+
+        <p>This verifies the
+        proposition for <m>j=m-1</m>.  We simply repeat this
+        construction for <m>j=m-2</m>, <m>j=m-3</m>, and so forth
+        until we have verified it for <m>j=1</m>.
+        </p>
+      </proof>
+    </proposition>
+        
 
     <proposition>
       <statement>
@@ -220,7 +360,81 @@
       </statement>
 
       <proof>
-	<p>We will prove this result using induction on <m>n=\dim
+        <p>We wish to create a basis for <m>V</m> that
+        reveals the nilpotent blocks so         this proof.  
+        </p>
+
+        <p>Suppose <m>m</m> is the largest integer for which
+        <m>T^m=0</m> but <m>T^{m-1}\neq 0</m>.  If <m>m=1</m>, then
+        <m>T=0</m>, which means any matrix representing <m>T</m> is
+        the zero matrix, which consists of <m>\dim V</m> nilpotent
+        <m>1\times1</m> blocks.  For this reason, we assume that
+        <m>m>1</m>.
+        </p>
+
+        <p>Suppose that <m>\vvec</m> is in <m>\nul(T^{j+1})</m> but
+        not in <m>\nul(T^j)</m>.  This
+        means that
+        <md>
+          <mrow>
+            0 \amp = T^{j+1}\vvec = T^j(T\vvec)
+          </mrow>
+          <mrow>
+            0 \amp \neq T^{j}\vvec = T^{j-1}(T\vvec)
+          </mrow>
+        </md>.
+        In other words, <m>T:\nul(T^{j+1})\to\nul(T^j)</m> so that
+        <m>T</m> pushes vectors to the left one step at a time across
+        the set of inclusions <xref ref="eq-nil-inclusions"/>.
+        </p>
+        
+        <p>We can write
+        <me>
+          \nul(T^{m}) = \nul(T^{m-1})\oplus W_m
+        </me>.
+        To see why this is, we can choose a basis for <m>\nul(T^{m-1})</m>,
+        add a linearly independent set of vectors
+        <m>\basis{\wvec}{k}</m> to obtain a basis for 
+        <m>\nul(T^m)</m>, and define
+        <me>
+          W_m = \laspan{\basis{\wvec}{k}}
+        </me>.
+        </p>
+
+        <p>Suppose <m>\wvec</m> is a vector in <m>W_m</m>.  We have
+        <m>T^m\wvec = 0</m>, but <m>T^{m-1}\wvec\neq 0</m>.  This
+        means that <m>T\wvec</m> is <m>\nul(T^{m-1})</m> and
+        <m>T\wvec\neq 0</m>.  In other words,
+        <m>T:W_m\to\nul(T^{m-1})</m> is injective.  Therefore,
+        because <m>\basis{\wvec}{k}</m> is a linearly independent set,
+        it follows that <m>T\wvec_1,\ldots,T\wvec_k</m> is a linearly
+        independent set in <m>\nul(T^{m-1})</m>.
+        </p>
+
+        <p>Because <m>T^{m-1}\wvec_j\neq 0</m>, we know that
+        <m>T^{m-2}(T\wvec_j)\neq 0.</m>  We can extend this linearly
+        independent set by adding vectors <m>\basis{\xvec}{l}</m> so
+        that
+        <md>
+          <mrow>
+            \nul(T^{m-1}) \amp = \nul(T^{m-2}) \oplus
+            \laspan{T\wvec_1,\ldots,T\wvec_k,\xvec_1,\ldots,\xvec_l}
+          </mrow>
+          <mrow>
+            \nul(T^{m-1}) \amp = \nul(T^{m-2}) \oplus W_{m-1}
+          </mrow>
+        </md>.
+        </p>
+
+      <p>In the same way, <m>T:W_{m-1}\to\nul(T^{m-2})</m> is
+      injective.
+      </p>
+
+
+
+
+        <!--
+        <p>We will prove this result using induction on <m>n=\dim
 	V</m>.  To begin, if <m>n=\dim V = 1</m>, then <m>T=0</m> so
 	the matrix associated to <m>T</m> in any basis is
 	<m>\begin{bmatrix}0\end{bmatrix}</m>, a <m>1\times1</m>
@@ -339,6 +553,7 @@
 	have constructed gives a basis of <m>V</m> for which the
 	matrix associated to <m>T</m> consists of nilpotent blocks.
 	</p>
+-->
       </proof>
     </proposition>
 	

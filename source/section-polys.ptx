@@ -358,7 +358,7 @@
 	  \vvec,T\vvec,T^2\vvec,\ldots,T^n\vvec
 	</me>.
 	Since there are <m>n+1</m> vector in this set and
-	<m>\dim(V)=n</m>, we know this is a linearly independent set.
+	<m>\dim(V)=n</m>, we know this is a linearly dependent set.
 	</p>
 
 	<p>Choose <m>m</m> to be the smallest integer such that
