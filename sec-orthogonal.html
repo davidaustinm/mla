@@ -96,7 +96,7 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.5.7';
+eBookConfig.runestone_version = '7.5.8';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
@@ -251,7 +251,7 @@ eBookConfig.enable_chatcodes =  false;
 <ul class="structural toc-item-list active">
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-3" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Inner products</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-4" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Orthogonality</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-5" class="internal"><span class="codenumber">1.3.3</span> <span class="title">The adjoint of a linear transformation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#subsec-adjoint" class="internal"><span class="codenumber">1.3.3</span> <span class="title">The adjoint of a linear transformation</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-section">
@@ -265,10 +265,19 @@ eBookConfig.enable_chatcodes =  false;
 </li>
 <li class="toc-item toc-chapter">
 <div class="toc-title-box"><a href="chap-std-forms.html" class="internal"><span class="codenumber">2</span> <span class="title">Standard forms</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-section">
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
 <div class="toc-title-box"><a href="sec-upper.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Upper triangular matrices</span></a></div>
 <ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-upper.html#sec-upper-3" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Upper triangular matrices</span></a></div></li></ul>
-</li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-spectral.html" class="internal"><span class="codenumber">2.2</span> <span class="title">The Spectral Theorem</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-spectral.html#sec-spectral-3" class="internal"><span class="codenumber">2.2.1</span> <span class="title">The Schur decomposition</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-spectral.html#sec-spectral-4" class="internal"><span class="codenumber">2.2.2</span> <span class="title">Self-adjoint operators</span></a></div></li>
+</ul>
+</li>
+</ul>
 </li>
 <li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
 </ul></nav></div>
@@ -616,10 +625,10 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.16</span><span class="period">.</span>
 </h4>
 <div class="para" id="prop-ortho-extend-1-1">Any orthonormal set in <span class="process-math">\(V\)</span> can be extended to an orthonormal basis for <span class="process-math">\(V\text{.}\)</span>
-</div></article></section><section class="subsection" id="sec-orthogonal-5"><h3 class="heading hide-type">
+</div></article></section><section class="subsection" id="subsec-adjoint"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.3.3</span><span class="space"> </span><span class="title">The adjoint of a linear transformation</span>
 </h3>
-<div class="para logical" id="sec-orthogonal-5-2">
+<div class="para logical" id="subsec-adjoint-2">
 <div class="para">We suppose now that <span class="process-math">\(V\)</span> and <span class="process-math">\(W\)</span> are inner product spaces over a field <span class="process-math">\(\field\text{.}\)</span>  If <span class="process-math">\(T:V\to W\)</span> is a linear transformation, we can define its adjoint <span class="process-math">\(T^*\)</span> through the following relationship</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -634,7 +643,7 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 </div>
 <div class="para">by applying the conjugate symmetry condition twice. The first thing to establish is that <span class="process-math">\(T^*\)</span> is itself an linear transformation.</div>
 </div>
-<div class="para" id="sec-orthogonal-5-3">We will first prove a useful result in the simple case that <span class="process-math">\(T:V\to \field\text{.}\)</span>
+<div class="para" id="subsec-adjoint-3">We will first prove a useful result in the simple case that <span class="process-math">\(T:V\to \field\text{.}\)</span>
 </div>
 <article class="proposition theorem-like" id="prop-riesz"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.17</span><span class="period">.</span><span class="space"> </span><span class="title">Riesz represenation theorem.</span>
@@ -692,10 +701,10 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 </div>
 <div class="para">which implies that <span class="process-math">\(\uvec_1=\uvec_2\text{.}\)</span>
 </div>
-</div></article><article class="definition definition-like" id="sec-orthogonal-5-5"><h4 class="heading">
+</div></article><article class="definition definition-like" id="subsec-adjoint-5"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.18</span><span class="period">.</span>
 </h4>
-<div class="para logical" id="sec-orthogonal-5-5-1-1">
+<div class="para logical" id="subsec-adjoint-5-1-1">
 <div class="para">If <span class="process-math">\(V\)</span> and <span class="process-math">\(W\)</span> are inner product spaces and <span class="process-math">\(T:V\to W\)</span> a linear transformation, the <em class="emphasis">adjoint</em> of <span class="process-math">\(T\)</span> is defined by <span class="process-math">\(T^*:W\to V\)</span> by</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -708,12 +717,12 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 \inner{T^*\wvec}{\vvec} = \inner{\wvec}{T(\vvec)}\text{.}
 \end{equation*}
 </div>
-</div></article><div class="para" id="sec-orthogonal-5-6">There are a number of things implied by this definition so we need to check that they are satisfied.  The following proposition will take care of this for us.</div>
-<article class="proposition theorem-like" id="sec-orthogonal-5-7"><h4 class="heading">
+</div></article><div class="para" id="subsec-adjoint-6">There are a number of things implied by this definition so we need to check that they are satisfied.  The following proposition will take care of this for us.</div>
+<article class="proposition theorem-like" id="subsec-adjoint-7"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.19</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-orthogonal-5-7-1-1">The adjoint <span class="process-math">\(T^*:W\to V\)</span> is a linear transformation.</div></article><article class="proof" id="sec-orthogonal-5-7-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para logical" id="sec-orthogonal-5-7-2-1">
+<div class="para" id="subsec-adjoint-7-1-1">The adjoint <span class="process-math">\(T^*:W\to V\)</span> is a linear transformation.</div></article><article class="proof" id="subsec-adjoint-7-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para logical" id="subsec-adjoint-7-2-1">
 <div class="para">We first need to establish that <span class="process-math">\(T^*(\wvec)\)</span> is a vector in <span class="process-math">\(V\)</span> for every <span class="process-math">\(\wvec\)</span> in <span class="process-math">\(V\text{.}\)</span>  For a fixed <span class="process-math">\(\wvec\)</span> in <span class="process-math">\(W\text{,}\)</span> define the linear transformation <span class="process-math">\(\phi:V\to \field\)</span> by</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-riesz.html">
 \begin{equation*}
@@ -731,9 +740,9 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 </div>
 <div class="para">We have now defined a function <span class="process-math">\(T^*:W\to V\)</span> such that <span class="process-math">\(\inner{T(\vvec)}{\wvec} = \inner{\vvec}{T^*(\wvec)}\)</span> for all <span class="process-math">\(\vvec\)</span> and <span class="process-math">\(\wvec\text{.}\)</span>  We just need to show that <span class="process-math">\(T^*\)</span> is a linear transformation.</div>
 </div>
-<div class="para logical" id="sec-orthogonal-5-7-2-2">
+<div class="para logical" id="subsec-adjoint-7-2-2">
 <div class="para">We need to show that <span class="process-math">\(T^*\)</span> satisfies the two linearity properties.  Suppose that <span class="process-math">\(\wvec_1\)</span> and <span class="process-math">\(\wvec_2\)</span> are vectors in <span class="process-math">\(V\text{.}\)</span>  Then</div>
-<div class="displaymath process-math" id="sec-orthogonal-5-7-2-2-5">
+<div class="displaymath process-math" id="subsec-adjoint-7-2-2-5">
 \begin{align*}
 \inner{\vvec}{T^*(\wvec_1+\wvec_2)} \amp =
 \inner{T\vvec}{\wvec_1+\wvec_2} =
@@ -749,9 +758,9 @@ T^*(\wvec_1+\wvec_2) = T^*(\wvec_1) + T^*(\wvec_2)\text{.}
 \end{equation*}
 </div>
 </div>
-<div class="para" id="sec-orthogonal-5-7-2-3">In the same way, we see that <span class="process-math">\(T^*(s\wvec) =
+<div class="para" id="subsec-adjoint-7-2-3">In the same way, we see that <span class="process-math">\(T^*(s\wvec) =
 sT^*(\wvec)\text{,}\)</span> which verifies that <span class="process-math">\(T^*\)</span> is an operator on <span class="process-math">\(T\text{.}\)</span>
-</div></article><div class="para" id="sec-orthogonal-5-8">We now relate the matrices associated to <span class="process-math">\(T\)</span> and <span class="process-math">\(T^*\)</span> with respect to an orthonormal basis of <span class="process-math">\(V\text{.}\)</span>  As before, we use <span class="process-math">\(\uvec_1,\ldots,\uvec_n\)</span> to denote an orthonormal basis of <span class="process-math">\(V\text{.}\)</span>
+</div></article><div class="para" id="subsec-adjoint-8">We now relate the matrices associated to <span class="process-math">\(T\)</span> and <span class="process-math">\(T^*\)</span> with respect to an orthonormal basis of <span class="process-math">\(V\text{.}\)</span>  As before, we use <span class="process-math">\(\uvec_1,\ldots,\uvec_n\)</span> to denote an orthonormal basis of <span class="process-math">\(V\text{.}\)</span>
 </div>
 <article class="proposition theorem-like" id="prop-adjoint-matrix"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.20</span><span class="period">.</span>
@@ -783,8 +792,8 @@ A_{i,j} = \inner{T(\vvec_j)}{\wvec_i} =
 \conj{\inner{T^*(\wvec_i)}{\vvec_j}} = \conj{B_{j,i}}\text{.}
 \end{equation*}
 </div>
-</div></article><article class="assemblage assemblage-like" id="sec-orthogonal-5-10"><h4 class="heading"><span class="title">Real adjoints.</span></h4>
-<div class="para" id="sec-orthogonal-5-10-2">If the underlying field <span class="process-math">\(\field=\real\text{,}\)</span> then the matrix associated to the adjoint <span class="process-math">\(T^*\)</span> is just the transpose of the matrix associated to <span class="process-math">\(T\text{.}\)</span>  In other words, <span class="process-math">\(B=A^T\)</span> in the notation of <a href="sec-orthogonal.html#prop-adjoint-matrix" class="xref" data-knowl="./knowl/xref/prop-adjoint-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.3.20">Proposition 1.3.20</a>.</div></article></section></section></div>
+</div></article><article class="assemblage assemblage-like" id="subsec-adjoint-10"><h4 class="heading"><span class="title">Real adjoints.</span></h4>
+<div class="para" id="subsec-adjoint-10-2">If the underlying field <span class="process-math">\(\field=\real\text{,}\)</span> then the matrix associated to the adjoint <span class="process-math">\(T^*\)</span> is just the transpose of the matrix associated to <span class="process-math">\(T\text{.}\)</span>  In other words, <span class="process-math">\(B=A^T\)</span> in the notation of <a href="sec-orthogonal.html#prop-adjoint-matrix" class="xref" data-knowl="./knowl/xref/prop-adjoint-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.3.20">Proposition 1.3.20</a>.</div></article></section></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="sec-lt-intro.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-polys.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>

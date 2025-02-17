@@ -23,6 +23,7 @@ p(x) = (x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)
 </div>
 <div class="para">where the roots <span class="process-math">\(\lambda_j\)</span> are in <span class="process-math">\(\field\text{.}\)</span>
 </div>
+</div> <div class="para">Moreover, when this happens, the diagonal entries of the matrix are the eigenvalues of <span class="process-math">\(T\text{.}\)</span>
 </div></article><article class="proof"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical">
 <div class="para">One direction is a natural consequence of <a href="sec-upper.html#prop-upper-min" class="xref" data-knowl="./knowl/xref/prop-upper-min.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 2.1.2">Proposition 2.1.2</a>.  Suppose that there is a basis for which the matrix <span class="process-math">\(A\)</span> of <span class="process-math">\(T\)</span> is upper triangular.  That proposition tells us that <span class="process-math">\(q(T) = 0\)</span> for</div>
@@ -31,11 +32,12 @@ p(x) = (x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)
 q(x)=(x-A_{1,1})(x-A_{2,2})\ldots(x-A_{n,n})\text{.}
 \end{equation*}
 </div>
-<div class="para">Since <span class="process-math">\(q(T) = 0\text{,}\)</span> we know that <span class="process-math">\(q\)</span> is a multiple of the minimal polynomial of <span class="process-math">\(T\text{,}\)</span> which says that the minimal polynomial has the form given in the statement of this theorem.</div>
+<div class="para">Since <span class="process-math">\(q(T) = 0\text{,}\)</span> we know that <span class="process-math">\(q\)</span> is a multiple of the minimal polynomial of <span class="process-math">\(T\text{,}\)</span> which says that the minimal polynomial has the form given in the statement of this theorem.  Because the eigenvalues are the roots of the minimal polynomial, we also know that the diagonal entries of the matrix are the eigenvalues.</div>
 </div>
-<div class="para">Now suppose that the minimal polynomial <span class="process-math">\(p\)</span> has the form given.  We will prove by induction that there is a basis for the matrix of <span class="process-math">\(T\)</span> is upper triangular.</div>
+<div class="para">Now suppose that the minimal polynomial <span class="process-math">\(p\)</span> has the form given.  We will prove by induction that there is a basis for which the matrix of <span class="process-math">\(T\)</span> is upper triangular.</div>
 <div class="para">First suppose that <span class="process-math">\(m=1\)</span> so that <span class="process-math">\(T-\lambda_1I =
-0\text{.}\)</span>  This means that <span class="process-math">\(T=\lambda_1 I\)</span> so that the matrix of <span class="process-math">\(T\)</span> in any basis is diagonal and hence upper triangular.</div>
+0\text{.}\)</span>  This means that <span class="process-math">\(T=\lambda_1 I\)</span> so that the matrix of <span class="process-math">\(T\)</span> in any basis is diagonal and hence upper triangular.  Notice that the diagonal entries of this matrix are <span class="process-math">\(\lambda_1\text{,}\)</span> which is an eigenvalue of <span class="process-math">\(T\text{.}\)</span>
+</div>
 <div class="para logical">
 <div class="para">Let’s now suppose that the result is true for any operator and vector space for which the minimal polynomial has the form</div>
 <div class="displaymath process-math">
@@ -71,7 +73,8 @@ T\vvec_j = (T-\lambda_mI)\vvec_j + \lambda_m\vvec_j
 T\vvec_j = A_{j,k}\wvec_k + \lambda_m\vvec_j\text{,}
 \end{equation*}
 </div>
-<div class="para">which shows that the matrix of <span class="process-math">\(T\)</span> is upper triangular.</div>
+<div class="para">which shows that the matrix of <span class="process-math">\(T\)</span> is upper triangular. Furthermore, the diagonal entry of the matrix associated to <span class="process-math">\(\vvec_j\)</span> is <span class="process-math">\(\lambda_m\text{,}\)</span> which shows that the diagonal entries of the matrix are the eigenvalues of <span class="process-math">\(T\text{.}\)</span>
+</div>
 </div></article><span class="incontext"><a class="internal" href="sec-upper.html#thm-upper-minimal">in-context</a></span>
 </body>
 </html>

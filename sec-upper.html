@@ -96,7 +96,7 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.5.7';
+eBookConfig.runestone_version = '7.5.8';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
@@ -127,7 +127,7 @@ eBookConfig.enable_chatcodes =  false;
 <ol id="searchresults" class="searchresults"></ol>
 </div>
 </div>
-<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="chap-std-forms.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="chap-std-forms.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="chap-std-forms.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="chap-std-forms.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec-spectral.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\nul}{\operatorname{nul}}
 \newcommand{\N}{\mathbb N}
 \newcommand{\Z}{\mathbb Z}
@@ -251,7 +251,7 @@ eBookConfig.enable_chatcodes =  false;
 <ul class="structural toc-item-list">
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-3" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Inner products</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-4" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Orthogonality</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-5" class="internal"><span class="codenumber">1.3.3</span> <span class="title">The adjoint of a linear transformation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#subsec-adjoint" class="internal"><span class="codenumber">1.3.3</span> <span class="title">The adjoint of a linear transformation</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-section">
@@ -265,10 +265,19 @@ eBookConfig.enable_chatcodes =  false;
 </li>
 <li class="toc-item toc-chapter contains-active">
 <div class="toc-title-box"><a href="chap-std-forms.html" class="internal"><span class="codenumber">2</span> <span class="title">Standard forms</span></a></div>
-<ul class="structural toc-item-list contains-active"><li class="toc-item toc-section contains-active">
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section contains-active">
 <div class="toc-title-box"><a href="sec-upper.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Upper triangular matrices</span></a></div>
 <ul class="structural toc-item-list active"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-upper.html#sec-upper-3" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Upper triangular matrices</span></a></div></li></ul>
-</li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-spectral.html" class="internal"><span class="codenumber">2.2</span> <span class="title">The Spectral Theorem</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-spectral.html#sec-spectral-3" class="internal"><span class="codenumber">2.2.1</span> <span class="title">The Schur decomposition</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-spectral.html#sec-spectral-4" class="internal"><span class="codenumber">2.2.2</span> <span class="title">Self-adjoint operators</span></a></div></li>
+</ul>
+</li>
+</ul>
 </li>
 <li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
 </ul></nav></div>
@@ -403,6 +412,7 @@ p(x) = (x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)
 </div>
 <div class="para">where the roots <span class="process-math">\(\lambda_j\)</span> are in <span class="process-math">\(\field\text{.}\)</span>
 </div>
+</div> <div class="para" id="thm-upper-minimal-1-2">Moreover, when this happens, the diagonal entries of the matrix are the eigenvalues of <span class="process-math">\(T\text{.}\)</span>
 </div></article><article class="proof" id="thm-upper-minimal-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="thm-upper-minimal-2-1">
 <div class="para">One direction is a natural consequence of <a href="sec-upper.html#prop-upper-min" class="xref" data-knowl="./knowl/xref/prop-upper-min.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 2.1.2">Proposition 2.1.2</a>.  Suppose that there is a basis for which the matrix <span class="process-math">\(A\)</span> of <span class="process-math">\(T\)</span> is upper triangular.  That proposition tells us that <span class="process-math">\(q(T) = 0\)</span> for</div>
@@ -411,11 +421,12 @@ p(x) = (x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)
 q(x)=(x-A_{1,1})(x-A_{2,2})\ldots(x-A_{n,n})\text{.}
 \end{equation*}
 </div>
-<div class="para">Since <span class="process-math">\(q(T) = 0\text{,}\)</span> we know that <span class="process-math">\(q\)</span> is a multiple of the minimal polynomial of <span class="process-math">\(T\text{,}\)</span> which says that the minimal polynomial has the form given in the statement of this theorem.</div>
+<div class="para">Since <span class="process-math">\(q(T) = 0\text{,}\)</span> we know that <span class="process-math">\(q\)</span> is a multiple of the minimal polynomial of <span class="process-math">\(T\text{,}\)</span> which says that the minimal polynomial has the form given in the statement of this theorem.  Because the eigenvalues are the roots of the minimal polynomial, we also know that the diagonal entries of the matrix are the eigenvalues.</div>
 </div>
-<div class="para" id="thm-upper-minimal-2-2">Now suppose that the minimal polynomial <span class="process-math">\(p\)</span> has the form given.  We will prove by induction that there is a basis for the matrix of <span class="process-math">\(T\)</span> is upper triangular.</div>
+<div class="para" id="thm-upper-minimal-2-2">Now suppose that the minimal polynomial <span class="process-math">\(p\)</span> has the form given.  We will prove by induction that there is a basis for which the matrix of <span class="process-math">\(T\)</span> is upper triangular.</div>
 <div class="para" id="thm-upper-minimal-2-3">First suppose that <span class="process-math">\(m=1\)</span> so that <span class="process-math">\(T-\lambda_1I =
-0\text{.}\)</span>  This means that <span class="process-math">\(T=\lambda_1 I\)</span> so that the matrix of <span class="process-math">\(T\)</span> in any basis is diagonal and hence upper triangular.</div>
+0\text{.}\)</span>  This means that <span class="process-math">\(T=\lambda_1 I\)</span> so that the matrix of <span class="process-math">\(T\)</span> in any basis is diagonal and hence upper triangular.  Notice that the diagonal entries of this matrix are <span class="process-math">\(\lambda_1\text{,}\)</span> which is an eigenvalue of <span class="process-math">\(T\text{.}\)</span>
+</div>
 <div class="para logical" id="thm-upper-minimal-2-4">
 <div class="para">Let’s now suppose that the result is true for any operator and vector space for which the minimal polynomial has the form</div>
 <div class="displaymath process-math">
@@ -451,10 +462,11 @@ T\vvec_j = (T-\lambda_mI)\vvec_j + \lambda_m\vvec_j
 T\vvec_j = A_{j,k}\wvec_k + \lambda_m\vvec_j\text{,}
 \end{equation*}
 </div>
-<div class="para">which shows that the matrix of <span class="process-math">\(T\)</span> is upper triangular.</div>
+<div class="para">which shows that the matrix of <span class="process-math">\(T\)</span> is upper triangular. Furthermore, the diagonal entry of the matrix associated to <span class="process-math">\(\vvec_j\)</span> is <span class="process-math">\(\lambda_m\text{,}\)</span> which shows that the diagonal entries of the matrix are the eigenvalues of <span class="process-math">\(T\text{.}\)</span>
+</div>
 </div></article><div class="para" id="sec-upper-3-13">Notice that the <a href="sec-polys.html#thm-fta" class="xref" data-knowl="./knowl/xref/thm-fta.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.4.5: Fundamental Theorem of Algebra">Theorem 1.4.5</a> tells us that any polynomial with complex coefficients has the form given in <a href="sec-upper.html#thm-upper-minimal" class="xref" data-knowl="./knowl/xref/thm-upper-minimal.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.1.3">Theorem 2.1.3</a>.  As a result, any operator on a complex vector space <span class="process-math">\(V\)</span> has a basis for which the associated matrix is upper triangular.</div></section></section></div>
 <div class="ptx-content-footer">
-<a class="previous-button button" href="chap-std-forms.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="chap-std-forms.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-spectral.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
