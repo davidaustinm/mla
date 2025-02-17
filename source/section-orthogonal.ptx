@@ -493,7 +493,7 @@
   </subsection>
 
 
-  <subsection>
+  <subsection xml:id="subsec-adjoint">
     <title>The adjoint of a linear transformation</title>
 
     <p>We suppose now that <m>V</m> and <m>W</m> are inner product

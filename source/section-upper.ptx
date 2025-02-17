@@ -170,6 +170,9 @@
 	</me>
 	where the roots <m>\lambda_j</m> are in <m>\field</m>.
 	</p>
+        <p>Moreover, when this happens, the diagonal entries of the
+        matrix are the eigenvalues of <m>T</m>. 
+        </p>
       </statement>
 
       <proof>
@@ -183,18 +186,21 @@
 	Since <m>q(T) = 0</m>, we know that <m>q</m> is a multiple of
 	the minimal polynomial of <m>T</m>, which says that the
 	minimal polynomial has the form given in the statement of this
-	theorem.
+	theorem.  Because the eigenvalues are the roots of the minimal
+        polynomial, we also know that the diagonal entries of the
+        matrix are the eigenvalues.
 	</p>
 
 	<p>Now suppose that the minimal polynomial <m>p</m> has the
 	form given.  We will prove by induction that there is a basis
-	for the matrix of <m>T</m> is upper triangular.
+	for which the matrix of <m>T</m> is upper triangular.
 	</p>
 
 	<p>First suppose that <m>m=1</m> so that <m>T-\lambda_1I =
 	0</m>.  This means that <m>T=\lambda_1 I</m> so that the
 	matrix of <m>T</m> in any basis is diagonal and hence upper
-	triangular.
+	triangular.  Notice that the diagonal entries of this matrix
+        are <m>\lambda_1</m>, which is an eigenvalue of <m>T</m>.
 	</p>
 
 	<p>Let's now suppose that the result is true for any operator
@@ -233,6 +239,9 @@
 	  T\vvec_j = A_{j,k}\wvec_k + \lambda_m\vvec_j
 	</me>,
 	which shows that the matrix of <m>T</m> is upper triangular.
+        Furthermore, the diagonal entry of the matrix associated to
+        <m>\vvec_j</m> is <m>\lambda_m</m>, which shows that the
+        diagonal entries of the matrix are the eigenvalues of <m>T</m>.
 	</p>
       </proof>
     </theorem>

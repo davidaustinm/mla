@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-spectral" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Spectral Theorem</title>
+
+  <introduction>
+    <p>
+      In <xref ref="sec-upper"/>, we saw conditions that enable us to
+      represent a linear transformation as an upper triangular matrix.
+      This is our first theorem about a standard form, and it puts us
+      in a position to prove an important result that we used earlier
+      called the <em>Spectral Theorem.</em>
+    </p>
+    
+    <p>The version of the Spectral Theorem that we saw concerns real
+    symmetric matrices, which are square matrices for which
+    <m>A=A^T</m>.  This necessarily means that we are working in an
+    inner product space so we will first extend our results on upper
+    triangular matrices to operators on inner product spaces.
+    </p>
+    
+  </introduction>
+
+  <subsection>
+    <title>The Schur decomposition</title>
+
+    <p>We will first consider complex vector spaces.  In particular,
+    suppose that <m>V</m> is a finite-dimensional complex
+    inner product space and that <m>T:V\to V</m> is an operator on
+    <m>V</m>.  By the Fundamental Theorem of Algebra, we know that the
+    minimal polynomial of <m>T</m> can be written as a product of
+    linear factors:
+    <me>
+      p(x)=(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)
+    </me>,
+    which tells us that there is a basis <m>\bcal</m> in which
+    <m>\coords{T}{\bcal}</m> is upper triangular.  We will denote the
+    vectors in <m>\bcal</m> as <m>\bcal=\{\basis{\vvec}{n}\}</m>.
+    </p>
+
+    <p>Since <m>V</m> is an inner product space, we can apply the
+    Gram-Schmidt algorithm to <m>\bcal</m> to form a new orthogonal
+    basis <m>\ccal</m>.  The vectors in <m>\ccal</m> will be denoted
+    by <m>\ccal=\{\basis{\wvec}{n}\}</m> so that
+    <md>
+      <mrow>
+        \wvec_1\amp=\vvec_1
+      </mrow>
+      <mrow>
+        \wvec_2\amp = \vvec_2 -
+        \frac{\inner{\vvec_2}{\wvec_1}}{\inner{\wvec_1}{\wvec_1}}
+      </mrow>
+      <mrow>
+        \wvec_3\amp = \vvec_3 -
+        \frac{\inner{\vvec_3}{\wvec_1}}{\inner{\wvec_1}{\vvec_1}}
+        -\frac{\inner{\vvec_3}{\wvec_2}}{\inner{\wvec_2}{\vvec_2}}
+      </mrow>
+    </md>
+    and so forth.  We can rearrange these expressions so that
+    <md>
+      <mrow>
+        \vvec_1\amp=\wvec_1
+      </mrow>
+      <mrow>
+        \vvec_2\amp = \wvec_2 +
+        \frac{\inner{\vvec_2}{\wvec_1}}{\inner{\wvec_1}{\wvec_1}}
+      </mrow>
+      <mrow>
+        \vvec_3\amp = \wvec_3 +
+        \frac{\inner{\vvec_3}{\wvec_1}}{\inner{\wvec_1}{\vvec_1}}
+        +\frac{\inner{\vvec_3}{\wvec_2}}{\inner{\wvec_2}{\vvec_2}}
+      </mrow>
+    </md>.
+    In other words, the change of coordinates matirx
+    <m>\coords{I}{\ccal,\bcal}</m> is upper triangular, which implies that
+    <me>
+      \coords{T}{\ccal} = \coords{I}{\ccal,\bcal}
+      \coords{T}{\bcal} \coords{I}{\bcal,\ccal}
+    </me>
+    is upper triangular.
+    </p>
+
+    <p>We obtain an orthonormal basis by setting
+    <m>\uvec_j=\frac{\wvec_j}{\len{\wvec_j}}</m>.  Since this change
+    of coordinates matrix is diagonal, we obtain the following result.
+    </p>
+
+    <theorem xml:id="thm-schur">
+      <title>Schur decomposition</title>
+      <statement>
+        <p>
+          If <m>T:V\to V</m> is an operator on a finite dimensional
+          complex inner product space, then there is an orthonormal basis
+          in which the matrix representing <m>T</m> is upper
+          triangular.
+        </p>
+      </statement>
+    </theorem>
+
+    <p>This result is sometimes expressed in terms of matrices.  We
+    earlier considered <em>orthogonal</em> matrices, which are real
+    matrices whose columns form an orthonormal basis.  If the matrix
+    is complex, such a matrix is called <em>unitary</em>.
+    </p>
+
+    <definition>
+      <statement>
+        A complex <m>n\times n</m> matrix <m>U</m> whose columns form
+        an orthonormal basis for <m>\complex^n</m> is called
+        <em>unitary</em>.  Such a matrix satisfies
+        <m>U^*U=UU^*=I</m>.
+      </statement>
+    </definition>
+
+    <p>We can now restate the Schur decomposition in terms of unitary
+    matrices. </p>
+
+    <theorem>
+      <title>Schur decomposition</title>
+      <statement>
+        <p>If <m>A</m> is a square complex matrix, then there is a unitary
+        matrix <m>U</m> and an upper triangular matrix <m>T</m> such
+        that
+        <me>A=UTU^*</me>.
+        </p>
+      </statement>
+    </theorem>
+
+  </subsection>
+
+  <subsection>
+    <title>Self-adjoint operators</title>
+
+    <p> When <m>V</m> and <m>W</m> are inner product spaces, a linear
+    transformation <m>T:V\to W</m> has an adjoint <m>T^*:W\to V</m> as
+    introduced in <xref ref="subsec-adjoint"/>.  When expressed in
+    terms of orthonormal bases for <m>V</m> and <m>W</m>, the matrix
+    associated to <m>T^*</m> is the conjugate transpose of the matrix
+    associated to <m>T</m>.  Or when the vector spaces are real, the
+    matrices are simply the transpose of one another.
+    </p>
+
+    <p>We will now consider operators <m>T:V\to V</m> on an inner
+    product space <m>V</m> that are
+    <em>self-adjoint</em>.
+    </p>
+    
+    <definition>
+      <statement>
+        <p> We say that operator <m>T</m> on an inner product space
+        <m>V</m> is <em>self-adjoint</em> if <m>T=T^*</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <theorem>
+      <title>The complex spectral theorem</title>
+      <statement>
+        <p>If <m>T:V\to V</m> is a self-adjoint operator on a complex
+        vector space <m>V</m>, then there is an orthonormal basis
+        <m>\bcal</m> for which <m>\coords{T}{\bcal}</m> is diagonal.
+        Furthermore, the eigenvalues of <m>T</m> are real.
+        </p>
+      </statement>
+      <proof>
+        <p>By the <xref ref="thm-schur">Schur decomposition</xref>, we
+        know that there is an orthonormal basis <m>\bcal</m> for which
+        <m>\coords{T}{\bcal} = A</m> is upper triangular.  However,
+        since <m>T=T^*</m>, we also know that <m>A=\conj{A}^T</m>,
+        which says that <m>A</m> is diagonal with real entries on the
+        diagonal.
+        </p>
+      </proof>
+    </theorem>
+
+    <p> For real inner product
+    spaces, self-adjoint operators are represented by symmetric
+    matrices.
+    </p>
+
+    <lemma xml:id="lemma-self-ad-quadratic">
+      <statement>
+        <p>If <m>T</m> is a self-adjoint operator on an inner product
+        space <m>V</m> and 
+        <m>b</m> and <m>c</m> are real numbers for which <m>b^2 \lt
+        4c</m>, then the operator
+        <me>
+          T^2 + bT + cI
+        </me>
+        is an isomorphism.
+        </p>
+      </statement>
+      <proof>
+        <p>By the <xref ref="prop-nul-range-dims">Fundamental Theorem
+        of Linear Maps</xref>, we only need to 
+        show that <m>\nul(T)=\{\zerovec\}</m>. 
+        Therefore, we suppose that <m>\vvec</m> is a nonzero vector
+        and consider
+        <me>
+          \begin{aligned}
+          \inner{(T^2+bT+cI)\vvec}{\vvec} \amp =
+          \inner{T^2\vvec}{\vvec}+
+          \inner{bT\vvec}{\vvec}+c\inner{\vvec}{\vvec} \\
+          \amp = 
+          \inner{T\vvec}{T\vvec}+
+          b\inner{T\vvec}{\vvec}+c\inner{\vvec}{\vvec}\\
+          \amp =
+          \len{T\vvec}^2 + b\inner{T\vvec}{\vvec}+c\len{\vvec}^2 \\
+          \amp \geq
+          \len{T\vvec}^2 - b\len{T\vvec}\len{\vvec} + c\len{\vvec} \\
+          \amp \geq
+          \left(\len{T\vvec} - \frac b2\len{\vvec}\right)^2 +
+          \left(c-\frac{b^2}{4}\right)\len{\vvec}^2 \\
+          \amp \gt 0 \\
+          \end{aligned}
+        </me>.
+        This shows that <m>(T^2+bT+cI)\vvec</m> is also nonzero so the
+        operator is an isomorphism.
+        </p>
+      </proof>
+    </lemma>
+
+    <p>If <m>\field=\complex</m> and <m>T</m> is an operator on
+    <m>V</m>, we know from the <xref ref="thm-fta" 
+    text="Fundamental Theorem of Algebra"/> that the minimal
+    polynomial of <m>T</m> has the form
+    <me>
+      p(x)=(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)
+    </me>
+    where each <m>\lambda_j\in\complex</m>.
+    If <m>\field=\real</m> and <m>T</m> is a
+    self-adjoint operator on <m>V</m>, we can reach a similar
+    conclusion.
+    </p>
+
+    <proposition xml:id="prop-self-ad-min-poly">
+      <statement>
+        <p>If <m>V</m> is a real inner product space and <m>T</m> is a
+        self-adjoint operator on <m>T</m>, then the minimal polynomial
+        of <m>T</m> has the form
+        <me>
+          p(x)=(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)
+        </me>
+        where <m>\lambda_j\in\real</m>.
+        </p>
+      </statement>
+
+      <proof>
+        <p>We know that the minimal polynomial has the form
+        <me>
+          p(x)=(x-\lambda_1)\ldots(x-\lambda_m)(x^2+b_1x+c_1)\ldots
+          (x^2+b_nx+c_n)
+        </me>
+        where <m>b_i^2 \lt 4c_i</m> for each <m>i</m>.
+        However, since <m>p(T)=0</m>, we know that
+        <me>
+          p(T)=(T-\lambda_1)\ldots(T-\lambda_m)(T^2+b_1T+c_1I)\ldots
+          (T^2+b_nT+c_nI)
+        </me>.
+        If <m>n\gt 0</m>, then <m>T^2+b_1T+c_1I</m> is invertible by
+        <xref ref="lemma-self-ad-quadratic"/>.  If
+        we multiply <m>p(T)</m> by its inverse, we obtain another
+        polynomial <m>q</m> of smaller degree for which <m>q(T)=0</m>.
+        </p>
+
+        <p>Since the minimal polynomial <m>p</m> is the polynomial
+        having the smallest degree among all polynomials for which
+        <m>p(T)=0</m>, we conclude that <m>m=0</m> and therefore
+        <me>
+          p(x)=(x-\lambda_1)\ldots(x-\lambda_m)
+        </me>.
+        </p>
+      </proof>
+    </proposition>
+
+    <theorem xml:id="thm-spectral-thm">
+      <title>The Spectral Theorem</title>
+      <statement>
+        <p>If <m>T</m> is a self-adjoint operator on a real vector
+        space <m>V</m>, then there is an orthonormal basis such that
+        the matrix associated to <m>T</m> is diagonal.
+        </p>
+      </statement>
+
+      <proof>
+        <p>By <xref ref="thm-upper-minimal"/> and <xref
+        ref="prop-self-ad-min-poly"/>, we know that there is a basis
+        <m>\bcal</m> of <m>V</m> for which
+        the matrix associated to <m>T</m> is upper triangular.  As
+        before, we apply the Gram-Schmidt algorithm to obtain an
+        orthonormal basis <m>\ccal</m> and note that the change of
+        coordinates matrix is upper triangular.  Therefore,
+        <me>
+          \coords{T}{\ccal} = \coords{I}{\ccal,\bcal}\coords{T}{\bcal}
+          \coords{I}{\bcal,\ccal}
+        </me>
+        is also upper triangular.
+        </p>
+
+        <p>However, if <m>A=\coords{T}{\ccal}</m> is this matrix, we
+        know that <m>A^T=A</m> since <m>T=T^*</m> is self-adjoint.
+        Therefore, <m>A</m> is diagonal.
+        </p>
+      </proof>
+    </theorem>
+
+    <p>In terms of matrices, this has the more familiar form:
+    </p>
+
+    <theorem>
+      <title>The spectral theorem, matrix edition</title>
+      <statement>
+        <p>If <m>A</m> is a real, symmetric matrix, then there is an
+        orthogonal matrix <m>Q</m> and a diagonal matrix <m>D</m> such
+        that <me>A=QDQ^T</me>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+
+</section>

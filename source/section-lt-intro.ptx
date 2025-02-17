@@ -347,6 +347,7 @@
 
     <p>We will frequently make use of the next proposition.</p>
     <proposition xml:id="prop-nul-range-dims">
+      <title>Fundamental Theorem of Linear Maps</title>
       <statement>
         <p>If <m>V</m> is a finite dimensional vector space and
         <m>T:V\to W</m> is a linear transformation, then 
