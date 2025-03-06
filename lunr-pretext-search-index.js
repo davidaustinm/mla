@@ -1099,6 +1099,159 @@ var ptx_lunr_docs = [
   "body": " The spectral theorem, matrix edition   If is a real, symmetric matrix, then there is an orthogonal matrix and a diagonal matrix such that .   "
 },
 {
+  "id": "sec-nilpotent",
+  "level": "1",
+  "url": "sec-nilpotent.html",
+  "type": "Section",
+  "number": "2.3",
+  "title": "Nilpotent operators",
+  "body": " Nilpotent operators   Eigenvectors of an operator are found through the equation . Now that we have developed some conditions under which operators are diagonalizable, we would like to understand what happens when operators are not diagonalizable. To this end, we will generalize the eigenvector condition by considering . To get started, however, we will first consider a related class of operators.    Null spaces of powers  Suppose that is an operator. If , then it also happens that . This means that , and we therefore have .  The next propositions say that this process stabilizes so that the inclusions eventually become equalities. First we show that when we reach an equality, then all the following inclusions are equalities as well.   If , then for any .   Suppose that for some and that is a vector in . It follows that , which means that is in . Because , it follows that is in , which says that .  We then see that .    The next result says that this process will always stablize by the time we reach the dimension of .    For any operator on a vector space of dimension , .    If , then is invertible as is every power of . Therefore for every power, including and .  Now suppose that has positive dimension so that and that the null spaces continue to grow . In this case, . This shows that the null spaces cannot grow beyond so we have .      Nilpotent operators  We will now focus on a particular type of operator known as nilpotent.   Nilpotent operator  An operator is nilpotent if some power .   Notice that the operator is nilpotent but we will often consider nonzero nilpotent operators.   Consider the matrix and notice that . An operator whose associated matrix is with respect to some basis is nilpotent since .   Suppose is nilpotent and that is the smallest power for which . This means that if and hence is the minimal polynomial of . We could view , which says that there is a basis for which the matrix associated to is upper triangular .  In fact, we will see that there is a basis so that the matrix associated to a nilpotent operator has an especially nice form.    A nilpotent block matrix is a square matrix having the form . This is, all the entries are zero except for the entries directly above the diagonal, which are 1.     The following matrix consists of three nilpotent blocks on the diagonal, a block, a block, and a block. .  Let's look a little more closely at how the linear transformation acts on basis vectors, which we'll denote as . We have . This transformation satisfies , but so we have null spaces . Within these null spaces, we have bases . For each , we have .  Notice that the block is formed by a vector that is in but not . Once we have identified , we obtain new basis vectors as and .   In fact, every nilpotent operator has a basis whose associated matrix consists of a set of nilpotent blocks on the diagonal, which we will state and prove in the next proposition.  First, notice that if is nilpotent, then its minimal polynomial is for some . In particular, this means that but . As we saw in , we have the inclusion of null spaces: where the inclusion of each null space into the other is a proper inclusion.  If is in , then , which means that is in . In other words, applying pushes a vector to the left in the inclusions of null spaces in .  We are now ready to prove our structure theorem for nilpotent operators.    If is a nilpotent operator on , then there is a basis for such that the matrix associated to has the form where each is a nilpotent block.    Our proof proceeds by induction on the dimension of the vector space , which we will denote by .  To verify the base case, suppose that . As we have seen, if is a vector in , then for some scalar . However, if is nilpotent, then and so . In any basis, the matrix representing is , a nilpotent block.  Now suppose that the result is true for any nilpotent operator on a vector space of dimension less than . Suppose also that the minimal polynomial of is . This means that but so . We will choose a vector in that is not in and define . Notice that so that is in . More generally, is in .  We will use to denote the subspace spanned by . Notice that a vector in may be written as and therefore . This shows that is a -invariant subspace of .  Suppose now that is a linear functional so that . We then define by . Once again, if is a vector in , then so that . This shows three things.   is surjective.   , the standard basis vector in , which means that is a linearly independent set and therefore a basis for . Moreover, in this basis, the matrix representing is a nilpotent block.   implies that , which means that .    Now consider . Since is surjective, we have by the Fundamental Theorem of Linear Maps . Moreover, so we have .  Finally, we claim that is a -invariant subspace. Notice that is in if and only if for all . If this is the case, then for all , which shows that is -invariant.  Because and is nilpotent, the inductive hypothesis applies to show that there is a basis for so that the matrix representing consists of nilpotent blocks. We can combine this basis with to finish the proof of the theorem.      "
+},
+{
+  "id": "prop-nil-nul-incl",
+  "level": "2",
+  "url": "sec-nilpotent.html#prop-nil-nul-incl",
+  "type": "Proposition",
+  "number": "2.3.1",
+  "title": "",
+  "body": " If , then for any .   Suppose that for some and that is a vector in . It follows that , which means that is in . Because , it follows that is in , which says that .  We then see that .   "
+},
+{
+  "id": "subsec-nul-powers-6",
+  "level": "2",
+  "url": "sec-nilpotent.html#subsec-nul-powers-6",
+  "type": "Proposition",
+  "number": "2.3.2",
+  "title": "",
+  "body": "  For any operator on a vector space of dimension , .    If , then is invertible as is every power of . Therefore for every power, including and .  Now suppose that has positive dimension so that and that the null spaces continue to grow . In this case, . This shows that the null spaces cannot grow beyond so we have .   "
+},
+{
+  "id": "sec-nilpotent-4-3",
+  "level": "2",
+  "url": "sec-nilpotent.html#sec-nilpotent-4-3",
+  "type": "Definition",
+  "number": "2.3.3",
+  "title": "Nilpotent operator.",
+  "body": " Nilpotent operator  An operator is nilpotent if some power .  "
+},
+{
+  "id": "sec-nilpotent-4-5",
+  "level": "2",
+  "url": "sec-nilpotent.html#sec-nilpotent-4-5",
+  "type": "Example",
+  "number": "2.3.4",
+  "title": "",
+  "body": " Consider the matrix and notice that . An operator whose associated matrix is with respect to some basis is nilpotent since .  "
+},
+{
+  "id": "sec-nilpotent-4-8",
+  "level": "2",
+  "url": "sec-nilpotent.html#sec-nilpotent-4-8",
+  "type": "Definition",
+  "number": "2.3.5",
+  "title": "",
+  "body": "  A nilpotent block matrix is a square matrix having the form . This is, all the entries are zero except for the entries directly above the diagonal, which are 1.   "
+},
+{
+  "id": "example-nilpotent",
+  "level": "2",
+  "url": "sec-nilpotent.html#example-nilpotent",
+  "type": "Example",
+  "number": "2.3.6",
+  "title": "",
+  "body": " The following matrix consists of three nilpotent blocks on the diagonal, a block, a block, and a block. .  Let's look a little more closely at how the linear transformation acts on basis vectors, which we'll denote as . We have . This transformation satisfies , but so we have null spaces . Within these null spaces, we have bases . For each , we have .  Notice that the block is formed by a vector that is in but not . Once we have identified , we obtain new basis vectors as and .  "
+},
+{
+  "id": "sec-nilpotent-4-14",
+  "level": "2",
+  "url": "sec-nilpotent.html#sec-nilpotent-4-14",
+  "type": "Proposition",
+  "number": "2.3.7",
+  "title": "",
+  "body": "  If is a nilpotent operator on , then there is a basis for such that the matrix associated to has the form where each is a nilpotent block.    Our proof proceeds by induction on the dimension of the vector space , which we will denote by .  To verify the base case, suppose that . As we have seen, if is a vector in , then for some scalar . However, if is nilpotent, then and so . In any basis, the matrix representing is , a nilpotent block.  Now suppose that the result is true for any nilpotent operator on a vector space of dimension less than . Suppose also that the minimal polynomial of is . This means that but so . We will choose a vector in that is not in and define . Notice that so that is in . More generally, is in .  We will use to denote the subspace spanned by . Notice that a vector in may be written as and therefore . This shows that is a -invariant subspace of .  Suppose now that is a linear functional so that . We then define by . Once again, if is a vector in , then so that . This shows three things.   is surjective.   , the standard basis vector in , which means that is a linearly independent set and therefore a basis for . Moreover, in this basis, the matrix representing is a nilpotent block.   implies that , which means that .    Now consider . Since is surjective, we have by the Fundamental Theorem of Linear Maps . Moreover, so we have .  Finally, we claim that is a -invariant subspace. Notice that is in if and only if for all . If this is the case, then for all , which shows that is -invariant.  Because and is nilpotent, the inductive hypothesis applies to show that there is a basis for so that the matrix representing consists of nilpotent blocks. We can combine this basis with to finish the proof of the theorem.   "
+},
+{
+  "id": "sec-jordan",
+  "level": "1",
+  "url": "sec-jordan.html",
+  "type": "Section",
+  "number": "2.4",
+  "title": "Generalized eigenvectors",
+  "body": " Generalized eigenvectors   Up to this point, eigenvalues and eigenvectors have helped us find some standard forms of operators. In particular, we have seen that if an operator on , an -dimensional vector space has linearly independent eigenvectors, then is diagonalizable. We also know that this condition holds if has distinct eigenvalues or if the operator is self-adjoint.  However, there are examples where this does not apply. For instance, the matrix has a single eigenvalue and the associated eigenspace is one-dimensional. In this case, the characteristic polynomial is so the eigenvalue is a root with multiplicity two.  This example show that just looking at eigenvalues and eigenvectors will not be enough to always find a standard form. So instead, we do something that mathematicians love to do: generalize an idea that has already proven useful. In this case, the eigenvalue\/eigenvector condition is given by the equation . We will generalize this equation to for some and call the solutions generalized eigenvectors .    Generalized eigenvectors    If is an operator on , we say that a nonzero vector is a generalized eigenvector if for some . The set of such vectors, the generalized eigenspace is denoted .    Notice that eigenvectors are also generalized eigenvectors since an eigenvector satisfies , the generalized eigenvector condition with .  We would like to characterize a generalized eigenspace as a subspace of . Before doing so, however, we recall an earlier homework exercise.    If is an operator and a nonzero vector in , then there is a unique monic polynomial having the smallest possible degree and satisfying .  If is another polynomial for which , then divides . In particular, it follows that divides the minimal polynomial of .    With this in mind, we can characterize the generalized eigenspaces.    If the minimal polynomial of has the form where , then .    Suppose that is a generalized eigenvector, which means that for some . If , then , which means that divides . Therefore, for some .  The minimal polynomiall of has exactly factors of . Since divides , can have no more than factors of . Therefore, , which says that is in .    We know that a vector cannot be an eigenvector associated to two different eigenvalues. This is also true for generalized eigenvectors.    If and are distinct eigenvalues of , then .    Suppose that is a nonzero vector in . Then for some , which says that is a root of .  At the same time, if is in , then for some . Since , we must have .       Complex Vector Spaces  Because of the Fundamental Theorem of Algebra, operators on complex vector spaces have special properties. In particular, the minimal polynomial of an operator on a complex vector space has the form . In this case, we claim that is a direct sum of generalized eigenspaces.    If is an operator on a complex vector space with eigenvalues , then .    We will use induction on the dimension of . To establish the base case, we assume that . In this case, so or . Then .  For the inductive step, we will assume the result is true for all vector spaces of dimension less than . We will choose an eigenvalue and write the minimal polynomial as where .  Notice that . To see this, suppose that is in this intersection. Then for some vector . Moreover, . This implies that divides so that the only factors of are . Since also divides the minimal polynomial , we also know that divides . Therefore, .  Because of , we also know that , which says that . If we define , then we also have .  Since we have written the minimal polynomial , we can see that the minimal polynomial of is . For instance, if is in , then for some vector . Then . This shows that the minimal polynomial of divides . However, if the minimal polynomial of has a smaller degree than , this would contradcit the fact that the minimal polynomial of has the smallest possible degree.  By the inductive hypothesis, may be written as a direct sum of its generalized eigenspaces. All that remains is to show that, if is an eigenvalue distinct from , the generalized eigenspace of associated to is the same as the generalized eigenspace of associated to . To this end, suppose that satisfies for some . Because , we can write where and . We have . Because these subspaces are -invariant, we have . This means that by so that . Therefore, and .      If is an operator on , a complex vector space, then there is a basis of consisting of generalized eigenvectors of .    Once again we proceed by induction on , the dimension of . The result is certainly true if because every nonzero vector is an eigenvector of .  Now assume that and that the result holds for all smaller values of . Suppose that is an eigenvalue of and consider the operator . We will first explain why .  First, we can see that these subspaces of intersect only in the zero vector. Suppose that , which means there is a vector such that . If is also in , then . Because , remember that for any positive . Since , we also have , which means that . Therefore, these two subspaces only intersect in the zero vector.  In the usual way, the dimensions of these subspaces add to so we have . If , then every vector in is a generalized eigenvector of and the conclusion of the theorem holds. Suppose instead that where the first inclusion holds because is an eigenvalue of . This means that .  Now is invariant under . By induction, there is a basis of consisting of generalized eigenvectors of . Putting this together with a basis of gives a basis of consisting of generalized eigenvectors of .      If is an operator on the complex vector space and the set of eigenvalues of is , then .    We have seen that there is a basis of consisting of generalized eigenvectors. Therefore, every vector in can be written as a linear combination of generalized eigenvectors.  We have further seen a set of generalized eigenvectors associated to different eigenvalues is linear independent.  These two facts are enough to establish the theorem.      Jordan form  We are now ready to proof the main structure theorem, again assuming that is a complex vector space. By a Jordan block, we mean a matrix whose diagonal entries are all , whose entries directly above the diagonal are 1, and whose other entries are all zero. That is, .   Jordan canonical form   If is an operator on a complex vector space , then there is a basis for such that the matrix associated to consists only of Jordan blocks on the diagonal. That is, .    We know that . Moreover, on , the operator is nilpotent, which means there is a basis for such that the matrix associated to conists of nilpotent blocks. The matrix associated to therefore has consists of Jordan blocks. Because each generalized eigenspace is invariant under , the theorem holds.    Notice that the characteristic polynomial of , which can easily be found using this matrix, has the form where the multiplicity of each eigenvalue equals the dimension . We earlier called the algebraic multiplicity of the eigenvalue . Because the eigenspace , have therefore shown that the multiplicity of the eigenvalue is at least as large as the dimension of the eigenspace: .   "
+},
+{
+  "id": "sec-jordan-3-2",
+  "level": "2",
+  "url": "sec-jordan.html#sec-jordan-3-2",
+  "type": "Definition",
+  "number": "2.4.1",
+  "title": "",
+  "body": "  If is an operator on , we say that a nonzero vector is a generalized eigenvector if for some . The set of such vectors, the generalized eigenspace is denoted .   "
+},
+{
+  "id": "sec-jordan-3-5",
+  "level": "2",
+  "url": "sec-jordan.html#sec-jordan-3-5",
+  "type": "Proposition",
+  "number": "2.4.2",
+  "title": "",
+  "body": "  If is an operator and a nonzero vector in , then there is a unique monic polynomial having the smallest possible degree and satisfying .  If is another polynomial for which , then divides . In particular, it follows that divides the minimal polynomial of .   "
+},
+{
+  "id": "sec-jordan-3-7",
+  "level": "2",
+  "url": "sec-jordan.html#sec-jordan-3-7",
+  "type": "Proposition",
+  "number": "2.4.3",
+  "title": "",
+  "body": "  If the minimal polynomial of has the form where , then .    Suppose that is a generalized eigenvector, which means that for some . If , then , which means that divides . Therefore, for some .  The minimal polynomiall of has exactly factors of . Since divides , can have no more than factors of . Therefore, , which says that is in .   "
+},
+{
+  "id": "prop-gen-eig-disjoint",
+  "level": "2",
+  "url": "sec-jordan.html#prop-gen-eig-disjoint",
+  "type": "Proposition",
+  "number": "2.4.4",
+  "title": "",
+  "body": "  If and are distinct eigenvalues of , then .    Suppose that is a nonzero vector in . Then for some , which says that is a root of .  At the same time, if is in , then for some . Since , we must have .   "
+},
+{
+  "id": "sec-jordan-4-3",
+  "level": "2",
+  "url": "sec-jordan.html#sec-jordan-4-3",
+  "type": "Proposition",
+  "number": "2.4.5",
+  "title": "",
+  "body": "  If is an operator on a complex vector space with eigenvalues , then .    We will use induction on the dimension of . To establish the base case, we assume that . In this case, so or . Then .  For the inductive step, we will assume the result is true for all vector spaces of dimension less than . We will choose an eigenvalue and write the minimal polynomial as where .  Notice that . To see this, suppose that is in this intersection. Then for some vector . Moreover, . This implies that divides so that the only factors of are . Since also divides the minimal polynomial , we also know that divides . Therefore, .  Because of , we also know that , which says that . If we define , then we also have .  Since we have written the minimal polynomial , we can see that the minimal polynomial of is . For instance, if is in , then for some vector . Then . This shows that the minimal polynomial of divides . However, if the minimal polynomial of has a smaller degree than , this would contradcit the fact that the minimal polynomial of has the smallest possible degree.  By the inductive hypothesis, may be written as a direct sum of its generalized eigenspaces. All that remains is to show that, if is an eigenvalue distinct from , the generalized eigenspace of associated to is the same as the generalized eigenspace of associated to . To this end, suppose that satisfies for some . Because , we can write where and . We have . Because these subspaces are -invariant, we have . This means that by so that . Therefore, and .   "
+},
+{
+  "id": "sec-jordan-4-4",
+  "level": "2",
+  "url": "sec-jordan.html#sec-jordan-4-4",
+  "type": "Proposition",
+  "number": "2.4.6",
+  "title": "",
+  "body": "  If is an operator on , a complex vector space, then there is a basis of consisting of generalized eigenvectors of .    Once again we proceed by induction on , the dimension of . The result is certainly true if because every nonzero vector is an eigenvector of .  Now assume that and that the result holds for all smaller values of . Suppose that is an eigenvalue of and consider the operator . We will first explain why .  First, we can see that these subspaces of intersect only in the zero vector. Suppose that , which means there is a vector such that . If is also in , then . Because , remember that for any positive . Since , we also have , which means that . Therefore, these two subspaces only intersect in the zero vector.  In the usual way, the dimensions of these subspaces add to so we have . If , then every vector in is a generalized eigenvector of and the conclusion of the theorem holds. Suppose instead that where the first inclusion holds because is an eigenvalue of . This means that .  Now is invariant under . By induction, there is a basis of consisting of generalized eigenvectors of . Putting this together with a basis of gives a basis of consisting of generalized eigenvectors of .   "
+},
+{
+  "id": "sec-jordan-4-5",
+  "level": "2",
+  "url": "sec-jordan.html#sec-jordan-4-5",
+  "type": "Proposition",
+  "number": "2.4.7",
+  "title": "",
+  "body": "  If is an operator on the complex vector space and the set of eigenvalues of is , then .    We have seen that there is a basis of consisting of generalized eigenvectors. Therefore, every vector in can be written as a linear combination of generalized eigenvectors.  We have further seen a set of generalized eigenvectors associated to different eigenvalues is linear independent.  These two facts are enough to establish the theorem.   "
+},
+{
+  "id": "sec-jordan-5-3",
+  "level": "2",
+  "url": "sec-jordan.html#sec-jordan-5-3",
+  "type": "Theorem",
+  "number": "2.4.8",
+  "title": "Jordan canonical form.",
+  "body": " Jordan canonical form   If is an operator on a complex vector space , then there is a basis for such that the matrix associated to consists only of Jordan blocks on the diagonal. That is, .    We know that . Moreover, on , the operator is nilpotent, which means there is a basis for such that the matrix associated to conists of nilpotent blocks. The matrix associated to therefore has consists of Jordan blocks. Because each generalized eigenspace is invariant under , the theorem holds.   "
+},
+{
   "id": "backmatter-2",
   "level": "1",
   "url": "backmatter-2.html",

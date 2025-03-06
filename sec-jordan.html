@@ -96,14 +96,14 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.5.8';
+eBookConfig.runestone_version = '7.5.10';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.d7db380f34a0a67e.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.f6bda0c0ccce4835.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<script src="_static/prefix-runtime.c2d04816128ebb44.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.f6bda0c0ccce4835.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
 <link rel="stylesheet" type="text/css" href="_static/prefix-runestone.e0c6d4592e23c667.css">
 <style>
 </style>
@@ -325,94 +325,178 @@ eBookConfig.enable_chatcodes =  false;
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.4.1</span><span class="period">.</span>
 </h4>
 <div class="para" id="sec-jordan-3-2-1-1">If <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(V\text{,}\)</span> we say that a nonzero vector <span class="process-math">\(\vvec\)</span> is a <em class="emphasis">generalized eigenvector</em> if <span class="process-math">\((T-\lambda I)^k\vvec=\zerovec\)</span> for some <span class="process-math">\(k\text{.}\)</span>  The set of such vectors, the <em class="emphasis">generalized eigenspace</em> is denoted <span class="process-math">\(G_\lambda\text{.}\)</span>
-</div></article><div class="para" id="sec-jordan-3-3">Notice that eigenvectors are also generalized eigenvectors.</div>
-<div class="para" id="sec-jordan-3-4">First notice that <span class="process-math">\(G_k\)</span> is an invariant subspace of <span class="process-math">\(V\)</span> because <span class="process-math">\(G_k=\nul(p(T))\)</span> for a polynomial <span class="process-math">\(p(x)=(x-\lambda)^k\text{.}\)</span>  Moreover, the minimal polynomial of <span class="process-math">\(T|_{G_k}\)</span> is <span class="process-math">\(p(x)=(x-\lambda)^k\text{.}\)</span>  Since the minimal polynomial of <span class="process-math">\(T|_{G_k}\)</span> divides the minimal polynomial of <span class="process-math">\(T\text{,}\)</span> we know that <span class="process-math">\((x-\lambda)^k\)</span> divides minimal polynomial of <span class="process-math">\(T\text{.}\)</span>  This means that <span class="process-math">\(\lambda\)</span> is an eigenvalue of <span class="process-math">\(T\text{.}\)</span>  So while we have generalized the notion of eigenvector, the values of <span class="process-math">\(\lambda\)</span> for which we have generalized eigenvectors and still eigenvalues of <span class="process-math">\(T\text{.}\)</span>
+</div></article><div class="para" id="sec-jordan-3-3">Notice that eigenvectors are also generalized eigenvectors since an eigenvector satisfies <span class="process-math">\((T-\lambda I)\vvec=0\text{,}\)</span> the generalized eigenvector condition with <span class="process-math">\(k=1\text{.}\)</span>
 </div>
+<div class="para" id="sec-jordan-3-4">We would like to characterize a generalized eigenspace as a subspace of <span class="process-math">\(V\text{.}\)</span> Before doing so, however, we recall an earlier homework exercise.</div>
 <article class="proposition theorem-like" id="sec-jordan-3-5"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.2</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-jordan-3-5-1-1">A nonzero vector cannot belong to generalized eigenspaces corresponding to two different eigenvalues.</div></article><article class="proof" id="sec-jordan-3-5-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para logical" id="sec-jordan-3-5-2-1">
-<div class="para">Suppose that <span class="process-math">\(\lambda\)</span> and <span class="process-math">\(\mu\)</span> are eigenvalues and that <span class="process-math">\((T-\lambda I)^k\vvec=\zerovec\)</span> for some <span class="process-math">\(k\text{.}\)</span>  Suppose also that <span class="process-math">\((T-\mu I)^j\vvec=\zerovec\)</span> for some other <span class="process-math">\(m\text{.}\)</span>  Then</div>
-<div class="displaymath process-math">
-\begin{equation*}
-\begin{aligned}
-\zerovec=(T-\mu I)^m\vvec \amp = (T-\lambda I +
-(\lambda-\mu)I)^m\vvec \\
-\amp = \sum_{j=0}^m{m \choose
-j}(\lambda-\mu)^{m-j}(T-\lambda I)^j\vvec \\
-\end{aligned}\text{.}
-\end{equation*}
-</div>
-<div class="para">For this vector <span class="process-math">\(\vvec\text{,}\)</span> there is a smallest value of <span class="process-math">\(k\)</span> such that <span class="process-math">\((T-\lambda I)^k\vvec=\zerovec\text{,}\)</span> but <span class="process-math">\((T-\lambda I)^{k-1}\vvec\neq\zerovec\text{.}\)</span>  We therefore multiply both sides of the previous expression by <span class="process-math">\((T-\lambda I)^{k-1}\)</span> so that</div>
-<div class="displaymath process-math">
-\begin{equation*}
-(T-\lambda I)^{k-1}\zerovec =
-\sum_{j=0}^m(\lambda-\mu)^{m-j} (T-\lambda I)^{k-1+j}\vvec =
-(\lambda - \mu)^m(T-\lambda I)^{k-1}\vvec\text{,}
-\end{equation*}
-</div>
-<div class="para">which says that <span class="process-math">\(\lambda - \mu = 0\text{.}\)</span>
-</div>
-</div></article><div class="para" id="sec-jordan-3-6">Moreover, a set of nonzero vectors <span class="process-math">\(\vvec_j\in
-G_{\lambda_j}\)</span> for a different set of eigenvalues is linearly independent.</div>
+<div class="para" id="sec-jordan-3-5-1-1">If <span class="process-math">\(T:V\to V\)</span> is an operator and <span class="process-math">\(\vvec\)</span> a nonzero vector in <span class="process-math">\(V\text{,}\)</span> then there is a unique monic polynomial <span class="process-math">\(p_\vvec\)</span> having the smallest possible degree and satisfying <span class="process-math">\(p_\vvec(T)\vvec=0\text{.}\)</span>
+</div> <div class="para" id="sec-jordan-3-5-1-2">If <span class="process-math">\(s\)</span> is another polynomial for which <span class="process-math">\(s(T)\vvec=0\text{,}\)</span> then <span class="process-math">\(p_\vvec\)</span> divides <span class="process-math">\(s\text{.}\)</span>  In particular, it follows that <span class="process-math">\(p_\vvec\)</span> divides the minimal polynomial <span class="process-math">\(p\)</span> of <span class="process-math">\(T\text{.}\)</span>
+</div></article><div class="para" id="sec-jordan-3-6">With this in mind, we can characterize the generalized eigenspaces.</div>
 <article class="proposition theorem-like" id="sec-jordan-3-7"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.3</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-jordan-3-7-1-1">A set of generalized eigenvectors, each associated to a different eigenvalue, is linearly independent.</div></article><article class="proof" id="sec-jordan-3-7-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para logical" id="sec-jordan-3-7-2-1">
-<div class="para">Suppose that <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\)</span> is a set of generalized eigenvectors associated to different eigenvalues.  We will proceed using induction on the number of vectors <span class="process-math">\(m\)</span> in the set.  If <span class="process-math">\(m=1\text{,}\)</span> we know that</div>
+<div class="para logical" id="sec-jordan-3-7-1-1">
+<div class="para">If the minimal polynomial of <span class="process-math">\(T\)</span> has the form <span class="process-math">\(p(x)=q(z)(x-\lambda)^k\)</span> where <span class="process-math">\(q(\lambda)\neq 0\text{,}\)</span> then</div>
 <div class="displaymath process-math">
 \begin{equation*}
-a_1\vvec_1 = \zerovec
+G_\lambda = \nul((T-\lambda I)^k)\text{.}
 \end{equation*}
 </div>
-<div class="para">implies that <span class="process-math">\(a_1=0\text{.}\)</span>
-</div>
+</div></article><article class="proof" id="sec-jordan-3-7-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="sec-jordan-3-7-2-1">Suppose that <span class="process-math">\(\vvec\)</span> is a generalized eigenvector, which means that <span class="process-math">\((T-\lambda I)^l\vvec=0\)</span> for some <span class="process-math">\(l\text{.}\)</span>  If <span class="process-math">\(s(x) = (x-\lambda)^l\text{,}\)</span> then <span class="process-math">\(s(T)\vvec=0\text{,}\)</span> which means that <span class="process-math">\(p_\vvec\)</span> divides <span class="process-math">\(s\text{.}\)</span>  Therefore, <span class="process-math">\(p_\vvec=(x-\lambda)^m\)</span> for some <span class="process-math">\(m\leq l\text{.}\)</span>
 </div>
 <div class="para logical" id="sec-jordan-3-7-2-2">
-<div class="para">Now suppose that <span class="process-math">\(m\gt 1\)</span> and that the result is true for all smaller values of <span class="process-math">\(m\text{.}\)</span> Suppose that <span class="process-math">\((T-\lambda_jI)^{k_j}\vvec_j=\zerovec\)</span> and that</div>
+<div class="para">The minimal polynomiall <span class="process-math">\(p\)</span> of <span class="process-math">\(T\)</span> has exactly <span class="process-math">\(k\)</span> factors of <span class="process-math">\(x-\lambda\text{.}\)</span> Since <span class="process-math">\(p_\vvec\)</span> divides <span class="process-math">\(p\text{,}\)</span> <span class="process-math">\(p_\vvec\)</span> can have no more than <span class="process-math">\(k\)</span> factors of <span class="process-math">\(x-\lambda\text{.}\)</span>  Therefore,</div>
 <div class="displaymath process-math">
 \begin{equation*}
-a_1\vvec_1+a_2\vvec_2 + \ldots + a_m\vvec_m = \zerovec\text{.}
+(T-\lambda I)^k\vvec = (T-\lambda I)^{k-m}(T-\lambda
+I)^m\vvec = 0\text{,}
 \end{equation*}
 </div>
-<div class="para">Multiply by <span class="process-math">\((T-\lambda_m)^{k_m}\)</span> so that the last term on the left size becomes zero.  Then we have</div>
+<div class="para">which says that <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(\nul((T-\lambda
+I)^k)\text{.}\)</span>
+</div>
+</div></article><div class="para" id="sec-jordan-3-8">We know that a vector cannot be an eigenvector associated to two different eigenvalues.  This is also true for generalized eigenvectors.</div>
+<article class="proposition theorem-like" id="prop-gen-eig-disjoint"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.4</span><span class="period">.</span>
+</h4>
+<div class="para" id="prop-gen-eig-disjoint-1-1">If <span class="process-math">\(\lambda\)</span> and <span class="process-math">\(\mu\)</span> are distinct eigenvalues of <span class="process-math">\(T\text{,}\)</span> then <span class="process-math">\(G_\lambda\cap G_\mu=\{0\}\text{.}\)</span>
+</div></article><article class="proof" id="prop-gen-eig-disjoint-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="prop-gen-eig-disjoint-2-1">Suppose that <span class="process-math">\(\vvec\)</span> is a nonzero vector in <span class="process-math">\(G_\lambda\text{.}\)</span>  Then <span class="process-math">\(p_\vvec(x)=(x-\lambda)^m\)</span> for some <span class="process-math">\(m\text{,}\)</span> which says that <span class="process-math">\(\lambda\)</span> is a root of <span class="process-math">\(p_\vvec\text{.}\)</span>
+</div>
+<div class="para logical" id="prop-gen-eig-disjoint-2-2">
+<div class="para">At the same time, if <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(G_\mu\text{,}\)</span> then <span class="process-math">\(p_\vvec(x) = (x-\mu)^n\)</span> for some <span class="process-math">\(n\text{.}\)</span>  Since</div>
 <div class="displaymath process-math">
 \begin{equation*}
-a_1(T-\lambda_m)^{k_m}\vvec_1+ \ldots +
-a_m(T-\lambda_m)^{k_m}\vvec_{m-1} = \zerovec\text{.}
+p_\vvec(\lambda) = (\lambda-\mu)^n = 0\text{,}
 \end{equation*}
 </div>
-<div class="para">Since a generalized eigenvector can only be associated to one eigenvalue, each vector <span class="process-math">\((T-\lambda_m)^{k_m}\vvec_j\)</span> is nonzero.  In addition, each of these vectors is still a generalized eigenvector because</div>
-<div class="displaymath process-math">
-\begin{equation*}
-(T-\lambda_j)^{k_j}(T-\lambda_m)^{k_m}\vvec_j =
-(T-\lambda_m)^{k_m}(T-\lambda_j)^{k_j}\vvec_j = \zerovec\text{.}
-\end{equation*}
+<div class="para">we must have <span class="process-math">\(\lambda = \mu\text{.}\)</span>
 </div>
-</div>
-<div class="para logical" id="sec-jordan-3-7-2-3">
-<div class="para">Therefore we have a linear combination of <span class="process-math">\(m-1\)</span> generalized eigenvectors with</div>
-<div class="displaymath process-math">
-\begin{equation*}
-a_1(T-\lambda_m)^{k_m}\vvec_1+ \ldots +
-a_m(T-\lambda_m)^{k_m}\vvec_{m-1} = \zerovec\text{.}
-\end{equation*}
-</div>
-<div class="para">By induction <span class="process-math">\(a_1=a_2=\ldots=a_{m-1} = 0\text{,}\)</span> which also implies that <span class="process-math">\(a_m=0\text{.}\)</span>  The original set of <span class="process-math">\(m\)</span> generalized eigenvectors is then seen to be linearly independent.</div>
 </div></article></section><section class="subsection" id="sec-jordan-4"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.4.2</span><span class="space"> </span><span class="title">Complex Vector Spaces</span>
 </h3>
-<div class="para" id="sec-jordan-4-2">Because of the Fundamental Theorem of Algebra, operators on complex vector spaces have special properties.  In the rest of this section, we will focus on complex vector spaces.</div>
+<div class="para logical" id="sec-jordan-4-2">
+<div class="para">Because of the Fundamental Theorem of Algebra, operators on complex vector spaces have special properties.  In particular, the minimal polynomial of an operator on a complex vector space has the form</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x)=(x-\lambda_1)^{k_1}(x-\lambda_2)^{k_2}\ldots(x-\lambda_1)^{k_m}\text{.}
+\end{equation*}
+</div>
+<div class="para">In this case, we claim that <span class="process-math">\(V\)</span> is a direct sum of generalized eigenspaces.</div>
+</div>
 <article class="proposition theorem-like" id="sec-jordan-4-3"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.4</span><span class="period">.</span>
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.5</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-jordan-4-3-1-1">If <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(V\text{,}\)</span> a complex vector space, then there is a basis of <span class="process-math">\(V\)</span> consisting of generalized eigenvectors of <span class="process-math">\(T\text{.}\)</span>
+<div class="para logical" id="sec-jordan-4-3-1-1">
+<div class="para">If <span class="process-math">\(T\)</span> is an operator on a complex vector space with eigenvalues <span class="process-math">\(\basis{\lambda}{m}\text{,}\)</span> then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+V = G_{\lambda_1}\oplus G_{\lambda_2} \oplus \ldots
+\oplus G_{\lambda_m}\text{.}
+\end{equation*}
+</div>
 </div></article><article class="proof" id="sec-jordan-4-3-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="sec-jordan-4-3-2-1">Once again we proceed by induction on <span class="process-math">\(n\text{,}\)</span> the dimension of <span class="process-math">\(V\text{.}\)</span>  The result is certainly true if <span class="process-math">\(n=1\)</span> because every nonzero vector is an eigenvector of <span class="process-math">\(T\text{.}\)</span>
+<div class="para" id="sec-jordan-4-3-2-1">We will use induction on the dimension of <span class="process-math">\(V\text{.}\)</span>  To establish the base case, we assume that <span class="process-math">\(\dim V = 1\text{.}\)</span>  In this case, <span class="process-math">\(p(x) = x-\lambda\)</span> so <span class="process-math">\(T-\lambda I = 0\)</span> or <span class="process-math">\(T=\lambda I\text{.}\)</span>  Then <span class="process-math">\(V=G_\lambda\text{.}\)</span>
 </div>
 <div class="para logical" id="sec-jordan-4-3-2-2">
+<div class="para">For the inductive step, we will assume the result is true for all vector spaces of dimension less than <span class="process-math">\(\dim V\text{.}\)</span>  We will choose an eigenvalue <span class="process-math">\(\lambda\)</span> and write the minimal polynomial <span class="process-math">\(p\)</span> as</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x) = q(x)(x-\lambda)^k
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(q(\lambda)\neq 0\text{.}\)</span>
+</div>
+</div>
+<div class="para logical" id="sec-jordan-4-3-2-3">
+<div class="para">Notice that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\nul((T-\lambda I)^k) \cap \range((T-\lambda)^k) = \{0\}\text{.}
+\end{equation*}
+</div>
+<div class="para">To see this, suppose that <span class="process-math">\(\vvec\)</span> is in this intersection.  Then <span class="process-math">\(\vvec = (T-\lambda)^k\uvec\)</span> for some vector <span class="process-math">\(\uvec\text{.}\)</span>  Moreover,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+0 = (T-\lambda I)^k\vvec = (T-\lambda I)^{2k}\uvec\text{.}
+\end{equation*}
+</div>
+<div class="para">This implies that <span class="process-math">\(p_\uvec\)</span> divides <span class="process-math">\((x-\lambda)^{2k}\)</span> so that the only factors of <span class="process-math">\(p_\uvec\)</span> are <span class="process-math">\(x-\lambda\text{.}\)</span>  Since <span class="process-math">\(p_\uvec\)</span> also divides the minimal polynomial <span class="process-math">\(p\text{,}\)</span> we also know that <span class="process-math">\(p_\uvec\)</span> divides <span class="process-math">\((x-\lambda)^k\text{.}\)</span>  Therefore,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\vvec = (T-\lambda I)^k\uvec = 0\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-jordan-4-3-2-4">
+<div class="para">Because of <a href="sec-lt-intro.html#prop-nul-range-dims" class="xref" data-knowl="./knowl/xref/prop-nul-range-dims.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.13: Fundamental Theorem of Linear Maps">Proposition 1.2.13</a>, we also know that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-nul-range-dims.html">
+\begin{equation*}
+\dim\nul((T-\lambda I)^k) +\dim \range((T-\lambda I)^k) =
+\dim V\text{,}
+\end{equation*}
+</div>
+<div class="para">which says that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-nul-range-dims.html">
+\begin{equation*}
+V = \nul((T-\lambda I)^k) \oplus \range((T-\lambda I)^k)\text{.}
+\end{equation*}
+</div>
+<div class="para">If we define <span class="process-math">\(U=\range((T-\lambda I)^k)\text{,}\)</span> then we also have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-nul-range-dims.html">
+\begin{equation*}
+V = G_\lambda \oplus U\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-jordan-4-3-2-5">
+<div class="para">Since we have written the minimal polynomial <span class="process-math">\(p(x)=q(x)(x-\lambda)^k\text{,}\)</span> we can see that the minimal polynomial of <span class="process-math">\(T|_U\)</span> is <span class="process-math">\(q\text{.}\)</span>  For instance, if <span class="process-math">\(\uvec\)</span> is in <span class="process-math">\(U\text{,}\)</span> then <span class="process-math">\(\uvec=(T-\lambda
+I)^k\vvec\)</span> for some vector <span class="process-math">\(V\text{.}\)</span>  Then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+q(T)\uvec = q(T)(T-\lambda I)^k \vvec = p(T)\vvec = 0\text{.}
+\end{equation*}
+</div>
+<div class="para">This shows that the minimal polynomial <span class="process-math">\(p_U\)</span> of <span class="process-math">\(T|_U\)</span> divides <span class="process-math">\(q\text{.}\)</span>  However, if the minimal polynomial of <span class="process-math">\(T|_U\)</span> has a smaller degree than <span class="process-math">\(q\text{,}\)</span> this would contradcit the fact that the minimal polynomial of <span class="process-math">\(T\)</span> has the smallest possible degree.</div>
+</div>
+<div class="para logical" id="sec-jordan-4-3-2-6">
+<div class="para">By the inductive hypothesis, <span class="process-math">\(U\)</span> may be written as a direct sum of its generalized eigenspaces.  All that remains is to show that, if <span class="process-math">\(\mu\)</span> is an eigenvalue distinct from <span class="process-math">\(\lambda\text{,}\)</span> the generalized eigenspace of <span class="process-math">\(T\)</span> associated to <span class="process-math">\(\mu\)</span> is the same as the generalized eigenspace of <span class="process-math">\(T|_U\)</span> associated to <span class="process-math">\(\mu\text{.}\)</span>  To this end, suppose that <span class="process-math">\(\vvec\)</span> satisfies <span class="process-math">\((T-\mu
+I)^l\vvec\)</span> for some <span class="process-math">\(l\text{.}\)</span>  Because <span class="process-math">\(V=G_\lambda
+\oplus U\text{,}\)</span> we can write</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-gen-eig-disjoint.html">
+\begin{equation*}
+\vvec = \nvec + \uvec
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(\nvec\in G_\lambda\)</span> and <span class="process-math">\(\uvec \in U\text{.}\)</span> We have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-gen-eig-disjoint.html">
+\begin{equation*}
+0 = (T-\mu I)^l\vvec = (T-\mu I)^l\nvec + (T-\mu I)^l\uvec\text{.}
+\end{equation*}
+</div>
+<div class="para">Because these subspaces are <span class="process-math">\(T\)</span>-invariant, we have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-gen-eig-disjoint.html" id="sec-jordan-4-3-2-6-17">
+\begin{align*}
+(T-\mu I)^l\nvec \amp = 0\text{.}
+\end{align*}
+</div>
+<div class="para">This means that <span class="process-math">\(\nvec\in G_\lambda\cap G_\mu = \{0\}\)</span> by <a href="sec-jordan.html#prop-gen-eig-disjoint" class="xref" data-knowl="./knowl/xref/prop-gen-eig-disjoint.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 2.4.4">Proposition 2.4.4</a> so that <span class="process-math">\(\nvec = 0\text{.}\)</span> Therefore, <span class="process-math">\(\vvec = \uvec\in U\)</span> and</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-gen-eig-disjoint.html">
+\begin{equation*}
+(T-\mu I)^l\uvec = (T|_U-\mu I)^l \uvec = 0\text{.}
+\end{equation*}
+</div>
+</div></article><article class="proposition theorem-like" id="sec-jordan-4-4"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.6</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-jordan-4-4-1-1">If <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(V\text{,}\)</span> a complex vector space, then there is a basis of <span class="process-math">\(V\)</span> consisting of generalized eigenvectors of <span class="process-math">\(T\text{.}\)</span>
+</div></article><article class="proof" id="sec-jordan-4-4-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="sec-jordan-4-4-2-1">Once again we proceed by induction on <span class="process-math">\(n\text{,}\)</span> the dimension of <span class="process-math">\(V\text{.}\)</span>  The result is certainly true if <span class="process-math">\(n=1\)</span> because every nonzero vector is an eigenvector of <span class="process-math">\(T\text{.}\)</span>
+</div>
+<div class="para logical" id="sec-jordan-4-4-2-2">
 <div class="para">Now assume that <span class="process-math">\(n\gt 1 \)</span> and that the result holds for all smaller values of <span class="process-math">\(n\text{.}\)</span>  Suppose that <span class="process-math">\(\lambda\)</span> is an eigenvalue of <span class="process-math">\(T\)</span> and consider the operator <span class="process-math">\((T-\lambda I)^n\text{.}\)</span>  We will first explain why</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -420,7 +504,7 @@ V = \nul(T-\lambda I)^n \oplus \range(T-\lambda I)^n\text{.}
 \end{equation*}
 </div>
 </div>
-<div class="para logical" id="sec-jordan-4-3-2-3">
+<div class="para logical" id="sec-jordan-4-4-2-3">
 <div class="para">First, we can see that these subspaces of <span class="process-math">\(V\)</span> intersect only in the zero vector.  Suppose that <span class="process-math">\(\vvec\in\range(T-\lambda I)^n\text{,}\)</span> which means there is a vector <span class="process-math">\(\uvec\)</span> such that <span class="process-math">\((T-\lambda I)^n\uvec =
 \vvec\text{.}\)</span>  If <span class="process-math">\(\vvec\)</span> is also in <span class="process-math">\(\nul(T-\lambda
 I)^n\text{,}\)</span> then</div>
@@ -438,7 +522,7 @@ I)^{2n}\text{,}\)</span> we also have <span class="process-math">\(\uvec\in\nul(
 </div>
 <div class="para">Therefore, these two subspaces only intersect in the zero vector.</div>
 </div>
-<div class="para logical" id="sec-jordan-4-3-2-4">
+<div class="para logical" id="sec-jordan-4-4-2-4">
 <div class="para">In the usual way, the dimensions of these subspaces add to <span class="process-math">\(\dim V =n\)</span> so we have</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -458,11 +542,11 @@ V = \nul(T-\lambda I)^n \oplus \range(T-\lambda I)^n\text{.}
 \end{equation*}
 </div>
 </div>
-<div class="para" id="sec-jordan-4-3-2-5">Now <span class="process-math">\(\range(T-\lambda I)^n\)</span> is invariant under <span class="process-math">\(T\text{.}\)</span>  By induction, there is a basis of <span class="process-math">\(\range(T-\lambda I)^n\)</span> consisting of generalized eigenvectors of <span class="process-math">\(T\text{.}\)</span>  Putting this together with a basis of <span class="process-math">\(\nul(T-\lambda I)^n\)</span> gives a basis of <span class="process-math">\(V\)</span> consisting of generalized eigenvectors of <span class="process-math">\(T\text{.}\)</span>
-</div></article><article class="proposition theorem-like" id="sec-jordan-4-4"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.5</span><span class="period">.</span>
+<div class="para" id="sec-jordan-4-4-2-5">Now <span class="process-math">\(\range(T-\lambda I)^n\)</span> is invariant under <span class="process-math">\(T\text{.}\)</span>  By induction, there is a basis of <span class="process-math">\(\range(T-\lambda I)^n\)</span> consisting of generalized eigenvectors of <span class="process-math">\(T\text{.}\)</span>  Putting this together with a basis of <span class="process-math">\(\nul(T-\lambda I)^n\)</span> gives a basis of <span class="process-math">\(V\)</span> consisting of generalized eigenvectors of <span class="process-math">\(T\text{.}\)</span>
+</div></article><article class="proposition theorem-like" id="sec-jordan-4-5"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.7</span><span class="period">.</span>
 </h4>
-<div class="para logical" id="sec-jordan-4-4-1-1">
+<div class="para logical" id="sec-jordan-4-5-1-1">
 <div class="para">If <span class="process-math">\(T\)</span> is an operator on the complex vector space <span class="process-math">\(V\)</span> and the set of eigenvalues of <span class="process-math">\(T\)</span> is <span class="process-math">\(\lambda_1,\lambda_2,\ldots,\lambda_m\text{,}\)</span> then</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -470,10 +554,10 @@ V = G_{\lambda_1}\oplus G_{\lambda_2}\oplus\ldots
 \oplus G_{\lambda_m}\text{.}
 \end{equation*}
 </div>
-</div></article><article class="proof" id="sec-jordan-4-4-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="sec-jordan-4-4-2-1">We have seen that there is a basis of <span class="process-math">\(V\)</span> consisting of generalized eigenvectors.  Therefore, every vector in <span class="process-math">\(V\)</span> can be written as a linear combination of generalized eigenvectors.</div>
-<div class="para" id="sec-jordan-4-4-2-2">We have further seen a set of generalized eigenvectors associated to different eigenvalues is linear independent.</div>
-<div class="para" id="sec-jordan-4-4-2-3">These two facts are enough to establish the theorem.</div></article></section><section class="subsection" id="sec-jordan-5"><h3 class="heading hide-type">
+</div></article><article class="proof" id="sec-jordan-4-5-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="sec-jordan-4-5-2-1">We have seen that there is a basis of <span class="process-math">\(V\)</span> consisting of generalized eigenvectors.  Therefore, every vector in <span class="process-math">\(V\)</span> can be written as a linear combination of generalized eigenvectors.</div>
+<div class="para" id="sec-jordan-4-5-2-2">We have further seen a set of generalized eigenvectors associated to different eigenvalues is linear independent.</div>
+<div class="para" id="sec-jordan-4-5-2-3">These two facts are enough to establish the theorem.</div></article></section><section class="subsection" id="sec-jordan-5"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.4.3</span><span class="space"> </span><span class="title">Jordan form</span>
 </h3>
 <div class="para logical" id="sec-jordan-5-2">
@@ -491,7 +575,7 @@ J =
 </div>
 </div>
 <article class="theorem theorem-like" id="sec-jordan-5-3"><h4 class="heading">
-<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.6</span><span class="period">.</span><span class="space"> </span><span class="title">Jordan canonical form.</span>
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.8</span><span class="period">.</span><span class="space"> </span><span class="title">Jordan canonical form.</span>
 </h4>
 <div class="para logical" id="sec-jordan-5-3-2-1">
 <div class="para">If <span class="process-math">\(T\)</span> is an operator on a complex vector space <span class="process-math">\(V\text{,}\)</span> then there is a basis for <span class="process-math">\(V\)</span> such that the matrix associated to <span class="process-math">\(T\)</span> consists only of Jordan blocks on the diagonal.  That is,</div>

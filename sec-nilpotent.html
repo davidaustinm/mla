@@ -96,14 +96,14 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.5.8';
+eBookConfig.runestone_version = '7.5.10';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.d7db380f34a0a67e.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.f6bda0c0ccce4835.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<script src="_static/prefix-runtime.c2d04816128ebb44.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.f6bda0c0ccce4835.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
 <link rel="stylesheet" type="text/css" href="_static/prefix-runestone.e0c6d4592e23c667.css">
 <style>
 </style>
@@ -487,7 +487,7 @@ T\vvec_6 \amp = 0 \text{.}
 </div>
 </div>
 <div class="para" id="example-nilpotent-3">Notice that the <span class="process-math">\(3\times3\)</span> block is formed by a vector <span class="process-math">\(\vvec_3\)</span> that is in <span class="process-math">\(\nul(T^3)\)</span> but not <span class="process-math">\(\nul(T^2)\text{.}\)</span> Once we have identified <span class="process-math">\(\vvec_3\text{,}\)</span> we obtain new basis vectors as <span class="process-math">\(\vvec_2=T\vvec_3\)</span> and <span class="process-math">\(\vvec_1=T\vvec_2=T^2\vvec_3\text{.}\)</span>
-</div></article><div class="para" id="sec-nilpotent-4-10">In fact, every nilpotent operator has a basis whose associated matrix consists of a set of nilpotent blocks on the diagonal.  We will state this as a proposition momentarily, but we’ll first present a few results that lead up to it.  <a href="sec-nilpotent.html#example-nilpotent" class="xref" data-knowl="./knowl/xref/example-nilpotent.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 2.3.6">Example 2.3.6</a> will guide our strategy to it could be helpful to make sure that’s clear.</div>
+</div></article><div class="para" id="sec-nilpotent-4-10">In fact, every nilpotent operator has a basis whose associated matrix consists of a set of nilpotent blocks on the diagonal, which we will state and prove in the next proposition.</div>
 <div class="para logical" id="sec-nilpotent-4-11">
 <div class="para">First, notice that if <span class="process-math">\(T\)</span> is nilpotent, then its minimal polynomial is <span class="process-math">\(p(x)=x^m\)</span> for some <span class="process-math">\(m\text{.}\)</span>  In particular, this means that <span class="process-math">\(T^m=0\)</span> but <span class="process-math">\(T^{m-1}\neq 0\text{.}\)</span>  As we saw in <a href="sec-nilpotent.html#subsec-nul-powers" class="internal" title="Subsection 2.3.1: Null spaces of powers">Subsection 2.3.1</a>, we have the inclusion of null spaces:</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/subsec-nul-powers.html" id="eq-nil-inclusions">
@@ -498,64 +498,20 @@ T\vvec_6 \amp = 0 \text{.}
 </div>
 <div class="para">where the inclusion of each null space into the other is a proper inclusion.</div>
 </div>
-<article class="proposition theorem-like" id="sec-nilpotent-4-12"><h4 class="heading">
+<div class="para logical" id="sec-nilpotent-4-12">
+<div class="para">If <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(\nul(T^{j+1})\text{,}\)</span> then</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq-nil-inclusions.html">
+\begin{equation*}
+0 = T^{j+1}\vvec = T^j(T\vvec)\text{,}
+\end{equation*}
+</div>
+<div class="para">which means that <span class="process-math">\(T\vvec\)</span> is in <span class="process-math">\(\nul(T^j)\text{.}\)</span>  In other words, applying <span class="process-math">\(T\)</span> pushes a vector to the left in the inclusions of null spaces in <a href="sec-nilpotent.html#eq-nil-inclusions" class="xref" data-knowl="./knowl/xref/eq-nil-inclusions.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.3.1">(2.3.1)</a>.</div>
+</div>
+<div class="para" id="sec-nilpotent-4-13">We are now ready to prove our structure theorem for nilpotent operators.</div>
+<article class="proposition theorem-like" id="sec-nilpotent-4-14"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.3.7</span><span class="period">.</span>
 </h4>
-<div class="para logical" id="sec-nilpotent-4-12-1-1">
-<div class="para">Suppose that <span class="process-math">\(T:V\to V\)</span> is nilpotent with minimal polynomial <span class="process-math">\(p(x)=x^m\text{.}\)</span>  For each <span class="process-math">\(j\)</span> with <span class="process-math">\(1\leq
-j \lt m\text{,}\)</span> there is a subspace <span class="process-math">\(W_j\)</span> so that</div>
-<div class="displaymath process-math">
-\begin{equation*}
-\nul(T^{j+1}) = \nul(T^j)\oplus W_j\text{.}
-\end{equation*}
-</div>
-<div class="para">Moreover, <span class="process-math">\(T|_{W_j}:W_j \to \nul(T^{j})\)</span> is injective with <span class="process-math">\(T(W_j)\subset W_{j-1}\text{.}\)</span>
-</div>
-</div></article><article class="proof" id="sec-nilpotent-4-12-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para logical" id="sec-nilpotent-4-12-2-1">
-<div class="para">Suppose that <span class="process-math">\(1\leq j\lt m\)</span> and that <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(\nul(T^{j+1})\)</span> but not in <span class="process-math">\(\nul(T^j)\text{.}\)</span>  This means that</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq-nil-tj-1.html ./knowl/xref/eq-nil-inclusions.html" id="sec-nilpotent-4-12-2-1-5">
-\begin{align}
-0 \amp = T^{j+1}\vvec = T^j(T\vvec)\tag{2.3.2}\\
-0 \amp \neq T^{j}\vvec = T^{j-1}(T\vvec)\text{.}\tag{2.3.3}
-\end{align}
-</div>
-<div class="para">Notice that <a href="sec-nilpotent.html#sec-nilpotent-4-12-2-1-5" class="xref" data-knowl="./knowl/xref/eq-nil-tj-1.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.3.2">(2.3.2)</a> says that <span class="process-math">\(T\vvec\)</span> is in <span class="process-math">\(\nul(T^j)\text{.}\)</span>  In other words, <span class="process-math">\(T\)</span> pushes vectors to the left in the set of inclusions represented by <a href="sec-nilpotent.html#eq-nil-inclusions" class="xref" data-knowl="./knowl/xref/eq-nil-inclusions.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.3.1">(2.3.1)</a>.</div>
-</div>
-<div class="para" id="sec-nilpotent-4-12-2-2">Also, <a href="sec-nilpotent.html#sec-nilpotent-4-12-2-1-5" class="xref" data-knowl="./knowl/xref/eq-nil-tj-2.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.3.3">(2.3.3)</a> says that <span class="process-math">\(\vvec\)</span> is not in <span class="process-math">\(\nul(T^{j-1})\text{.}\)</span>  This means that <span class="process-math">\(T\)</span> pushes vectors to the left in <a href="sec-nilpotent.html#eq-nil-inclusions" class="xref" data-knowl="./knowl/xref/eq-nil-inclusions.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.3.1">(2.3.1)</a> one step at a time.</div>
-<div class="para logical" id="sec-nilpotent-4-12-2-3">
-<div class="para">Now we will construct the subspaces <span class="process-math">\(W_j\)</span> beginning with <span class="process-math">\(W_{m-1}\text{.}\)</span>  We have <span class="process-math">\(\nul(T^{m-1})\subsetneq
-\nul(T^m)\text{.}\)</span>  If we have a basis for <span class="process-math">\(\nul(T^{m-1})\text{,}\)</span> we can extend it to a basis for <span class="process-math">\(\nul(T^m)\)</span> by adding vectors <span class="process-math">\(\basis{\wvec}{k}\text{.}\)</span>  We define</div>
-<div class="displaymath process-math">
-\begin{equation*}
-W_{m-1} = \laspan{\basis{\wvec}{k}}
-\end{equation*}
-</div>
-<div class="para">so that</div>
-<div class="displaymath process-math">
-\begin{equation*}
-\nul(T^m) = \nul(T^{m-1}) \oplus W_{m-1}\text{.}
-\end{equation*}
-</div>
-</div>
-<div class="para" id="sec-nilpotent-4-12-2-4">Since <span class="process-math">\(W_{m-1}\cap\nul(T) = \{0\}\text{,}\)</span> <span class="process-math">\(T|_{W_{m-1}}:W_{m-1}\to \nul(T^{m-1})\)</span> is injective. This means that <span class="process-math">\(T(\wvec_1),\ldots,T(\wvec_k)\)</span> is a linearly independent set in <span class="process-math">\(\nul(T^{m-1})\)</span> that is not contained in <span class="process-math">\(\nul(T^{m-2})\text{.}\)</span>
-</div>
-<div class="para logical" id="sec-nilpotent-4-12-2-5">
-<div class="para">If we were to choose a basis for <span class="process-math">\(\nul(T^{m-2})\text{,}\)</span> we add the vectors <span class="process-math">\(T(\wvec_1),\ldots,\T(\wvec_k)\)</span> to obtain a linearly independent set in <span class="process-math">\(\nul(T^{m-1})\text{.}\)</span>  We can then extend this basis by adding vectors <span class="process-math">\(\vvec_1,\ldots,\vvec_l\)</span> to give a basis for <span class="process-math">\(\nul(T^{m-1})\text{.}\)</span>  We then define</div>
-<div class="displaymath process-math">
-\begin{equation*}
-W_{m-2} =
-\laspan{T\wvec_1,\ldots,T\wvec_k,\vvec_1,\ldots,\vvec_l}\text{.}
-\end{equation*}
-</div>
-<div class="para">Notice that <span class="process-math">\(T|_{W_{m-1}}\to\nul(T^{m-1})\)</span> is injective and <span class="process-math">\(T(W_{m-1})\subset W_{m-2}\text{.}\)</span>
-</div>
-</div>
-<div class="para" id="sec-nilpotent-4-12-2-6">This verifies the proposition for <span class="process-math">\(j=m-1\text{.}\)</span>  We simply repeat this construction for <span class="process-math">\(j=m-2\text{,}\)</span> <span class="process-math">\(j=m-3\text{,}\)</span> and so forth until we have verified it for <span class="process-math">\(j=1\text{.}\)</span>
-</div></article><article class="proposition theorem-like" id="sec-nilpotent-4-13"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.3.8</span><span class="period">.</span>
-</h4>
-<div class="para logical" id="sec-nilpotent-4-13-1-1">
+<div class="para logical" id="sec-nilpotent-4-14-1-1">
 <div class="para">If <span class="process-math">\(T\)</span> is a nilpotent operator on <span class="process-math">\(V\text{,}\)</span> then there is a basis for <span class="process-math">\(V\)</span> such that the matrix associated to <span class="process-math">\(T\)</span> has the form</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -568,47 +524,81 @@ A_1 \amp 0 \amp \ldots \amp 0 \\
 \end{equation*}
 </div>
 <div class="para">where each <span class="process-math">\(A_j\)</span> is a nilpotent block.</div>
-</div></article><article class="proof" id="sec-nilpotent-4-13-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="sec-nilpotent-4-13-2-1">We wish to create a basis for <span class="process-math">\(V\)</span> that reveals the nilpotent blocks so         this proof.</div>
-<div class="para" id="sec-nilpotent-4-13-2-2">Suppose <span class="process-math">\(m\)</span> is the largest integer for which <span class="process-math">\(T^m=0\)</span> but <span class="process-math">\(T^{m-1}\neq 0\text{.}\)</span>  If <span class="process-math">\(m=1\text{,}\)</span> then <span class="process-math">\(T=0\text{,}\)</span> which means any matrix representing <span class="process-math">\(T\)</span> is the zero matrix, which consists of <span class="process-math">\(\dim V\)</span> nilpotent <span class="process-math">\(1\times1\)</span> blocks.  For this reason, we assume that <span class="process-math">\(m&gt;1\text{.}\)</span>
+</div></article><article class="proof" id="sec-nilpotent-4-14-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="sec-nilpotent-4-14-2-1">Our proof proceeds by induction on the dimension of the vector space <span class="process-math">\(V\text{,}\)</span> which we will denote by <span class="process-math">\(\dim V =
+n\text{.}\)</span>
 </div>
-<div class="para logical" id="sec-nilpotent-4-13-2-3">
-<div class="para">Suppose that <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(\nul(T^{j+1})\)</span> but not in <span class="process-math">\(\nul(T^j)\text{.}\)</span>  This means that</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq-nil-inclusions.html" id="sec-nilpotent-4-13-2-3-4">
-\begin{align*}
-0 \amp = T^{j+1}\vvec = T^j(T\vvec)\\
-0 \amp \neq T^{j}\vvec = T^{j-1}(T\vvec)\text{.}
-\end{align*}
-</div>
-<div class="para">In other words, <span class="process-math">\(T:\nul(T^{j+1})\to\nul(T^j)\)</span> so that <span class="process-math">\(T\)</span> pushes vectors to the left one step at a time across the set of inclusions <a href="sec-nilpotent.html#eq-nil-inclusions" class="xref" data-knowl="./knowl/xref/eq-nil-inclusions.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.3.1">(2.3.1)</a>.</div>
-</div>
-<div class="para logical" id="sec-nilpotent-4-13-2-4">
-<div class="para">We can write</div>
+<div class="para" id="sec-nilpotent-4-14-2-2">To verify the base case, suppose that <span class="process-math">\(\dim V = n =
+1\text{.}\)</span>  As we have seen, if <span class="process-math">\(\vvec\)</span> is a vector in <span class="process-math">\(V\text{,}\)</span> then <span class="process-math">\(T\vvec = \lambda\vvec\)</span> for some scalar <span class="process-math">\(\lambda\text{.}\)</span>  However, if <span class="process-math">\(T\)</span> is nilpotent, then <span class="process-math">\(\lambda = 0\)</span> and so <span class="process-math">\(T=0\text{.}\)</span>  In any basis, the matrix representing <span class="process-math">\(T\)</span> is <span class="process-math">\([0]\text{,}\)</span> a <span class="process-math">\(1\times1\)</span> nilpotent block.</div>
+<div class="para logical" id="sec-nilpotent-4-14-2-3">
+<div class="para">Now suppose that the result is true for any nilpotent operator on a vector space of dimension less than <span class="process-math">\(n\text{.}\)</span> Suppose also that the minimal polynomial of <span class="process-math">\(T\)</span> is <span class="process-math">\(p(x)=x^m\text{.}\)</span>  This means that <span class="process-math">\(T^m=0\)</span> but <span class="process-math">\(T^{m-1}\neq 0\)</span> so</div>
 <div class="displaymath process-math">
 \begin{equation*}
-\nul(T^{m}) = \nul(T^{m-1})\oplus W_m\text{.}
+\nul(T^{m-1})\subsetneq\nul(T^m)\text{.}
 \end{equation*}
 </div>
-<div class="para">To see why this is, we can choose a basis for <span class="process-math">\(\nul(T^{m-1})\text{,}\)</span> add a linearly independent set of vectors <span class="process-math">\(\basis{\wvec}{k}\)</span> to obtain a basis for <span class="process-math">\(\nul(T^m)\text{,}\)</span> and define</div>
-<div class="displaymath process-math">
-\begin{equation*}
-W_m = \laspan{\basis{\wvec}{k}}\text{.}
-\end{equation*}
-</div>
-</div>
-<div class="para" id="sec-nilpotent-4-13-2-5">Suppose <span class="process-math">\(\wvec\)</span> is a vector in <span class="process-math">\(W_m\text{.}\)</span>  We have <span class="process-math">\(T^m\wvec = 0\text{,}\)</span> but <span class="process-math">\(T^{m-1}\wvec\neq 0\text{.}\)</span>  This means that <span class="process-math">\(T\wvec\)</span> is <span class="process-math">\(\nul(T^{m-1})\)</span> and <span class="process-math">\(T\wvec\neq 0\text{.}\)</span>  In other words, <span class="process-math">\(T:W_m\to\nul(T^{m-1})\)</span> is injective.  Therefore, because <span class="process-math">\(\basis{\wvec}{k}\)</span> is a linearly independent set, it follows that <span class="process-math">\(T\wvec_1,\ldots,T\wvec_k\)</span> is a linearly independent set in <span class="process-math">\(\nul(T^{m-1})\text{.}\)</span>
-</div>
-<div class="para logical" id="sec-nilpotent-4-13-2-6">
-<div class="para">Because <span class="process-math">\(T^{m-1}\wvec_j\neq 0\text{,}\)</span> we know that <span class="process-math">\(T^{m-2}(T\wvec_j)\neq 0.\)</span>  We can extend this linearly independent set by adding vectors <span class="process-math">\(\basis{\xvec}{l}\)</span> so that</div>
-<div class="displaymath process-math" id="sec-nilpotent-4-13-2-6-4">
+<div class="para">We will choose a vector <span class="process-math">\(\vvec_m\)</span> in <span class="process-math">\(\nul(T^m)\)</span> that is not in <span class="process-math">\(\nul(T^{m-1})\)</span> and define</div>
+<div class="displaymath process-math" id="sec-nilpotent-4-14-2-3-10">
 \begin{align*}
-\nul(T^{m-1}) \amp = \nul(T^{m-2}) \oplus
-\laspan{T\wvec_1,\ldots,T\wvec_k,\xvec_1,\ldots,\xvec_l}\\
-\nul(T^{m-1}) \amp = \nul(T^{m-2}) \oplus W_{m-1}\text{.}
+\vvec_{m-1}\amp=T\vvec_m\\
+\vvec_{m-2}\amp=T\vvec_{m-1}=T^2\vvec_m\\
+\vdots\amp=\vdots\\
+\vvec_{2}\amp=T\vvec_3 = T^{m-2}\vvec_m\\
+\vvec_{1}\amp=T\vvec_2=T^{m-1}\vvec_m\text{.}
 \end{align*}
 </div>
+<div class="para">Notice that <span class="process-math">\(T\vvec_1 = T^m\vvec_m=0\)</span> so that <span class="process-math">\(\vvec_1\)</span> is in <span class="process-math">\(\nul(T)\text{.}\)</span>  More generally, <span class="process-math">\(\vvec_j\)</span> is in <span class="process-math">\(\nul(T^j)\text{.}\)</span>
 </div>
-<div class="para" id="sec-nilpotent-4-13-2-7">In the same way, <span class="process-math">\(T:W_{m-1}\to\nul(T^{m-2})\)</span> is injective.</div></article></section></section></div>
+</div>
+<div class="para logical" id="sec-nilpotent-4-14-2-4">
+<div class="para">We will use <span class="process-math">\(U\)</span> to denote the subspace spanned by <span class="process-math">\(\basis{\vvec}{m}\text{.}\)</span>  Notice that a vector <span class="process-math">\(\uvec\)</span> in <span class="process-math">\(U\)</span> may be written as</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\uvec=c_1\vvec_1 + c_2\vvec_2 + \ldots c_m\vvec_m
+\end{equation*}
+</div>
+<div class="para">and therefore</div>
+<div class="displaymath process-math">
+\begin{equation*}
+T\uvec=c_2\vvec_1 + c_3\vvec_2 + \ldots c_m\vvec_{m-1}\text{.}
+\end{equation*}
+</div>
+<div class="para">This shows that <span class="process-math">\(U\)</span> is a <span class="process-math">\(T\)</span>-invariant subspace of <span class="process-math">\(V\text{.}\)</span>
+</div>
+</div>
+<div class="para logical" id="sec-nilpotent-4-14-2-5">
+<div class="para">Suppose now that <span class="process-math">\(\phi:V\to\field\)</span> is a linear functional so that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\phi(\vvec_1) = 1, \phi(\vvec_2) = 0,\ldots,\phi(\vvec_m) =
+0\text{.}
+\end{equation*}
+</div>
+<div class="para">We then define <span class="process-math">\(S:V\to \field^m\)</span> by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+S(\vvec) = \left[\begin{array}{c}\phi(\vvec)\\ \phi(T\vvec) \\
+\vdots \\ \phi(T^{m-1}\vvec) \\
+\end{array}\right]\text{.}
+\end{equation*}
+</div>
+<div class="para">Once again, if <span class="process-math">\(\uvec\)</span> is a vector in <span class="process-math">\(U\text{,}\)</span> then <span class="process-math">\(\uvec=c_1\vvec_1 + c_2\vvec_2 + \ldots c_m\vvec_m\)</span> so that <span class="process-math">\(S(\uvec) = \fourvec{c_1}{c_2}{\vdots}{c_m}\text{.}\)</span> This shows three things.</div>
+<ul class="disc" id="sec-nilpotent-4-14-2-5-9">
+<li id="sec-nilpotent-4-14-2-5-9-1"><div class="para" id="sec-nilpotent-4-14-2-5-9-1-1">
+<span class="process-math">\(S\)</span> is surjective.</div></li>
+<li id="sec-nilpotent-4-14-2-5-9-2"><div class="para" id="sec-nilpotent-4-14-2-5-9-2-1">
+<span class="process-math">\(S(\vvec_j)=\evec_j\text{,}\)</span> the standard basis vector in <span class="process-math">\(\field^m\text{,}\)</span> which means that <span class="process-math">\(\basis{\vvec}{m}\)</span> is a linearly independent set and therefore a basis for <span class="process-math">\(U\text{.}\)</span> Moreover, in this basis, the matrix representing <span class="process-math">\(T|_U\)</span> is a nilpotent <span class="process-math">\(m\times m\)</span> block.</div></li>
+<li id="sec-nilpotent-4-14-2-5-9-3"><div class="para" id="sec-nilpotent-4-14-2-5-9-3-1">
+<span class="process-math">\(S(\uvec) = 0\)</span> implies that <span class="process-math">\(\uvec=0\text{,}\)</span> which means that <span class="process-math">\(U\cap\nul(S) = \{0\}\text{.}\)</span>
+</div></li>
+</ul>
+</div>
+<div class="para" id="sec-nilpotent-4-14-2-6">Now consider <span class="process-math">\(W=\nul(S)\text{.}\)</span>  Since <span class="process-math">\(S\)</span> is surjective, we have <span class="process-math">\(\dim W = n-m \lt n\)</span> by the <a href="sec-lt-intro.html#prop-nul-range-dims" class="xref" data-knowl="./knowl/xref/prop-nul-range-dims.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.13: Fundamental Theorem of Linear Maps">Fundamental Theorem of Linear Maps 1.2.13</a>.  Moreover, <span class="process-math">\(U\cap W = U\cap 
+\nul(S) = \{0\}\)</span> so we have <span class="process-math">\(U\oplus W = V\text{.}\)</span>
+</div>
+<div class="para" id="sec-nilpotent-4-14-2-7">Finally, we claim that <span class="process-math">\(W\)</span> is a <span class="process-math">\(T\)</span>-invariant subspace.  Notice that <span class="process-math">\(\wvec\)</span> is in <span class="process-math">\(W=\nul(S)\)</span> if and only if <span class="process-math">\(\phi(T^j\vvec) = 0\)</span> for all <span class="process-math">\(j\text{.}\)</span>  If this is the case, then <span class="process-math">\(\phi(T^j(T\vvec)) =
+\phi(T^{j+1}\vvec) = 0\)</span> for all <span class="process-math">\(j\text{,}\)</span> which shows that <span class="process-math">\(W\)</span> is <span class="process-math">\(T\)</span>-invariant.</div>
+<div class="para" id="sec-nilpotent-4-14-2-8">Because <span class="process-math">\(\dim W\lt n\)</span> and <span class="process-math">\(T|_W\)</span> is nilpotent, the inductive hypothesis applies to show that there is a basis for <span class="process-math">\(W\)</span> so that the matrix representing <span class="process-math">\(T|_W\)</span> consists of nilpotent blocks.  We can combine this basis with <span class="process-math">\(\basis{\vvec}{m}\)</span> to finish the proof of the theorem.</div></article></section></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="sec-spectral.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-jordan.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
