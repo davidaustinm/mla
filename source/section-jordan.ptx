@@ -60,9 +60,96 @@
       </statement>
     </definition>
 
-    <p>Notice that eigenvectors are also generalized eigenvectors.
+    <p>Notice that eigenvectors are also generalized eigenvectors
+    since an eigenvector satisfies <m>(T-\lambda I)\vvec=0</m>,
+    the generalized eigenvector condition with <m>k=1</m>.
     </p>
 
+    <p>We would like to characterize a generalized eigenspace as a
+    subspace of <m>V</m>. Before doing so, however, we recall an
+    earlier homework exercise.
+    </p>
+
+    <proposition>
+      <statement>
+        <p>If <m>T:V\to V</m> is an operator and <m>\vvec</m> a nonzero
+        vector in <m>V</m>, then there is a unique monic polynomial
+        <m>p_\vvec</m> having the smallest possible degree and
+        satisfying <m>p_\vvec(T)\vvec=0</m>.
+        </p>
+        <p> If <m>s</m> is another polynomial for which
+        <m>s(T)\vvec=0</m>, then <m>p_\vvec</m> divides <m>s</m>.  In
+        particular, it follows that <m>p_\vvec</m> divides the minimal
+        polynomial <m>p</m> of <m>T</m>.
+        </p>
+      </statement>
+    </proposition>
+
+    <p>With this in mind, we can characterize the generalized
+    eigenspaces.</p>
+
+    <proposition>
+      <statement>
+        <p>If the minimal polynomial of <m>T</m> has the form
+        <m>p(x)=q(z)(x-\lambda)^k</m> where <m>q(\lambda)\neq 0</m>,
+        then
+        <me>
+          G_\lambda = \nul((T-\lambda I)^k)
+        </me>.
+        </p>
+      </statement>
+      <proof>
+        <p>Suppose that <m>\vvec</m> is a generalized eigenvector,
+        which means that <m>(T-\lambda I)^l\vvec=0</m> for some
+        <m>l</m>.  If <m>s(x) = (x-\lambda)^l</m>, then
+        <m>s(T)\vvec=0</m>, which means that <m>p_\vvec</m> divides
+        <m>s</m>.  Therefore, <m>p_\vvec=(x-\lambda)^m</m> for some
+        <m>m\leq l</m>.
+        </p>
+
+        <p>The minimal polynomiall <m>p</m> of <m>T</m> has exactly
+        <m>k</m> factors of <m>x-\lambda</m>.  
+        Since <m>p_\vvec</m> divides <m>p</m>, <m>p_\vvec</m> can have
+        no more than <m>k</m> factors of <m>x-\lambda</m>.  Therefore,
+        <me>
+          (T-\lambda I)^k\vvec = (T-\lambda I)^{k-m}(T-\lambda
+          I)^m\vvec = 0
+        </me>,
+        which says that <m>\vvec</m> is in <m>\nul((T-\lambda
+        I)^k)</m>.
+        </p>
+      </proof>
+    </proposition>
+
+    <p>We know that a vector cannot be an eigenvector associated to
+    two different eigenvalues.  This is also true for generalized
+    eigenvectors.
+    </p>
+
+    <proposition xml:id="prop-gen-eig-disjoint">
+      <statement>
+        <p>If <m>\lambda</m> and <m>\mu</m> are distinct eigenvalues
+        of <m>T</m>, then <m>G_\lambda\cap G_\mu=\{0\}</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>Suppose that <m>\vvec</m> is a nonzero vector in
+        <m>G_\lambda</m>.  Then <m>p_\vvec(x)=(x-\lambda)^m</m> for
+        some <m>m</m>, which says that <m>\lambda</m> is a root of
+        <m>p_\vvec</m>.
+        </p>
+
+        <p>At the same time, if <m>\vvec</m> is in <m>G_\mu</m>, then
+        <m>p_\vvec(x) = (x-\mu)^n</m> for some <m>n</m>.  Since
+        <me>
+          p_\vvec(\lambda) = (\lambda-\mu)^n = 0
+        </me>,
+        we must have <m>\lambda = \mu</m>.
+        </p>
+      </proof>
+    </proposition>
+
+    <!--
     <p>First notice that <m>G_k</m> is an invariant subspace of
     <m>V</m> because <m>G_k=\nul(p(T))</m> for a polynomial
     <m>p(x)=(x-\lambda)^k</m>.  Moreover, the minimal polynomial of
@@ -169,16 +256,141 @@
         </p>
       </proof>
     </proposition>
+    -->
+    
   </subsection>
 
   <subsection>
     <title>Complex Vector Spaces</title>
 
     <p>Because of the Fundamental Theorem of Algebra, operators on
-    complex vector spaces have special properties.  In the rest of
-    this section, we will focus on complex vector spaces.
+    complex vector spaces have special properties.  In particular, the
+    minimal polynomial of an operator on a complex vector space has
+    the form
+    <me>
+      p(x)=(x-\lambda_1)^{k_1}(x-\lambda_2)^{k_2}\ldots(x-\lambda_1)^{k_m}
+    </me>.
+    In this case, we claim that <m>V</m> is a direct sum of
+    generalized eigenspaces.
     </p>
 
+    <proposition>
+      <statement>
+        <p>If <m>T</m> is an operator on a complex vector space with
+        eigenvalues <m>\basis{\lambda}{m}</m>, then
+        <me>
+          V = G_{\lambda_1}\oplus G_{\lambda_2} \oplus \ldots
+          \oplus G_{\lambda_m}
+        </me>.
+        </p>
+      </statement>
+
+      <proof>
+        <p>We will use induction on the dimension of <m>V</m>.  To
+        establish the base case, we assume that <m>\dim V = 1</m>.  In
+        this case, <m>p(x) = x-\lambda</m> so <m>T-\lambda I = 0</m>
+        or <m>T=\lambda I</m>.  Then <m>V=G_\lambda</m>.
+        </p>
+
+        <p>For the inductive step, we will assume the result is true
+        for all vector spaces of dimension less than
+        <m>\dim V</m>.  We will choose an eigenvalue <m>\lambda</m>
+        and write the minimal polynomial <m>p</m> as
+        <me>
+          p(x) = q(x)(x-\lambda)^k
+        </me>
+        where <m>q(\lambda)\neq 0</m>.
+        </p>
+
+        <p>Notice that
+        <me>
+          \nul((T-\lambda I)^k) \cap \range((T-\lambda)^k) = \{0\}
+        </me>.
+        To see this, suppose that <m>\vvec</m> is in this
+        intersection.  Then <m>\vvec = (T-\lambda)^k\uvec</m> for some
+        vector <m>\uvec</m>.  Moreover,
+        <me>
+          0 = (T-\lambda I)^k\vvec = (T-\lambda I)^{2k}\uvec
+        </me>.
+        This implies that <m>p_\uvec</m> divides
+        <m>(x-\lambda)^{2k}</m> so that the only factors of
+        <m>p_\uvec</m> are <m>x-\lambda</m>.  Since <m>p_\uvec</m>
+        also divides the minimal polynomial <m>p</m>, we also know
+        that <m>p_\uvec</m> divides <m>(x-\lambda)^k</m>.  Therefore,
+        <me>
+          \vvec = (T-\lambda I)^k\uvec = 0
+        </me>.
+        </p>
+
+        <p>Because of <xref ref="prop-nul-range-dims"/>, we also know
+        that
+        <me>
+          \dim\nul((T-\lambda I)^k) +\dim \range((T-\lambda I)^k) =
+          \dim V
+        </me>,
+        which says that
+        <me>
+          V = \nul((T-\lambda I)^k) \oplus \range((T-\lambda I)^k)
+        </me>.
+        If we define <m>U=\range((T-\lambda I)^k)</m>, then we also
+        have
+        <me>
+          V = G_\lambda \oplus U
+        </me>.
+        </p>
+
+        <p>Since we have written the minimal polynomial
+        <m>p(x)=q(x)(x-\lambda)^k</m>, we can see that the minimal
+        polynomial of <m>T|_U</m> is <m>q</m>.  For instance, if
+        <m>\uvec</m> is in <m>U</m>, then <m>\uvec=(T-\lambda
+        I)^k\vvec</m> for some vector <m>V</m>.  Then
+        <me>
+          q(T)\uvec = q(T)(T-\lambda I)^k \vvec = p(T)\vvec = 0
+        </me>.
+        This shows that the minimal polynomial <m>p_U</m> of
+        <m>T|_U</m> divides <m>q</m>.  However, if the minimal
+        polynomial of <m>T|_U</m> has a smaller degree than <m>q</m>,
+        this would contradcit the fact that the minimal polynomial of
+        <m>T</m> has the smallest possible degree.
+        </p>
+
+        <p>By the inductive hypothesis, <m>U</m> may be written as a
+        direct sum of its generalized eigenspaces.  All that remains
+        is to show that, if <m>\mu</m> is an eigenvalue distinct from
+        <m>\lambda</m>, the generalized eigenspace of <m>T</m>
+        associated to <m>\mu</m> is the same as the generalized
+        eigenspace of <m>T|_U</m> associated to <m>\mu</m>.  To this
+        end, suppose that <m>\vvec</m> satisfies <m>(T-\mu
+        I)^l\vvec</m> for some <m>l</m>.  Because <m>V=G_\lambda
+        \oplus U</m>, we can write
+        <me>
+          \vvec = \nvec + \uvec
+        </me>
+        where <m>\nvec\in G_\lambda</m> and <m>\uvec \in U</m>.
+        We have
+        <me>
+          0 = (T-\mu I)^l\vvec = (T-\mu I)^l\nvec + (T-\mu I)^l\uvec
+        </me>.
+        Because these subspaces are <m>T</m>-invariant, we have
+        <md>
+          <mrow>
+            (T-\mu I)^l\nvec \amp = 0
+          </mrow>
+          <mro>
+            (T-\mu I)^l\uvec \amp = 0
+          </mro>
+        </md>.
+        This means that <m>\nvec\in G_\lambda\cap G_\mu = \{0\}</m> by
+        <xref ref="prop-gen-eig-disjoint"/> so that <m>\nvec = 0</m>.
+        Therefore, <m>\vvec = \uvec\in U</m> and
+        <me>
+          (T-\mu I)^l\uvec = (T|_U-\mu I)^l \uvec = 0
+        </me>.
+        </p>
+      </proof>
+    </proposition>
+
+    <!--
     <proposition>
       <statement>
         <p>If <m>T</m> is an operator on <m>V</m>, a complex vector space,
@@ -276,6 +488,7 @@
         </p>
       </proof>
     </proposition>
+    -->
   </subsection>
 
   <subsection>

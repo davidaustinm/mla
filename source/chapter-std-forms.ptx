@@ -42,8 +42,8 @@
   <!-- include sections -->
   <xi:include href="section-upper.ptx" />
   <xi:include href="section-spectral.ptx"/>
-  <!--
   <xi:include href="section-nilpotent.ptx" />
   <xi:include href="section-jordan.ptx" />
+  <!--
   -->
 </chapter>
