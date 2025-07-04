@@ -6,14 +6,20 @@
 <!--*                                          *-->
 <!--********************************************-->
 <html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: denver                         *-->
+<!--*  Palette: ice-fire                     *-->
+<!--******************************************-->
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Inner products</title>
-<meta name="Keywords" content="Authored in PreTeXt">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:type" content="book">
-<meta property="book:title" content="Understanding More Linear Algebra">
-<meta property="book:author" content="David Austin">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
 <script>
 var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
 window.MathJax = {
@@ -69,12 +75,12 @@ window.MathJax = {
     )}
   }
 };
-</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
-</script><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
-<!--** eBookCongig is necessary to configure interactive       **-->
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Understanding More Linear Algebra">
+<meta property="book:author" content="David Austin">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><!--** eBookCongig is necessary to configure interactive       **-->
 <!--** Runestone components to run locally in reader's browser **-->
 <!--** No external communication:                              **-->
 <!--**     log level is 0, Runestone Services are disabled     **-->
@@ -96,25 +102,23 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.5.10';
+eBookConfig.runestone_version = '7.8.4';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.c2d04816128ebb44.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.f6bda0c0ccce4835.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.e0c6d4592e23c667.css">
-<style>
-</style>
+<script src="_static/prefix-runtime.962d00926ef9460e.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.2e7f40e86ae7d163.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.5bdeacdba067a0e3.css">
+<script src="_static/pretext/js/lti_iframe_resizer.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
 </head>
 <body id="umla" class="pretext book ignore-math">
-<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
-<a id="logo-link" class="logo-link" target="_blank" href=""></a><div class="title-container">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner"><div class="title-container">
 <h1 class="heading"><a href="my-great-book.html"><span class="title">Understanding More Linear Algebra</span></a></h1>
 <p class="byline">David Austin</p>
-</div>
-</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+</div></div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
 <button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
 <div class="searchbox">
 <div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
@@ -235,6 +239,7 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Vector spaces</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-4" class="internal"><span class="codenumber">1.1.2</span> <span class="title">Linear combinations</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-5" class="internal"><span class="codenumber">1.1.3</span> <span class="title">Bases</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-6" class="internal"><span class="codenumber">1.1.4</span> <span class="title">Sums of subspaces</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-section">
@@ -299,8 +304,10 @@ eBookConfig.enable_chatcodes =  false;
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-orthogonal"><h2 class="heading hide-type">
 <span class="type">Section</span><span class="space"> </span><span class="codenumber">1.3</span><span class="space"> </span><span class="title">Inner products</span>
 </h2>
-<section class="introduction" id="sec-orthogonal-2"><div class="para" id="sec-orthogonal-2-1">In our earlier studies, we introduced the dot product to introduce a richer geometric perspective on some key ideas.  In particular, we could use the dot product to detect when vectors are orthogonal, and this led to many simplifications.  For instance, the inverse of a matrix whose columns form an orthonormal basis of <span class="process-math">\(\real^n\)</span> is just the transpose of that matrix.</div>
-<div class="para" id="sec-orthogonal-2-2">As we expand our study to consider more general vector spaces, we need to introduce a concept like the dot product for vector spaces.  This leads us to the concept of an inner product.</div></section><section class="subsection" id="sec-orthogonal-3"><h3 class="heading hide-type">
+<section class="introduction" id="sec-orthogonal-2"><div class="para" id="sec-orthogonal-2-1">In our earlier studies, we introduced the dot product to introduce a richer geometric perspective on some key ideas.  In particular, we could use the dot product to detect when vectors are orthogonal, and this led to many simplifications.  For instance, the inverse of a matrix whose columns form an orthonormal basis of <span class="process-math">\(\real^n\)</span> is just the transpose of that matrix.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-orthogonal-2-2">As we expand our study to consider more general vector spaces, we need to introduce a concept like the dot product for vector spaces.  This leads us to the concept of an inner product.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></section><section class="subsection" id="sec-orthogonal-3"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.3.1</span><span class="space"> </span><span class="title">Inner products</span>
 </h3>
 <div class="para logical" id="sec-orthogonal-3-2">
@@ -316,23 +323,32 @@ eBookConfig.enable_chatcodes =  false;
 \vvec\cdot\vvec = v_1^2 + v_2^2 + \ldots + v_n^2 = \len{\vvec}^2\text{.}
 \end{equation*}
 </div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-orthogonal-3-3">
 <div class="para">More generally, we had the following properties:</div>
 <ul class="disc" id="sec-orthogonal-3-3-1">
 <li id="sec-orthogonal-3-3-1-1">
 <span class="heading"><span class="title">Positivity.</span></span><div class="para" id="sec-orthogonal-3-3-1-1-2">
-<span class="process-math">\(\vvec\cdot\vvec \geq 0\)</span> with <span class="process-math">\(\vvec\cdot\vvec=0\)</span> if and only if <span class="process-math">\(\vvec=\zerovec\text{.}\)</span>
+<span class="process-math">\(\vvec\cdot\vvec \geq 0\)</span> with <span class="process-math">\(\vvec\cdot\vvec=0\)</span> if and only if <span class="process-math">\(\vvec=\zerovec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-3-1-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
+<div class="autopermalink" data-description="Item: Positivity"><a href="#sec-orthogonal-3-3-1-1" title="Copy heading and permalink for Item: Positivity">🔗</a></div>
 </li>
 <li id="sec-orthogonal-3-3-1-2">
-<span class="heading"><span class="title">Symmetry.</span></span><div class="para" id="sec-orthogonal-3-3-1-2-2"><span class="process-math">\(\vvec\cdot\wvec = \wvec\cdot\vvec\text{.}\)</span></div>
+<span class="heading"><span class="title">Symmetry.</span></span><div class="para" id="sec-orthogonal-3-3-1-2-2">
+<span class="process-math">\(\vvec\cdot\wvec = \wvec\cdot\vvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-3-1-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Symmetry"><a href="#sec-orthogonal-3-3-1-2" title="Copy heading and permalink for Item: Symmetry">🔗</a></div>
 </li>
 <li id="sec-orthogonal-3-3-1-3">
-<span class="heading"><span class="title">Linearity.</span></span><div class="para" id="sec-orthogonal-3-3-1-3-2"><span class="process-math">\((c_1\vvec_1+c_2\vvec_2)\cdot\wvec = c_1\vvec_1\cdot\wvec
-+ c_2\vvec_2\cdot\wvec\text{.}\)</span></div>
+<span class="heading"><span class="title">Linearity.</span></span><div class="para" id="sec-orthogonal-3-3-1-3-2">
+<span class="process-math">\((c_1\vvec_1+c_2\vvec_2)\cdot\wvec = c_1\vvec_1\cdot\wvec
++ c_2\vvec_2\cdot\wvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-3-1-3-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Linearity"><a href="#sec-orthogonal-3-3-1-3" title="Copy heading and permalink for Item: Linearity">🔗</a></div>
 </li>
 </ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-orthogonal-3-4">
 <div class="para">Things are a little different when we are using complex numbers.  If <span class="process-math">\(z\)</span> is a general complex number, then <span class="process-math">\(z^2\)</span> is not guaranteed to be real, much less nonnegative.  To preserve the positivity condition above, remember that the complex conjugate is defined by</div>
@@ -363,6 +379,7 @@ z\conj{z}=a^2+b^2=\len{z}^2\geq 0\text{.}
 <div class="para">With this definition, the three properties above still hold except that the symmetry condition is modified to <span class="process-math">\(\vvec\cdot\wvec =
 \conj{\wvec\cdot\vvec}\text{.}\)</span>
 </div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-4" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-orthogonal-3-5"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.1</span><span class="period">.</span>
@@ -372,23 +389,35 @@ z\conj{z}=a^2+b^2=\len{z}^2\geq 0\text{.}
 <ul class="disc" id="sec-orthogonal-3-5-1-1-4">
 <li id="sec-orthogonal-3-5-1-1-4-1">
 <span class="heading"><span class="title">Positivity.</span></span><div class="para" id="sec-orthogonal-3-5-1-1-4-1-2">
-<span class="process-math">\(\inner{\vvec}{\vvec}\geq 0\)</span> and <span class="process-math">\(\inner{\vvec}{\vvec} = 0\)</span> if and only if <span class="process-math">\(\vvec=0\text{.}\)</span>
+<span class="process-math">\(\inner{\vvec}{\vvec}\geq 0\)</span> and <span class="process-math">\(\inner{\vvec}{\vvec} = 0\)</span> if and only if <span class="process-math">\(\vvec=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-5-1-1-4-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
+<div class="autopermalink" data-description="Item: Positivity"><a href="#sec-orthogonal-3-5-1-1-4-1" title="Copy heading and permalink for Item: Positivity">🔗</a></div>
 </li>
 <li id="sec-orthogonal-3-5-1-1-4-2">
-<span class="heading"><span class="title">Conjugate symmetry.</span></span><div class="para" id="sec-orthogonal-3-5-1-1-4-2-2"><span class="process-math">\(\conj{\inner{\vvec}{\wvec}} =
-\inner{\wvec}{\vvec}\text{.}\)</span></div>
+<span class="heading"><span class="title">Conjugate symmetry.</span></span><div class="para" id="sec-orthogonal-3-5-1-1-4-2-2">
+<span class="process-math">\(\conj{\inner{\vvec}{\wvec}} =
+\inner{\wvec}{\vvec}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-5-1-1-4-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Conjugate symmetry"><a href="#sec-orthogonal-3-5-1-1-4-2" title="Copy heading and permalink for Item: Conjugate symmetry">🔗</a></div>
 </li>
 <li id="sec-orthogonal-3-5-1-1-4-3">
-<span class="heading"><span class="title">Linearity.</span></span><div class="para" id="sec-orthogonal-3-5-1-1-4-3-2"><span class="process-math">\(\inner{c_1\vvec_1+c_2\vvec_2}{\wvec} =
-c_1\inner{\vvec_1}{\wvec} + c_2\inner{\vvec_2}{\wvec}\text{.}\)</span></div>
+<span class="heading"><span class="title">Linearity.</span></span><div class="para" id="sec-orthogonal-3-5-1-1-4-3-2">
+<span class="process-math">\(\inner{c_1\vvec_1+c_2\vvec_2}{\wvec} =
+c_1\inner{\vvec_1}{\wvec} + c_2\inner{\vvec_2}{\wvec}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-5-1-1-4-3-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Linearity"><a href="#sec-orthogonal-3-5-1-1-4-3" title="Copy heading and permalink for Item: Linearity">🔗</a></div>
 </li>
 </ul>
-</div></article><article class="example example-like" id="sec-orthogonal-3-6"><h4 class="heading">
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-5-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.1"><a href="#sec-orthogonal-3-5" title="Copy heading and permalink for Definition 1.3.1">🔗</a></div></article><article class="example example-like" id="sec-orthogonal-3-6"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.2</span><span class="period">.</span>
 </h4>
 <div class="para" id="sec-orthogonal-3-6-1-1">If <span class="process-math">\(V=\complex^n\text{,}\)</span> then <span class="process-math">\(\inner{\vvec}{\wvec} =
-\vvec\cdot\wvec\)</span> is an inner product.</div> <div class="para" id="sec-orthogonal-3-6-1-2">In fact, this is true if <span class="process-math">\(V=\real^n\)</span> as well.  If <span class="process-math">\(x\)</span> is real, then <span class="process-math">\(\conj{x} = x\)</span> so the conjugate symmetry condition is the same as the symmetry condition above.</div></article><article class="example example-like" id="example-inner-poly"><h4 class="heading">
+\vvec\cdot\wvec\)</span> is an inner product.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-6-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="sec-orthogonal-3-6-1-2">In fact, this is true if <span class="process-math">\(V=\real^n\)</span> as well.  If <span class="process-math">\(x\)</span> is real, then <span class="process-math">\(\conj{x} = x\)</span> so the conjugate symmetry condition is the same as the symmetry condition above.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-6-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 1.3.2"><a href="#sec-orthogonal-3-6" title="Copy heading and permalink for Example 1.3.2">🔗</a></div></article><article class="example example-like" id="example-inner-poly"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.3</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="example-inner-poly-1-1">
@@ -399,6 +428,7 @@ c_1\inner{\vvec_1}{\wvec} + c_2\inner{\vvec_2}{\wvec}\text{.}\)</span></div>
 \end{equation*}
 </div>
 <div class="para">is an inner product.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#example-inner-poly-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="example-inner-poly-1-2">
 <div class="para">This may seem strange when you first see it, but it is just an extension of the usual dot product in some sense.  For instance, think of a three-dimensional vector as a function from the set <span class="process-math">\(\{-1,0,1\}\)</span> into <span class="process-math">\(\real\text{.}\)</span>  The dot product between two vectors is then</div>
 <div class="displaymath process-math">
@@ -409,7 +439,9 @@ c_1\inner{\vvec_1}{\wvec} + c_2\inner{\vvec_2}{\wvec}\text{.}\)</span></div>
 \end{equation*}
 </div>
 <div class="para">so that we multiply the the value of <span class="process-math">\(v\)</span> and <span class="process-math">\(\conj{\wvec}\)</span> at each point and add.  If we interpret the integral as an infinite sum, this is what the inner product defined above is doing.</div>
-</div></article><article class="example example-like" id="sec-orthogonal-3-8"><h4 class="heading">
+<div class="autopermalink" data-description="Paragraph"><a href="#example-inner-poly-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 1.3.3"><a href="#example-inner-poly" title="Copy heading and permalink for Example 1.3.3">🔗</a></div></article><article class="example example-like" id="sec-orthogonal-3-8"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.4</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-orthogonal-3-8-1-1">
@@ -421,6 +453,7 @@ n\)</span> matrices.  If <span class="process-math">\(A\)</span> is such a matri
 \end{equation*}
 </div>
 <div class="para">is an inner product, where <span class="process-math">\(\tr\)</span> represents the <em class="emphasis">trace</em> of a matrix, the sum of its diagonal entries.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-8-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="sec-orthogonal-3-8-1-2">
 <div class="para">It’s relatively straightforward to show that</div>
 <div class="displaymath process-math">
@@ -428,7 +461,9 @@ n\)</span> matrices.  If <span class="process-math">\(A\)</span> is such a matri
 \inner{A}{A} = \sum_{i,j}\len{A_{i,j}}^2\text{.}
 \end{equation*}
 </div>
-</div></article><div class="para logical" id="sec-orthogonal-3-9">
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-8-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 1.3.4"><a href="#sec-orthogonal-3-8" title="Copy heading and permalink for Example 1.3.4">🔗</a></div></article><div class="para logical" id="sec-orthogonal-3-9">
 <div class="para">It may be useful to note the following consequence of the conjugate symmetry and linearity properties:</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -437,11 +472,14 @@ n\)</span> matrices.  If <span class="process-math">\(A\)</span> is such a matri
 \conj{c_2}\inner{\vvec}{\wvec_2}\text{.}
 \end{equation*}
 </div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-9" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-orthogonal-3-10"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.5</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-orthogonal-3-10-1-1">We typically refer to a vector space <span class="process-math">\(V\)</span> with an inner product as an <em class="emphasis">inner product space</em>.</div></article><article class="definition definition-like" id="sec-orthogonal-3-11"><h4 class="heading">
+<div class="para" id="sec-orthogonal-3-10-1-1">We typically refer to a vector space <span class="process-math">\(V\)</span> with an inner product as an <em class="emphasis">inner product space</em>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-10-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.5"><a href="#sec-orthogonal-3-10" title="Copy heading and permalink for Definition 1.3.5">🔗</a></div></article><article class="definition definition-like" id="sec-orthogonal-3-11"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.6</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-orthogonal-3-11-1-1">
@@ -451,8 +489,10 @@ n\)</span> matrices.  If <span class="process-math">\(A\)</span> is such a matri
 \len{\vvec} = \sqrt{\inner{\vvec}{\vvec}}\text{.}
 \end{equation*}
 </div>
-</div></article><div class="para" id="sec-orthogonal-3-12">With this definition, it follows that <span class="process-math">\(\len{s\vvec} =
-\len{s}\len{\vvec}\text{.}\)</span>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-11-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.6"><a href="#sec-orthogonal-3-11" title="Copy heading and permalink for Definition 1.3.6">🔗</a></div></article><div class="para" id="sec-orthogonal-3-12">With this definition, it follows that <span class="process-math">\(\len{s\vvec} =
+\len{s}\len{\vvec}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-12" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-orthogonal-3-13"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.7</span><span class="period">.</span>
@@ -465,19 +505,26 @@ n\)</span> matrices.  If <span class="process-math">\(A\)</span> is such a matri
 \end{equation*}
 </div>
 <div class="para">for all vectors <span class="process-math">\(\vvec_1\)</span> and <span class="process-math">\(\vvec_2\text{,}\)</span> we say that <span class="process-math">\(T\)</span> is an <em class="emphasis">isometry</em> of vector spaces.</div>
-</div></article></section><section class="subsection" id="sec-orthogonal-4"><h3 class="heading hide-type">
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-3-13-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.7"><a href="#sec-orthogonal-3-13" title="Copy heading and permalink for Definition 1.3.7">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.3.1: Inner products"><a href="#sec-orthogonal-3" title="Copy heading and permalink for Subsection 1.3.1: Inner products">🔗</a></div></section><section class="subsection" id="sec-orthogonal-4"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.3.2</span><span class="space"> </span><span class="title">Orthogonality</span>
 </h3>
-<div class="para" id="sec-orthogonal-4-2">Since an inner product is the same concept as the dot product extended to vector spaces, we have access to many similar concepts, such as orthogonality.</div>
+<div class="para" id="sec-orthogonal-4-2">Since an inner product is the same concept as the dot product extended to vector spaces, we have access to many similar concepts, such as orthogonality.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
 <article class="definition definition-like" id="sec-orthogonal-4-3"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.8</span><span class="period">.</span>
 </h4>
 <div class="para" id="sec-orthogonal-4-3-1-1">Two vectors <span class="process-math">\(\vvec\)</span> and <span class="process-math">\(\wvec\)</span> in an inner product space are <em class="emphasis">orthogonal</em> if <span class="process-math">\(\inner{\vvec}{\wvec} = 
-0\text{.}\)</span>
-</div></article><article class="example example-like" id="sec-orthogonal-4-4"><h4 class="heading">
+0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-3-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.8"><a href="#sec-orthogonal-4-3" title="Copy heading and permalink for Definition 1.3.8">🔗</a></div></article><article class="example example-like" id="sec-orthogonal-4-4"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.9</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-orthogonal-4-4-1-1">If <span class="process-math">\(V=\poly\text{,}\)</span> the set of all polynomials, with the inner product given in <a href="sec-orthogonal.html#example-inner-poly" class="xref" data-knowl="./knowl/xref/example-inner-poly.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.3.3">Example 1.3.3</a>, then <span class="process-math">\(p(x)=x-x^3\)</span> is orthogonal to <span class="process-math">\(q(x)=x^2+7x^8\text{.}\)</span>  This follows because each term in <span class="process-math">\(p(x)\conj{q(x)}\)</span> is an odd power of <span class="process-math">\(x\)</span> whose integral on the interval <span class="process-math">\([-1,1]\)</span> will be zero by symmetry.</div> <div class="para" id="sec-orthogonal-4-4-1-2">More generally, any polynomial whose terms are all of odd degree is orthogonal to any polynomials whose terms are all of even degree.</div></article><article class="proposition theorem-like" id="sec-orthogonal-4-5"><h4 class="heading">
+<div class="para" id="sec-orthogonal-4-4-1-1">If <span class="process-math">\(V=\poly\text{,}\)</span> the set of all polynomials, with the inner product given in <a href="sec-orthogonal.html#example-inner-poly" class="xref" data-knowl="./knowl/xref/example-inner-poly.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.3.3">Example 1.3.3</a>, then <span class="process-math">\(p(x)=x-x^3\)</span> is orthogonal to <span class="process-math">\(q(x)=x^2+7x^8\text{.}\)</span>  This follows because each term in <span class="process-math">\(p(x)\conj{q(x)}\)</span> is an odd power of <span class="process-math">\(x\)</span> whose integral on the interval <span class="process-math">\([-1,1]\)</span> will be zero by symmetry.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-4-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="sec-orthogonal-4-4-1-2">More generally, any polynomial whose terms are all of odd degree is orthogonal to any polynomials whose terms are all of even degree.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-4-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 1.3.9"><a href="#sec-orthogonal-4-4" title="Copy heading and permalink for Example 1.3.9">🔗</a></div></article><article class="proposition theorem-like" id="sec-orthogonal-4-5"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.10</span><span class="period">.</span><span class="space"> </span><span class="title">Pythagorean theorem.</span>
 </h4>
 <div class="para logical" id="sec-orthogonal-4-5-2-1">
@@ -487,7 +534,9 @@ n\)</span> matrices.  If <span class="process-math">\(A\)</span> is such a matri
 \len{\vvec+\wvec}^2 = \len{\vvec}^2+\len{\wvec}^2\text{.}
 \end{equation*}
 </div>
-</div></article><article class="proof" id="sec-orthogonal-4-5-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-5-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 1.3.10: Pythagorean theorem"><a href="#sec-orthogonal-4-5" title="Copy heading and permalink for Proposition 1.3.10: Pythagorean theorem">🔗</a></div></article><article class="proof" id="sec-orthogonal-4-5-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="sec-orthogonal-4-5-3-1">
 <div class="para">The follows from the linearity of the inner product:</div>
 <div class="displaymath process-math" id="sec-orthogonal-4-5-3-1-1">
@@ -501,13 +550,19 @@ n\)</span> matrices.  If <span class="process-math">\(A\)</span> is such a matri
 \len{\vvec}^2 + \len{\wvec}^2
 \end{align*}
 </div>
-</div></article><article class="definition definition-like" id="sec-orthogonal-4-6"><h4 class="heading">
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-5-3-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.3.10.1"><a href="#sec-orthogonal-4-5-3" title="Copy heading and permalink for Proof 1.3.10.1">🔗</a></div></article><article class="definition definition-like" id="sec-orthogonal-4-6"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.11</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-orthogonal-4-6-1-1">In an inner product space, we say that <span class="process-math">\(\basis{\vvec}{m}\)</span> is an <em class="emphasis">orthogonal</em> set if each vector is nonzero and each pair of vectors is orthogonal to one another.</div></article><article class="proposition theorem-like" id="sec-orthogonal-4-7"><h4 class="heading">
+<div class="para" id="sec-orthogonal-4-6-1-1">In an inner product space, we say that <span class="process-math">\(\basis{\vvec}{m}\)</span> is an <em class="emphasis">orthogonal</em> set if each vector is nonzero and each pair of vectors is orthogonal to one another.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-6-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.11"><a href="#sec-orthogonal-4-6" title="Copy heading and permalink for Definition 1.3.11">🔗</a></div></article><article class="proposition theorem-like" id="sec-orthogonal-4-7"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.12</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-orthogonal-4-7-1-1">In an inner product space, an orthogonal set is linearly independent.</div></article><article class="proof" id="sec-orthogonal-4-7-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="sec-orthogonal-4-7-1-1">In an inner product space, an orthogonal set is linearly independent.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-7-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 1.3.12"><a href="#sec-orthogonal-4-7" title="Copy heading and permalink for Proposition 1.3.12">🔗</a></div></article><article class="proof" id="sec-orthogonal-4-7-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="sec-orthogonal-4-7-2-1">
 <div class="para">Suppose that <span class="process-math">\(\basis{\vvec}{m}\)</span> is an orthogonal set and that</div>
 <div class="displaymath process-math">
@@ -528,7 +583,10 @@ a_j\len{\vvec_j}^2 \amp = 0
 </div>
 <div class="para">which says that <span class="process-math">\(a_j=0\text{.}\)</span>
 </div>
-</div></article><div class="para" id="sec-orthogonal-4-8">From this, we conclude that an orthogonal set forms a basis for a subspace of the inner product space.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-7-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.3.12.1"><a href="#sec-orthogonal-4-7-2" title="Copy heading and permalink for Proof 1.3.12.1">🔗</a></div></article><div class="para" id="sec-orthogonal-4-8">From this, we conclude that an orthogonal set forms a basis for a subspace of the inner product space.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-8" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
 <article class="proposition theorem-like" id="sec-orthogonal-4-9"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.13</span><span class="period">.</span><span class="space"> </span><span class="title">Projection formula.</span>
 </h4>
@@ -544,9 +602,13 @@ a_j\len{\vvec_j}^2 \amp = 0
 \frac{\inner{\bvec}{\wvec_m}}{\inner{\wvec_m}{\wvec_m}}\wvec_m\text{.}
 \end{equation*}
 </div>
-</div></article><article class="proof" id="sec-orthogonal-4-9-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="sec-orthogonal-4-9-3-1">This is the same expression as the <a class="external" href="https://understandinglinearalgebra.org/sec-orthogonal-bases.html#prop-proj-formula" target="_blank">Projection Formula</a><details class="ptx-footnote" aria-live="polite" id="sec-orthogonal-4-9-3-1-2"><summary class="ptx-footnote__number" title="Footnote 1.3.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-orthogonal-4-9-3-1-2"><code class="code-inline tex2jax_ignore">understandinglinearalgebra.org/sec-orthogonal-bases.html#prop-proj-formula</code></div></details> that we frequently used in our previous classes and its found by the same argument.</div>
-<div class="para" id="sec-orthogonal-4-9-3-2">We first find the vector <span class="process-math">\(\bhat\)</span> so that <span class="process-math">\(\bvec-\bhat\)</span> is orthogonal to <span class="process-math">\(W\)</span> and then explain why it is the closest vector.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-9-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 1.3.13: Projection formula"><a href="#sec-orthogonal-4-9" title="Copy heading and permalink for Proposition 1.3.13: Projection formula">🔗</a></div></article><article class="proof" id="sec-orthogonal-4-9-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="sec-orthogonal-4-9-3-1">This is the same expression as the <a class="external" href="https://understandinglinearalgebra.org/sec-orthogonal-bases.html#prop-proj-formula" target="_blank">Projection Formula</a><details class="ptx-footnote" aria-live="polite" id="sec-orthogonal-4-9-3-1-2"><summary class="ptx-footnote__number" title="Footnote 1.3.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-orthogonal-4-9-3-1-2"><code class="code-inline tex2jax_ignore">understandinglinearalgebra.org/sec-orthogonal-bases.html#prop-proj-formula</code></div></details> that we frequently used in our previous classes and its found by the same argument.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-9-3-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-orthogonal-4-9-3-2">We first find the vector <span class="process-math">\(\bhat\)</span> so that <span class="process-math">\(\bvec-\bhat\)</span> is orthogonal to <span class="process-math">\(W\)</span> and then explain why it is the closest vector.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-9-3-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
 <div class="para logical" id="sec-orthogonal-4-9-3-3">
 <div class="para">Notice that, by linearity, if a vector <span class="process-math">\(\uvec\)</span> is orthogonal to each <span class="process-math">\(\wvec_j\text{,}\)</span> then it is orthogonal to every vector in <span class="process-math">\(W\text{.}\)</span>  This is because any vector in <span class="process-math">\(W\)</span> is a linear combination of <span class="process-math">\(\basis{\wvec}{m}\)</span> so that</div>
 <div class="displaymath process-math">
@@ -561,6 +623,7 @@ a_j\len{\vvec_j}^2 \amp = 0
 c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 \end{equation*}
 </div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-9-3-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-orthogonal-4-9-3-4">
 <div class="para">We require that <span class="process-math">\(\bvec-\bhat\)</span> be orthogonal to <span class="process-math">\(W\)</span> so that</div>
@@ -590,6 +653,7 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 \end{equation*}
 </div>
 <div class="para">which gives the expression for <span class="process-math">\(\bhat\)</span> in the statement of the proposition.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-9-3-4" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-orthogonal-4-9-3-5">
 <div class="para">Now suppose that <span class="process-math">\(\wvec\)</span> is any other vector in <span class="process-math">\(W\text{.}\)</span>  Then <span class="process-math">\(\bhat - \wvec\)</span> is in <span class="process-math">\(W\)</span> and hence orthogonal to <span class="process-math">\(\bvec-\bhat\text{.}\)</span>  Therefore,</div>
@@ -607,15 +671,21 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 </div>
 <div class="para">which shows that <span class="process-math">\(\bhat\)</span> is closer to <span class="process-math">\(\bvec\)</span> than any other vector in <span class="process-math">\(W\text{.}\)</span>
 </div>
-</div></article><div class="para" id="sec-orthogonal-4-10">The Projection Formula was key to a wide range of useful concepts.  In particular, we can apply the Gram-Schmidt algorithm as we did earlier.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-9-3-5" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.3.13.1"><a href="#sec-orthogonal-4-9-3" title="Copy heading and permalink for Proof 1.3.13.1">🔗</a></div></article><div class="para" id="sec-orthogonal-4-10">The Projection Formula was key to a wide range of useful concepts.  In particular, we can apply the Gram-Schmidt algorithm as we did earlier.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-10" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
 <article class="definition definition-like" id="sec-orthogonal-4-11"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.14</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-orthogonal-4-11-1-1">A set of vectors is called <em class="emphasis">orthonormal</em> if each pair of vectors is orthogonal and each vector has unit length.</div></article><article class="proposition theorem-like" id="sec-orthogonal-4-12"><h4 class="heading">
+<div class="para" id="sec-orthogonal-4-11-1-1">A set of vectors is called <em class="emphasis">orthonormal</em> if each pair of vectors is orthogonal and each vector has unit length.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-11-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.14"><a href="#sec-orthogonal-4-11" title="Copy heading and permalink for Definition 1.3.14">🔗</a></div></article><article class="proposition theorem-like" id="sec-orthogonal-4-12"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.15</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-orthogonal-4-12-1-1">If <span class="process-math">\(W\)</span> is a finite dimensional subspace of an inner product space <span class="process-math">\(V\text{,}\)</span> then there is an orthonormal basis for <span class="process-math">\(W\text{.}\)</span>
-</div></article><article class="proof" id="sec-orthogonal-4-12-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="sec-orthogonal-4-12-1-1">If <span class="process-math">\(W\)</span> is a finite dimensional subspace of an inner product space <span class="process-math">\(V\text{,}\)</span> then there is an orthonormal basis for <span class="process-math">\(W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-12-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 1.3.15"><a href="#sec-orthogonal-4-12" title="Copy heading and permalink for Proposition 1.3.15">🔗</a></div></article><article class="proof" id="sec-orthogonal-4-12-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="sec-orthogonal-4-12-2-1">
 <div class="para">We choose any basis <span class="process-math">\(\basis{\vvec}{m}\)</span> for <span class="process-math">\(W\)</span> and then define</div>
 <div class="displaymath process-math" id="sec-orthogonal-4-12-2-1-3">
@@ -631,16 +701,21 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 <div class="para">and so on.  This produces an orthogonal basis for <span class="process-math">\(W\)</span> since, at every step, <span class="process-math">\(\laspan{\basis{\wvec}{j}} =
 \laspan{\basis{\vvec}{j}}\text{.}\)</span>
 </div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-12-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para" id="sec-orthogonal-4-12-2-2">Finally, we define <span class="process-math">\(\uvec_j =
-\frac{\wvec_j}{\len{\wvec_j}}\)</span> to obtain an orthonormal basis for <span class="process-math">\(W\text{.}\)</span>
-</div></article><div class="para" id="sec-orthogonal-4-13">Notice that a vector space <span class="process-math">\(V\)</span> is a subspace of itself so the previous proposition implies that every finite dimensional subspace has an orthonormal basis.</div>
-<div class="para" id="sec-orthogonal-4-14">Also, remember that any linearly independent set in <span class="process-math">\(V\)</span> can be extended to a basis of <span class="process-math">\(V\)</span> by <a href="sec-vs-intro.html#prop-basis-extend" class="xref" data-knowl="./knowl/xref/prop-basis-extend.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.31">Proposition 1.1.31</a>.  If we begin with an orthonormal set of vectors in <span class="process-math">\(V\text{,}\)</span> we can extend it to a basis of <span class="process-math">\(V\text{,}\)</span> and apply the Gram-Schmidt algorithm to the added basis vectors to obtain an orthonormal basis of <span class="process-math">\(V\text{.}\)</span>  In other words,</div>
+\frac{\wvec_j}{\len{\wvec_j}}\)</span> to obtain an orthonormal basis for <span class="process-math">\(W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-12-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.3.15.1"><a href="#sec-orthogonal-4-12-2" title="Copy heading and permalink for Proof 1.3.15.1">🔗</a></div></article><div class="para" id="sec-orthogonal-4-13">Notice that a vector space <span class="process-math">\(V\)</span> is a subspace of itself so the previous proposition implies that every finite dimensional subspace has an orthonormal basis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-13" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-orthogonal-4-14">Also, remember that any linearly independent set in <span class="process-math">\(V\)</span> can be extended to a basis of <span class="process-math">\(V\)</span> by <a href="sec-vs-intro.html#prop-basis-extend" class="xref" data-knowl="./knowl/xref/prop-basis-extend.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.32">Proposition 1.1.32</a>.  If we begin with an orthonormal set of vectors in <span class="process-math">\(V\text{,}\)</span> we can extend it to a basis of <span class="process-math">\(V\text{,}\)</span> and apply the Gram-Schmidt algorithm to the added basis vectors to obtain an orthonormal basis of <span class="process-math">\(V\text{.}\)</span>  In other words,<div class="autopermalink" data-description="Paragraph"><a href="#sec-orthogonal-4-14" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
 <article class="proposition theorem-like" id="prop-ortho-extend"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.16</span><span class="period">.</span>
 </h4>
-<div class="para" id="prop-ortho-extend-1-1">Any orthonormal set in <span class="process-math">\(V\)</span> can be extended to an orthonormal basis for <span class="process-math">\(V\text{.}\)</span>
-</div></article></section><section class="subsection" id="subsec-adjoint"><h3 class="heading hide-type">
+<div class="para" id="prop-ortho-extend-1-1">Any orthonormal set in <span class="process-math">\(V\)</span> can be extended to an orthonormal basis for <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-ortho-extend-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 1.3.16"><a href="#prop-ortho-extend" title="Copy heading and permalink for Proposition 1.3.16">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.3.2: Orthogonality"><a href="#sec-orthogonal-4" title="Copy heading and permalink for Subsection 1.3.2: Orthogonality">🔗</a></div></section><section class="subsection" id="subsec-adjoint"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.3.3</span><span class="space"> </span><span class="title">The adjoint of a linear transformation</span>
 </h3>
 <div class="para logical" id="subsec-adjoint-2">
@@ -657,8 +732,9 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 \end{equation*}
 </div>
 <div class="para">by applying the conjugate symmetry condition twice. The first thing to establish is that <span class="process-math">\(T^*\)</span> is itself an linear transformation.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-adjoint-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="subsec-adjoint-3">We will first prove a useful result in the simple case that <span class="process-math">\(T:V\to \field\text{.}\)</span>
+<div class="para" id="subsec-adjoint-3">We will first prove a useful result in the simple case that <span class="process-math">\(T:V\to \field\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-adjoint-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-riesz"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.17</span><span class="period">.</span><span class="space"> </span><span class="title">Riesz represenation theorem.</span>
@@ -670,10 +746,13 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 \phi(\vvec) = \inner{\vvec}{\uvec}\text{.}
 \end{equation*}
 </div>
-</div></article><article class="proof" id="prop-riesz-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="prop-riesz-3-1">If <span class="process-math">\(\phi = 0\text{,}\)</span> then we can take <span class="process-math">\(\uvec=0\)</span> as well.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-riesz-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 1.3.17: Riesz represenation theorem"><a href="#prop-riesz" title="Copy heading and permalink for Proposition 1.3.17: Riesz represenation theorem">🔗</a></div></article><article class="proof" id="prop-riesz-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="prop-riesz-3-1">If <span class="process-math">\(\phi = 0\text{,}\)</span> then we can take <span class="process-math">\(\uvec=0\)</span> as well.<div class="autopermalink" data-description="Paragraph"><a href="#prop-riesz-3-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
 <div class="para" id="prop-riesz-3-2">So suppose that <span class="process-math">\(\phi\neq 0\text{,}\)</span> which means that there is a vector <span class="process-math">\(\vvec\)</span> such that <span class="process-math">\(\phi(\vvec) \neq
-0\text{.}\)</span>  Therefore, <span class="process-math">\(\phi\)</span> is onto and <span class="process-math">\(\range(\phi)=\field\text{.}\)</span>
+0\text{.}\)</span>  Therefore, <span class="process-math">\(\phi\)</span> is onto and <span class="process-math">\(\range(\phi)=\field\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-riesz-3-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-riesz-3-3">
 <div class="para">If <span class="process-math">\(\dim V = n\text{,}\)</span> we know that</div>
@@ -684,6 +763,7 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 </div>
 <div class="para">Choose an orthonormal basis <span class="process-math">\(\basis{\vvec}{n-1}\)</span> for <span class="process-math">\(\nul(\phi)\text{.}\)</span>  We know by <a href="sec-orthogonal.html#prop-ortho-extend" class="xref" data-knowl="./knowl/xref/prop-ortho-extend.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.3.16">Proposition 1.3.16</a> that we can add a vector <span class="process-math">\(\wvec\)</span> to obtain an orthonormal basis.  Let <span class="process-math">\(\uvec=\phi(\wvec)\wvec\text{.}\)</span>
 </div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-riesz-3-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-riesz-3-4">
 <div class="para">If <span class="process-math">\(\vvec\)</span> is a vector in <span class="process-math">\(V\text{,}\)</span> then</div>
@@ -698,6 +778,7 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 \phi(\vvec) = c_n\phi(\wvec) = \inner{\vvec}{\uvec}\text{.}
 \end{equation*}
 </div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-riesz-3-4" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-riesz-3-5">
 <div class="para">To see that <span class="process-math">\(\uvec\)</span> is unique, suppose that there are two such vectors <span class="process-math">\(\uvec_1\)</span> and <span class="process-math">\(\uvec_1\)</span> such that</div>
@@ -716,7 +797,9 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 </div>
 <div class="para">which implies that <span class="process-math">\(\uvec_1=\uvec_2\text{.}\)</span>
 </div>
-</div></article><article class="definition definition-like" id="subsec-adjoint-5"><h4 class="heading">
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-riesz-3-5" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.3.17.1"><a href="#prop-riesz-3" title="Copy heading and permalink for Proof 1.3.17.1">🔗</a></div></article><article class="definition definition-like" id="subsec-adjoint-5"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.18</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="subsec-adjoint-5-1-1">
@@ -732,11 +815,16 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 \inner{T^*\wvec}{\vvec} = \inner{\wvec}{T(\vvec)}\text{.}
 \end{equation*}
 </div>
-</div></article><div class="para" id="subsec-adjoint-6">There are a number of things implied by this definition so we need to check that they are satisfied.  The following proposition will take care of this for us.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-adjoint-5-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.18"><a href="#subsec-adjoint-5" title="Copy heading and permalink for Definition 1.3.18">🔗</a></div></article><div class="para" id="subsec-adjoint-6">There are a number of things implied by this definition so we need to check that they are satisfied.  The following proposition will take care of this for us.<div class="autopermalink" data-description="Paragraph"><a href="#subsec-adjoint-6" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
 <article class="proposition theorem-like" id="subsec-adjoint-7"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.19</span><span class="period">.</span>
 </h4>
-<div class="para" id="subsec-adjoint-7-1-1">The adjoint <span class="process-math">\(T^*:W\to V\)</span> is a linear transformation.</div></article><article class="proof" id="subsec-adjoint-7-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="subsec-adjoint-7-1-1">The adjoint <span class="process-math">\(T^*:W\to V\)</span> is a linear transformation.<div class="autopermalink" data-description="Paragraph"><a href="#subsec-adjoint-7-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 1.3.19"><a href="#subsec-adjoint-7" title="Copy heading and permalink for Proposition 1.3.19">🔗</a></div></article><article class="proof" id="subsec-adjoint-7-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="subsec-adjoint-7-2-1">
 <div class="para">We first need to establish that <span class="process-math">\(T^*(\wvec)\)</span> is a vector in <span class="process-math">\(V\)</span> for every <span class="process-math">\(\wvec\)</span> in <span class="process-math">\(V\text{.}\)</span>  For a fixed <span class="process-math">\(\wvec\)</span> in <span class="process-math">\(W\text{,}\)</span> define the linear transformation <span class="process-math">\(\phi:V\to \field\)</span> by</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-riesz.html">
@@ -754,6 +842,7 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 \end{equation*}
 </div>
 <div class="para">We have now defined a function <span class="process-math">\(T^*:W\to V\)</span> such that <span class="process-math">\(\inner{T(\vvec)}{\wvec} = \inner{\vvec}{T^*(\wvec)}\)</span> for all <span class="process-math">\(\vvec\)</span> and <span class="process-math">\(\wvec\text{.}\)</span>  We just need to show that <span class="process-math">\(T^*\)</span> is a linear transformation.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-adjoint-7-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="subsec-adjoint-7-2-2">
 <div class="para">We need to show that <span class="process-math">\(T^*\)</span> satisfies the two linearity properties.  Suppose that <span class="process-math">\(\wvec_1\)</span> and <span class="process-math">\(\wvec_2\)</span> are vectors in <span class="process-math">\(V\text{.}\)</span>  Then</div>
@@ -772,10 +861,12 @@ c_n\inner{\wvec_m}{\uvec} = 0\text{.}
 T^*(\wvec_1+\wvec_2) = T^*(\wvec_1) + T^*(\wvec_2)\text{.}
 \end{equation*}
 </div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-adjoint-7-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para" id="subsec-adjoint-7-2-3">In the same way, we see that <span class="process-math">\(T^*(s\wvec) =
-sT^*(\wvec)\text{,}\)</span> which verifies that <span class="process-math">\(T^*\)</span> is an operator on <span class="process-math">\(T\text{.}\)</span>
-</div></article><div class="para" id="subsec-adjoint-8">We now relate the matrices associated to <span class="process-math">\(T\)</span> and <span class="process-math">\(T^*\)</span> with respect to an orthonormal basis of <span class="process-math">\(V\text{.}\)</span>  As before, we use <span class="process-math">\(\uvec_1,\ldots,\uvec_n\)</span> to denote an orthonormal basis of <span class="process-math">\(V\text{.}\)</span>
+sT^*(\wvec)\text{,}\)</span> which verifies that <span class="process-math">\(T^*\)</span> is an operator on <span class="process-math">\(T\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-adjoint-7-2-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.3.19.1"><a href="#subsec-adjoint-7-2" title="Copy heading and permalink for Proof 1.3.19.1">🔗</a></div></article><div class="para" id="subsec-adjoint-8">We now relate the matrices associated to <span class="process-math">\(T\)</span> and <span class="process-math">\(T^*\)</span> with respect to an orthonormal basis of <span class="process-math">\(V\text{.}\)</span>  As before, we use <span class="process-math">\(\uvec_1,\ldots,\uvec_n\)</span> to denote an orthonormal basis of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-adjoint-8" title="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-adjoint-matrix"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.20</span><span class="period">.</span>
@@ -789,7 +880,9 @@ B= A^* = \conjugate{A}^T\text{,}
 </div>
 <div class="para">the conjugate transpose of <span class="process-math">\(A\text{.}\)</span>
 </div>
-</div></article><article class="proof" id="prop-adjoint-matrix-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-adjoint-matrix-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 1.3.20"><a href="#prop-adjoint-matrix" title="Copy heading and permalink for Proposition 1.3.20">🔗</a></div></article><article class="proof" id="prop-adjoint-matrix-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="prop-adjoint-matrix-2-1">
 <div class="para">If <span class="process-math">\(\bcal=\{\basis{\vvec}{n}\}\)</span> and <span class="process-math">\(\ccal=\{\basis{\wvec}{m}\}\text{,}\)</span> then</div>
 <div class="displaymath process-math" id="prop-adjoint-matrix-2-1-3">
@@ -807,14 +900,18 @@ A_{i,j} = \inner{T(\vvec_j)}{\wvec_i} =
 \conj{\inner{T^*(\wvec_i)}{\vvec_j}} = \conj{B_{j,i}}\text{.}
 \end{equation*}
 </div>
-</div></article><article class="assemblage assemblage-like" id="subsec-adjoint-10"><h4 class="heading"><span class="title">Real adjoints.</span></h4>
-<div class="para" id="subsec-adjoint-10-2">If the underlying field <span class="process-math">\(\field=\real\text{,}\)</span> then the matrix associated to the adjoint <span class="process-math">\(T^*\)</span> is just the transpose of the matrix associated to <span class="process-math">\(T\text{.}\)</span>  In other words, <span class="process-math">\(B=A^T\)</span> in the notation of <a href="sec-orthogonal.html#prop-adjoint-matrix" class="xref" data-knowl="./knowl/xref/prop-adjoint-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.3.20">Proposition 1.3.20</a>.</div></article></section></section></div>
-<div class="ptx-content-footer">
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-adjoint-matrix-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.3.20.1"><a href="#prop-adjoint-matrix-2" title="Copy heading and permalink for Proof 1.3.20.1">🔗</a></div></article><article class="assemblage assemblage-like" id="subsec-adjoint-10"><h4 class="heading"><span class="title">Real adjoints.</span></h4>
+<div class="para" id="subsec-adjoint-10-2">If the underlying field <span class="process-math">\(\field=\real\text{,}\)</span> then the matrix associated to the adjoint <span class="process-math">\(T^*\)</span> is just the transpose of the matrix associated to <span class="process-math">\(T\text{.}\)</span>  In other words, <span class="process-math">\(B=A^T\)</span> in the notation of <a href="sec-orthogonal.html#prop-adjoint-matrix" class="xref" data-knowl="./knowl/xref/prop-adjoint-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.3.20">Proposition 1.3.20</a>.<div class="autopermalink" data-description="Paragraph"><a href="#subsec-adjoint-10-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Assemblage: Real adjoints"><a href="#subsec-adjoint-10" title="Copy heading and permalink for Assemblage: Real adjoints">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.3.3: The adjoint of a linear transformation"><a href="#subsec-adjoint" title="Copy heading and permalink for Subsection 1.3.3: The adjoint of a linear transformation">🔗</a></div></section><div class="autopermalink" data-description="Section 1.3: Inner products"><a href="#sec-orthogonal" title="Copy heading and permalink for Section 1.3: Inner products">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="sec-lt-intro.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-polys.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
-<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
 </div>
 </body>
 </html>
