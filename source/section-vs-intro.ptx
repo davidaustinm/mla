@@ -71,8 +71,8 @@
 
     <p>Notice that the entries in our matrices are real numbers
     <m>\real</m>.  We 
-    could instead change the example so that we consider <m>3\times
-    2</m> matrices whose entries are in the complex numbers
+    could instead change the example so that we consider 
+    matrices whose entries are in the complex numbers
     <m>\complex</m>.
     </p>
 
@@ -119,7 +119,8 @@
     <definition>
       <title>Vector space</title>
       <statement>
-        <p>A vector space over a field <m>\field</m> is a set <m>V</m>
+        <p>A <term>vector space</term> over a field <m>\field</m> is a
+        set <m>V</m> 
         with two operations, scalar multiplication by elements of
         <m>\field</m> and addition, under which <m>V</m> is closed.
         Moreover, these operations 
@@ -160,10 +161,15 @@
     </definition>
 
     <p>That is a long list of properties.  Technically speaking, if we
-    want to check that some set is a vector space, we need to check
+    want to check that some set with operations is a vector space, we
+    need to check 
     each one of those properties.  In practice, however, we will know
     a vector space when we see one, and we will be fairly loose with
-    these details.  </p>
+    these details.  We will often think of a vector space as a set
+    that is closed under operations that are called addition and scalar
+    multiplication and that satisfy some familiar <q>compatibility
+    properties.</q>
+    </p>
 
     <example>
       <title>Polynomials</title>
@@ -183,11 +189,25 @@
         <m>n</m> or less.  For example, <m>\pbb_2</m> contains all
         polynomials of degree two or less:
         <me>
-          p(x) = a_2x^2 + a_1x + a_0
+          p(x) = a_0 + a_1x + a_2x^2
         </me>
         where the coefficients <m>a_j</m> are assumed to be either
         real or complex, as will be either specified or clear from the
         context.
+        </p>
+
+        <p>If <m>p=a_0 + a_1x + a_2x^2</m> and
+        <m>q=b_1+b_1x+b_2x^2</m>, then the operations of scalar
+        multiplication and addition are
+        <md>
+          <mrow>
+            sp \amp = sa_0 + (sa_1)x + (sa_2)x^2
+          </mrow>
+          <mrow>
+            p + q \amp = (a_0+b_0) + (a_1+b_0)x + (a_2+b_2)x^2
+          </mrow>
+        </md>.
+        In particular, the additive identity is <m>0 = 0 + 0x + 0x^2</m>.
         </p>
       </statement>
     </example>
@@ -201,7 +221,7 @@
       <title>Vector subspace</title>
       <statement>
         <p>A subset <m>W</m> of a vector space <m>V</m> is called a
-        <em>subspace</em> of <m>V</m> if <m>W</m> is closed under the
+        <term>subspace</term> of <m>V</m> if <m>W</m> is closed under the
         operations of scalar multiplication and addition that it
         inherits from <m>V</m>.  
         </p>
@@ -213,7 +233,7 @@
     </p>
 
     <p>Every vector space <m>V</m> has two subspaces that we will
-    frequently need to consider.  Namely, the subspace consisting of
+    sometimes need to consider, namely, the subspace consisting of
     only the zero vector <m>W=\{0\}</m> and the entire vector space
     <m>W=V</m> itself.
     </p>
@@ -225,6 +245,19 @@
         <m>\real</m> and whose codomain is <m>\complex</m>;  that is,
         functions of the form <m>f:\real\to\complex</m>.  It follows
         that <m>\fcal</m> is a complex vector space.
+        </p>
+
+        <p>If <m>f</m> and <m>g</m> are such functions and <m>s</m> is
+        a complex scalar, then we define new functions <m>sf</m> and
+        <m>f+g</m> by
+        <md>
+          <mrow>
+            (sf)(x) \amp s f(x)
+          </mrow>
+          <mrow>
+            (f+g)(x) \amp f(x) + g(x)
+          </mrow>
+        </md>.
         </p>
       </statement>
     </example>
@@ -242,29 +275,57 @@
         <ul>
           <li><p>The set of functions
           <m>f:\real\to\complex</m> for 
-          which <m>f(17)=0</m>. </p></li>
+          which <m>f(17)=0</m>. </p>
+          <p>If <m>s</m> is a scalar and <m>f</m> and <m>g</m> are
+          functions that satisfy <m>f(17)=g(17)=0</m>, then
+          <md>
+            <mrow>
+              (sf)(17)\amp = sf(17) = 0
+            </mrow>
+            <mrow>
+              (f+g)(17)\amp = f(17)+g(17) = 0 + 0 = 0
+            </mrow>
+          </md>
+          showing that this set of functions is closed under scalar
+          multiplication and addition.</p>
+          </li>
 
           <li><p>The set of periodic functions whose period is 7;
           that is functions that satisfy <m>f(x+7)=f(x)</m> for all
-          <m>x</m>.
-          </p></li>
+          <m>x</m>.</p>
+          <p>Again,
+          <md>
+            <mrow>
+              (sf)(x+7) \amp = sf(x+7) = sf(x) = (sf)(x)
+            </mrow>
+            <mrow>
+              (f+g)(x+7) \amp = f(x+7)+g(x+7) = f(x)+g(x) = (f+g)(x)
+            </mrow>
+          </md>.
+          </p>
+          </li>
 
           <li><p>The set of continous functions.</p></li>
+
+          <li><p>The set of functions that satisfy <m>f(17)=1</m> is,
+          however, not a subspace since it is not closed under scalar
+          multiplication or vector addition.  For instance, if <m>f(17)
+          = 1</m>, then <m>(2f)(17) = 2f(17) = 2\cdot1=2</m>.</p>
+          </li>
         </ul>
         </p>
-
-        <p>The set of functions that satisfy <m>f(17)=1</m> is,
-        however, not a subspace since it is not closed under scalar
-        multiplication or vector addition. </p>
       </statement>
     </example>
 
-    <example>
+    <example xml:id="example-vs-intersection">>
       <statement>
         <p>If <m>V</m> is a vector space and <m>V_1</m> and <m>V_2</m>
         are subspaces, then <m>V_1\cap V_2</m> is also a subspace of
         <m>V</m> as it can be seen that the interection is closed
-        under scalar multiplication and addition.
+        under scalar multiplication and addition.  The <q>compatibility
+        properties</q> are satisfied due to the fact that <m>V</m> is
+        itself a
+        vector space.
         </p>
       </statement>
     </example>
@@ -279,7 +340,7 @@
   <subsection>
     <title>Linear combinations</title>
 
-    <p>Our study of linear algebra really began once we introduced
+    <p>Our earlier study of linear algebra really began once we introduced
     linear combinations.  Of course, linear combinations are defined
     purely in terms of scalar multiplication and addition so we can
     form linear combinations of elements in a vector space.</p>
@@ -288,12 +349,12 @@
       <statement>
         <p>Suppose that <m>\vvec_1,\ldots,\vvec_n</m> is a set of
         vectors in a vector space <m>V</m> over a field
-        <m>\field</m>.  A <em>linear combination</em> of these vectors
+        <m>\field</m>.  A <term>linear combination</term> of these vectors
         is a vector of the form
         <me>
-          a_1\vvec_1 + a_2\vvec_2 + \ldots + a_m\vvec_m
+          c_1\vvec_1 + c_2\vvec_2 + \ldots + c_m\vvec_m
         </me>
-        where the scalars <m>a_j</m> belong to the field
+        where the scalars <m>c_j</m> belong to the field
         <m>\field</m>.
         </p>
       </statement>
@@ -312,19 +373,53 @@
       </statement>
     </example>
 
-    <p>We can also think about concepts like span and linear
+    <p>Because we can form linear combinations, we can also think
+    about concepts like span and linear 
     independence.</p>
 
     <definition>
       <title>Span</title>
       <statement>
-        <p>The <em>span</em> of a set of vectors in a vector space is
+        <p>The <term>span</term> of a set of vectors in a vector space is
         the set of all linear combinations that can be formed from the
         set. 
         </p>
       </statement>
     </definition>
 
+    <example>
+      <statement>
+        <p>Consider the vector space <m>V</m> formed by all
+        <m>2\times2</m> matrices.  Then consider
+        <me>
+          \vvec_1 = \begin{bmatrix}
+          1 \amp 0 \\
+          0 \amp 0 \\
+          \end{bmatrix},
+          \vvec_2 = \begin{bmatrix}
+          0 \amp 1 \\
+          0 \amp 0 \\
+          \end{bmatrix},
+          \vvec_3 = \begin{bmatrix}
+          0 \amp 0 \\
+          0 \amp 1 \\
+          \end{bmatrix}
+        </me>.
+        The span of these three matrices is the set of all possible
+        linear combinations
+        <me>
+          c_1\vvec_1 + c_2\vvec_2 + c_3\vvec_3 =
+          \begin{bmatrix}
+          c_1 \amp c_2 \\
+          0 \amp c_3 \\
+          \end{bmatrix}
+        </me>,
+        which is the set of all upper triangular <m>2\times 2</m>
+        matrices. 
+        </p>
+      </statement>
+    </example>
+        
     <p>It's not hard to see that the span of a set of vectors
     <m>\vvec_1,\vvec_2,\ldots,\vvec_m</m> in <m>V</m> forms a
     subspace.  We just have to check that the span is closed under
@@ -363,7 +458,7 @@
     <definition>
       <title>Linear independence</title>
       <statement>
-        <p>A set of vectors in <m>V</m> is <em>linearly dependent</em>
+        <p>A set of vectors in <m>V</m> is <term>linearly dependent</term>
         if one 
         of the vectors can be written as a linear combination of the
         others.
@@ -375,15 +470,15 @@
       <statement>
         <p>In <m>\pbb_2</m>, consider the polynomials
         <me>
-          p_1(x)=x^2-x+2,\hspace{24pt}
-          p_2(x)=3x^2+4x-1,\hspace{24pt}
+          p_1(x)=x^2-x+2,\hspace{12pt}
+          p_2(x)=3x^2+4x-1,\hspace{12pt}
           p_3(x)=-7x+7
         </me>.
         This set of polynomials is linear dependent because
         <m>p_3=3p_1-p_2</m>.
         </p>
 
-        <p>Notice that this also says that
+        <p>Notice that this relationship can also be expressed as
         <me>
           3p_1 - p_2 - p_3 = 0
         </me>,
@@ -437,7 +532,7 @@
           a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0
         </me>
         for some set of scalars
-        and that <m>a_k</m> be the last nonzero scalar.
+        and that <m>a_k</m> is the last nonzero scalar.
         We can rewrite this expression as
         <me>
           \vvec_k = -\frac{a_1}{a_k}\vvec_1 
@@ -467,10 +562,10 @@
       </statement>
       <proof>
         <p>If <m>\wvec = a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m</m>,
-        then we can replace <m>\vvec_j</m> in this expression with a
+        then we can replace <m>\vvec_k</m> in this expression with a
         linear combination of the other vectors.  This shows that
         <m>\wvec</m> can be written as a linear combination of the set
-        of vectors with <m>\vvec_j</m> removed.
+        of vectors with <m>\vvec_k</m> removed.
         </p>
       </proof>
     </proposition>
@@ -480,8 +575,9 @@
 
     <definition>
       <statement>
-        <p>A set of vectors in a vector space <m>V</m> forms a basis
-        for <m>V</m> is the set is linearly independent and its span
+        <p>A set of vectors in a vector space <m>V</m> forms a
+        <term>basis</term> 
+        for <m>V</m> if the set is linearly independent and its span
         is <m>V</m>.
         </p>
       </statement>
@@ -509,7 +605,7 @@
         <me>
           a_1 p_1(x) + a_2p_2(x) + a_3p_3(x) = 0
         </me>,
-        the additivity identiy in <m>\pbb_2</m>.  We therefore have
+        the additivity identity in <m>\pbb_2</m>.  We therefore have
         <me>
           a_1 + a_2x + a_3x^2 = 0 + 0x+0x^2
         </me>
@@ -559,7 +655,13 @@
         </me>,
         which has a unique solution for every vector
         <m>\threevec{a_0}{a_1}{a_2}</m>.  This says that
-        <m>\laspan{q_1,q_2,q_3} = \pbb_2</m> and that these
+        <m>\laspan{q_1,q_2,q_3} = \pbb_2</m>.
+        </p>
+
+        <p>Moreover, since the solution to the equation above is
+        unique, the only linear combination
+        <me>c_1q_1 + c_2q_2 +c_3q_3=0 = 0+0x+0x^2</me>
+        must have <m>c_1=c_2=c_2=0</m>, which means that these
         polynomials are linearly independent.
         </p>
       </statement>
@@ -635,9 +737,10 @@
 
     <definition>
       <statement>
-        <p>We say that a vector space <m>V</m> is finite dimensional
+        <p>We say that a vector space <m>V</m> is <term>finite
+        dimensional</term> 
         if there is a finite set whose span is <m>V</m>.  Otherwise,
-        we say that <m>V</m> is infinite dimensional.</p>
+        we say that <m>V</m> is <term>infinite dimensional.</term></p> 
       </statement>
     </definition>
 
@@ -665,8 +768,10 @@
     
     <p>Notice that the two bases for
     <m>\pbb_2</m> in <xref ref="ex-poly-basis-1"/> and <xref
-    ref="ex-poly-basis-2"/> both consist of three polynomials.  This is
-    generally true as we will begin to explain.  First, we will prove
+    ref="ex-poly-basis-2"/> both consist of three polynomials.
+    That is, these two bases for <m>\pbb_2</m> have the same number of
+    vectors.  This is
+    generally true as we now explain.  First, we will prove
     a more technical, but still useful, result.
     </p>
 
@@ -704,7 +809,8 @@
           \vvec_m,\wvec_1,\ldots,\widehat{\wvec_j},\ldots,\wvec_n
         </me>
         whose span is <m>V</m> by <xref ref="prop-lin-dep-span"/>.
-        Notice that the cardinality of this new list is <m>n</m>.
+        Notice that the cardinality of this new list is still
+        <m>n</m>. 
         </p>
 
         <p>We can repeat this process.  We prepend <m>\vvec_{m-1}</m>
@@ -809,18 +915,18 @@
         </p>
       </statement>
       <proof>
-        <p>Any linear independent subset of <m>V</m> can have no more
-        than <m>n</m> vectors by <xref ref="prop-lin-indep-num"/>.  If
-        this linearly independent set of 
-        <m>n</m> vectors does not span <m>V</m>, then by 
-        <xref ref="prop-lin-indep-add"/>, we can add a vector
-        <m>\uvec</m> so that
+        <p>We will prove this fact by contradiction.  Suppose that
+        <m>\basis{\vvec}{n}</m> does not span <m>V</m>.  Then by <xref
+        ref="prop-lin-indep-add"/>, we can add a vector <m>\uvec</m>
+        so that
         <me>
           \vvec_1,\vvec_2,\ldots,\vvec_n,\uvec
         </me>
-        is a linearly independent subset of <m>V</m>.  This cannot
-        happen, however, since this set would have <m>n+1</m> vectors.
-        Therefore, <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> must span
+        is a linearly independent subset of <m>n+1</m> vectors in
+        <m>V</m>.  However, any linear independent subset of <m>V</m>
+        can have no more 
+        than <m>n</m> vectors by <xref ref="prop-lin-indep-num"/>,
+        which says that <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m> must span
         <m>V</m>. 
         </p>
       </proof>
@@ -908,7 +1014,7 @@
       <statement>
         <p>If <m>V</m> is a finite dimensional vector space of
         dimension <m>n</m> and <m>\vvec_1,\vvec_2,\ldots,\vvec_n</m>
-        is a set of vectors in <m>V</m>, then
+        is a set of vectors in <m>V</m>, it follows that
         <ul>
           <li>
             <p>if the set of vectors is linearly independent, then it
@@ -923,12 +1029,60 @@
       </statement>
     </proposition>
   </subsection>
-  <!--
+
   <subsection>
     <title>Sums of subspaces</title>
 
-    <p>Here is a construction whose usefulness will become more clear
-    over time as it helps us to break vector spaces into simpler
+    <p>If we have two subspaces <m>V_1</m> and <m>V_2</m> in a vector
+    space <m>V</m>, <xref ref="example-vs-intersection"/> says that
+    the intersection <m>V_1\cap V_2</m> is also a subspace of
+    <m>V</m>.  The same is not true, however, for the union <m>V_1\cup
+    V_2</m> as demonstrated by <xref ref="example-vs-union"/>.</p>
+
+    <example xml:id="example-vs-union">
+      <statement>
+        <p>Suppose that <m>V=\real^2</m> with <m>\vvec_1=\twovec11</m>
+        and <m>\vvec_2=\twovec{-1}1</m>.  If <m>V_1=\laspan{\vvec_1}</m>
+        and <m>V_2=\laspan{\vvec_2}</m>, then <m>V_1\cup V_2</m>
+        consists of two lines as seen in <xref
+        ref="diagram-vs-union"/>.  Notice that <m>\vvec_1 + \vvec_2 =
+        \twovec02</m> is not in <m>V_1\cup V_2</m>, which shows that
+        <m>V_1\cup V_2</m> is not closed under addition.</p>
+
+        <figure xml:id="diagram-vs-union">
+          <caption>The union of two subspaces is not usually a
+          subspace.</caption> 
+          <image width="60%">
+            <prefigure xmlns="https://prefigure.org"
+                       label="prefigure-vs-union">
+              <diagram dimensions="(300,300)" margins="5">
+                <definition>v1=(1,1)</definition>
+                <definition>v2=(-1,1)</definition>
+                <coordinates bbox="(-3,-3,3,3)">
+                  <grid-axes/>
+                  <line endpoints="((0,0),v1)" infinite="yes"
+                        stroke="blue"/>
+                  <line endpoints="((0,0),v2)" infinite="yes"
+                        stroke="blue"/>
+                  <vector v="v1" stroke="black"/>
+                  <vector v="v2" stroke="black"/>
+                  <label anchor="(2,2)" alignment="se">
+                    <m>V_1</m>
+                  </label>
+                  <label anchor="(-2,2)" alignment="sw">
+                    <m>V_2</m>
+                  </label>
+                </coordinates>
+              </diagram>
+            </prefigure>
+          </image>
+        </figure>
+      </statement>
+    </example>
+
+    <p>Instead, we construct a vector subspace that contains the union
+    <m>V_1\cup V_2</m>.  This construction will be useful in the future
+    as it helps us to break vector spaces into simpler
     pieces.  Suppose that we have a vector space <m>V</m> and that 
     <m>V_1</m> and <m>V_2</m> are subspaces.  We can define a new
     subspace <m>V_1+V_2</m>.
@@ -936,7 +1090,8 @@
 
     <definition>
       <statement>
-        <p>Given subspaces <m>V_1</m> and <m>V_2</m> of <m>V</m>, we form 
+        <p>Given subspaces <m>V_1</m> and <m>V_2</m> of <m>V</m>, we
+        form the <term>vector space sum</term>
         <m>V_1+V_2</m> as the subset of <m>V</m> whose elements can be
         written in the form <m>\vvec_1+\vvec_2</m> where <m>\vvec_1\in
         V_1</m> and <m>\vvec_2\in V_2</m>.
@@ -1064,6 +1219,6 @@
       </statement>
     </definition>
   </subsection>
-  -->
+
 </section>
   
