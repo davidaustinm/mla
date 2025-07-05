@@ -877,6 +877,45 @@
       </statement>
     </definition>
 
+    <example>
+      <statement>
+        <p>We have seen that
+        <me>
+          1, x, x^2,\ldots,x^n
+        </me>
+        is a basis for <m>\pbb_n</m>.  Therefore,
+        <m>\dim\pbb_n=n+1</m>.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>Returning to the vector space <m>V</m> of <m>3\times2</m>
+        matrices, 
+        as introduced in <xref ref="example-vs-matrices"/>, we find a
+        basis
+        <me>
+          \begin{bmatrix} 1 \amp 0 \\ 0 \amp 0 \\ 0 \amp 0 \end{bmatrix},
+          \begin{bmatrix} 0 \amp 1 \\ 0 \amp 0 \\ 0 \amp 0 \end{bmatrix},
+          \begin{bmatrix} 0 \amp 0 \\ 1 \amp 0 \\ 0 \amp 0 \end{bmatrix},
+          \begin{bmatrix} 0 \amp 0 \\ 0 \amp 1 \\ 0 \amp 0 \end{bmatrix},
+          \begin{bmatrix} 0 \amp 0 \\ 0 \amp 0 \\ 1 \amp 0 \end{bmatrix},
+          \begin{bmatrix} 0 \amp 0 \\ 0 \amp 0 \\ 0 \amp 1
+          \end{bmatrix}
+        </me>.
+        This means that <m>\dim V=3\cdot 2 = 6</m>.</p>
+
+        <p>More generally,
+        if <m>V=M_{m,n}</m>, the vector space of <m>m\times n</m>
+        matrices, we have
+        <me>
+          \dim M_{m,n} = mn
+        </me>.
+        </p>
+      </statement>
+    </example>
+    
     <p>We may informally think of the dimension of a vector space as a
     measure of its size.  Therefore, it should follow that the
     dimension of a subspace cannot be larger than the dimension of the

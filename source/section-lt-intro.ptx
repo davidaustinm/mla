@@ -284,7 +284,7 @@
       </statement>
     </example>
 
-    <example>
+    <example xml:id="example-lt-poly">
       <statement>
         <p>Suppose that <m>V=\pbb_3</m> and <m>W=\real^2</m> and that
         <m>T:V\to\real^2</m> where <m>T(p)=\twovec{p(0)}{p'(0)}</m>.
@@ -294,8 +294,12 @@
         </me>
         so that <m>T(p)=\twovec{a_0}{a_1}</m>.  Therefore,
         <m>\nul(T)</m> is the set of polynomials for which
-        <m>a_0=a_0=0</m> so that <m>p(x)=a_3x^3+a_2x^2</m>.  We also
-        see that
+        <m>a_0=a_1=0</m> so that <m>p(x)=a_3x^3+a_2x^2</m>.  This
+        shows that <m>\nul(T) = \laspan{x^2,x^3}</m>.</p>
+
+        <p>
+        We also
+        have that
         <m>\range(T) = \real^2</m>
         </p>
       </statement>
@@ -345,7 +349,9 @@
       </proof>
     </proposition>
 
-    <p>We will frequently make use of the next proposition.</p>
+    <p>The next proposition is extremely useful so we will refer to it
+    as the <q>Fundamental Theorem of Linear Maps</q>.</p>
+    
     <proposition xml:id="prop-nul-range-dims">
       <title>Fundamental Theorem of Linear Maps</title>
       <statement>
@@ -357,7 +363,7 @@
         </p>
       </statement>
       <proof>
-        <p>Now suppose that <m>\uvec_1,\ldots,\uvec_j</m> is a
+        <p>Suppose that <m>\uvec_1,\ldots,\uvec_j</m> is a
         basis for <m>\nul(T)</m>, which we extend to a basis for
         <m>V</m> by adding vectors <m>\vvec_1,\ldots,\vvec_k</m>.
         We also define <m>\wvec_i=T\vvec_i</m>.</p>
@@ -388,43 +394,105 @@
             b_1\wvec_1 + \ldots b_k\wvec_k \amp = 0
           </mrow>
           <mrow>
+            b_1T\vvec_1 + \ldots b_kT\vvec_k \amp = 0
+          </mrow>
+          <mrow>
             T(b_1\vvec_1+\ldots+b_k\vvec_k) \amp = 0
           </mrow>
           </md>,
           which means that <m>b_1\vvec_1+\ldots+b_k\vvec_k</m> is in
           <m>\nul(T)</m> so that this vector is a linear combination
-          of <m>\uvec_1,\ldots,\uvec_j</m>.  This can only happen if
-          the vector is zero, showing that
-          <m>b_1=\ldots=b_k=0</m> and the <m>\wvec</m> vectors are
-        linearly independent.</p>
+          of <m>\uvec_1,\ldots,\uvec_j</m>.  In other words,
+          <md>
+            <mrow>
+              b_1\vvec_1+\ldots+b_k\vvec_k \amp = a_1\uvec_1 + \ldots
+              a_j\uvec_j
+            </mrow>
+            <mrow>
+              a_1\uvec_1 + \ldots + a_j\uvec_j -
+              b_1\vvec_1-\ldots-b_k\vvec_k \amp = 0
+            </mrow>
+          </md>.
+          Since <m>\uvec_1,\ldots,\uvec_j,\vvec_1,\ldots,\vvec_k</m>
+          is a basis for <m>V</m>, this set of vectors is linearly
+          independent, which means that
+          <me>
+            a_1=\ldots=a_j=b_1=\ldots=b_k
+          </me>.
+          Therefore, the set of vectors <m>\basis{\wvec}{k}</m> is
+          linearly independent and hence a basis for <m>\range(T)</m>.
+          </p>
         
-        <p>We conclude that <m>\wvec_1,\ldots,\wvec_k</m> is a basis
-        for <m>\range(T)</m> and we have
-        <me>
-          \dim \nul(T) + \dim \range(T) = j + k = \dim V
+          <p>This shows that
+          <me>
+            \dim \nul(T) + \dim \range(T) = j + k = \dim V
           </me>.
         </p>
       </proof>
     </proposition>
 
+    <example>
+      <statement>
+        <p>The Fundamental Theorem of Linear Maps is familiar from our
+        earlier course where we defined the <em>rank</em> <m>r</m> of
+        a matrix to be its 
+        number of pivots.
+        If <m>A</m> is an <m>m\times n</m> matrix and
+        <m>T:\real^n\to\real^m</m> the linear transformation defined
+        by <m>T(\xvec) = A\xvec</m>, we saw that
+        <md>
+          <mrow>
+            \dim\col(A) \amp = r
+          </mrow>
+          <mrow>
+            \dim\nul(A) \amp = n - r
+          </mrow>
+        </md>.
+        Therefore, <m>\dim\col(A) + \dim\nul(A) = n</m>, which is an
+        expression of the Fundamental Theorem of Linear Maps.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>Revisiting <xref ref="example-lt-poly"/>, we had <m>T:V\to
+        W</m> where <m>V=\pbb_3</m> and <m>W=\real^2</m>.
+        We saw that <m>\nul(T)= \laspan{x^2,x^3}</m> so that
+        <m>\dim\nul(T) = 2</m> and that <m>\range(T) = \real^2</m> so
+        that <m>\dim\range(T) = 2</m>.  Therefore,
+        <me>
+          \dim\nul(T) + \dim\range(T) = 2 + 2 = 4 = \dim V = \dim \pbb_3
+        </me>.
+        </p>
+      </statement>
+    </example>
+        
     <definition>
       <statement>
-        <p>Suppose <m>T:V\to W</m>. If <m>\range(T)=W</m>, we say that
-        <m>T</m> is <em>surjective</em>.  If <m>\nul(T)=\{0\}</m>, we
-        say that 
-        <m>T</m> is <em>injective</em>.
+        <p>Suppose <m>T:V\to W</m>.
+        <ul>
+          <li>
+            <p>If <m>\range(T)=W</m>, we say that
+            <m>T</m> is <em>surjective</em>.  In particular, for every
+            <m>\wvec</m> in <m>W</m>, there is a <m>\vvec</m> in
+            <m>V</m> such that <m>T\vvec = \wvec</m>.
+            </p>
+          </li>
+          <li>
+            <p>If <m>\nul(T)=\{0\}</m>, we
+            say that 
+            <m>T</m> is <em>injective</em>.  In this case, if
+            <m>T\vvec_1=T\vvec_2</m>, then <m>\vvec_1=\vvec_2</m>
+            since <m>T(\vvec_1-\vvec_2) =
+            0</m>, which means that <m>\vvec_1-\vvec_2</m> is in
+            <m>\nul(T)=\{0\}</m>. 
+            </p>
+          </li>
+        </ul>
         </p>
       </statement>
     </definition>
-
-    <p>If <m>T</m> is surjective, notice that every vector <m>\wvec\in
-    W</m> has a vector <m>\vvec</m> for which <m>T\vvec=\wvec</m>.
-    </p>
-
-    <p>If <m>T</m> is injective and <m>T\vvec_1=T\vvec_2</m>, then
-    <m>\vvec_1=\vvec_2</m> since <m>T(\vvec_1-\vvec_2)=0</m> meaning
-    <m>\vvec_1-\vvec_2\in \nul(T)</m>.
-    </p>
 
     <example>
       <statement>
@@ -460,22 +528,28 @@
       </statement>
     </definition>
 
-    <p>The following proposition follows immediately from <xref
-    ref="prop-nul-range-dims"/>. 
+    <p>The following proposition follows immediately from the <xref
+    ref="prop-nul-range-dims">Fundamental Theorem of Linear Maps</xref>. 
     </p>
     
     <proposition>
       <statement>
-        <p>If <m>T:V\to W</m> is surjective, then <m>\dim V \geq \dim
-        W</m>.
-        </p>
-
-        <p>If <m>T:V\to W</m> is injective, then <m>\dim V
-        \leq \dim W</m>.
-        </p>
-
-        <p>If <m>T:V\to W</m> is an isomorphism, then <m>\dim V
-        = \dim W</m>.
+        <p> If <m>V</m> and <m>W</m> are finite dimensional vector
+        spaces and <m>T:V\to W</m>, then
+        <ul>
+          <li>
+            <p>If <m>T</m> is surjective, then <m>\dim V \geq \dim
+            W</m>.</p>
+          </li>
+          <li>
+            <p>If <m>T</m> is injective, then <m>\dim V
+            \leq \dim W</m>.</p>
+          </li>
+          <li>
+            <p>If <m>T</m> is an isomorphism, then <m>\dim V
+            = \dim W</m>.</p>
+          </li>
+        </ul>
         </p>
       </statement>
     </proposition>
@@ -537,11 +611,22 @@
         <p>If <m>T:V\to W</m> is an ismorphism, there is a linear
         transformation <m>S:W\to V</m> such that <m>ST=I_V</m>, the
         identity transformation on <m>V</m>, and <m>TS=I_W</m>, the
-        identity transformation on <m>W</m>.  We will typically denote
-        <m>S</m> as <m>T^{-1}</m>.
+        identity transformation on <m>W</m>.  We call <m>S</m> the
+        <term>inverse</term> of <m>T</m> and write
+        <m>S=T^{-1}</m>.
         </p>
       </statement>
     </proposition>
+
+    <example>
+      <statement>
+        <p>If <m>A</m> is an <m>m\times m</m> matrix and
+        <m>T:\real^m\to\real^m</m> by <m>T(\xvec)=A\xvec</m>, then
+        <m>T</m> is an isomorphism precisely when <m>A</m> is
+        invertible. In this case, <m>T^{-1}(\xvec) = A^{-1}\xvec</m>.
+        </p>
+      </statement>
+    </example>
 
     <proposition xml:id="prop-fin-dim-isom">
       <statement>
@@ -555,7 +640,7 @@
       <proof>
         <p>We choose a basis <m>\basis{\vvec}{n}</m> and define
         <me>
-          T\left(\threevec{c_1}{\vdots}{c_n}\right) = c_1\vvec_1 +
+          T\left(\cthreevec{c_1}{\vdots}{c_n}\right) = c_1\vvec_1 +
           c_2\vvec_2 + \ldots + c_n\vvec_n
         </me>.
         By the linear independence of the basis, we see that <m>T</m>
@@ -605,7 +690,7 @@
     </me>.
     As shorthand, we will write
     <me>
-      \coords{\vvec}{\bcal} = \fourvec{c_1}{c_2}{\vdots}{c_n}
+      \coords{\vvec}{\bcal} = \cfourvec{c_1}{c_2}{\vdots}{c_n}
     </me>.
     This should be familiar from our
     <url
@@ -620,7 +705,7 @@
         <p>Consider the vector space <m>V=\pbb_2</m> with the basis
         <m>\bcal=\{1,x,x^2\}</m>.  Then we have
         <me>
-          \coords{a_0+a_1x+a_2x^2}{\bcal} = \threevec{a_0}{a_1}{a_2}
+          \coords{a_0+a_1x+a_2x^2}{\bcal} = \cthreevec{a_0}{a_1}{a_2}
         </me>.
         We may think of this as a coordinate system in the vector
         space of polynomials.
@@ -644,7 +729,7 @@
     <m>\coords{T}{\ccal,\bcal} = A</m>.  Notice that
     <me>
       \coords{T(\vvec_j)}{\ccal} =
-      \fourvec{A_{1,j}}{A_{2,j}}{\vdots}{A_{n,j}}
+      \cfourvec{A_{1,j}}{A_{2,j}}{\vdots}{A_{n,j}}
     </me>
     meaning that the columns of <m>\coords{T}{\ccal,\bcal}</m> are the
     coordinates <m>\coords{T(\vvec_j)}{\ccal}</m>:
@@ -681,7 +766,7 @@
         we choose the bases <m>\bcal=\{x^3,x^2,x,1\}</m> and
         <m>\ccal=\{x^2,x,1\}</m>, then
         <me>
-          \coords{T}{\bcal,\ccal}=\begin{bmatrix}
+          \coords{T}{\ccal,\bcal}=\begin{bmatrix}
           3 \amp 0 \amp 0 \amp 0 \\
           0 \amp 2 \amp 0 \amp 0 \\
           0 \amp 0 \amp 1 \amp 0 \\
@@ -884,7 +969,17 @@
 
     <p>We will often be interested in linear transformations <m>T:V\to
     V</m> in which the codomain and the domain are the same vector
-    space.  Given a basis <m>\bcal</m> for <m>V</m>, we can then
+    space.  In this case, we say that <m>T</m> is an <em>operator</em> on
+    <m>V</m>. </p>
+
+    <definition>
+      <statement>
+        <p>A linear transformation <m>T:V\to V</m> is called an
+        <term>operator</term> on <m>V</m>.</p>
+      </statement>
+    </definition>
+
+    <p>Given a basis <m>\bcal</m> for <m>V</m>, we can then
     represent <m>T</m> in terms of this basis as
     <m>\coords{T}{\bcal,\bcal}</m> where the same basis is used for
     the codomain and domain.
@@ -892,7 +987,7 @@
     transformation are represented in two bases.
     </p>
 
-    <proposition>
+    <proposition xml:id="prop-matrix-change-basis">
       <statement>
         <p>Suppose that <m>T:V\to V</m> is a linear transformation and
         that <m>\bcal</m> and <m>\ccal</m> are two bases for
@@ -919,14 +1014,19 @@
     </me>.
     This should remind you of the kind of expression we saw when we
     were diagonalizing matrices and gives some idea for where we are
-    heading.
-    </p>
+    heading.  In particular, given an operator <m>T</m> on a vector
+    space <m>V</m>, we would like to find a basis <m>\bcal</m> for
+    <m>V</m> so that <m>\coords{T}{\bcal,\bcal}</m> is relatively
+    simple, such as a diagonal matrix.  The expression in <xref
+    ref="prop-matrix-change-basis"/>
+    can help us do that, even though that expression may look
+    daunting. </p>
 
     <definition>
       <statement>
         <p>Two square <m>n\times n</m> matrices <m>A</m> and <m>B</m>
         are called 
-        <em>similar</em> if there is a matrix <m>P</m> such that
+        <term>similar</term> if there is a matrix <m>P</m> such that
         <me>
           B = PAP^{-1}
         </me>.
@@ -976,13 +1076,14 @@
       </statement>
     </definition>
 
-    <proposition>
+    <proposition xml:id="prop-lt-vs">
       <statement>
         <p>If <m>V</m> and <m>W</m> are two vector spaces, then
         <m>L(V,W)</m> is a vector space.  Moreover, if <m>\bcal</m> is
         a finite basis for <m>V</m> and <m>\ccal</m> is a finite basis
         for <m>W</m>, then the function <m>S:L(V,W)\to
-        \field^{m,n}</m> by 
+        \field^{m,n}</m>, the vector space of <m>m\times n</m>
+        matrices, by
         <me>
           S(T) = \coords{T}{\ccal,\bcal}
         </me>
@@ -997,17 +1098,141 @@
     
   </subsection>
 
-  
-
-  
-
-  
-
-  <!--
   <subsection>
     <title>Dual spaces</title>
 
+    <p>A special case of the vector space <m>L(V,W)</m> of linear
+    transformations from <m>V</m> to <m>W</m> is when <m>W=\field</m>.
+    In this case, we call <m>L(V,\field)</m> the <em>dual</em> of
+    <m>V</m>.
+    </p>
+
+    <definition>
+      <statement>
+        <p>The vector space of linear transformations
+        <m>L(V,\field)</m> is called the <term>dual</term> of <m>V</m>
+        and is denoted by
+        <me>
+          V'=L(V,\field)
+        </me>.
+        An element of <m>V'</m> is called a <term>functional</term> on
+        <m>V</m>. 
+        </p>
+      </statement>
+    </definition>
+
+    <p>Up to this point, we have typically used <m>T</m> to denote a
+    linear transformation.  However, we often use <m>\phi</m> to
+    represent an element of the dual.</p>
+
+    <example>
+      <statment>
+        <p>Suppose that <m>V=\real^3</m>.  Then
+        <me>\phi\left(\threevec xyz\right) = 2x + 3y -z
+        </me>
+        is a functional on <m>V</m> and hence an element of the dual
+        <m>(\real^3)'</m>.
+        </p>
+
+        <p>Notice that we can represent this functional in terms of
+        the dot product if we define the vector
+        <m>\uvec=\threevec23{-1}</m>.  Then
+        <me>
+          \phi(\vvec) = \uvec\cdot\vvec
+        </me>.
+        We will later understand this example as an illustration of
+        the <xref ref="prop-riesz">Riesz Representation
+        Theorem</xref>.  More generally, any vector <m>\uvec</m> in
+        <m>\real^3</m> defines a functional by
+        <m>\phi(\vvec)=\uvec\cdot\vvec</m>. 
+        </p>
+      </statment>
+    </example>
+
+    <example>
+      <statement>
+        <p>If <m>V=\pbb_3</m>, then <m>\phi(p)=p(0)</m> is a
+        functional on <m>V</m>.
+        </p>
+      </statement>
+    </example>
+
+    <p>By <xref ref="prop-lt-vs"/>, we know that <m>V'</m> is a vector
+    space and that <m>\dim V' = \dim V</m>.  Therefore, if <m>\dim
+    V=n</m>, we see that <m>\dim V' = n</m> as well and given a
+    basis for <m>V</m>, we can construct an explicit isomorphism
+    <m>T:V'\to \real^n </m>.
+    </p>
+
+    <p>Suppose that <m>\basis{\vvec}{n}</m> is a basis for <m>V</m> and
+    that <m>\phi</m> is a functional on <m>V</m>.  If <m>\vvec</m> is
+    in <m>V</m>, then we can write
+    <me>
+      \vvec = a_1\vvec_1 + a_2\vvec_2 + \ldots + a_n\vvec_n
+    </me>
+    and hence
+    <me>
+      \phi(\vvec) = a_1\phi(\vvec_1) + a_2\phi(\vvec_2) + \ldots +
+      a_n\phi(\vvec_n)
+    </me>.
+    This shows that <m>\phi</m> is determined by the vector
+    <m>\cfourvec{\phi(\vvec_1)}{\phi(\vvec_2)}{\vdots}{\phi(\vvec_n)}</m>.
+    We therefore define the isomorphism
+    <m>T:V'\to \real^n</m> by
+    <me>
+      T(\phi) =
+      \cfourvec{\phi(\vvec_1)}{\phi(\vvec_2)}{\vdots}{\phi(\vvec_n)}
+    </me>.
+    We see that <m>T</m> is an isomorphism because it is injective:
+    if <m>T(\phi) = \zerovec</m>, then <m>\phi(\vvec_j)=0</m> for all
+    <m>j</m> and hence
+    <me>
+      \phi(\vvec) = a_1\phi(\vvec_1) + a_2\phi(\vvec_2) + \ldots +
+      a_n\phi(\vvec_n) = 0
+    </me>
+    for all vectors <m>\vvec</m>.  Since <m>T</m> is injective and
+    <m>\dim V'=\dim \real^n</m>, <m>T</m> is also surjective by <xref 
+    ref="prop-nul-range-dims">Fundamental Theorem of Linear Maps</xref>.       
+    </p>
+
+    <proposition>
+      <statement>
+        <p>If <m>V</m> is a finite dimensional vector space, the dual
+        space <m>V'</m> satisfies
+        <me>
+          \dim V' = \dim V
+        </me>
+        and an isomorphism is given once we choose a basis for
+        <m>V</m>.
+        </p>
+      </statement>
+    </proposition>
+
+    <example>
+      <statement>
+        <p>Consider <m>V=\pbb_2</m> with basis <m>1,x,x^2</m>.  Define
+        functionals <m>\phi_1</m>, <m>\phi_2</m>, and <m>\phi_3</m> by
+        <md>
+          <mrow>
+            \phi_1(1) = 1, \phi_1(x) = 0, \phi_1(x^2) =0
+          </mrow>
+          <mrow>
+            \phi_2(1) = 0, \phi_2(x) = 1, \phi_2(x^2) =0
+          </mrow>
+          <mrow>
+            \phi_3(1) = 0, \phi_3(x) = 0, \phi_3(x^2) =1
+          </mrow>
+        </md>.
+        Then any functional <m>\phi</m> with
+        <me>
+          \phi(1) = a_1, \phi(x)=a_2, \phi(x^2)=a_3
+        </me>
+        satisfies <m>\phi=a_1\phi_1 + a_2\phi_2+a_3\phi_3</m>.
+        </p>
+      </statement>
+    </example>
+    
   </subsection>
-  -->
+
       
 </section>
