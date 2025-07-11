@@ -402,7 +402,7 @@
     to the following important proposition.
     </p>
 
-    <proposition>
+    <proposition xml:id="prop-poly-invariant-subspaces">
       <statement>
 	<p>If <m>p(x)</m> is a polynomial and <m>T</m> an operator on
         a vector space <m>V</m>,
@@ -617,7 +617,7 @@
       </statement>
     </definition>
 
-    <example>
+    <example xml:id="example-nul-range-invariant-2">
       <statement>
         <p>We will revisit <xref ref="example-nul-range-invariant"/>
         and the operator <m>T:\real^4\to\real^4</m>
@@ -707,7 +707,153 @@
     <m>\vvec</m>.  When the grade of a vector is one, that vector must
     be an eigenvector of <m>T</m>.
     </p>
-    
+  </subsection>
+
+  <subsection>
+    <title>The minimal polynomial of an operator</title>
+
+    <p>While we will see that the minimal polynomial of a vector
+    <m>p_\vvec</m> is useful, we can take this idea a bit further and
+    find a polynomial <m>p</m> that annihilates every vector in
+    <m>V</m>.  This 
+    will be called the <em>minimal polynomial of the operator</em>
+    <m>T</m>.  Rather than starting with a proof of the theorem, let's
+    illustrate the idea by continuing our earlier example from <xref
+    ref="example-nul-range-invariant-2"/>.</p>
+
+    <example xml:id="example-minimal-polynomial">
+      <title>The minimal polynomial of an operator</title>
+
+      <p>
+        Remember the setup from
+        <xref ref="example-nul-range-invariant-2"/>.  We have 
+        the operator <m>T:\real^4\to\real^4</m>
+        defined by <m>T\xvec=A\xvec</m> where 
+        <m>A=\begin{bmatrix}
+        -10 \amp 16 \amp 5 \amp -9 \\
+        -6 \amp 10 \amp 1 \amp -5 \\
+        -2 \amp 4 \amp 1 \amp -5 \\
+        2 \amp -4 \amp -3 \amp 3 \\
+        \end{bmatrix}
+        </m>.
+        With the vector <m>\vvec=\fourvec1111</m>, we found that
+        <m>p_\vvec(x) = x^2 +4x+4=(x+2)^2</m>.
+      </p>
+
+      <p>We know that <m>p_\vvec(T)</m> annihilates <m>\vvec</m>,
+      meaning that <m>p_\vvec(T)\vvec=0</m>.  But <m>p_\vvec(T)</m>
+      also annihilates <m>T\vvec</m> since
+      <me>
+        p_\vvec(T)T\vvec = Tp_\vvec(T)\vvec = 0
+      </me>,
+      which means that <m>p_\vvec(T)</m> annihilates any vector in the
+      two-dimensional Krylov subspace <m>\kcal_2(T,\vvec)</m>.  We
+      would like to find a polynomial that annihilates every vector in
+      <m>V</m>.</p>
+
+      <p>To do this, will consider the subspace
+      <m>U=\range(p_\vvec(T))</m>.  By
+      <xref ref="prop-poly-invariant-subspaces"/>, <m>U</m> is a
+      <m>T</m>-invariant subspace of <m>\real^4</m>.  In fact, we can
+      find a basis for <m>U</m>.  We see that the matrix representing
+      <m>p_\vvec(T)</m> is
+      <me>
+        p_\vvec(A) =
+        \begin{bmatrix}
+        -60 \amp 120 \amp 18 \amp -78 \\
+        -36 \amp 72 \amp 0 \amp -36 \\
+        -24 \amp 48 \amp 18 \amp -42 \\
+        24 \amp -48 \amp -18 \amp 42
+        \end{bmatrix}
+        \sim
+        \begin{bmatrix}
+        1 \amp -2 \amp 0 \amp 1 \\
+        0 \amp 0 \amp 1 \amp -1 \\
+        0 \amp 0 \amp 0 \amp 0 \\
+        0 \amp 0 \amp 0 \amp 0
+        \end{bmatrix}
+      </me>.
+      This shows that a basis for <m>\range(p_\vvec(T)) =
+      \col(p_\vvec(A))</m> is
+      <me>
+        \uvec_1 = \fourvec{-60}{-36}{-24}{24},\hspace{12pt}
+        \uvec_2 = \fourvec{18}{0}{18}{-18}
+      </me>.
+      </p>
+
+      <p>Now that we know that <m>U</m> is a <m>T</m>-invariant
+      subspace and we find that
+      <md>
+        <mrow>
+          T\uvec_1 \amp = 4\uvec_1 - 4 \uvec_2
+        </mrow>
+        <mrow>
+          T\uvec_1 \amp = 4 \uvec_2
+        </mrow>
+      </md>.
+      By <m>T|_U</m>, we mean the operator <m>T</m> restricted to
+      <m>U</m>;  that is <m>T|_U:U\to U</m> by <m>T|_U(\uvec) =
+      T\uvec</m>.  If we call the basis for <m>U</m>
+      <m>\bcal=\{\uvec_1,\uvec_2\}</m>, we have
+      <me>
+        \coords{T|_U}{\bcal} =
+        \begin{bmatrix}
+        4 \amp -4 \\
+        0 \amp 3 \\
+        \end{bmatrix}
+      </me>.
+      </p>
+
+      <p>Now we will choose a vector <m>\uvec=\twovec11</m> (think of
+      this as being randomly chosen) and find the annihilating polynomial
+      <m>p_\uvec</m> for <m>T|_U</m>.  We have
+      <me>
+        \begin{bmatrix}
+        \uvec \amp T|_U\uvec \amp T|_U^2\uvec
+        \end{bmatrix}
+        \sim
+        \begin{bmatrix}
+        1 \amp 0 \amp -16 \\
+        0 \amp 1 \amp 8 \\
+        \end{bmatrix}
+      </me>,
+      which means that
+      <me>
+        (T|_U^2-8T|_U + 16I)\uvec = \zerovec
+      </me>.
+      In other words, <m>p_\uvec(x) = x^2 - 8x+16=(x-4)^2</m> is the
+      annihilating polynomial of <m>\uvec</m> for the operator
+      <m>T|_U</m>.
+      </p>
+
+      <p>In fact, this polynomial annihilates every vector in <m>U</m>
+      because we find that
+      <me>
+        T|_U^2 - 8T|_U + 16I = 0
+      </me>.
+      </p>
+
+      <p>Notice what happens if we multiply
+      <me>
+        p(x) = p_\uvec(x)p_\vvec(x) = (x-4)^2(x+2)^2
+      </me>.
+      Suppose that <m>\wvec</m> is any vector in <m>V</m>.  Then
+      <me>
+        p(T)\wvec = p_\uvec(T)p_\vvec(T)\wvec
+      </me>.
+      But notice that <m>p_\vvec(T)\wvec</m> is in
+      <m>U=\range(p_\vvec(T))</m> and that <m>p_\uvec(T)</m>
+      annihilates every vector in <m>U</m>.  This means that
+      <m>p(T)\wvec = 0</m> so that <m>p(T)</m> annihilates every
+      vector in <m>V</m>.
+      </p>
+
+      <p>In fact, this polynomial is what we will call the minimal
+      polynomial of <m>T</m>.  This example illustrates the proof of
+      the theorem that we are about to give.
+      </p>
+    </example>
+      
     <theorem xml:id="thm-minimal-polynomial">
       <title>The minimal polynomial of an operator</title>
 
@@ -732,78 +878,63 @@
 	Therefore, if <m>p(x) = x-\lambda</m>, we have <m>p(T)=0</m>.
 	</p>
 
-	<p>We now imagine that <m>\dim(V)=n</m> and that the theorem
+	<p>Now suppose that <m>\dim(V)=n</m> and that the theorem
 	has been verified for all operators on vector spaces of
-	dimension less than <m>n</m>.  We choose a vector <m>\vvec</m>
-	and consider the powers <m>T^k\vvec</m>;  that is, consider
-	the vectors
-	<me>
-	  \vvec,T\vvec,T^2\vvec,\ldots,T^n\vvec
-	</me>.
-	Since there are <m>n+1</m> vector in this set and
-	<m>\dim(V)=n</m>, we know this is a linearly dependent set.
-	</p>
+	dimension less than <m>n</m>.  Following our work in
+        <xref ref="example-minimal-polynomial"/>, we choose a nonzero
+        vector <m>\vvec</m> and find its minimal polynomial
+        <m>p_\vvec</m>. This polynomial will have degree <m>m\geq
+        1</m>.
+        </p>
 
-	<p>Choose <m>m</m> to be the smallest integer such that
-	<m>T^m\vvec</m> is a linear combination of
-	<m>\vvec,T\vvec,\ldots,T^{m-1}\vvec</m>.  This means two
-	things.  First, the vectors
-	<m>\vvec,T\vvec,\ldots,T^{m-1}\vvec</m> are linearly
-	independent.  Second, there are constants
-	<me>
-	  a_0\vvec + a_1T\vvec + \ldots + a_{m-1}T^{m-1}\vvec +
-	  T^m\vvec = \zerovec
-	</me>.
-	If we define the degree <m>m</m> monic polynomial
-	<me>
-	  p(x)=a_0 + a_1x + \ldots + a_{m-1}x^{m-1}+x^m
-	</me>,
-	then <m>p(T)\vvec = \zerovec</m>.  That is, <m>\vvec</m> is in
-	<m>\nul(p(T))</m>.
-	</p>
+        <p>Since <m>\nul(p_\vvec(T))</m> is <m>T</m>-invariant and
+        <m>\vvec</m> is in <m>\nul(p_\vvec(T))</m>, it follows that
+        <me>
+          \vvec, T\vvec, T^2\vvec, \ldots, T^{m-1}\vvec
+        </me>
+        are all in <m>\nul(p_\vvec(T))</m>.  Since these vectors are
+        linearly independent, we have
+        <me>
+          \dim\nul(p_\vvec(T)) \geq m \geq 1
+        </me>.
+        </p>
 
-	<p>Since <m>\nul(p(T))</m> is invariant under <m>T</m> and
-	<m>\vvec</m> is in <m>\nul(p(T))</m>, we know that
-	<me>
-	  \vvec,T\vvec,\ldots,T^{m-1}\vvec
-	</me> 
-	are all in <m>\nul(p(T))</m>.  These vectors are linearly
-	independent so we know that <m>\dim(\nul(p(T)))\geq m</m>.
-	Therefore,
+        <p>Now we focus on <m>U=\range(p_\vvec(T))</m>, which we know
+        is <m>T</m>-invariant by
+        <xref ref="prop-poly-invariant-subspaces"/>.  Moreover,
+        by the
+        <xref ref="prop-nul-range-dims" text="custom">
+          Fundamental Theorem of Linear Maps
+          </xref>, we know that <m>U</m> 
 	<me>
 	  \dim(\range(p(T))) = \dim(V) - \dim(\nul(p(T))) \leq n - m
+          \lt n
 	</me>.
+        This says that the induction hypothesis applies to the
+        operator <m>T|_U</m> so that there is a minimal polynomial,
+        which we will denote by <m>p_U</m> so that <m>p_U(T|_U) =
+        0</m>.  Moreover, by the induction hypothesis, this polynomial
+        is monic and <m>\deg(p_U) \leq \dim U \leq n - m</m>.
 	</p>
 
-	<p>For convenience, we will denote the vector space
-	<m>W=\range(p(T))</m>.  Since <m>W</m> is invariant under
-	<m>T</m>, <m>T</m> is an operator on <m>W</m>, whose dimension
-	is less than <m>\dim(V)</m>.  By the induction hypothesis, we
-	know that there is a unique monic polynomial <m>q(x)</m> such
-	that <m>q(T|_W)=0</m>.  Again by the induction hypothesis, it
-	also follows that <m>\deg(q) \leq \dim(W) \leq n - m</m>.
-	</p>
-
-	<p>Now consider the polynomial <m>pq</m> whose degree is
-	<me>
-	  \deg(qp) = \deg(q)+\deg(p) \leq n - m + m \leq n = \dim(V)
-	</me>.
-	Moreover, both <m>p</m> and <m>q</m> are monic so <m>pq</m> is
-	also monic.  Finally, for any vector <m>\vvec</m> in <m>V</m>,
-	we have 
-	<me>
-	  (qp)(T)\vvec = q(T)p(T)\vvec = q(T)(p(T)\vvec) = \zerovec
-	</me>
-	where the last equality holds because <m>p(T)\vvec</m> is in
-	<m>W=\range(p(T))</m> and <m>q(T)\uvec=\zerovec</m> for any
-	vector <m>\uvec</m> in <m>W</m>.  Since
-	<m>(qp)(T)\vvec=\zerovec</m> for every vector <m>\vvec</m>,
-	this means that <m>(qp)(T)=0</m>.
-	</p>
+        <p>We call <m>p = p_Up_\vvec</m> and note that
+        <me>
+          \deg(p)=\deg(p_U)+\deg(p_\vvec) \leq n-m + m = n=\dim
+          V
+        </me>.
+        Moreover, if <m>\wvec</m> is any vector in <m>V</m>, it
+        follows that <m>p_\vvec(T)\wvec</m> is a vector in
+        <m>U=\range(p_\vvec)</m> so that
+        <me>
+          p(T)\wvec = p_U(T)p_\vvec(T)\wvec = 0
+        </me>.
+        That is, <m>p(T)</m> annihilates every vector in <m>V</m> so
+        that <m>p(T)=0</m>.</p>
 
 	<p>This shows that there is a
-	monic polynomial <m>s</m> such that <m>s(T)=0</m> on
-	<m>V</m>.  Therefore, there is some possibly different
+	monic polynomial <m>p</m> such that <m>p(T)=0</m> on
+	<m>V</m> and <m>\deg(p) \leq \dim V</m>.
+        Therefore, there is some possibly different
 	polynomial having the smallest degree among all such
 	polynomials, and this is the minimal
 	polynomial of the operator <m>T</m> on <m>V</m>.
@@ -828,6 +959,44 @@
       </proof>
     </theorem>
 
+    <example>
+      <statement>
+        <p>Returning to our earlier example where 
+        <m>T:\real^4\to\real^4</m> by
+        <m>T\xvec = A\xvec</m> with
+        <m>A=\begin{bmatrix}
+        -10 \amp 16 \amp 5 \amp -9 \\
+        -6 \amp 10 \amp 1 \amp -5 \\
+        -2 \amp 4 \amp 1 \amp -5 \\
+        2 \amp -4 \amp -3 \amp 3 \\
+        \end{bmatrix}
+        </m>.
+        If we choose <m>\vvec=\fourvec1010</m>.  We have
+        <me>
+          \begin{bmatrix}
+          \vvec \amp T\vvec \amp T^2\vvec \amp T^3\vvec \amp T^4\vvec
+          \end{bmatrix}
+          \sim
+          \begin{bmatrix}
+          1 \amp 0 \amp 0 \amp 0 \amp -64 \\
+          0 \amp 1 \amp 0 \amp 0 \amp -32 \\
+          0 \amp 0 \amp 1 \amp 0 \amp 12 \\
+          0 \amp 0 \amp 0 \amp 1 \amp 4
+          \end{bmatrix}
+        </me>.
+        This says that <m>p_\vvec(x) = x^4-4x^3-12x^2+32x+64</m>.
+        One can now check that <m>p_\vvec(T) = 0</m> so that the
+        minimal polynomial of <m>T</m> is in fact
+        <me>
+          p(x) = x^4-4x^3-12x^2+32x+64=(x+2)^2(x-4)^2
+        </me>.
+        This is, of course, the same polynomial we found earlier.
+        For most vectors <m>\vvec</m>, we will find that the minimal
+        polynomial of the operator <m>T</m> is <m>p_\vvec</m>.
+        </p>
+      </statement>
+    </example>
+        
     <example xml:id="example-min-poly-1">
       <statement>
 	<p> Consider the <m>2\times2</m> matrix 
@@ -918,6 +1087,7 @@
 	  0 = p(T) = (T-\lambda I)q(T)
 	</me>
 	However, <m>q(T)\neq 0</m> since <m>\deg(q) \lt \deg(p)</m>,
+        which implies
 	there is some vector <m>\vvec</m> for which <m>q(T)\vvec\neq
 	0</m>.  Therefore,
 	<me>
