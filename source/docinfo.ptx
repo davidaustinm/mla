@@ -82,6 +82,7 @@
     \newcommand{\wcal}{{\cal W}}
     \newcommand{\ecal}{{\cal E}}
     \newcommand{\fcal}{{\cal F}}
+    \newcommand{\kcal}{{\cal K}}
     \newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
     \newcommand{\gray}[1]{\color{gray}{#1}}
     \newcommand{\lgray}[1]{\color{lightgray}{#1}}

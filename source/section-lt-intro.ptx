@@ -136,7 +136,7 @@
       </statement>
     </example>
 
-    <definition>
+    <definition xml:id="definition-l-v-w">
       <statement>
         <p>Given two vector spaces, <m>V</m> and
         <m>W</m>, the set of 
@@ -972,7 +972,7 @@
     space.  In this case, we say that <m>T</m> is an <em>operator</em> on
     <m>V</m>. </p>
 
-    <definition>
+    <definition xml:id="definition-operator">
       <statement>
         <p>A linear transformation <m>T:V\to V</m> is called an
         <term>operator</term> on <m>V</m>.</p>
@@ -1063,18 +1063,11 @@
     such as determinants, eigenvalues, and more.
     </p>
 
-    <p>We close this section by noting that the set of linear
-    transformations is itself a vector space.
+    <p>If <m>V</m> and <m>W</m> are vector spaces, remember that
+    <xref ref="definition-l-v-w"/> defined
+    <m>L(V,W)</m> to be the set of linear transformations <m>T:V\to
+    W</m>.  We now note that <m>L(V,W)</m> is itself a vector space.
     </p>
-
-    <definition>
-      <statement>
-        <p>If <m>V</m> and <m>W</m> are two vector spaces, then
-        <m>L(V,W)</m> is the set of linear transformations <m>T:V\to
-        W</m>.
-        </p>
-      </statement>
-    </definition>
 
     <proposition xml:id="prop-lt-vs">
       <statement>

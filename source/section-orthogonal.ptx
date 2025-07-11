@@ -4,17 +4,16 @@
   <title>Inner products</title>
 
   <introduction>
-    <p>In our earlier studies, we introduced the dot product to
-    introduce a richer geometric perspective on some key ideas.  In
+    <p>In our earlier studies, the dot product helped us
+    develop a richer, geometric perspective on some key ideas.  In
     particular, we could use the dot product to detect when vectors
-    are orthogonal, and this led to many simplifications.  For
-    instance, the inverse of a matrix whose columns form an
-    orthonormal basis of <m>\real^n</m> is just the transpose of that
-    matrix.
+    are orthogonal, and this led to important ideas, such as least
+    squares and the singular value decomposition.
     </p>
+
     <p> As we expand our study to consider more general vector spaces,
-    we need to introduce a concept like the dot product for vector
-    spaces.  This leads us to the concept of an inner product.
+    we would like to generalize the dot product so that it applies
+    more generally.  This leads us to inner products.
     </p>
   </introduction>
 
@@ -33,7 +32,7 @@
     </p>
 
     <p>More generally, we had the following properties:
-    <ul>
+    <dl>
       <li>
         <title>Positivity</title>
         <p><m>\vvec\cdot\vvec \geq 0</m> with <m>\vvec\cdot\vvec=0</m>
@@ -50,7 +49,7 @@
           + c_2\vvec_2\cdot\wvec</m>.
         </p>
       </li>
-    </ul>
+    </dl>
     </p>
 
     <p>Things are a little different when we are using complex
@@ -75,15 +74,15 @@
       \vvec\cdot\wvec = v_1\conj{w_1}+v_2\conj{w_2} + \ldots+v_n\conj{w_n}
     </me>.
     With this definition, the three properties above still hold except
-    that the symmetry condition is modified to <m>\vvec\cdot\wvec =
-    \conj{\wvec\cdot\vvec}</m>. 
+    that the symmetry condition is modified to <m>\wvec\cdot\vvec =
+    \conj{\vvec\cdot\wvec}</m>. 
     </p>
 
     <definition>
       <statement>
         <p>If <m>V</m> is a vector space, we call
         <m>\inner{}{}</m> an <em>inner product</em> provided that
-        <ul>
+        <dl>
           <li><title>Positivity</title>
           <p><m>\inner{\vvec}{\vvec}\geq 0</m> and
           <m>\inner{\vvec}{\vvec} = 0</m> if and only if
@@ -91,8 +90,8 @@
           </p>
           </li>
           <li><title>Conjugate symmetry</title>
-          <p><m>\conj{\inner{\vvec}{\wvec}} =
-          \inner{\wvec}{\vvec}</m>.
+          <p><m>
+          \inner{\wvec}{\vvec}=\conj{\inner{\vvec}{\wvec}}</m>.
           </p>
           </li>
           <li><title>Linearity</title>
@@ -100,7 +99,7 @@
           c_1\inner{\vvec_1}{\wvec} + c_2\inner{\vvec_2}{\wvec}</m>.
           </p>
           </li>
-        </ul>
+        </dl>
         </p>
       </statement>
     </definition>
@@ -126,7 +125,9 @@
         <me>
           \inner{p}{q}=\int_{-1}^1 p(x)\conj{q(x)}~dx
         </me>
-        is an inner product.
+        is an inner product as one can check by
+        verifying the positivity, conjugate symmetry, and linearity
+        properties. 
         </p>
 
         <p>This may seem strange when you first see it, but it is just
@@ -150,7 +151,8 @@
     <example>
       <statement>
         <p>Suppose <m>V=\field^{m,n}</m>, the vector space of <m>m\times
-        n</m> matrices.  If <m>A</m> is such a matrix, we define
+        n</m> matrices with entries in <m>\field</m>.  If <m>A</m> is
+        such a matrix, we define 
         <m>A^*</m> to be its conjugate transpose.  That is,
         <m>A^*=\conj{A^T}</m>.  Then
         <me>
@@ -171,24 +173,39 @@
 
     <p> It may be useful to note the following consequence of the
     conjugate symmetry and linearity properties:
+    <md>
+      <mrow>
+        \inner{\vvec}{c_1\wvec_1+c_2\wvec_2}
+        \amp = \conj{\inner{c_1\wvec_1+c_2\wvec_2}{\vvec}}
+      </mrow>
+      <mrow>
+        \amp = \conj{c_1}\conj{\inner{\wvec_1}{\vvec}}
+        +\conj{c_2}\conj{\inner{\wvec_2}{\vvec}}
+      </mrow>
+      <mrow>
+        \amp = \conj{c_1}\inner{\vvec}{\wvec_1} +
+        \conj{c_2}\inner{\vvec}{\wvec_2}
+      </mrow>
+    </md>.
+    That is,
     <me>
-      \inner{\vvec}{c_1\wvec_1+c_2\wvec_2}
-      =\conj{c_1}\inner{\vvec}{\wvec_1} +
+      \inner{\vvec}{c_1\wvec_1+c_2\wvec_2} =
+      \conj{c_1}\inner{\vvec}{\wvec_1} +
       \conj{c_2}\inner{\vvec}{\wvec_2}
     </me>.
     </p>
 
     <definition>
       <statement>
-        <p>We typically refer to a vector space <m>V</m> with an inner
-        product as an <em>inner product space</em>.
+        <p>We refer to a vector space <m>V</m> with an inner
+        product as an <term>inner product space</term>.
         </p>
       </statement>
     </definition>
 
     <definition>
       <statement>
-        <p>The <em>length</em> or <em>norm</em> of a vector
+        <p>The <term>length</term> or <term>norm</term> of a vector
         <m>\vvec</m> in an inner product space is
         <me>
           \len{\vvec} = \sqrt{\inner{\vvec}{\vvec}}
@@ -245,7 +262,7 @@
         </p>
 
         <p>More generally, any polynomial whose terms are all of odd
-        degree is orthogonal to any polynomials whose terms are all of
+        degree is orthogonal to any polynomial whose terms are all of
         even degree.
         </p>
       </statement>
@@ -354,7 +371,7 @@
         <url
             href="https://understandinglinearalgebra.org/sec-orthogonal-bases.html#prop-proj-formula">Projection
         Formula</url> that we frequently used in our previous classes
-        and its found by the same argument.
+        and is found by the same argument.
         </p>
 
         <p>We first find the vector <m>\bhat</m> so that
@@ -394,10 +411,15 @@
           \bhat=c_1\wvec_j+\ldots+c_m\wvec_m
         </me>
         so that we have
-        <me>
-          \inner{\bvec}{\wvec_j}=\inner{c_1\wvec_1}{\wvec_j}+\ldots+
-          \inner{c_m\wvec_m}{\wvec_j}
-        </me>,
+        <md>
+          <mrow>
+            \inner{\bvec}{\wvec_j}\amp=\inner{c_1\wvec_1}{\wvec_j}+\ldots+
+            \inner{c_m\wvec_m}{\wvec_j}
+          </mrow>
+          <mrow>
+            \amp=c_j\inner{\wvec_j}{\wvec_j}
+          </mrow>
+        </md>,
         which gives the expression for <m>\bhat</m> in the statement
         of the proposition.
         </p>
@@ -419,6 +441,13 @@
       </proof>
     </proposition>
 
+    <assemblage>
+      <title>Caution</title>
+
+      <p>The Projection Formula only applies when the vectors
+      <m>\basis{\wvec}{m}</m> form an orthogonal set.</p>
+    </assemblage>
+
     <p>The Projection Formula was key to a wide range of useful
     concepts.  In particular, we can apply the Gram-Schmidt algorithm
     as we did earlier.
@@ -432,7 +461,8 @@
       </statement>
     </definition>
 
-    <proposition>
+    <proposition xml:id="prop-gram-schmidt">
+      <title>Gram-Schmidt orthogonalization</title>
       <statement>
         <p>If <m>W</m> is a finite dimensional subspace of
         an inner product space <m>V</m>, then there is an orthonormal
@@ -463,7 +493,7 @@
         </p>
 
         <p>Finally, we define <m>\uvec_j =
-        \frac{\wvec_j}{\len{\wvec_j}}</m> to obtain an orthonormal
+        \frac1{\len{\wvec_j}}\wvec_j</m> to obtain an orthonormal
         basis for <m>W</m>.
         </p>
       </proof>
@@ -471,7 +501,7 @@
 
     <p>Notice that a vector space <m>V</m> is a subspace of itself so
     the previous proposition implies that every finite dimensional
-    subspace has an orthonormal basis.
+    vector space has an orthonormal basis.
     </p>
 
     <p>Also, remember that any linearly independent set in <m>V</m>
@@ -532,22 +562,31 @@
 
       <proof>
         <p>If <m>\phi = 0</m>, then we can take <m>\uvec=0</m> as
-        well.
+        well.  This choice of <m>\uvec</m> is unique because if
+        <m>\wvec</m> is a nonzero vector with
+        <m>\phi(\vvec)=\inner{\vvec}{\wvec} = 0</m> for all
+        <m>\vvec</m>, then
+        <me>
+          \phi(\wvec) = \inner{\wvec}{\wvec} = 0
+        </me>,
+        which means that <m>\wvec=0</m>.
         </p>
 
-        <p>So suppose that <m>\phi\neq 0</m>, which means that
+        <p>Suppose now that <m>\phi\neq 0</m>, which means that
         there is a vector <m>\vvec</m> such that <m>\phi(\vvec) \neq
-        0</m>.  Therefore, <m>\phi</m> is onto and
+        0</m>.  Therefore, <m>\phi</m> is surjective and
         <m>\range(\phi)=\field</m>.</p>
 
-        <p>If <m>\dim V = n</m>, we know that
+        <p>If <m>\dim V = n</m>, we know by the
+        <xref ref="prop-nul-range-dims">Fundamental Theorem of Linear
+        Maps</xref> that
         <me>
           \dim \nul(\phi) = \dim V - \dim \range(\phi) = n-1
         </me>.
         Choose an orthonormal basis <m>\basis{\vvec}{n-1}</m> for
         <m>\nul(\phi)</m>.  We know by <xref ref="prop-ortho-extend"/>
         that we can add a vector <m>\wvec</m> to obtain an orthonormal
-        basis.  Let <m>\uvec=\phi(\wvec)\wvec</m>.
+        basis.  Let <m>\uvec=\conj{\phi(\wvec)}\wvec</m>.
         </p>
 
         <p>If <m>\vvec</m> is a vector in <m>V</m>, then
@@ -561,7 +600,7 @@
         </p>
 
         <p>To see that <m>\uvec</m> is unique, suppose that there are
-        two such vectors <m>\uvec_1</m> and <m>\uvec_1</m> such that
+        two such vectors <m>\uvec_1</m> and <m>\uvec_2</m> such that
         <me>
           \phi(\vvec) = 
           \inner{\vvec}{\uvec_1}=
@@ -574,11 +613,56 @@
         <me>
           \inner{\uvec_1-\uvec_2}{\uvec_1-\uvec_2} = 0
         </me>,
-        which implies that <m>\uvec_1=\uvec_2</m>.
+        which implies that <m>\uvec_1-\uvec_2=0</m> and hence
+        <m>\uvec_1=\uvec_2</m>. 
         </p>
       </proof>
     </proposition>
 
+    <p>The vector <m>\uvec</m> in the last proposition can be found
+    explicitly in terms of an orthonormal basis for <m>V</m>.</p>
+
+    <proposition xml:id="prop-riesz-explicit">
+      <statement>
+        <p>If <m>\basis{\uvec}{n}</m> is an orthonormal basis for
+        <m>V</m> and <m>\phi:V\to\field</m> is a functional on
+        <m>V</m>, then the vector <m>\uvec</m> given in the
+        <xref ref="prop-riesz">Riesz Representation Theorem</xref> is
+        given by
+        <me>
+          \uvec = \conj{\phi(\uvec_1)}\uvec_1 +
+          \conj{\phi(\uvec_2)}\uvec_2 + \ldots
+          \conj{\phi(\uvec_n)}\uvec_n
+        </me>.
+        </p>
+      </statement>
+
+      <proof>
+        <p>Suppose that <m>\phi:V\to\field</m> and that
+        <m>\uvec = c_1\uvec_1+\ldots+c_n\uvec_n</m> is
+        the vector given in the Riesz Representation Theorem.  Notice
+        that
+        <md>
+          <mrow>
+            \phi(\uvec_i) \amp = \inner{\uvec_i}{\uvec}
+          </mrow>
+          <mrow>
+            \amp = \inner{\uvec_i}{c_1\uvec_1+\ldots+c_n\uvec_n}
+          </mrow>
+          <mrow>
+            \amp =
+            \conj{\inner{c_1\uvec_1+\ldots+c_n\uvec_n}{\uvec_i}}
+          </mrow>
+          <mrow>
+            \amp =\conj{c_i}
+          </mrow>
+        </md>,
+        which says that <m>c_i=\conj{\phi(\uvec_i)}</m>.
+        </p>
+      </proof>
+        
+    </proposition>
+      
     <definition>
       <statement>
         <p>If <m>V</m> and <m>W</m> are inner product spaces and
@@ -618,7 +702,7 @@
         </me>.
         By <xref ref="prop-riesz"/>, we know there is a vector
         <m>\uvec</m> in <m>V</m> such that <m>\phi(\vvec) =
-        \inner{\vvec}{\uvec}</m> so we define <m>T^*(\wvec) =
+        \inner{\vvec}{\uvec}</m>.  We define <m>T^*(\wvec) =
         \uvec</m>, which gives
         <me>
           \phi(\vvec) = \inner{T(\vvec)}{\wvec} =
@@ -626,8 +710,7 @@
         </me>.
         We have now defined a function <m>T^*:W\to V</m> such that
         <m>\inner{T(\vvec)}{\wvec} = \inner{\vvec}{T^*(\wvec)}</m> for
-        all <m>\vvec</m> and <m>\wvec</m>.  We just need to show that
-        <m>T^*</m> is a linear transformation.
+        all <m>\vvec</m> and <m>\wvec</m>.  
         </p>  
 
         <!--
@@ -649,7 +732,9 @@
         </p>
         -->
 
-        <p>We need to show that <m>T^*</m> satisfies the two
+        <p>Finally, we need to show that
+        <m>T^*</m> is a linear transformation by verifying
+        that <m>T^*</m> satisfies the two
         linearity properties.  Suppose that <m>\wvec_1</m> and
         <m>\wvec_2</m> are vectors in <m>V</m>.  Then
         <md>

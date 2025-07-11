@@ -4,9 +4,12 @@
   <title>The minimal polynomial</title>
 
   <introduction>
-    <p> This section will describe some important properties about
+    <p> This section will describe some important properties of
     polynomials and demonstrate how they might help us understand linear
-    transformations.  
+    transformations or, more accurately,
+    <xref ref="definition-operator"
+          text="custom">operators,</xref> which are linear
+    transformations <m>T:V\to V</m> from a vector space to itself.
     </p>
     
     <p> We will begin by studying familiar polynomials, such as you
@@ -37,13 +40,18 @@
     <m>\real</m>.
     </p>
 
-    <p>The <em>degree</em> of a polynomial is the highest power of
-    <m>x</m> whose coefficient is nonzero.  For example, the degree of
-    <me>
-      p(x)=-2x^7 + 4x^6 -x^5 + 4x^3-3x + 1
-    </me>
-    is <m>\deg(p) = 7</m>.
-    </p>
+    <definition xml:id="definition-degree">
+      <statement>
+        <p>The <term>degree</term> of a polynomial is the highest
+        power of <m>x</m> whose coefficient is nonzero.  For example,
+        the degree of 
+        <me>
+          p(x)=-2x^7 + 4x^6 -x^5 + 4x^3-3x + 1
+        </me>
+        is <m>\deg(p) = 7</m>.
+        </p>
+      </statement>
+    </definition>
 
     <p> We have already seen that the set of polynomials form a vector
     space, which means we can multiply polynomials by scalars
@@ -74,16 +82,23 @@
       <p>Two important properties follow from the general expression
       for the coefficients of the product given in
       <xref ref="example-poly-product"/>.
-      First, the order in which we multiply
-      polynomials is irrelevant;  that is,
-      <me>pq = qp</me>.
-      </p>
-      
-      <p>Second, the degree of the product is the sum of the degrees;
-      that is,
-      <me>
-        \deg(pq)=\deg(p)+\deg(q)
-        </me>.
+      <ul>
+        <li>
+          <p>The order in which we multiply
+          polynomials is irrelevant;  that is,
+          <me>pq = qp</me>.
+          </p>
+        </li>
+
+        <li>
+          <p>The degree of the product is the sum of the degrees;
+          that is,
+          <me>
+            \deg(pq)=\deg(p)+\deg(q)
+          </me>.
+          </p>
+        </li>
+      </ul>
       </p>
     </assemblage>
       
@@ -98,8 +113,10 @@
     example, if 
     <m>a=17</m> and <m>b=5</m>, then
     <me>
-      17 = 3\cdot5 + 2
+      17 = 5\cdot3 + 2
     </me>.
+    We might say <q>17 divided by 5 has a quotient of 3 and a
+    remainder of 2.</q>
     </p>
 
     <p>Polynomials satisfy a similar property also called the Division
@@ -109,10 +126,10 @@
     <proposition xml:id="prop-poly-division">
       <title>The Division Algorithm</title>
       <statement>
-	<p>If <m>p(x)</m> and <m>s(x)</m> are polynomials, then there
-	are unique polynomials <m>q(x)</m> and <m>r(x)</m> such that
+	<p>If <m>p</m> and <m>s</m> are polynomials, then there
+	are unique polynomials <m>q</m> and <m>r</m> such that
 	<me>
-	  p(x) = (qs)(x) + r(x)
+	  p = qs + r
 	</me>
 	where <m>\deg(r) \lt \deg(s)</m>.
 	</p>
@@ -177,7 +194,7 @@
       <statement> If <m>\lambda</m> is a root of the polynomial <m>p(x)</m>,
       then
       <me>
-	p(x)=(x-r)q(x)
+	p(x)=(x-\lambda)q(x)
       </me>
       for some polynomial <m>q</m>.
       </statement>
@@ -203,10 +220,10 @@
 
     <p>This proposition shows that there is a relationship between the
     factors of a polynomial <m>p(x)</m> and its roots.  Polynomials
-    with complex coefficients are special because the Fundamental
+    with <em>complex</em> coefficients are special because the Fundamental
     Theorem of Algebra tells us that every such polynomial has a
     root.  The proof of this theorem is outside the scope of our
-    course, but students often see it in a course in complex analysis.
+    course, but is is usually included in a course in complex analysis.
     </p>
 
     <theorem xml:id="thm-fta">
@@ -216,7 +233,7 @@
 	<p>If <m>p(x)</m> is a degree <m>n</m> polynomial having
 	complex coefficients, then there are <m>n</m> roots,
 	<m>\lambda_1, \lambda_2, \ldots, \lambda_n</m>, possibly with
-	repitition.  This means that
+	repetition.  This means that
 	<me>p(x)=a_n(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_n)
 	</me>.
 	</p>
@@ -237,7 +254,7 @@
     <m>b = -(\lambda+\overline{\lambda})</m> and
     <m>c=\lambda\overline{\lambda}</m>.  Since this quadratic
     polynomial does not have real roots, we know from the quadratic
-    formula that <m>b^2\lt 4ac</m>.  Therefore,
+    formula that <m>b^2\lt 4c</m>.  Therefore,
     </p>
 
     <proposition>
@@ -246,15 +263,13 @@
 	there are real roots <m>\lambda_1,\ldots,\lambda_m</m> such
 	that 
 	<me>
-	  p(x)=a_n(x-\lambda_1)\ldots(x-\lambda_r)(x^2+b_1x+c_1^2)\ldots(x^2+b_sx+c_s)
-	  </me>.
+	  p(x)=a_n(x-\lambda_1)\ldots(x-\lambda_m)
+          (x^2+b_1x+c_1^2)\ldots(x^2+b_sx+c_s)
+	</me>
+        where <m>b_i^2 \lt 4c_i</m> for <m>1\leq i\leq k</m>.
 	</p>
       </statement>
     </proposition>
-  </subsection>
-
-  <subsection>
-    <title>The minimal polynomial of an operator</title>
 
     <p>As mentioned in the introduction to this section, our interest
     in polynomials stems from the insights we gain when we evaluate a
@@ -265,15 +280,122 @@
     identify transformation <m>I</m>.
     </p>
 
+    <example>
+      <statement>
+        <p>Consider the operator <m>T:\real^2\to\real^2</m> by <m>T(\xvec)
+        = A\xvec</m> where
+        <m>A=\begin{bmatrix}
+        2 \amp -1 \\
+        2 \amp 3
+        \end{bmatrix}
+        </m>.  If <m>p(x)=x^2+4x-5</m>, then
+        <me>
+          p(T)\xvec = (A^2 + 4A -5I)\xvec =
+          \begin{bmatrix}
+          5 \amp -9 \\
+          18 \amp 14 \\
+          \end{bmatrix}
+          \xvec
+        </me>.
+        This means that <m>p(T):\real^2\to\real^2</m> is the operator
+        represented by the matrix 
+        <m>
+          \begin{bmatrix}
+          5 \amp -9 \\
+          18 \amp 14 \\
+          \end{bmatrix}
+        </m>.
+        </p>
+      </statement>
+    </example>
+
+  </subsection>
+
+  <subsection>
+    <title>Invariant subspaces</title>
+
+    <p>As we begin to study operators, the concept of an
+    <em>invariant</em> subspace will be helpful.  In particular,
+    finding invariant subspaces will frequently help us reduce our
+    focus from an entire vector space to a smaller subspace so that we
+    can more easily draw conclusions.</p>
+
     <definition>
       <statement>
         <p>If <m>W</m> is a vector subspace of <m>V</m> and <m>T:V\to
         V</m> an operator, we say that <m>W</m> is <em>invariant</em>
         under <m>T</m> if <m>T(\wvec)\in W</m> for all <m>\wvec\in
-        W</m>.
+        W</m>.  We frequently say that <m>W</m> is <m>T</m>-invariant.
         </p>
       </statement>
     </definition>
+
+    <example>
+      <statement>
+        <p>If <m>T</m> is an operator and <m>T\vvec =
+        \lambda\vvec</m>, we say that <m>\vvec</m> is an
+        <term>eigenvector</term> of <m>T</m> with associated
+        <term>eigenvalue</term> <m>\lambda</m>.  This is the same
+        concept that we explored with matrices.
+        </p>
+
+        <p>The eigensapce associated to the eigenvalue <m>\lambda</m>,
+        <m>W=E_\lambda</m>, which consists of all the eigenvectors of
+        <m>T</m> is a <m>T</m>-invariant subspace.  In particular, if
+        <m>\vvec</m> is in <m>E_\lambda</m>, then <m>T\vvec =
+        \lambda\vvec</m>, which is also in <m>E_\lambda</m>.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>Consider the operator <m>T:\real^3\to\real^3</m>, which
+        rotates vectors by <m>90^\circ</m> around the <m>z</m>-axis.
+        The <m>z</m>-axis forms an invariant subspace since it is
+        equal to <m>E_1</m>.
+        </p>
+
+        <p>Moreover, the set of vectors <m>\threevec xy0</m> forms a
+        two-dimensional <m>T</m>-invariant subspace since any vector
+        in that plane is rotated to another vector in the same plane.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>Suppose that <m>V=\pbb_8</m>, the vector space of
+        polynomials of degree 8 or less, and that <m>T:V\to V</m> by
+        <m>T(p) = p'</m>.  Then <m>W=\pbb_5</m> is a
+        <m>T</m>-invariant subspace because the derivative of any
+        degree five polynomial has a degree less than five.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>Suppose that <m>T:V\to V</m> is an operator.  Then
+        <m>\nul(T)</m> is a <m>T</m>-invariant subspace.  For example,
+        if <m>\vvec</m> is in <m>\nul(T)</m>, then <m>T\vvec=0</m>,
+        which is also in <m>\nul(T)</m>.
+        </p>
+
+        <p>Furthermore, <m>\range(T)</m> is also <m>T</m>-invariant.
+        If <m>\wvec\in\range(T)</m>, then <m>T\wvec</m> is in
+        <m>\range(T)</m> by the definition of <m>\range(T)</m>.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>Any operator <m>T:V\to V</m> will have two invariant
+        subspaces, namely <m>\{0\}</m> and <m>V</m> itself.
+        </p>
+      </statement>
+    </example>
 
     <p>Remember that the order in which we multiply polynomials is not
     important.  In particular, <m>p(T)q(T)=q(T)p(T)</m>.  This leads
@@ -282,13 +404,18 @@
 
     <proposition>
       <statement>
-	<p>If <m>p(x)</m> is a polynomial and <m>T</m> an operator,
+	<p>If <m>p(x)</m> is a polynomial and <m>T</m> an operator on
+        a vector space <m>V</m>,
 	then both <m>\nul(p(T))</m> and <m>\range(p(T))</m> are
-	invariant subspaces under <m>T</m>.
+	<m>T</m>-invariant subspaces of <m>V</m>.
 	</p>
       </statement>
 
       <proof>
+        <p>Consider the polynomial <m>q(x)=x</m> so that
+        <m>(pq)(x)=xp(x)=p(x)x</m>.  This means that
+        <m>p(T)T=Tp(T)</m>.</p>
+
 	<p> Suppose that <m>\vvec</m> is in <m>\nul(p(T))</m>, which
 	means that <m>p(T)\vvec = \zerovec</m>.  We need to explain
 	why <m>T\vvec</m> is also in <m>\nul(p(T))</m>, which leads us
@@ -311,7 +438,87 @@
       </proof>
     </proposition>
 
-    <p>We now come to a crucial result for our upcoming explorations.
+    <example xml:id="example-nul-range-invariant">
+      <statement>
+        <p>Consider the operator <m>T:\real^4\to\real^4</m> by
+        <m>T\xvec = A\xvec</m> with
+        <m>A=\begin{bmatrix}
+        -10 \amp 16 \amp 5 \amp -9 \\
+        -6 \amp 10 \amp 1 \amp -5 \\
+        -2 \amp 4 \amp 1 \amp -5 \\
+        2 \amp -4 \amp -3 \amp 3 \\
+        \end{bmatrix}
+        </m>.
+        Consider also the polynomial <m>p(x) = x^2+4x+4</m> so that
+        the operator <m>p(T)</m> is represented by the matrix
+        <me>
+          B = A^2 + 4A+4I =
+          \begin{bmatrix}
+          -60 \amp 120 \amp 18 \amp -78 \\
+          -36 \amp 72 \amp 0 \amp -36 \\
+          -24 \amp 48 \amp 18 \amp -42 \\
+          24 \amp -48 \amp -18 \amp 42
+          \end{bmatrix}
+        </me>.
+        </p>
+
+        <p>Notice that the reduced row echelon form of <m>B</m> is
+        <me>
+          B\sim\begin{bmatrix}
+          1 \amp -2 \amp 0 \amp 1 \\
+          0 \amp 0 \amp 1 \amp -1 \\
+          0 \amp 0 \amp 0 \amp 0 \\
+          0 \amp 0 \amp 0 \amp 0 \\
+          \end{bmatrix}
+        </me>.
+        First considering <m>\range(p(T))=\col(B)</m>, we find a basis
+        consisting of the first and third columns of <m>B</m>:
+        <me>
+          \wvec_1 = \fourvec{-60}{-36}{-24}{24},\hspace{12pt}
+          \wvec_2 = \fourvec{18}{0}{18}{18}
+        </me>.
+        We can check that
+        <md>
+          <mrow>
+            T\wvec_1 \amp = 4\wvec_1 + 4\wvec_2
+          </mrow>
+          <mrow>
+            T\wvec_2 \amp = 4\wvec_2
+          </mrow>
+        </md>.
+        This shows that <m>\range(p(T))</m> is <m>T</m>-invariant
+        since <m>T\wvec_1</m> and <m>T\wvec_2</m> lie in
+        <m>\range(p(T))</m>.
+        </p>
+
+        <p>We also have a basis for <m>\nul(p(T))=\nul(B)</m>
+        consisting of vectors
+        <me>
+          \uvec_1 = \fourvec{2}{1}{0}{0},\hspace{12pt}
+          \uvec_2 = \fourvec{-1}{0}{1}{1}
+        </me>.
+        We can check that
+        <md>
+          <mrow>
+            T\uvec_1 \amp = -2\uvec_1
+          </mrow>
+          <mrow>
+            T\uvec_2 \amp = -2\uvec_1-2\uvec_2
+          </mrow>
+        </md>.
+        Once again, this shows that <m>\nul(p(T))</m> is
+        <m>T</m>-invariant.
+        </p>
+      </statement>
+    </example>
+          
+  </subsection>
+
+  <subsection>
+    <title>The minimal polynomial of a vector</title>
+
+    <p>We are approaching a result that will be crucial for our
+    upcoming explorations. 
     First, we need to make the following definition clear.
     </p>
 
@@ -325,6 +532,182 @@
     but <m>3x^3+2x-1</m> is not.
     </p>
 
+    <theorem xml:id="thm-minimal-polynomial-vector">
+      <title>The minimal polynomial of an operator applied to a
+      vector</title>
+
+      <statement>
+        <p>Suppose that <m>T:V\to V</m> is an operator on a finite
+        dimensional vector space <m>V</m> and that <m>\vvec</m> is a
+        vector in <m>V</m>.  There is a unique monic polynomial
+        <m>p_\vvec</m> such that
+        <ul>
+          <li>
+            <p><m>p_\vvec(T)\vvec = 0</m>.</p>
+          </li>
+          <li>
+            <p><m>p_\vvec</m> has the smallest possible possible
+            degree among polynomials <m>p</m> for which
+            <m>p(T)\vvec=0</m>.
+            </p>
+          </li>
+          <li>
+            <p><m>\deg(p_\vvec) \leq \dim V</m>.</p>
+          </li>
+        </ul>
+        </p>
+      </statement>
+
+      <proof>
+        <p>Consider the sequence of vectors formed by repeatedly
+        applying <m>T</m> to <m>\vvec</m>:
+        <me>
+          \vvec, T\vvec, T^2\vvec, T^3\vvec,\ldots
+        </me>.
+        Because <m>V</m> is finite dimensional, this set of vectors
+        will eventually become linearly dependent.  Suppose that
+        <m>m</m> is the smallest integer for which <m>T^m</m> is a
+        linear combination of the earlier vectors in the list.  This
+        means that
+        <md>
+          <mrow>
+            T^m\vvec \amp = -a_0\vvec -a_1T\vvec - \ldots -
+            a_{m-1}T^{m-1}\vvec
+          </mrow>
+          <mrow>
+            0 \amp = (a_0I + a_1T + \ldots + a_{m-1}T^{m-1} + T^m)\vvec
+          </mrow>
+        </md>.
+        Therefore, <m>p(x) = a_0 + a_1x + \ldots +
+        a_{m-1}x^{m-1}+x^m</m> is a monic polynomial for which
+        <m>p(T)\vvec= 0</m>.
+        </p>
+
+        <p>Since the vectors <m>\vvec,T\vvec,\ldots,T^{m-1}\vvec</m>
+        are linearly independent, there can be no polynomial <m>s</m>
+        whose degree is smaller than <m>m</m> such that
+        <m>s(T)\vvec=0</m>.
+        </p>
+
+        <p>Moreover, if there is another monic polynomial <m>r</m> of
+        degree <m>m</m> such that <m>r(T)\vvec = 0</m>, then
+        <m>p-r</m> is a polynomial whose degree is smaller than
+        <m>m</m> and that satisfies <m>(p-r)(T)\vvec = 0</m>, but the
+        argument of the previous paragraph shows that this cannot
+        happen.  Therefore, <m>p=r</m>, which shows that <m>p</m> is
+        the unique monic polynomial of smallest degree satisfying
+        <m>p(T)\vvec=0</m>.
+        </p>
+
+        <p>We must have <m>\deg(p_\vvec)\leq \dim V</m> since if
+        <m>\dim V = n</m>, then the set of vectors
+        <m>\vvec,\ldots,T^n\vvec</m> has <m>n+1</m> vectors and hence
+        must be linearly dependent.
+        </p>
+      </proof>
+    </theorem>
+
+    <definition>
+      <statement>
+        <p>The polynomial <m>p_\vvec</m> is sometimes called the
+        <term>annihilating polynomial</term> of <m>\vvec</m>, since
+        <m>p_\vvec(T)\vvec = 0</m>, or the <term>minimal polynomial of
+        <m>T</m> applied to <m>\vvec</m>.</term>
+        </p>
+      </statement>
+    </definition>
+
+    <example>
+      <statement>
+        <p>We will revisit <xref ref="example-nul-range-invariant"/>
+        and the operator <m>T:\real^4\to\real^4</m>
+        defined by <m>T\xvec=A\xvec</m> where 
+        <m>A=\begin{bmatrix}
+        -10 \amp 16 \amp 5 \amp -9 \\
+        -6 \amp 10 \amp 1 \amp -5 \\
+        -2 \amp 4 \amp 1 \amp -5 \\
+        2 \amp -4 \amp -3 \amp 3 \\
+        \end{bmatrix}
+        </m>.
+        Suppose that <m>\vvec=\fourvec1111</m> and consider the vectors
+        <me>
+          \vvec, T\vvec, \ldots, T^5\vvec
+        </me>.
+        Since this is a set
+        of five vectors in <m>\real^4</m>, we are guaranteed that this
+        set is linearly dependent.
+        Putting these five vectors into a matrix and row reducing, we
+        have
+        <me>
+          \begin{bmatrix}
+          \vvec \amp T\vvec \amp T^2\vvec \amp T^3\vvec \amp T^4\vvec
+          \end{bmatrix}
+          \sim
+          \begin{bmatrix}
+          1 \amp 0 \amp -4 \amp 16 \amp -48 \amp 128 \\
+          0 \amp 1 \amp -4 \amp 12 \amp -32 \amp 80 \\
+          0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
+          0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0
+          \end{bmatrix}
+        </me>.
+        </p>
+
+        <p>This shows, in particular, that <m>T^2\vvec = -4\vvec -
+        4T\vvec</m> so that
+        <me>
+          (T^2 + 4T+4I)\vvec = 0
+        </me>.
+        Since <m>\vvec</m> and <m>T\vvec</m> are linearly independent,
+        the minimal polynomial <m>p_\vvec</m> cannot have degree one or
+        less.  Therefore,
+        <me>
+          p_\vvec(x) = x^2 + 4x + 4
+        </me>.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>If <m>\vvec</m> is an eigenvector of <m>T</m> with
+        associated eigenvalue <m>\lambda</m>, then
+        <me>
+          (T-\lambda I)\vvec = 0
+        </me>
+        so that <m>p_\vvec(x) = x-\lambda</m>.
+        </p>
+      </statement>
+    </example>
+
+    <p>The construction in this proof will be important when we
+    investigate numerical linear algebra later on this course.</p>
+
+    <definition>
+      <title>Krylov subspace</title>
+
+      <statement>
+        <p>Given an operator <m>T</m> on a finite dimensional vector
+        space <m>V</m> and a vector <m>\vvec</m>, we define
+        <me>
+          \kcal_m(T,\vvec) = \laspan{\vvec,T\vvec,\ldots,T^{m-1}\vvec}
+        </me>,
+        the <m>m^{th}</m> <term>Krylov subspace</term>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>We see that
+    <me>
+      \kcal_1\subset\kcal_2\subset\kcal_3\subset\ldots\subset\kcal_m
+      = \kcal_{m+1} = \ldots = \kcal_{m+k}
+    </me> so that
+    the set of inclusions eventually stablizes when <m>m</m> reaches the
+    degree of the minimal polynomial of <m>\vvec</m>.  This integer
+    <m>m</m> is sometimes called the <term>grade</term> of
+    <m>\vvec</m>.  When the grade of a vector is one, that vector must
+    be an eigenvector of <m>T</m>.
+    </p>
+    
     <theorem xml:id="thm-minimal-polynomial">
       <title>The minimal polynomial of an operator</title>
 
