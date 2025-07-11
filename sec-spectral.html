@@ -19,7 +19,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
 <link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
-<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
 <script>
 var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
 window.MathJax = {
@@ -102,14 +101,14 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.8.4';
+eBookConfig.runestone_version = '7.8.5';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.962d00926ef9460e.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.2e7f40e86ae7d163.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<script src="_static/prefix-runtime.a99e275a1e410b98.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.58623b9a3097f5e4.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
 <link rel="stylesheet" type="text/css" href="_static/prefix-runestone.5bdeacdba067a0e3.css">
 <script src="_static/pretext/js/lti_iframe_resizer.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
 </script>
@@ -194,6 +193,7 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\wcal}{{\cal W}}
 \newcommand{\ecal}{{\cal E}}
 \newcommand{\fcal}{{\cal F}}
+\newcommand{\kcal}{{\cal K}}
 \newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
 \newcommand{\gray}[1]{\color{gray}{#1}}
 \newcommand{\lgray}[1]{\color{lightgray}{#1}}
@@ -264,7 +264,8 @@ eBookConfig.enable_chatcodes =  false;
 <div class="toc-title-box"><a href="sec-polys.html" class="internal"><span class="codenumber">1.4</span> <span class="title">The minimal polynomial</span></a></div>
 <ul class="structural toc-item-list">
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-3" class="internal"><span class="codenumber">1.4.1</span> <span class="title">Properties of Polynomials</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-4" class="internal"><span class="codenumber">1.4.2</span> <span class="title">The minimal polynomial of an operator</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-4" class="internal"><span class="codenumber">1.4.2</span> <span class="title">Invariant subspaces</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-5" class="internal"><span class="codenumber">1.4.3</span> <span class="title">The minimal polynomial of a vector</span></a></div></li>
 </ul>
 </li>
 </ul>
@@ -305,9 +306,9 @@ eBookConfig.enable_chatcodes =  false;
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-spectral"><h2 class="heading hide-type">
 <span class="type">Section</span><span class="space"> </span><span class="codenumber">2.2</span><span class="space"> </span><span class="title">The Spectral Theorem</span>
 </h2>
-<section class="introduction" id="sec-spectral-2"><div class="para" id="sec-spectral-2-1">In <a href="sec-upper.html" class="internal" title="Section 2.1: Upper triangular matrices">Section 2.1</a>, we saw conditions that enable us to represent a linear transformation as an upper triangular matrix. This is our first theorem about a standard form, and it puts us in a position to prove an important result that we used earlier called the <em class="emphasis">Spectral Theorem.</em><div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<section class="introduction" id="sec-spectral-2"><div class="para" id="sec-spectral-2-1">In <a href="sec-upper.html" class="internal" title="Section 2.1: Upper triangular matrices">Section 2.1</a>, we saw conditions that enable us to represent a linear transformation as an upper triangular matrix. This is our first theorem about a standard form, and it puts us in a position to prove an important result that we used earlier called the <em class="emphasis">Spectral Theorem.</em><div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-spectral-2-2">The version of the Spectral Theorem that we saw concerns real symmetric matrices, which are square matrices for which <span class="process-math">\(A=A^T\text{.}\)</span>  This necessarily means that we are working in an inner product space so we will first extend our results on upper triangular matrices to operators on inner product spaces.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-spectral-2-2">The version of the Spectral Theorem that we saw concerns real symmetric matrices, which are square matrices for which <span class="process-math">\(A=A^T\text{.}\)</span>  This necessarily means that we are working in an inner product space so we will first extend our results on upper triangular matrices to operators on inner product spaces.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div></section><section class="subsection" id="sec-spectral-3"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.2.1</span><span class="space"> </span><span class="title">The Schur decomposition</span>
 </h3>
@@ -320,7 +321,7 @@ p(x)=(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)\text{,}
 </div>
 <div class="para">which tells us that there is a basis <span class="process-math">\(\bcal\)</span> in which <span class="process-math">\(\coords{T}{\bcal}\)</span> is upper triangular.  We will denote the vectors in <span class="process-math">\(\bcal\)</span> as <span class="process-math">\(\bcal=\{\basis{\vvec}{n}\}\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-3-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-spectral-3-3">
 <div class="para">Since <span class="process-math">\(V\)</span> is an inner product space, we can apply the Gram-Schmidt algorithm to <span class="process-math">\(\bcal\)</span> to form a new orthogonal basis <span class="process-math">\(\ccal\text{.}\)</span>  The vectors in <span class="process-math">\(\ccal\)</span> will be denoted by <span class="process-math">\(\ccal=\{\basis{\wvec}{n}\}\)</span> so that</div>
@@ -353,20 +354,20 @@ p(x)=(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)\text{,}
 \end{equation*}
 </div>
 <div class="para">is upper triangular.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-3-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-spectral-3-4">We obtain an orthonormal basis by setting <span class="process-math">\(\uvec_j=\frac{\wvec_j}{\len{\wvec_j}}\text{.}\)</span>  Since this change of coordinates matrix is diagonal, we obtain the following result.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-3-4" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-spectral-3-4">We obtain an orthonormal basis by setting <span class="process-math">\(\uvec_j=\frac{\wvec_j}{\len{\wvec_j}}\text{.}\)</span>  Since this change of coordinates matrix is diagonal, we obtain the following result.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="theorem theorem-like" id="thm-schur"><h4 class="heading">
 <span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">Schur decomposition.</span>
 </h4>
-<div class="para" id="thm-schur-2-1">If <span class="process-math">\(T:V\to V\)</span> is an operator on a finite dimensional complex inner product space, then there is an orthonormal basis in which the matrix representing <span class="process-math">\(T\)</span> is upper triangular.<div class="autopermalink" data-description="Paragraph"><a href="#thm-schur-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="thm-schur-2-1">If <span class="process-math">\(T:V\to V\)</span> is an operator on a finite dimensional complex inner product space, then there is an orthonormal basis in which the matrix representing <span class="process-math">\(T\)</span> is upper triangular.<div class="autopermalink" data-description="Paragraph"><a href="#thm-schur-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 2.2.1: Schur decomposition"><a href="#thm-schur" title="Copy heading and permalink for Theorem 2.2.1: Schur decomposition">🔗</a></div></article><div class="para" id="sec-spectral-3-6">This result is sometimes expressed in terms of matrices.  We earlier considered <em class="emphasis">orthogonal</em> matrices, which are real matrices whose columns form an orthonormal basis.  If the matrix is complex, such a matrix is called <em class="emphasis">unitary</em>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-3-6" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Theorem 2.2.1: Schur decomposition"><a href="#thm-schur" title="Copy heading and permalink for Theorem 2.2.1: Schur decomposition" aria-label="Copy heading and permalink for Theorem 2.2.1: Schur decomposition">🔗</a></div></article><div class="para" id="sec-spectral-3-6">This result is sometimes expressed in terms of matrices.  We earlier considered <em class="emphasis">orthogonal</em> matrices, which are real matrices whose columns form an orthonormal basis.  If the matrix is complex, such a matrix is called <em class="emphasis">unitary</em>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-3-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-spectral-3-7"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.2.2</span><span class="period">.</span>
-</h4>A complex <span class="process-math">\(n\times n\)</span> matrix <span class="process-math">\(U\)</span> whose columns form an orthonormal basis for <span class="process-math">\(\complex^n\)</span> is called <em class="emphasis">unitary</em>.  Such a matrix satisfies <span class="process-math">\(U^*U=UU^*=I\text{.}\)</span><div class="autopermalink" data-description="Definition 2.2.2"><a href="#sec-spectral-3-7" title="Copy heading and permalink for Definition 2.2.2">🔗</a></div></article><div class="para" id="sec-spectral-3-8">We can now restate the Schur decomposition in terms of unitary matrices.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-3-8" title="Copy heading and permalink for Paragraph">🔗</a></div>
+</h4>A complex <span class="process-math">\(n\times n\)</span> matrix <span class="process-math">\(U\)</span> whose columns form an orthonormal basis for <span class="process-math">\(\complex^n\)</span> is called <em class="emphasis">unitary</em>.  Such a matrix satisfies <span class="process-math">\(U^*U=UU^*=I\text{.}\)</span><div class="autopermalink" data-description="Definition 2.2.2"><a href="#sec-spectral-3-7" title="Copy heading and permalink for Definition 2.2.2" aria-label="Copy heading and permalink for Definition 2.2.2">🔗</a></div></article><div class="para" id="sec-spectral-3-8">We can now restate the Schur decomposition in terms of unitary matrices.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-3-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="theorem theorem-like" id="sec-spectral-3-9"><h4 class="heading">
 <span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.2.3</span><span class="period">.</span><span class="space"> </span><span class="title">Schur decomposition.</span>
@@ -378,29 +379,29 @@ p(x)=(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)\text{,}
 A=UTU^*\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-3-9-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-3-9-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 2.2.3: Schur decomposition"><a href="#sec-spectral-3-9" title="Copy heading and permalink for Theorem 2.2.3: Schur decomposition">🔗</a></div></article><div class="autopermalink" data-description="Subsection 2.2.1: The Schur decomposition"><a href="#sec-spectral-3" title="Copy heading and permalink for Subsection 2.2.1: The Schur decomposition">🔗</a></div></section><section class="subsection" id="sec-spectral-4"><h3 class="heading hide-type">
+<div class="autopermalink" data-description="Theorem 2.2.3: Schur decomposition"><a href="#sec-spectral-3-9" title="Copy heading and permalink for Theorem 2.2.3: Schur decomposition" aria-label="Copy heading and permalink for Theorem 2.2.3: Schur decomposition">🔗</a></div></article><div class="autopermalink" data-description="Subsection 2.2.1: The Schur decomposition"><a href="#sec-spectral-3" title="Copy heading and permalink for Subsection 2.2.1: The Schur decomposition" aria-label="Copy heading and permalink for Subsection 2.2.1: The Schur decomposition">🔗</a></div></section><section class="subsection" id="sec-spectral-4"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.2.2</span><span class="space"> </span><span class="title">Self-adjoint operators</span>
 </h3>
-<div class="para" id="sec-spectral-4-2">When <span class="process-math">\(V\)</span> and <span class="process-math">\(W\)</span> are inner product spaces, a linear transformation <span class="process-math">\(T:V\to W\)</span> has an adjoint <span class="process-math">\(T^*:W\to V\)</span> as introduced in <a href="sec-orthogonal.html#subsec-adjoint" class="internal" title="Subsection 1.3.3: The adjoint of a linear transformation">Subsection 1.3.3</a>.  When expressed in terms of orthonormal bases for <span class="process-math">\(V\)</span> and <span class="process-math">\(W\text{,}\)</span> the matrix associated to <span class="process-math">\(T^*\)</span> is the conjugate transpose of the matrix associated to <span class="process-math">\(T\text{.}\)</span>  Or when the vector spaces are real, the matrices are simply the transpose of one another.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-spectral-4-2">When <span class="process-math">\(V\)</span> and <span class="process-math">\(W\)</span> are inner product spaces, a linear transformation <span class="process-math">\(T:V\to W\)</span> has an adjoint <span class="process-math">\(T^*:W\to V\)</span> as introduced in <a href="sec-orthogonal.html#subsec-adjoint" class="internal" title="Subsection 1.3.3: The adjoint of a linear transformation">Subsection 1.3.3</a>.  When expressed in terms of orthonormal bases for <span class="process-math">\(V\)</span> and <span class="process-math">\(W\text{,}\)</span> the matrix associated to <span class="process-math">\(T^*\)</span> is the conjugate transpose of the matrix associated to <span class="process-math">\(T\text{.}\)</span>  Or when the vector spaces are real, the matrices are simply the transpose of one another.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-spectral-4-3">We will now consider operators <span class="process-math">\(T:V\to V\)</span> on an inner product space <span class="process-math">\(V\)</span> that are <em class="emphasis">self-adjoint</em>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-spectral-4-3">We will now consider operators <span class="process-math">\(T:V\to V\)</span> on an inner product space <span class="process-math">\(V\)</span> that are <em class="emphasis">self-adjoint</em>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-spectral-4-4"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.2.4</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-spectral-4-4-1-1">We say that operator <span class="process-math">\(T\)</span> on an inner product space <span class="process-math">\(V\)</span> is <em class="emphasis">self-adjoint</em> if <span class="process-math">\(T=T^*\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-4-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-spectral-4-4-1-1">We say that operator <span class="process-math">\(T\)</span> on an inner product space <span class="process-math">\(V\)</span> is <em class="emphasis">self-adjoint</em> if <span class="process-math">\(T=T^*\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 2.2.4"><a href="#sec-spectral-4-4" title="Copy heading and permalink for Definition 2.2.4">🔗</a></div></article><article class="theorem theorem-like" id="sec-spectral-4-5"><h4 class="heading">
+<div class="autopermalink" data-description="Definition 2.2.4"><a href="#sec-spectral-4-4" title="Copy heading and permalink for Definition 2.2.4" aria-label="Copy heading and permalink for Definition 2.2.4">🔗</a></div></article><article class="theorem theorem-like" id="sec-spectral-4-5"><h4 class="heading">
 <span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.2.5</span><span class="period">.</span><span class="space"> </span><span class="title">The complex spectral theorem.</span>
 </h4>
-<div class="para" id="sec-spectral-4-5-2-1">If <span class="process-math">\(T:V\to V\)</span> is a self-adjoint operator on a complex vector space <span class="process-math">\(V\text{,}\)</span> then there is an orthonormal basis <span class="process-math">\(\bcal\)</span> for which <span class="process-math">\(\coords{T}{\bcal}\)</span> is diagonal. Furthermore, the eigenvalues of <span class="process-math">\(T\)</span> are real.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-5-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-spectral-4-5-2-1">If <span class="process-math">\(T:V\to V\)</span> is a self-adjoint operator on a complex vector space <span class="process-math">\(V\text{,}\)</span> then there is an orthonormal basis <span class="process-math">\(\bcal\)</span> for which <span class="process-math">\(\coords{T}{\bcal}\)</span> is diagonal. Furthermore, the eigenvalues of <span class="process-math">\(T\)</span> are real.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 2.2.5: The complex spectral theorem"><a href="#sec-spectral-4-5" title="Copy heading and permalink for Theorem 2.2.5: The complex spectral theorem">🔗</a></div></article><article class="proof" id="sec-spectral-4-5-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="sec-spectral-4-5-3-1">By the <a href="sec-spectral.html#thm-schur" class="xref" data-knowl="./knowl/xref/thm-schur.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.2.1: Schur decomposition">Schur decomposition 2.2.1</a>, we know that there is an orthonormal basis <span class="process-math">\(\bcal\)</span> for which <span class="process-math">\(\coords{T}{\bcal} = A\)</span> is upper triangular.  However, since <span class="process-math">\(T=T^*\text{,}\)</span> we also know that <span class="process-math">\(A=\conj{A}^T\text{,}\)</span> which says that <span class="process-math">\(A\)</span> is diagonal with real entries on the diagonal.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-5-3-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Theorem 2.2.5: The complex spectral theorem"><a href="#sec-spectral-4-5" title="Copy heading and permalink for Theorem 2.2.5: The complex spectral theorem" aria-label="Copy heading and permalink for Theorem 2.2.5: The complex spectral theorem">🔗</a></div></article><article class="proof" id="sec-spectral-4-5-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="sec-spectral-4-5-3-1">By the <a href="sec-spectral.html#thm-schur" class="xref" data-knowl="./knowl/xref/thm-schur.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.2.1: Schur decomposition">Schur decomposition 2.2.1</a>, we know that there is an orthonormal basis <span class="process-math">\(\bcal\)</span> for which <span class="process-math">\(\coords{T}{\bcal} = A\)</span> is upper triangular.  However, since <span class="process-math">\(T=T^*\text{,}\)</span> we also know that <span class="process-math">\(A=\conj{A}^T\text{,}\)</span> which says that <span class="process-math">\(A\)</span> is diagonal with real entries on the diagonal.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-5-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 2.2.5.1"><a href="#sec-spectral-4-5-3" title="Copy heading and permalink for Proof 2.2.5.1">🔗</a></div></article><div class="para" id="sec-spectral-4-6">For real inner product spaces, self-adjoint operators are represented by symmetric matrices.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-6" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proof 2.2.5.1"><a href="#sec-spectral-4-5-3" title="Copy heading and permalink for Proof 2.2.5.1" aria-label="Copy heading and permalink for Proof 2.2.5.1">🔗</a></div></article><div class="para" id="sec-spectral-4-6">For real inner product spaces, self-adjoint operators are represented by symmetric matrices.<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="lemma theorem-like" id="lemma-self-ad-quadratic"><h4 class="heading">
 <span class="type">Lemma</span><span class="space"> </span><span class="codenumber">2.2.6</span><span class="period">.</span>
@@ -414,9 +415,9 @@ T^2 + bT + cI
 \end{equation*}
 </div>
 <div class="para">is an isomorphism.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#lemma-self-ad-quadratic-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lemma-self-ad-quadratic-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Lemma 2.2.6"><a href="#lemma-self-ad-quadratic" title="Copy heading and permalink for Lemma 2.2.6">🔗</a></div></article><article class="proof" id="lemma-self-ad-quadratic-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Lemma 2.2.6"><a href="#lemma-self-ad-quadratic" title="Copy heading and permalink for Lemma 2.2.6" aria-label="Copy heading and permalink for Lemma 2.2.6">🔗</a></div></article><article class="proof" id="lemma-self-ad-quadratic-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="lemma-self-ad-quadratic-2-1">
 <div class="para">By the <a href="sec-lt-intro.html#prop-nul-range-dims" class="xref" data-knowl="./knowl/xref/prop-nul-range-dims.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.13: Fundamental Theorem of Linear Maps">Fundamental Theorem of Linear Maps 1.2.13</a>, we only need to show that <span class="process-math">\(\nul(T)=\{\zerovec\}\text{.}\)</span> Therefore, we suppose that <span class="process-math">\(\vvec\)</span> is a nonzero vector and consider</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-nul-range-dims.html">
@@ -440,17 +441,17 @@ b\inner{T\vvec}{\vvec}+c\inner{\vvec}{\vvec}\\
 \end{equation*}
 </div>
 <div class="para">This shows that <span class="process-math">\((T^2+bT+cI)\vvec\)</span> is also nonzero so the operator is an isomorphism.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#lemma-self-ad-quadratic-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lemma-self-ad-quadratic-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 2.2.6.1"><a href="#lemma-self-ad-quadratic-2" title="Copy heading and permalink for Proof 2.2.6.1">🔗</a></div></article><div class="para logical" id="sec-spectral-4-8">
-<div class="para">If <span class="process-math">\(\field=\complex\)</span> and <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(V\text{,}\)</span> we know from the <a href="sec-polys.html#thm-fta" class="xref" data-knowl="./knowl/xref/thm-fta.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.4.5: Fundamental Theorem of Algebra">Theorem 1.4.5</a> that the minimal polynomial of <span class="process-math">\(T\)</span> has the form</div>
+<div class="autopermalink" data-description="Proof 2.2.6.1"><a href="#lemma-self-ad-quadratic-2" title="Copy heading and permalink for Proof 2.2.6.1" aria-label="Copy heading and permalink for Proof 2.2.6.1">🔗</a></div></article><div class="para logical" id="sec-spectral-4-8">
+<div class="para">If <span class="process-math">\(\field=\complex\)</span> and <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(V\text{,}\)</span> we know from the <a href="sec-polys.html#thm-fta" class="xref" data-knowl="./knowl/xref/thm-fta.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.4.6: Fundamental Theorem of Algebra">Theorem 1.4.6</a> that the minimal polynomial of <span class="process-math">\(T\)</span> has the form</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-fta.html">
 \begin{equation*}
 p(x)=(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)
 \end{equation*}
 </div>
 <div class="para">where each <span class="process-math">\(\lambda_j\in\complex\text{.}\)</span> If <span class="process-math">\(\field=\real\)</span> and <span class="process-math">\(T\)</span> is a self-adjoint operator on <span class="process-math">\(V\text{,}\)</span> we can reach a similar conclusion.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-8" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-self-ad-min-poly"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.2.7</span><span class="period">.</span>
@@ -464,9 +465,9 @@ p(x)=(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)
 </div>
 <div class="para">where <span class="process-math">\(\lambda_j\in\real\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-self-ad-min-poly-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-self-ad-min-poly-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 2.2.7"><a href="#prop-self-ad-min-poly" title="Copy heading and permalink for Proposition 2.2.7">🔗</a></div></article><article class="proof" id="prop-self-ad-min-poly-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 2.2.7"><a href="#prop-self-ad-min-poly" title="Copy heading and permalink for Proposition 2.2.7" aria-label="Copy heading and permalink for Proposition 2.2.7">🔗</a></div></article><article class="proof" id="prop-self-ad-min-poly-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="prop-self-ad-min-poly-2-1">
 <div class="para">We know that the minimal polynomial has the form</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lemma-self-ad-quadratic.html">
@@ -484,7 +485,7 @@ p(T)=(T-\lambda_1)\ldots(T-\lambda_m)(T^2+b_1T+c_1I)\ldots
 </div>
 <div class="para">If <span class="process-math">\(n\gt 0\text{,}\)</span> then <span class="process-math">\(T^2+b_1T+c_1I\)</span> is invertible by <a href="sec-spectral.html#lemma-self-ad-quadratic" class="xref" data-knowl="./knowl/xref/lemma-self-ad-quadratic.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 2.2.6">Lemma 2.2.6</a>.  If we multiply <span class="process-math">\(p(T)\)</span> by its inverse, we obtain another polynomial <span class="process-math">\(q\)</span> of smaller degree for which <span class="process-math">\(q(T)=0\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-self-ad-min-poly-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-self-ad-min-poly-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-self-ad-min-poly-2-2">
 <div class="para">Since the minimal polynomial <span class="process-math">\(p\)</span> is the polynomial having the smallest degree among all polynomials for which <span class="process-math">\(p(T)=0\text{,}\)</span> we conclude that <span class="process-math">\(m=0\)</span> and therefore</div>
@@ -493,14 +494,14 @@ p(T)=(T-\lambda_1)\ldots(T-\lambda_m)(T^2+b_1T+c_1I)\ldots
 p(x)=(x-\lambda_1)\ldots(x-\lambda_m)\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-self-ad-min-poly-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-self-ad-min-poly-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 2.2.7.1"><a href="#prop-self-ad-min-poly-2" title="Copy heading and permalink for Proof 2.2.7.1">🔗</a></div></article><article class="theorem theorem-like" id="thm-spectral-thm"><h4 class="heading">
+<div class="autopermalink" data-description="Proof 2.2.7.1"><a href="#prop-self-ad-min-poly-2" title="Copy heading and permalink for Proof 2.2.7.1" aria-label="Copy heading and permalink for Proof 2.2.7.1">🔗</a></div></article><article class="theorem theorem-like" id="thm-spectral-thm"><h4 class="heading">
 <span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.2.8</span><span class="period">.</span><span class="space"> </span><span class="title">The Spectral Theorem.</span>
 </h4>
-<div class="para" id="thm-spectral-thm-2-1">If <span class="process-math">\(T\)</span> is a self-adjoint operator on a real vector space <span class="process-math">\(V\text{,}\)</span> then there is an orthonormal basis such that the matrix associated to <span class="process-math">\(T\)</span> is diagonal.<div class="autopermalink" data-description="Paragraph"><a href="#thm-spectral-thm-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="thm-spectral-thm-2-1">If <span class="process-math">\(T\)</span> is a self-adjoint operator on a real vector space <span class="process-math">\(V\text{,}\)</span> then there is an orthonormal basis such that the matrix associated to <span class="process-math">\(T\)</span> is diagonal.<div class="autopermalink" data-description="Paragraph"><a href="#thm-spectral-thm-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 2.2.8: The Spectral Theorem"><a href="#thm-spectral-thm" title="Copy heading and permalink for Theorem 2.2.8: The Spectral Theorem">🔗</a></div></article><article class="proof" id="thm-spectral-thm-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Theorem 2.2.8: The Spectral Theorem"><a href="#thm-spectral-thm" title="Copy heading and permalink for Theorem 2.2.8: The Spectral Theorem" aria-label="Copy heading and permalink for Theorem 2.2.8: The Spectral Theorem">🔗</a></div></article><article class="proof" id="thm-spectral-thm-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="thm-spectral-thm-3-1">
 <div class="para">By <a href="sec-upper.html#thm-upper-minimal" class="xref" data-knowl="./knowl/xref/thm-upper-minimal.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.1.3">Theorem 2.1.3</a> and <a href="sec-spectral.html#prop-self-ad-min-poly" class="xref" data-knowl="./knowl/xref/prop-self-ad-min-poly.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 2.2.7">Proposition 2.2.7</a>, we know that there is a basis <span class="process-math">\(\bcal\)</span> of <span class="process-math">\(V\)</span> for which the matrix associated to <span class="process-math">\(T\)</span> is upper triangular.  As before, we apply the Gram-Schmidt algorithm to obtain an orthonormal basis <span class="process-math">\(\ccal\)</span> and note that the change of coordinates matrix is upper triangular.  Therefore,</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-upper-minimal.html ./knowl/xref/prop-self-ad-min-poly.html">
@@ -510,11 +511,11 @@ p(x)=(x-\lambda_1)\ldots(x-\lambda_m)\text{.}
 \end{equation*}
 </div>
 <div class="para">is also upper triangular.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#thm-spectral-thm-3-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#thm-spectral-thm-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="thm-spectral-thm-3-2">However, if <span class="process-math">\(A=\coords{T}{\ccal}\)</span> is this matrix, we know that <span class="process-math">\(A^T=A\)</span> since <span class="process-math">\(T=T^*\)</span> is self-adjoint. Therefore, <span class="process-math">\(A\)</span> is diagonal.<div class="autopermalink" data-description="Paragraph"><a href="#thm-spectral-thm-3-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="thm-spectral-thm-3-2">However, if <span class="process-math">\(A=\coords{T}{\ccal}\)</span> is this matrix, we know that <span class="process-math">\(A^T=A\)</span> since <span class="process-math">\(T=T^*\)</span> is self-adjoint. Therefore, <span class="process-math">\(A\)</span> is diagonal.<div class="autopermalink" data-description="Paragraph"><a href="#thm-spectral-thm-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 2.2.8.1"><a href="#thm-spectral-thm-3" title="Copy heading and permalink for Proof 2.2.8.1">🔗</a></div></article><div class="para" id="sec-spectral-4-11">In terms of matrices, this has the more familiar form:<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-11" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proof 2.2.8.1"><a href="#thm-spectral-thm-3" title="Copy heading and permalink for Proof 2.2.8.1" aria-label="Copy heading and permalink for Proof 2.2.8.1">🔗</a></div></article><div class="para" id="sec-spectral-4-11">In terms of matrices, this has the more familiar form:<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="theorem theorem-like" id="sec-spectral-4-12"><h4 class="heading">
 <span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.2.9</span><span class="period">.</span><span class="space"> </span><span class="title">The spectral theorem, matrix edition.</span>
@@ -526,9 +527,9 @@ p(x)=(x-\lambda_1)\ldots(x-\lambda_m)\text{.}
 A=QDQ^T\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-12-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-spectral-4-12-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 2.2.9: The spectral theorem, matrix edition"><a href="#sec-spectral-4-12" title="Copy heading and permalink for Theorem 2.2.9: The spectral theorem, matrix edition">🔗</a></div></article><div class="autopermalink" data-description="Subsection 2.2.2: Self-adjoint operators"><a href="#sec-spectral-4" title="Copy heading and permalink for Subsection 2.2.2: Self-adjoint operators">🔗</a></div></section><div class="autopermalink" data-description="Section 2.2: The Spectral Theorem"><a href="#sec-spectral" title="Copy heading and permalink for Section 2.2: The Spectral Theorem">🔗</a></div></section></div>
+<div class="autopermalink" data-description="Theorem 2.2.9: The spectral theorem, matrix edition"><a href="#sec-spectral-4-12" title="Copy heading and permalink for Theorem 2.2.9: The spectral theorem, matrix edition" aria-label="Copy heading and permalink for Theorem 2.2.9: The spectral theorem, matrix edition">🔗</a></div></article><div class="autopermalink" data-description="Subsection 2.2.2: Self-adjoint operators"><a href="#sec-spectral-4" title="Copy heading and permalink for Subsection 2.2.2: Self-adjoint operators" aria-label="Copy heading and permalink for Subsection 2.2.2: Self-adjoint operators">🔗</a></div></section><div class="autopermalink" data-description="Section 2.2: The Spectral Theorem"><a href="#sec-spectral" title="Copy heading and permalink for Section 2.2: The Spectral Theorem" aria-label="Copy heading and permalink for Section 2.2: The Spectral Theorem">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="sec-upper.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-nilpotent.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>

@@ -19,7 +19,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
 <link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
-<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
 <script>
 var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
 window.MathJax = {
@@ -102,14 +101,14 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.8.4';
+eBookConfig.runestone_version = '7.8.5';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.962d00926ef9460e.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.2e7f40e86ae7d163.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<script src="_static/prefix-runtime.a99e275a1e410b98.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.58623b9a3097f5e4.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
 <link rel="stylesheet" type="text/css" href="_static/prefix-runestone.5bdeacdba067a0e3.css">
 <script src="_static/pretext/js/lti_iframe_resizer.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
 </script>
@@ -194,6 +193,7 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\wcal}{{\cal W}}
 \newcommand{\ecal}{{\cal E}}
 \newcommand{\fcal}{{\cal F}}
+\newcommand{\kcal}{{\cal K}}
 \newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
 \newcommand{\gray}[1]{\color{gray}{#1}}
 \newcommand{\lgray}[1]{\color{lightgray}{#1}}
@@ -264,7 +264,8 @@ eBookConfig.enable_chatcodes =  false;
 <div class="toc-title-box"><a href="sec-polys.html" class="internal"><span class="codenumber">1.4</span> <span class="title">The minimal polynomial</span></a></div>
 <ul class="structural toc-item-list">
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-3" class="internal"><span class="codenumber">1.4.1</span> <span class="title">Properties of Polynomials</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-4" class="internal"><span class="codenumber">1.4.2</span> <span class="title">The minimal polynomial of an operator</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-4" class="internal"><span class="codenumber">1.4.2</span> <span class="title">Invariant subspaces</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-5" class="internal"><span class="codenumber">1.4.3</span> <span class="title">The minimal polynomial of a vector</span></a></div></li>
 </ul>
 </li>
 </ul>
@@ -305,11 +306,11 @@ eBookConfig.enable_chatcodes =  false;
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-vs-intro"><h2 class="heading hide-type">
 <span class="type">Section</span><span class="space"> </span><span class="codenumber">1.1</span><span class="space"> </span><span class="title">Vector spaces</span>
 </h2>
-<section class="introduction" id="sec-vs-intro-2"><div class="para" id="sec-vs-intro-2-1">A vector space is simply a mathematical set on which we can perform addition and scalar multiplication.  We already have some familiarity with vector spaces since <span class="process-math">\(\real^n\)</span> is a good example.  However, as mentioned in the introduction to this chapter, polynomials have similar operations so we would like to create a mathematical structure that allows us to study vectors and polynomials as equals.  This is why the concept of a vector space is so useful.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<section class="introduction" id="sec-vs-intro-2"><div class="para" id="sec-vs-intro-2-1">A vector space is simply a mathematical set on which we can perform addition and scalar multiplication.  We already have some familiarity with vector spaces since <span class="process-math">\(\real^n\)</span> is a good example.  However, as mentioned in the introduction to this chapter, polynomials have similar operations so we would like to create a mathematical structure that allows us to study vectors and polynomials as equals.  This is why the concept of a vector space is so useful.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div></section><section class="subsection" id="sec-vs-intro-3"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.1.1</span><span class="space"> </span><span class="title">Vector spaces</span>
 </h3>
-<div class="para" id="sec-vs-intro-3-2">The usual place to get started would be with a general definition of a vector space.  However, this is one place in mathematics, among others, where a general definition can obscure the underlying idea.  For that reason, let’s just start with some examples.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-3-2">The usual place to get started would be with a general definition of a vector space.  However, this is one place in mathematics, among others, where a general definition can obscure the underlying idea.  For that reason, let’s just start with some examples.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="example-vs-matrices"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.1</span><span class="period">.</span><span class="space"> </span><span class="title">Matrices.</span>
@@ -348,10 +349,10 @@ A+B=\begin{bmatrix}
 \end{equation*}
 </div>
 <div class="para">Notice that both operations produce a new object that is also a <span class="process-math">\(3\times2\)</span> matrix.  We say that that the set is <em class="emphasis">closed</em> under these operations.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#example-vs-matrices-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
-</div> <div class="para" id="example-vs-matrices-2-2">With these operations, the set of <span class="process-math">\(3\times2\)</span> matrices becomes a vector space.<div class="autopermalink" data-description="Paragraph"><a href="#example-vs-matrices-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#example-vs-matrices-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="example-vs-matrices-2-2">With these operations, the set of <span class="process-math">\(3\times2\)</span> matrices becomes a vector space.<div class="autopermalink" data-description="Paragraph"><a href="#example-vs-matrices-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.1: Matrices"><a href="#example-vs-matrices" title="Copy heading and permalink for Example 1.1.1: Matrices">🔗</a></div></article><div class="para" id="sec-vs-intro-3-4">Notice that the entries in our matrices are real numbers <span class="process-math">\(\real\text{.}\)</span>  We could instead change the example so that we consider matrices whose entries are in the complex numbers <span class="process-math">\(\complex\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-4" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Example 1.1.1: Matrices"><a href="#example-vs-matrices" title="Copy heading and permalink for Example 1.1.1: Matrices" aria-label="Copy heading and permalink for Example 1.1.1: Matrices">🔗</a></div></article><div class="para" id="sec-vs-intro-3-4">Notice that the entries in our matrices are real numbers <span class="process-math">\(\real\text{.}\)</span>  We could instead change the example so that we consider matrices whose entries are in the complex numbers <span class="process-math">\(\complex\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="example-vs-complex-matrices"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.2</span><span class="period">.</span><span class="space"> </span><span class="title">Complex matrices.</span>
@@ -379,11 +380,11 @@ A+B = \begin{bmatrix}
 \end{bmatrix}\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#example-vs-complex-matrices-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#example-vs-complex-matrices-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.2: Complex matrices"><a href="#example-vs-complex-matrices" title="Copy heading and permalink for Example 1.1.2: Complex matrices">🔗</a></div></article><div class="para" id="sec-vs-intro-3-6">These examples show that vector spaces have an underlying <em class="emphasis">field</em>, which is the set of scalars by which we can multiply.  You may or may not know about fields depending on whether you have studied abstract algebra.  In either case, the underlying field of our vector spaces will always be either the real numbers or the complex numbers, which we will write as <span class="process-math">\(\field=\real\)</span> or <span class="process-math">\(\field=\complex\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-6" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Example 1.1.2: Complex matrices"><a href="#example-vs-complex-matrices" title="Copy heading and permalink for Example 1.1.2: Complex matrices" aria-label="Copy heading and permalink for Example 1.1.2: Complex matrices">🔗</a></div></article><div class="para" id="sec-vs-intro-3-6">These examples show that vector spaces have an underlying <em class="emphasis">field</em>, which is the set of scalars by which we can multiply.  You may or may not know about fields depending on whether you have studied abstract algebra.  In either case, the underlying field of our vector spaces will always be either the real numbers or the complex numbers, which we will write as <span class="process-math">\(\field=\real\)</span> or <span class="process-math">\(\field=\complex\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-vs-intro-3-7">Having seen some examples, we offer a general definition of a vector space.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-7" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-3-7">Having seen some examples, we offer a general definition of a vector space.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-vs-intro-3-8"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.1.3</span><span class="period">.</span><span class="space"> </span><span class="title">Vector space.</span>
@@ -392,19 +393,19 @@ A+B = \begin{bmatrix}
 <div class="para">A <dfn class="terminology">vector space</dfn> over a field <span class="process-math">\(\field\)</span> is a set <span class="process-math">\(V\)</span> with two operations, scalar multiplication by elements of <span class="process-math">\(\field\)</span> and addition, under which <span class="process-math">\(V\)</span> is closed. Moreover, these operations satisfy the following natural properties:</div>
 <ul class="disc" id="sec-vs-intro-3-8-2-1-6">
 <li id="sec-vs-intro-3-8-2-1-6-1">
-<div class="para" id="sec-vs-intro-3-8-2-1-6-1-1">Addition is commutative; that is <span class="process-math">\(\vvec+\wvec=\wvec+\vvec\)</span> for every pair of <span class="process-math">\(\vvec,\wvec\in V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1-6-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-3-8-2-1-6-1-1">Addition is commutative; that is <span class="process-math">\(\vvec+\wvec=\wvec+\vvec\)</span> for every pair of <span class="process-math">\(\vvec,\wvec\in V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-8-2-1-6-1" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-8-2-1-6-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 <li id="sec-vs-intro-3-8-2-1-6-2">
-<div class="para" id="sec-vs-intro-3-8-2-1-6-2-1">There is an additive identity;  that is, there is an element <span class="process-math">\(0\in V\)</span> such that <span class="process-math">\(0+\vvec = \vvec\)</span> for any element in <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1-6-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-3-8-2-1-6-2-1">There is an additive identity;  that is, there is an element <span class="process-math">\(0\in V\)</span> such that <span class="process-math">\(0+\vvec = \vvec\)</span> for any element in <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1-6-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-8-2-1-6-2" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-8-2-1-6-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 <li id="sec-vs-intro-3-8-2-1-6-3">
-<div class="para" id="sec-vs-intro-3-8-2-1-6-3-1">Every element <span class="process-math">\(\vvec\)</span> has an additive inverse <span class="process-math">\(\wvec\)</span> such that <span class="process-math">\(\vvec + \wvec = 0\text{.}\)</span>  We will usually write the additive identity as <span class="process-math">\(-\vvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1-6-3-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-3-8-2-1-6-3-1">Every element <span class="process-math">\(\vvec\)</span> has an additive inverse <span class="process-math">\(\wvec\)</span> such that <span class="process-math">\(\vvec + \wvec = 0\text{.}\)</span>  We will usually write the additive identity as <span class="process-math">\(-\vvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1-6-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-8-2-1-6-3" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-8-2-1-6-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 <li id="sec-vs-intro-3-8-2-1-6-4">
 <div class="para logical" id="sec-vs-intro-3-8-2-1-6-4-1">
@@ -414,15 +415,15 @@ A+B = \begin{bmatrix}
 (\uvec+\vvec) + \wvec = \uvec + (\vvec+\wvec)\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1-6-4-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1-6-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-8-2-1-6-4" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-8-2-1-6-4" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 <li id="sec-vs-intro-3-8-2-1-6-5">
 <div class="para" id="sec-vs-intro-3-8-2-1-6-5-1">For every <span class="process-math">\(\vvec\in V\text{,}\)</span> we have <span class="process-math">\(1\vvec =
-\vvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1-6-5-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+\vvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1-6-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-8-2-1-6-5" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-8-2-1-6-5" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 <li id="sec-vs-intro-3-8-2-1-6-6">
 <div class="para logical" id="sec-vs-intro-3-8-2-1-6-6-1">
@@ -432,21 +433,21 @@ A+B = \begin{bmatrix}
 s(\vvec+\wvec) = s\vvec + s\wvec\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1-6-6-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1-6-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-8-2-1-6-6" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-8-2-1-6-6" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 </ul>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-8-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.1.3: Vector space"><a href="#sec-vs-intro-3-8" title="Copy heading and permalink for Definition 1.1.3: Vector space">🔗</a></div></article><div class="para" id="sec-vs-intro-3-9">That is a long list of properties.  Technically speaking, if we want to check that some set with operations is a vector space, we need to check each one of those properties.  In practice, however, we will know a vector space when we see one, and we will be fairly loose with these details.  We will often think of a vector space as a set that is closed under operations that are called addition and scalar multiplication and that satisfy some familiar “compatibility properties.”<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-9" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Definition 1.1.3: Vector space"><a href="#sec-vs-intro-3-8" title="Copy heading and permalink for Definition 1.1.3: Vector space" aria-label="Copy heading and permalink for Definition 1.1.3: Vector space">🔗</a></div></article><div class="para" id="sec-vs-intro-3-9">That is a long list of properties.  Technically speaking, if we want to check that some set with operations is a vector space, we need to check each one of those properties.  In practice, however, we will know a vector space when we see one, and we will be fairly loose with these details.  We will often think of a vector space as a set that is closed under operations that are called addition and scalar multiplication and that satisfy some familiar “compatibility properties.”<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="sec-vs-intro-3-10"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.4</span><span class="period">.</span><span class="space"> </span><span class="title">Polynomials.</span>
 </h4>
-<div class="para" id="sec-vs-intro-3-10-2-1">If <span class="process-math">\(\field=\real\)</span> or <span class="process-math">\(\field=\complex\text{,}\)</span> the set of polynomials whose coefficients are in <span class="process-math">\(\field\)</span> form a vector space <span class="process-math">\(\pbb\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-10-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-3-10-2-1">If <span class="process-math">\(\field=\real\)</span> or <span class="process-math">\(\field=\complex\text{,}\)</span> the set of polynomials whose coefficients are in <span class="process-math">\(\field\)</span> form a vector space <span class="process-math">\(\pbb\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-10-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.4: Polynomials"><a href="#sec-vs-intro-3-10" title="Copy heading and permalink for Example 1.1.4: Polynomials">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-3-11"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.1.4: Polynomials"><a href="#sec-vs-intro-3-10" title="Copy heading and permalink for Example 1.1.4: Polynomials" aria-label="Copy heading and permalink for Example 1.1.4: Polynomials">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-3-11"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.5</span><span class="period">.</span><span class="space"> </span><span class="title">Polynomials of degree <span class="process-math">\(n\)</span>.</span>
 </h4>
 <div class="para logical" id="sec-vs-intro-3-11-2-1">
@@ -457,7 +458,7 @@ p(x) = a_0 + a_1x + a_2x^2
 \end{equation*}
 </div>
 <div class="para">where the coefficients <span class="process-math">\(a_j\)</span> are assumed to be either real or complex, as will be either specified or clear from the context.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-11-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-11-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="sec-vs-intro-3-11-2-2">
 <div class="para">If <span class="process-math">\(p=a_0 + a_1x + a_2x^2\)</span> and <span class="process-math">\(q=b_1+b_1x+b_2x^2\text{,}\)</span> then the operations of scalar multiplication and addition are</div>
 <div class="displaymath process-math" id="sec-vs-intro-3-11-2-2-3">
@@ -468,23 +469,23 @@ p + q \amp = (a_0+b_0) + (a_1+b_0)x + (a_2+b_2)x^2\text{.}
 </div>
 <div class="para">In particular, the additive identity is <span class="process-math">\(0 = 0 + 0x + 0x^2\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-11-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-11-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.5: Polynomials of degree n"><a href="#sec-vs-intro-3-11" title="Copy heading and permalink for Example 1.1.5: Polynomials of degree n">🔗</a></div></article><div class="para" id="sec-vs-intro-3-12">Of course, the set of all polynomials is larger than the set of quadratic polynomials, and we have <span class="process-math">\(\pbb_2\subset \pbb\text{.}\)</span> We say that <span class="process-math">\(\pbb_2\)</span> is a vector subspace of <span class="process-math">\(\pbb\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-12" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Example 1.1.5: Polynomials of degree n"><a href="#sec-vs-intro-3-11" title="Copy heading and permalink for Example 1.1.5: Polynomials of degree n" aria-label="Copy heading and permalink for Example 1.1.5: Polynomials of degree n">🔗</a></div></article><div class="para" id="sec-vs-intro-3-12">Of course, the set of all polynomials is larger than the set of quadratic polynomials, and we have <span class="process-math">\(\pbb_2\subset \pbb\text{.}\)</span> We say that <span class="process-math">\(\pbb_2\)</span> is a vector subspace of <span class="process-math">\(\pbb\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-vs-intro-3-13"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.1.6</span><span class="period">.</span><span class="space"> </span><span class="title">Vector subspace.</span>
 </h4>
-<div class="para" id="sec-vs-intro-3-13-2-1">A subset <span class="process-math">\(W\)</span> of a vector space <span class="process-math">\(V\)</span> is called a <dfn class="terminology">subspace</dfn> of <span class="process-math">\(V\)</span> if <span class="process-math">\(W\)</span> is closed under the operations of scalar multiplication and addition that it inherits from <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-13-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-3-13-2-1">A subset <span class="process-math">\(W\)</span> of a vector space <span class="process-math">\(V\)</span> is called a <dfn class="terminology">subspace</dfn> of <span class="process-math">\(V\)</span> if <span class="process-math">\(W\)</span> is closed under the operations of scalar multiplication and addition that it inherits from <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-13-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.1.6: Vector subspace"><a href="#sec-vs-intro-3-13" title="Copy heading and permalink for Definition 1.1.6: Vector subspace">🔗</a></div></article><div class="para" id="sec-vs-intro-3-14">Notice that a subspace is itself a vector space and that the underlying fields of <span class="process-math">\(V\)</span> and <span class="process-math">\(W\)</span> are the same.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-14" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Definition 1.1.6: Vector subspace"><a href="#sec-vs-intro-3-13" title="Copy heading and permalink for Definition 1.1.6: Vector subspace" aria-label="Copy heading and permalink for Definition 1.1.6: Vector subspace">🔗</a></div></article><div class="para" id="sec-vs-intro-3-14">Notice that a subspace is itself a vector space and that the underlying fields of <span class="process-math">\(V\)</span> and <span class="process-math">\(W\)</span> are the same.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-14" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-vs-intro-3-15">Every vector space <span class="process-math">\(V\)</span> has two subspaces that we will sometimes need to consider, namely, the subspace consisting of only the zero vector <span class="process-math">\(W=\{0\}\)</span> and the entire vector space <span class="process-math">\(W=V\)</span> itself.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-15" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-3-15">Every vector space <span class="process-math">\(V\)</span> has two subspaces that we will sometimes need to consider, namely, the subspace consisting of only the zero vector <span class="process-math">\(W=\{0\}\)</span> and the entire vector space <span class="process-math">\(W=V\)</span> itself.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-15" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="sec-vs-intro-3-16"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.7</span><span class="period">.</span><span class="space"> </span><span class="title">Function spaces.</span>
 </h4>
-<div class="para" id="sec-vs-intro-3-16-2-1">Let <span class="process-math">\(\fcal\)</span> be the set of functions whose domain is <span class="process-math">\(\real\)</span> and whose codomain is <span class="process-math">\(\complex\text{;}\)</span>  that is, functions of the form <span class="process-math">\(f:\real\to\complex\text{.}\)</span>  It follows that <span class="process-math">\(\fcal\)</span> is a complex vector space.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-16-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-3-16-2-1">Let <span class="process-math">\(\fcal\)</span> be the set of functions whose domain is <span class="process-math">\(\real\)</span> and whose codomain is <span class="process-math">\(\complex\text{;}\)</span>  that is, functions of the form <span class="process-math">\(f:\real\to\complex\text{.}\)</span>  It follows that <span class="process-math">\(\fcal\)</span> is a complex vector space.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-16-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="sec-vs-intro-3-16-2-2">
 <div class="para">If <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> are such functions and <span class="process-math">\(s\)</span> is a complex scalar, then we define new functions <span class="process-math">\(sf\)</span> and <span class="process-math">\(f+g\)</span> by</div>
 <div class="displaymath process-math" id="sec-vs-intro-3-16-2-2-6">
@@ -493,9 +494,9 @@ p + q \amp = (a_0+b_0) + (a_1+b_0)x + (a_2+b_2)x^2\text{.}
 (f+g)(x) \amp f(x) + g(x)\text{.}
 \end{align*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-16-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-16-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.7: Function spaces"><a href="#sec-vs-intro-3-16" title="Copy heading and permalink for Example 1.1.7: Function spaces">🔗</a></div></article><div class="para" id="sec-vs-intro-3-17">If we were to consider functions <span class="process-math">\(f:\real\to\real\text{,}\)</span> we would obtain a real vector space.  This is <em class="emphasis">not</em> a subspace of <span class="process-math">\(\fcal\text{,}\)</span> however, since the underlying fields are different.  Rather, here are some natural subspaces of <span class="process-math">\(\fcal\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-17" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Example 1.1.7: Function spaces"><a href="#sec-vs-intro-3-16" title="Copy heading and permalink for Example 1.1.7: Function spaces" aria-label="Copy heading and permalink for Example 1.1.7: Function spaces">🔗</a></div></article><div class="para" id="sec-vs-intro-3-17">If we were to consider functions <span class="process-math">\(f:\real\to\real\text{,}\)</span> we would obtain a real vector space.  This is <em class="emphasis">not</em> a subspace of <span class="process-math">\(\fcal\text{,}\)</span> however, since the underlying fields are different.  Rather, here are some natural subspaces of <span class="process-math">\(\fcal\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-17" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="sec-vs-intro-3-18"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.8</span><span class="period">.</span>
@@ -505,7 +506,7 @@ p + q \amp = (a_0+b_0) + (a_1+b_0)x + (a_2+b_2)x^2\text{.}
 </div>
 <ul class="disc" id="sec-vs-intro-3-18-1-1-2">
 <li id="sec-vs-intro-3-18-1-1-2-1">
-<div class="para" id="sec-vs-intro-3-18-1-1-2-1-1">The set of functions <span class="process-math">\(f:\real\to\complex\)</span> for which <span class="process-math">\(f(17)=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1-2-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-3-18-1-1-2-1-1">The set of functions <span class="process-math">\(f:\real\to\complex\)</span> for which <span class="process-math">\(f(17)=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-vs-intro-3-18-1-1-2-1-2">
 <div class="para">If <span class="process-math">\(s\)</span> is a scalar and <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> are functions that satisfy <span class="process-math">\(f(17)=g(17)=0\text{,}\)</span> then</div>
@@ -516,12 +517,12 @@ p + q \amp = (a_0+b_0) + (a_1+b_0)x + (a_2+b_2)x^2\text{.}
 \end{align*}
 </div>
 <div class="para">showing that this set of functions is closed under scalar multiplication and addition.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1-2-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1-2-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-18-1-1-2-1" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-18-1-1-2-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 <li id="sec-vs-intro-3-18-1-1-2-2">
-<div class="para" id="sec-vs-intro-3-18-1-1-2-2-1">The set of periodic functions whose period is 7; that is functions that satisfy <span class="process-math">\(f(x+7)=f(x)\)</span> for all <span class="process-math">\(x\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1-2-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-3-18-1-1-2-2-1">The set of periodic functions whose period is 7; that is functions that satisfy <span class="process-math">\(f(x+7)=f(x)\)</span> for all <span class="process-math">\(x\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-vs-intro-3-18-1-1-2-2-2">
 <div class="para">Again,</div>
@@ -531,35 +532,35 @@ p + q \amp = (a_0+b_0) + (a_1+b_0)x + (a_2+b_2)x^2\text{.}
 (f+g)(x+7) \amp = f(x+7)+g(x+7) = f(x)+g(x) = (f+g)(x)\text{.}
 \end{align*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1-2-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1-2-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-18-1-1-2-2" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-18-1-1-2-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 <li id="sec-vs-intro-3-18-1-1-2-3">
-<div class="para" id="sec-vs-intro-3-18-1-1-2-3-1">The set of continous functions.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1-2-3-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-3-18-1-1-2-3-1">The set of continous functions.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-18-1-1-2-3" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-18-1-1-2-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 <li id="sec-vs-intro-3-18-1-1-2-4">
 <div class="para" id="sec-vs-intro-3-18-1-1-2-4-1">The set of functions that satisfy <span class="process-math">\(f(17)=1\)</span> is, however, not a subspace since it is not closed under scalar multiplication or vector addition.  For instance, if <span class="process-math">\(f(17)
-= 1\text{,}\)</span> then <span class="process-math">\((2f)(17) = 2f(17) = 2\cdot1=2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1-2-4-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+= 1\text{,}\)</span> then <span class="process-math">\((2f)(17) = 2f(17) = 2\cdot1=2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1-2-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-18-1-1-2-4" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-3-18-1-1-2-4" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 </ul>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-18-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.8"><a href="#sec-vs-intro-3-18" title="Copy heading and permalink for Example 1.1.8">🔗</a></div></article><article class="example example-like" id="example-vs-intersection"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.1.8"><a href="#sec-vs-intro-3-18" title="Copy heading and permalink for Example 1.1.8" aria-label="Copy heading and permalink for Example 1.1.8">🔗</a></div></article><article class="example example-like" id="example-vs-intersection"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.9</span><span class="period">.</span>
 </h4>
-<div class="para" id="example-vs-intersection-1-1">If <span class="process-math">\(V\)</span> is a vector space and <span class="process-math">\(V_1\)</span> and <span class="process-math">\(V_2\)</span> are subspaces, then <span class="process-math">\(V_1\cap V_2\)</span> is also a subspace of <span class="process-math">\(V\)</span> as it can be seen that the interection is closed under scalar multiplication and addition.  The “compatibility properties” are satisfied due to the fact that <span class="process-math">\(V\)</span> is itself a vector space.<div class="autopermalink" data-description="Paragraph"><a href="#example-vs-intersection-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="example-vs-intersection-1-1">If <span class="process-math">\(V\)</span> is a vector space and <span class="process-math">\(V_1\)</span> and <span class="process-math">\(V_2\)</span> are subspaces, then <span class="process-math">\(V_1\cap V_2\)</span> is also a subspace of <span class="process-math">\(V\)</span> as it can be seen that the interection is closed under scalar multiplication and addition.  The “compatibility properties” are satisfied due to the fact that <span class="process-math">\(V\)</span> is itself a vector space.<div class="autopermalink" data-description="Paragraph"><a href="#example-vs-intersection-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.9"><a href="#example-vs-intersection" title="Copy heading and permalink for Example 1.1.9">🔗</a></div></article><div class="para" id="sec-vs-intro-3-20">When working with a vector space <span class="process-math">\(V\text{,}\)</span> we will frequently refer to the elements of <span class="process-math">\(V\)</span> as <em class="emphasis">vectors</em> even though they may be polynomials, matrices, functions, or even something entirely different.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-20" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Example 1.1.9"><a href="#example-vs-intersection" title="Copy heading and permalink for Example 1.1.9" aria-label="Copy heading and permalink for Example 1.1.9">🔗</a></div></article><div class="para" id="sec-vs-intro-3-20">When working with a vector space <span class="process-math">\(V\text{,}\)</span> we will frequently refer to the elements of <span class="process-math">\(V\)</span> as <em class="emphasis">vectors</em> even though they may be polynomials, matrices, functions, or even something entirely different.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-3-20" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Subsection 1.1.1: Vector spaces"><a href="#sec-vs-intro-3" title="Copy heading and permalink for Subsection 1.1.1: Vector spaces">🔗</a></div></section><section class="subsection" id="sec-vs-intro-4"><h3 class="heading hide-type">
+<div class="autopermalink" data-description="Subsection 1.1.1: Vector spaces"><a href="#sec-vs-intro-3" title="Copy heading and permalink for Subsection 1.1.1: Vector spaces" aria-label="Copy heading and permalink for Subsection 1.1.1: Vector spaces">🔗</a></div></section><section class="subsection" id="sec-vs-intro-4"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.1.2</span><span class="space"> </span><span class="title">Linear combinations</span>
 </h3>
-<div class="para" id="sec-vs-intro-4-2">Our earlier study of linear algebra really began once we introduced linear combinations.  Of course, linear combinations are defined purely in terms of scalar multiplication and addition so we can form linear combinations of elements in a vector space.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-4-2">Our earlier study of linear algebra really began once we introduced linear combinations.  Of course, linear combinations are defined purely in terms of scalar multiplication and addition so we can form linear combinations of elements in a vector space.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-vs-intro-4-3"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.1.10</span><span class="period">.</span>
@@ -573,9 +574,9 @@ c_1\vvec_1 + c_2\vvec_2 + \ldots + c_m\vvec_m
 </div>
 <div class="para">where the scalars <span class="process-math">\(c_j\)</span> belong to the field <span class="process-math">\(\field\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-3-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.1.10"><a href="#sec-vs-intro-4-3" title="Copy heading and permalink for Definition 1.1.10">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-4-4"><h4 class="heading">
+<div class="autopermalink" data-description="Definition 1.1.10"><a href="#sec-vs-intro-4-3" title="Copy heading and permalink for Definition 1.1.10" aria-label="Copy heading and permalink for Definition 1.1.10">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-4-4"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.11</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-vs-intro-4-4-1-1">
@@ -585,16 +586,16 @@ c_1\vvec_1 + c_2\vvec_2 + \ldots + c_m\vvec_m
 2p_1(x)-3p_2(x) = -21x^2 +5\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-4-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.11"><a href="#sec-vs-intro-4-4" title="Copy heading and permalink for Example 1.1.11">🔗</a></div></article><div class="para" id="sec-vs-intro-4-5">Because we can form linear combinations, we can also think about concepts like span and linear independence.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-5" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Example 1.1.11"><a href="#sec-vs-intro-4-4" title="Copy heading and permalink for Example 1.1.11" aria-label="Copy heading and permalink for Example 1.1.11">🔗</a></div></article><div class="para" id="sec-vs-intro-4-5">Because we can form linear combinations, we can also think about concepts like span and linear independence.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-vs-intro-4-6"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.1.12</span><span class="period">.</span><span class="space"> </span><span class="title">Span.</span>
 </h4>
-<div class="para" id="sec-vs-intro-4-6-2-1">The <dfn class="terminology">span</dfn> of a set of vectors in a vector space is the set of all linear combinations that can be formed from the set.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-6-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-4-6-2-1">The <dfn class="terminology">span</dfn> of a set of vectors in a vector space is the set of all linear combinations that can be formed from the set.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-6-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.1.12: Span"><a href="#sec-vs-intro-4-6" title="Copy heading and permalink for Definition 1.1.12: Span">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-4-7"><h4 class="heading">
+<div class="autopermalink" data-description="Definition 1.1.12: Span"><a href="#sec-vs-intro-4-6" title="Copy heading and permalink for Definition 1.1.12: Span" aria-label="Copy heading and permalink for Definition 1.1.12: Span">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-4-7"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.13</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-vs-intro-4-7-1-1">
@@ -626,9 +627,9 @@ c_1 \amp c_2 \\
 \end{equation*}
 </div>
 <div class="para">which is the set of all upper triangular <span class="process-math">\(2\times 2\)</span> matrices.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-7-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.13"><a href="#sec-vs-intro-4-7" title="Copy heading and permalink for Example 1.1.13">🔗</a></div></article><div class="para logical" id="sec-vs-intro-4-8">
+<div class="autopermalink" data-description="Example 1.1.13"><a href="#sec-vs-intro-4-7" title="Copy heading and permalink for Example 1.1.13" aria-label="Copy heading and permalink for Example 1.1.13">🔗</a></div></article><div class="para logical" id="sec-vs-intro-4-8">
 <div class="para">It’s not hard to see that the span of a set of vectors <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\)</span> in <span class="process-math">\(V\)</span> forms a subspace.  We just have to check that the span is closed under scalar multiplication and addition.  So we will consider vectors</div>
 <div class="displaymath process-math" id="sec-vs-intro-4-8-3">
 \begin{align*}
@@ -650,21 +651,21 @@ s\uvec = (sa_1)\vvec_1 + (sa_2) \vvec_2 + \ldots + (sa_m)\vvec_m\text{,}
 \end{equation*}
 </div>
 <div class="para">which is also in the span.  This demonstrates the following proposition.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-8" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-vs-intro-4-9"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.14</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-vs-intro-4-9-1-1">The span of a set of vectors in <span class="process-math">\(V\)</span> is a subspace of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-9-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-4-9-1-1">The span of a set of vectors in <span class="process-math">\(V\)</span> is a subspace of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.14"><a href="#sec-vs-intro-4-9" title="Copy heading and permalink for Proposition 1.1.14">🔗</a></div></article><div class="para" id="sec-vs-intro-4-10">We can also define linear dependence as before.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-10" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 1.1.14"><a href="#sec-vs-intro-4-9" title="Copy heading and permalink for Proposition 1.1.14" aria-label="Copy heading and permalink for Proposition 1.1.14">🔗</a></div></article><div class="para" id="sec-vs-intro-4-10">We can also define linear dependence as before.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-vs-intro-4-11"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.1.15</span><span class="period">.</span><span class="space"> </span><span class="title">Linear independence.</span>
 </h4>
-<div class="para" id="sec-vs-intro-4-11-2-1">A set of vectors in <span class="process-math">\(V\)</span> is <dfn class="terminology">linearly dependent</dfn> if one of the vectors can be written as a linear combination of the others.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-11-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-4-11-2-1">A set of vectors in <span class="process-math">\(V\)</span> is <dfn class="terminology">linearly dependent</dfn> if one of the vectors can be written as a linear combination of the others.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-11-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.1.15: Linear independence"><a href="#sec-vs-intro-4-11" title="Copy heading and permalink for Definition 1.1.15: Linear independence">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-4-12"><h4 class="heading">
+<div class="autopermalink" data-description="Definition 1.1.15: Linear independence"><a href="#sec-vs-intro-4-11" title="Copy heading and permalink for Definition 1.1.15: Linear independence" aria-label="Copy heading and permalink for Definition 1.1.15: Linear independence">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-4-12"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.16</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-vs-intro-4-12-1-1">
@@ -678,7 +679,7 @@ p_3(x)=-7x+7\text{.}
 </div>
 <div class="para">This set of polynomials is linear dependent because <span class="process-math">\(p_3=3p_1-p_2\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-12-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-12-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="sec-vs-intro-4-12-1-2">
 <div class="para">Notice that this relationship can also be expressed as</div>
 <div class="displaymath process-math">
@@ -687,9 +688,9 @@ p_3(x)=-7x+7\text{.}
 \end{equation*}
 </div>
 <div class="para">which leads to the next proposition.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-12-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-4-12-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.16"><a href="#sec-vs-intro-4-12" title="Copy heading and permalink for Example 1.1.16">🔗</a></div></article><article class="proposition theorem-like" id="prop-lin-indep-scalars"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.1.16"><a href="#sec-vs-intro-4-12" title="Copy heading and permalink for Example 1.1.16" aria-label="Copy heading and permalink for Example 1.1.16">🔗</a></div></article><article class="proposition theorem-like" id="prop-lin-indep-scalars"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.17</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="prop-lin-indep-scalars-1-1">
@@ -700,7 +701,7 @@ a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0
 \end{equation*}
 </div>
 <div class="para">for some set of scalars <span class="process-math">\(a_1,a_2,\ldots,a_m\)</span> with at least one being nonzero.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-scalars-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-scalars-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="prop-lin-indep-scalars-1-2">
 <div class="para">Equivalently, the set of vectors is linearly independent if and only if</div>
 <div class="displaymath process-math">
@@ -710,9 +711,9 @@ a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0
 </div>
 <div class="para">implies that all the scalars <span class="process-math">\(a_j=0\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-scalars-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-scalars-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.17"><a href="#prop-lin-indep-scalars" title="Copy heading and permalink for Proposition 1.1.17">🔗</a></div></article><article class="proof" id="prop-lin-indep-scalars-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 1.1.17"><a href="#prop-lin-indep-scalars" title="Copy heading and permalink for Proposition 1.1.17" aria-label="Copy heading and permalink for Proposition 1.1.17">🔗</a></div></article><article class="proof" id="prop-lin-indep-scalars-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="prop-lin-indep-scalars-2-1">
 <div class="para">The second statement is logically equivalent to the first so our proof will focus on the first statement.  Suppose that the set <span class="process-math">\(\vvec_1,\ldots,\vvec_m\)</span> is linearly dependent and that <span class="process-math">\(\vvec_k\)</span> is the first vector that is a linear combination of vectors that occur previously in the list. This means that there are scalars <span class="process-math">\(c_1,c_2,\ldots,c_{k-1}\)</span> such that</div>
 <div class="displaymath process-math">
@@ -732,7 +733,7 @@ c_1\vvec_1+c_2\vvec_2+\ldots+c_{k-1}\vvec_{k-1}-\vvec_k = 0\text{,}
 a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-scalars-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-scalars-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-lin-indep-scalars-2-2">
 <div class="para">Conversely, suppose that</div>
@@ -750,9 +751,9 @@ a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0
 \end{equation*}
 </div>
 <div class="para">This shows that <span class="process-math">\(\vvec_k\)</span> is a linear combination of the other vectors and that the set of vectors is therefore linearly dependent.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-scalars-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-scalars-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.1.17.1"><a href="#prop-lin-indep-scalars-2" title="Copy heading and permalink for Proof 1.1.17.1">🔗</a></div></article><article class="proposition theorem-like" id="prop-lin-dep-span"><h4 class="heading">
+<div class="autopermalink" data-description="Proof 1.1.17.1"><a href="#prop-lin-indep-scalars-2" title="Copy heading and permalink for Proof 1.1.17.1" aria-label="Copy heading and permalink for Proof 1.1.17.1">🔗</a></div></article><article class="proposition theorem-like" id="prop-lin-dep-span"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.18</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="prop-lin-dep-span-1-1">
@@ -763,20 +764,20 @@ a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m = 0
 \laspan{\vvec_1,\vvec_2,\ldots,\widehat{\vvec_k},\ldots,\vvec_m}\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-dep-span-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-dep-span-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.18"><a href="#prop-lin-dep-span" title="Copy heading and permalink for Proposition 1.1.18">🔗</a></div></article><article class="proof" id="prop-lin-dep-span-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="prop-lin-dep-span-2-1">If <span class="process-math">\(\wvec = a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m\text{,}\)</span> then we can replace <span class="process-math">\(\vvec_k\)</span> in this expression with a linear combination of the other vectors.  This shows that <span class="process-math">\(\wvec\)</span> can be written as a linear combination of the set of vectors with <span class="process-math">\(\vvec_k\)</span> removed.<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-dep-span-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 1.1.18"><a href="#prop-lin-dep-span" title="Copy heading and permalink for Proposition 1.1.18" aria-label="Copy heading and permalink for Proposition 1.1.18">🔗</a></div></article><article class="proof" id="prop-lin-dep-span-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="prop-lin-dep-span-2-1">If <span class="process-math">\(\wvec = a_1\vvec_1+a_2\vvec_2+\ldots+a_m\vvec_m\text{,}\)</span> then we can replace <span class="process-math">\(\vvec_k\)</span> in this expression with a linear combination of the other vectors.  This shows that <span class="process-math">\(\wvec\)</span> can be written as a linear combination of the set of vectors with <span class="process-math">\(\vvec_k\)</span> removed.<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-dep-span-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.1.18.1"><a href="#prop-lin-dep-span-2" title="Copy heading and permalink for Proof 1.1.18.1">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.1.2: Linear combinations"><a href="#sec-vs-intro-4" title="Copy heading and permalink for Subsection 1.1.2: Linear combinations">🔗</a></div></section><section class="subsection" id="sec-vs-intro-5"><h3 class="heading hide-type">
+<div class="autopermalink" data-description="Proof 1.1.18.1"><a href="#prop-lin-dep-span-2" title="Copy heading and permalink for Proof 1.1.18.1" aria-label="Copy heading and permalink for Proof 1.1.18.1">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.1.2: Linear combinations"><a href="#sec-vs-intro-4" title="Copy heading and permalink for Subsection 1.1.2: Linear combinations" aria-label="Copy heading and permalink for Subsection 1.1.2: Linear combinations">🔗</a></div></section><section class="subsection" id="sec-vs-intro-5"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.1.3</span><span class="space"> </span><span class="title">Bases</span>
 </h3>
 <article class="definition definition-like" id="sec-vs-intro-5-2"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.1.19</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-vs-intro-5-2-1-1">A set of vectors in a vector space <span class="process-math">\(V\)</span> forms a <dfn class="terminology">basis</dfn> for <span class="process-math">\(V\)</span> if the set is linearly independent and its span is <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-2-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-5-2-1-1">A set of vectors in a vector space <span class="process-math">\(V\)</span> forms a <dfn class="terminology">basis</dfn> for <span class="process-math">\(V\)</span> if the set is linearly independent and its span is <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.1.19"><a href="#sec-vs-intro-5-2" title="Copy heading and permalink for Definition 1.1.19">🔗</a></div></article><article class="example example-like" id="ex-poly-basis-1"><h4 class="heading">
+<div class="autopermalink" data-description="Definition 1.1.19"><a href="#sec-vs-intro-5-2" title="Copy heading and permalink for Definition 1.1.19" aria-label="Copy heading and permalink for Definition 1.1.19">🔗</a></div></article><article class="example example-like" id="ex-poly-basis-1"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.20</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="ex-poly-basis-1-1-1">
@@ -790,7 +791,7 @@ p_3(x)=x^2
 </div>
 <div class="para">form a basis of <span class="process-math">\(\pbb_2\text{.}\)</span>  Notice that this statement is true for both <span class="process-math">\(\field=\real\)</span> and <span class="process-math">\(\field=\complex\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#ex-poly-basis-1-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ex-poly-basis-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="ex-poly-basis-1-1-2">
 <div class="para">First, every polynomial <span class="process-math">\(p\)</span> in <span class="process-math">\(\pbb_2\)</span> can be written as</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-lin-indep-scalars.html">
@@ -812,9 +813,9 @@ a_1 + a_2x + a_3x^2 = 0 + 0x+0x^2
 </div>
 <div class="para">from which we conclude that <span class="process-math">\(a_1=0\text{,}\)</span> <span class="process-math">\(a_2=0\text{,}\)</span> and <span class="process-math">\(a_3=0\text{.}\)</span>  Therefore, <span class="process-math">\(p_1\text{,}\)</span> <span class="process-math">\(p_2\text{,}\)</span> and <span class="process-math">\(p_3\)</span> are linearly indepedent by <a href="sec-vs-intro.html#prop-lin-indep-scalars" class="xref" data-knowl="./knowl/xref/prop-lin-indep-scalars.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.17">Proposition 1.1.17</a> and hence form a basis for <span class="process-math">\(\pbb_2\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#ex-poly-basis-1-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ex-poly-basis-1-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.20"><a href="#ex-poly-basis-1" title="Copy heading and permalink for Example 1.1.20">🔗</a></div></article><article class="example example-like" id="ex-poly-basis-2"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.1.20"><a href="#ex-poly-basis-1" title="Copy heading and permalink for Example 1.1.20" aria-label="Copy heading and permalink for Example 1.1.20">🔗</a></div></article><article class="example example-like" id="ex-poly-basis-2"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.21</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="ex-poly-basis-2-1-1">
@@ -828,7 +829,7 @@ q_3(x)=2x^2+4x+2
 </div>
 <div class="para">form a basis of <span class="process-math">\(\pbb_2\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#ex-poly-basis-2-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ex-poly-basis-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="ex-poly-basis-2-1-2">
 <div class="para">To see this, suppose that <span class="process-math">\(p(x)=a_0 + a_1x + a_2x^2\)</span> is a polynomial in <span class="process-math">\(\pbb_\text{.}\)</span>  We wish to see that <span class="process-math">\(p\)</span> can be written as a linear combination of <span class="process-math">\(q_1\text{,}\)</span> <span class="process-math">\(q_2\text{,}\)</span> and <span class="process-math">\(q_3\text{.}\)</span>  This means that there are scalars <span class="process-math">\(c_1\text{,}\)</span> <span class="process-math">\(c_2\text{,}\)</span> and <span class="process-math">\(c_3\)</span> such that</div>
 <div class="displaymath process-math" id="ex-poly-basis-2-1-2-10">
@@ -855,7 +856,7 @@ c_1(x^2+3x) + c_2(-x^2+x) + c_3(2x^2 + 4x + 2) \amp
 </div>
 <div class="para">which has a unique solution for every vector <span class="process-math">\(\threevec{a_0}{a_1}{a_2}\text{.}\)</span>  This says that <span class="process-math">\(\laspan{q_1,q_2,q_3} = \pbb_2\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#ex-poly-basis-2-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ex-poly-basis-2-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="ex-poly-basis-2-1-3">
 <div class="para">Moreover, since the solution to the equation above is unique, the only linear combination</div>
 <div class="displaymath process-math">
@@ -864,9 +865,9 @@ c_1q_1 + c_2q_2 +c_3q_3=0 = 0+0x+0x^2
 \end{equation*}
 </div>
 <div class="para">must have <span class="process-math">\(c_1=c_2=c_2=0\text{,}\)</span> which means that these polynomials are linearly independent.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#ex-poly-basis-2-1-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ex-poly-basis-2-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.21"><a href="#ex-poly-basis-2" title="Copy heading and permalink for Example 1.1.21">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-5-5"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.1.21"><a href="#ex-poly-basis-2" title="Copy heading and permalink for Example 1.1.21" aria-label="Copy heading and permalink for Example 1.1.21">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-5-5"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.22</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-vs-intro-5-5-1-1">
@@ -882,7 +883,7 @@ p_n \amp = 1 +x+x^2+\ldots+x^n
 </div>
 <div class="para">in <span class="process-math">\(\pbb_n\text{.}\)</span>  We claim that these polynomials form a basis for <span class="process-math">\(\pbb_n\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-5-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="sec-vs-intro-5-5-1-2">
 <div class="para">To see that they are linearly independent, we will suppose that they are linearly dependent and derive a contradiction. Suppose that</div>
 <div class="displaymath process-math">
@@ -899,7 +900,7 @@ c_kx^k + \text{ lower order terms}\text{.}
 </div>
 <div class="para">That is, <span class="process-math">\(c_kx^k\)</span> is the only term involving <span class="process-math">\(x^k\text{.}\)</span> Therefore, <span class="process-math">\(c_k=0\text{,}\)</span> which contradicts our assumption that <span class="process-math">\(c_k\neq 0\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-5-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-5-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="sec-vs-intro-5-5-1-3">
 <div class="para">To see that these polynomials span <span class="process-math">\(\pbb_n\text{,}\)</span> we offer a proof by induction.  When <span class="process-math">\(n=0\text{,}\)</span> we see that <span class="process-math">\(p_0 = 1\)</span> spans <span class="process-math">\(\pbb_0\text{.}\)</span>  Now suppose that <span class="process-math">\(p_0,p_1,\ldots,p_{n-1}\)</span> span <span class="process-math">\(\pbb_{n-1}\)</span> and that <span class="process-math">\(p(x)=a_0+a_1x+a_2x^2 + \ldots + a_nx^n\)</span> is a polynomial in <span class="process-math">\(\pbb_n\text{.}\)</span>  Notice that the polynomials <span class="process-math">\(p(x)\)</span> and <span class="process-math">\(a_np_n(x)\)</span> have the same coefficient of <span class="process-math">\(x^n\text{.}\)</span> Therefore,</div>
 <div class="displaymath process-math">
@@ -914,37 +915,37 @@ p - a_np_n \amp = c_0p_0+c_1p_1+\ldots+c_{n-1}p_{n-1}\\
 p \amp = c_0p_0+c_1p_1+\ldots+c_{n-1}p_{n-1} + a_np_n
 \end{align*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-5-1-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-5-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.22"><a href="#sec-vs-intro-5-5" title="Copy heading and permalink for Example 1.1.22">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-5-6"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.1.22"><a href="#sec-vs-intro-5-5" title="Copy heading and permalink for Example 1.1.22" aria-label="Copy heading and permalink for Example 1.1.22">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-5-6"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.23</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-vs-intro-5-6-1-1">There is no finite set that forms a basis for <span class="process-math">\(\pbb\text{,}\)</span> the set of all polynomials.  Given any finite set, there is a polynomial having a highest degree <span class="process-math">\(m\text{.}\)</span>  Therefore, the polynomial <span class="process-math">\(x^{m+1}\)</span> is not in the span of the set so it cannot be a basis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-6-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-5-6-1-1">There is no finite set that forms a basis for <span class="process-math">\(\pbb\text{,}\)</span> the set of all polynomials.  Given any finite set, there is a polynomial having a highest degree <span class="process-math">\(m\text{.}\)</span>  Therefore, the polynomial <span class="process-math">\(x^{m+1}\)</span> is not in the span of the set so it cannot be a basis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.23"><a href="#sec-vs-intro-5-6" title="Copy heading and permalink for Example 1.1.23">🔗</a></div></article><article class="definition definition-like" id="sec-vs-intro-5-7"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.1.23"><a href="#sec-vs-intro-5-6" title="Copy heading and permalink for Example 1.1.23" aria-label="Copy heading and permalink for Example 1.1.23">🔗</a></div></article><article class="definition definition-like" id="sec-vs-intro-5-7"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.1.24</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-vs-intro-5-7-1-1">We say that a vector space <span class="process-math">\(V\)</span> is <dfn class="terminology">finite dimensional</dfn> if there is a finite set whose span is <span class="process-math">\(V\text{.}\)</span>  Otherwise, we say that <span class="process-math">\(V\)</span> is <dfn class="terminology">infinite dimensional.</dfn><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-7-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-5-7-1-1">We say that a vector space <span class="process-math">\(V\)</span> is <dfn class="terminology">finite dimensional</dfn> if there is a finite set whose span is <span class="process-math">\(V\text{.}\)</span>  Otherwise, we say that <span class="process-math">\(V\)</span> is <dfn class="terminology">infinite dimensional.</dfn><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.1.24"><a href="#sec-vs-intro-5-7" title="Copy heading and permalink for Definition 1.1.24">🔗</a></div></article><div class="para" id="sec-vs-intro-5-8">Notice that any finite dimensional vector space must have a basis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-8" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Definition 1.1.24"><a href="#sec-vs-intro-5-7" title="Copy heading and permalink for Definition 1.1.24" aria-label="Copy heading and permalink for Definition 1.1.24">🔗</a></div></article><div class="para" id="sec-vs-intro-5-8">Notice that any finite dimensional vector space must have a basis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-vs-intro-5-9"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.25</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-vs-intro-5-9-1-1">Any finite dimensional vector space has a basis consisting of a finite number of vectors.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-9-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-5-9-1-1">Any finite dimensional vector space has a basis consisting of a finite number of vectors.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.25"><a href="#sec-vs-intro-5-9" title="Copy heading and permalink for Proposition 1.1.25">🔗</a></div></article><article class="proof" id="sec-vs-intro-5-9-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="sec-vs-intro-5-9-2-1">If <span class="process-math">\(V\)</span> is a finite dimensional vector space, there is a finite set of vectors whose span is <span class="process-math">\(V\text{.}\)</span>  If this set of vectors is linearly independent, then it forms a basis.  It not, we can remove one vector that is a linear combination of the others.  <a href="sec-vs-intro.html#prop-lin-dep-span" class="xref" data-knowl="./knowl/xref/prop-lin-dep-span.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.18">Proposition 1.1.18</a> says that the span of the remaining vectors is still <span class="process-math">\(V\)</span> so we continue removing vectors one at a time until we obtain a linearly independent set, which must be a basis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-9-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 1.1.25"><a href="#sec-vs-intro-5-9" title="Copy heading and permalink for Proposition 1.1.25" aria-label="Copy heading and permalink for Proposition 1.1.25">🔗</a></div></article><article class="proof" id="sec-vs-intro-5-9-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="sec-vs-intro-5-9-2-1">If <span class="process-math">\(V\)</span> is a finite dimensional vector space, there is a finite set of vectors whose span is <span class="process-math">\(V\text{.}\)</span>  If this set of vectors is linearly independent, then it forms a basis.  It not, we can remove one vector that is a linear combination of the others.  <a href="sec-vs-intro.html#prop-lin-dep-span" class="xref" data-knowl="./knowl/xref/prop-lin-dep-span.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.18">Proposition 1.1.18</a> says that the span of the remaining vectors is still <span class="process-math">\(V\)</span> so we continue removing vectors one at a time until we obtain a linearly independent set, which must be a basis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-9-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.1.25.1"><a href="#sec-vs-intro-5-9-2" title="Copy heading and permalink for Proof 1.1.25.1">🔗</a></div></article><div class="para" id="sec-vs-intro-5-10">Notice that the two bases for <span class="process-math">\(\pbb_2\)</span> in <a href="sec-vs-intro.html#ex-poly-basis-1" class="xref" data-knowl="./knowl/xref/ex-poly-basis-1.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.1.20">Example 1.1.20</a> and <a href="sec-vs-intro.html#ex-poly-basis-2" class="xref" data-knowl="./knowl/xref/ex-poly-basis-2.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.1.21">Example 1.1.21</a> both consist of three polynomials. That is, these two bases for <span class="process-math">\(\pbb_2\)</span> have the same number of vectors.  This is generally true as we now explain.  First, we will prove a more technical, but still useful, result.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-10" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proof 1.1.25.1"><a href="#sec-vs-intro-5-9-2" title="Copy heading and permalink for Proof 1.1.25.1" aria-label="Copy heading and permalink for Proof 1.1.25.1">🔗</a></div></article><div class="para" id="sec-vs-intro-5-10">Notice that the two bases for <span class="process-math">\(\pbb_2\)</span> in <a href="sec-vs-intro.html#ex-poly-basis-1" class="xref" data-knowl="./knowl/xref/ex-poly-basis-1.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.1.20">Example 1.1.20</a> and <a href="sec-vs-intro.html#ex-poly-basis-2" class="xref" data-knowl="./knowl/xref/ex-poly-basis-2.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.1.21">Example 1.1.21</a> both consist of three polynomials. That is, these two bases for <span class="process-math">\(\pbb_2\)</span> have the same number of vectors.  This is generally true as we now explain.  First, we will prove a more technical, but still useful, result.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-lin-indep-num"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.26</span><span class="period">.</span>
 </h4>
-<div class="para" id="prop-lin-indep-num-1-1">The number of vectors in a linearly independent set in the vector space <span class="process-math">\(V\)</span> is no more than the number of vectors in any set whose span is <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-num-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="prop-lin-indep-num-1-1">The number of vectors in a linearly independent set in the vector space <span class="process-math">\(V\)</span> is no more than the number of vectors in any set whose span is <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-num-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.26"><a href="#prop-lin-indep-num" title="Copy heading and permalink for Proposition 1.1.26">🔗</a></div></article><article class="proof" id="prop-lin-indep-num-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="prop-lin-indep-num-2-1">Suppose that <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\)</span> is a linear independent set in the vector space <span class="process-math">\(V\)</span> and that <span class="process-math">\(\wvec_1,\wvec_2,\ldots,\wvec_n\)</span> is a set whose span is <span class="process-math">\(V\text{.}\)</span>  We wish to show that <span class="process-math">\(m\leq n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-num-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 1.1.26"><a href="#prop-lin-indep-num" title="Copy heading and permalink for Proposition 1.1.26" aria-label="Copy heading and permalink for Proposition 1.1.26">🔗</a></div></article><article class="proof" id="prop-lin-indep-num-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="prop-lin-indep-num-2-1">Suppose that <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\)</span> is a linear independent set in the vector space <span class="process-math">\(V\)</span> and that <span class="process-math">\(\wvec_1,\wvec_2,\ldots,\wvec_n\)</span> is a set whose span is <span class="process-math">\(V\text{.}\)</span>  We wish to show that <span class="process-math">\(m\leq n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-num-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-lin-indep-num-2-2">
 <div class="para">We first construct a new list</div>
@@ -961,7 +962,7 @@ p \amp = c_0p_0+c_1p_1+\ldots+c_{n-1}p_{n-1} + a_np_n
 </div>
 <div class="para">whose span is <span class="process-math">\(V\)</span> by <a href="sec-vs-intro.html#prop-lin-dep-span" class="xref" data-knowl="./knowl/xref/prop-lin-dep-span.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.18">Proposition 1.1.18</a>. Notice that the cardinality of this new list is still <span class="process-math">\(n\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-num-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-num-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-lin-indep-num-2-3">
 <div class="para">We can repeat this process.  We prepend <span class="process-math">\(\vvec_{m-1}\)</span> to the list to obtain</div>
@@ -972,28 +973,28 @@ p \amp = c_0p_0+c_1p_1+\ldots+c_{n-1}p_{n-1} + a_np_n
 </div>
 <div class="para">which must be linearly dependent.  Let <span class="process-math">\(\uvec\)</span> be the first vector in the list that is a linear combination of vectors that occur previously in the list.  Once again, since the <span class="process-math">\(\vvec\)</span> vectors form a linearly independent set, we know that <span class="process-math">\(\uvec\)</span> is one of the <span class="process-math">\(\wvec\)</span> vectors.  We can remove <span class="process-math">\(\uvec\)</span> to obtain a new list of vectors whose span is <span class="process-math">\(V\text{.}\)</span>  Again, the cardinality of this new list is <span class="process-math">\(n\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-num-2-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-num-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="prop-lin-indep-num-2-4">We continue this process until all the <span class="process-math">\(\vvec\)</span> vectors have been added to the beginning of the list.  At each step, the vector we remove is one of the <span class="process-math">\(\wvec\)</span> vectors since the <span class="process-math">\(\vvec\)</span> vectors are linearly independent.  Therefore, we have a list of <span class="process-math">\(n\)</span> vectors that contains <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\text{,}\)</span> which says that <span class="process-math">\(m\leq n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-num-2-4" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="prop-lin-indep-num-2-4">We continue this process until all the <span class="process-math">\(\vvec\)</span> vectors have been added to the beginning of the list.  At each step, the vector we remove is one of the <span class="process-math">\(\wvec\)</span> vectors since the <span class="process-math">\(\vvec\)</span> vectors are linearly independent.  Therefore, we have a list of <span class="process-math">\(n\)</span> vectors that contains <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\text{,}\)</span> which says that <span class="process-math">\(m\leq n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-num-2-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.1.26.1"><a href="#prop-lin-indep-num-2" title="Copy heading and permalink for Proof 1.1.26.1">🔗</a></div></article><article class="proposition theorem-like" id="sec-vs-intro-5-12"><h4 class="heading">
+<div class="autopermalink" data-description="Proof 1.1.26.1"><a href="#prop-lin-indep-num-2" title="Copy heading and permalink for Proof 1.1.26.1" aria-label="Copy heading and permalink for Proof 1.1.26.1">🔗</a></div></article><article class="proposition theorem-like" id="sec-vs-intro-5-12"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.27</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-vs-intro-5-12-1-1">If <span class="process-math">\(V\)</span> is a finite dimensional vector space, then any two bases have the same number of vectors.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-12-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-5-12-1-1">If <span class="process-math">\(V\)</span> is a finite dimensional vector space, then any two bases have the same number of vectors.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-12-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.27"><a href="#sec-vs-intro-5-12" title="Copy heading and permalink for Proposition 1.1.27">🔗</a></div></article><article class="proof" id="sec-vs-intro-5-12-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="sec-vs-intro-5-12-2-1">Suppose that <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\)</span> is one basis and that <span class="process-math">\(\wvec_1,\wvec_2,\ldots,\wvec_n\)</span> is another.  The set of <span class="process-math">\(\vvec\)</span> vectors forms a linearly independent set and the set of <span class="process-math">\(\wvec\)</span> vectors spans <span class="process-math">\(V\text{.}\)</span>  By <a href="sec-vs-intro.html#prop-lin-indep-num" class="xref" data-knowl="./knowl/xref/prop-lin-indep-num.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.26">Proposition 1.1.26</a>, we know that <span class="process-math">\(m\leq n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-12-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 1.1.27"><a href="#sec-vs-intro-5-12" title="Copy heading and permalink for Proposition 1.1.27" aria-label="Copy heading and permalink for Proposition 1.1.27">🔗</a></div></article><article class="proof" id="sec-vs-intro-5-12-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="sec-vs-intro-5-12-2-1">Suppose that <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\)</span> is one basis and that <span class="process-math">\(\wvec_1,\wvec_2,\ldots,\wvec_n\)</span> is another.  The set of <span class="process-math">\(\vvec\)</span> vectors forms a linearly independent set and the set of <span class="process-math">\(\wvec\)</span> vectors spans <span class="process-math">\(V\text{.}\)</span>  By <a href="sec-vs-intro.html#prop-lin-indep-num" class="xref" data-knowl="./knowl/xref/prop-lin-indep-num.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.26">Proposition 1.1.26</a>, we know that <span class="process-math">\(m\leq n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-12-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-vs-intro-5-12-2-2">We can repeat this argument interchanging the two bases to conclude that <span class="process-math">\(n\leq m\text{.}\)</span>  Put together, these two facts mean that <span class="process-math">\(m=n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-12-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-5-12-2-2">We can repeat this argument interchanging the two bases to conclude that <span class="process-math">\(n\leq m\text{.}\)</span>  Put together, these two facts mean that <span class="process-math">\(m=n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-12-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.1.27.1"><a href="#sec-vs-intro-5-12-2" title="Copy heading and permalink for Proof 1.1.27.1">🔗</a></div></article><div class="para" id="sec-vs-intro-5-13">If <span class="process-math">\(V\)</span> is a finite dimensional vector space, we define its dimension to be the number of vectors in a basis. In this case, the number of vectors in any basis is the same so this definition does not depend on which basis we choose.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-13" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proof 1.1.27.1"><a href="#sec-vs-intro-5-12-2" title="Copy heading and permalink for Proof 1.1.27.1" aria-label="Copy heading and permalink for Proof 1.1.27.1">🔗</a></div></article><div class="para" id="sec-vs-intro-5-13">If <span class="process-math">\(V\)</span> is a finite dimensional vector space, we define its dimension to be the number of vectors in a basis. In this case, the number of vectors in any basis is the same so this definition does not depend on which basis we choose.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-vs-intro-5-14"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.1.28</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-vs-intro-5-14-1-1">If a vector space <span class="process-math">\(V\)</span> has a basis with <span class="process-math">\(n\)</span> vectors, we say that the <em class="emphasis">dimension</em> of <span class="process-math">\(V\)</span> is <span class="process-math">\(n\)</span> and write <span class="process-math">\(\dim V = n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-14-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-5-14-1-1">If a vector space <span class="process-math">\(V\)</span> has a basis with <span class="process-math">\(n\)</span> vectors, we say that the <em class="emphasis">dimension</em> of <span class="process-math">\(V\)</span> is <span class="process-math">\(n\)</span> and write <span class="process-math">\(\dim V = n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-14-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.1.28"><a href="#sec-vs-intro-5-14" title="Copy heading and permalink for Definition 1.1.28">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-5-15"><h4 class="heading">
+<div class="autopermalink" data-description="Definition 1.1.28"><a href="#sec-vs-intro-5-14" title="Copy heading and permalink for Definition 1.1.28" aria-label="Copy heading and permalink for Definition 1.1.28">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-5-15"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.29</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-vs-intro-5-15-1-1">
@@ -1005,9 +1006,9 @@ p \amp = c_0p_0+c_1p_1+\ldots+c_{n-1}p_{n-1} + a_np_n
 </div>
 <div class="para">is a basis for <span class="process-math">\(\pbb_n\text{.}\)</span>  Therefore, <span class="process-math">\(\dim\pbb_n=n+1\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-15-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-15-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.29"><a href="#sec-vs-intro-5-15" title="Copy heading and permalink for Example 1.1.29">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-5-16"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.1.29"><a href="#sec-vs-intro-5-15" title="Copy heading and permalink for Example 1.1.29" aria-label="Copy heading and permalink for Example 1.1.29">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-5-16"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.30</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-vs-intro-5-16-1-1">
@@ -1025,7 +1026,7 @@ p \amp = c_0p_0+c_1p_1+\ldots+c_{n-1}p_{n-1} + a_np_n
 </div>
 <div class="para">This means that <span class="process-math">\(\dim V=3\cdot 2 = 6\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-16-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-16-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="sec-vs-intro-5-16-1-2">
 <div class="para">More generally, if <span class="process-math">\(V=M_{m,n}\text{,}\)</span> the vector space of <span class="process-math">\(m\times n\)</span> matrices, we have</div>
 <div class="displaymath process-math">
@@ -1033,16 +1034,16 @@ p \amp = c_0p_0+c_1p_1+\ldots+c_{n-1}p_{n-1} + a_np_n
 \dim M_{m,n} = mn\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-16-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-16-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.30"><a href="#sec-vs-intro-5-16" title="Copy heading and permalink for Example 1.1.30">🔗</a></div></article><div class="para" id="sec-vs-intro-5-17">We may informally think of the dimension of a vector space as a measure of its size.  Therefore, it should follow that the dimension of a subspace cannot be larger than the dimension of the vector space in which it resides.  We first call attention to a useful fact.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-17" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Example 1.1.30"><a href="#sec-vs-intro-5-16" title="Copy heading and permalink for Example 1.1.30" aria-label="Copy heading and permalink for Example 1.1.30">🔗</a></div></article><div class="para" id="sec-vs-intro-5-17">We may informally think of the dimension of a vector space as a measure of its size.  Therefore, it should follow that the dimension of a subspace cannot be larger than the dimension of the vector space in which it resides.  We first call attention to a useful fact.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-17" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-lin-indep-add"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.31</span><span class="period">.</span>
 </h4>
-<div class="para" id="prop-lin-indep-add-1-1">If <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\)</span> is a linearly independent subset of the vector space <span class="process-math">\(V\)</span> whose span is not <span class="process-math">\(V\text{,}\)</span> then there is a vector <span class="process-math">\(\uvec\)</span> in <span class="process-math">\(V\)</span> such that <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m,\uvec\)</span> is a linearly independent subset of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-add-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="prop-lin-indep-add-1-1">If <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\)</span> is a linearly independent subset of the vector space <span class="process-math">\(V\)</span> whose span is not <span class="process-math">\(V\text{,}\)</span> then there is a vector <span class="process-math">\(\uvec\)</span> in <span class="process-math">\(V\)</span> such that <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m,\uvec\)</span> is a linearly independent subset of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-add-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.31"><a href="#prop-lin-indep-add" title="Copy heading and permalink for Proposition 1.1.31">🔗</a></div></article><article class="proof" id="prop-lin-indep-add-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 1.1.31"><a href="#prop-lin-indep-add" title="Copy heading and permalink for Proposition 1.1.31" aria-label="Copy heading and permalink for Proposition 1.1.31">🔗</a></div></article><article class="proof" id="prop-lin-indep-add-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="prop-lin-indep-add-2-1">
 <div class="para">Under the assumptions of this proposition, the span of <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\)</span> is not <span class="process-math">\(V\)</span> so there is a vector <span class="process-math">\(\uvec\)</span> that is not in the span of the <span class="process-math">\(\vvec\)</span> vectors.  This means that it is not a linear combination of the <span class="process-math">\(\vvec\)</span> vectors and therefore</div>
 <div class="displaymath process-math">
@@ -1051,15 +1052,15 @@ p \amp = c_0p_0+c_1p_1+\ldots+c_{n-1}p_{n-1} + a_np_n
 \end{equation*}
 </div>
 <div class="para">is a linearly independent set.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-add-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-indep-add-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.1.31.1"><a href="#prop-lin-indep-add-2" title="Copy heading and permalink for Proof 1.1.31.1">🔗</a></div></article><article class="proposition theorem-like" id="prop-lin-dep-full"><h4 class="heading">
+<div class="autopermalink" data-description="Proof 1.1.31.1"><a href="#prop-lin-indep-add-2" title="Copy heading and permalink for Proof 1.1.31.1" aria-label="Copy heading and permalink for Proof 1.1.31.1">🔗</a></div></article><article class="proposition theorem-like" id="prop-lin-dep-full"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.32</span><span class="period">.</span>
 </h4>
 <div class="para" id="prop-lin-dep-full-1-1">If <span class="process-math">\(V\)</span> is a vector space whose dimension <span class="process-math">\(\dim V =
-n\)</span> and <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</span> is a linearly independent set in <span class="process-math">\(V\text{,}\)</span> then <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</span> also spans <span class="process-math">\(V\)</span> and is therefore a basis of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-dep-full-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+n\)</span> and <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</span> is a linearly independent set in <span class="process-math">\(V\text{,}\)</span> then <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</span> also spans <span class="process-math">\(V\)</span> and is therefore a basis of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-dep-full-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.32"><a href="#prop-lin-dep-full" title="Copy heading and permalink for Proposition 1.1.32">🔗</a></div></article><article class="proof" id="prop-lin-dep-full-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 1.1.32"><a href="#prop-lin-dep-full" title="Copy heading and permalink for Proposition 1.1.32" aria-label="Copy heading and permalink for Proposition 1.1.32">🔗</a></div></article><article class="proof" id="prop-lin-dep-full-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="prop-lin-dep-full-2-1">
 <div class="para">We will prove this fact by contradiction.  Suppose that <span class="process-math">\(\basis{\vvec}{n}\)</span> does not span <span class="process-math">\(V\text{.}\)</span>  Then by <a href="sec-vs-intro.html#prop-lin-indep-add" class="xref" data-knowl="./knowl/xref/prop-lin-indep-add.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.31">Proposition 1.1.31</a>, we can add a vector <span class="process-math">\(\uvec\)</span> so that</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-lin-indep-add.html ./knowl/xref/prop-lin-indep-num.html">
@@ -1069,9 +1070,9 @@ n\)</span> and <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</sp
 </div>
 <div class="para">is a linearly independent subset of <span class="process-math">\(n+1\)</span> vectors in <span class="process-math">\(V\text{.}\)</span>  However, any linear independent subset of <span class="process-math">\(V\)</span> can have no more than <span class="process-math">\(n\)</span> vectors by <a href="sec-vs-intro.html#prop-lin-indep-num" class="xref" data-knowl="./knowl/xref/prop-lin-indep-num.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.26">Proposition 1.1.26</a>, which says that <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</span> must span <span class="process-math">\(V\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-dep-full-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-lin-dep-full-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.1.32.1"><a href="#prop-lin-dep-full-2" title="Copy heading and permalink for Proof 1.1.32.1">🔗</a></div></article><article class="proposition theorem-like" id="sec-vs-intro-5-20"><h4 class="heading">
+<div class="autopermalink" data-description="Proof 1.1.32.1"><a href="#prop-lin-dep-full-2" title="Copy heading and permalink for Proof 1.1.32.1" aria-label="Copy heading and permalink for Proof 1.1.32.1">🔗</a></div></article><article class="proposition theorem-like" id="sec-vs-intro-5-20"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.33</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-vs-intro-5-20-1-1">
@@ -1081,10 +1082,10 @@ n\)</span> and <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</sp
 \dim W \leq \dim V\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-20-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-20-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.33"><a href="#sec-vs-intro-5-20" title="Copy heading and permalink for Proposition 1.1.33">🔗</a></div></article><article class="proof" id="sec-vs-intro-5-20-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="sec-vs-intro-5-20-2-1">We will first explain why <span class="process-math">\(W\)</span> is a finite dimensional vector space, which means we need to explain why there is a finite set <span class="process-math">\(W\)</span> that spans <span class="process-math">\(W\text{.}\)</span>  We begin with any set of vectors <span class="process-math">\(\wvec_1,\wvec_2,\ldots,\wvec_m\)</span> in <span class="process-math">\(W\text{.}\)</span>  By <a href="sec-vs-intro.html#prop-lin-dep-span" class="xref" data-knowl="./knowl/xref/prop-lin-dep-span.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.18">Proposition 1.1.18</a>, we can remove vectors one at a time until we obtain a linearly independent set in <span class="process-math">\(W\text{.}\)</span>  If this set does not span <span class="process-math">\(W\text{,}\)</span> then we can add vectors in <span class="process-math">\(W\)</span> one at a time to obtain new linearly independent sets in <span class="process-math">\(W\text{.}\)</span>  This process must stop at some point since any linearly independent set in <span class="process-math">\(V\)</span> can have no more than <span class="process-math">\(\dim V\)</span> vectors.  Therefore, we have obtained a finite set that spans <span class="process-math">\(W\text{,}\)</span> which says that <span class="process-math">\(W\)</span> is finite dimensional.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-20-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 1.1.33"><a href="#sec-vs-intro-5-20" title="Copy heading and permalink for Proposition 1.1.33" aria-label="Copy heading and permalink for Proposition 1.1.33">🔗</a></div></article><article class="proof" id="sec-vs-intro-5-20-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="sec-vs-intro-5-20-2-1">We will first explain why <span class="process-math">\(W\)</span> is a finite dimensional vector space, which means we need to explain why there is a finite set <span class="process-math">\(W\)</span> that spans <span class="process-math">\(W\text{.}\)</span>  We begin with any set of vectors <span class="process-math">\(\wvec_1,\wvec_2,\ldots,\wvec_m\)</span> in <span class="process-math">\(W\text{.}\)</span>  By <a href="sec-vs-intro.html#prop-lin-dep-span" class="xref" data-knowl="./knowl/xref/prop-lin-dep-span.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.18">Proposition 1.1.18</a>, we can remove vectors one at a time until we obtain a linearly independent set in <span class="process-math">\(W\text{.}\)</span>  If this set does not span <span class="process-math">\(W\text{,}\)</span> then we can add vectors in <span class="process-math">\(W\)</span> one at a time to obtain new linearly independent sets in <span class="process-math">\(W\text{.}\)</span>  This process must stop at some point since any linearly independent set in <span class="process-math">\(V\)</span> can have no more than <span class="process-math">\(\dim V\)</span> vectors.  Therefore, we have obtained a finite set that spans <span class="process-math">\(W\text{,}\)</span> which says that <span class="process-math">\(W\)</span> is finite dimensional.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-20-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-vs-intro-5-20-2-2">
 <div class="para">Since any basis for <span class="process-math">\(W\)</span> is also a linearly independent subset of <span class="process-math">\(V\text{,}\)</span> it can contain no more vectors than a basis of <span class="process-math">\(V\text{.}\)</span>  This tells us that</div>
@@ -1093,14 +1094,14 @@ n\)</span> and <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</sp
 \dim W \leq \dim V\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-20-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-20-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.1.33.1"><a href="#sec-vs-intro-5-20-2" title="Copy heading and permalink for Proof 1.1.33.1">🔗</a></div></article><article class="proposition theorem-like" id="prop-basis-extend"><h4 class="heading">
+<div class="autopermalink" data-description="Proof 1.1.33.1"><a href="#sec-vs-intro-5-20-2" title="Copy heading and permalink for Proof 1.1.33.1" aria-label="Copy heading and permalink for Proof 1.1.33.1">🔗</a></div></article><article class="proposition theorem-like" id="prop-basis-extend"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.34</span><span class="period">.</span>
 </h4>
-<div class="para" id="prop-basis-extend-1-1">Any linearly independent set in a finite dimensional vector space <span class="process-math">\(V\)</span> can be extended to a basis for <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-basis-extend-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="prop-basis-extend-1-1">Any linearly independent set in a finite dimensional vector space <span class="process-math">\(V\)</span> can be extended to a basis for <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-basis-extend-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.34"><a href="#prop-basis-extend" title="Copy heading and permalink for Proposition 1.1.34">🔗</a></div></article><article class="proof" id="prop-basis-extend-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 1.1.34"><a href="#prop-basis-extend" title="Copy heading and permalink for Proposition 1.1.34" aria-label="Copy heading and permalink for Proposition 1.1.34">🔗</a></div></article><article class="proof" id="prop-basis-extend-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="prop-basis-extend-2-1">
 <div class="para">Suppose that <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_m\)</span> is a linearly independent set in <span class="process-math">\(V\)</span> and that <span class="process-math">\(\wvec_1,\wvec_2,\ldots,\wvec_n\)</span> is a basis for <span class="process-math">\(V\text{.}\)</span> Join the two lists together to obtain</div>
 <div class="displaymath process-math">
@@ -1110,17 +1111,17 @@ n\)</span> and <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</sp
 </div>
 <div class="para">We are guaranteed that the span of this set is <span class="process-math">\(V\text{.}\)</span>  If it is not a linear independent set, then we remove the first vector that is a linear combination of the others.  Since the <span class="process-math">\(\vvec\)</span> vectors are linearly independent, the vector that is removed must be one of the <span class="process-math">\(\wvec\)</span> vectors.  Continuing in this way, we eventually obtain a basis that includes the vectors <span class="process-math">\(\vvec_1,\ldots,\vvec_m\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-basis-extend-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-basis-extend-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.1.34.1"><a href="#prop-basis-extend-2" title="Copy heading and permalink for Proof 1.1.34.1">🔗</a></div></article><div class="para" id="sec-vs-intro-5-22">The following is a consequence of <a href="sec-vs-intro.html#prop-lin-dep-full" class="xref" data-knowl="./knowl/xref/prop-lin-dep-full.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.32">Proposition 1.1.32</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-22" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proof 1.1.34.1"><a href="#prop-basis-extend-2" title="Copy heading and permalink for Proof 1.1.34.1" aria-label="Copy heading and permalink for Proof 1.1.34.1">🔗</a></div></article><div class="para" id="sec-vs-intro-5-22">The following is a consequence of <a href="sec-vs-intro.html#prop-lin-dep-full" class="xref" data-knowl="./knowl/xref/prop-lin-dep-full.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.32">Proposition 1.1.32</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-22" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-vs-intro-5-23"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.35</span><span class="period">.</span>
 </h4>
 <div class="para" id="sec-vs-intro-5-23-1-1">If <span class="process-math">\(W\)</span> is a subspace of <span class="process-math">\(V\)</span> and <span class="process-math">\(\dim W = \dim
-V\text{,}\)</span> then <span class="process-math">\(W=V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-23-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+V\text{,}\)</span> then <span class="process-math">\(W=V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-23-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.35"><a href="#sec-vs-intro-5-23" title="Copy heading and permalink for Proposition 1.1.35">🔗</a></div></article><div class="para" id="sec-vs-intro-5-24">Some further conseqences of these ideas follow.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-24" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 1.1.35"><a href="#sec-vs-intro-5-23" title="Copy heading and permalink for Proposition 1.1.35" aria-label="Copy heading and permalink for Proposition 1.1.35">🔗</a></div></article><div class="para" id="sec-vs-intro-5-24">Some further conseqences of these ideas follow.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-24" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-vs-intro-5-25"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.36</span><span class="period">.</span>
@@ -1129,50 +1130,50 @@ V\text{,}\)</span> then <span class="process-math">\(W=V\text{.}\)</span><div cl
 <div class="para">If <span class="process-math">\(V\)</span> is a finite dimensional vector space of dimension <span class="process-math">\(n\)</span> and <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</span> is a set of vectors in <span class="process-math">\(V\text{,}\)</span> it follows that</div>
 <ul class="disc" id="sec-vs-intro-5-25-1-1-5">
 <li id="sec-vs-intro-5-25-1-1-5-1">
-<div class="para" id="sec-vs-intro-5-25-1-1-5-1-1">if the set of vectors is linearly independent, then it is a basis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-25-1-1-5-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-5-25-1-1-5-1-1">if the set of vectors is linearly independent, then it is a basis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-25-1-1-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-5-25-1-1-5-1" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-5-25-1-1-5-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 <li id="sec-vs-intro-5-25-1-1-5-2">
-<div class="para" id="sec-vs-intro-5-25-1-1-5-2-1">if the span of the set of vectors is <span class="process-math">\(V\text{,}\)</span> then it is a basis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-25-1-1-5-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-5-25-1-1-5-2-1">if the span of the set of vectors is <span class="process-math">\(V\text{,}\)</span> then it is a basis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-25-1-1-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-5-25-1-1-5-2" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-vs-intro-5-25-1-1-5-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 </ul>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-25-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-5-25-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.36"><a href="#sec-vs-intro-5-25" title="Copy heading and permalink for Proposition 1.1.36">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.1.3: Bases"><a href="#sec-vs-intro-5" title="Copy heading and permalink for Subsection 1.1.3: Bases">🔗</a></div></section><section class="subsection" id="sec-vs-intro-6"><h3 class="heading hide-type">
+<div class="autopermalink" data-description="Proposition 1.1.36"><a href="#sec-vs-intro-5-25" title="Copy heading and permalink for Proposition 1.1.36" aria-label="Copy heading and permalink for Proposition 1.1.36">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.1.3: Bases"><a href="#sec-vs-intro-5" title="Copy heading and permalink for Subsection 1.1.3: Bases" aria-label="Copy heading and permalink for Subsection 1.1.3: Bases">🔗</a></div></section><section class="subsection" id="sec-vs-intro-6"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.1.4</span><span class="space"> </span><span class="title">Sums of subspaces</span>
 </h3>
 <div class="para" id="sec-vs-intro-6-2">If we have two subspaces <span class="process-math">\(V_1\)</span> and <span class="process-math">\(V_2\)</span> in a vector space <span class="process-math">\(V\text{,}\)</span> <a href="sec-vs-intro.html#example-vs-intersection" class="xref" data-knowl="./knowl/xref/example-vs-intersection.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.1.9">Example 1.1.9</a> says that the intersection <span class="process-math">\(V_1\cap V_2\)</span> is also a subspace of <span class="process-math">\(V\text{.}\)</span>  The same is not true, however, for the union <span class="process-math">\(V_1\cup
-V_2\)</span> as demonstrated by <a href="sec-vs-intro.html#example-vs-union" class="xref" data-knowl="./knowl/xref/example-vs-union.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.1.37">Example 1.1.37</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+V_2\)</span> as demonstrated by <a href="sec-vs-intro.html#example-vs-union" class="xref" data-knowl="./knowl/xref/example-vs-union.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.1.37">Example 1.1.37</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="example-vs-union"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.37</span><span class="period">.</span>
 </h4>
 <div class="para" id="example-vs-union-1-1">Suppose that <span class="process-math">\(V=\real^2\)</span> with <span class="process-math">\(\vvec_1=\twovec11\)</span> and <span class="process-math">\(\vvec_2=\twovec{-1}1\text{.}\)</span>  If <span class="process-math">\(V_1=\laspan{\vvec_1}\)</span> and <span class="process-math">\(V_2=\laspan{\vvec_2}\text{,}\)</span> then <span class="process-math">\(V_1\cup V_2\)</span> consists of two lines as seen in <a href="sec-vs-intro.html#diagram-vs-union" class="xref" data-knowl="./knowl/xref/diagram-vs-union.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 1.1.38">Figure 1.1.38</a>.  Notice that <span class="process-math">\(\vvec_1 + \vvec_2 =
-\twovec02\)</span> is not in <span class="process-math">\(V_1\cup V_2\text{,}\)</span> which shows that <span class="process-math">\(V_1\cup V_2\)</span> is not closed under addition.<div class="autopermalink" data-description="Paragraph"><a href="#example-vs-union-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+\twovec02\)</span> is not in <span class="process-math">\(V_1\cup V_2\text{,}\)</span> which shows that <span class="process-math">\(V_1\cup V_2\)</span> is not closed under addition.<div class="autopermalink" data-description="Paragraph"><a href="#example-vs-union-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <figure class="figure figure-like" id="diagram-vs-union"><div class="image-box" style="width: 60%; margin-left: 20%; margin-right: 20%;"><img src="generated/prefigure/prefigure-vs-union.svg" role="img" class="contained"></div>
-<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.1.38<span class="period">.</span></span><span class="space"> </span>The union of two subspaces is not usually a subspace.<div class="autopermalink" data-description="Figure 1.1.38"><a href="#diagram-vs-union" title="Copy heading and permalink for Figure 1.1.38">🔗</a></div></figcaption></figure><div class="autopermalink" data-description="Example 1.1.37"><a href="#example-vs-union" title="Copy heading and permalink for Example 1.1.37">🔗</a></div></article><div class="para" id="sec-vs-intro-6-4">Instead, we construct a vector subspace that contains the union <span class="process-math">\(V_1\cup V_2\text{.}\)</span>  This construction will be useful in the future as it helps us to break vector spaces into simpler pieces.  Suppose that we have a vector space <span class="process-math">\(V\)</span> and that <span class="process-math">\(V_1\)</span> and <span class="process-math">\(V_2\)</span> are subspaces.  We can define a new subspace <span class="process-math">\(V_1+V_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-4" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.1.38<span class="period">.</span></span><span class="space"> </span>The union of two subspaces is not usually a subspace.<div class="autopermalink" data-description="Figure 1.1.38"><a href="#diagram-vs-union" title="Copy heading and permalink for Figure 1.1.38" aria-label="Copy heading and permalink for Figure 1.1.38">🔗</a></div></figcaption></figure><div class="autopermalink" data-description="Example 1.1.37"><a href="#example-vs-union" title="Copy heading and permalink for Example 1.1.37" aria-label="Copy heading and permalink for Example 1.1.37">🔗</a></div></article><div class="para" id="sec-vs-intro-6-4">Instead, we construct a vector subspace that contains the union <span class="process-math">\(V_1\cup V_2\text{.}\)</span>  This construction will be useful in the future as it helps us to break vector spaces into simpler pieces.  Suppose that we have a vector space <span class="process-math">\(V\)</span> and that <span class="process-math">\(V_1\)</span> and <span class="process-math">\(V_2\)</span> are subspaces.  We can define a new subspace <span class="process-math">\(V_1+V_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-vs-intro-6-5"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.1.39</span><span class="period">.</span>
 </h4>
 <div class="para" id="sec-vs-intro-6-5-1-1">Given subspaces <span class="process-math">\(V_1\)</span> and <span class="process-math">\(V_2\)</span> of <span class="process-math">\(V\text{,}\)</span> we form the <dfn class="terminology">vector space sum</dfn> <span class="process-math">\(V_1+V_2\)</span> as the subset of <span class="process-math">\(V\)</span> whose elements can be written in the form <span class="process-math">\(\vvec_1+\vvec_2\)</span> where <span class="process-math">\(\vvec_1\in
-V_1\)</span> and <span class="process-math">\(\vvec_2\in V_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-5-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+V_1\)</span> and <span class="process-math">\(\vvec_2\in V_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.1.39"><a href="#sec-vs-intro-6-5" title="Copy heading and permalink for Definition 1.1.39">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-6-6"><h4 class="heading">
+<div class="autopermalink" data-description="Definition 1.1.39"><a href="#sec-vs-intro-6-5" title="Copy heading and permalink for Definition 1.1.39" aria-label="Copy heading and permalink for Definition 1.1.39">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-6-6"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.40</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-vs-intro-6-6-1-1">Suppose that <span class="process-math">\(V=\real^3\text{,}\)</span> <span class="process-math">\(V_1\)</span> is the 1-dimensional subspace whose vectors are <span class="process-math">\(\threevec x00\text{,}\)</span> and <span class="process-math">\(V_2\)</span> is the 1-dimensional subspace whose vectors are <span class="process-math">\(\threevec 0y0\text{.}\)</span>  Then <span class="process-math">\(V_1+V_2\)</span> is the 2-dimensional subspace whose vectors have the form <span class="process-math">\(\threevec xy0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-6-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-6-6-1-1">Suppose that <span class="process-math">\(V=\real^3\text{,}\)</span> <span class="process-math">\(V_1\)</span> is the 1-dimensional subspace whose vectors are <span class="process-math">\(\threevec x00\text{,}\)</span> and <span class="process-math">\(V_2\)</span> is the 1-dimensional subspace whose vectors are <span class="process-math">\(\threevec 0y0\text{.}\)</span>  Then <span class="process-math">\(V_1+V_2\)</span> is the 2-dimensional subspace whose vectors have the form <span class="process-math">\(\threevec xy0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.40"><a href="#sec-vs-intro-6-6" title="Copy heading and permalink for Example 1.1.40">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-6-7"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.1.40"><a href="#sec-vs-intro-6-6" title="Copy heading and permalink for Example 1.1.40" aria-label="Copy heading and permalink for Example 1.1.40">🔗</a></div></article><article class="example example-like" id="sec-vs-intro-6-7"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1.41</span><span class="period">.</span>
 </h4>
 <div class="para" id="sec-vs-intro-6-7-1-1">Suppose that <span class="process-math">\(V=\real^4\text{,}\)</span> <span class="process-math">\(V_1\)</span> is the 2-dimensional subspace having vectors <span class="process-math">\(\fourvec xy00\text{,}\)</span> and <span class="process-math">\(V_2\)</span> is the 2-dimensional subspace having vectors <span class="process-math">\(\fourvec 0yz0\text{.}\)</span>  Then <span class="process-math">\(V_1+V_2\)</span> is the three-dimensional subspace consisting of vectors <span class="process-math">\(\fourvec
-xyz0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-7-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+xyz0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.1.41"><a href="#sec-vs-intro-6-7" title="Copy heading and permalink for Example 1.1.41">🔗</a></div></article><article class="proposition theorem-like" id="prop-dim-sum"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.1.41"><a href="#sec-vs-intro-6-7" title="Copy heading and permalink for Example 1.1.41" aria-label="Copy heading and permalink for Example 1.1.41">🔗</a></div></article><article class="proposition theorem-like" id="prop-dim-sum"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.42</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="prop-dim-sum-1-1">
@@ -1182,10 +1183,10 @@ xyz0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a 
 \dim (V_1+V_2) = \dim V_1 + \dim V_2 - \dim (V_1\cap V_2)\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-dim-sum-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-dim-sum-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.42"><a href="#prop-dim-sum" title="Copy heading and permalink for Proposition 1.1.42">🔗</a></div></article><article class="proof" id="prop-dim-sum-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="prop-dim-sum-2-1">One can verify that <span class="process-math">\(V_1+V_2\)</span> is closed under scalar multiplication and addition, which means that it forms a subspace of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-dim-sum-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 1.1.42"><a href="#prop-dim-sum" title="Copy heading and permalink for Proposition 1.1.42" aria-label="Copy heading and permalink for Proposition 1.1.42">🔗</a></div></article><article class="proof" id="prop-dim-sum-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="prop-dim-sum-2-1">One can verify that <span class="process-math">\(V_1+V_2\)</span> is closed under scalar multiplication and addition, which means that it forms a subspace of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-dim-sum-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-dim-sum-2-2">
 <div class="para">Suppose that <span class="process-math">\(V_1\cap V_2\)</span> has a basis <span class="process-math">\(\uvec_1,\ldots,\uvec_m\text{.}\)</span>  Since <span class="process-math">\(V_1\cap V_2\)</span> is a subspace of <span class="process-math">\(V_1\text{,}\)</span> this basis can be extended to a basis for <span class="process-math">\(V_1\)</span> by adding vectors <span class="process-math">\(\vvec_1,\ldots,\vvec_j\text{.}\)</span>  Similarly, the basis for <span class="process-math">\(V_1\cap V_2\)</span> can be extended to a basis for <span class="process-math">\(V_2\)</span> by adding vectors <span class="process-math">\(\wvec_1,\ldots,\wvec_k\text{.}\)</span>  Putting all these vectors together gives the set</div>
@@ -1197,9 +1198,9 @@ xyz0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a 
 </div>
 <div class="para">which we claim is a basis for <span class="process-math">\(V_1+V_2\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-dim-sum-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-dim-sum-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="prop-dim-sum-2-3">Any vector in <span class="process-math">\(V_1+V_2\)</span> can be written as the sum of a vector in <span class="process-math">\(V_1\)</span> and a vector in <span class="process-math">\(V_2\text{.}\)</span>  Therefore, the span of the vectors in <span class="process-math">\(\bcal\)</span> is <span class="process-math">\(V_1+V_2\)</span> since contained within <span class="process-math">\(\bcal\)</span> is a basis for <span class="process-math">\(V_1\)</span>and a basis for <span class="process-math">\(V_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-dim-sum-2-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="prop-dim-sum-2-3">Any vector in <span class="process-math">\(V_1+V_2\)</span> can be written as the sum of a vector in <span class="process-math">\(V_1\)</span> and a vector in <span class="process-math">\(V_2\text{.}\)</span>  Therefore, the span of the vectors in <span class="process-math">\(\bcal\)</span> is <span class="process-math">\(V_1+V_2\)</span> since contained within <span class="process-math">\(\bcal\)</span> is a basis for <span class="process-math">\(V_1\)</span>and a basis for <span class="process-math">\(V_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-dim-sum-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-dim-sum-2-4">
 <div class="para">Moreover, the set of vectors <span class="process-math">\(\bcal\)</span> is linearly independent.  Suppose that</div>
@@ -1218,14 +1219,14 @@ a_m\uvec_m - b_1\vvec_1 - \ldots - b_j\vvec_j\text{.}
 </div>
 <div class="para">The vector on the left is in <span class="process-math">\(V_2\)</span> but not <span class="process-math">\(V_1\cap
 V_2\text{,}\)</span> while the vector on the right is in <span class="process-math">\(V_1\text{.}\)</span>  The only way this can happen is for both vectors to be zero, which means that all the coefficients must be zero.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-dim-sum-2-4" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-dim-sum-2-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.1.42.1"><a href="#prop-dim-sum-2" title="Copy heading and permalink for Proof 1.1.42.1">🔗</a></div></article><article class="definition definition-like" id="sec-vs-intro-6-9"><h4 class="heading">
+<div class="autopermalink" data-description="Proof 1.1.42.1"><a href="#prop-dim-sum-2" title="Copy heading and permalink for Proof 1.1.42.1" aria-label="Copy heading and permalink for Proof 1.1.42.1">🔗</a></div></article><article class="definition definition-like" id="sec-vs-intro-6-9"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.1.43</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-vs-intro-6-9-1-1">If <span class="process-math">\(V_1\cap V_2 = \{0\}\text{,}\)</span> we say that <span class="process-math">\(V_1+V_2\)</span> is the <em class="emphasis">direct sum</em> of <span class="process-math">\(V_1\)</span> and <span class="process-math">\(V_2\)</span> and denote it as <span class="process-math">\(V_1\oplus V_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-9-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-6-9-1-1">If <span class="process-math">\(V_1\cap V_2 = \{0\}\text{,}\)</span> we say that <span class="process-math">\(V_1+V_2\)</span> is the <em class="emphasis">direct sum</em> of <span class="process-math">\(V_1\)</span> and <span class="process-math">\(V_2\)</span> and denote it as <span class="process-math">\(V_1\oplus V_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.1.43"><a href="#sec-vs-intro-6-9" title="Copy heading and permalink for Definition 1.1.43">🔗</a></div></article><div class="para" id="sec-vs-intro-6-10">As a consequence of <a href="sec-vs-intro.html#prop-dim-sum" class="xref" data-knowl="./knowl/xref/prop-dim-sum.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.42">Proposition 1.1.42</a>, we have that<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-10" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Definition 1.1.43"><a href="#sec-vs-intro-6-9" title="Copy heading and permalink for Definition 1.1.43" aria-label="Copy heading and permalink for Definition 1.1.43">🔗</a></div></article><div class="para" id="sec-vs-intro-6-10">As a consequence of <a href="sec-vs-intro.html#prop-dim-sum" class="xref" data-knowl="./knowl/xref/prop-dim-sum.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.42">Proposition 1.1.42</a>, we have that<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-vs-intro-6-11"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.44</span><span class="period">.</span>
@@ -1236,21 +1237,21 @@ V_2\text{,}\)</span> while the vector on the right is in <span class="process-ma
 \dim(V_1\oplus V_2)= \dim V_1 + \dim V_2\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-11-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-11-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.44"><a href="#sec-vs-intro-6-11" title="Copy heading and permalink for Proposition 1.1.44">🔗</a></div></article><div class="para" id="sec-vs-intro-6-12">As a consequence of <a href="sec-vs-intro.html#prop-basis-extend" class="xref" data-knowl="./knowl/xref/prop-basis-extend.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.34">Proposition 1.1.34</a>, we have<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-12" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 1.1.44"><a href="#sec-vs-intro-6-11" title="Copy heading and permalink for Proposition 1.1.44" aria-label="Copy heading and permalink for Proposition 1.1.44">🔗</a></div></article><div class="para" id="sec-vs-intro-6-12">As a consequence of <a href="sec-vs-intro.html#prop-basis-extend" class="xref" data-knowl="./knowl/xref/prop-basis-extend.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.1.34">Proposition 1.1.34</a>, we have<div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-vs-intro-6-13"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.1.45</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-vs-intro-6-13-1-1">If <span class="process-math">\(W\)</span> is a subspace of <span class="process-math">\(V\text{,}\)</span> then there is another subspace <span class="process-math">\(U\)</span> such that <span class="process-math">\(V=W\oplus U\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-13-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-6-13-1-1">If <span class="process-math">\(W\)</span> is a subspace of <span class="process-math">\(V\text{,}\)</span> then there is another subspace <span class="process-math">\(U\)</span> such that <span class="process-math">\(V=W\oplus U\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-13-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.1.45"><a href="#sec-vs-intro-6-13" title="Copy heading and permalink for Proposition 1.1.45">🔗</a></div></article><article class="definition definition-like" id="sec-vs-intro-6-14"><h4 class="heading">
+<div class="autopermalink" data-description="Proposition 1.1.45"><a href="#sec-vs-intro-6-13" title="Copy heading and permalink for Proposition 1.1.45" aria-label="Copy heading and permalink for Proposition 1.1.45">🔗</a></div></article><article class="definition definition-like" id="sec-vs-intro-6-14"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.1.46</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-vs-intro-6-14-1-1">If <span class="process-math">\(V = W\oplus U\text{,}\)</span> we say that <span class="process-math">\(U\)</span> is a <em class="emphasis">complement</em> of <span class="process-math">\(W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-14-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-vs-intro-6-14-1-1">If <span class="process-math">\(V = W\oplus U\text{,}\)</span> we say that <span class="process-math">\(U\)</span> is a <em class="emphasis">complement</em> of <span class="process-math">\(W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-vs-intro-6-14-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.1.46"><a href="#sec-vs-intro-6-14" title="Copy heading and permalink for Definition 1.1.46">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.1.4: Sums of subspaces"><a href="#sec-vs-intro-6" title="Copy heading and permalink for Subsection 1.1.4: Sums of subspaces">🔗</a></div></section><div class="autopermalink" data-description="Section 1.1: Vector spaces"><a href="#sec-vs-intro" title="Copy heading and permalink for Section 1.1: Vector spaces">🔗</a></div></section></div>
+<div class="autopermalink" data-description="Definition 1.1.46"><a href="#sec-vs-intro-6-14" title="Copy heading and permalink for Definition 1.1.46" aria-label="Copy heading and permalink for Definition 1.1.46">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.1.4: Sums of subspaces"><a href="#sec-vs-intro-6" title="Copy heading and permalink for Subsection 1.1.4: Sums of subspaces" aria-label="Copy heading and permalink for Subsection 1.1.4: Sums of subspaces">🔗</a></div></section><div class="autopermalink" data-description="Section 1.1: Vector spaces"><a href="#sec-vs-intro" title="Copy heading and permalink for Section 1.1: Vector spaces" aria-label="Copy heading and permalink for Section 1.1: Vector spaces">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="chap-vs.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-lt-intro.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>

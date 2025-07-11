@@ -19,7 +19,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
 <link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
-<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
 <script>
 var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
 window.MathJax = {
@@ -102,14 +101,14 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.8.4';
+eBookConfig.runestone_version = '7.8.5';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.962d00926ef9460e.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.2e7f40e86ae7d163.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<script src="_static/prefix-runtime.a99e275a1e410b98.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.58623b9a3097f5e4.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
 <link rel="stylesheet" type="text/css" href="_static/prefix-runestone.5bdeacdba067a0e3.css">
 <script src="_static/pretext/js/lti_iframe_resizer.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
 </script>
@@ -194,6 +193,7 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\wcal}{{\cal W}}
 \newcommand{\ecal}{{\cal E}}
 \newcommand{\fcal}{{\cal F}}
+\newcommand{\kcal}{{\cal K}}
 \newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
 \newcommand{\gray}[1]{\color{gray}{#1}}
 \newcommand{\lgray}[1]{\color{lightgray}{#1}}
@@ -264,7 +264,8 @@ eBookConfig.enable_chatcodes =  false;
 <div class="toc-title-box"><a href="sec-polys.html" class="internal"><span class="codenumber">1.4</span> <span class="title">The minimal polynomial</span></a></div>
 <ul class="structural toc-item-list">
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-3" class="internal"><span class="codenumber">1.4.1</span> <span class="title">Properties of Polynomials</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-4" class="internal"><span class="codenumber">1.4.2</span> <span class="title">The minimal polynomial of an operator</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-4" class="internal"><span class="codenumber">1.4.2</span> <span class="title">Invariant subspaces</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-5" class="internal"><span class="codenumber">1.4.3</span> <span class="title">The minimal polynomial of a vector</span></a></div></li>
 </ul>
 </li>
 </ul>
@@ -314,11 +315,11 @@ T(\vvec_1+\vvec_2)\amp =T(\vvec_1)+T(\vvec_2)\text{.}
 \end{align*}
 </div>
 <div class="para">Now that we are working with vector spaces, we can define linear transformations, which are functions between vector spaces that satisfy these properties.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div></section><section class="subsection" id="sec-lt-intro-3"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.2.1</span><span class="space"> </span><span class="title">Linear transformations</span>
 </h3>
-<div class="para" id="sec-lt-intro-3-2">Given two vector spaces, <span class="process-math">\(V\)</span> and <span class="process-math">\(W\text{,}\)</span> we can define a linear transformation between them by generalizing our earlier notion of matrix transformation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-3-2">Given two vector spaces, <span class="process-math">\(V\)</span> and <span class="process-math">\(W\text{,}\)</span> we can define a linear transformation between them by generalizing our earlier notion of matrix transformation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-lt-intro-3-3"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.1</span><span class="period">.</span>
@@ -331,9 +332,9 @@ T(s\vvec)\amp=sT(\vvec)\\
 T(\vvec_1+\vvec_2)\amp =T(\vvec_1)+T(\vvec_2)\text{.}
 \end{align*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-3-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.2.1"><a href="#sec-lt-intro-3-3" title="Copy heading and permalink for Definition 1.2.1">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-3-4"><h4 class="heading">
+<div class="autopermalink" data-description="Definition 1.2.1"><a href="#sec-lt-intro-3-3" title="Copy heading and permalink for Definition 1.2.1" aria-label="Copy heading and permalink for Definition 1.2.1">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-3-4"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.2</span><span class="period">.</span>
 </h4>
 <div class="para" id="sec-lt-intro-3-4-1-1">Suppose that <span class="process-math">\(A=\begin{bmatrix}
@@ -341,7 +342,7 @@ T(\vvec_1+\vvec_2)\amp =T(\vvec_1)+T(\vvec_2)\text{.}
 -1 \amp 2 \\
 2 \amp 1 \\
 \end{bmatrix}
-\text{.}\)</span>  Then <span class="process-math">\(T:\real^2\to\real^3\)</span> defined by <span class="process-math">\(T(\vvec)=A\vvec\)</span> is a linear transformation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-4-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+\text{.}\)</span>  Then <span class="process-math">\(T:\real^2\to\real^3\)</span> defined by <span class="process-math">\(T(\vvec)=A\vvec\)</span> is a linear transformation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="sec-lt-intro-3-4-1-2">
 <div class="para">This follows because matrix multiplication is a linear operation:</div>
 <div class="displaymath process-math" id="sec-lt-intro-3-4-1-2-1">
@@ -351,12 +352,12 @@ T(\vvec_1+\vvec_2) \amp = A(\vvec_1+\vvec_2) = A\vvec_1 +
 A\vvec_2 = T(\vvec_1) +T(\vvec_2)
 \end{align*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-4-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-4-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.2"><a href="#sec-lt-intro-3-4" title="Copy heading and permalink for Example 1.2.2">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-3-5"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.2"><a href="#sec-lt-intro-3-4" title="Copy heading and permalink for Example 1.2.2" aria-label="Copy heading and permalink for Example 1.2.2">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-3-5"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.3</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-3-5-1-1">Suppose that <span class="process-math">\(V=\fcal\text{,}\)</span> the set of functions <span class="process-math">\(f:\real\to\complex\text{.}\)</span>  Then <span class="process-math">\(T(f)=\threevec{f(-3)}{f(0)}{f(3)}\)</span> is a linear transformation <span class="process-math">\(T:\fcal\to \complex^3\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-5-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-3-5-1-1">Suppose that <span class="process-math">\(V=\fcal\text{,}\)</span> the set of functions <span class="process-math">\(f:\real\to\complex\text{.}\)</span>  Then <span class="process-math">\(T(f)=\threevec{f(-3)}{f(0)}{f(3)}\)</span> is a linear transformation <span class="process-math">\(T:\fcal\to \complex^3\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="sec-lt-intro-3-5-1-2">
 <div class="para">To see this, we need to remember how scalar multiplication and vector addition work in <span class="process-math">\(V\text{.}\)</span>  If <span class="process-math">\(s\)</span> is a scalar and <span class="process-math">\(f_1\)</span> and <span class="process-math">\(f_2\)</span> are functions, then</div>
 <div class="displaymath process-math" id="sec-lt-intro-3-5-1-2-5">
@@ -380,35 +381,35 @@ T(f_1+f_2) \amp = \threevec{(f_1+f_2)(-3)}
 {f_2(3)}=T(f_1)+T(f_2)
 \end{align*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-5-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-5-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.3"><a href="#sec-lt-intro-3-5" title="Copy heading and permalink for Example 1.2.3">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-3-6"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.3"><a href="#sec-lt-intro-3-5" title="Copy heading and permalink for Example 1.2.3" aria-label="Copy heading and permalink for Example 1.2.3">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-3-6"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.4</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-3-6-1-1">Suppose that <span class="process-math">\(V=\pbb_3\)</span> and <span class="process-math">\(W=\pbb_2\text{.}\)</span>  If <span class="process-math">\(p\)</span> is a polynomial in <span class="process-math">\(\pbb_3\text{,}\)</span> define the function <span class="process-math">\(T(p) = p'\)</span> where <span class="process-math">\(p'\)</span> is the derivative of <span class="process-math">\(p\text{.}\)</span>  Two common rules of differentiation, the constant multiplier rule and the addition rule, imply that <span class="process-math">\(T\)</span> is a linear transformation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-6-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-3-6-1-1">Suppose that <span class="process-math">\(V=\pbb_3\)</span> and <span class="process-math">\(W=\pbb_2\text{.}\)</span>  If <span class="process-math">\(p\)</span> is a polynomial in <span class="process-math">\(\pbb_3\text{,}\)</span> define the function <span class="process-math">\(T(p) = p'\)</span> where <span class="process-math">\(p'\)</span> is the derivative of <span class="process-math">\(p\text{.}\)</span>  Two common rules of differentiation, the constant multiplier rule and the addition rule, imply that <span class="process-math">\(T\)</span> is a linear transformation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.4"><a href="#sec-lt-intro-3-6" title="Copy heading and permalink for Example 1.2.4">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-3-7"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.4"><a href="#sec-lt-intro-3-6" title="Copy heading and permalink for Example 1.2.4" aria-label="Copy heading and permalink for Example 1.2.4">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-3-7"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.5</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-3-7-1-1">If <span class="process-math">\(V=\pbb_3\)</span> and <span class="process-math">\(W=\real\text{,}\)</span> then <span class="process-math">\(T(p)=\int_0^5 p(x)~dx\)</span> is a linear transformation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-7-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-3-7-1-1">If <span class="process-math">\(V=\pbb_3\)</span> and <span class="process-math">\(W=\real\text{,}\)</span> then <span class="process-math">\(T(p)=\int_0^5 p(x)~dx\)</span> is a linear transformation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.5"><a href="#sec-lt-intro-3-7" title="Copy heading and permalink for Example 1.2.5">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-3-8"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.5"><a href="#sec-lt-intro-3-7" title="Copy heading and permalink for Example 1.2.5" aria-label="Copy heading and permalink for Example 1.2.5">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-3-8"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.6</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-3-8-1-1">Suppose that <span class="process-math">\(V\)</span> is the vector space of <span class="process-math">\(3\times3\)</span> matrices.  Then <span class="process-math">\(T:V\to\real\)</span> by <span class="process-math">\(T(A)=\det(A)\)</span> is not a linear transformation because <span class="process-math">\(T(sA)=s^3T(A)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-8-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-3-8-1-1">Suppose that <span class="process-math">\(V\)</span> is the vector space of <span class="process-math">\(3\times3\)</span> matrices.  Then <span class="process-math">\(T:V\to\real\)</span> by <span class="process-math">\(T(A)=\det(A)\)</span> is not a linear transformation because <span class="process-math">\(T(sA)=s^3T(A)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.6"><a href="#sec-lt-intro-3-8" title="Copy heading and permalink for Example 1.2.6">🔗</a></div></article><article class="definition definition-like" id="sec-lt-intro-3-9"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.6"><a href="#sec-lt-intro-3-8" title="Copy heading and permalink for Example 1.2.6" aria-label="Copy heading and permalink for Example 1.2.6">🔗</a></div></article><article class="definition definition-like" id="definition-l-v-w"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.7</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-3-9-1-1">Given two vector spaces, <span class="process-math">\(V\)</span> and <span class="process-math">\(W\text{,}\)</span> the set of linear transformations <span class="process-math">\(T:V\to W\)</span> will be denoted as <span class="process-math">\(L(V,W)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-9-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="definition-l-v-w-1-1">Given two vector spaces, <span class="process-math">\(V\)</span> and <span class="process-math">\(W\text{,}\)</span> the set of linear transformations <span class="process-math">\(T:V\to W\)</span> will be denoted as <span class="process-math">\(L(V,W)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#definition-l-v-w-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.2.7"><a href="#sec-lt-intro-3-9" title="Copy heading and permalink for Definition 1.2.7">🔗</a></div></article><article class="assemblage assemblage-like" id="sec-lt-intro-3-10"><h4 class="heading"><span class="title">Notation.</span></h4>
-<div class="para" id="sec-lt-intro-3-10-2">While a linear transformation <span class="process-math">\(T:V\to W\)</span> is a function, we will frequently write <span class="process-math">\(T\vvec\text{,}\)</span> without parentheses, when we mean <span class="process-math">\(T(\vvec)\text{.}\)</span>  This is similar to how we often write <span class="process-math">\(\sin x\)</span> rather than <span class="process-math">\(\sin(x)\)</span> in other courses.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-10-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Definition 1.2.7"><a href="#definition-l-v-w" title="Copy heading and permalink for Definition 1.2.7" aria-label="Copy heading and permalink for Definition 1.2.7">🔗</a></div></article><article class="assemblage assemblage-like" id="sec-lt-intro-3-10"><h4 class="heading"><span class="title">Notation.</span></h4>
+<div class="para" id="sec-lt-intro-3-10-2">While a linear transformation <span class="process-math">\(T:V\to W\)</span> is a function, we will frequently write <span class="process-math">\(T\vvec\text{,}\)</span> without parentheses, when we mean <span class="process-math">\(T(\vvec)\text{.}\)</span>  This is similar to how we often write <span class="process-math">\(\sin x\)</span> rather than <span class="process-math">\(\sin(x)\)</span> in other courses.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-3-10-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Assemblage: Notation"><a href="#sec-lt-intro-3-10" title="Copy heading and permalink for Assemblage: Notation">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.2.1: Linear transformations"><a href="#sec-lt-intro-3" title="Copy heading and permalink for Subsection 1.2.1: Linear transformations">🔗</a></div></section><section class="subsection" id="sec-lt-intro-4"><h3 class="heading hide-type">
+<div class="autopermalink" data-description="Assemblage: Notation"><a href="#sec-lt-intro-3-10" title="Copy heading and permalink for Assemblage: Notation" aria-label="Copy heading and permalink for Assemblage: Notation">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.2.1: Linear transformations"><a href="#sec-lt-intro-3" title="Copy heading and permalink for Subsection 1.2.1: Linear transformations" aria-label="Copy heading and permalink for Subsection 1.2.1: Linear transformations">🔗</a></div></section><section class="subsection" id="sec-lt-intro-4"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.2.2</span><span class="space"> </span><span class="title">The null space and range</span>
 </h3>
-<div class="para" id="sec-lt-intro-4-2">A linear transformation <span class="process-math">\(T:V\to W\)</span> creates a subspace of <span class="process-math">\(V\)</span> and a subspace of <span class="process-math">\(W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-4-2">A linear transformation <span class="process-math">\(T:V\to W\)</span> creates a subspace of <span class="process-math">\(V\)</span> and a subspace of <span class="process-math">\(W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-lt-intro-4-3"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.8</span><span class="period">.</span>
@@ -422,18 +423,18 @@ T(f_1+f_2) \amp = \threevec{(f_1+f_2)(-3)}
 }\vvec\}\subset W\text{.}
 \end{align*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-3-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.2.8"><a href="#sec-lt-intro-4-3" title="Copy heading and permalink for Definition 1.2.8">🔗</a></div></article><div class="para" id="sec-lt-intro-4-4">In our earlier linear algebra courses, we considered the null space and column space of a matrix.  The null space and range of a linear transformation is the same concept generalized to vector spaces.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-4" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Definition 1.2.8"><a href="#sec-lt-intro-4-3" title="Copy heading and permalink for Definition 1.2.8" aria-label="Copy heading and permalink for Definition 1.2.8">🔗</a></div></article><div class="para" id="sec-lt-intro-4-4">In our earlier linear algebra courses, we considered the null space and column space of a matrix.  The null space and range of a linear transformation is the same concept generalized to vector spaces.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="sec-lt-intro-4-5"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.9</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-4-5-1-1">Suppose that <span class="process-math">\(A\)</span> is a <span class="process-math">\(10\times 17\)</span> matrix and consider the linear transformation <span class="process-math">\(T:\real^{17}\to\real^{10}\text{.}\)</span>  Then <span class="process-math">\(\nul(A)\)</span> is the set of solutions to the equation <span class="process-math">\(A\xvec=T(\xvec)=\zerovec\text{,}\)</span> which is the same as the null space <span class="process-math">\(\nul(T)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-5-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-4-5-1-1">Suppose that <span class="process-math">\(A\)</span> is a <span class="process-math">\(10\times 17\)</span> matrix and consider the linear transformation <span class="process-math">\(T:\real^{17}\to\real^{10}\text{.}\)</span>  Then <span class="process-math">\(\nul(A)\)</span> is the set of solutions to the equation <span class="process-math">\(A\xvec=T(\xvec)=\zerovec\text{,}\)</span> which is the same as the null space <span class="process-math">\(\nul(T)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para" id="sec-lt-intro-4-5-1-2">Similarly, the column space is the set of vectors <span class="process-math">\(\bvec\)</span> for which <span class="process-math">\(A\xvec = \bvec\)</span> is consistent. In other words, <span class="process-math">\(\bvec\)</span> is in <span class="process-math">\(\col(A)\)</span> if and only if there is a vector <span class="process-math">\(\xvec\)</span> such that <span class="process-math">\(T(\xvec)=A\xvec
-= \bvec\text{.}\)</span>  This is precisely the definition of <span class="process-math">\(\range(T)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-5-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+= \bvec\text{.}\)</span>  This is precisely the definition of <span class="process-math">\(\range(T)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-5-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.9"><a href="#sec-lt-intro-4-5" title="Copy heading and permalink for Example 1.2.9">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-4-6"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.9"><a href="#sec-lt-intro-4-5" title="Copy heading and permalink for Example 1.2.9" aria-label="Copy heading and permalink for Example 1.2.9">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-4-6"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.10</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-lt-intro-4-6-1-1">
@@ -455,10 +456,10 @@ A=\begin{bmatrix}
 </div>
 <div class="para">The null space is the set of vectors for which <span class="process-math">\(T\vvec=A\vvec=\zerovec\text{,}\)</span> which we see is the subspace of <span class="process-math">\(\real^4\)</span> spanned by <span class="process-math">\(\fourvec0210\)</span> and <span class="process-math">\(\fourvec{-2}{-1}01\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-6-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
-</div> <div class="para" id="sec-lt-intro-4-6-1-2">Similarly, <span class="process-math">\(\range(T)\)</span> is the subspace of <span class="process-math">\(\real^3\)</span> having a basis given by <span class="process-math">\(\threevec21{-2}\)</span> and <span class="process-math">\(\threevec{-1}02\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-6-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="sec-lt-intro-4-6-1-2">Similarly, <span class="process-math">\(\range(T)\)</span> is the subspace of <span class="process-math">\(\real^3\)</span> having a basis given by <span class="process-math">\(\threevec21{-2}\)</span> and <span class="process-math">\(\threevec{-1}02\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-6-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.10"><a href="#sec-lt-intro-4-6" title="Copy heading and permalink for Example 1.2.10">🔗</a></div></article><article class="example example-like" id="example-lt-poly"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.10"><a href="#sec-lt-intro-4-6" title="Copy heading and permalink for Example 1.2.10" aria-label="Copy heading and permalink for Example 1.2.10">🔗</a></div></article><article class="example example-like" id="example-lt-poly"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.11</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="example-lt-poly-1-1">
@@ -470,15 +471,15 @@ p(x)=a_3x^3+a_2x^2+a_1x+a_0
 </div>
 <div class="para">so that <span class="process-math">\(T(p)=\twovec{a_0}{a_1}\text{.}\)</span>  Therefore, <span class="process-math">\(\nul(T)\)</span> is the set of polynomials for which <span class="process-math">\(a_0=a_1=0\)</span> so that <span class="process-math">\(p(x)=a_3x^3+a_2x^2\text{.}\)</span>  This shows that <span class="process-math">\(\nul(T) = \laspan{x^2,x^3}\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#example-lt-poly-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
-</div> <div class="para" id="example-lt-poly-1-2">We also have that <span class="process-math">\(\range(T) = \real^2\)</span><div class="autopermalink" data-description="Paragraph"><a href="#example-lt-poly-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#example-lt-poly-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="example-lt-poly-1-2">We also have that <span class="process-math">\(\range(T) = \real^2\)</span><div class="autopermalink" data-description="Paragraph"><a href="#example-lt-poly-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.11"><a href="#example-lt-poly" title="Copy heading and permalink for Example 1.2.11">🔗</a></div></article><article class="proposition theorem-like" id="sec-lt-intro-4-8"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.11"><a href="#example-lt-poly" title="Copy heading and permalink for Example 1.2.11" aria-label="Copy heading and permalink for Example 1.2.11">🔗</a></div></article><article class="proposition theorem-like" id="sec-lt-intro-4-8"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.12</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-4-8-1-1">If <span class="process-math">\(T:V\to W\text{,}\)</span> then <span class="process-math">\(\nul(T)\)</span> is a subspace of <span class="process-math">\(V\)</span> and <span class="process-math">\(\range(T)\)</span> is a subspace of <span class="process-math">\(W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-8-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-4-8-1-1">If <span class="process-math">\(T:V\to W\text{,}\)</span> then <span class="process-math">\(\nul(T)\)</span> is a subspace of <span class="process-math">\(V\)</span> and <span class="process-math">\(\range(T)\)</span> is a subspace of <span class="process-math">\(W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.2.12"><a href="#sec-lt-intro-4-8" title="Copy heading and permalink for Proposition 1.2.12">🔗</a></div></article><article class="proof" id="sec-lt-intro-4-8-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 1.2.12"><a href="#sec-lt-intro-4-8" title="Copy heading and permalink for Proposition 1.2.12" aria-label="Copy heading and permalink for Proposition 1.2.12">🔗</a></div></article><article class="proof" id="sec-lt-intro-4-8-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="sec-lt-intro-4-8-2-1">
 <div class="para">Suppose that <span class="process-math">\(\vvec_1\)</span> and <span class="process-math">\(\vvec_2\)</span> are in <span class="process-math">\(\nul(T)\text{.}\)</span>  Then we have</div>
 <div class="displaymath process-math" id="sec-lt-intro-4-8-2-1-4">
@@ -490,7 +491,7 @@ T(\vvec_1+\vvec_2) = \amp T(\vvec_1) + T(\vvec_2) = 0 + 0
 </div>
 <div class="para">This shows that <span class="process-math">\(\nul(T)\)</span> is closed under scalar multiplication and vector addition and is therefore a subspace of <span class="process-math">\(V\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-8-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-8-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-lt-intro-4-8-2-2">
 <div class="para">Now suppose the <span class="process-math">\(\wvec_1\)</span> and <span class="process-math">\(\wvec_2\)</span> are in <span class="process-math">\(\range(T)\text{.}\)</span>  We know that there are vectors <span class="process-math">\(\vvec_1\)</span> and <span class="process-math">\(\vvec_2\)</span> in <span class="process-math">\(V\)</span> such that <span class="process-math">\(T(\vvec_1) = \wvec_1\)</span> and <span class="process-math">\(T(\vvec_2)=\wvec_2\text{.}\)</span> Therefore,</div>
@@ -503,9 +504,9 @@ T(\vvec_1+\vvec_2).
 </div>
 <div class="para">This shows that <span class="process-math">\(\range(T)\)</span> is closed under scalar multiplication and vector addition so <span class="process-math">\(\range(T)\)</span> is a subspace of <span class="process-math">\(W\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-8-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-8-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.2.12.1"><a href="#sec-lt-intro-4-8-2" title="Copy heading and permalink for Proof 1.2.12.1">🔗</a></div></article><div class="para" id="sec-lt-intro-4-9">The next proposition is extremely useful so we will refer to it as the “Fundamental Theorem of Linear Maps”.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-9" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proof 1.2.12.1"><a href="#sec-lt-intro-4-8-2" title="Copy heading and permalink for Proof 1.2.12.1" aria-label="Copy heading and permalink for Proof 1.2.12.1">🔗</a></div></article><div class="para" id="sec-lt-intro-4-9">The next proposition is extremely useful so we will refer to it as the “Fundamental Theorem of Linear Maps”.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-nul-range-dims"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.13</span><span class="period">.</span><span class="space"> </span><span class="title">Fundamental Theorem of Linear Maps.</span>
@@ -517,10 +518,10 @@ T(\vvec_1+\vvec_2).
 \dim \nul(T) + \dim \range(T) = \dim V\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-nul-range-dims-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-nul-range-dims-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.2.13: Fundamental Theorem of Linear Maps"><a href="#prop-nul-range-dims" title="Copy heading and permalink for Proposition 1.2.13: Fundamental Theorem of Linear Maps">🔗</a></div></article><article class="proof" id="prop-nul-range-dims-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="prop-nul-range-dims-3-1">Suppose that <span class="process-math">\(\uvec_1,\ldots,\uvec_j\)</span> is a basis for <span class="process-math">\(\nul(T)\text{,}\)</span> which we extend to a basis for <span class="process-math">\(V\)</span> by adding vectors <span class="process-math">\(\vvec_1,\ldots,\vvec_k\text{.}\)</span> We also define <span class="process-math">\(\wvec_i=T\vvec_i\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-nul-range-dims-3-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 1.2.13: Fundamental Theorem of Linear Maps"><a href="#prop-nul-range-dims" title="Copy heading and permalink for Proposition 1.2.13: Fundamental Theorem of Linear Maps" aria-label="Copy heading and permalink for Proposition 1.2.13: Fundamental Theorem of Linear Maps">🔗</a></div></article><article class="proof" id="prop-nul-range-dims-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="prop-nul-range-dims-3-1">Suppose that <span class="process-math">\(\uvec_1,\ldots,\uvec_j\)</span> is a basis for <span class="process-math">\(\nul(T)\text{,}\)</span> which we extend to a basis for <span class="process-math">\(V\)</span> by adding vectors <span class="process-math">\(\vvec_1,\ldots,\vvec_k\text{.}\)</span> We also define <span class="process-math">\(\wvec_i=T\vvec_i\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-nul-range-dims-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-nul-range-dims-3-2">
 <div class="para">Given a vector <span class="process-math">\(\vvec\)</span> in <span class="process-math">\(V\text{,}\)</span> we can write</div>
@@ -540,7 +541,7 @@ T\vvec\amp=a_1T\uvec_1 + \ldots + a_jT\uvec_j + b_1T\vvec_1 +
 </div>
 <div class="para">This shows that <span class="process-math">\(\wvec_1,\ldots,\wvec_k\)</span> span <span class="process-math">\(\range(T)\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-nul-range-dims-3-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-nul-range-dims-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-nul-range-dims-3-3">
 <div class="para">We also claim that <span class="process-math">\(\wvec_1,\ldots,\wvec_k\)</span> forms a linearly independent set.  Suppose that</div>
@@ -568,7 +569,7 @@ a_1=\ldots=a_j=b_1=\ldots=b_k\text{.}
 </div>
 <div class="para">Therefore, the set of vectors <span class="process-math">\(\basis{\wvec}{k}\)</span> is linearly independent and hence a basis for <span class="process-math">\(\range(T)\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-nul-range-dims-3-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-nul-range-dims-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-nul-range-dims-3-4">
 <div class="para">This shows that</div>
@@ -577,9 +578,9 @@ a_1=\ldots=a_j=b_1=\ldots=b_k\text{.}
 \dim \nul(T) + \dim \range(T) = j + k = \dim V\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-nul-range-dims-3-4" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-nul-range-dims-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.2.13.1"><a href="#prop-nul-range-dims-3" title="Copy heading and permalink for Proof 1.2.13.1">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-4-11"><h4 class="heading">
+<div class="autopermalink" data-description="Proof 1.2.13.1"><a href="#prop-nul-range-dims-3" title="Copy heading and permalink for Proof 1.2.13.1" aria-label="Copy heading and permalink for Proof 1.2.13.1">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-4-11"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.14</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-lt-intro-4-11-1-1">
@@ -591,9 +592,9 @@ a_1=\ldots=a_j=b_1=\ldots=b_k\text{.}
 \end{align*}
 </div>
 <div class="para">Therefore, <span class="process-math">\(\dim\col(A) + \dim\nul(A) = n\text{,}\)</span> which is an expression of the Fundamental Theorem of Linear Maps.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-11-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-11-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.14"><a href="#sec-lt-intro-4-11" title="Copy heading and permalink for Example 1.2.14">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-4-12"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.14"><a href="#sec-lt-intro-4-11" title="Copy heading and permalink for Example 1.2.14" aria-label="Copy heading and permalink for Example 1.2.14">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-4-12"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.15</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-lt-intro-4-12-1-1">
@@ -604,9 +605,9 @@ W\)</span> where <span class="process-math">\(V=\pbb_3\)</span> and <span class=
 \dim\nul(T) + \dim\range(T) = 2 + 2 = 4 = \dim V = \dim \pbb_3\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-12-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-12-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.15"><a href="#sec-lt-intro-4-12" title="Copy heading and permalink for Example 1.2.15">🔗</a></div></article><article class="definition definition-like" id="sec-lt-intro-4-13"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.15"><a href="#sec-lt-intro-4-12" title="Copy heading and permalink for Example 1.2.15" aria-label="Copy heading and permalink for Example 1.2.15">🔗</a></div></article><article class="definition definition-like" id="sec-lt-intro-4-13"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.16</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-lt-intro-4-13-1-1">
@@ -614,36 +615,36 @@ W\)</span> where <span class="process-math">\(V=\pbb_3\)</span> and <span class=
 </div>
 <ul class="disc" id="sec-lt-intro-4-13-1-1-2">
 <li id="sec-lt-intro-4-13-1-1-2-1">
-<div class="para" id="sec-lt-intro-4-13-1-1-2-1-1">If <span class="process-math">\(\range(T)=W\text{,}\)</span> we say that <span class="process-math">\(T\)</span> is <em class="emphasis">surjective</em>.  In particular, for every <span class="process-math">\(\wvec\)</span> in <span class="process-math">\(W\text{,}\)</span> there is a <span class="process-math">\(\vvec\)</span> in <span class="process-math">\(V\)</span> such that <span class="process-math">\(T\vvec = \wvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-13-1-1-2-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-4-13-1-1-2-1-1">If <span class="process-math">\(\range(T)=W\text{,}\)</span> we say that <span class="process-math">\(T\)</span> is <em class="emphasis">surjective</em>.  In particular, for every <span class="process-math">\(\wvec\)</span> in <span class="process-math">\(W\text{,}\)</span> there is a <span class="process-math">\(\vvec\)</span> in <span class="process-math">\(V\)</span> such that <span class="process-math">\(T\vvec = \wvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-13-1-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-lt-intro-4-13-1-1-2-1" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-lt-intro-4-13-1-1-2-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 <li id="sec-lt-intro-4-13-1-1-2-2">
 <div class="para" id="sec-lt-intro-4-13-1-1-2-2-1">If <span class="process-math">\(\nul(T)=\{0\}\text{,}\)</span> we say that <span class="process-math">\(T\)</span> is <em class="emphasis">injective</em>.  In this case, if <span class="process-math">\(T\vvec_1=T\vvec_2\text{,}\)</span> then <span class="process-math">\(\vvec_1=\vvec_2\)</span> since <span class="process-math">\(T(\vvec_1-\vvec_2) =
-0\text{,}\)</span> which means that <span class="process-math">\(\vvec_1-\vvec_2\)</span> is in <span class="process-math">\(\nul(T)=\{0\}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-13-1-1-2-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+0\text{,}\)</span> which means that <span class="process-math">\(\vvec_1-\vvec_2\)</span> is in <span class="process-math">\(\nul(T)=\{0\}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-13-1-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-lt-intro-4-13-1-1-2-2" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-lt-intro-4-13-1-1-2-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 </ul>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-13-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-13-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.2.16"><a href="#sec-lt-intro-4-13" title="Copy heading and permalink for Definition 1.2.16">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-4-14"><h4 class="heading">
+<div class="autopermalink" data-description="Definition 1.2.16"><a href="#sec-lt-intro-4-13" title="Copy heading and permalink for Definition 1.2.16" aria-label="Copy heading and permalink for Definition 1.2.16">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-4-14"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.17</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-4-14-1-1">Once again, these are familiar notions.  Suppose that <span class="process-math">\(A\)</span> is an <span class="process-math">\(m\times n\)</span> matrix that defines a linear transformation <span class="process-math">\(T:\real^n\to\real^m\text{.}\)</span>  Then <span class="process-math">\(T\)</span> is injective if <span class="process-math">\(\nul(A) = \{\zerovec\}\text{.}\)</span>  This happens when the columns of <span class="process-math">\(A\)</span> are linearly independent.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-14-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
-</div> <div class="para" id="sec-lt-intro-4-14-1-2">The transformation <span class="process-math">\(T\)</span> is surjective if <span class="process-math">\(\col(A) = \real^m\text{,}\)</span> which happens when the columns of <span class="process-math">\(A\)</span> span <span class="process-math">\(\real^m\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-14-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-4-14-1-1">Once again, these are familiar notions.  Suppose that <span class="process-math">\(A\)</span> is an <span class="process-math">\(m\times n\)</span> matrix that defines a linear transformation <span class="process-math">\(T:\real^n\to\real^m\text{.}\)</span>  Then <span class="process-math">\(T\)</span> is injective if <span class="process-math">\(\nul(A) = \{\zerovec\}\text{.}\)</span>  This happens when the columns of <span class="process-math">\(A\)</span> are linearly independent.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-14-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="sec-lt-intro-4-14-1-2">The transformation <span class="process-math">\(T\)</span> is surjective if <span class="process-math">\(\col(A) = \real^m\text{,}\)</span> which happens when the columns of <span class="process-math">\(A\)</span> span <span class="process-math">\(\real^m\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-14-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.17"><a href="#sec-lt-intro-4-14" title="Copy heading and permalink for Example 1.2.17">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-4-15"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.17"><a href="#sec-lt-intro-4-14" title="Copy heading and permalink for Example 1.2.17" aria-label="Copy heading and permalink for Example 1.2.17">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-4-15"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.18</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-4-15-1-1">The linear transformation <span class="process-math">\(T:\pbb\to\pbb\)</span> defined by <span class="process-math">\(T(p)(x)=xp(x)\)</span> is injective but not surjective because the constant polynomials are not in <span class="process-math">\(\range(T)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-15-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-4-15-1-1">The linear transformation <span class="process-math">\(T:\pbb\to\pbb\)</span> defined by <span class="process-math">\(T(p)(x)=xp(x)\)</span> is injective but not surjective because the constant polynomials are not in <span class="process-math">\(\range(T)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-15-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.18"><a href="#sec-lt-intro-4-15" title="Copy heading and permalink for Example 1.2.18">🔗</a></div></article><article class="definition definition-like" id="sec-lt-intro-4-16"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.18"><a href="#sec-lt-intro-4-15" title="Copy heading and permalink for Example 1.2.18" aria-label="Copy heading and permalink for Example 1.2.18">🔗</a></div></article><article class="definition definition-like" id="sec-lt-intro-4-16"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.19</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-4-16-1-1">A linear transformation <span class="process-math">\(T:V\to W\)</span> is called an <em class="emphasis">isomorphism</em> if <span class="process-math">\(T\)</span> is both surjective and injective.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-16-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-4-16-1-1">A linear transformation <span class="process-math">\(T:V\to W\)</span> is called an <em class="emphasis">isomorphism</em> if <span class="process-math">\(T\)</span> is both surjective and injective.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-16-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.2.19"><a href="#sec-lt-intro-4-16" title="Copy heading and permalink for Definition 1.2.19">🔗</a></div></article><div class="para" id="sec-lt-intro-4-17">The following proposition follows immediately from the <a href="sec-lt-intro.html#prop-nul-range-dims" class="xref" data-knowl="./knowl/xref/prop-nul-range-dims.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.13: Fundamental Theorem of Linear Maps">Fundamental Theorem of Linear Maps 1.2.13</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-17" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Definition 1.2.19"><a href="#sec-lt-intro-4-16" title="Copy heading and permalink for Definition 1.2.19" aria-label="Copy heading and permalink for Definition 1.2.19">🔗</a></div></article><div class="para" id="sec-lt-intro-4-17">The following proposition follows immediately from the <a href="sec-lt-intro.html#prop-nul-range-dims" class="xref" data-knowl="./knowl/xref/prop-nul-range-dims.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.13: Fundamental Theorem of Linear Maps">Fundamental Theorem of Linear Maps 1.2.13</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-17" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-lt-intro-4-18"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.20</span><span class="period">.</span>
@@ -653,40 +654,40 @@ W\)</span> where <span class="process-math">\(V=\pbb_3\)</span> and <span class=
 <ul class="disc" id="sec-lt-intro-4-18-1-1-4">
 <li id="sec-lt-intro-4-18-1-1-4-1">
 <div class="para" id="sec-lt-intro-4-18-1-1-4-1-1">If <span class="process-math">\(T\)</span> is surjective, then <span class="process-math">\(\dim V \geq \dim
-W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-18-1-1-4-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-18-1-1-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-lt-intro-4-18-1-1-4-1" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-lt-intro-4-18-1-1-4-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 <li id="sec-lt-intro-4-18-1-1-4-2">
 <div class="para" id="sec-lt-intro-4-18-1-1-4-2-1">If <span class="process-math">\(T\)</span> is injective, then <span class="process-math">\(\dim V
-\leq \dim W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-18-1-1-4-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+\leq \dim W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-18-1-1-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-lt-intro-4-18-1-1-4-2" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-lt-intro-4-18-1-1-4-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 <li id="sec-lt-intro-4-18-1-1-4-3">
 <div class="para" id="sec-lt-intro-4-18-1-1-4-3-1">If <span class="process-math">\(T\)</span> is an isomorphism, then <span class="process-math">\(\dim V
-= \dim W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-18-1-1-4-3-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+= \dim W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-18-1-1-4-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-lt-intro-4-18-1-1-4-3" title="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-lt-intro-4-18-1-1-4-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 </ul>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-18-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-4-18-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.2.20"><a href="#sec-lt-intro-4-18" title="Copy heading and permalink for Proposition 1.2.20">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.2.2: The null space and range"><a href="#sec-lt-intro-4" title="Copy heading and permalink for Subsection 1.2.2: The null space and range">🔗</a></div></section><section class="subsection" id="sec-lt-intro-5"><h3 class="heading hide-type">
+<div class="autopermalink" data-description="Proposition 1.2.20"><a href="#sec-lt-intro-4-18" title="Copy heading and permalink for Proposition 1.2.20" aria-label="Copy heading and permalink for Proposition 1.2.20">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.2.2: The null space and range"><a href="#sec-lt-intro-4" title="Copy heading and permalink for Subsection 1.2.2: The null space and range" aria-label="Copy heading and permalink for Subsection 1.2.2: The null space and range">🔗</a></div></section><section class="subsection" id="sec-lt-intro-5"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.2.3</span><span class="space"> </span><span class="title">Vector space isomorphisms</span>
 </h3>
 <article class="example example-like" id="sec-lt-intro-5-2"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.21</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-5-2-1-1">Consider the linear transformation <span class="process-math">\(T:\pbb_2\to\real^3\)</span> defined by <span class="process-math">\(T(p)=\threevec{p(0)}{p'(0)}{p''(0)}\text{.}\)</span> If <span class="process-math">\(p(x)=a_0+a_1x+a_2x^2\text{,}\)</span> then <span class="process-math">\(T(p) = \threevec{a_0}{a_1}{2a_2}\text{.}\)</span>  This shows that <span class="process-math">\(\nul(T) = \{0\}\)</span> and <span class="process-math">\(\range(T)=\real^3\text{.}\)</span> Therefore, <span class="process-math">\(T\)</span> is a vector space isomorphism.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-2-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-5-2-1-1">Consider the linear transformation <span class="process-math">\(T:\pbb_2\to\real^3\)</span> defined by <span class="process-math">\(T(p)=\threevec{p(0)}{p'(0)}{p''(0)}\text{.}\)</span> If <span class="process-math">\(p(x)=a_0+a_1x+a_2x^2\text{,}\)</span> then <span class="process-math">\(T(p) = \threevec{a_0}{a_1}{2a_2}\text{.}\)</span>  This shows that <span class="process-math">\(\nul(T) = \{0\}\)</span> and <span class="process-math">\(\range(T)=\real^3\text{.}\)</span> Therefore, <span class="process-math">\(T\)</span> is a vector space isomorphism.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.21"><a href="#sec-lt-intro-5-2" title="Copy heading and permalink for Example 1.2.21">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-5-3"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.21"><a href="#sec-lt-intro-5-2" title="Copy heading and permalink for Example 1.2.21" aria-label="Copy heading and permalink for Example 1.2.21">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-5-3"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.22</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-5-3-1-1">If <span class="process-math">\(V\)</span> is a vector space, then <span class="process-math">\(I:V\to V\)</span> defined by <span class="process-math">\(I(\vvec) = \vvec\)</span> is a linear transformation called the <em class="emphasis">identity</em> transformation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-3-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-5-3-1-1">If <span class="process-math">\(V\)</span> is a vector space, then <span class="process-math">\(I:V\to V\)</span> defined by <span class="process-math">\(I(\vvec) = \vvec\)</span> is a linear transformation called the <em class="emphasis">identity</em> transformation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.22"><a href="#sec-lt-intro-5-3" title="Copy heading and permalink for Example 1.2.22">🔗</a></div></article><div class="para" id="sec-lt-intro-5-4">Suppose that <span class="process-math">\(T:V\to W\)</span> is an isomorphism, then every vector <span class="process-math">\(\wvec\)</span> in <span class="process-math">\(W\)</span> has a vector <span class="process-math">\(\vvec\)</span> in <span class="process-math">\(V\)</span> such that <span class="process-math">\(T(\vvec) = \wvec\text{.}\)</span>  In fact, there is exactly once such vector since if <span class="process-math">\(T(\vvec_1)=T(\vvec_2) =
-\wvec\text{,}\)</span> we know that <span class="process-math">\(\vvec_1=\vvec_2\)</span> because <span class="process-math">\(T\)</span> is injective.  In this case, we can define a function <span class="process-math">\(S:W\to V\)</span> where <span class="process-math">\(S(\wvec)\)</span> is the vector <span class="process-math">\(\vvec\)</span> for which <span class="process-math">\(T(\vvec) = \wvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-4" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Example 1.2.22"><a href="#sec-lt-intro-5-3" title="Copy heading and permalink for Example 1.2.22" aria-label="Copy heading and permalink for Example 1.2.22">🔗</a></div></article><div class="para" id="sec-lt-intro-5-4">Suppose that <span class="process-math">\(T:V\to W\)</span> is an isomorphism, then every vector <span class="process-math">\(\wvec\)</span> in <span class="process-math">\(W\)</span> has a vector <span class="process-math">\(\vvec\)</span> in <span class="process-math">\(V\)</span> such that <span class="process-math">\(T(\vvec) = \wvec\text{.}\)</span>  In fact, there is exactly once such vector since if <span class="process-math">\(T(\vvec_1)=T(\vvec_2) =
+\wvec\text{,}\)</span> we know that <span class="process-math">\(\vvec_1=\vvec_2\)</span> because <span class="process-math">\(T\)</span> is injective.  In this case, we can define a function <span class="process-math">\(S:W\to V\)</span> where <span class="process-math">\(S(\wvec)\)</span> is the vector <span class="process-math">\(\vvec\)</span> for which <span class="process-math">\(T(\vvec) = \wvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-lt-intro-5-5">
 <div class="para">Notice that <span class="process-math">\(S:W\to V\)</span> is a linear transformation.  For instance, if <span class="process-math">\(T(\vvec) = \wvec\text{,}\)</span> then <span class="process-math">\(T(s\vvec) =
@@ -702,26 +703,26 @@ S(s\wvec) = s\vvec = sS(\wvec)\text{.}
 S(\wvec_1+\wvec_2) = \vvec_1+\vvec_2 = S(\wvec_1)+S(\wvec_2)\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-5" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-lt-intro-5-6">Therefore, we have the following proposition.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-6" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-5-6">Therefore, we have the following proposition.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-lt-intro-5-7"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.23</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-5-7-1-1">If <span class="process-math">\(T:V\to W\)</span> is an ismorphism, there is a linear transformation <span class="process-math">\(S:W\to V\)</span> such that <span class="process-math">\(ST=I_V\text{,}\)</span> the identity transformation on <span class="process-math">\(V\text{,}\)</span> and <span class="process-math">\(TS=I_W\text{,}\)</span> the identity transformation on <span class="process-math">\(W\text{.}\)</span>  We call <span class="process-math">\(S\)</span> the <dfn class="terminology">inverse</dfn> of <span class="process-math">\(T\)</span> and write <span class="process-math">\(S=T^{-1}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-7-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-5-7-1-1">If <span class="process-math">\(T:V\to W\)</span> is an ismorphism, there is a linear transformation <span class="process-math">\(S:W\to V\)</span> such that <span class="process-math">\(ST=I_V\text{,}\)</span> the identity transformation on <span class="process-math">\(V\text{,}\)</span> and <span class="process-math">\(TS=I_W\text{,}\)</span> the identity transformation on <span class="process-math">\(W\text{.}\)</span>  We call <span class="process-math">\(S\)</span> the <dfn class="terminology">inverse</dfn> of <span class="process-math">\(T\)</span> and write <span class="process-math">\(S=T^{-1}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.2.23"><a href="#sec-lt-intro-5-7" title="Copy heading and permalink for Proposition 1.2.23">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-5-8"><h4 class="heading">
+<div class="autopermalink" data-description="Proposition 1.2.23"><a href="#sec-lt-intro-5-7" title="Copy heading and permalink for Proposition 1.2.23" aria-label="Copy heading and permalink for Proposition 1.2.23">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-5-8"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.24</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-5-8-1-1">If <span class="process-math">\(A\)</span> is an <span class="process-math">\(m\times m\)</span> matrix and <span class="process-math">\(T:\real^m\to\real^m\)</span> by <span class="process-math">\(T(\xvec)=A\xvec\text{,}\)</span> then <span class="process-math">\(T\)</span> is an isomorphism precisely when <span class="process-math">\(A\)</span> is invertible. In this case, <span class="process-math">\(T^{-1}(\xvec) = A^{-1}\xvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-8-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-5-8-1-1">If <span class="process-math">\(A\)</span> is an <span class="process-math">\(m\times m\)</span> matrix and <span class="process-math">\(T:\real^m\to\real^m\)</span> by <span class="process-math">\(T(\xvec)=A\xvec\text{,}\)</span> then <span class="process-math">\(T\)</span> is an isomorphism precisely when <span class="process-math">\(A\)</span> is invertible. In this case, <span class="process-math">\(T^{-1}(\xvec) = A^{-1}\xvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.24"><a href="#sec-lt-intro-5-8" title="Copy heading and permalink for Example 1.2.24">🔗</a></div></article><article class="proposition theorem-like" id="prop-fin-dim-isom"><h4 class="heading">
+<div class="autopermalink" data-description="Example 1.2.24"><a href="#sec-lt-intro-5-8" title="Copy heading and permalink for Example 1.2.24" aria-label="Copy heading and permalink for Example 1.2.24">🔗</a></div></article><article class="proposition theorem-like" id="prop-fin-dim-isom"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.25</span><span class="period">.</span>
 </h4>
-<div class="para" id="prop-fin-dim-isom-1-1">If <span class="process-math">\(V\)</span> is a finite dimensional vector space of dimension <span class="process-math">\(n\)</span> over the field <span class="process-math">\(\field\text{,}\)</span> then there is an isomorphism <span class="process-math">\(T:\field^n\to V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-fin-dim-isom-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="prop-fin-dim-isom-1-1">If <span class="process-math">\(V\)</span> is a finite dimensional vector space of dimension <span class="process-math">\(n\)</span> over the field <span class="process-math">\(\field\text{,}\)</span> then there is an isomorphism <span class="process-math">\(T:\field^n\to V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-fin-dim-isom-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.2.25"><a href="#prop-fin-dim-isom" title="Copy heading and permalink for Proposition 1.2.25">🔗</a></div></article><article class="proof" id="prop-fin-dim-isom-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 1.2.25"><a href="#prop-fin-dim-isom" title="Copy heading and permalink for Proposition 1.2.25" aria-label="Copy heading and permalink for Proposition 1.2.25">🔗</a></div></article><article class="proof" id="prop-fin-dim-isom-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="prop-fin-dim-isom-2-1">
 <div class="para">We choose a basis <span class="process-math">\(\basis{\vvec}{n}\)</span> and define</div>
 <div class="displaymath process-math">
@@ -731,17 +732,17 @@ c_2\vvec_2 + \ldots + c_n\vvec_n\text{.}
 \end{equation*}
 </div>
 <div class="para">By the linear independence of the basis, we see that <span class="process-math">\(T\)</span> is injective.  Since the span of the basis vectors is <span class="process-math">\(V\text{,}\)</span> we see that <span class="process-math">\(T\)</span> is surjective.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-fin-dim-isom-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-fin-dim-isom-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.2.25.1"><a href="#prop-fin-dim-isom-2" title="Copy heading and permalink for Proof 1.2.25.1">🔗</a></div></article><div class="para" id="sec-lt-intro-5-10">The term <em class="emphasis">isomorphism</em> means “having the same shape or structure.”  In other words, isomorphic vector spaces have the same structure.  In our earlier courses, we considered only the vector spaces <span class="process-math">\(\real^n\text{.}\)</span>  The previous proposition, <a href="sec-lt-intro.html#prop-fin-dim-isom" class="xref" data-knowl="./knowl/xref/prop-fin-dim-isom.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.25">Proposition 1.2.25</a>, shows us that every finite dimensional real vector space has the same structure as <span class="process-math">\(\real^n\text{.}\)</span> This means that, technically speaking, we were also studying finite dimensional real vector spaces at the same time.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-10" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proof 1.2.25.1"><a href="#prop-fin-dim-isom-2" title="Copy heading and permalink for Proof 1.2.25.1" aria-label="Copy heading and permalink for Proof 1.2.25.1">🔗</a></div></article><div class="para" id="sec-lt-intro-5-10">The term <em class="emphasis">isomorphism</em> means “having the same shape or structure.”  In other words, isomorphic vector spaces have the same structure.  In our earlier courses, we considered only the vector spaces <span class="process-math">\(\real^n\text{.}\)</span>  The previous proposition, <a href="sec-lt-intro.html#prop-fin-dim-isom" class="xref" data-knowl="./knowl/xref/prop-fin-dim-isom.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.25">Proposition 1.2.25</a>, shows us that every finite dimensional real vector space has the same structure as <span class="process-math">\(\real^n\text{.}\)</span> This means that, technically speaking, we were also studying finite dimensional real vector spaces at the same time.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-lt-intro-5-11">Notice, however, that the isomorphism in <a href="sec-lt-intro.html#prop-fin-dim-isom" class="xref" data-knowl="./knowl/xref/prop-fin-dim-isom.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.25">Proposition 1.2.25</a> depends on a choice of basis.  If two people choose different bases, then they will produce different isomorphisms.  In fact, as we move forward, some of our work will be motivated by choosing a basis that creates a particularly nice isomorphism.  Our next discussion of matrices will lay that foundation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-11" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-5-11">Notice, however, that the isomorphism in <a href="sec-lt-intro.html#prop-fin-dim-isom" class="xref" data-knowl="./knowl/xref/prop-fin-dim-isom.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.25">Proposition 1.2.25</a> depends on a choice of basis.  If two people choose different bases, then they will produce different isomorphisms.  In fact, as we move forward, some of our work will be motivated by choosing a basis that creates a particularly nice isomorphism.  Our next discussion of matrices will lay that foundation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-5-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Subsection 1.2.3: Vector space isomorphisms"><a href="#sec-lt-intro-5" title="Copy heading and permalink for Subsection 1.2.3: Vector space isomorphisms">🔗</a></div></section><section class="subsection" id="sec-lt-intro-6"><h3 class="heading hide-type">
+<div class="autopermalink" data-description="Subsection 1.2.3: Vector space isomorphisms"><a href="#sec-lt-intro-5" title="Copy heading and permalink for Subsection 1.2.3: Vector space isomorphisms" aria-label="Copy heading and permalink for Subsection 1.2.3: Vector space isomorphisms">🔗</a></div></section><section class="subsection" id="sec-lt-intro-6"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.2.4</span><span class="space"> </span><span class="title">Representing linear transformations with matrices</span>
 </h3>
 <div class="para" id="sec-lt-intro-6-2">
-<a href="sec-lt-intro.html#prop-fin-dim-isom" class="xref" data-knowl="./knowl/xref/prop-fin-dim-isom.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.25">Proposition 1.2.25</a> says that every finite dimensional vector space is essentially the same as <span class="process-math">\(\field^n\text{.}\)</span>  Therefore, we are able to represent elements in a vector space as more typical vectors in <span class="process-math">\(\field^n\)</span> and linear transformations as matrices.  Let us make this more clear now.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<a href="sec-lt-intro.html#prop-fin-dim-isom" class="xref" data-knowl="./knowl/xref/prop-fin-dim-isom.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.25">Proposition 1.2.25</a> says that every finite dimensional vector space is essentially the same as <span class="process-math">\(\field^n\text{.}\)</span>  Therefore, we are able to represent elements in a vector space as more typical vectors in <span class="process-math">\(\field^n\)</span> and linear transformations as matrices.  Let us make this more clear now.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-lt-intro-6-3">
 <div class="para">Suppose that we have a basis <span class="process-math">\(\bcal=\{\basis{\vvec}{n}\}\)</span> for a finite dimensional vector space <span class="process-math">\(V\text{.}\)</span>  If <span class="process-math">\(\vvec\)</span> is an element of <span class="process-math">\(V\text{,}\)</span> then we can uniquely write</div>
@@ -757,7 +758,7 @@ c_2\vvec_2 + \ldots + c_n\vvec_n\text{.}
 \end{equation*}
 </div>
 <div class="para">This should be familiar from our <a class="external" href="https://understandinglinearalgebra.org/sec-bases.html#sec-bases-4" target="_blank">earlier work</a><details class="ptx-footnote" aria-live="polite" id="sec-lt-intro-6-3-8"><summary class="ptx-footnote__number" title="Footnote 1.2.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-lt-intro-6-3-8"><code class="code-inline tex2jax_ignore">understandinglinearalgebra.org/sec-bases.html#sec-bases-4</code></div></details> when we used a basis of <span class="process-math">\(\real^m\)</span> to form a new coordinate system.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="sec-lt-intro-6-4"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.26</span><span class="period">.</span>
@@ -770,9 +771,9 @@ c_2\vvec_2 + \ldots + c_n\vvec_n\text{.}
 \end{equation*}
 </div>
 <div class="para">We may think of this as a coordinate system in the vector space of polynomials.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-4-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.26"><a href="#sec-lt-intro-6-4" title="Copy heading and permalink for Example 1.2.26">🔗</a></div></article><div class="para logical" id="sec-lt-intro-6-5">
+<div class="autopermalink" data-description="Example 1.2.26"><a href="#sec-lt-intro-6-4" title="Copy heading and permalink for Example 1.2.26" aria-label="Copy heading and permalink for Example 1.2.26">🔗</a></div></article><div class="para logical" id="sec-lt-intro-6-5">
 <div class="para">In a similar way, we can represent linear transformations using matrices. Suppose that <span class="process-math">\(T:V\to W\)</span> is a linear transformation and that we have a basis <span class="process-math">\(\bcal=\{\vvec_1,\ldots,\vvec_n\}\)</span> for <span class="process-math">\(V\)</span> and a basis <span class="process-math">\(\ccal=\{\wvec_1,\ldots,\wvec_m\}\)</span> for <span class="process-math">\(W\text{.}\)</span>  We then have</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -802,16 +803,16 @@ A_{m,j}\wvec_m \text{,}
 \right]\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-5" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-lt-intro-6-6">At first glance, this notation may seem a little intimidating, but it will become clear with a little practice.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-6" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-6-6">At first glance, this notation may seem a little intimidating, but it will become clear with a little practice.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-lt-intro-6-7"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.27</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-6-7-1-1">If <span class="process-math">\(T:V\to W\)</span> is a linear transformation, <span class="process-math">\(\bcal\)</span> a basis for <span class="process-math">\(V\)</span> and <span class="process-math">\(\ccal\)</span> a basis for <span class="process-math">\(W\text{,}\)</span> we say that the matrix <span class="process-math">\(\coords{T}{\ccal,\bcal}\)</span> is the matrix associated to <span class="process-math">\(T\)</span> with respect to these bases.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-7-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-6-7-1-1">If <span class="process-math">\(T:V\to W\)</span> is a linear transformation, <span class="process-math">\(\bcal\)</span> a basis for <span class="process-math">\(V\)</span> and <span class="process-math">\(\ccal\)</span> a basis for <span class="process-math">\(W\text{,}\)</span> we say that the matrix <span class="process-math">\(\coords{T}{\ccal,\bcal}\)</span> is the matrix associated to <span class="process-math">\(T\)</span> with respect to these bases.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.2.27"><a href="#sec-lt-intro-6-7" title="Copy heading and permalink for Definition 1.2.27">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-6-8"><h4 class="heading">
+<div class="autopermalink" data-description="Definition 1.2.27"><a href="#sec-lt-intro-6-7" title="Copy heading and permalink for Definition 1.2.27" aria-label="Copy heading and permalink for Definition 1.2.27">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-6-8"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.28</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-lt-intro-6-8-1-1">
@@ -825,9 +826,9 @@ A_{m,j}\wvec_m \text{,}
 \end{bmatrix}\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-8-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.28"><a href="#sec-lt-intro-6-8" title="Copy heading and permalink for Example 1.2.28">🔗</a></div></article><div class="para" id="sec-lt-intro-6-9">The next proposition says that the composition of linear transformations corresponds to matrix multiplication.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-9" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Example 1.2.28"><a href="#sec-lt-intro-6-8" title="Copy heading and permalink for Example 1.2.28" aria-label="Copy heading and permalink for Example 1.2.28">🔗</a></div></article><div class="para" id="sec-lt-intro-6-9">The next proposition says that the composition of linear transformations corresponds to matrix multiplication.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-lt-intro-6-10"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.29</span><span class="period">.</span>
@@ -840,9 +841,9 @@ A_{m,j}\wvec_m \text{,}
 \coords{T}{\ccal,\bcal} \text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-10-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-10-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.2.29"><a href="#sec-lt-intro-6-10" title="Copy heading and permalink for Proposition 1.2.29">🔗</a></div></article><article class="proof" id="sec-lt-intro-6-10-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 1.2.29"><a href="#sec-lt-intro-6-10" title="Copy heading and permalink for Proposition 1.2.29" aria-label="Copy heading and permalink for Proposition 1.2.29">🔗</a></div></article><article class="proof" id="sec-lt-intro-6-10-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="sec-lt-intro-6-10-2-1">
 <div class="para">We denote the vectors in the bases by <span class="process-math">\(\basis{\vvec}{m}\text{,}\)</span> <span class="process-math">\(\basis{\wvec}{n}\text{,}\)</span> and <span class="process-math">\(\basis{\uvec}{p}\text{,}\)</span> respectively.  Similarly, we use the shorthand</div>
 <div class="displaymath process-math" id="sec-lt-intro-6-10-2-1-4">
@@ -852,7 +853,7 @@ B \amp = \coords{S}{\dcal,\ccal}\\
 C \amp = \coords{ST}{\dcal,\bcal}
 \end{align*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-10-2-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-10-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-lt-intro-6-10-2-2">
 <div class="para">We have</div>
@@ -873,9 +874,9 @@ S\wvec_k \amp = \sum_l B_{l,k} \uvec_l\text{,}
 \end{align*}
 </div>
 <div class="para">Therefore, <span class="process-math">\(C_{l,j} = \sum_kB_{l,k}A_{k,j}\text{,}\)</span> which says that <span class="process-math">\(C=BA\)</span> as expected.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-10-2-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-10-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.2.29.1"><a href="#sec-lt-intro-6-10-2" title="Copy heading and permalink for Proof 1.2.29.1">🔗</a></div></article><div class="para" id="sec-lt-intro-6-11">A similar result holds for the coordinate representations of vectors.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-11" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proof 1.2.29.1"><a href="#sec-lt-intro-6-10-2" title="Copy heading and permalink for Proof 1.2.29.1" aria-label="Copy heading and permalink for Proof 1.2.29.1">🔗</a></div></article><div class="para" id="sec-lt-intro-6-11">A similar result holds for the coordinate representations of vectors.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-lt-intro-6-12"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.30</span><span class="period">.</span>
@@ -888,9 +889,9 @@ S\wvec_k \amp = \sum_l B_{l,k} \uvec_l\text{,}
 \coords{v}{\bcal}\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-12-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-12-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.2.30"><a href="#sec-lt-intro-6-12" title="Copy heading and permalink for Proposition 1.2.30">🔗</a></div></article><div class="para logical" id="sec-lt-intro-6-13">
+<div class="autopermalink" data-description="Proposition 1.2.30"><a href="#sec-lt-intro-6-12" title="Copy heading and permalink for Proposition 1.2.30" aria-label="Copy heading and permalink for Proposition 1.2.30">🔗</a></div></article><div class="para logical" id="sec-lt-intro-6-13">
 <div class="para">An important example is when the linear transformation is the identity <span class="process-math">\(I:V\to V\)</span> and we have two bases <span class="process-math">\(\bcal\)</span> and <span class="process-math">\(\ccal\)</span> for <span class="process-math">\(V\text{.}\)</span>  In this case,</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -910,7 +911,7 @@ S\wvec_k \amp = \sum_l B_{l,k} \uvec_l\text{,}
 \coords{\vvec}{\bcal}\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-13" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="sec-lt-intro-6-14"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.31</span><span class="period">.</span>
@@ -934,7 +935,7 @@ S\wvec_k \amp = \sum_l B_{l,k} \uvec_l\text{,}
 \end{align*}
 </div>
 <div class="para">This matrix converts the coordinate representation of a polynomials in the <span class="process-math">\(\bcal\)</span> basis into the coordinate representation of the same polynomial in the <span class="process-math">\(\ccal\)</span> basis.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-14-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-14-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="sec-lt-intro-6-14-1-2">
 <div class="para">The inverse of this matrix will convert the <span class="process-math">\(\ccal\)</span>-coordinate representation of a polynomial into the <span class="process-math">\(\bcal\)</span>-coordinate representation:</div>
 <div class="displaymath process-math">
@@ -947,7 +948,7 @@ S\wvec_k \amp = \sum_l B_{l,k} \uvec_l\text{,}
 \end{bmatrix}\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-14-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-14-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="sec-lt-intro-6-14-1-3">
 <div class="para">Consider the polynomial <span class="process-math">\(p(x)=4-2x+8x^2\text{.}\)</span>  We then have</div>
 <div class="displaymath process-math">
@@ -975,17 +976,17 @@ p(x) = 4-2x+8x^2 = 5(x+1)-7(x-x^2)+1(x^2-1)
 \end{equation*}
 </div>
 <div class="para">as is easily checked.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-14-1-3" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-14-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.31"><a href="#sec-lt-intro-6-14" title="Copy heading and permalink for Example 1.2.31">🔗</a></div></article><div class="para" id="sec-lt-intro-6-15">We will often be interested in linear transformations <span class="process-math">\(T:V\to
-V\)</span> in which the codomain and the domain are the same vector space.  In this case, we say that <span class="process-math">\(T\)</span> is an <em class="emphasis">operator</em> on <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-15" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Example 1.2.31"><a href="#sec-lt-intro-6-14" title="Copy heading and permalink for Example 1.2.31" aria-label="Copy heading and permalink for Example 1.2.31">🔗</a></div></article><div class="para" id="sec-lt-intro-6-15">We will often be interested in linear transformations <span class="process-math">\(T:V\to
+V\)</span> in which the codomain and the domain are the same vector space.  In this case, we say that <span class="process-math">\(T\)</span> is an <em class="emphasis">operator</em> on <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-15" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<article class="definition definition-like" id="sec-lt-intro-6-16"><h4 class="heading">
+<article class="definition definition-like" id="definition-operator"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.32</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-6-16-1-1">A linear transformation <span class="process-math">\(T:V\to V\)</span> is called an <dfn class="terminology">operator</dfn> on <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-16-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="definition-operator-1-1">A linear transformation <span class="process-math">\(T:V\to V\)</span> is called an <dfn class="terminology">operator</dfn> on <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#definition-operator-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.2.32"><a href="#sec-lt-intro-6-16" title="Copy heading and permalink for Definition 1.2.32">🔗</a></div></article><div class="para" id="sec-lt-intro-6-17">Given a basis <span class="process-math">\(\bcal\)</span> for <span class="process-math">\(V\text{,}\)</span> we can then represent <span class="process-math">\(T\)</span> in terms of this basis as <span class="process-math">\(\coords{T}{\bcal,\bcal}\)</span> where the same basis is used for the codomain and domain. The following shows how the matrices representing the same transformation are represented in two bases.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-17" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Definition 1.2.32"><a href="#definition-operator" title="Copy heading and permalink for Definition 1.2.32" aria-label="Copy heading and permalink for Definition 1.2.32">🔗</a></div></article><div class="para" id="sec-lt-intro-6-17">Given a basis <span class="process-math">\(\bcal\)</span> for <span class="process-math">\(V\text{,}\)</span> we can then represent <span class="process-math">\(T\)</span> in terms of this basis as <span class="process-math">\(\coords{T}{\bcal,\bcal}\)</span> where the same basis is used for the codomain and domain. The following shows how the matrices representing the same transformation are represented in two bases.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-17" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-matrix-change-basis"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.33</span><span class="period">.</span>
@@ -1004,9 +1005,9 @@ V\)</span> in which the codomain and the domain are the same vector space.  In t
 \coords{I}{\ccal,\bcal}^{-1}\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-matrix-change-basis-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-matrix-change-basis-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.2.33"><a href="#prop-matrix-change-basis" title="Copy heading and permalink for Proposition 1.2.33">🔗</a></div></article><div class="para logical" id="sec-lt-intro-6-19">
+<div class="autopermalink" data-description="Proposition 1.2.33"><a href="#prop-matrix-change-basis" title="Copy heading and permalink for Proposition 1.2.33" aria-label="Copy heading and permalink for Proposition 1.2.33">🔗</a></div></article><div class="para logical" id="sec-lt-intro-6-19">
 <div class="para">Here is a simpler way to represent this statement.  If <span class="process-math">\(B =
 \coords{T}{\ccal,\ccal}\text{,}\)</span> <span class="process-math">\(A=\coords{T}{\bcal,\bcal}\text{,}\)</span> and <span class="process-math">\(P=\coords{I}{\ccal,\bcal}\text{,}\)</span> then we have</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-matrix-change-basis.html">
@@ -1015,7 +1016,7 @@ B = PAP^{-1}\text{.}
 \end{equation*}
 </div>
 <div class="para">This should remind you of the kind of expression we saw when we were diagonalizing matrices and gives some idea for where we are heading.  In particular, given an operator <span class="process-math">\(T\)</span> on a vector space <span class="process-math">\(V\text{,}\)</span> we would like to find a basis <span class="process-math">\(\bcal\)</span> for <span class="process-math">\(V\)</span> so that <span class="process-math">\(\coords{T}{\bcal,\bcal}\)</span> is relatively simple, such as a diagonal matrix.  The expression in <a href="sec-lt-intro.html#prop-matrix-change-basis" class="xref" data-knowl="./knowl/xref/prop-matrix-change-basis.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.33">Proposition 1.2.33</a> can help us do that, even though that expression may look daunting.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-19" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-19" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-lt-intro-6-20"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.34</span><span class="period">.</span>
@@ -1027,33 +1028,28 @@ B = PAP^{-1}\text{.}
 B = PAP^{-1}\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-20-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-20-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.2.34"><a href="#sec-lt-intro-6-20" title="Copy heading and permalink for Definition 1.2.34">🔗</a></div></article><div class="para" id="sec-lt-intro-6-21">Notice that a matrix is diagonalizable precisely when it is similar to a diagonal matrix.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-21" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Definition 1.2.34"><a href="#sec-lt-intro-6-20" title="Copy heading and permalink for Definition 1.2.34" aria-label="Copy heading and permalink for Definition 1.2.34">🔗</a></div></article><div class="para" id="sec-lt-intro-6-21">Notice that a matrix is diagonalizable precisely when it is similar to a diagonal matrix.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-21" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-lt-intro-6-22"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.35</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-6-22-1-1">Similarity is an equivalence relation on the set of <span class="process-math">\(n\times n\)</span> matrices.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-22-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-6-22-1-1">Similarity is an equivalence relation on the set of <span class="process-math">\(n\times n\)</span> matrices.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-22-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.2.35"><a href="#sec-lt-intro-6-22" title="Copy heading and permalink for Proposition 1.2.35">🔗</a></div></article><article class="proposition theorem-like" id="sec-lt-intro-6-23"><h4 class="heading">
+<div class="autopermalink" data-description="Proposition 1.2.35"><a href="#sec-lt-intro-6-22" title="Copy heading and permalink for Proposition 1.2.35" aria-label="Copy heading and permalink for Proposition 1.2.35">🔗</a></div></article><article class="proposition theorem-like" id="sec-lt-intro-6-23"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.36</span><span class="period">.</span>
 </h4>
 <div class="para" id="sec-lt-intro-6-23-1-1">Suppose that <span class="process-math">\(A\)</span> and <span class="process-math">\(B\)</span> are similar <span class="process-math">\(n\times
-n\)</span> matrices.  If <span class="process-math">\(\bcal\)</span> is a basis for <span class="process-math">\(V\)</span> and <span class="process-math">\(A=\coords{T}{\bcal,\bcal}\text{,}\)</span> then <span class="process-math">\(B=\coords{T}{\ccal,\ccal}\)</span> for some other basis <span class="process-math">\(\ccal\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-23-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+n\)</span> matrices.  If <span class="process-math">\(\bcal\)</span> is a basis for <span class="process-math">\(V\)</span> and <span class="process-math">\(A=\coords{T}{\bcal,\bcal}\text{,}\)</span> then <span class="process-math">\(B=\coords{T}{\ccal,\ccal}\)</span> for some other basis <span class="process-math">\(\ccal\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-23-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.2.36"><a href="#sec-lt-intro-6-23" title="Copy heading and permalink for Proposition 1.2.36">🔗</a></div></article><div class="para" id="sec-lt-intro-6-24">In other words, two similar matrices represent the same linear transformations in two different bases.  This is why we should expect that similar matrices should share important properties, such as determinants, eigenvalues, and more.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-24" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 1.2.36"><a href="#sec-lt-intro-6-23" title="Copy heading and permalink for Proposition 1.2.36" aria-label="Copy heading and permalink for Proposition 1.2.36">🔗</a></div></article><div class="para" id="sec-lt-intro-6-24">In other words, two similar matrices represent the same linear transformations in two different bases.  This is why we should expect that similar matrices should share important properties, such as determinants, eigenvalues, and more.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-24" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-lt-intro-6-25">We close this section by noting that the set of linear transformations is itself a vector space.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-25" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-6-25">If <span class="process-math">\(V\)</span> and <span class="process-math">\(W\)</span> are vector spaces, remember that <a href="sec-lt-intro.html#definition-l-v-w" class="xref" data-knowl="./knowl/xref/definition-l-v-w.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.2.7">Definition 1.2.7</a> defined <span class="process-math">\(L(V,W)\)</span> to be the set of linear transformations <span class="process-math">\(T:V\to
+W\text{.}\)</span>  We now note that <span class="process-math">\(L(V,W)\)</span> is itself a vector space.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-25" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<article class="definition definition-like" id="sec-lt-intro-6-26"><h4 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.37</span><span class="period">.</span>
-</h4>
-<div class="para" id="sec-lt-intro-6-26-1-1">If <span class="process-math">\(V\)</span> and <span class="process-math">\(W\)</span> are two vector spaces, then <span class="process-math">\(L(V,W)\)</span> is the set of linear transformations <span class="process-math">\(T:V\to
-W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-6-26-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Definition 1.2.37"><a href="#sec-lt-intro-6-26" title="Copy heading and permalink for Definition 1.2.37">🔗</a></div></article><article class="proposition theorem-like" id="prop-lt-vs"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.38</span><span class="period">.</span>
+<article class="proposition theorem-like" id="prop-lt-vs"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.37</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="prop-lt-vs-1-1">
 <div class="para">If <span class="process-math">\(V\)</span> and <span class="process-math">\(W\)</span> are two vector spaces, then <span class="process-math">\(L(V,W)\)</span> is a vector space.  Moreover, if <span class="process-math">\(\bcal\)</span> is a finite basis for <span class="process-math">\(V\)</span> and <span class="process-math">\(\ccal\)</span> is a finite basis for <span class="process-math">\(W\text{,}\)</span> then the function <span class="process-math">\(S:L(V,W)\to
@@ -1069,15 +1065,15 @@ S(T) = \coords{T}{\ccal,\bcal}
 \dim L(V,W) = \dim V \dim W\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#prop-lt-vs-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-lt-vs-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.2.38"><a href="#prop-lt-vs" title="Copy heading and permalink for Proposition 1.2.38">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.2.4: Representing linear transformations with matrices"><a href="#sec-lt-intro-6" title="Copy heading and permalink for Subsection 1.2.4: Representing linear transformations with matrices">🔗</a></div></section><section class="subsection" id="sec-lt-intro-7"><h3 class="heading hide-type">
+<div class="autopermalink" data-description="Proposition 1.2.37"><a href="#prop-lt-vs" title="Copy heading and permalink for Proposition 1.2.37" aria-label="Copy heading and permalink for Proposition 1.2.37">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.2.4: Representing linear transformations with matrices"><a href="#sec-lt-intro-6" title="Copy heading and permalink for Subsection 1.2.4: Representing linear transformations with matrices" aria-label="Copy heading and permalink for Subsection 1.2.4: Representing linear transformations with matrices">🔗</a></div></section><section class="subsection" id="sec-lt-intro-7"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.2.5</span><span class="space"> </span><span class="title">Dual spaces</span>
 </h3>
-<div class="para" id="sec-lt-intro-7-2">A special case of the vector space <span class="process-math">\(L(V,W)\)</span> of linear transformations from <span class="process-math">\(V\)</span> to <span class="process-math">\(W\)</span> is when <span class="process-math">\(W=\field\text{.}\)</span> In this case, we call <span class="process-math">\(L(V,\field)\)</span> the <em class="emphasis">dual</em> of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-7-2">A special case of the vector space <span class="process-math">\(L(V,W)\)</span> of linear transformations from <span class="process-math">\(V\)</span> to <span class="process-math">\(W\)</span> is when <span class="process-math">\(W=\field\text{.}\)</span> In this case, we call <span class="process-math">\(L(V,\field)\)</span> the <em class="emphasis">dual</em> of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-lt-intro-7-3"><h4 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.39</span><span class="period">.</span>
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.2.38</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-lt-intro-7-3-1-1">
 <div class="para">The vector space of linear transformations <span class="process-math">\(L(V,\field)\)</span> is called the <dfn class="terminology">dual</dfn> of <span class="process-math">\(V\)</span> and is denoted by</div>
@@ -1088,12 +1084,12 @@ V'=L(V,\field)\text{.}
 </div>
 <div class="para">An element of <span class="process-math">\(V'\)</span> is called a <dfn class="terminology">functional</dfn> on <span class="process-math">\(V\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-3-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.2.39"><a href="#sec-lt-intro-7-3" title="Copy heading and permalink for Definition 1.2.39">🔗</a></div></article><div class="para" id="sec-lt-intro-7-4">Up to this point, we have typically used <span class="process-math">\(T\)</span> to denote a linear transformation.  However, we often use <span class="process-math">\(\phi\)</span> to represent an element of the dual.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-4" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Definition 1.2.38"><a href="#sec-lt-intro-7-3" title="Copy heading and permalink for Definition 1.2.38" aria-label="Copy heading and permalink for Definition 1.2.38">🔗</a></div></article><div class="para" id="sec-lt-intro-7-4">Up to this point, we have typically used <span class="process-math">\(T\)</span> to denote a linear transformation.  However, we often use <span class="process-math">\(\phi\)</span> to represent an element of the dual.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="sec-lt-intro-7-5"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.40</span><span class="period">.</span>
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.39</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-lt-intro-7-5-1-1">
 <div class="para">Suppose that <span class="process-math">\(V=\real^3\text{.}\)</span>  Then</div>
@@ -1104,7 +1100,7 @@ V'=L(V,\field)\text{.}
 </div>
 <div class="para">is a functional on <span class="process-math">\(V\)</span> and hence an element of the dual <span class="process-math">\((\real^3)'\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-5-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para logical" id="sec-lt-intro-7-5-1-2">
 <div class="para">Notice that we can represent this functional in terms of the dot product if we define the vector <span class="process-math">\(\uvec=\threevec23{-1}\text{.}\)</span>  Then</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-riesz.html">
@@ -1114,15 +1110,15 @@ V'=L(V,\field)\text{.}
 </div>
 <div class="para">We will later understand this example as an illustration of the <a href="sec-orthogonal.html#prop-riesz" class="xref" data-knowl="./knowl/xref/prop-riesz.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.3.17: Riesz represenation theorem">Riesz Representation Theorem 1.3.17</a>.  More generally, any vector <span class="process-math">\(\uvec\)</span> in <span class="process-math">\(\real^3\)</span> defines a functional by <span class="process-math">\(\phi(\vvec)=\uvec\cdot\vvec\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-5-1-2" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-5-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.40"><a href="#sec-lt-intro-7-5" title="Copy heading and permalink for Example 1.2.40">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-7-6"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.41</span><span class="period">.</span>
+<div class="autopermalink" data-description="Example 1.2.39"><a href="#sec-lt-intro-7-5" title="Copy heading and permalink for Example 1.2.39" aria-label="Copy heading and permalink for Example 1.2.39">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-7-6"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.40</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-lt-intro-7-6-1-1">If <span class="process-math">\(V=\pbb_3\text{,}\)</span> then <span class="process-math">\(\phi(p)=p(0)\)</span> is a functional on <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-6-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lt-intro-7-6-1-1">If <span class="process-math">\(V=\pbb_3\text{,}\)</span> then <span class="process-math">\(\phi(p)=p(0)\)</span> is a functional on <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.41"><a href="#sec-lt-intro-7-6" title="Copy heading and permalink for Example 1.2.41">🔗</a></div></article><div class="para" id="sec-lt-intro-7-7">By <a href="sec-lt-intro.html#prop-lt-vs" class="xref" data-knowl="./knowl/xref/prop-lt-vs.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.38">Proposition 1.2.38</a>, we know that <span class="process-math">\(V'\)</span> is a vector space and that <span class="process-math">\(\dim V' = \dim V\text{.}\)</span>  Therefore, if <span class="process-math">\(\dim
-V=n\text{,}\)</span> we see that <span class="process-math">\(\dim V' = n\)</span> as well and given a basis for <span class="process-math">\(V\text{,}\)</span> we can construct an explicit isomorphism <span class="process-math">\(T:V'\to \real^n \text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-7" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Example 1.2.40"><a href="#sec-lt-intro-7-6" title="Copy heading and permalink for Example 1.2.40" aria-label="Copy heading and permalink for Example 1.2.40">🔗</a></div></article><div class="para" id="sec-lt-intro-7-7">By <a href="sec-lt-intro.html#prop-lt-vs" class="xref" data-knowl="./knowl/xref/prop-lt-vs.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.37">Proposition 1.2.37</a>, we know that <span class="process-math">\(V'\)</span> is a vector space and that <span class="process-math">\(\dim V' = \dim V\text{.}\)</span>  Therefore, if <span class="process-math">\(\dim
+V=n\text{,}\)</span> we see that <span class="process-math">\(\dim V' = n\)</span> as well and given a basis for <span class="process-math">\(V\text{,}\)</span> we can construct an explicit isomorphism <span class="process-math">\(T:V'\to \real^n \text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-lt-intro-7-8">
 <div class="para">Suppose that <span class="process-math">\(\basis{\vvec}{n}\)</span> is a basis for <span class="process-math">\(V\)</span> and that <span class="process-math">\(\phi\)</span> is a functional on <span class="process-math">\(V\text{.}\)</span>  If <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(V\text{,}\)</span> then we can write</div>
@@ -1153,10 +1149,10 @@ a_n\phi(\vvec_n) = 0
 \end{equation*}
 </div>
 <div class="para">for all vectors <span class="process-math">\(\vvec\text{.}\)</span>  Since <span class="process-math">\(T\)</span> is injective and <span class="process-math">\(\dim V'=\dim \real^n\text{,}\)</span> <span class="process-math">\(T\)</span> is also surjective by <a href="sec-lt-intro.html#prop-nul-range-dims" class="xref" data-knowl="./knowl/xref/prop-nul-range-dims.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.13: Fundamental Theorem of Linear Maps">Fundamental Theorem of Linear Maps 1.2.13</a>.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-8" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-lt-intro-7-9"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.42</span><span class="period">.</span>
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.2.41</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-lt-intro-7-9-1-1">
 <div class="para">If <span class="process-math">\(V\)</span> is a finite dimensional vector space, the dual space <span class="process-math">\(V'\)</span> satisfies</div>
@@ -1167,10 +1163,10 @@ a_n\phi(\vvec_n) = 0
 </div>
 <div class="para">and an isomorphism is given once we choose a basis for <span class="process-math">\(V\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-9-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.2.42"><a href="#sec-lt-intro-7-9" title="Copy heading and permalink for Proposition 1.2.42">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-7-10"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.43</span><span class="period">.</span>
+<div class="autopermalink" data-description="Proposition 1.2.41"><a href="#sec-lt-intro-7-9" title="Copy heading and permalink for Proposition 1.2.41" aria-label="Copy heading and permalink for Proposition 1.2.41">🔗</a></div></article><article class="example example-like" id="sec-lt-intro-7-10"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.42</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-lt-intro-7-10-1-1">
 <div class="para">Consider <span class="process-math">\(V=\pbb_2\)</span> with basis <span class="process-math">\(1,x,x^2\text{.}\)</span>  Define functionals <span class="process-math">\(\phi_1\text{,}\)</span> <span class="process-math">\(\phi_2\text{,}\)</span> and <span class="process-math">\(\phi_3\)</span> by</div>
@@ -1189,9 +1185,9 @@ a_n\phi(\vvec_n) = 0
 </div>
 <div class="para">satisfies <span class="process-math">\(\phi=a_1\phi_1 + a_2\phi_2+a_3\phi_3\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-10-1-1" title="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lt-intro-7-10-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 1.2.43"><a href="#sec-lt-intro-7-10" title="Copy heading and permalink for Example 1.2.43">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.2.5: Dual spaces"><a href="#sec-lt-intro-7" title="Copy heading and permalink for Subsection 1.2.5: Dual spaces">🔗</a></div></section><div class="autopermalink" data-description="Section 1.2: Linear transformations"><a href="#sec-lt-intro" title="Copy heading and permalink for Section 1.2: Linear transformations">🔗</a></div></section></div>
+<div class="autopermalink" data-description="Example 1.2.42"><a href="#sec-lt-intro-7-10" title="Copy heading and permalink for Example 1.2.42" aria-label="Copy heading and permalink for Example 1.2.42">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.2.5: Dual spaces"><a href="#sec-lt-intro-7" title="Copy heading and permalink for Subsection 1.2.5: Dual spaces" aria-label="Copy heading and permalink for Subsection 1.2.5: Dual spaces">🔗</a></div></section><div class="autopermalink" data-description="Section 1.2: Linear transformations"><a href="#sec-lt-intro" title="Copy heading and permalink for Section 1.2: Linear transformations" aria-label="Copy heading and permalink for Section 1.2: Linear transformations">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="sec-vs-intro.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-orthogonal.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
