@@ -961,7 +961,12 @@
 
     <example>
       <statement>
-        <p>Returning to our earlier example where 
+        <p>Returning to
+        <xref ref="example-minimal-polynomial"
+              text="custom">
+          our earlier example
+        </xref>
+        where 
         <m>T:\real^4\to\real^4</m> by
         <m>T\xvec = A\xvec</m> with
         <m>A=\begin{bmatrix}
