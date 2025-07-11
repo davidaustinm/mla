@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: denver                         *-->
+<!--*  Palette: ice-fire                     *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.20</span><span class="period">.</span>
+</h4>
+<div class="para logical">
+<div class="para">We will revisit <a href="sec-polys.html#example-nul-range-invariant" class="xref" data-knowl="./knowl/xref/example-nul-range-invariant.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.4.16">Example 1.4.16</a> and the operator <span class="process-math">\(T:\real^4\to\real^4\)</span> defined by <span class="process-math">\(T\xvec=A\xvec\)</span> where <span class="process-math">\(A=\begin{bmatrix}
+-10 \amp 16 \amp 5 \amp -9 \\
+-6 \amp 10 \amp 1 \amp -5 \\
+-2 \amp 4 \amp 1 \amp -5 \\
+2 \amp -4 \amp -3 \amp 3 \\
+\end{bmatrix}
+\text{.}\)</span> Suppose that <span class="process-math">\(\vvec=\fourvec1111\)</span> and consider the vectors</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/example-nul-range-invariant.html">
+\begin{equation*}
+\vvec, T\vvec, \ldots, T^5\vvec\text{.}
+\end{equation*}
+</div>
+<div class="para">Since this is a set of five vectors in <span class="process-math">\(\real^4\text{,}\)</span> we are guaranteed that this set is linearly dependent. Putting these five vectors into a matrix and row reducing, we have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/example-nul-range-invariant.html">
+\begin{equation*}
+\begin{bmatrix}
+\vvec \amp T\vvec \amp T^2\vvec \amp T^3\vvec \amp T^4\vvec
+\end{bmatrix}
+\sim
+\begin{bmatrix}
+1 \amp 0 \amp -4 \amp 16 \amp -48 \amp 128 \\
+0 \amp 1 \amp -4 \amp 12 \amp -32 \amp 80 \\
+0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
+0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0
+\end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#example-nul-range-invariant-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical">
+<div class="para">This shows, in particular, that <span class="process-math">\(T^2\vvec = -4\vvec -
+4T\vvec\)</span> so that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(T^2 + 4T+4I)\vvec = 0\text{.}
+\end{equation*}
+</div>
+<div class="para">Since <span class="process-math">\(\vvec\)</span> and <span class="process-math">\(T\vvec\)</span> are linearly independent, the minimal polynomial <span class="process-math">\(p_\vvec\)</span> cannot have degree one or less.  Therefore,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p_\vvec(x) = x^2 + 4x + 4\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#example-nul-range-invariant-2-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 1.4.20"><a href="#example-nul-range-invariant-2" title="Copy heading and permalink for Example 1.4.20" aria-label="Copy heading and permalink for Example 1.4.20">🔗</a></div></article><span class="incontext"><a class="internal" href="sec-polys.html#example-nul-range-invariant-2">in-context</a></span>
+</body>
+</html>
