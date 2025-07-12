@@ -274,10 +274,7 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-chapter contains-active">
 <div class="toc-title-box"><a href="chap-std-forms.html" class="internal"><span class="codenumber">2</span> <span class="title">Standard forms</span></a></div>
 <ul class="structural toc-item-list contains-active">
-<li class="toc-item toc-section contains-active">
-<div class="toc-title-box"><a href="sec-upper.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Upper triangular matrices</span></a></div>
-<ul class="structural toc-item-list active"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-upper.html#sec-upper-3" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Upper triangular matrices</span></a></div></li></ul>
-</li>
+<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-upper.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Upper triangular matrices</span></a></div></li>
 <li class="toc-item toc-section">
 <div class="toc-title-box"><a href="sec-spectral.html" class="internal"><span class="codenumber">2.2</span> <span class="title">The Spectral Theorem</span></a></div>
 <ul class="structural toc-item-list">
@@ -308,13 +305,10 @@ eBookConfig.enable_chatcodes =  false;
 <span class="type">Section</span><span class="space"> </span><span class="codenumber">2.1</span><span class="space"> </span><span class="title">Upper triangular matrices</span>
 </h2>
 <section class="introduction" id="sec-upper-2"><div class="para" id="sec-upper-2-1">In this section, we will use our understanding of the minimal polynomial to find some standard forms for matrices of operators. First, we will consider upper triangular matrices.<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div></section><section class="subsection" id="sec-upper-3"><h3 class="heading hide-type">
-<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.1.1</span><span class="space"> </span><span class="title">Upper triangular matrices</span>
-</h3>
-<div class="para" id="sec-upper-3-2">As we have seen in the past, upper triangular matrices have some simple properties.  For one, the eigenvalues of the associated operator equal the diagonal elements of the matrix.  We have also seen that linear systems formed by triangular matrices are relatively easy to solve.  All told, they form a pleasant set of matrices.<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></section><div class="para" id="sec-upper-3">As we have seen in the past, upper triangular matrices have some simple properties.  For one, the eigenvalues of the associated operator equal the diagonal elements of the matrix.  We have also seen that linear systems formed by triangular matrices are relatively easy to solve.  All told, they form a pleasant set of matrices.<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para logical" id="sec-upper-3-3">
-<div class="para">Reember that an upper triangular matrix is one whose entries are zero below the diagonal;  that is, they have a form like this:</div>
+<div class="para logical" id="sec-upper-4">
+<div class="para">Remember that an upper triangular matrix is one whose entries are zero below the diagonal;  that is, they have a form like this:</div>
 <div class="displaymath process-math">
 \begin{equation*}
 \begin{bmatrix}
@@ -326,7 +320,7 @@ eBookConfig.enable_chatcodes =  false;
 \end{equation*}
 </div>
 <div class="para">Suppose that <span class="process-math">\(T\)</span> is an operator and that there is a basis <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</span> for which the associated matrix <span class="process-math">\(A\)</span> for <span class="process-math">\(T\)</span> is upper triangular.  Since <span class="process-math">\(A_{k,j} = 0\)</span> if <span class="process-math">\(k \gt j\text{,}\)</span> we have</div>
-<div class="displaymath process-math" id="sec-upper-3-3-8">
+<div class="displaymath process-math" id="sec-upper-4-8">
 \begin{align}
 T\vvec_1 \amp = A_{1,1}\vvec_1\tag{2.1.1}\\
 T\vvec_2 \amp = A_{1,2}\vvec_1 + A_{2,2}\vvec_2\tag{2.1.2}\\
@@ -334,13 +328,13 @@ T\vvec_3 \amp = A_{1,3}\vvec_1 + A_{2,3}\vvec_2 + A_{3,3}\vvec_3\tag{2.1.3}
 \end{align}
 </div>
 <div class="para">and so forth.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-upper-3-4">Notice that <a href="sec-upper.html#sec-upper-3-3-8" class="xref" data-knowl="./knowl/xref/me-upper-triang-1.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.1.1">(2.1.1)</a> says that <span class="process-math">\(T\vvec_1
-= A_{1,1}\vvec_1\)</span> so that <span class="process-math">\(\vvec_1\)</span> is an eigenvector with associated eigenvalue <span class="process-math">\(A_{1,1}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-upper-5">Notice that <a href="sec-upper.html#sec-upper-4-8" class="xref" data-knowl="./knowl/xref/me-upper-triang-1.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.1.1">(2.1.1)</a> says that <span class="process-math">\(T\vvec_1
+= A_{1,1}\vvec_1\)</span> so that <span class="process-math">\(\vvec_1\)</span> is an eigenvector with associated eigenvalue <span class="process-math">\(A_{1,1}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para logical" id="sec-upper-3-5">
-<div class="para">In addition, <a href="sec-upper.html#sec-upper-3-3-8" class="xref" data-knowl="./knowl/xref/me-upper-triang-2.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.1.2">(2.1.2)</a> tells us that</div>
+<div class="para logical" id="sec-upper-6">
+<div class="para">In addition, <a href="sec-upper.html#sec-upper-4-8" class="xref" data-knowl="./knowl/xref/me-upper-triang-2.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.1.2">(2.1.2)</a> tells us that</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/me-upper-triang-2.html">
 \begin{equation*}
 T\vvec_2 = A_{2,1}\vvec_1 + A_{2,2}\vvec_2\text{,}
@@ -348,9 +342,9 @@ T\vvec_2 = A_{2,1}\vvec_1 + A_{2,2}\vvec_2\text{,}
 </div>
 <div class="para">which implies that <span class="process-math">\(\laspan{\vvec_1,\vvec_2}\)</span> is invariant under <span class="process-math">\(T\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-3-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para logical" id="sec-upper-3-6">
+<div class="para logical" id="sec-upper-7">
 <div class="para">More generally,</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -360,16 +354,16 @@ A_{k,k}\vvec_k\text{,}
 </div>
 <div class="para">which says that, for every <span class="process-math">\(j\text{,}\)</span> <span class="process-math">\(\laspan{\vvec_1,\vvec_2,\ldots,\vvec_j}\)</span> is invariant under <span class="process-math">\(T\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-3-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-upper-3-7">Let’s record this as a proposition.<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-3-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-upper-8">Let’s record this as a proposition.<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<article class="proposition theorem-like" id="prop-upper-invariant"><h4 class="heading">
+<article class="proposition theorem-like" id="prop-upper-invariant"><h3 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.1.1</span><span class="period">.</span>
-</h4>
+</h3>
 <div class="para" id="prop-upper-invariant-1-1">Suppose that <span class="process-math">\(T\)</span> is an operator on the vector space <span class="process-math">\(V\text{.}\)</span>  Then there is a basis <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</span> for <span class="process-math">\(V\)</span> in which the associated matrix of <span class="process-math">\(T\)</span> is upper triangular if and only if <span class="process-math">\(\laspan{\vvec_1,\vvec_2,\ldots,\vvec_j}\)</span> is invariant under <span class="process-math">\(T\)</span> for each <span class="process-math">\(j\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-upper-invariant-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 2.1.1"><a href="#prop-upper-invariant" title="Copy heading and permalink for Proposition 2.1.1" aria-label="Copy heading and permalink for Proposition 2.1.1">🔗</a></div></article><article class="proof" id="prop-upper-invariant-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 2.1.1"><a href="#prop-upper-invariant" title="Copy heading and permalink for Proposition 2.1.1" aria-label="Copy heading and permalink for Proposition 2.1.1">🔗</a></div></article><article class="proof" id="prop-upper-invariant-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
 <div class="para logical" id="prop-upper-invariant-2-1">
 <div class="para">The discussion above explains why an operator with an upper triangular matrix forms invariant subspaces.  Conversely, suppose that <span class="process-math">\(\laspan{\vvec_1,\vvec_2,\ldots,\vvec_j}\)</span> is invariant for every <span class="process-math">\(j\text{.}\)</span>  The matrix <span class="process-math">\(A\)</span> associated to <span class="process-math">\(T\)</span> satisfies</div>
 <div class="displaymath process-math">
@@ -381,11 +375,11 @@ T\vvec_j = \sum_{k=1}^n A_{k,j}\vvec_k =
 <div class="para">which shows that <span class="process-math">\(A_{k,j}=0\)</span> if <span class="process-math">\(k\gt j\)</span> and that <span class="process-math">\(A\)</span> is therefore upper triangular.</div>
 <div class="autopermalink" data-description="Paragraph"><a href="#prop-upper-invariant-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 2.1.1.1"><a href="#prop-upper-invariant-2" title="Copy heading and permalink for Proof 2.1.1.1" aria-label="Copy heading and permalink for Proof 2.1.1.1">🔗</a></div></article><div class="para" id="sec-upper-3-9">We can rephrase this in terms of polynomials.<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-3-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proof 2.1.1.1"><a href="#prop-upper-invariant-2" title="Copy heading and permalink for Proof 2.1.1.1" aria-label="Copy heading and permalink for Proof 2.1.1.1">🔗</a></div></article><div class="para" id="sec-upper-10">We can rephrase this in terms of polynomials.<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<article class="proposition theorem-like" id="prop-upper-min"><h4 class="heading">
+<article class="proposition theorem-like" id="prop-upper-min"><h3 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.1.2</span><span class="period">.</span>
-</h4>
+</h3>
 <div class="para logical" id="prop-upper-min-1-1">
 <div class="para">Suppose that <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(V\)</span> and that there is a basis <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</span> of <span class="process-math">\(V\)</span> such that the matrix <span class="process-math">\(A\)</span> of <span class="process-math">\(T\)</span> is upper triangular.  Then</div>
 <div class="displaymath process-math">
@@ -398,7 +392,7 @@ T\vvec_j = \sum_{k=1}^n A_{k,j}\vvec_k =
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#prop-upper-min-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 2.1.2"><a href="#prop-upper-min" title="Copy heading and permalink for Proposition 2.1.2" aria-label="Copy heading and permalink for Proposition 2.1.2">🔗</a></div></article><article class="proof" id="prop-upper-min-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 2.1.2"><a href="#prop-upper-min" title="Copy heading and permalink for Proposition 2.1.2" aria-label="Copy heading and permalink for Proposition 2.1.2">🔗</a></div></article><article class="proof" id="prop-upper-min-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
 <div class="para logical" id="prop-upper-min-2-1">
 <div class="para">We will use <span class="process-math">\(q\)</span> to denote the polynomial</div>
 <div class="displaymath process-math">
@@ -415,13 +409,13 @@ q(x)=(x-A_{1,1})(x-A_{2,2})\ldots(x-A_{n,n})\text{.}
 A_{1,2}\vvec_1 + A_{2,2}\vvec_2\text{.}\)</span>  Rearranging gives</div>
 <div class="displaymath process-math">
 \begin{equation*}
-(T-A_{2,2})\vvec_2 = A_{1,2}\vvec_1\text{.}
+(T-A_{2,2}I)\vvec_2 = A_{1,2}\vvec_1\text{.}
 \end{equation*}
 </div>
 <div class="para">Therefore,</div>
 <div class="displaymath process-math">
 \begin{equation*}
-(T-A_{1,1})(T-A_{2,2})\vvec_2 = A_{1,2}(T-A_{1,1)}\vvec_1 = 0\text{,}
+(T-A_{1,1}I)(T-A_{2,2}I)\vvec_2 = A_{1,2}(T-A_{1,1}I)\vvec_1 = 0\text{,}
 \end{equation*}
 </div>
 <div class="para">which tells us that <span class="process-math">\(q(T)\vvec_2=0\text{.}\)</span>
@@ -432,17 +426,17 @@ A_{1,2}\vvec_1 + A_{2,2}\vvec_2\text{.}\)</span>  Rearranging gives</div>
 <div class="para">Continuing in this way, we see that</div>
 <div class="displaymath process-math">
 \begin{equation*}
-(T-A_{1,1})(T-A_{2,2)}\ldots (T-A_{j,j})\vvec_j = 0
+(T-A_{1,1}I)(T-A_{2,2}I)\ldots (T-A_{j,j}I)\vvec_j = 0
 \end{equation*}
 </div>
 <div class="para">and hence that <span class="process-math">\(q(T)\vvec_j=0\text{.}\)</span>  This means that <span class="process-math">\(q(T)\vvec=0\)</span> for every vector <span class="process-math">\(\vvec\)</span> and so we know that <span class="process-math">\(q(T)=0\)</span> as claimed.</div>
 <div class="autopermalink" data-description="Paragraph"><a href="#prop-upper-min-2-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 2.1.2.1"><a href="#prop-upper-min-2" title="Copy heading and permalink for Proof 2.1.2.1" aria-label="Copy heading and permalink for Proof 2.1.2.1">🔗</a></div></article><div class="para" id="sec-upper-3-11">This leads to the following crucial result.<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-3-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proof 2.1.2.1"><a href="#prop-upper-min-2" title="Copy heading and permalink for Proof 2.1.2.1" aria-label="Copy heading and permalink for Proof 2.1.2.1">🔗</a></div></article><div class="para" id="sec-upper-12">This leads to the following crucial result.<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<article class="theorem theorem-like" id="thm-upper-minimal"><h4 class="heading">
+<article class="theorem theorem-like" id="thm-upper-minimal"><h3 class="heading">
 <span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.1.3</span><span class="period">.</span>
-</h4>
+</h3>
 <div class="para logical" id="thm-upper-minimal-1-1">
 <div class="para">Suppose that <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(V\)</span> over the field <span class="process-math">\(\field\text{.}\)</span>  There is a basis for <span class="process-math">\(V\)</span> for which the matrix of <span class="process-math">\(T\)</span> is upper triangular if and only if the minimal polynomial of <span class="process-math">\(T\)</span> has the form</div>
 <div class="displaymath process-math">
@@ -455,15 +449,15 @@ p(x) = (x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)
 <div class="autopermalink" data-description="Paragraph"><a href="#thm-upper-minimal-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para" id="thm-upper-minimal-1-2">Moreover, when this happens, the diagonal entries of the matrix are the eigenvalues of <span class="process-math">\(T\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#thm-upper-minimal-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 2.1.3"><a href="#thm-upper-minimal" title="Copy heading and permalink for Theorem 2.1.3" aria-label="Copy heading and permalink for Theorem 2.1.3">🔗</a></div></article><article class="proof" id="thm-upper-minimal-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Theorem 2.1.3"><a href="#thm-upper-minimal" title="Copy heading and permalink for Theorem 2.1.3" aria-label="Copy heading and permalink for Theorem 2.1.3">🔗</a></div></article><article class="proof" id="thm-upper-minimal-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3>
 <div class="para logical" id="thm-upper-minimal-2-1">
 <div class="para">One direction is a natural consequence of <a href="sec-upper.html#prop-upper-min" class="xref" data-knowl="./knowl/xref/prop-upper-min.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 2.1.2">Proposition 2.1.2</a>.  Suppose that there is a basis for which the matrix <span class="process-math">\(A\)</span> of <span class="process-math">\(T\)</span> is upper triangular.  That proposition tells us that <span class="process-math">\(q(T) = 0\)</span> for</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-upper-min.html">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-upper-min.html ./knowl/xref/prop-min-poly-div.html">
 \begin{equation*}
 q(x)=(x-A_{1,1})(x-A_{2,2})\ldots(x-A_{n,n})\text{.}
 \end{equation*}
 </div>
-<div class="para">Since <span class="process-math">\(q(T) = 0\text{,}\)</span> we know that <span class="process-math">\(q\)</span> is a multiple of the minimal polynomial of <span class="process-math">\(T\text{,}\)</span> which says that the minimal polynomial has the form given in the statement of this theorem.  Because the eigenvalues are the roots of the minimal polynomial, we also know that the diagonal entries of the matrix are the eigenvalues.</div>
+<div class="para">Since <span class="process-math">\(q(T) = 0\text{,}\)</span> <a href="sec-polys.html#prop-min-poly-div" class="xref" data-knowl="./knowl/xref/prop-min-poly-div.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.4.29">Proposition 1.4.29</a> tells us that <span class="process-math">\(q\)</span> is a multiple of the minimal polynomial of <span class="process-math">\(T\text{,}\)</span> which says that the minimal polynomial has the form given in the statement of this theorem.  Because the eigenvalues are the roots of the minimal polynomial, we also know that the diagonal entries of the matrix are the eigenvalues.</div>
 <div class="autopermalink" data-description="Paragraph"><a href="#thm-upper-minimal-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para" id="thm-upper-minimal-2-2">Now suppose that the minimal polynomial <span class="process-math">\(p\)</span> has the form given.  We will prove by induction that there is a basis for which the matrix of <span class="process-math">\(T\)</span> is upper triangular.<div class="autopermalink" data-description="Paragraph"><a href="#thm-upper-minimal-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
@@ -511,9 +505,127 @@ T\vvec_j = A_{j,k}\wvec_k + \lambda_m\vvec_j\text{,}
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#thm-upper-minimal-2-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 2.1.3.1"><a href="#thm-upper-minimal-2" title="Copy heading and permalink for Proof 2.1.3.1" aria-label="Copy heading and permalink for Proof 2.1.3.1">🔗</a></div></article><div class="para" id="sec-upper-3-13">Notice that the <a href="sec-polys.html#thm-fta" class="xref" data-knowl="./knowl/xref/thm-fta.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.4.6: Fundamental Theorem of Algebra">Theorem 1.4.6</a> tells us that any polynomial with complex coefficients has the form given in <a href="sec-upper.html#thm-upper-minimal" class="xref" data-knowl="./knowl/xref/thm-upper-minimal.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.1.3">Theorem 2.1.3</a>.  As a result, any operator on a complex vector space <span class="process-math">\(V\)</span> has a basis for which the associated matrix is upper triangular.<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-3-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proof 2.1.3.1"><a href="#thm-upper-minimal-2" title="Copy heading and permalink for Proof 2.1.3.1" aria-label="Copy heading and permalink for Proof 2.1.3.1">🔗</a></div></article><div class="para" id="sec-upper-14">Notice that the <a href="sec-polys.html#thm-fta" class="xref" data-knowl="./knowl/xref/thm-fta.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.4.6: Fundamental Theorem of Algebra">Fundamental Theorem of Algebra"</a> tells us that any polynomial with complex coefficients has the form given in <a href="sec-upper.html#thm-upper-minimal" class="xref" data-knowl="./knowl/xref/thm-upper-minimal.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.1.3">Theorem 2.1.3</a>.  As a result, any operator on a complex vector space <span class="process-math">\(V\)</span> has a basis for which the associated matrix is upper triangular.<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-14" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Subsection 2.1.1: Upper triangular matrices"><a href="#sec-upper-3" title="Copy heading and permalink for Subsection 2.1.1: Upper triangular matrices" aria-label="Copy heading and permalink for Subsection 2.1.1: Upper triangular matrices">🔗</a></div></section><div class="autopermalink" data-description="Section 2.1: Upper triangular matrices"><a href="#sec-upper" title="Copy heading and permalink for Section 2.1: Upper triangular matrices" aria-label="Copy heading and permalink for Section 2.1: Upper triangular matrices">🔗</a></div></section></div>
+<article class="proposition theorem-like" id="prop-complex-upper"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.1.4</span><span class="period">.</span>
+</h3>
+<div class="para" id="prop-complex-upper-1-1">If <span class="process-math">\(T\)</span> is an operator on a finite dimensional complex vector space <span class="process-math">\(V\text{,}\)</span> then there is a basis <span class="process-math">\(\bcal\)</span> for <span class="process-math">\(V\)</span> such that <span class="process-math">\(\coords{T}{\bcal}\)</span> is upper triangular.<div class="autopermalink" data-description="Paragraph"><a href="#prop-complex-upper-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 2.1.4"><a href="#prop-complex-upper" title="Copy heading and permalink for Proposition 2.1.4" aria-label="Copy heading and permalink for Proposition 2.1.4">🔗</a></div></article><article class="example example-like" id="sec-upper-16"><h3 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.1.5</span><span class="period">.</span>
+</h3>
+<div class="para logical" id="sec-upper-16-1-1">
+<div class="para">Let’s consider the operator <span class="process-math">\(T:\real^3\to\real^3\)</span> defined by the matrix <span class="process-math">\(A=\begin{bmatrix}
+2 \amp 8 \amp 8 \\
+6 \amp 3 \amp 9 \\
+10 \amp 7 \amp 1
+\end{bmatrix}\text{.}\)</span>  The minimal polynomial of <span class="process-math">\(T\)</span> is</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-upper-minimal.html">
+\begin{equation*}
+p(x)=(x-18)(x+6)^2\text{,}
+\end{equation*}
+</div>
+<div class="para">which satisfies the hypothesis of <a href="sec-upper.html#thm-upper-minimal" class="xref" data-knowl="./knowl/xref/thm-upper-minimal.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.1.3">Theorem 2.1.3</a>.  Therefore, there is a basis <span class="process-math">\(\bcal\)</span> so that <span class="process-math">\(\coords{T}{\bcal}\)</span> is upper triangular.  We will find such a basis following the proof of the theorem.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-16-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="sec-upper-16-1-2">
+<div class="para">Consider one factor <span class="process-math">\(x+6\)</span> of the minimal polynomial of <span class="process-math">\(T\)</span> and construct <span class="process-math">\(U_1 = \range(T+6I)\text{.}\)</span>  We see that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A + 6I =
+\begin{bmatrix}
+8 \amp 8 \amp 8 \\
+6 \amp 9 \amp 9 \\
+10 \amp 7 \amp 7
+\end{bmatrix}
+\sim
+\begin{bmatrix}
+1 \amp 0 \amp 0 \\
+0 \amp 1 \amp 1 \\
+0 \amp 0 \amp 0 \\
+\end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">This shows that a basis for <span class="process-math">\(U_1\)</span> consists of the vectors</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\uvec_1 = \threevec86{10},\hspace{12pt}
+\uvec_2 = \threevec89{7}\text{.}
+\end{equation*}
+</div>
+<div class="para">We have</div>
+<div class="displaymath process-math" id="sec-upper-16-1-2-7">
+\begin{align*}
+T\uvec_1 \amp = 2\uvec_1 + 16\uvec_2\\
+T\uvec_2 \amp = 8\uvec_1 + 10\uvec_2
+\end{align*}
+</div>
+<div class="para">so that the matrix <span class="process-math">\(\begin{bmatrix}2 \amp 8 \\ 16 \amp 10
+\end{bmatrix}\)</span> represents <span class="process-math">\(T|_{U_1}\)</span> in this basis.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-16-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="sec-upper-16-1-3">
+<div class="para">Of course, we know that the minimal polynomial of <span class="process-math">\(T|_{U_1}\)</span> is <span class="process-math">\((x-18)(x+6)\)</span> so we consider the operator <span class="process-math">\(T|_{U_1}+6I\)</span> on <span class="process-math">\(U_1\text{,}\)</span> which is represented by the matrix <span class="process-math">\(\begin{bmatrix}8 \amp 8 \\ 16 \amp 16 \end{bmatrix}\)</span> in this basis.  Therefore, a basis for <span class="process-math">\(U_2 = \range(T|_{U_1}+6I)\)</span> is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\vvec_1 = 8\uvec_1 + 16\uvec_2 = \threevec{192}{192}{192}\text{.}
+\end{equation*}
+</div>
+<div class="para">We note that <span class="process-math">\(T\vvec_1 = 18\vvec_1\text{,}\)</span> as expected since the minimial polynomial of <span class="process-math">\(T|_{U_2}\)</span> is <span class="process-math">\(x-18\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-16-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="sec-upper-16-1-4">
+<div class="para">We will now work our way back out to find a basis for <span class="process-math">\(U_1=\laspan{\uvec_1,\uvec_2}\text{.}\)</span>  We have <span class="process-math">\(\vvec_1 =
+8\uvec_1+16\uvec_2\)</span> so we will take <span class="process-math">\(\vvec_2 =
+\uvec_1=\threevec86{10}\text{.}\)</span>  (There are lots of possible choices since we just need to choose a vector in <span class="process-math">\(U_1\)</span> that is not a scalar multiple of <span class="process-math">\(\vvec_1\text{.}\)</span>)  Notice that</div>
+<div class="displaymath process-math" id="sec-upper-16-1-4-6">
+\begin{align*}
+T\vvec_1 \amp = 18\vvec_1\\
+T\vvec_2 \amp = \vvec_1 - 6\vvec_2\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-16-1-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="sec-upper-16-1-5">
+<div class="para">We just need to find a vector <span class="process-math">\(\vvec_3\)</span> so that <span class="process-math">\(\{\vvec_1,\vvec_2,\vvec_3\}\)</span> forms a basis for <span class="process-math">\(\real^3\text{.}\)</span>  Again, there are lots of possibilities so we choose <span class="process-math">\(\vvec_3 = \threevec100\text{.}\)</span>  We see that</div>
+<div class="displaymath process-math" id="sec-upper-16-1-5-5">
+\begin{align*}
+T\vvec_1 \amp = 18\vvec_1\\
+T\vvec_2 \amp = \vvec_1 - 6\vvec_2\\
+T\vvec_3 \amp = \vvec_2 - 6\vvec_3\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-16-1-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="sec-upper-16-1-6">
+<div class="para">If we call the basis <span class="process-math">\(\bcal=\{\vvec_1,\vvec_2,\vvec_3\}\text{,}\)</span> then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+B = \coords{T}{\bcal}=
+\begin{bmatrix}
+18 \amp 1 \amp 0 \\
+0 \amp -6 \amp 1 \\
+0 \amp 0 \amp -6 \\
+\end{bmatrix}\text{,}
+\end{equation*}
+</div>
+<div class="para">which shows that we have found an upper triangular matrix representing <span class="process-math">\(T\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-16-1-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="sec-upper-16-1-7">
+<div class="para">Thinking in terms of matrices, we construct</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-upper-minimal.html">
+\begin{equation*}
+P=\begin{bmatrix}\vvec_1 \amp \vvec_2 \amp \vvec_3
+\end{bmatrix}
+= \begin{bmatrix}
+192 \amp 8 \amp 1 \\
+192 \amp 6 \amp 0 \\
+192 \amp 10 \amp 0
+\end{bmatrix}
+\end{equation*}
+</div>
+<div class="para">and find that our original matrix <span class="process-math">\(A=PBP^{-1}\text{.}\)</span>  In other words, we have demonstrated that <span class="process-math">\(A\)</span> is similar to an upper triangular matrix, as predicted by <a href="sec-upper.html#thm-upper-minimal" class="xref" data-knowl="./knowl/xref/thm-upper-minimal.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.1.3">Theorem 2.1.3</a>.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-upper-16-1-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.1.5"><a href="#sec-upper-16" title="Copy heading and permalink for Example 2.1.5" aria-label="Copy heading and permalink for Example 2.1.5">🔗</a></div></article><div class="autopermalink" data-description="Section 2.1: Upper triangular matrices"><a href="#sec-upper" title="Copy heading and permalink for Section 2.1: Upper triangular matrices" aria-label="Copy heading and permalink for Section 2.1: Upper triangular matrices">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="chap-std-forms.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-spectral.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
