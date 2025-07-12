@@ -10,9 +10,6 @@
     </p>
   </introduction>
   
-  <subsection>
-    <title>Upper triangular matrices</title>
-
     <p>As we have seen in the past, upper triangular matrices have
     some simple properties.  For one, the eigenvalues of the
     associated operator equal the diagonal elements of the matrix.  We
@@ -21,7 +18,7 @@
     of matrices.
     </p>
 
-    <p>Reember that an upper triangular matrix is one whose entries
+    <p>Remember that an upper triangular matrix is one whose entries
     are zero below the diagonal;  that is, they have a form like this:
     <me>
       \begin{bmatrix}
@@ -135,18 +132,18 @@
 	<p>Next consider <m>\vvec_2</m> for <m>T\vvec_2 =
 	A_{1,2}\vvec_1 + A_{2,2}\vvec_2</m>.  Rearranging gives
 	<me>
-	  (T-A_{2,2})\vvec_2 = A_{1,2}\vvec_1
+	  (T-A_{2,2}I)\vvec_2 = A_{1,2}\vvec_1
 	</me>.
 	Therefore,
 	<me>
-	  (T-A_{1,1})(T-A_{2,2})\vvec_2 = A_{1,2}(T-A_{1,1)}\vvec_1 = 0
+	  (T-A_{1,1}I)(T-A_{2,2}I)\vvec_2 = A_{1,2}(T-A_{1,1}I)\vvec_1 = 0
 	</me>,
 	which tells us that <m>q(T)\vvec_2=0</m>.
 	</p>
 
 	<p>Continuing in this way, we see that
 	<me>
-	  (T-A_{1,1})(T-A_{2,2)}\ldots (T-A_{j,j})\vvec_j = 0
+	  (T-A_{1,1}I)(T-A_{2,2}I)\ldots (T-A_{j,j}I)\vvec_j = 0
 	</me>
 	and hence that <m>q(T)\vvec_j=0</m>.  This means that
 	<m>q(T)\vvec=0</m> for every vector <m>\vvec</m> and so we
@@ -183,7 +180,9 @@
 	<me>
 	  q(x)=(x-A_{1,1})(x-A_{2,2})\ldots(x-A_{n,n})
 	</me>.
-	Since <m>q(T) = 0</m>, we know that <m>q</m> is a multiple of
+	Since <m>q(T) = 0</m>,
+        <xref ref="prop-min-poly-div"/> tells us that <m>q</m> is a
+        multiple of
 	the minimal polynomial of <m>T</m>, which says that the
 	minimal polynomial has the form given in the statement of this
 	theorem.  Because the eigenvalues are the roots of the minimal
@@ -246,12 +245,161 @@
       </proof>
     </theorem>
 
-    <p>Notice that the <xref ref="thm-fta" text="Fundamental Theorem of
-    Algebra" /> tells us that any polynomial with complex
+    <p>Notice that the
+    <xref ref="thm-fta"
+          text="custom">
+      Fundamental Theorem of
+      Algebra"
+    </xref>
+    tells us that any polynomial with complex
     coefficients has the form given in <xref
     ref="thm-upper-minimal"/>.  As a result, any operator on a complex
     vector space <m>V</m> has a basis for which the associated matrix
     is upper triangular. 
     </p>
-  </subsection>
-</section>
+
+    <proposition xml:id="prop-complex-upper">
+      <statement>
+        <p>If <m>T</m> is an operator on a finite dimensional complex
+        vector space <m>V</m>, then there is a basis <m>\bcal</m> for
+        <m>V</m> such that <m>\coords{T}{\bcal}</m> is upper
+        triangular.
+        </p>
+      </statement>
+    </proposition>
+
+    <example>
+      <statement>
+        <p>Let's consider the operator <m>T:\real^3\to\real^3</m>
+        defined by the matrix <m>A=\begin{bmatrix}
+        2 \amp 8 \amp 8 \\
+        6 \amp 3 \amp 9 \\
+        10 \amp 7 \amp 1
+        \end{bmatrix}</m>.  The minimal polynomial of <m>T</m> is
+        <me>
+          p(x)=(x-18)(x+6)^2
+        </me>,
+        which satisfies the hypothesis of <xref
+        ref="thm-upper-minimal"/>.  Therefore, there is a basis
+        <m>\bcal</m> so that
+        <m>\coords{T}{\bcal}</m> is upper triangular.  We will find
+        such a basis following
+        the proof of the theorem.
+        </p>
+
+        <p>Consider one factor <m>x+6</m> of the minimal polynomial of
+        <m>T</m> and construct <m>U_1 = \range(T+6I)</m>.  We see that
+        <me>
+          A + 6I =
+          \begin{bmatrix}
+          8 \amp 8 \amp 8 \\
+          6 \amp 9 \amp 9 \\
+          10 \amp 7 \amp 7
+          \end{bmatrix}
+          \sim
+          \begin{bmatrix}
+          1 \amp 0 \amp 0 \\
+          0 \amp 1 \amp 1 \\
+          0 \amp 0 \amp 0 \\
+          \end{bmatrix}
+        </me>.
+        This shows that a basis for <m>U_1</m> consists
+        of the vectors
+        <me>
+          \uvec_1 = \threevec86{10},\hspace{12pt}
+          \uvec_2 = \threevec89{7}
+        </me>.
+        We have
+        <md>
+          <mrow>
+            T\uvec_1 \amp = 2\uvec_1 + 16\uvec_2
+          </mrow>
+          <mrow>
+            T\uvec_2 \amp = 8\uvec_1 + 10\uvec_2
+          </mrow>
+        </md>
+        so that the matrix <m>\begin{bmatrix}2 \amp 8 \\ 16 \amp 10
+        \end{bmatrix}</m> represents <m>T|_{U_1}</m> in this basis.
+        </p>
+
+        <p>Of course, we know that the minimal polynomial of
+        <m>T|_{U_1}</m> is <m>(x-18)(x+6)</m> so we consider the
+        operator <m>T|_{U_1}+6I</m> on <m>U_1</m>, which is
+        represented by the 
+        matrix
+        <m>\begin{bmatrix}8 \amp 8 \\ 16 \amp 16 \end{bmatrix}</m> in
+        this basis.  Therefore, a basis for
+        <m>U_2 = \range(T|_{U_1}+6I)</m> is
+        <me>
+          \vvec_1 = 8\uvec_1 + 16\uvec_2 = \threevec{192}{192}{192}
+        </me>.
+        We note that <m>T\vvec_1 = 18\vvec_1</m>, as expected since
+        the minimial polynomial of <m>T|_{U_2}</m> is <m>x-18</m>.
+        </p>
+
+        <p>We will now work our way back out to find a basis for
+        <m>U_1=\laspan{\uvec_1,\uvec_2}</m>.  We have <m>\vvec_1 =
+        8\uvec_1+16\uvec_2</m> so we will take <m>\vvec_2 =
+        \uvec_1=\threevec86{10}</m>.  (There are lots of possible choices 
+        since we just need to choose a vector in <m>U_1</m> that is not a
+        scalar multiple of <m>\vvec_1</m>.)  Notice that
+        <md>
+          <mrow>
+            T\vvec_1 \amp = 18\vvec_1
+          </mrow>
+          <mrow>
+            T\vvec_2 \amp = \vvec_1 - 6\vvec_2
+          </mrow>
+        </md>.
+        </p>
+
+        <p>We just need to find a vector <m>\vvec_3</m> so that
+        <m>\{\vvec_1,\vvec_2,\vvec_3\}</m> forms a basis for
+        <m>\real^3</m>.  Again, there are lots of possibilities so we
+        choose <m>\vvec_3 = \threevec100</m>.  We see that
+        <md>
+          <mrow>
+            T\vvec_1 \amp = 18\vvec_1
+          </mrow>
+          <mrow>
+            T\vvec_2 \amp = \vvec_1 - 6\vvec_2
+          </mrow>
+          <mrow>
+            T\vvec_3 \amp = \vvec_2 - 6\vvec_3
+          </mrow>
+        </md>.
+        </p>
+
+        <p>If we call the basis
+        <m>\bcal=\{\vvec_1,\vvec_2,\vvec_3\}</m>, then
+        <me>
+          B = \coords{T}{\bcal}=
+          \begin{bmatrix}
+          18 \amp 1 \amp 0 \\
+          0 \amp -6 \amp 1 \\
+          0 \amp 0 \amp -6 \\
+          \end{bmatrix}
+        </me>,
+        which shows that we have found an upper triangular matrix
+        representing <m>T</m>.
+        </p>
+
+        <p>Thinking in terms of matrices, we construct
+        <me>
+          P=\begin{bmatrix}\vvec_1 \amp \vvec_2 \amp \vvec_3
+          \end{bmatrix}
+          = \begin{bmatrix}
+          192 \amp 8 \amp 1 \\
+          192 \amp 6 \amp 0 \\
+          192 \amp 10 \amp 0
+          \end{bmatrix}
+        </me>
+        and find that our original matrix <m>A=PBP^{-1}</m>.  In other
+        words, we have demonstrated that <m>A</m> is similar to an
+        upper triangular matrix, as predicted by <xref
+        ref="thm-upper-minimal"/>.
+        </p>
+      </statement>
+    </example>
+
+  </section>

@@ -1022,7 +1022,7 @@
     can help us do that, even though that expression may look
     daunting. </p>
 
-    <definition>
+    <definition xml:id="definition-similar">
       <statement>
         <p>Two square <m>n\times n</m> matrices <m>A</m> and <m>B</m>
         are called 
