@@ -48,12 +48,12 @@
       </mrow>
       <mrow>
         \wvec_2\amp = \vvec_2 -
-        \frac{\inner{\vvec_2}{\wvec_1}}{\inner{\wvec_1}{\wvec_1}}
+        \frac{\inner{\vvec_2}{\wvec_1}}{\inner{\wvec_1}{\wvec_1}}\wvec_1
       </mrow>
       <mrow>
         \wvec_3\amp = \vvec_3 -
-        \frac{\inner{\vvec_3}{\wvec_1}}{\inner{\wvec_1}{\vvec_1}}
-        -\frac{\inner{\vvec_3}{\wvec_2}}{\inner{\wvec_2}{\vvec_2}}
+        \frac{\inner{\vvec_3}{\wvec_1}}{\inner{\wvec_1}{\vvec_1}}\wvec_1
+        -\frac{\inner{\vvec_3}{\wvec_2}}{\inner{\wvec_2}{\vvec_2}}\wvec_2
       </mrow>
     </md>
     and so forth.  We can rearrange these expressions so that
@@ -63,12 +63,12 @@
       </mrow>
       <mrow>
         \vvec_2\amp = \wvec_2 +
-        \frac{\inner{\vvec_2}{\wvec_1}}{\inner{\wvec_1}{\wvec_1}}
+        \frac{\inner{\vvec_2}{\wvec_1}}{\inner{\wvec_1}{\wvec_1}}\wvec_1
       </mrow>
       <mrow>
         \vvec_3\amp = \wvec_3 +
-        \frac{\inner{\vvec_3}{\wvec_1}}{\inner{\wvec_1}{\vvec_1}}
-        +\frac{\inner{\vvec_3}{\wvec_2}}{\inner{\wvec_2}{\vvec_2}}
+        \frac{\inner{\vvec_3}{\wvec_1}}{\inner{\wvec_1}{\vvec_1}}\wvec_1
+        +\frac{\inner{\vvec_3}{\wvec_2}}{\inner{\wvec_2}{\vvec_2}}\wvec_2
       </mrow>
     </md>.
     In other words, the change of coordinates matirx
@@ -81,7 +81,7 @@
     </p>
 
     <p>We obtain an orthonormal basis by setting
-    <m>\uvec_j=\frac{\wvec_j}{\len{\wvec_j}}</m>.  Since this change
+    <m>\uvec_j=\frac{1}{\len{\wvec_j}}\wvec_j</m>.  Since this change
     of coordinates matrix is diagonal, we obtain the following result.
     </p>
 
@@ -116,7 +116,7 @@
     matrices. </p>
 
     <theorem>
-      <title>Schur decomposition</title>
+      <title>Schur decomposition, matrix version</title>
       <statement>
         <p>If <m>A</m> is a square complex matrix, then there is a unitary
         matrix <m>U</m> and an upper triangular matrix <m>T</m> such
@@ -147,7 +147,7 @@
     
     <definition>
       <statement>
-        <p> We say that operator <m>T</m> on an inner product space
+        <p> We say that an operator <m>T</m> on an inner product space
         <m>V</m> is <em>self-adjoint</em> if <m>T=T^*</m>.
         </p>
       </statement>
@@ -217,6 +217,18 @@
         This shows that <m>(T^2+bT+cI)\vvec</m> is also nonzero so the
         operator is an isomorphism.
         </p>
+
+        <p>
+          The appearance of the inequality in the argument above
+          results from the <xref
+          ref="prop-cauchy-schwarz" text="custom">Cauchy-Scwarz
+          inequality</xref>, which implies here that
+          <me>
+            |\inner{T\vvec}{\vvec}| \leq \len{T\vvec}\len{\vvec}
+          </me>
+          so that <m>b\inner{T\vvec}{\vvec} \geq
+          -b\len{T\vvec}\len{\vvec}</m>.
+        </p>
       </proof>
     </lemma>
 
@@ -249,15 +261,15 @@
         <p>We know that the minimal polynomial has the form
         <me>
           p(x)=(x-\lambda_1)\ldots(x-\lambda_m)(x^2+b_1x+c_1)\ldots
-          (x^2+b_nx+c_n)
+          (x^2+b_kx+c_k)
         </me>
         where <m>b_i^2 \lt 4c_i</m> for each <m>i</m>.
         However, since <m>p(T)=0</m>, we know that
         <me>
           p(T)=(T-\lambda_1)\ldots(T-\lambda_m)(T^2+b_1T+c_1I)\ldots
-          (T^2+b_nT+c_nI)
+          (T^2+b_kT+c_kI)
         </me>.
-        If <m>n\gt 0</m>, then <m>T^2+b_1T+c_1I</m> is invertible by
+        If <m>k\gt 0</m>, then <m>T^2+b_1T+c_1I</m> is invertible by
         <xref ref="lemma-self-ad-quadratic"/>.  If
         we multiply <m>p(T)</m> by its inverse, we obtain another
         polynomial <m>q</m> of smaller degree for which <m>q(T)=0</m>.
@@ -265,7 +277,7 @@
 
         <p>Since the minimal polynomial <m>p</m> is the polynomial
         having the smallest degree among all polynomials for which
-        <m>p(T)=0</m>, we conclude that <m>m=0</m> and therefore
+        <m>p(T)=0</m>, we conclude that <m>k=0</m> and therefore
         <me>
           p(x)=(x-\lambda_1)\ldots(x-\lambda_m)
         </me>.

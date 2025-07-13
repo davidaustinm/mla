@@ -522,6 +522,77 @@
     
   </subsection>
 
+  <subsection xml:id="subsec-cauchy-schwarz">
+    <title>The Cauchy-Schwarz inequality</title>
+
+    <p>When earlier considering the dot product on <m>\real^n</m>, we
+    saw that the dot product provided important geometric information:
+    <me>
+      \vvec\cdot\wvec = \len{\vvec}\len{\wvec}\cos\theta
+    </me>
+    where <m>\theta</m> is the angle between <m>\vvec</m> and
+    <m>\wvec</m>.  Now that we are working with more general inner
+    product
+    spaces, the idea of the angle between two vectors might not have
+    much meaning.  However, since <m>|\cos\theta| \leq 1</m>, we have
+    <me>
+      |\vvec\cdot\wvec| \leq \len{\vvec}\len{\wvec}
+    </me>,
+    and this relationship holds more generally in an inner product
+    space.  It is known as the Cauchy-Scwarz inequality.</p>
+
+    <proposition xml:id="prop-cauchy-schwarz">
+      <title>Cauchy-Schwarz inequality</title>
+
+      <statement>
+        <p>If <m>\vvec</m> and <m>\wvec</m> are two vectors in an
+        inner product space <m>V</m>, then
+        <me>
+          |\inner{\vvec}{\wvec}| \leq \len{\vvec}\len{\wvec}
+        </me>.
+        </p>
+      </statement>
+
+      <proof>
+        <p>We first apply the projection formula to find <m>\what</m>,
+        the
+        orthogonal projection of <m>\wvec</m> onto <m>\vvec</m>:
+        <me>
+          \what = \frac{\inner{\wvec}{\vvec}} {\inner{\vvec}{\vvec}} \vvec
+        </me>.
+        We know that <m>\what</m> and <m>\wvec-\what</m> are
+        orthogonal by the construction of the orthogonal projection.
+        Therefore, the Pythagorean theorem applies.
+        <md>
+          <mrow>
+            \wvec \amp = \what + (\wvec - \what)
+          </mrow>
+          <mrow>
+            \len{\wvec}^2 \amp = \len{\what}^2 + \len{\wvec - \what}^2
+          </mrow>
+          <mrow>
+            \len{\wvec}^2 \amp \geq \len{\what}^2
+          </mrow>
+          <mrow>
+            \len{\wvec}^2 \amp \geq \len{\frac{\inner{\wvec}{\vvec}}
+            {\inner{\vvec}{\vvec}}}^2 \len{\vvec}^2
+          </mrow>
+          <mrow>
+            \len{\wvec}^2 \amp \geq \frac{\len{\inner{\wvec}{\vvec}}^2}
+            {\len{\vvec}^2}
+          </mrow>
+          <mrow>
+            \len{\vvec}^2\len{\wvec}^2 \amp \geq
+            \len{\inner{\wvec}{\vvec}}^2
+          </mrow>
+          <mrow>
+            \len{\vvec}\len{\wvec} \amp \geq \len{\inner{\wvec}{\vvec}}
+          </mrow>
+        </md>.
+        </p>
+      </proof>
+    </proposition>
+  </subsection>
 
   <subsection xml:id="subsec-adjoint">
     <title>The adjoint of a linear transformation</title>
