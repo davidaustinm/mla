@@ -197,6 +197,8 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
 \newcommand{\gray}[1]{\color{gray}{#1}}
 \newcommand{\lgray}[1]{\color{lightgray}{#1}}
+\newcommand{\go}{\gray{1}}
+\newcommand{\gz}{\gray{0}}
 \newcommand{\rank}{\operatorname{rank}}
 \newcommand{\row}{\operatorname{Row}}
 \newcommand{\col}{\operatorname{Col}}
@@ -305,20 +307,24 @@ eBookConfig.enable_chatcodes =  false;
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-nilpotent"><h2 class="heading hide-type">
 <span class="type">Section</span><span class="space"> </span><span class="codenumber">2.3</span><span class="space"> </span><span class="title">Nilpotent operators</span>
 </h2>
-<section class="introduction" id="sec-nilpotent-2"><div class="para logical" id="sec-nilpotent-2-1">
-<div class="para">Eigenvectors of an operator <span class="process-math">\(T\)</span> are found through the equation <span class="process-math">\((T-\lambda I)\vvec=\zerovec\text{.}\)</span>  Now that we have developed some conditions under which operators are diagonalizable, we would like to understand what happens when operators are not diagonalizable.  To this end, we will generalize the eigenvector condition by considering</div>
+<section class="introduction" id="sec-nilpotent-2"><div class="para" id="sec-nilpotent-2-1">The <a href="sec-spectral.html" class="internal" title="Section 2.2: The Spectral Theorem">previous section</a> gave some conditions for a matrix to be diagonalizable.  We will now explore what happens when a matrix is not diagonalizable.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-nilpotent-2-2">If an operator <span class="process-math">\(T\)</span> on a vector space <span class="process-math">\(V\)</span> is diagonalizable, then the basis <span class="process-math">\(\bcal\)</span> for which <span class="process-math">\(\coords{T}{\bcal}\)</span> is diagonal consists of eigenvectors of <span class="process-math">\(T\text{.}\)</span>  Remember that eigenvectors of an operator <span class="process-math">\(T\)</span> are found through the equation <span class="process-math">\((T-\lambda I)\vvec=\zerovec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-nilpotent-2-3">
+<div class="para">If we want to explore what happens when <span class="process-math">\(T\)</span> is not diagonalizable, we will need a more general notion of eigenvectors.  To that end, we refer to vectors satisfying</div>
 <div class="displaymath process-math">
 \begin{equation*}
-(T-\lambda I)^k\vvec=\zerovec\text{.}
+(T-\lambda I)^k\vvec=\zerovec
 \end{equation*}
 </div>
-<div class="para">To get started, however, we will first consider a related class of operators.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para">for some power <span class="process-math">\(k\)</span> as generalized eigenvectors.  To get started, however, we will first consider a related class of operators.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div></section><section class="subsection" id="subsec-nul-powers"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.3.1</span><span class="space"> </span><span class="title">Null spaces of powers</span>
 </h3>
 <div class="para logical" id="subsec-nul-powers-2">
-<div class="para">Suppose that <span class="process-math">\(T\)</span> is an operator. If <span class="process-math">\(T^k\vvec=\zerovec\text{,}\)</span> then it also happens that</div>
+<div class="para">Suppose that <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(V\text{.}\)</span> If <span class="process-math">\(\vvec\)</span> is a vector for which <span class="process-math">\(T^k\vvec=\zerovec\text{,}\)</span> then it also happens that</div>
 <div class="displaymath process-math">
 \begin{equation*}
 T^{k+1}\vvec=T(T^k\vvec)=\zerovec\text{.}
@@ -327,7 +333,7 @@ T^{k+1}\vvec=T(T^k\vvec)=\zerovec\text{.}
 <div class="para">This means that  <span class="process-math">\(\nul(T^k)\subset\nul(T^{k+1})\text{,}\)</span> and we therefore have</div>
 <div class="displaymath process-math">
 \begin{equation*}
-\nul(T)\subset\nul(T^2)\subset\nul(T^3)\subset\ldots\text{.}
+\{0\}\subset\nul(T)\subset\nul(T^2)\subset\nul(T^3)\subset\ldots\text{.}
 \end{equation*}
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#subsec-nul-powers-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
@@ -365,10 +371,10 @@ T^{n}(T\vvec) = T^{n+1}\vvec = 0\text{.}
 </div>
 <div class="autopermalink" data-description="Proof 2.3.1.1"><a href="#prop-nil-nul-incl-2" title="Copy heading and permalink for Proof 2.3.1.1" aria-label="Copy heading and permalink for Proof 2.3.1.1">🔗</a></div></article><div class="para" id="subsec-nul-powers-5">The next result says that this process will always stablize by the time we reach the dimension of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-nul-powers-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<article class="proposition theorem-like" id="subsec-nul-powers-6"><h4 class="heading">
+<article class="proposition theorem-like" id="prop-null-dim-V"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.3.2</span><span class="period">.</span>
 </h4>
-<div class="para logical" id="subsec-nul-powers-6-1-1">
+<div class="para logical" id="prop-null-dim-V-1-1">
 <div class="para">For any operator <span class="process-math">\(T\)</span> on a vector space <span class="process-math">\(V\)</span> of dimension <span class="process-math">\(n\text{,}\)</span>
 </div>
 <div class="displaymath process-math">
@@ -376,12 +382,12 @@ T^{n}(T\vvec) = T^{n+1}\vvec = 0\text{.}
 \nul(T^n)=\nul(T^{n+1})\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#subsec-nul-powers-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-null-dim-V-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 2.3.2"><a href="#subsec-nul-powers-6" title="Copy heading and permalink for Proposition 2.3.2" aria-label="Copy heading and permalink for Proposition 2.3.2">🔗</a></div></article><article class="proof" id="subsec-nul-powers-6-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="subsec-nul-powers-6-2-1">If <span class="process-math">\(\nul(T)=\{\zerovec\}\text{,}\)</span> then <span class="process-math">\(T\)</span> is invertible as is every power of <span class="process-math">\(T\text{.}\)</span>  Therefore <span class="process-math">\(\nul(T^k)=\{\zerovec\}\)</span> for every power, including <span class="process-math">\(n\)</span> and <span class="process-math">\(n+1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-nul-powers-6-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 2.3.2"><a href="#prop-null-dim-V" title="Copy heading and permalink for Proposition 2.3.2" aria-label="Copy heading and permalink for Proposition 2.3.2">🔗</a></div></article><article class="proof" id="prop-null-dim-V-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="prop-null-dim-V-2-1">If <span class="process-math">\(\nul(T)=\{\zerovec\}\text{,}\)</span> then <span class="process-math">\(T\)</span> is invertible as is every power of <span class="process-math">\(T\text{.}\)</span>  Therefore <span class="process-math">\(\nul(T^k)=\{\zerovec\}\)</span> for every power, including <span class="process-math">\(n\)</span> and <span class="process-math">\(n+1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-null-dim-V-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para logical" id="subsec-nul-powers-6-2-2">
+<div class="para logical" id="prop-null-dim-V-2-2">
 <div class="para">Now suppose that <span class="process-math">\(\nul(T)\)</span> has positive dimension so that <span class="process-math">\(\dim\nul(T) \geq 1\)</span> and that the null spaces continue to grow</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -396,9 +402,9 @@ n=\dim(V)\geq\dim\nul(T^m)\geq m\text{.}
 </div>
 <div class="para">This shows that the null spaces cannot grow beyond <span class="process-math">\(T^n\)</span> so we have <span class="process-math">\(\nul(T^n)=\nul(T^{n+1})\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#subsec-nul-powers-6-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-null-dim-V-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 2.3.2.1"><a href="#subsec-nul-powers-6-2" title="Copy heading and permalink for Proof 2.3.2.1" aria-label="Copy heading and permalink for Proof 2.3.2.1">🔗</a></div></article><div class="autopermalink" data-description="Subsection 2.3.1: Null spaces of powers"><a href="#subsec-nul-powers" title="Copy heading and permalink for Subsection 2.3.1: Null spaces of powers" aria-label="Copy heading and permalink for Subsection 2.3.1: Null spaces of powers">🔗</a></div></section><section class="subsection" id="sec-nilpotent-4"><h3 class="heading hide-type">
+<div class="autopermalink" data-description="Proof 2.3.2.1"><a href="#prop-null-dim-V-2" title="Copy heading and permalink for Proof 2.3.2.1" aria-label="Copy heading and permalink for Proof 2.3.2.1">🔗</a></div></article><div class="autopermalink" data-description="Subsection 2.3.1: Null spaces of powers"><a href="#subsec-nul-powers" title="Copy heading and permalink for Subsection 2.3.1: Null spaces of powers" aria-label="Copy heading and permalink for Subsection 2.3.1: Null spaces of powers">🔗</a></div></section><section class="subsection" id="sec-nilpotent-4"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.3.2</span><span class="space"> </span><span class="title">Nilpotent operators</span>
 </h3>
 <div class="para" id="sec-nilpotent-4-2">We will now focus on a particular type of operator known as nilpotent.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
@@ -406,9 +412,9 @@ n=\dim(V)\geq\dim\nul(T^m)\geq m\text{.}
 <article class="definition definition-like" id="sec-nilpotent-4-3"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.3.3</span><span class="period">.</span><span class="space"> </span><span class="title">Nilpotent operator.</span>
 </h4>
-<div class="para" id="sec-nilpotent-4-3-2">An operator <span class="process-math">\(T\)</span> is nilpotent if some power <span class="process-math">\(T^m=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-nilpotent-4-3-2">An operator <span class="process-math">\(T\)</span> is <dfn class="terminology">nilpotent</dfn> if some power <span class="process-math">\(T^m=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 2.3.3: Nilpotent operator"><a href="#sec-nilpotent-4-3" title="Copy heading and permalink for Definition 2.3.3: Nilpotent operator" aria-label="Copy heading and permalink for Definition 2.3.3: Nilpotent operator">🔗</a></div></article><div class="para" id="sec-nilpotent-4-4">Notice that the operator <span class="process-math">\(T=0\)</span> is nilpotent but we will often consider nonzero nilpotent operators.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Definition 2.3.3: Nilpotent operator"><a href="#sec-nilpotent-4-3" title="Copy heading and permalink for Definition 2.3.3: Nilpotent operator" aria-label="Copy heading and permalink for Definition 2.3.3: Nilpotent operator">🔗</a></div></article><div class="para" id="sec-nilpotent-4-4">Notice that the operator <span class="process-math">\(T=0\)</span> is nilpotent, but there are certainly nonzero nilpotent operators.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="sec-nilpotent-4-5"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">2.3.4</span><span class="period">.</span>
@@ -418,8 +424,11 @@ n=\dim(V)\geq\dim\nul(T^m)\geq m\text{.}
 0 \amp 0 \\
 \end{bmatrix}\)</span> and notice that <span class="process-math">\(A^2=0\text{.}\)</span>  An operator <span class="process-math">\(T\)</span> whose associated matrix is <span class="process-math">\(A\)</span> with respect to some basis is nilpotent since <span class="process-math">\(T^2=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 2.3.4"><a href="#sec-nilpotent-4-5" title="Copy heading and permalink for Example 2.3.4" aria-label="Copy heading and permalink for Example 2.3.4">🔗</a></div></article><div class="para logical" id="sec-nilpotent-4-6">
-<div class="para">Suppose <span class="process-math">\(T\)</span> is nilpotent and that <span class="process-math">\(m\)</span> is the smallest power for which <span class="process-math">\(T^m=0\text{.}\)</span>  This means that <span class="process-math">\(p(T)=0\)</span> if <span class="process-math">\(p(x)=x^m\)</span> and hence <span class="process-math">\(p\)</span> is the minimal polynomial of <span class="process-math">\(T\text{.}\)</span>  We could view</div>
+<div class="autopermalink" data-description="Example 2.3.4"><a href="#sec-nilpotent-4-5" title="Copy heading and permalink for Example 2.3.4" aria-label="Copy heading and permalink for Example 2.3.4">🔗</a></div></article><div class="para" id="sec-nilpotent-4-6">Suppose <span class="process-math">\(T\)</span> is nilpotent and that <span class="process-math">\(m\)</span> is the smallest power for which <span class="process-math">\(T^m=0\text{.}\)</span>  This means that <span class="process-math">\(p(T)=0\)</span> if <span class="process-math">\(p(x)=x^m\)</span> and hence <span class="process-math">\(p\)</span> is the minimal polynomial of <span class="process-math">\(T\text{.}\)</span>  This says that <span class="process-math">\(m\leq \dim
+V\)</span> so the smallest power of <span class="process-math">\(T\)</span> that is zero is not more than the dimension of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-nilpotent-4-7">
+<div class="para">We could view</div>
 <div class="displaymath process-math">
 \begin{equation*}
 p(x) = x^m = (x-0)^m\text{,}
@@ -436,15 +445,15 @@ p(x) = x^m = (x-0)^m\text{,}
 \end{bmatrix}\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-nilpotent-4-7">In fact, we will see that there is a basis so that the matrix associated to a nilpotent operator has an especially nice form.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-nilpotent-4-8">In fact, we will see that there is a basis so that the matrix associated to a nilpotent operator has an especially nice form.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<article class="definition definition-like" id="sec-nilpotent-4-8"><h4 class="heading">
+<article class="definition definition-like" id="sec-nilpotent-4-9"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.3.5</span><span class="period">.</span>
 </h4>
-<div class="para logical" id="sec-nilpotent-4-8-1-1">
-<div class="para">A <em class="emphasis">nilpotent block</em> matrix is a square matrix having the form</div>
+<div class="para logical" id="sec-nilpotent-4-9-1-1">
+<div class="para">A <dfn class="terminology">nilpotent block</dfn> matrix is a square matrix having the form</div>
 <div class="displaymath process-math">
 \begin{equation*}
 \begin{bmatrix}
@@ -455,10 +464,10 @@ p(x) = x^m = (x-0)^m\text{,}
 \end{bmatrix}\text{.}
 \end{equation*}
 </div>
-<div class="para">This is, all the entries are zero except for the entries directly above the diagonal, which are 1.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para">That is, all the entries are zero except for the entries directly above the diagonal, which are 1.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 2.3.5"><a href="#sec-nilpotent-4-8" title="Copy heading and permalink for Definition 2.3.5" aria-label="Copy heading and permalink for Definition 2.3.5">🔗</a></div></article><article class="example example-like" id="example-nilpotent"><h4 class="heading">
+<div class="autopermalink" data-description="Definition 2.3.5"><a href="#sec-nilpotent-4-9" title="Copy heading and permalink for Definition 2.3.5" aria-label="Copy heading and permalink for Definition 2.3.5">🔗</a></div></article><article class="example example-like" id="example-nilpotent"><h4 class="heading">
 <span class="type">Example</span><span class="space"> </span><span class="codenumber">2.3.6</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="example-nilpotent-1">
@@ -466,12 +475,12 @@ p(x) = x^m = (x-0)^m\text{,}
 <div class="displaymath process-math">
 \begin{equation*}
 \begin{bmatrix}
-0 \amp 1 \amp 0 \amp 0 \amp 0 \amp 0 \\
-0 \amp 0 \amp 1 \amp 0 \amp 0 \amp 0 \\
-0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
-0 \amp 0 \amp 0 \amp 0 \amp 1 \amp 0 \\
-0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
-0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
+0 \amp 1 \amp 0 \amp \gz \amp \gz \amp \gz \\
+0 \amp 0 \amp 1 \amp \gz \amp \gz \amp \gz \\
+0 \amp 0 \amp 0 \amp \gz \amp \gz \amp \gz \\
+\gz \amp \gz \amp \gz \amp 0 \amp 1 \amp \gz \\
+\gz \amp \gz \amp \gz \amp 0 \amp 0 \amp \gz \\
+\gz \amp \gz \amp \gz \amp \gz \amp \gz \amp 0 \\
 \end{bmatrix}\text{.}
 \end{equation*}
 </div>
@@ -489,11 +498,11 @@ T\vvec_5 \amp = \vvec_4 \\
 T\vvec_6 \amp = 0 \text{.}
 \end{align*}
 </div>
-<div class="para">This transformation satisfies <span class="process-math">\(T^3=0\text{,}\)</span> but <span class="process-math">\(T^2\neq
+<div class="para">This shows that <span class="process-math">\(T^3=0\text{,}\)</span> but <span class="process-math">\(T^2\neq
 0\)</span> so we have null spaces</div>
 <div class="displaymath process-math">
 \begin{equation*}
-\{0\}\subset\nul(T)\subset\nul(T^2)\subset(T^3) = V\text{.}
+\{0\}\subset\nul(T)\subset\nul(T^2)\subset\nul(T^3) = V\text{.}
 \end{equation*}
 </div>
 <div class="para">Within these null spaces, we have bases</div>
@@ -504,19 +513,13 @@ T\vvec_6 \amp = 0 \text{.}
 \nul(T^3) \amp =\nul(T^2)\oplus \laspan{\vvec_3}\text{.}
 \end{align*}
 </div>
-<div class="para">For each <span class="process-math">\(j\text{,}\)</span> we have</div>
-<div class="displaymath process-math">
-\begin{equation*}
-\nul(T^{j+1}) = \nul(T^j) \oplus W_j\text{.}
-\end{equation*}
-</div>
 <div class="autopermalink" data-description="Paragraph"><a href="#example-nilpotent-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para" id="example-nilpotent-3">Notice that the <span class="process-math">\(3\times3\)</span> block is formed by a vector <span class="process-math">\(\vvec_3\)</span> that is in <span class="process-math">\(\nul(T^3)\)</span> but not <span class="process-math">\(\nul(T^2)\text{.}\)</span> Once we have identified <span class="process-math">\(\vvec_3\text{,}\)</span> we obtain new basis vectors as <span class="process-math">\(\vvec_2=T\vvec_3\)</span> and <span class="process-math">\(\vvec_1=T\vvec_2=T^2\vvec_3\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#example-nilpotent-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 2.3.6"><a href="#example-nilpotent" title="Copy heading and permalink for Example 2.3.6" aria-label="Copy heading and permalink for Example 2.3.6">🔗</a></div></article><div class="para" id="sec-nilpotent-4-10">In fact, every nilpotent operator has a basis whose associated matrix consists of a set of nilpotent blocks on the diagonal, which we will state and prove in the next proposition.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Example 2.3.6"><a href="#example-nilpotent" title="Copy heading and permalink for Example 2.3.6" aria-label="Copy heading and permalink for Example 2.3.6">🔗</a></div></article><div class="para" id="sec-nilpotent-4-11">In fact, every nilpotent operator has a basis whose associated matrix consists of a set of nilpotent blocks on the diagonal, which we will state and prove in the next proposition.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para logical" id="sec-nilpotent-4-11">
+<div class="para logical" id="sec-nilpotent-4-12">
 <div class="para">First, notice that if <span class="process-math">\(T\)</span> is nilpotent, then its minimal polynomial is <span class="process-math">\(p(x)=x^m\)</span> for some <span class="process-math">\(m\text{.}\)</span>  In particular, this means that <span class="process-math">\(T^m=0\)</span> but <span class="process-math">\(T^{m-1}\neq 0\text{.}\)</span>  As we saw in <a href="sec-nilpotent.html#subsec-nul-powers" class="internal" title="Subsection 2.3.1: Null spaces of powers">Subsection 2.3.1</a>, we have the inclusion of null spaces:</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/subsec-nul-powers.html" id="eq-nil-inclusions">
 \begin{equation}
@@ -525,9 +528,9 @@ T\vvec_6 \amp = 0 \text{.}
 \end{equation}
 </div>
 <div class="para">where the inclusion of each null space into the other is a proper inclusion.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para logical" id="sec-nilpotent-4-12">
+<div class="para logical" id="sec-nilpotent-4-13">
 <div class="para">If <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(\nul(T^{j+1})\text{,}\)</span> then</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq-nil-inclusions.html">
 \begin{equation*}
@@ -535,14 +538,14 @@ T\vvec_6 \amp = 0 \text{.}
 \end{equation*}
 </div>
 <div class="para">which means that <span class="process-math">\(T\vvec\)</span> is in <span class="process-math">\(\nul(T^j)\text{.}\)</span>  In other words, applying <span class="process-math">\(T\)</span> pushes a vector to the left in the inclusions of null spaces in <a href="sec-nilpotent.html#eq-nil-inclusions" class="xref" data-knowl="./knowl/xref/eq-nil-inclusions.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.3.1">(2.3.1)</a>.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-nilpotent-4-13">We are now ready to prove our structure theorem for nilpotent operators.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-nilpotent-4-14">We are now ready to prove our structure theorem for nilpotent operators.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-14" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<article class="proposition theorem-like" id="sec-nilpotent-4-14"><h4 class="heading">
+<article class="proposition theorem-like" id="sec-nilpotent-4-15"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.3.7</span><span class="period">.</span>
 </h4>
-<div class="para logical" id="sec-nilpotent-4-14-1-1">
+<div class="para logical" id="sec-nilpotent-4-15-1-1">
 <div class="para">If <span class="process-math">\(T\)</span> is a nilpotent operator on <span class="process-math">\(V\text{,}\)</span> then there is a basis for <span class="process-math">\(V\)</span> such that the matrix associated to <span class="process-math">\(T\)</span> has the form</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -555,16 +558,16 @@ A_1 \amp 0 \amp \ldots \amp 0 \\
 \end{equation*}
 </div>
 <div class="para">where each <span class="process-math">\(A_j\)</span> is a nilpotent block.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-14-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-15-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 2.3.7"><a href="#sec-nilpotent-4-14" title="Copy heading and permalink for Proposition 2.3.7" aria-label="Copy heading and permalink for Proposition 2.3.7">🔗</a></div></article><article class="proof" id="sec-nilpotent-4-14-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="sec-nilpotent-4-14-2-1">Our proof proceeds by induction on the dimension of the vector space <span class="process-math">\(V\text{,}\)</span> which we will denote by <span class="process-math">\(\dim V =
-n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-14-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 2.3.7"><a href="#sec-nilpotent-4-15" title="Copy heading and permalink for Proposition 2.3.7" aria-label="Copy heading and permalink for Proposition 2.3.7">🔗</a></div></article><article class="proof" id="sec-nilpotent-4-15-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="sec-nilpotent-4-15-2-1">Our proof proceeds by induction on the dimension of the vector space <span class="process-math">\(V\text{,}\)</span> which we will denote by <span class="process-math">\(\dim V =
+n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-15-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-nilpotent-4-14-2-2">To verify the base case, suppose that <span class="process-math">\(\dim V = n =
-1\text{.}\)</span>  As we have seen, if <span class="process-math">\(\vvec\)</span> is a vector in <span class="process-math">\(V\text{,}\)</span> then <span class="process-math">\(T\vvec = \lambda\vvec\)</span> for some scalar <span class="process-math">\(\lambda\text{.}\)</span>  However, if <span class="process-math">\(T\)</span> is nilpotent, then <span class="process-math">\(\lambda = 0\)</span> and so <span class="process-math">\(T=0\text{.}\)</span>  In any basis, the matrix representing <span class="process-math">\(T\)</span> is <span class="process-math">\([0]\text{,}\)</span> a <span class="process-math">\(1\times1\)</span> nilpotent block.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-14-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-nilpotent-4-15-2-2">To verify the base case, suppose that <span class="process-math">\(\dim V = n =
+1\text{.}\)</span>  As we have seen, if <span class="process-math">\(\vvec\)</span> is a vector in <span class="process-math">\(V\text{,}\)</span> then <span class="process-math">\(T\vvec = \lambda\vvec\)</span> for some scalar <span class="process-math">\(\lambda\text{.}\)</span>  However, if <span class="process-math">\(T\)</span> is nilpotent, then <span class="process-math">\(\lambda = 0\)</span> and so <span class="process-math">\(T=0\text{.}\)</span>  In any basis, the matrix representing <span class="process-math">\(T\)</span> is <span class="process-math">\([0]\text{,}\)</span> a <span class="process-math">\(1\times1\)</span> nilpotent block.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-15-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para logical" id="sec-nilpotent-4-14-2-3">
+<div class="para logical" id="sec-nilpotent-4-15-2-3">
 <div class="para">Now suppose that the result is true for any nilpotent operator on a vector space of dimension less than <span class="process-math">\(n\text{.}\)</span> Suppose also that the minimal polynomial of <span class="process-math">\(T\)</span> is <span class="process-math">\(p(x)=x^m\text{.}\)</span>  This means that <span class="process-math">\(T^m=0\)</span> but <span class="process-math">\(T^{m-1}\neq 0\)</span> so</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -572,7 +575,7 @@ n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a hre
 \end{equation*}
 </div>
 <div class="para">We will choose a vector <span class="process-math">\(\vvec_m\)</span> in <span class="process-math">\(\nul(T^m)\)</span> that is not in <span class="process-math">\(\nul(T^{m-1})\)</span> and define</div>
-<div class="displaymath process-math" id="sec-nilpotent-4-14-2-3-10">
+<div class="displaymath process-math" id="sec-nilpotent-4-15-2-3-10">
 \begin{align*}
 \vvec_{m-1}\amp=T\vvec_m\\
 \vvec_{m-2}\amp=T\vvec_{m-1}=T^2\vvec_m\\
@@ -583,9 +586,9 @@ n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a hre
 </div>
 <div class="para">Notice that <span class="process-math">\(T\vvec_1 = T^m\vvec_m=0\)</span> so that <span class="process-math">\(\vvec_1\)</span> is in <span class="process-math">\(\nul(T)\text{.}\)</span>  More generally, <span class="process-math">\(\vvec_j\)</span> is in <span class="process-math">\(\nul(T^j)\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-14-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-15-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para logical" id="sec-nilpotent-4-14-2-4">
+<div class="para logical" id="sec-nilpotent-4-15-2-4">
 <div class="para">We will use <span class="process-math">\(U\)</span> to denote the subspace spanned by <span class="process-math">\(\basis{\vvec}{m}\text{.}\)</span>  Notice that a vector <span class="process-math">\(\uvec\)</span> in <span class="process-math">\(U\)</span> may be written as</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -600,56 +603,56 @@ T\uvec=c_2\vvec_1 + c_3\vvec_2 + \ldots c_m\vvec_{m-1}\text{.}
 </div>
 <div class="para">This shows that <span class="process-math">\(U\)</span> is a <span class="process-math">\(T\)</span>-invariant subspace of <span class="process-math">\(V\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-14-2-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-15-2-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para logical" id="sec-nilpotent-4-14-2-5">
-<div class="para">Suppose now that <span class="process-math">\(\phi:V\to\field\)</span> is a linear functional so that</div>
-<div class="displaymath process-math">
+<div class="para logical" id="sec-nilpotent-4-15-2-5">
+<div class="para">Using <a href="sec-lt-intro.html#corollary-functional-basis" class="xref" data-knowl="./knowl/xref/corollary-functional-basis.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.2.42">Corollary 1.2.42</a>, suppose now that <span class="process-math">\(\phi:V\to\field\)</span> is a linear functional so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/corollary-functional-basis.html">
 \begin{equation*}
 \phi(\vvec_1) = 1, \phi(\vvec_2) = 0,\ldots,\phi(\vvec_m) =
 0\text{.}
 \end{equation*}
 </div>
 <div class="para">We then define <span class="process-math">\(S:V\to \field^m\)</span> by</div>
-<div class="displaymath process-math">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/corollary-functional-basis.html">
 \begin{equation*}
 S(\vvec) = \left[\begin{array}{c}\phi(\vvec)\\ \phi(T\vvec) \\
 \vdots \\ \phi(T^{m-1}\vvec) \\
 \end{array}\right]\text{.}
 \end{equation*}
 </div>
-<div class="para">Once again, if <span class="process-math">\(\uvec\)</span> is a vector in <span class="process-math">\(U\text{,}\)</span> then <span class="process-math">\(\uvec=c_1\vvec_1 + c_2\vvec_2 + \ldots c_m\vvec_m\)</span> so that <span class="process-math">\(S(\uvec) = \fourvec{c_1}{c_2}{\vdots}{c_m}\text{.}\)</span> This shows three things.</div>
-<ul class="disc" id="sec-nilpotent-4-14-2-5-9">
-<li id="sec-nilpotent-4-14-2-5-9-1">
-<div class="para" id="sec-nilpotent-4-14-2-5-9-1-1">
-<span class="process-math">\(S\)</span> is surjective.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-14-2-5-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para">Once again, if <span class="process-math">\(\uvec\)</span> is a vector in <span class="process-math">\(U\text{,}\)</span> then <span class="process-math">\(\uvec=c_1\vvec_1 + c_2\vvec_2 + \ldots c_m\vvec_m\)</span> so that <span class="process-math">\(S(\uvec) = \cfourvec{c_1}{c_2}{\vdots}{c_m}\text{.}\)</span> This shows three things.</div>
+<ul class="disc" id="sec-nilpotent-4-15-2-5-10">
+<li id="sec-nilpotent-4-15-2-5-10-1">
+<div class="para" id="sec-nilpotent-4-15-2-5-10-1-1">
+<span class="process-math">\(S\)</span> is surjective.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-15-2-5-10-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-nilpotent-4-14-2-5-9-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-nilpotent-4-15-2-5-10-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
-<li id="sec-nilpotent-4-14-2-5-9-2">
-<div class="para" id="sec-nilpotent-4-14-2-5-9-2-1">
-<span class="process-math">\(S(\vvec_j)=\evec_j\text{,}\)</span> the standard basis vector in <span class="process-math">\(\field^m\text{,}\)</span> which means that <span class="process-math">\(\basis{\vvec}{m}\)</span> is a linearly independent set and therefore a basis for <span class="process-math">\(U\text{.}\)</span> Moreover, in this basis, the matrix representing <span class="process-math">\(T|_U\)</span> is a nilpotent <span class="process-math">\(m\times m\)</span> block.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-14-2-5-9-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<li id="sec-nilpotent-4-15-2-5-10-2">
+<div class="para" id="sec-nilpotent-4-15-2-5-10-2-1">
+<span class="process-math">\(S(\vvec_j)=\evec_j\text{,}\)</span> the standard basis vector in <span class="process-math">\(\field^m\text{,}\)</span> which means that <span class="process-math">\(\basis{\vvec}{m}\)</span> is a linearly independent set and therefore a basis for <span class="process-math">\(U\text{.}\)</span> Moreover, in this basis, the matrix representing <span class="process-math">\(T|_U\)</span> is a nilpotent <span class="process-math">\(m\times m\)</span> block.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-15-2-5-10-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-nilpotent-4-14-2-5-9-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-nilpotent-4-15-2-5-10-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
-<li id="sec-nilpotent-4-14-2-5-9-3">
-<div class="para" id="sec-nilpotent-4-14-2-5-9-3-1">
-<span class="process-math">\(S(\uvec) = 0\)</span> implies that <span class="process-math">\(\uvec=0\text{,}\)</span> which means that <span class="process-math">\(U\cap\nul(S) = \{0\}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-14-2-5-9-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<li id="sec-nilpotent-4-15-2-5-10-3">
+<div class="para" id="sec-nilpotent-4-15-2-5-10-3-1">
+<span class="process-math">\(S(\uvec) = 0\)</span> implies that <span class="process-math">\(\uvec=0\text{,}\)</span> which means that <span class="process-math">\(U\cap\nul(S) = \{0\}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-15-2-5-10-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#sec-nilpotent-4-14-2-5-9-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item"><a href="#sec-nilpotent-4-15-2-5-10-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
 </li>
 </ul>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-14-2-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-15-2-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-nilpotent-4-14-2-6">Now consider <span class="process-math">\(W=\nul(S)\text{.}\)</span>  Since <span class="process-math">\(S\)</span> is surjective, we have <span class="process-math">\(\dim W = n-m \lt n\)</span> by the <a href="sec-lt-intro.html#prop-nul-range-dims" class="xref" data-knowl="./knowl/xref/prop-nul-range-dims.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.13: Fundamental Theorem of Linear Maps">Fundamental Theorem of Linear Maps 1.2.13</a>.  Moreover, <span class="process-math">\(U\cap W = U\cap 
-\nul(S) = \{0\}\)</span> so we have <span class="process-math">\(U\oplus W = V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-14-2-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-nilpotent-4-15-2-6">Now consider <span class="process-math">\(W=\nul(S)\text{.}\)</span>  Since <span class="process-math">\(S\)</span> is surjective, we have <span class="process-math">\(\dim W = n-m \lt n\)</span> by the <a href="sec-lt-intro.html#prop-nul-range-dims" class="xref" data-knowl="./knowl/xref/prop-nul-range-dims.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.13: Fundamental Theorem of Linear Maps">Fundamental Theorem of Linear Maps 1.2.13</a>.  Moreover, <span class="process-math">\(U\cap W = U\cap 
+\nul(S) = \{0\}\)</span> so we have <span class="process-math">\(U\oplus W = V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-15-2-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-nilpotent-4-14-2-7">Finally, we claim that <span class="process-math">\(W\)</span> is a <span class="process-math">\(T\)</span>-invariant subspace.  Notice that <span class="process-math">\(\wvec\)</span> is in <span class="process-math">\(W=\nul(S)\)</span> if and only if <span class="process-math">\(\phi(T^j\vvec) = 0\)</span> for all <span class="process-math">\(j\text{.}\)</span>  If this is the case, then <span class="process-math">\(\phi(T^j(T\vvec)) =
-\phi(T^{j+1}\vvec) = 0\)</span> for all <span class="process-math">\(j\text{,}\)</span> which shows that <span class="process-math">\(W\)</span> is <span class="process-math">\(T\)</span>-invariant.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-14-2-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-nilpotent-4-15-2-7">Finally, we claim that <span class="process-math">\(W\)</span> is a <span class="process-math">\(T\)</span>-invariant subspace.  Notice that <span class="process-math">\(\wvec\)</span> is in <span class="process-math">\(W=\nul(S)\)</span> if and only if <span class="process-math">\(\phi(T^j\vvec) = 0\)</span> for all <span class="process-math">\(j\text{.}\)</span>  If this is the case, then <span class="process-math">\(\phi(T^j(T\vvec)) =
+\phi(T^{j+1}\vvec) = 0\)</span> for all <span class="process-math">\(j\text{,}\)</span> which shows that <span class="process-math">\(W\)</span> is <span class="process-math">\(T\)</span>-invariant.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-15-2-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-nilpotent-4-14-2-8">Because <span class="process-math">\(\dim W\lt n\)</span> and <span class="process-math">\(T|_W\)</span> is nilpotent, the inductive hypothesis applies to show that there is a basis for <span class="process-math">\(W\)</span> so that the matrix representing <span class="process-math">\(T|_W\)</span> consists of nilpotent blocks.  We can combine this basis with <span class="process-math">\(\basis{\vvec}{m}\)</span> to finish the proof of the theorem.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-14-2-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-nilpotent-4-15-2-8">Because <span class="process-math">\(\dim W\lt n\)</span> and <span class="process-math">\(T|_W\)</span> is nilpotent, the inductive hypothesis applies to show that there is a basis for <span class="process-math">\(W\)</span> so that the matrix representing <span class="process-math">\(T|_W\)</span> consists of nilpotent blocks.  We can combine this basis with <span class="process-math">\(\basis{\vvec}{m}\)</span> to finish the proof of the theorem.<div class="autopermalink" data-description="Paragraph"><a href="#sec-nilpotent-4-15-2-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 2.3.7.1"><a href="#sec-nilpotent-4-14-2" title="Copy heading and permalink for Proof 2.3.7.1" aria-label="Copy heading and permalink for Proof 2.3.7.1">🔗</a></div></article><div class="autopermalink" data-description="Subsection 2.3.2: Nilpotent operators"><a href="#sec-nilpotent-4" title="Copy heading and permalink for Subsection 2.3.2: Nilpotent operators" aria-label="Copy heading and permalink for Subsection 2.3.2: Nilpotent operators">🔗</a></div></section><div class="autopermalink" data-description="Section 2.3: Nilpotent operators"><a href="#sec-nilpotent" title="Copy heading and permalink for Section 2.3: Nilpotent operators" aria-label="Copy heading and permalink for Section 2.3: Nilpotent operators">🔗</a></div></section></div>
+<div class="autopermalink" data-description="Proof 2.3.7.1"><a href="#sec-nilpotent-4-15-2" title="Copy heading and permalink for Proof 2.3.7.1" aria-label="Copy heading and permalink for Proof 2.3.7.1">🔗</a></div></article><div class="autopermalink" data-description="Subsection 2.3.2: Nilpotent operators"><a href="#sec-nilpotent-4" title="Copy heading and permalink for Subsection 2.3.2: Nilpotent operators" aria-label="Copy heading and permalink for Subsection 2.3.2: Nilpotent operators">🔗</a></div></section><div class="autopermalink" data-description="Section 2.3: Nilpotent operators"><a href="#sec-nilpotent" title="Copy heading and permalink for Section 2.3: Nilpotent operators" aria-label="Copy heading and permalink for Section 2.3: Nilpotent operators">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="sec-spectral.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-jordan.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>

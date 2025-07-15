@@ -197,6 +197,8 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
 \newcommand{\gray}[1]{\color{gray}{#1}}
 \newcommand{\lgray}[1]{\color{lightgray}{#1}}
+\newcommand{\go}{\gray{1}}
+\newcommand{\gz}{\gray{0}}
 \newcommand{\rank}{\operatorname{rank}}
 \newcommand{\row}{\operatorname{Row}}
 \newcommand{\col}{\operatorname{Col}}
@@ -313,7 +315,7 @@ eBookConfig.enable_chatcodes =  false;
 \end{bmatrix}\)</span> has a single eigenvalue <span class="process-math">\(\lambda=2\)</span> and the associated eigenspace <span class="process-math">\(E_2\)</span> is one-dimensional.  In this case, the characteristic polynomial is <span class="process-math">\((\lambda-2)^2\)</span> so the eigenvalue <span class="process-math">\(\lambda=2\)</span> is a root with multiplicity two.<div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-jordan-2-3">
-<div class="para">This example show that just looking at eigenvalues and eigenvectors will not be enough to always find a standard form. So instead, we do something that mathematicians love to do: generalize an idea that has already proven useful.  In this case, the eigenvalue/eigenvector condition is given by the equation</div>
+<div class="para">This example shows that just looking at eigenvalues and eigenvectors will not be enough to always find a standard form. So instead, we do something that mathematicians love to do: generalize an idea that has already proven useful.  In this case, the eigenvalue/eigenvector condition is given by the equation</div>
 <div class="displaymath process-math">
 \begin{equation*}
 (T-\lambda I)\vvec = \zerovec\text{.}
@@ -333,36 +335,28 @@ eBookConfig.enable_chatcodes =  false;
 <article class="definition definition-like" id="sec-jordan-3-2"><h4 class="heading">
 <span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.4.1</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-jordan-3-2-1-1">If <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(V\text{,}\)</span> we say that a nonzero vector <span class="process-math">\(\vvec\)</span> is a <em class="emphasis">generalized eigenvector</em> if <span class="process-math">\((T-\lambda I)^k\vvec=\zerovec\)</span> for some <span class="process-math">\(k\text{.}\)</span>  The set of such vectors, the <em class="emphasis">generalized eigenspace</em> is denoted <span class="process-math">\(G_\lambda\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-jordan-3-2-1-1">If <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(V\text{,}\)</span> we say that a nonzero vector <span class="process-math">\(\vvec\)</span> is a <em class="emphasis">generalized eigenvector</em> if <span class="process-math">\((T-\lambda I)^k\vvec=\zerovec\)</span> for some <span class="process-math">\(k\text{.}\)</span>  The set of such vectors is called the <em class="emphasis">generalized eigenspace</em> and is denoted <span class="process-math">\(G_\lambda\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Definition 2.4.1"><a href="#sec-jordan-3-2" title="Copy heading and permalink for Definition 2.4.1" aria-label="Copy heading and permalink for Definition 2.4.1">🔗</a></div></article><div class="para" id="sec-jordan-3-3">Notice that eigenvectors are also generalized eigenvectors since an eigenvector satisfies <span class="process-math">\((T-\lambda I)\vvec=0\text{,}\)</span> the generalized eigenvector condition with <span class="process-math">\(k=1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="sec-jordan-3-4">We would like to characterize a generalized eigenspace as a subspace of <span class="process-math">\(V\text{.}\)</span> Before doing so, however, we recall an earlier homework exercise.<div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-jordan-3-4">The next proposition connects generalized eigenspaces with the minimal polynomial.<div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-jordan-3-5"><h4 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.2</span><span class="period">.</span>
 </h4>
-<div class="para" id="sec-jordan-3-5-1-1">If <span class="process-math">\(T:V\to V\)</span> is an operator and <span class="process-math">\(\vvec\)</span> a nonzero vector in <span class="process-math">\(V\text{,}\)</span> then there is a unique monic polynomial <span class="process-math">\(p_\vvec\)</span> having the smallest possible degree and satisfying <span class="process-math">\(p_\vvec(T)\vvec=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div> <div class="para" id="sec-jordan-3-5-1-2">If <span class="process-math">\(s\)</span> is another polynomial for which <span class="process-math">\(s(T)\vvec=0\text{,}\)</span> then <span class="process-math">\(p_\vvec\)</span> divides <span class="process-math">\(s\text{.}\)</span>  In particular, it follows that <span class="process-math">\(p_\vvec\)</span> divides the minimal polynomial <span class="process-math">\(p\)</span> of <span class="process-math">\(T\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-5-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Proposition 2.4.2"><a href="#sec-jordan-3-5" title="Copy heading and permalink for Proposition 2.4.2" aria-label="Copy heading and permalink for Proposition 2.4.2">🔗</a></div></article><div class="para" id="sec-jordan-3-6">With this in mind, we can characterize the generalized eigenspaces.<div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<article class="proposition theorem-like" id="sec-jordan-3-7"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.3</span><span class="period">.</span>
-</h4>
-<div class="para logical" id="sec-jordan-3-7-1-1">
-<div class="para">If the minimal polynomial of <span class="process-math">\(T\)</span> has the form <span class="process-math">\(p(x)=q(z)(x-\lambda)^k\)</span> where <span class="process-math">\(q(\lambda)\neq 0\text{,}\)</span> then</div>
+<div class="para logical" id="sec-jordan-3-5-1-1">
+<div class="para">If the minimal polynomial of <span class="process-math">\(T\)</span> has the form <span class="process-math">\(p(x)=q(x)(x-\lambda)^k\)</span> where <span class="process-math">\(q(\lambda)\neq 0\text{,}\)</span> then</div>
 <div class="displaymath process-math">
 \begin{equation*}
 G_\lambda = \nul((T-\lambda I)^k)\text{.}
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 2.4.3"><a href="#sec-jordan-3-7" title="Copy heading and permalink for Proposition 2.4.3" aria-label="Copy heading and permalink for Proposition 2.4.3">🔗</a></div></article><article class="proof" id="sec-jordan-3-7-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
-<div class="para" id="sec-jordan-3-7-2-1">Suppose that <span class="process-math">\(\vvec\)</span> is a generalized eigenvector, which means that <span class="process-math">\((T-\lambda I)^l\vvec=0\)</span> for some <span class="process-math">\(l\text{.}\)</span>  If <span class="process-math">\(s(x) = (x-\lambda)^l\text{,}\)</span> then <span class="process-math">\(s(T)\vvec=0\text{,}\)</span> which means that <span class="process-math">\(p_\vvec\)</span> divides <span class="process-math">\(s\text{.}\)</span>  Therefore, <span class="process-math">\(p_\vvec=(x-\lambda)^m\)</span> for some <span class="process-math">\(m\leq l\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-7-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proposition 2.4.2"><a href="#sec-jordan-3-5" title="Copy heading and permalink for Proposition 2.4.2" aria-label="Copy heading and permalink for Proposition 2.4.2">🔗</a></div></article><article class="proof" id="sec-jordan-3-5-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="para" id="sec-jordan-3-5-2-1">Suppose that <span class="process-math">\(\vvec\)</span> is a generalized eigenvector, which means that <span class="process-math">\((T-\lambda I)^l\vvec=0\)</span> for some <span class="process-math">\(l\text{.}\)</span>  If <span class="process-math">\(s(x) = (x-\lambda)^l\text{,}\)</span> then <span class="process-math">\(s(T)\vvec=0\text{,}\)</span> which means that <span class="process-math">\(p_\vvec\text{,}\)</span> the minimal polynomial of <span class="process-math">\(\vvec\text{,}\)</span> divides <span class="process-math">\(s\text{.}\)</span>  Therefore, <span class="process-math">\(p_\vvec=(x-\lambda)^m\)</span> for some <span class="process-math">\(m\leq l\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para logical" id="sec-jordan-3-7-2-2">
+<div class="para logical" id="sec-jordan-3-5-2-2">
 <div class="para">The minimal polynomiall <span class="process-math">\(p\)</span> of <span class="process-math">\(T\)</span> has exactly <span class="process-math">\(k\)</span> factors of <span class="process-math">\(x-\lambda\text{.}\)</span> Since <span class="process-math">\(p_\vvec\)</span> divides <span class="process-math">\(p\text{,}\)</span> <span class="process-math">\(p_\vvec\)</span> can have no more than <span class="process-math">\(k\)</span> factors of <span class="process-math">\(x-\lambda\text{.}\)</span>  Therefore,</div>
 <div class="displaymath process-math">
 \begin{equation*}
@@ -373,16 +367,16 @@ I)^m\vvec = 0\text{,}
 <div class="para">which says that <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(\nul((T-\lambda
 I)^k)\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-7-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-5-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 2.4.3.1"><a href="#sec-jordan-3-7-2" title="Copy heading and permalink for Proof 2.4.3.1" aria-label="Copy heading and permalink for Proof 2.4.3.1">🔗</a></div></article><div class="para" id="sec-jordan-3-8">We know that a vector cannot be an eigenvector associated to two different eigenvalues.  This is also true for generalized eigenvectors.<div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Proof 2.4.2.1"><a href="#sec-jordan-3-5-2" title="Copy heading and permalink for Proof 2.4.2.1" aria-label="Copy heading and permalink for Proof 2.4.2.1">🔗</a></div></article><div class="para" id="sec-jordan-3-6">We know that a vector cannot be an eigenvector associated to two different eigenvalues.  This is also true for generalized eigenvectors.<div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-3-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-gen-eig-disjoint"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.4</span><span class="period">.</span>
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.3</span><span class="period">.</span>
 </h4>
 <div class="para" id="prop-gen-eig-disjoint-1-1">If <span class="process-math">\(\lambda\)</span> and <span class="process-math">\(\mu\)</span> are distinct eigenvalues of <span class="process-math">\(T\text{,}\)</span> then <span class="process-math">\(G_\lambda\cap G_\mu=\{0\}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-gen-eig-disjoint-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 2.4.4"><a href="#prop-gen-eig-disjoint" title="Copy heading and permalink for Proposition 2.4.4" aria-label="Copy heading and permalink for Proposition 2.4.4">🔗</a></div></article><article class="proof" id="prop-gen-eig-disjoint-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 2.4.3"><a href="#prop-gen-eig-disjoint" title="Copy heading and permalink for Proposition 2.4.3" aria-label="Copy heading and permalink for Proposition 2.4.3">🔗</a></div></article><article class="proof" id="prop-gen-eig-disjoint-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para" id="prop-gen-eig-disjoint-2-1">Suppose that <span class="process-math">\(\vvec\)</span> is a nonzero vector in <span class="process-math">\(G_\lambda\text{.}\)</span>  Then <span class="process-math">\(p_\vvec(x)=(x-\lambda)^m\)</span> for some <span class="process-math">\(m\text{,}\)</span> which says that <span class="process-math">\(\lambda\)</span> is a root of <span class="process-math">\(p_\vvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-gen-eig-disjoint-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-gen-eig-disjoint-2-2">
@@ -396,7 +390,7 @@ p_\vvec(\lambda) = (\lambda-\mu)^n = 0\text{,}
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#prop-gen-eig-disjoint-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 2.4.4.1"><a href="#prop-gen-eig-disjoint-2" title="Copy heading and permalink for Proof 2.4.4.1" aria-label="Copy heading and permalink for Proof 2.4.4.1">🔗</a></div></article><div class="autopermalink" data-description="Subsection 2.4.1: Generalized eigenvectors"><a href="#sec-jordan-3" title="Copy heading and permalink for Subsection 2.4.1: Generalized eigenvectors" aria-label="Copy heading and permalink for Subsection 2.4.1: Generalized eigenvectors">🔗</a></div></section><section class="subsection" id="sec-jordan-4"><h3 class="heading hide-type">
+<div class="autopermalink" data-description="Proof 2.4.3.1"><a href="#prop-gen-eig-disjoint-2" title="Copy heading and permalink for Proof 2.4.3.1" aria-label="Copy heading and permalink for Proof 2.4.3.1">🔗</a></div></article><div class="autopermalink" data-description="Subsection 2.4.1: Generalized eigenvectors"><a href="#sec-jordan-3" title="Copy heading and permalink for Subsection 2.4.1: Generalized eigenvectors" aria-label="Copy heading and permalink for Subsection 2.4.1: Generalized eigenvectors">🔗</a></div></section><section class="subsection" id="sec-jordan-4"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.4.2</span><span class="space"> </span><span class="title">Complex Vector Spaces</span>
 </h3>
 <div class="para logical" id="sec-jordan-4-2">
@@ -410,7 +404,7 @@ p(x)=(x-\lambda_1)^{k_1}(x-\lambda_2)^{k_2}\ldots(x-\lambda_1)^{k_m}\text{.}
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-jordan-4-3"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.5</span><span class="period">.</span>
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.4.4</span><span class="period">.</span>
 </h4>
 <div class="para logical" id="sec-jordan-4-3-1-1">
 <div class="para">If <span class="process-math">\(T\)</span> is an operator on a complex vector space with eigenvalues <span class="process-math">\(\basis{\lambda}{m}\text{,}\)</span> then</div>
@@ -422,7 +416,7 @@ V = G_{\lambda_1}\oplus G_{\lambda_2} \oplus \ldots
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-4-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 2.4.5"><a href="#sec-jordan-4-3" title="Copy heading and permalink for Proposition 2.4.5" aria-label="Copy heading and permalink for Proposition 2.4.5">🔗</a></div></article><article class="proof" id="sec-jordan-4-3-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 2.4.4"><a href="#sec-jordan-4-3" title="Copy heading and permalink for Proposition 2.4.4" aria-label="Copy heading and permalink for Proposition 2.4.4">🔗</a></div></article><article class="proof" id="sec-jordan-4-3-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para" id="sec-jordan-4-3-2-1">We will use induction on the dimension of <span class="process-math">\(V\text{.}\)</span>  To establish the base case, we assume that <span class="process-math">\(\dim V = 1\text{.}\)</span>  In this case, <span class="process-math">\(p(x) = x-\lambda\)</span> so <span class="process-math">\(T-\lambda I = 0\)</span> or <span class="process-math">\(T=\lambda I\text{.}\)</span>  Then <span class="process-math">\(V=G_\lambda\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-4-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-jordan-4-3-2-2">
@@ -487,12 +481,12 @@ I)^k\vvec\)</span> for some vector <span class="process-math">\(V\text{.}\)</spa
 q(T)\uvec = q(T)(T-\lambda I)^k \vvec = p(T)\vvec = 0\text{.}
 \end{equation*}
 </div>
-<div class="para">This shows that the minimal polynomial <span class="process-math">\(p_U\)</span> of <span class="process-math">\(T|_U\)</span> divides <span class="process-math">\(q\text{.}\)</span>  However, if the minimal polynomial of <span class="process-math">\(T|_U\)</span> has a smaller degree than <span class="process-math">\(q\text{,}\)</span> this would contradcit the fact that the minimal polynomial of <span class="process-math">\(T\)</span> has the smallest possible degree.</div>
+<div class="para">This shows that the minimal polynomial <span class="process-math">\(p_U\)</span> of <span class="process-math">\(T|_U\)</span> divides <span class="process-math">\(q\text{.}\)</span>  However, if the minimal polynomial of <span class="process-math">\(T|_U\)</span> has a smaller degree than <span class="process-math">\(q\text{,}\)</span> this would contradict the fact that the minimal polynomial of <span class="process-math">\(T\)</span> has the smallest possible degree.</div>
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-4-3-2-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="sec-jordan-4-3-2-6">
 <div class="para">By the inductive hypothesis, <span class="process-math">\(U\)</span> may be written as a direct sum of its generalized eigenspaces.  All that remains is to show that, if <span class="process-math">\(\mu\)</span> is an eigenvalue distinct from <span class="process-math">\(\lambda\text{,}\)</span> the generalized eigenspace of <span class="process-math">\(T\)</span> associated to <span class="process-math">\(\mu\)</span> is the same as the generalized eigenspace of <span class="process-math">\(T|_U\)</span> associated to <span class="process-math">\(\mu\text{.}\)</span>  To this end, suppose that <span class="process-math">\(\vvec\)</span> satisfies <span class="process-math">\((T-\mu
-I)^l\vvec\)</span> for some <span class="process-math">\(l\text{.}\)</span>  Because <span class="process-math">\(V=G_\lambda
+I)^l\vvec=0\)</span> for some <span class="process-math">\(l\text{.}\)</span>  Because <span class="process-math">\(V=G_\lambda
 \oplus U\text{,}\)</span> we can write</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-gen-eig-disjoint.html">
 \begin{equation*}
@@ -511,7 +505,7 @@ I)^l\vvec\)</span> for some <span class="process-math">\(l\text{.}\)</span>  Bec
 (T-\mu I)^l\nvec \amp = 0\text{.}
 \end{align*}
 </div>
-<div class="para">This means that <span class="process-math">\(\nvec\in G_\lambda\cap G_\mu = \{0\}\)</span> by <a href="sec-jordan.html#prop-gen-eig-disjoint" class="xref" data-knowl="./knowl/xref/prop-gen-eig-disjoint.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 2.4.4">Proposition 2.4.4</a> so that <span class="process-math">\(\nvec = 0\text{.}\)</span> Therefore, <span class="process-math">\(\vvec = \uvec\in U\)</span> and</div>
+<div class="para">This means that <span class="process-math">\(\nvec\in G_\lambda\cap G_\mu = \{0\}\)</span> by <a href="sec-jordan.html#prop-gen-eig-disjoint" class="xref" data-knowl="./knowl/xref/prop-gen-eig-disjoint.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 2.4.3">Proposition 2.4.3</a> so that <span class="process-math">\(\nvec = 0\text{.}\)</span> Therefore, <span class="process-math">\(\vvec = \uvec\in U\)</span> and</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-gen-eig-disjoint.html">
 \begin{equation*}
 (T-\mu I)^l\uvec = (T|_U-\mu I)^l \uvec = 0\text{.}
@@ -519,7 +513,7 @@ I)^l\vvec\)</span> for some <span class="process-math">\(l\text{.}\)</span>  Bec
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-4-3-2-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 2.4.5.1"><a href="#sec-jordan-4-3-2" title="Copy heading and permalink for Proof 2.4.5.1" aria-label="Copy heading and permalink for Proof 2.4.5.1">🔗</a></div></article><div class="autopermalink" data-description="Subsection 2.4.2: Complex Vector Spaces"><a href="#sec-jordan-4" title="Copy heading and permalink for Subsection 2.4.2: Complex Vector Spaces" aria-label="Copy heading and permalink for Subsection 2.4.2: Complex Vector Spaces">🔗</a></div></section><section class="subsection" id="sec-jordan-5"><h3 class="heading hide-type">
+<div class="autopermalink" data-description="Proof 2.4.4.1"><a href="#sec-jordan-4-3-2" title="Copy heading and permalink for Proof 2.4.4.1" aria-label="Copy heading and permalink for Proof 2.4.4.1">🔗</a></div></article><div class="autopermalink" data-description="Subsection 2.4.2: Complex Vector Spaces"><a href="#sec-jordan-4" title="Copy heading and permalink for Subsection 2.4.2: Complex Vector Spaces" aria-label="Copy heading and permalink for Subsection 2.4.2: Complex Vector Spaces">🔗</a></div></section><section class="subsection" id="sec-jordan-5"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.4.3</span><span class="space"> </span><span class="title">Jordan form</span>
 </h3>
 <div class="para logical" id="sec-jordan-5-2">
@@ -538,7 +532,7 @@ J =
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="theorem theorem-like" id="sec-jordan-5-3"><h4 class="heading">
-<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.6</span><span class="period">.</span><span class="space"> </span><span class="title">Jordan canonical form.</span>
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.5</span><span class="period">.</span><span class="space"> </span><span class="title">Jordan canonical form.</span>
 </h4>
 <div class="para logical" id="sec-jordan-5-3-2-1">
 <div class="para">If <span class="process-math">\(T\)</span> is an operator on a complex vector space <span class="process-math">\(V\text{,}\)</span> then there is a basis for <span class="process-math">\(V\)</span> such that the matrix associated to <span class="process-math">\(T\)</span> consists only of Jordan blocks on the diagonal.  That is,</div>
@@ -554,7 +548,7 @@ J_1 \amp 0 \amp \ldots \amp 0 \\
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-5-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 2.4.6: Jordan canonical form"><a href="#sec-jordan-5-3" title="Copy heading and permalink for Theorem 2.4.6: Jordan canonical form" aria-label="Copy heading and permalink for Theorem 2.4.6: Jordan canonical form">🔗</a></div></article><article class="proof" id="sec-jordan-5-3-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Theorem 2.4.5: Jordan canonical form"><a href="#sec-jordan-5-3" title="Copy heading and permalink for Theorem 2.4.5: Jordan canonical form" aria-label="Copy heading and permalink for Theorem 2.4.5: Jordan canonical form">🔗</a></div></article><article class="proof" id="sec-jordan-5-3-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
 <div class="para logical" id="sec-jordan-5-3-3-1">
 <div class="para">We know that</div>
 <div class="displaymath process-math">
@@ -563,17 +557,17 @@ V = G_{\lambda_1}\oplus G_{\lambda_2}\oplus\ldots
 \oplus G_{\lambda_m}\text{.}
 \end{equation*}
 </div>
-<div class="para">Moreover, on <span class="process-math">\(G_{\lambda_j}\text{,}\)</span> the operator <span class="process-math">\((T-\lambda_j I)^{k_j}\)</span> is nilpotent, which means there is a basis for <span class="process-math">\(G_{\lambda_j}\)</span> such that the matrix associated to <span class="process-math">\(T-\lambda_j\)</span> conists of nilpotent blocks.  The matrix associated to <span class="process-math">\(T\)</span> therefore has consists of Jordan blocks.  Because each generalized eigenspace is invariant under <span class="process-math">\(T\text{,}\)</span> the theorem holds.</div>
+<div class="para">Moreover, on <span class="process-math">\(G_{\lambda_j}\text{,}\)</span> the operator <span class="process-math">\((T-\lambda_j I)^{k_j}\)</span> is nilpotent, which means there is a basis for <span class="process-math">\(G_{\lambda_j}\)</span> such that the matrix associated to <span class="process-math">\(T-\lambda_j\)</span> conists of nilpotent blocks.  The matrix associated to <span class="process-math">\(T\)</span> therefore consists of Jordan blocks.  Because each generalized eigenspace is invariant under <span class="process-math">\(T\text{,}\)</span> the theorem holds.</div>
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-5-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 2.4.6.1"><a href="#sec-jordan-5-3-3" title="Copy heading and permalink for Proof 2.4.6.1" aria-label="Copy heading and permalink for Proof 2.4.6.1">🔗</a></div></article><div class="para logical" id="sec-jordan-5-4">
+<div class="autopermalink" data-description="Proof 2.4.5.1"><a href="#sec-jordan-5-3-3" title="Copy heading and permalink for Proof 2.4.5.1" aria-label="Copy heading and permalink for Proof 2.4.5.1">🔗</a></div></article><div class="para logical" id="sec-jordan-5-4">
 <div class="para">Notice that the characteristic polynomial of <span class="process-math">\(T\text{,}\)</span> which can easily be found using this matrix, has the form</div>
 <div class="displaymath process-math">
 \begin{equation*}
 p(x)=(x-\lambda_1)^{m_1}(x-\lambda_2)^{m_2}\ldots(x-\lambda_k)^{m_k}
 \end{equation*}
 </div>
-<div class="para">where the multiplicity of each eigenvalue equals the dimension <span class="process-math">\(\dim G_{\lambda_j}\text{.}\)</span>  We earlier called <span class="process-math">\(m_j\)</span> the algebraic multiplicity of the eigenvalue <span class="process-math">\(\lambda_j\text{.}\)</span> Because the eigenspace <span class="process-math">\(E_{\lambda_j}\subset G_{\lambda_j}\text{,}\)</span> have therefore shown that the multiplicity of the eigenvalue is at least as large as the dimension of the eigenspace:</div>
+<div class="para">where the multiplicity of each eigenvalue equals the dimension <span class="process-math">\(\dim G_{\lambda_j}\text{.}\)</span>  In our previous course, we called <span class="process-math">\(m_j\)</span> the algebraic multiplicity of the eigenvalue <span class="process-math">\(\lambda_j\text{.}\)</span> Because the eigenspace <span class="process-math">\(E_{\lambda_j}\subset G_{\lambda_j}\text{,}\)</span> we have therefore shown that the multiplicity of the eigenvalue is at least as large as the dimension of the eigenspace:</div>
 <div class="displaymath process-math">
 \begin{equation*}
 0\lt \dim E^{\lambda_j} \leq m_j\text{.}
@@ -581,7 +575,19 @@ p(x)=(x-\lambda_1)^{m_1}(x-\lambda_2)^{m_2}\ldots(x-\lambda_k)^{m_k}
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-5-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Subsection 2.4.3: Jordan form"><a href="#sec-jordan-5" title="Copy heading and permalink for Subsection 2.4.3: Jordan form" aria-label="Copy heading and permalink for Subsection 2.4.3: Jordan form">🔗</a></div></section><div class="autopermalink" data-description="Section 2.4: Generalized eigenvectors"><a href="#sec-jordan" title="Copy heading and permalink for Section 2.4: Generalized eigenvectors" aria-label="Copy heading and permalink for Section 2.4: Generalized eigenvectors">🔗</a></div></section></div>
+<article class="theorem theorem-like" id="sec-jordan-5-5"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.6</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="sec-jordan-5-5-1-1">
+<div class="para">If <span class="process-math">\(\lambda\)</span> is an eigenvalue of the operator <span class="process-math">\(T\)</span> whose multiplicity, which is the number of times <span class="process-math">\(x-\lambda\)</span> is a factor of the characteristic polynomial, is <span class="process-math">\(m\text{,}\)</span> then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\dim E_\lambda \leq m.\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-jordan-5-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 2.4.6"><a href="#sec-jordan-5-5" title="Copy heading and permalink for Theorem 2.4.6" aria-label="Copy heading and permalink for Theorem 2.4.6">🔗</a></div></article><div class="autopermalink" data-description="Subsection 2.4.3: Jordan form"><a href="#sec-jordan-5" title="Copy heading and permalink for Subsection 2.4.3: Jordan form" aria-label="Copy heading and permalink for Subsection 2.4.3: Jordan form">🔗</a></div></section><div class="autopermalink" data-description="Section 2.4: Generalized eigenvectors"><a href="#sec-jordan" title="Copy heading and permalink for Section 2.4: Generalized eigenvectors" aria-label="Copy heading and permalink for Section 2.4: Generalized eigenvectors">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="sec-nilpotent.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
