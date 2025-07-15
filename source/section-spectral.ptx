@@ -248,7 +248,7 @@
     <proposition xml:id="prop-self-ad-min-poly">
       <statement>
         <p>If <m>V</m> is a real inner product space and <m>T</m> is a
-        self-adjoint operator on <m>T</m>, then the minimal polynomial
+        self-adjoint operator on <m>V</m>, then the minimal polynomial
         of <m>T</m> has the form
         <me>
           p(x)=(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_m)

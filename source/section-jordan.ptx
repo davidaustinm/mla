@@ -25,7 +25,7 @@
     eigenvalue <m>\lambda=2</m> is a root with multiplicity two.
     </p>
 
-    <p>This example show that just looking at eigenvalues and
+    <p>This example shows that just looking at eigenvalues and
     eigenvectors will not be enough to always find a standard form.
     So instead, we do something that mathematicians love to do:
     generalize an idea that has already proven useful.  In this
@@ -54,7 +54,8 @@
 	nonzero vector
 	<m>\vvec</m> is a <em>generalized eigenvector</em> if
 	<m>(T-\lambda I)^k\vvec=\zerovec</m> for some <m>k</m>.  The
-	set of such vectors, the <em>generalized eigenspace</em> is
+	set of such vectors is called the <em>generalized
+        eigenspace</em> and is
 	denoted <m>G_\lambda</m>.
 	</p>
       </statement>
@@ -65,33 +66,13 @@
     the generalized eigenvector condition with <m>k=1</m>.
     </p>
 
-    <p>We would like to characterize a generalized eigenspace as a
-    subspace of <m>V</m>. Before doing so, however, we recall an
-    earlier homework exercise.
-    </p>
-
-    <proposition>
-      <statement>
-        <p>If <m>T:V\to V</m> is an operator and <m>\vvec</m> a nonzero
-        vector in <m>V</m>, then there is a unique monic polynomial
-        <m>p_\vvec</m> having the smallest possible degree and
-        satisfying <m>p_\vvec(T)\vvec=0</m>.
-        </p>
-        <p> If <m>s</m> is another polynomial for which
-        <m>s(T)\vvec=0</m>, then <m>p_\vvec</m> divides <m>s</m>.  In
-        particular, it follows that <m>p_\vvec</m> divides the minimal
-        polynomial <m>p</m> of <m>T</m>.
-        </p>
-      </statement>
-    </proposition>
-
-    <p>With this in mind, we can characterize the generalized
-    eigenspaces.</p>
+    <p>The next proposition connects generalized eigenspaces
+    with the minimal polynomial.</p>
 
     <proposition>
       <statement>
         <p>If the minimal polynomial of <m>T</m> has the form
-        <m>p(x)=q(z)(x-\lambda)^k</m> where <m>q(\lambda)\neq 0</m>,
+        <m>p(x)=q(x)(x-\lambda)^k</m> where <m>q(\lambda)\neq 0</m>,
         then
         <me>
           G_\lambda = \nul((T-\lambda I)^k)
@@ -102,7 +83,8 @@
         <p>Suppose that <m>\vvec</m> is a generalized eigenvector,
         which means that <m>(T-\lambda I)^l\vvec=0</m> for some
         <m>l</m>.  If <m>s(x) = (x-\lambda)^l</m>, then
-        <m>s(T)\vvec=0</m>, which means that <m>p_\vvec</m> divides
+        <m>s(T)\vvec=0</m>, which means that <m>p_\vvec</m>, the
+        minimal polynomial of <m>\vvec</m>, divides
         <m>s</m>.  Therefore, <m>p_\vvec=(x-\lambda)^m</m> for some
         <m>m\leq l</m>.
         </p>
@@ -350,7 +332,7 @@
         This shows that the minimal polynomial <m>p_U</m> of
         <m>T|_U</m> divides <m>q</m>.  However, if the minimal
         polynomial of <m>T|_U</m> has a smaller degree than <m>q</m>,
-        this would contradcit the fact that the minimal polynomial of
+        this would contradict the fact that the minimal polynomial of
         <m>T</m> has the smallest possible degree.
         </p>
 
@@ -361,7 +343,7 @@
         associated to <m>\mu</m> is the same as the generalized
         eigenspace of <m>T|_U</m> associated to <m>\mu</m>.  To this
         end, suppose that <m>\vvec</m> satisfies <m>(T-\mu
-        I)^l\vvec</m> for some <m>l</m>.  Because <m>V=G_\lambda
+        I)^l\vvec=0</m> for some <m>l</m>.  Because <m>V=G_\lambda
         \oplus U</m>, we can write
         <me>
           \vvec = \nvec + \uvec
@@ -538,7 +520,7 @@
         <m>(T-\lambda_j I)^{k_j}</m> is nilpotent, which means there is
         a basis for <m>G_{\lambda_j}</m> such that the matrix
         associated to <m>T-\lambda_j</m> conists of nilpotent
-        blocks.  The matrix associated to <m>T</m> therefore has
+        blocks.  The matrix associated to <m>T</m> therefore
         consists of Jordan blocks.  Because each generalized
         eigenspace is invariant under <m>T</m>, the theorem
         holds. </p>
@@ -551,14 +533,29 @@
       p(x)=(x-\lambda_1)^{m_1}(x-\lambda_2)^{m_2}\ldots(x-\lambda_k)^{m_k}
     </me>
     where the multiplicity of each eigenvalue equals the dimension
-    <m>\dim G_{\lambda_j}</m>.  We earlier called <m>m_j</m> the
+    <m>\dim G_{\lambda_j}</m>.  In our previous course, we called
+    <m>m_j</m> the
     algebraic multiplicity of the eigenvalue <m>\lambda_j</m>.
     Because the eigenspace <m>E_{\lambda_j}\subset G_{\lambda_j}</m>, 
-    have therefore shown that the multiplicity of the eigenvalue is at
+    we have therefore shown that the multiplicity of the eigenvalue is at
     least as large as the dimension of the eigenspace:
     <me>
       0\lt \dim E^{\lambda_j} \leq m_j
     </me>.
     </p>
+
+    <theorem>
+      <statement>
+        <p>If <m>\lambda</m> is an eigenvalue of the operator <m>T</m>
+        whose multiplicity, which is the number of times
+        <m>x-\lambda</m> appears as a factor of the characteristic
+        polynomial,
+        is <m>m</m>, then
+        <me>
+          \dim E_\lambda \leq m.
+        </me>.
+        </p>
+      </statement>
+    </theorem>
   </subsection>
 </section>

@@ -1201,6 +1201,21 @@
       </statement>
     </proposition>
 
+    <p>Notice that the proof of the previous proposition tells us a
+    bit more.  If we have a basis <m>\basis{\vvec}{n}</m> for
+    <m>V</m>, then a functional <m>\phi</m> is uniquely determined by
+    its values on the basis <m>\phi(\vvec_i)</m>.
+    </p>
+
+    <corollary xml:id="corollary-functional-basis">
+      <statement>
+        <p>If <m>\basis{\vvec}{n}</m> is a basis for <m>V</m>, then
+        any functional <m>\phi:V\to\field</m> is uniquely determined
+        by <m>\phi(\vvec_i)</m>.
+        </p>
+      </statement>
+    </corollary>
+
     <example>
       <statement>
         <p>Consider <m>V=\pbb_2</m> with basis <m>1,x,x^2</m>.  Define
@@ -1222,6 +1237,9 @@
         </me>
         satisfies <m>\phi=a_1\phi_1 + a_2\phi_2+a_3\phi_3</m>.
         </p>
+
+        <p>This demonstrates that <m>\phi_1</m>, <m>\phi_2</m>, and
+        <m>\phi_3</m> form a basis for <m>(\pbb_2)'</m>.</p>
       </statement>
     </example>
     

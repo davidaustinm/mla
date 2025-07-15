@@ -86,6 +86,8 @@
     \newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
     \newcommand{\gray}[1]{\color{gray}{#1}}
     \newcommand{\lgray}[1]{\color{lightgray}{#1}}
+    \newcommand{\go}{\gray{1}}
+    \newcommand{\gz}{\gray{0}}
     \newcommand{\rank}{\operatorname{rank}}
     \newcommand{\row}{\operatorname{Row}}
     \newcommand{\col}{\operatorname{Col}}

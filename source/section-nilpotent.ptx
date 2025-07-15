@@ -4,24 +4,35 @@
   <title>Nilpotent operators</title>
 
   <introduction>
-    <p>Eigenvectors of an operator <m>T</m> are found through the
-    equation <m>(T-\lambda I)\vvec=\zerovec</m>.  Now that we
-    have developed some conditions under which operators are
-    diagonalizable, we would like to understand what happens when
-    operators are not diagonalizable.  To this end, we will generalize
-    the eigenvector condition by considering
+    <p>The <xref ref="sec-spectral" text="custom">
+    previous section</xref> gave some conditions for a matrix to be
+    diagonalizable.  We will now explore what happens when a
+    matrix is not diagonalizable.</p>
+
+    <p>If an operator <m>T</m> on a vector space <m>V</m> is
+    diagonalizable, then the basis <m>\bcal</m> for which
+    <m>\coords{T}{\bcal}</m> is diagonal consists of eigenvectors of
+    <m>T</m>.  Remember that eigenvectors of an operator <m>T</m> are
+    found through the equation <m>(T-\lambda I)\vvec=\zerovec</m>.
+    </p>
+
+    <p>If we want to explore what happens when <m>T</m> is not
+    diagonalizable, we will need a more general notion of
+    eigenvectors.  To that end, we refer to vectors satisfying
     <me>
       (T-\lambda I)^k\vvec=\zerovec
-    </me>.
-    To get started, however, we will first consider a related class of
-    operators. 
+    </me>
+    for some power <m>k</m> as generalized eigenvectors.  To get
+    started, however, we will first
+    consider a related class of operators.
     </p>
   </introduction>
 
   <subsection xml:id="subsec-nul-powers">
     <title> Null spaces of powers </title>
 
-    <p>Suppose that <m>T</m> is an operator. If
+    <p>Suppose that <m>T</m> is an operator on <m>V</m>. If
+    <m>\vvec</m> is a vector for which
     <m>T^k\vvec=\zerovec</m>, then it also happens that
     <me>
       T^{k+1}\vvec=T(T^k\vvec)=\zerovec
@@ -29,7 +40,7 @@
     This means that  <m>\nul(T^k)\subset\nul(T^{k+1})</m>, and we
     therefore have 
     <me>
-      \nul(T)\subset\nul(T^2)\subset\nul(T^3)\subset\ldots
+      \{0\}\subset\nul(T)\subset\nul(T^2)\subset\nul(T^3)\subset\ldots
     </me>.
     </p>
 
@@ -74,7 +85,7 @@
     the time we reach the dimension of <m>V</m>.
     </p>
 
-    <proposition>
+    <proposition xml:id="prop-null-dim-V">
       <statement>
 	<p>For any operator <m>T</m> on a vector space <m>V</m> of
 	dimension <m>n</m>,
@@ -117,12 +128,12 @@
 
     <definition>
       <title>Nilpotent operator</title>
-      <p>An operator <m>T</m> is nilpotent if some power <m>T^m=0</m>.
-      </p>
+      <p>An operator <m>T</m> is <term>nilpotent</term> if some power
+      <m>T^m=0</m>.</p>
     </definition>
 
-    <p>Notice that the operator <m>T=0</m> is nilpotent but we will
-    often consider nonzero nilpotent operators.
+    <p>Notice that the operator <m>T=0</m> is nilpotent, but there are
+    certainly nonzero nilpotent operators.
     </p>
       
     <example>
@@ -141,7 +152,12 @@
     <p>Suppose <m>T</m> is nilpotent and that <m>m</m> is the smallest
     power for which <m>T^m=0</m>.  This means
     that <m>p(T)=0</m> if <m>p(x)=x^m</m> and hence <m>p</m> is the
-    minimal polynomial of <m>T</m>.  We could view
+    minimal polynomial of <m>T</m>.  This says that <m>m\leq \dim
+    V</m> so the smallest power of <m>T</m> that is zero is not more
+    than the dimension of <m>V</m>.</p>
+
+    <p>
+    We could view
     <me>
       p(x) = x^m = (x-0)^m
     </me>,
@@ -163,7 +179,7 @@
 
     <definition>
       <statement>
-	<p>A <em>nilpotent block</em> matrix is a square matrix having
+	<p>A <term>nilpotent block</term> matrix is a square matrix having
         the form 
 	<me>
 	  \begin{bmatrix}
@@ -173,7 +189,7 @@
 	  0 \amp 0 \amp 0 \amp 0 \amp 0 \\
 	  \end{bmatrix}
 	</me>.
-	This is, all the entries are zero except for the entries
+	That is, all the entries are zero except for the entries
 	directly above the diagonal, which are 1.
 	</p>
 
@@ -186,12 +202,12 @@
       and a <m>1\times1</m> block.
       <me>
 	\begin{bmatrix}
-	0 \amp 1 \amp 0 \amp 0 \amp 0 \amp 0 \\
-	0 \amp 0 \amp 1 \amp 0 \amp 0 \amp 0 \\
-	0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
-	0 \amp 0 \amp 0 \amp 0 \amp 1 \amp 0 \\
-	0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
-	0 \amp 0 \amp 0 \amp 0 \amp 0 \amp 0 \\
+	0 \amp 1 \amp 0 \amp \gz \amp \gz \amp \gz \\
+	0 \amp 0 \amp 1 \amp \gz \amp \gz \amp \gz \\
+	0 \amp 0 \amp 0 \amp \gz \amp \gz \amp \gz \\
+	\gz \amp \gz \amp \gz \amp 0 \amp 1 \amp \gz \\
+	\gz \amp \gz \amp \gz \amp 0 \amp 0 \amp \gz \\
+	\gz \amp \gz \amp \gz \amp \gz \amp \gz \amp 0 \\
 	\end{bmatrix}
 	</me>.
       </p>
@@ -206,10 +222,10 @@
           <mrow> T\vvec_5 \amp = \vvec_4 </mrow>
           <mrow> T\vvec_6 \amp = 0 </mrow>
         </md>.
-        This transformation satisfies <m>T^3=0</m>, but <m>T^2\neq
+        This shows that <m>T^3=0</m>, but <m>T^2\neq
         0</m> so we have null spaces
         <me>
-          \{0\}\subset\nul(T)\subset\nul(T^2)\subset(T^3) = V
+          \{0\}\subset\nul(T)\subset\nul(T^2)\subset\nul(T^3) = V
         </me>.
         Within these null spaces, we have bases
         <md>
@@ -223,10 +239,6 @@
             \nul(T^3) \amp =\nul(T^2)\oplus \laspan{\vvec_3}
           </mrow>          
         </md>.
-        For each <m>j</m>, we have
-        <me>
-          \nul(T^{j+1}) = \nul(T^j) \oplus W_j
-        </me>.
         </p>
         <p>
         Notice that the <m>3\times3</m> block is formed by a vector
@@ -349,7 +361,8 @@
         <m>V</m>.
         </p>
         
-        <p>Suppose now that <m>\phi:V\to\field</m> is a linear
+        <p>Using <xref ref="corollary-functional-basis"/>, suppose now
+        that <m>\phi:V\to\field</m> is a linear
         functional so that
         <me>
           \phi(\vvec_1) = 1, \phi(\vvec_2) = 0,\ldots,\phi(\vvec_m) =
@@ -365,7 +378,7 @@
         <m>
           \uvec=c_1\vvec_1 + c_2\vvec_2 + \ldots c_m\vvec_m
         </m>
-        so that <m>S(\uvec) = \fourvec{c_1}{c_2}{\vdots}{c_m}</m>.
+        so that <m>S(\uvec) = \cfourvec{c_1}{c_2}{\vdots}{c_m}</m>.
         This shows three things.
         <ul>
           <li><p> <m>S</m> is surjective.</p></li>
