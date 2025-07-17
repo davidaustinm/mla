@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-power" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Power Method</title>
+
+  <introduction>
+    <p>We will begin by considering the problem of finding the
+    eigenvalues of an <m>m\times m</m> matrix <m>A</m> where <m>m</m>
+    is extremely large and the only operation we can perform is
+    matrix-vector multiplication <m>A\xvec</m>.</p>
+
+    <p>The <em>power method</em>, which we introduce in this section,
+    is a fairly simple way for us to get started.  While this method
+    is not particularly effective in practical problems, it will
+    inform a great deal of our later thinking.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>The power method</title>
+
+    <p>For convenience, we will suppose that <m>A</m> has a complete set of
+    eigenvectors <m>\vvec_i</m> with associated eigenvalues
+    <m>\lambda_i</m> and that the eigenvalues are ordered so
+    that
+    <me>
+      \len{\lambda_1} \geq \len{\lambda_2} \geq \ldots \geq
+      \len{\lambda_m}
+    </me>.
+    Our initial version of the power method will help us find
+    <m>\lambda_1</m>, the eigenvalue having the largest magnitude,
+    which is often called the <em>dominant eigenvalue.</em></p>
+
+    <p>
+    Suppose we start with a randomly chosen vector <m>\vvec</m> so
+    that
+    <me>
+      \vvec = c_1\vvec_1+c_2\vvec_2+\ldots+c_m\vvec_m
+    </me>.
+    Since <m>\vvec</m> is randomly chosen, it is safe to assume that
+    <m>c_1\neq 0</m>.  If not, we had really bad luck in choosing
+    <m>\vvec</m>.  However, computers cannot perform exact
+    arithmetic so even if <m>c_1=0</m>, some error will creep into the
+    subsequent calculations making <m>c_1\neq 0</m>.
+    </p>
+
+    <p>We can multiply <m>\vvec</m> by <m>A</m> so that
+    <me>
+      A\vvec =
+      c_1\lambda_1\vvec_1+c_2\lambda_2\vvec_2+\ldots+c_m\lambda_m\vvec_m
+    </me>.
+    Since <m>\lambda_1</m> has the largest magnitude, we see that the
+    contribution to <m>A\vvec</m> from <m>\vvec_1</m> is the greatest.
+    While this is the essential idea in the power method, as we will
+    see, this also explains why finding <m>\lambda_1</m> is useful:
+    the eigenvalues with the greatest magnitude contribute the most to
+    <m>A\vvec</m>.</p>
+
+    <p>
+    If we repeatedly multiply <m>\vvec</m> by <m>A</m>, we see that
+    <md>
+      <mrow>
+        A^k\vvec \amp =
+        c_1\lambda_1^k\vvec_1+c_2\lambda_2^k\vvec_2+\ldots+
+        c_m\lambda_m^k\vvec_m
+      </mrow>
+      <mrow>
+        \amp =
+        \lambda_1^k\left(
+        c_1\vvec_1+c_2\left(\frac{\lambda_2}{\lambda_1}\right)^k\vvec_2
+        + \ldots + 
+        c_m\left(\frac{\lambda_m}{\lambda_1}\right)^k\vvec_m\right)
+      </mrow>
+    </md>.
+    We expect that <m>\len{\frac{\lambda_k}{\lambda_1}} \lt 1</m> for
+    <m>k\geq 2</m> and, as a result, that
+    <m>\left(\len{\frac{\lambda_k}{\lambda_1}}\right)^k \to 0</m> as
+    <m>k</m> grows.  Consequently, when <m>k</m> is large,
+    <me>
+      A^k\vvec \approx c_1\lambda_1^k\vvec_1
+    </me>,
+    which shows that the direction of <m>A^k\vvec</m> will approximate
+    more and more closely the direction of <m>\vvec_1</m>.
+    </p>
+
+    <p>Of course, if <m>\len{\lambda_1} \gt 1</m> or
+    <m>\len{\lambda_1} \lt 1</m>, then the length of <m>A^k\vvec</m>
+    will grow very large or shrink away to zero.  To mitigate this
+    effect, we will normalize the product <m>A\vvec</m> after every
+    step. Remembering that <m>a \leftarrow b</m> means to replace the
+    value of <m>a</m> by the current value of <m>b</m>, the first
+    draft of our algorithm looks like this,
+    <ol>
+      <li>
+        <p>Choose <m>\vvec</m> randomly</p>
+      </li>
+      <li>
+        <p>Repeat a sufficient number of times:</p>
+        <ol marker="i.">
+          <li><p><m>\vvec \leftarrow A\vvec</m></p></li>
+          <li><p><m>\vvec \leftarrow
+          \frac{1}{\len{\vvec}}\vvec</m></p></li>
+        </ol>
+      </li>
+    </ol>
+    Assuming that <m>\len{\lambda_1} \gt \len{\lambda_2}</m>, the
+    resulting vector <m>\vvec</m> is eventually a good 
+    approximation of the eigenvector <m>\vvec_1</m>.</p>
+
+    <p>How can we find an approximation for the eigenvalue
+    <m>\lambda_1</m>?  If <m>\vvec\approx \vvec_1</m>, then
+    <m>A\vvec\approx \lambda_1\vvec_1</m>, and
+    <me>
+      \vvec\cdot A\vvec \approx \lambda_1 \vvec_1\cdot\vvec_1
+    </me>
+    so that
+    <me>
+      \lambda_1 \approx \frac{\vvec\cdot A\vvec}{\vvec\cdot\vvec} =
+      r(A,\vvec)
+    </me>.
+    This ratio of the inner products is known as the <em>Rayleigh
+    quotient</em>.</p>
+
+    <definition>
+      <statement>
+        <p>Given a square matrix <m>A</m> and a vector <m>\vvec</m>,
+        the <term>Rayleigh quotient</term> is defined to be
+        <me>
+          r(A,\vvec) = \frac{\vvec\cdot A\vvec}{\vvec\cdot\vvec}
+        </me>.
+        </p>
+      </statement>
+    </definition>
+
+    <proposition>
+      <statement>
+        <p>If <m>\vvec</m> is an eigenvector of <m>A</m> with
+        associated eigenvalue <m>\lambda</m>, then
+        <me>
+          r(A,\vvec) = \lambda
+        </me>.
+        </p>
+      </statement>
+      <proof>
+        <p>This is because
+        <me>
+          r(A,\vvec) = \frac{\vvec\cdot A\vvec}{\vvec\cdot\vvec}
+          = \frac{\lambda \vvec\cdot\vvec}{\vvec\cdot\vvec} = \lambda
+        </me>.
+        </p>
+      </proof>
+    </proposition>
+
+    <p>This leads to an updated version of the power method:
+    <ol>
+      <li>
+        <p>Choose <m>\vvec</m> randomly</p>
+      </li>
+      <li>
+        <p>Repeat a sufficient number of times:
+        <ol marker="i.">
+          <li><p><m>\mu \leftarrow r(A,\vvec)</m></p></li>
+          <li><p><m>\vvec \leftarrow A\vvec</m></p></li>
+          <li><p><m>\vvec \leftarrow
+          \frac{1}{\len{\vvec}}\vvec</m></p></li>
+        </ol>
+        </p>
+      </li>
+    </ol>
+    Now each iteration of the algorithm produces an approximation of
+    <m>\lambda_1</m> and <m>\vvec_1</m>.
+    </p>
+
+    <p>The following Sage cell implements the power method and
+    applying it to the matrix <m>A=\begin{bmatrix}1\amp 2\\2\amp
+    1\end{bmatrix}</m> and initial vector <m>\vvec = \twovec10</m> 20
+    times.</p>
+
+    <sage>
+      <input>
+def power(A, v, n=20):
+    A = N(A)
+    for _ in range(n):
+        w = A*v
+        mu = (w*v)/(v*v)
+        v = 1/w.norm() * w
+        print(mu, v)
+
+A = matrix([[1,2],[2,1]])
+v = vector([1,0])
+power(A, v)
+      </input>
+    </sage>
+
+    <p>For this matrix, we have seen that the dominant eigenvalue
+    <m>\lambda_1 = 3</m> and a basis vector for <m>E_3</m> is
+    <m>\vvec_1=\twovec 11</m>.  Notice how our demonstration shows the
+    results converging to these quantities.
+    </p>
+
+    <p>We will not be too careful about analyzing how rapidly the
+    eigenvalue estimates converge to the exact eigenvalue, but we can
+    make some straightforward observations.  Remember that
+    <me>
+      A^k\vvec =
+      \lambda_1^k\left(
+      c_1\vvec_1+c_2\left(\frac{\lambda_2}{\lambda_1}\right)^k\vvec_2
+      + \ldots + 
+      c_m\left(\frac{\lambda_m}{\lambda_1}\right)^k\vvec_m\right)
+    </me>,
+    which shows that the direction of <m>A^k\vvec</m> approaches the
+    direction of the eigenvector <m>\vvec_1</m> and that the second
+    largest term is determined by the ratio
+    <m>\len{\lambda_2/\lambda_1}</m>.  If <m>\len{\lambda_2}</m> is
+    much less than <m>\len{\lambda_1}</m>, then
+    <m>(\lambda_2/\lambda_1)^k</m> will approach 0 quickly, which
+    means we can expect our eigenvalue estimates to converge quickly.
+    If <m>\len{\lambda_2}</m> is close to
+    <m>\len{\lambda_1}</m>, then
+    <m>(\lambda_2/\lambda_1)^k</m> will approach 0 slowly so that
+    we expect our eigenvalue estimates to converge slowly as well.</p>
+    
+  </subsection>
+
+  <subsection>
+    <title>The inverse power method</title>
+
+    <p>The power method will help us find the dominant eigenvalue
+    <m>\lambda_1</m> of a matrix <m>A</m>.  Can we find any more?</p>
+
+    <p>Remember that, assuming <m>\vvec</m> is an eigenvector of an
+    invertible matrix
+    <m>A</m> with associated nonzero eigenvalue <m>\lambda</m>, then
+    <m>\vvec</m> is also an eigenvector of <m>A^{-1}</m> with
+    associated eigenvalue <m>\frac1\lambda</m>.  Therefore, applying
+    the power method to <m>A^{-1}</m> will help us find the eigenvalue
+    of <m>A</m> having the <em>smallest</em> magnitude.</p>
+
+    <p>Here is our algorithm, called the inverse power method, looks
+    in this case:
+    <ol>
+      <li>
+        <p>Choose <m>\vvec</m> randomly</p>
+      </li>
+      <li>
+        <p>Repeat a sufficient number of times:
+        <ol marker="i.">
+          <li><p><m>\mu \leftarrow r(A,\vvec)</m></p></li>
+          <li><p><m>\vvec \leftarrow A^{-1}\vvec</m></p></li>
+          <li><p><m>\vvec \leftarrow
+          \frac{1}{\len{\vvec}}\vvec</m></p></li>
+        </ol>
+        </p>
+      </li>
+    </ol>
+    As you can see, the only change is that we multiply by
+    <m>A^{-1}</m> in the iteration.  The following Sage cell
+    demonstrates. </p>
+
+    <sage>
+      <input>
+def inverse_power(A, v, n=20):
+    A = N(A)
+    for _ in range(n):
+        mu = (v*(A*v))/(v*v)
+        w = A^-1 * v
+        v = 1/w.norm() * w
+        print(mu, v)
+
+A = matrix([[1,2],[2,1]])
+v = vector([1,0])
+inverse_power(A, v)
+      </input>
+    </sage>
+
+    <p>In this case, we see the results converging to the eigenvalue
+    <m>\lambda_2=-1</m> and associated eigenvector
+    <m>\twovec{1}{-1}</m>.</p>
+
+    <p>Remember that there is a potentially prohibitive cost to
+    finding the inverse <m>A^{-1}</m>.  Therefore, it is
+    preferred to replace the step <m>\wvec\leftarrow A^{-1}\vvec</m> with
+    <q>Solve <m>A\wvec=\vvec</m> for <m>\wvec</m></q>.  In this
+    formulation, an <m>LU</m> factorization of <m>A</m> could be
+    reused when repeatedly solving the equation.</p>
+
+    <p>The eigenvalue with the smallest absolute value is
+    <m>\lambda_m</m> so the convergence of the eigenvalue estimates is
+    determined by the ratio <m>\lambda_m/\lambda_{m-1}</m>.  When the
+    eigenvalues are close in magnitude, then we expect slow
+    convergence.</p>
+  </subsection>
+
+  <subsection>
+    <title>The shifted inverse power method</title>
+
+    <p>With another modification, we can use these ideas to find any
+    eigenvalue of <m>A</m>.  Remember that if <m>\vvec</m> is an
+    eigenvector of <m>A</m> having eigenvalue <m>\lambda</m>, then
+    <m>\vvec</m> is also an eigenvector of <m>A-\sigma I</m> with
+    associated eigenvalue <m>\lambda-\sigma</m>.  Therefore, applying
+    the inverse power method to <m>A-\sigma I</m> will find the
+    eigenvalue of <m>A</m> closest to <m>\sigma</m>.  Once again, the
+    algorithm only modifies a single line.
+    
+    <ol>
+      <li>
+        <p>Choose <m>\vvec</m> randomly</p>
+      </li>
+      <li>
+        <p>Repeat a sufficient number of times:
+        <ol marker="i.">
+          <li><p><m>\mu \leftarrow r(A,\vvec)</m></p></li>
+          <li><p><m>\vvec \leftarrow (A-\sigma I)^{-1}\vvec</m></p></li>
+          <li><p><m>\vvec \leftarrow
+          \frac{1}{\len{\vvec}}\vvec</m></p></li>
+        </ol>
+        </p>
+      </li>
+    </ol>
+    </p>
+    
+    <sage>
+      <input>
+def shifted_inverse_power(A, sigma, v, n=20):
+    A = N(A)
+    m = A.nrows()
+    for _ in range(n):
+        mu = (v*(A*v))/(v*v)
+        w = (A-sigma * identity_matrix(m))^-1 * v
+        v = 1/w.norm() * w
+        print(mu, v)
+
+A = matrix([[-14.6,  9.0, -14.1, 5.8,  13.0],
+            [ 27.8, -4.2,  16.0, 0.9, -21.3],
+            [ -5.5,  3.4,   3.4, 3.3,   1.1],
+            [-25.4, 11.3, -15.4, 4.7,  20.3],
+            [-33.7, 14.8, -22.5, 9.7,  26.6]])
+v = vector([1,0,0,0,0])
+shifted_inverse_power(A, 3, v)
+A.eigenvalues()
+      </input>
+    </sage>
+
+    <p>This use of the shifted inverse power method will find the
+    eigenvalue of <m>A</m> closest to <m>3</m>, which is
+    <c>5.97351259038981</c>.  With some more experimenting, you should
+    be able to find all five eigenvalues of <m>A</m>.</p>
+
+    <p>The rate of convergence is controlled by the ratio
+    <m>(\lambda_k-\sigma)/(\lambda_{j}-\sigma)</m> where
+    <m>\lambda_k</m> is the eigenvalue closest to <m>\sigma</m> and
+    <m>\lambda_j</m> is the next closest eigenvalue.  Therefore, the
+    closer we choose <m>\sigma</m> to <m>\lambda_k</m>, we faster we
+    expect the eigenvalue estimates to converge.</p>
+
+    <p>Notice that, after 20 steps, our estimate for the eigenvalue,
+    found in the previous Sage cell, is
+    only accurate to within 0.03<percent/>.  Thus we see a few
+    drawbacks to the power method:
+    <ul>
+      <li><p>It oftentimes converges slowly.</p></li>
+      <li><p>It finds only one eigenvalue at a time.</p></li>
+      <li><p>We need to find <m>A^{-1}</m> or solve equations of the
+      form <m>A\wvec = \vvec</m> in each step.</p></li>/
+      <li><p>Automating the process of finding all the
+      eigenvalues could be difficult since we need to determine
+      appropriate values of
+      <m>\sigma</m> to use in the shifted version.</p></li>
+    </ul>
+    </p>
+
+    <p>While we will explore ways to address these
+    shortcomings, the power method is important as a demonstration of
+    one idea that we will continue to use:  repeatedly multiplying
+    <m>\vvec</m> by <m>A</m> gives
+    us information about the eigenvalues.</p>
+    
+  </subsection>
+    
+    
+</section>

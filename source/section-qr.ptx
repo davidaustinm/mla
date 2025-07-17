@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-qr" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>QR Methods</title>
+
+  <introduction>
+    <p>In this section, our goal is to improve the power method so
+    that we compute more eigenvalues of <m>A</m>.
+    For convenience, we will focus on real, symmetric matrices
+    for which the Spectral Theorem tells us
+    that there is an <em>othonormal</em> basis for <m>\real^m</m>
+    consisting of eigenvectors of the <m>m\times m</m> matrix
+    <m>A</m>.  While many of the ideas we will discuss apply more
+    generally, this assumption will simplify some of our thinking.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>Using orthogonality</title>
+
+    <p>In the <xref ref="sec-power" text="custom"> last
+    section</xref>, we explored the power method, how it leads to
+    eigenvalue estimates, and some of its drawbacks.  In particular,
+    we saw that the power method, and its variants, focus on a
+    single eigenvalue by looking at powers <m>A^k\vvec</m> of a single
+    vector.  Perhaps we could do better by applying the power method
+    to a collection of vectors <m>\basis{\wvec}{n}</m>;  that is, we
+    will start with an <m>m\times n</m> matrix
+    <m>W=\begin{bmatrix}
+    \wvec_1\amp\wvec_2\amp\ldots\amp\wvec_n
+    \end{bmatrix}</m>,
+    whose columns are linearly independent.</p>
+
+    <p>If we repeatedly multiply <m>W</m> by <m>A</m>, we obtain the
+    matrix
+    <me>
+      A^kW=\begin{bmatrix}
+      A^k\wvec_1 \amp A^k\wvec_2 \amp \ldots \amp A^k\wvec_n
+      \end{bmatrix}
+    </me>.
+    Assuming <m>A</m> is nonsingular, <m>\col(A^kW)</m> will be an
+    <m>n</m>-dimensional subspace of <m>\real^m</m>.</p>
+
+    <p>For the moment, we focus on the first two vectors
+    <m>\wvec_1</m> and <m>\wvec_2</m> and write
+    <md>
+      <mrow>
+        \wvec_1 \amp = c_1\vvec_1+c_2\vvec_2+\ldots+c_m\vvec_m
+      </mrow>
+      <mrow>
+        \wvec_2 \amp = b_1\vvec_1+b_2\vvec_2+\ldots+b_m\vvec_m
+      </mrow>
+    </md>
+    in terms of eigenvectors <m>\basis{\vvec}{m}</m>.  Then
+    <md>
+      <mrow>
+        A^k\wvec_1 \amp = \lambda_1^k
+        \left(c_1\vvec_1 +
+        c_2\left(\frac{\lambda_2}{\lambda_1}\right)^k\vvec_2+
+        \ldots
+        c_m\left(\frac{\lambda_m}{\lambda_1}\right)^k\vvec_m
+        \right)
+      </mrow>
+      <mrow>
+        A^k\wvec_2 \amp = \lambda_1^k
+        \left(b_1\vvec_1 +
+        b_2\left(\frac{\lambda_2}{\lambda_1}\right)^k\vvec_2+
+        \ldots
+        b_m\left(\frac{\lambda_m}{\lambda_1}\right)^k\vvec_m
+        \right)
+      </mrow>
+    </md>.
+    The span of these two vectors will be a <m>2</m>-dimensional
+    subspace and the most significant terms involve <m>\vvec_1</m> and
+    <m>\vvec_2</m>.  This means that <m>\laspan{A^k\wvec_1,A^k\wvec_2}
+    \approx \laspan{\vvec_1,\vvec_2}</m>.</p>
+
+    <p>Also, the ordinary power method tells us to expect that
+    <m>A^k\wvec_1</m> approximately points in
+    the direction <m>\vvec_1</m>.  Due to our assumption that <m>A</m>
+    is symmetric, we know that <m>\vvec_2</m> is orthogonal to
+    <m>\vvec_1</m>.  Therefore, to find the approximate direction of
+    <m>\vvec_2</m>, we can look for a vector in
+    <m>\laspan{A^k\wvec_1,A^k\wvec_2}</m> that is orthogonal to
+    <m>A^k\wvec_1\approx c\vvec_1</m>.  Such a vector
+    can be found using Gram-Schmidt orthogonalization.
+    </p>
+
+    <example>
+      <statement>
+        <p>We will investigate using the matrix
+        <m>A=\begin{bmatrix}
+        1 \amp 2 \\
+        2 \amp 1 \\
+        \end{bmatrix}</m>,
+        whose eigenvalues we already know to be <m>3</m> and <m>-1</m>.  We
+        will choose <m>\wvec_1=\twovec10</m> and <m>\wvec_2=\twovec01</m> so
+        that <m>W=I</m> and hence <m>A^kW = A^k</m>.  Our notation is that
+        <me>
+          A^kW = \begin{bmatrix}
+          \zvec_1 \amp \zvec_2
+          \end{bmatrix}
+        </me>
+        so that <m>\zvec_1</m> approximately points in the direction of
+        <m>\vvec_1</m>,  We find a vector orthogonal to <m>\zvec_1</m>
+        using Gram-Schmidt so that we obtain
+        <md>
+          <mrow>
+            \yvec_1 \amp = \zvec_1
+          </mrow>
+          <mrow>
+            \yvec_2 \amp = \zvec_2 - \frac{\zvec_2\cdot\yvec_1}
+            {\yvec_1\cdot\yvec_1}\yvec_1
+          </mrow>
+        </md>.
+        We expect that <m>\yvec_1</m> will be a good approximation to
+        <m>\vvec_1</m> and <m>\yvec_2</m> will be a good approximation to
+        <m>\vvec_2</m>.  The following Sage cell implements these
+        computations using <m>A^{100}</m>.
+        </p>
+
+        <sage>
+          <input>
+A = matrix([[1.0, 2.0], [2.0, 1.0]])
+B = A^100
+z1 = B.column(0)
+z2 = B.column(1)
+print('z1 =', z1)
+print('z2 =', z2)
+# We apply Gram-Schmidt to find an orthogonal basis for col(A^100)
+y1 = z1
+y2 = z2 - (z2*y1)/(y1*y1)*y1
+print('----------------')
+print('y1 = ', y1)
+print('y2 = ', y2)
+          </input>
+        </sage>
+
+        <p>Clearly, this idea fails here since we find that
+        <m>\yvec_2</m>, whose direction should approximate <m>\vvec_2</m>,
+        is zero.  To see why, notice that the vectors <m>\zvec_1</m> and
+        <m>\zvec_2</m> appear to be the same, at least as computed by
+        Sage.</p>
+
+        <p>The problem is that the components of these vectors are so large
+        (approximately <m>10^{47}</m>) that the floating point
+        computations cannot detect the difference in these vectors.  For
+        this reason, we need to modify this idea.
+        </p>
+      </statement>
+    </example>
+  </subsection>
+
+  <subsection>
+    <title>The QR Method</title>
+
+    <p>Instead of computing <m>A^kW</m> for a very large <m>k</m> and
+    then finding an orthogonal basis, we will multiply once, finding
+    <m>AW</m>, determine an orthogonal basis for the column
+    space of <m>AW</m>, and then repeat.</p>
+
+    <p>Remember that the Gram-Schmidt algorithm is described by a
+    <m>QR</m> factorization.  That is, if we write <m>AW=QR</m>, then
+    <m>Q</m> is a matrix whose columns are orthonormal and <m>R</m> is
+    upper triangular.  In particular, if
+    <m>Q=\begin{bmatrix}
+    \qvec_1 \amp \qvec_2 \amp \ldots \qvec_m
+    \end{bmatrix}
+    </m>,
+    then <m>\qvec_1 = A\wvec_1</m>, which has more information about
+    the first eigenvector <m>\vvec_1</m>.  The second column
+    <m>\qvec_2</m> is orthgonal to <m>\qvec_1</m> and should be
+    expected to have more information about the second eigenvector
+    <m>\vvec_2</m>.  Our hope is that
+    <me>
+      Q = \begin{bmatrix}
+      \qvec_1\amp \amp \qvec_2 \amp \ldots \qvec_m
+      \end{bmatrix}
+      \approx
+      V = \begin{bmatrix}
+      \vvec_1\amp \amp \vvec_2 \amp \ldots \vvec_m
+      \end{bmatrix}
+    </me>
+    for some appropriate set of eigenvectors <m>\basis{\vvec}{m}</m>.
+    That is, after one step, the columns of <m>Q</m> more closely
+    align with a set of eigenvectors than do the columns of our
+    original matrix <m>W</m>.  We then replace <m>W</m> by <m>Q</m>
+    and repeat.</p>
+
+    <p> This leads to the following algorithm:
+    <ol>
+      <li>
+        <p>Choose
+        <m>W=\begin{bmatrix}
+        \wvec_1\amp\ldots\wvec_m
+        \end{bmatrix}</m> randomly.</p>
+      </li>
+      <li>
+        <p>Repeat a sufficient number of times:</p>
+        <ol marker="i.">
+          <li><p>Find <m>B = AW</m></p></li>
+          <li><p>Find a <m>QR</m> factorization <m>B=QR</m>.</p></li>
+          <li><p>Replace <m>W\leftarrow Q</m>.</p></li>
+        </ol>
+      </li>
+    </ol>
+    As <m>W=Q</m> begins to approach an orthogonal basis of
+    eigenvectors, then <m>QAQ^T</m> should start to approach a
+    diagonal matrix whose
+    entries are the eigenvalues of <m>A</m>.
+    </p>
+
+    <p>The following Sage cell demonstrates with the previous matrix
+    <m>A</m>.</p>
+
+    <sage>
+      <input>
+A = matrix(RDF, [[1.0, 2.0], [2.0, 1.0]])
+W = identity_matrix(2)        
+for _ in range(20):
+    B = A*W
+    Q, R = B.QR()
+    W = Q
+    D = Q*A*Q.T
+    print(D[0][0], D[1][1])
+
+print('-----------')
+print('D =', D)
+print()
+print('Q =', Q)
+      </input>
+    </sage>
+
+    <p>This looks promising.  We see that <m>D=QAQ^T</m> approaches a
+    diagonal matrix whose entries are the eigenvalues of <m>A</m> and
+    <m>Q</m> begins to approach an orthonormal set of
+    eigenvectors.</p>
+
+    <p>If we are only interested in finding eigenvalues, we can
+    streamline this method further.  If we take <m>W=I</m>, then the
+    <m>QR</m> factorization <m>A=QR</m>
+    produces an orthogonal matrix <m>Q</m> so that we can form
+    <m>A' = Q^TAQ</m>, which is similar to <m>A</m>.  Because similar
+    matrices share the
+    same set of eigenvalues, we can continue working with <m>A'</m>
+    rather than <m>A</m>.  As we iterate, the columns of <m>Q</m>
+    still approach an orthogonal set of eigenvectors and hence
+    <m>Q^TAQ</m> should approach a diagonal matrix containing the
+    eigenvalues.</p>
+
+    <p>But something remarkable happens.  If <m>A = QR</m>, then
+    <me>
+      A' = Q^TAQ = Q^T(QR)Q = (Q^TQ)RQ = RQ
+    </me>.
+    That is, <m>A = QR</m> and <m>A'=RQ</m>, which means we find the
+    new matrix <m>A'</m> by simply reversing the order of the
+    <m>QR</m> product.  Therefore, our algorithm to find the
+    eigenvalues of <m>A</m> takes a simple form, which is known as the
+    <em><m>QR</m> algorithm</em>:
+    <ol>
+      <li>
+        <p>Repeat a sufficient number of times:</p>
+        <ol marker="i.">
+          <li><p>Find a <m>QR</m> factorization <m>A=QR</m>.</p></li>
+          <li><p>Replace <m>A\leftarrow RQ</m>.</p></li>
+        </ol>
+      </li>
+    </ol>
+    It's hard to imagine a simpler algorithm.  Let's see how it does.
+    </p>
+
+    <sage>
+      <input>
+A = matrix(RDF, [[1.0, 2.0], [2.0, 1.0]])
+for _ in range(20):
+    Q, R = A.QR()
+    A = R*Q
+    print('-----------')
+    print(A)
+      </input>
+    </sage>
+
+    <p>Notice how the matrix approaches a diagonal matrix with the
+    eigenvalues on the diagonal!</p>
+
+    <example>
+      <statement>
+        <p>Let's try with a larger symmetric matrix,
+        <m>A=\begin{bmatrix}
+        2 \amp 5 \amp -1 \amp -1 \\
+        5 \amp -2 \amp 3 \amp -5 \\
+        -1 \amp 3 \amp 4 \amp 1 \\
+        -1 \amp -5 \amp 1 \amp 4 \\
+        \end{bmatrix}
+        </m>.  We will iterate several times, and then examine the
+        hopefully almost diagonal matrix <m>A</m>.  Notice that the
+        actual eigenvalues of <m>A</m> appear at the top of the cell's
+        output.
+        </p>
+
+        <sage>
+          <input>
+A = matrix(RDF, [[2, 5,-1,-1],
+                 [5,-2, 3,-5],
+                 [-1,3, 4, 1],
+                 [-1,-5,1, 4]])
+print(A.eigenvalues())
+print('------------')    
+                 
+for _ in range(20):
+    Q, R = A.QR()
+    A = R*Q
+
+print(N(A,digits=6))
+          </input>
+        </sage>
+
+        <p>After 50 iterations, the <m>QR</m> algorithm has made good
+        progress toward finding the eigenvalues</p>.
+      </statement>
+    </example>
+    
+  </subsection>
+
+  <subsection>
+    <title>The shifted QR algorithm</title>
+
+    <p>The <m>QR</m> algorithm is based on the power method, which we
+    began by attempting to find the dominant eigenvalue
+    <m>\lambda_1</m>. With a little bit of algebra, however, we will
+    see that there is even more going on.</p>
+
+    <p>Let's first consider the matrix
+    <m>P = \begin{bmatrix}
+    0 \amp 0 \amp \ldots \amp 1 \\
+    \vdots \amp \vdots \amp \ddots \amp \vdots \\
+    0 \amp 1 \amp \ldots \amp 0 \\
+    1 \amp 0 \amp \ldots \amp 0 \\
+    \end{bmatrix}
+    </m>, which is an example of what is called a permutation matrix.
+    For instance, if
+    <m>B=\begin{bmatrix}\bvec_1\amp\bvec_2\amp \ldots \amp\bvec_m
+    \end{bmatrix}</m>,
+    then <m>BP = \begin{bmatrix}
+    \bvec_m\amp \ldots \amp \bvec_2\amp\bvec_1
+    \end{bmatrix}</m> showing that multiplying by <m>P</m> on the
+    right reverses the columns of <m>B</m>.  In particular, this shows
+    that <m>P^2 = I</m> so that <m>P</m> is its own inverse.  Similarly,
+    multiplying a matrix <m>C</m> on the left by <m>P</m>
+    reverses the rows of <m>C</m>.</p>
+
+    <p>This means that if <m>Q=\begin{bmatrix}
+    \qvec_1\amp\qvec_2\amp\ldots\amp\qvec_m
+    \end{bmatrix}</m>, then
+    <m>QP = \begin{bmatrix}
+    \qvec_m\amp\ldots\amp\qvec_2\amp\qvec_1
+    \end{bmatrix}</m>.  Once again, the columns of <m>QP</m> are the
+    same as the columns of <m>Q</m>, just reversed, which means that
+    <m>QP</m> is also an orthogonal matrix.
+    </p>
+
+    <p>Since we are assuming that <m>A</m> is symmetric, we know that
+    <m>A=A^T</m>.  Taking the inverses of both sides says that
+    <m>A^{-1}={A^{-1}}^T</m> so that <m>A^{-1}</m> is also symmetric.
+    Now if we have a <m>QR</m> factorization of <m>A</m>, we have
+    <m>A=QR</m> and hence
+    <me>
+      A^{-1}={A^{-1}}^T = ((QR)^{-1})^T = (R^{-1}Q^{-1})^T = QR^{-T}
+    </me>
+    where <m>R^{-T} = (R^{-1})^T</m>.  Since <m>P^2=I</m>, it then
+    follows that
+    <me>
+      A^{-1}P = QR^{-T}P = Q(P^2)R^{-T}P = (QP)(PR^{-T}P)
+    </me>.
+    </p>
+
+    <p>Remember that <m>R</m> is upper triangular, which means that
+    <m>R^{-T}</m> is lower triangular.  However, <m>PR^{-T}P</m> is
+    obtained from <m>R^{-T}</m> by reversing the columns and
+    reversing the rows, which means that <m>PR^{-T}P</m> is upper
+    triangular.  Since <m>QP</m> is orthogonal, this shows that
+    <me>
+      A^{-1}P = (QP)(PR^{-T}P)
+    </me>
+    is a <m>QR</m> factorization of of <m>A^{-1}P</m>.</p>
+
+    <p>Now that we've been through this algebraic digression, we see
+    the following implication.  When we implement the <m>QR</m>
+    algorithm on <m>A</m>, the last column of <m>Q</m> is the first
+    column of <m>QP</m>, which we obtain by implementing the <m>QR</m>
+    algorithm on <m>A^{-1}P</m>.  This means that while the <m>QR</m>
+    algorithm is applying the power method to the first vector, it is
+    applying the inverse power method to the last vector at the same
+    time.</p>
+
+    <p>In other words, we developed the <m>QR</m> algorithm based on
+    the power method, which finds the dominant eigenvalue associated
+    to the first column of <m>Q</m>.  It turns
+    out, however, that the <m>QR</m> algorithm is also simultaenously
+    performing the inverse power method on the last column of
+    <m>Q</m>.  This is an unexpected bonus that we can exploit to
+    speed up the algorithm!
+    </p>
+
+    <p>
+      Suppose that the columns of <m>Q</m> are denoted by
+      <m>\qvec_i</m>.  Also suppose that
+      <m>\evec_m</m> is the last standard basis vector, that is, the
+      vector whose components are all zero except for the last
+      component, which is <m>1</m>.  We have
+      <m>\qvec_m = Q\evec_m</m>.  Therefore, the Rayleigh quotient
+      <md>
+        <mrow>
+          r(\qvec_m, A\qvec_m) \amp =
+          \frac{\qvec_m\cdot(A\qvec_m)}{\qvec_m\cdot\qvec_m}
+        </mrow>
+        <mrow>
+          \amp = (Q\evec_m)\cdot(AQ\evec_m)
+        </mrow>
+        <mrow>
+          \amp = \evec_m\cdot(Q^TAQ)\evec_m
+        </mrow>
+        <mrow>
+          \amp = (Q^TAQ)_{mm}
+        </mrow>
+      </md>,
+      the entry in the lower-right corner of the matrix that results
+      from one step of the iteration.  This shows that, if
+      <m>\qvec_m</m> is an approximate eigenvector, then the new
+      <m>A_{mm}</m> will approximately be an eigenvalue.
+    </p>
+    
+    <p>This suggests a change in tactics.  Since the <m>QR</m>
+    algorithm is 
+    performing the inverse power method on the last column of
+    the matrix, we can shift by <m>A_{mm}</m>, an approximation to the
+    eigenvalue associated to the approximate eigenvector <m>\qvec_m</m>,
+    so that we are performing the shifted inverse
+    power method.  This should converge quickly if we continually
+    update our shift by <m>A_{mm}</m>, our approximate eigenvalue.
+    Here is our new algorithm:
+    <ol>
+      <li>
+        <p>Repeat a sufficient number of times:</p>
+        <ol marker="i.">
+          <li><p>Let <m>\sigma = A_{mm}</m></p></li>
+          <li><p>Find a <m>QR</m> factorization <m>A-\sigma
+          I=QR</m>.</p></li> 
+          <li><p>Replace <m>A\leftarrow RQ+\sigma I</m>.</p></li>
+        </ol>
+      </li>
+    </ol>
+    This is known as the <em>shifted <m>QR</m> algorithm</em>.
+    </p>
+    
+    <example>
+      <statement>
+        <p>Let's reconsider the matrix,
+        <m>A=\begin{bmatrix}
+        2 \amp 5 \amp -1 \amp -1 \\
+        5 \amp -2 \amp 3 \amp -5 \\
+        -1 \amp 3 \amp 4 \amp 1 \\
+        -1 \amp -5 \amp 1 \amp 4 \\
+        \end{bmatrix}
+        </m>,
+        that has the eigenvalue <c>4.893138821026808</c>.
+        The
+        following Sage cell implements the shifted <m>QR</m> algorithm.
+        </p>
+        
+        <sage>
+          <input>
+A = matrix(RDF, [[2, 5,-1,-1],
+                 [5,-2, 3,-5],
+                 [-1,3, 4, 1],
+                 [-1,-5,1, 4]]
+          )
+print(A.eigenvalues())
+print('------------')
+m = A.nrows()
+Id = identity_matrix(m)
+for _ in range(7):
+    sigma = A[-1][-1]
+    Q, R = (A - sigma * Id).QR()
+    A = R * Q + sigma * Id
+
+print(N(A,digits=6))
+print('------------')    
+print(A[-1][-1])
+          </input>
+        </sage>
+
+        <p>Notice that with only seven iterations, we have found the
+        eigenvalue accurate to within 15 digits, which is
+        about as good as we're going to get with a computer.  Moreover,
+        the final matrix <m>A</m> essentially has only one zero in the
+        last row and last column.  In other words, it approximately
+        looks like the block matrix:
+        <me>
+          A = \begin{bmatrix}
+          A' \amp 0 \\
+          0 \amp \lambda \\
+          \end{bmatrix}
+        </me>.
+        This observation will be important in our final improvement.
+        </p>
+      </statement>
+    </example>
+
+    <p>We would like to find all of the eigenvalues of <m>A</m> so
+    there is yet
+    one more improvement we can make.  First, we will see in the next
+    section how some preliminary work produces a matrix
+    that is similar to <m>A</m> and that is tridiagonal,
+    meaning that the only nonzero elements are on the diagonal, or just
+    above or below the diagonal.  For instance,
+    <me>
+      \begin{bmatrix}
+      5 \amp 9 \amp 0 \amp 0 \\
+      9 \amp 8 \amp 5 \amp 0 \\
+      0 \amp 5 \amp 3 \amp 4 \\
+      0 \amp 0 \amp 4 \amp 5 \\
+      \end{bmatrix}
+    </me>
+    is a symmetric, tridiagonal matrix with which we can begin the new
+    algorithm.</p>
+    
+    <p>We will perform enough steps of the shifted <m>QR</m> algorithm
+    until we reach the point that the final matrix
+    <me>
+      A = \begin{bmatrix}
+      A' \amp 0 \\
+      0 \amp \lambda
+      \end{bmatrix}
+      </me>.
+      Practically speaking, we iterate until the element in the last
+      row and next to last column is sufficiently small.
+      We then make note of the eigenvalue <m>\lambda\approx A_{mm}</m>
+      and proceed to apply the shifted <m>QR</m> algorithm to <m>A'</m>.
+    </p>
+
+    <sage>
+      <input>
+A = matrix(RDF, [[5, 9, 0, 0],
+                 [9, 8, 5, 0],
+                 [0, 5, 3, 4],
+                 [0, 0, 4, 5]])
+
+print('Eigenvalues =', A.eigenvalues())
+print('------------')
+num_steps = 0
+m = A.nrows()
+
+while m > 1:
+    Id = identity_matrix(m)
+    while abs(A[-1][-2]) > 1e-14:
+        sigma = A[-1][-1]
+        Q, R = (A - sigma*Id).QR()
+        A = (R*Q + sigma*Id)
+        num_steps += 1
+    print('Eigenvalue =', A[-1][-1])
+    print('------------')
+    A = A.matrix_from_rows_and_columns(range(m-1), range(m-1))
+    m -= 1
+print('Eigenvalue =', A[0][0])
+print('Number of iterations =', num_steps)
+      </input>
+    </sage>
+
+    <p>Notice that we have computed all four eigenvalues of <m>A</m>
+    to almost within the accuracy of the computer with a total of only
+    10 iterations.  This is truly a remarkable algorithm!</p>
+
+    <p>The shifted <m>QR</m> algorithm is the state of the art for
+    finding eigenvalues of symmetric matrices.  While there are
+    newer algorithms that rival it, shifted <m>QR</m> is simple,
+    numerically stable, and in wide use today.  The Association of
+    Computing Machinery named it one of the
+    <url
+        href="https://www.computer.org/csdl/magazine/cs/2000/01/c1022/13rRUxBJhBm"
+        text="custom">
+      top ten algorithms of the <m>20^{th}</m> century.
+    </url></p>
+
+    
+  </subsection>
+    
+    
+</section>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="chap-numerical" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Numerical linear algebra</title>
+
+  <introduction>
+    <p>Up to this point, our investigations have been mostly
+    theoretical.  We will now turn to some important questions in
+    numerical linear algebra.</p>
+
+    <p>Throughout our study of linear algebra, two computational
+    issues have repeatedly presented themselves:
+    <ul>
+      <li>
+        <p>Solve the equation <m>A\xvec=\bvec</m>.</p>
+      </li>
+      <li>
+        <p>Find the eigenvalues and eigenvectors of a
+        matrix.</p>
+      </li>
+    </ul>
+    </p>
+
+    <p>
+      In fact, these issues are important throughout a wide range of
+      scientific applications.  For instance, studying a lightning
+      strike on an airplane involves solving <m>A\xvec=\bvec</m> where
+      <m>A</m> is a <em>very</em> large matrix.  This problem is
+      actually modeled by a partial differential equation that proves
+      to be too difficult to solve directly.  Instead, we
+      <q>discretize</q> the equation, replacing the derivatives with
+      difference quotients on a discrete mesh of points.  In this way,
+      the partial differential equation is approximated by a linear
+      system <m>A\xvec=\bvec</m> where there is one equation for each
+      point in our mesh.
+    </p>
+    
+    <p>
+      Just as in your first calculus course, the finer the mesh, the
+      closer the points are to one another and the
+      better the approximation.  That is, the more points we have, the
+      bigger the matrix and the more confidence we have in our
+      results.
+      Throughout this chapter, we will usually think of an <m>m\times
+      m</m> matrix <m>A</m>, but we actually want to think of <m>m</m>
+      as being infinite.  In practice, this could mean that <m>m=100</m>
+      billion.
+    </p>
+
+    <p>
+      As we saw in our earlier course, the effort involved in solving
+      <m>A\xvec = \bvec</m> using Gaussian elimination is proportional
+      to <m>m^3</m>.  This means
+      that solving a system where <m>m=100</m> is roughly 1000 times
+      more work than when <m>m=10</m>.  So if <m>m=100</m> billion and
+      want to know a solution in our lifetime, Gaussian elimination is
+      completely unrealistic.
+    </p>
+
+    <p>
+      Fortunately, our matrices <m>A</m> typically have some kind of
+      structure that we can exploit.  For instance, <m>A</m> could be
+      <term>sparse</term>, meaning that most of its entries are zero.
+      This often happens when approximating the solution to a partial
+      differential equation as mesh points only interact with nearby
+      mesh points.  For instance, if <m>A</m> is approximating a
+      two-dimensional differential operator on a discrete
+      rectangular mesh, each
+      row may only have four entries since each point interacts with
+      four adjacent points, two horizontally and two vertically.
+    </p>
+
+    <p>
+      In fact, in this case, we typically don't want to actually
+      store the matrix <m>A</m> in a computer because the matrix is
+      huge and most of the entries are zero.  Instead, we just want to
+      use the fact that we can compute <m>A\xvec</m> for any vector
+      <m>\xvec</m>, which is certainly the case when <m>A</m> is
+      approximating a differential operator.
+    </p>
+
+    <p>
+      So to summarize, we will be making the following assumptions:
+      <ul>
+        <li>
+          <p><m>A</m> is an <m>m\times m</m> matrix where <m>m</m> is
+          huge.</p>
+        </li>
+        <li>
+          <p>We are only allowed to compute <m>A\xvec</m> for any
+          vector <m>\xvec</m>, but the amount of effort is
+          proportional to <m>m</m>.</p>
+        </li>
+      </ul>
+    </p>
+    
+  </introduction>
+
+  <!-- include sections -->
+  <xi:include href="section-power.ptx" />
+  <xi:include href="section-qr.ptx" />
+  <!--
+  -->
+</chapter>
