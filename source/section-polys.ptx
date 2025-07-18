@@ -682,7 +682,7 @@
     <p>The construction in this proof will be important when we
     investigate numerical linear algebra later on this course.</p>
 
-    <definition>
+    <definition xml:id="definition-krylov">
       <title>Krylov subspace</title>
 
       <statement>

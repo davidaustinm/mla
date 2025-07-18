@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="sec-qr" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>QR Methods</title>
+  <title>QR methods</title>
 
   <introduction>
     <p>In this section, our goal is to improve the power method so
@@ -13,6 +13,11 @@
     <m>A</m>.  While many of the ideas we will discuss apply more
     generally, this assumption will simplify some of our thinking.
     </p>
+
+    <p>We began this chapter emphasizing the fact that we want to
+    study very large, possibly sparse matrices.  We will return to
+    that in later sections, but we will set aside this focus for the
+    time being.</p>
   </introduction>
 
   <subsection>

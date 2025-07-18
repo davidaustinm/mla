@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-arnoldi" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Arnoldi iteration</title>
+
+  <introduction>
+    <p>The <m>QR</m> algorithm that we developed in the
+    <xref ref="sec-qr" text="custom">previous section</xref> is a
+    general purpose algorithm for finding all the eigenvalues of a
+    symmetric matrix.  We now return to the problem we stated at the
+    beginning of this chapter.  We assume that
+    <ul>
+      <li>
+        <p><m>A</m> is an
+        <m>m\times m</m> matrix, where <m>m</m> is possibly huge, and
+        <m>A</m> is not necessarily symmetric but is
+        possibly sparse.</p>
+      </li>
+      <li>
+        <p>We do not want to store the entire matrix in a
+        computer, but instead we assume that we can efficiently compute
+        <m>A\xvec</m> for any vector <m>\xvec</m>.</p>
+      </li>
+    </ul>
+    </p>
+
+    <p>We will develop techniques for approximating the largest
+    eigenvalues of <m>A</m> and for approximating the solution of
+    <m>A\xvec = \bvec</m>.  Two key ideas will be the use of Krylov
+    subspaces, which were introduced in <xref
+    ref="definition-krylov"/> but which we will revisit soon in more
+    detail, and Arnoldi iteration, which will produce an orthonormal
+    basis for a Krylov subspace.</p>
+  </introduction>
+
+  <subsection>
+    <title>Arnoldi iteration</title>
+
+    <p>Since we are interested in computing the eigenvalues of a matrix,
+    we may remember that <xref ref="prop-complex-upper"/> tells us
+    that any complex matrix is similar to an upper triangular matrix.
+    The diagonal entries in the upper triangular matrix would then
+    give us the eigenvalues.  This is also true for real matrices as
+    long as we allow complex arithmetic.</p>
+
+    <p>Unfortunately, there is not a computationally feasible
+    algorithm to produce an
+    upper triangular matrix similar to 
+    <m>A</m> given our assumptions.
+    However, we may relax the condition somewhat and
+    consider <em>Hessenberg</em> matrices, which are matrices having
+    the following, almost-upper triangular form:
+    <me>
+      H=\begin{bmatrix}
+      * \amp * \amp * \amp \ldots \amp * \amp * \\
+      * \amp * \amp * \amp \ldots \amp * \amp * \\
+      0 \amp * \amp * \amp \ldots \amp * \amp * \\
+      0 \amp 0 \amp * \amp \ldots \amp * \amp * \\
+      \vdots \amp \vdots \amp \amp \ddots \amp * \amp * \\
+      0 \amp 0 \amp 0 \amp \ldots \amp * \amp * \\
+      \end{bmatrix}
+    </me>.
+    That is, a Hessenberg matrix is upper triangular except for
+    nonzero entries that could live just below the diagonal.  If we
+    are given a square matrix <m>A</m>, it turns
+    out there are several computationally feasible ways to find a
+    Hessenberg matrix
+    similar to <m>A</m>.  One way that may be familiar involves
+    Householder reflections.</p>
+
+    <p>However, we assume we are in the situation where we do not have
+    access to the matrix and that we can multiply <m>A\xvec</m> for any
+    vector <m>\xvec</m>.  In language from the earlier part of our
+    course, we know the operator defined by <m>A</m>, but not <m>A</m>
+    itself.  A technique known as <em>Arnoldi iteration</em> allows us
+    to find a unitary matrix <m>Q</m> and a Hessenberg matrix <m>H</m>
+    such that <m>A=QHQ^*</m>.  If we work with real matrices, we find
+    an orthogonal matrix <m>Q</m> with <m>A=QHQ^T</m>.</p>
+
+    <p>
+      We have
+    <me>
+      Q = \begin{bmatrix}
+      \qvec_1 \amp \qvec_2 \amp \ldots \amp \qvec_m
+      \end{bmatrix}
+    </me>
+    and
+    <me>
+      H=\begin{bmatrix}
+      h_{11} \amp h_{12} \amp h_{13} \amp \ldots \amp h_{1,m-1} \amp h_{1m} \\
+      h_{21} \amp h_{22} \amp h_{23} \amp \ldots \amp h_{2,m-1} \amp h_{2m} \\
+      0 \amp h_{32} \amp h_{33} \amp \ldots \amp h_{3,m-1} \amp h_{3m} \\
+      \vdots \amp \vdots \amp \amp \ddots \amp \vdots \amp \vdots \\
+      0 \amp 0 \amp 0 \amp \ldots \amp h_{m-1,m} \amp h_{mm} \\
+      \end{bmatrix}
+    </me>.
+    We begin by rewriting <m>A=QHQ^T</m> as <m>AQ=QH</m>
+    so that
+    <me>
+      AQ=\begin{bmatrix}
+      A\qvec_1\amp A\qvec_2 \amp \ldots \amp A\qvec_n
+      \end{bmatrix}
+    </me>.
+    This leads to the expressions
+    <md>
+      <mrow>
+        A\qvec_1 \amp = h_{11}\qvec_1 + h_{21}\qvec_2
+      </mrow>
+      <mrow>
+        A\qvec_2 \amp = h_{12}\qvec_1 + h_{22}\qvec_2 + h_{32}\qvec_3
+      </mrow>
+      <mrow>
+        \vdots \amp = \vdots
+      </mrow>
+      <mrow>
+        A\qvec_n \amp = h_{n1}\qvec_1 + h_{n2}\qvec_2 + \ldots +
+        h_{nn}\qvec_n + h_{n+1,n}\qvec_{n+1}
+      </mrow>
+      <mrow>
+        \vdots \amp = \vdots
+      </mrow>
+      <mrow>
+        A\qvec_m \amp = h_{m1}\qvec_1 + h_{m2}\qvec_2 + \ldots +
+        h_{mm}\qvec_n
+      </mrow>
+    </md>.
+    </p>
+
+    <example xml:id="example-arnoldi">
+      <statement>
+        <p>Rather than developing a general explanation for
+        finding <m>Q</m> and <m>H</m>, we will demonstrate with an
+        example.  Suppose that
+        <m>A=\begin{bmatrix}
+        1 \amp -2 \amp 3 \\
+        -2 \amp 4 \amp 2 \\
+        3 \amp 2 \amp -1 \\
+        \end{bmatrix}
+        </m>.  We choose any nonzero vector <m>\vvec</m> and define
+        <me>
+          \qvec_1 = \frac{1}{\len{\vvec}}\vvec
+        </me>.
+        We will choose <m>\vvec=\threevec100</m> so that
+        <m>\qvec_1=\threevec100</m>.
+        </p>
+
+        <p>Our first expression is
+        <me>
+          A\qvec_1 = h_{11}\qvec_1 + h_{21}\qvec_2
+        </me>.
+        Remember that the vectors <m>\qvec_i</m> will be the columns
+        of an orthogonal matrix, which means that they form an
+        orthonormal set.  Therefore,
+        <me>
+          (A\qvec_1)\cdot\qvec_1 = h_{11}\qvec_1\cdot\qvec_1 +
+          h_{21}\qvec_2\cdot\qvec_1 = h_{11}
+        </me>.
+        That is, we find
+        <me>
+          h_{11}=\qvec_1\cdot(A\qvec_1) = r(A,\qvec_1)
+        </me>,
+        so we see that <m>h_{11}</m> is a Rayleigh quotient, which is
+        encouraging.
+        </p>
+
+        <p>In our example, we have <m>A\qvec_1 = \cthreevec1{-2}3</m>
+        so that <m>h_{11} = \qvec_1\cdot(A\qvec_1) = 1</m>.
+        </p>
+
+        <p>Rearranging the expression for <m>A\qvec_1</m>, we have
+        <me>
+          h_{21}\qvec_2 = A\qvec_1 - h_{11}\qvec_1= \cthreevec0{-2}{3}
+        </me>.
+        Because <m>\qvec_2</m> has unit length, we have
+        <me>
+          h_{21} = \len{A\qvec_1 - h_{11}\qvec_1}
+        </me>
+        so that <m>h_{21} = \sqrt{13}</m> and then
+        <me>
+          \qvec_2 = \frac{1}{h_{21}}(A\qvec_1 - h_{11}\qvec_1)
+        </me>
+        or <m>\qvec_2 = \frac{1}{\sqrt{13}}\cthreevec0{-2}3</m>.
+        </p>
+
+        <p>We now repeat the same process using the second expression
+        <me>
+          A\qvec_2 = h_{12}\qvec_1+h_{22}\qvec_2+h_{32}\qvec_3
+        </me>.
+        In particular,
+        <me>
+          h_{12}=(A\qvec_2)\cdot\qvec_1,\hspace{12pt}
+          h_{22}=(A\qvec_2)\cdot\qvec_2=r(A,\qvec_2)
+        </me>
+        so that, once again, <m>h_{22}</m> is a Rayleigh quotient.
+        </p>
+
+        <p>In our example, <m>A\qvec_2 =
+        \frac{1}{\sqrt{13}}\cthreevec{13}{-2}{-7}</m> and hence
+        <m>h_{12}=\sqrt{13}</m> and <m>h_{22}=-\frac{17}{13}</m>.</p>
+
+        <p>Rearranging the expression for <m>A\qvec_2</m> shows that
+        <me>
+          h_{32}\qvec_3 = A\qvec_2-h_{12}\qvec_1-h_{22}\qvec_2=
+          \cthreevec{0}{-\frac{60}{13\sqrt{13}}}{-\frac{40}{13\sqrt{13}}}
+        </me>.
+        Therefore, <m>h_{32}=\frac{20}{13}</m> and
+        <m>\qvec_3=\cthreevec{0}{-\frac{3}{\sqrt{13}}}{-\frac{2}{\sqrt{13}}}</m>.        </p>
+
+        <p>Notice that <m>\qvec_1</m>, <m>\qvec_2</m>, and
+        <m>\qvec_3</m> form a basis for <m>\real^3</m> so we have all
+        three columns for the matrix <m>Q</m>.
+        Our final expression is
+        <me>
+          A\qvec_3=h_{13}\qvec_1 + h_{23}\qvec_2 + h_{33}\qvec_3
+        </me>,
+        which gives
+        <md>
+          <mrow>
+            h_{13}\amp=(A\qvec_3)\cdot\qvec_1 =0
+          </mrow>
+          <mrow>
+            h_{23}\amp=(A\qvec_3)\cdot\qvec_2 =\frac{20}{13}
+          </mrow>
+          <mrow>
+            h_{33}\amp=(A\qvec_3)\cdot\qvec_3 =\frac{56}{13}
+          </mrow>
+        </md>.
+        This leaves us with
+        <me>
+          Q = \begin{bmatrix}
+          1 \amp 0 \amp 0 \\
+          0 \amp -\frac{2}{\sqrt{13}} \amp -\frac{3}{\sqrt{13}} \\
+          0 \amp \frac{3}{\sqrt{13}} \amp -\frac{2}{\sqrt{13}} \\
+          \end{bmatrix},
+          \hspace{12pt}
+          H = \begin{bmatrix}
+          1 \amp \sqrt{13} \amp 0 \\
+          \sqrt{13} \amp -\frac{17}{13} \amp \frac{20}{13} \\
+          0 \amp \frac{20}{13} \amp \frac{56}{13} \\
+          \end{bmatrix}
+        </me>
+        from which we can check that <m>A=QHQ^T</m>.
+        </p>
+
+        <p>Notice that our original matrix 
+        <m>A=\begin{bmatrix}
+        1 \amp -2 \amp 3 \\
+        -2 \amp 4 \amp 2 \\
+        3 \amp 2 \amp -1 \\
+        \end{bmatrix}
+        </m> is symmetric.  Since <m>H=Q^TAQ</m>, we have
+        <me>H^T = (Q^TAQ)^T = Q^TA^TQ = Q^TAQ = H</me>
+        showing that <m>H</m> is symmetric too.  Since <m>H</m> is
+        also Hessenberg, this explains why <m>H</m> is tridiagonal,
+        which is seen by the presence of the <m>0</m> in the first row,
+        third column of <m>H</m>.
+        </p>
+
+      </statement>
+    </example>
+  </subsection>
+
+  <subsection>
+    <title>Krylov subspaces</title>
+
+    <p>We will now explore how Arnoldi iteration can approximate the
+    largest
+    eigenvalues of an 
+    <m>m\times m</m> matrix when <m>m</m> is very large.  To begin, we
+    recall that the power method, our first technique for
+    approximating eigenvalues, begins with a randomly chosen vector
+    <m>\vvec</m> and repeatedly multiplies by <m>A</m> to compute
+    <m>A^k\vvec</m>.</p>
+
+    <p>One feature of the power method is that it is <q>forgetful.</q>
+    That is, we compute lots of vectors <m>A^k\vvec</m>, but at
+    every step we only use the last one.  Perhaps we could do better
+    if we remembered all the vectors.  This is the motivation for
+    considering a <xref ref="definition-krylov" text="custom">Krylov
+    subspace</xref>:
+    <me>
+      \kcal_n(A,\vvec) = \laspan{\vvec, A\vvec,\ldots,A^{n-1}\vvec}
+    </me>
+    and its associated <term>Krylov matrix</term>
+    <me>
+      K_n = \begin{bmatrix}
+      \vvec \amp A\vvec \amp \ldots \amp A^{n-1}\vvec
+      \end{bmatrix}
+    </me>.
+    </p>
+
+    <p>You may remember that we introduced Krylov subspaces when we
+    constructed the minimal polynomial of a vector <m>\vvec</m>.
+    Notice that we have the inclusion of subspaces
+    <men xml:id="equation-inclusions">
+      \kcal_1 \subset \kcal _2 \subset \ldots \subset \kcal_n
+    </men>
+    and that these begin as proper inclusions
+    <m>\kcal_j\subsetneq\kcal_{j+1}</m> until the vectors
+    <me>
+      \vvec, A\vvec, \ldots, A^\nu\vvec
+    </me>
+    become linearly dependent.  We said that <m>\nu</m> is the
+    <term>grade</term> of <m>\vvec</m> and noted that a non-trivial linear
+    relationship between these vectors led to the minimal polynomial
+    <m>p_\vvec</m>.</p>
+
+    <p>Remember that <m>p_\vvec</m> divides the minimal
+    polynomial <m>p</m> of <m>A</m>.  If <m>\deg(p_\vvec) \lt
+    \deg(p)</m>, then <m>\vvec</m> is in <m>\nul(p_\vvec(A))</m>, a
+    proper subspace of <m>\real^m</m>.  The chances of choosing a
+    vector in a given proper subspace is practically zero so we
+    generally do not expect this to happen.  In other words, we expect
+    the <xref ref="equation-inclusions" text="custom">chain of proper
+    inclusions</xref> to continue for a long time so we assume that
+    <me>
+      \dim\kcal_n = \dim(\col(K_n) = n
+    </me>.
+    </p>
+
+    <proposition>
+      <statement>
+        <p>Suppose we apply Arnoldi iteration to the matrix <m>K_n</m> to
+        produce an orthogonal matrix
+        <m>Q_n=\begin{bmatrix}\qvec_1\amp\ldots\amp\qvec_n\end{bmatrix}</m>.
+        Then <m>K_n=Q_nR</m> where <m>R</m> is upper
+        triangular and <m>Q_n</m> is an orthonormal basis for the
+        Krylov subspace <m>\kcal_n=\col(K_n)</m>.
+        </p>
+      </statement>
+      <proof>
+        <p> Recall that
+        <me>
+          A\qvec_j = h_{1j}\qvec_1 + h_{2j}\qvec_2 + \ldots +
+          h_{j+1,j}\qvec_{j+1}
+        </me>,
+        which implies that
+        <men xml:id="equation-Aqvec">
+          A\qvec_j \in \laspan{\basis{\qvec}{j+1}}
+        </men>.
+        </p>
+          
+        <p>Notice that <m>A^0\vvec = \vvec = \len{\vvec}~\qvec_1</m> so
+        that
+        <me>
+          A^0\vvec \in \laspan{\qvec_1}
+        </me>.
+        Now suppose that
+        <me>
+          A^{j-1}\vvec \in \laspan{\basis{\qvec}{j}}
+        </me>.
+        It then follows that
+        <me>
+          A^j\vvec \in \laspan{\basis{A\qvec}{j}} =
+          \laspan{\basis{\qvec}{j+1}}
+        </me>
+        where the equality of spans follows from <xref
+        ref="equation-Aqvec"/>.  This shows, by induction, that
+        <me>
+          A^{j-1}\vvec \in \laspan{\basis{\qvec}{j}}
+        </me>
+        for all <m>j</m>.
+        </p>
+
+        <p>Since <m>A^{j-1}\vvec</m> is the <m>j^{th}</m> column of
+        <m>K_n</m> and is a linear combination of the first <m>j</m>
+        columns of <m>Q_n</m>, it follows that <m>K_n=Q_nR</m> where
+        <m>R</m> is upper triangular.
+        </p>
+      </proof>
+    </proposition>
+          
+    <p>This proposition shows that Arnoldi
+    iteration creates a 
+    <m>QR</m> factorization of <m>K_n</m> without explicitly
+    constructing <m>R</m>.  This is good fortune indeed!
+    </p>
+
+    <p>This analysis also provides some insight into a possible issue
+    when running Arnoldi iteration.  Remembering that 
+    <me>
+      A\qvec_j = h_{1j}\qvec_1 + h_{2j}\qvec_2 + \ldots +
+      h_{j+1,j}\qvec_{j+1}
+    </me>,
+    the algorithm could break down if
+    <m>A\qvec_j\in\laspan{\basis{\qvec}{j}}</m>.  When this is the
+    case,
+    <m>h_{j+1,j}\qvec_{j+1} = \zerovec</m> and hence
+    <m>\qvec_{j+1}</m> is not defined.</p>
+
+    <p>This can only happen,
+    however, if <m>A^j\vvec</m> is also in
+    <me>
+      \laspan{\basis{\qvec}{j}} =
+      \laspan{\vvec,A\vvec,\ldots,A^{j-1}\vvec}
+    </me>,
+    which we have seen means that <m>j=\nu</m>, the grade of
+    <m>\vvec</m>, and that <m>p_\vvec</m>, the minimal polynomial of
+    <m>\vvec</m>, is a proper factor of the minimal polynomial of
+    <m>p</m>.  Since there are finitely many proper factors of
+    <m>p</m>, the chance that we randomly choose <m>\vvec</m> in the
+    null space of one of those factors is exceedingly rare.</p>
+
+  </subsection>
+
+  <subsection>
+    <title>Eigenvalues and Arnoldi iteration</title>
+
+    <p>
+      We introduced Arnoldi iteration as a way of finding a
+      Hessenberg matrix <m>H</m> similar to <m>A</m>.  Remember,
+      however, that we would like to work with very large <m>m\times
+      m</m> matrices for which it would not be practical to run the
+      algorithm to completion.  Instead, we remember that the power
+      method tells us that the
+      Krylov subspaces contain information about the largest
+      eigenvalues of <m>A</m>.  Also, Arnoldi iteration is a
+      process that, after each step, produces <m>Q_n</m> an
+      orthonormal basis for the Krylov subspace <m>\kcal_n</m> where
+      <m>n</m> is usually much smaller than <m>m</m>, the size of the
+      matrix.
+    </p>
+
+    <p>We will slightly reformulate the algebraic framework for
+    Arnoldi iteration to focus on intermediate steps without expecting
+    that it runs to completion.  Once again, we
+    will have
+    <me>
+      Q_n = \begin{bmatrix}
+      \qvec_1 \amp \qvec_2 \amp \ldots \amp \qvec_n
+      \end{bmatrix}
+    </me>,
+    which is an <m>m\times n</m> matrix with <m>n\leq m</m>.
+    Multiplying the columns of <m>Q</m> by <m>A</m> gives the
+    relations that we saw earlier:
+    <md>
+      <mrow>
+        A\qvec_1 \amp = h_{11}\qvec_1 + h_{21}\qvec_2
+      </mrow>
+      <mrow>
+        A\qvec_2 \amp = h_{12}\qvec_1 + h_{22}\qvec_2 + h_{32}\qvec_3
+      </mrow>
+      <mrow>
+        \vdots \amp = \vdots
+      </mrow>
+      <mrow>
+        A\qvec_n \amp = h_{1n}\qvec_1 + h_{2n}\qvec_2 + \ldots +
+        h_{nn}\qvec_n + h_{n+1,n}\qvec_{n+1}
+      </mrow>
+    </md>.
+    Notice the term <m>h_{n+1,n}\qvec_{n+1}</m> in the expression for
+    <m>A\qvec_n</m>.  Putting all the coefficients <m>h_{ij}</m> into
+    a matrix results in the matrix
+    <me>
+      \widetilde{H}_n = \begin{bmatrix}
+      h_{11} \amp h_{12} \amp h_{13} \amp \ldots \amp h_{1n} \\
+      h_{21} \amp h_{22} \amp h_{23} \amp \ldots \amp h_{2n} \\
+      0 \amp h_{32} \amp h_{33} \amp \ldots \amp h_{3n} \\
+      0 \amp 0 \amp h_{43} \amp \ldots \amp h_{4n} \\
+      \vdots \amp \vdots \amp \vdots \amp \ddots \amp \vdots \\
+      0 \amp 0 \amp 0 \amp \ldots \amp h_{n+1,n} \\
+      \end{bmatrix}
+    </me>.
+    Notice that the shape of <m>\widetilde{H}_n</m> is <m>(n+1)\times
+    n</m> so it is not square.  We do,
+    however, have
+    <me>
+      AQ_n = Q_{n+1}\widetilde{H}_n
+    </me>.
+    </p>
+
+    <p>Here are some straightforward observations.
+    <ul>
+      <li>
+        <p>Since
+        the columns of <m>Q_n</m> are orthonormal, we
+        have <m>Q_n^TQ_n = I_n</m>.</p>
+      </li>
+      <li>
+        <p><m>Q_{n+1} = \begin{bmatrix}
+        Q_n \amp \qvec_{n+1}
+        \end{bmatrix}</m> so 
+        <m>Q_n^TQ_{n+1} = \begin{bmatrix}
+        I_n \amp \zerovec\end{bmatrix}</m>.  That is,
+        <m>Q_n^TQ_{n+1}</m> is an <m>n\times (n+1)</m> matrix with
+        a column of zeros appended to the side of the <m>n\times
+        n</m> identity matrix.</p>
+      </li>
+      <li>
+        <p>If we define
+        <m>H_n = Q_n^TQ_{n+1}\widetilde{H}_n</m>,
+        then <m>H_n</m> is a square <m>n\times n</m> matrix obtained
+        from <m>\widetilde{H}_n</m> by removing its last row.</p>
+      </li>
+      <li>
+        <p>Because
+        <m>Q_{n+1}\widetilde{H}_n = AQ_n</m>, it also follows that
+        <me>
+          H_n = Q_n^TAQ_n
+        </me>.
+        While this may appear to say that <m>H_n</m> is similar to
+        <m>A</m>, remember than <m>Q_n</m> is not square so this is
+        not a similarity relationship.  It does suggest, however, that
+        <m>H_n</m> is <q>somewhat similar</q> to <m>A</m> so that
+        they may share some common features.</p>
+      </li>
+    </ul>
+    </p>
+
+    <p>Our goal now is to work with an <m>m\times m</m> matrix
+    <m>A</m>, which is possibly very large, and approximate its
+    largest eigenvalues.  The power method tells us that the Krylov
+    subspace <m>\kcal_n</m> can be expected to have information about
+    the largest eigenvalues of <m>A</m>.  For this reason, we will
+    use the Krylov subspace to create an approximation of
+    <m>A</m>.</p>
+
+    <p>The Krylov subspace <m>\kcal_n</m> is an <m>n</m>-dimensional
+    subspace of <m>\real^n</m> so we can consider the orthogonal
+    projection <m>P_{\kcal_n}:\real^m \to \kcal_n</m>.  This leads us
+    to form the approximating operator <m>T_n:\kcal_n\to\kcal_n</m>
+    by
+    <me>
+      T_n(\xvec) = P_{\kcal n}A\xvec
+    </me>.
+    This is, <m>T_n</m> multiplies a vector in <m>\kcal_n</m> by
+    <m>A</m> and then projects it back into <m>\kcal_n</m>.</p>
+
+    <p>Notice that <m>A</m> defines
+    an operator on <m>\real^m</m> where <m>m</m> is huge, while
+    <m>T_n</m> defines an operator on an <m>n</m>-dimensional space
+    where <m>n</m> is possibly much smaller than <m>m</m>.
+    Therefore, the operator <m>T_n</m>
+    is an approximation to <m>A</m> on a much lower dimensional
+    subspace <m>\kcal_n</m> that
+    has important information about the largest eigenvalues of
+    <m>A</m>.  
+    </p>
+
+    <proposition>
+      <statement>
+        <p>If <m>\bcal</m> is the orthonormal basis
+        <m>\basis{\qvec}{n}</m> for 
+        <m>\kcal_n</m>, then the matrix representing <m>T_n</m> is
+        <me>
+          \coords{T_n}{\bcal} = H_n
+        </me>.
+        </p>
+      </statement>
+
+      <proof>
+        <p>Since <m>\basis{\qvec}{n}</m> is an orthonormal basis for
+        <m>\kcal_n</m>, the orthogonal projection <m>P_{\kcal_n}</m>
+        is given by <m>Q_nQ_n^T</m>, which says that
+        <me>
+          T_n\xvec = Q_nQ_n^TA\xvec
+        </me>.
+        Now the change of basis relationships tell us that
+        <m>\xvec=Q_n\coords{\xvec}{\bcal}</m> and
+        <m>\coords{T_n\xvec}{\bcal} = Q_n^{-1}T_n\xvec =
+        Q_n^TT_n\xvec</m>.
+        Putting this together, we have
+        <md>
+          <mrow>
+            \coords{T_n\xvec}{\bcal} \amp = Q_n^TT_n\xvec
+          </mrow>
+          <mrow>
+            \amp = Q_n^TQ_nQ_n^TA\xvec
+          </mrow>
+          <mrow>
+            \amp = Q_n^TAQ_n\coords{\xvec}{\bcal}
+          </mrow>
+          <mrow>
+            \amp = H_n\coords{\xvec}{\bcal}
+          </mrow>
+        </md>.
+        </p>
+      </proof>
+    </proposition>
+
+    <p>This remarkable turn of events shows us that Arnoldi iteration
+    provides the perfect tool for approximating the largest
+    eigenvalues of <m>A</m>.  The operator <m>T_n</m> approximates
+    <m>A</m> on a subspace with information about the largest
+    eigenvalues and the matrix <m>H_n</m>, which is formed by Arnoldi
+    iteration, represents the operator <m>T_n</m>.  This leads us to
+    suspect that</p>
+    <blockquote>
+      <em>The eigenvalues of <m>H_n</m> approximate the largest
+      eigenvalues of <m>A</m>.</em>
+    </blockquote>
+
+    <p>The eigenvalues of <m>H_n</m> are called <term>Ritz
+    values</term>.  Since <m>H_n</m> is an <m>n\times n</m> matrix and
+    <m>n</m> is much smaller than <m>m</m>, we can use a conventional
+    technique, such as the <em>QR</em> algorithm to find the Ritz
+    values.</p>
+
+  </subsection>
+
+  <subsection>
+    <title>A working example</title>
+
+    <p>We will demonstrate these ideas computationally.  We will first
+    construct a <m>100\times 100</m> matrix <m>A</m> and plot its
+    eigenvalues.  Of course, this is not a particularly large matrix,
+    certainly not of the size we have imagined in this discussion, but
+    it is big enough to demonstrate the central ideas.</p>
+
+    <p>Evaluate the following cell and you will see a plot of
+    <m>100</m> eigenvalues in the complex plane.  For the most part,
+    the eigenvalues are spread uniformly throughout a disk though
+    there are a couple of eigenvalues of relatively large magnitude
+    along the positive real axis.</p>
+
+    <sage>
+      <input>
+import matplotlib.pyplot as plt
+import numpy as np
+
+def arnoldi(A, v, n):
+    m = A.nrows()
+    q_list = []
+    h = np.zeros((n+1,n))
+    v = 1/v.norm() * v
+    q_list.append(v)
+    for col in range(n):
+        v = A*v
+        for j, q in enumerate(q_list):
+            h[j][col] = q * v
+            v = v - h[j][col] * q
+            v = vector(v)
+        h[col+1][col] = v.norm()
+        v = 1/v.norm() * v
+        q_list.append(v)
+    if len(q_list) > m:
+        q_list.pop(-1)
+        h = h[:-1]
+    return matrix(q_list).T, matrix(h)
+
+def e1(m):
+    v_entries = [0] * m
+    v_entries[0] = 1
+    v = vector(v_entries)
+    return v
+
+def buildA(m):
+    np.random.seed(1)
+    A = np.random.randn(m, m)/np.sqrt(m)
+    A[0][0]=1.5
+    A[1][1]=1.3
+    A[2][2]=1
+    A = matrix(A)
+    return A
+
+def plot_eigenvalues(A, size=4, color='0'):
+    ev = np.array(A.eigenvalues())
+    plt.scatter(ev.real, ev.imag, s=size, c=color)
+    
+m = 100
+A = buildA(m)
+fig, ax = plt.subplots()
+plot_eigenvalues(A)
+plt.show()        
+      </input>
+    </sage>
+
+    <p>Evaluating the next cell performs 6 steps of Arnoldi iteration
+    to produce a <m>6\times 6</m> matrix <m>H_n</m>, which is
+    displayed to demonstrate its Hessenberg form.  (This cell and the
+    next assume that the previous cell has been recently evaluated.)</p>
+
+    <sage>
+      <input>
+n = 6
+Q, H = arnoldi(A, e1(m), n)
+H = H.matrix_from_rows(range(n))
+print(N(H, digits=5))
+      </input>
+    </sage>
+
+    <p>Next we plot the eigenvalues of <m>H_n</m>, which we call the
+    Ritz values, and compare them to the eigenvalues of <m>A</m>.  We
+    begin with a small value of <m>n=3</m>, but you should experiment
+    by increasing the value of <m>n</m> and noting how the Ritz values
+    approximate the largest eigenvalues.  Note what happens when
+    <m>n=10,20,50</m>, for instance.</p>
+
+    <sage>
+      <input>
+n = 3
+Q, H = arnoldi(A, e1(m), n)
+H = H.matrix_from_rows(range(n))
+fig, ax = plt.subplots()
+plot_eigenvalues(A)
+plot_eigenvalues(H, size=15, color="r")
+plt.show()
+
+      </input>
+    </sage>
+
+    <p>To restate the main idea, we assume that <m>A</m> is so large
+    that it is not possible to directly compute its eigenvalues.
+    Instead, we approximate <m>A</m> by <m>H_n</m> when <m>n</m> is
+    relatively small so that its eigenvalues can be computed through
+    traditional means.  We see that the eigenvalues of <m>H_n</m>
+    approximate the large eigenvalues of <m>A</m> and that the
+    accuracy of the approximations improve as <m>n</m> grows.</p>
+    
+  </subsection>
+
+</section>

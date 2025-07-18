@@ -250,7 +250,7 @@
     minimal polynomial of an operator on a complex vector space has
     the form
     <me>
-      p(x)=(x-\lambda_1)^{k_1}(x-\lambda_2)^{k_2}\ldots(x-\lambda_1)^{k_m}
+      p(x)=(x-\lambda_1)^{k_1}(x-\lambda_2)^{k_2}\ldots(x-\lambda_m)^{k_m}
     </me>.
     In this case, we claim that <m>V</m> is a direct sum of
     generalized eigenspaces.

@@ -99,6 +99,7 @@
   <!-- include sections -->
   <xi:include href="section-power.ptx" />
   <xi:include href="section-qr.ptx" />
+  <xi:include href="section-arnoldi.ptx" />
   <!--
   -->
 </chapter>

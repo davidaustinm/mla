@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="sec-power" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>The Power Method</title>
+  <title>The power method</title>
 
   <introduction>
     <p>We will begin by considering the problem of finding the
