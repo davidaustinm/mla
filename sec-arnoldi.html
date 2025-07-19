@@ -119,14 +119,14 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.9.0';
+eBookConfig.runestone_version = '7.9.1';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.a5f1dc7727a1aa22.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.014cb392a13bd045.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<script src="_static/prefix-runtime.787a04695534ef1e.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.014cb392a13bd045.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
 <link rel="stylesheet" type="text/css" href="_static/prefix-runestone.8141ae22fd347e48.css">
 <script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script src="_static/pretext/js/lti_iframe_resizer.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
 </script><script>// Make *any* div with class 'sagecell-sage' an executable Sage cell
@@ -358,6 +358,7 @@ sagecell.makeSagecell({
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-arnoldi.html#sec-arnoldi-4" class="internal"><span class="codenumber">3.3.2</span> <span class="title">Krylov subspaces</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-arnoldi.html#sec-arnoldi-5" class="internal"><span class="codenumber">3.3.3</span> <span class="title">Eigenvalues and Arnoldi iteration</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-arnoldi.html#sec-arnoldi-6" class="internal"><span class="codenumber">3.3.4</span> <span class="title">A working example</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-arnoldi.html#sec-arnoldi-7" class="internal"><span class="codenumber">3.3.5</span> <span class="title">GMRES</span></a></div></li>
 </ul>
 </li>
 </ul>
@@ -907,7 +908,7 @@ def buildA(m):
     A = matrix(A)
     return A
 
-def plot_eigenvalues(A, size=4, color='0'):
+def plot_eigenvalues(A, size=5, color='0'):
     ev = np.array(A.eigenvalues())
     plt.scatter(ev.real, ev.imag, s=size, c=color)
     
@@ -930,13 +931,179 @@ print(N(H, digits=5))
 Q, H = arnoldi(A, e1(m), n)
 H = H.matrix_from_rows(range(n))
 fig, ax = plt.subplots()
+plot_eigenvalues(H, size=20, color="r")
 plot_eigenvalues(A)
-plot_eigenvalues(H, size=15, color="r")
 plt.show()
 </script></div>
-<div class="para" id="sec-arnoldi-6-9">To restate the main idea, we assume that <span class="process-math">\(A\)</span> is so large that it is not possible to directly compute its eigenvalues. Instead, we approximate <span class="process-math">\(A\)</span> by <span class="process-math">\(H_n\)</span> when <span class="process-math">\(n\)</span> is relatively small so that its eigenvalues can be computed through traditional means.  We see that the eigenvalues of <span class="process-math">\(H_n\)</span> approximate the large eigenvalues of <span class="process-math">\(A\)</span> and that the accuracy of the approximations improve as <span class="process-math">\(n\)</span> grows.<div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-6-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-arnoldi-6-9">To restate the main idea, we assume that <span class="process-math">\(A\)</span> is so large that it is not possible to directly compute its eigenvalues. Instead, we approximate <span class="process-math">\(A\)</span> by <span class="process-math">\(H_n\)</span> where <span class="process-math">\(n\)</span> is relatively small so that its eigenvalues can be computed through traditional means.  We see that the eigenvalues of <span class="process-math">\(H_n\)</span> approximate the large eigenvalues of <span class="process-math">\(A\)</span> and that the accuracy of the approximations improve as <span class="process-math">\(n\)</span> grows.<div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-6-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Subsection 3.3.4: A working example"><a href="#sec-arnoldi-6" title="Copy heading and permalink for Subsection 3.3.4: A working example" aria-label="Copy heading and permalink for Subsection 3.3.4: A working example">🔗</a></div></section><div class="autopermalink" data-description="Section 3.3: Arnoldi iteration"><a href="#sec-arnoldi" title="Copy heading and permalink for Section 3.3: Arnoldi iteration" aria-label="Copy heading and permalink for Section 3.3: Arnoldi iteration">🔗</a></div></section></div>
+<div class="autopermalink" data-description="Subsection 3.3.4: A working example"><a href="#sec-arnoldi-6" title="Copy heading and permalink for Subsection 3.3.4: A working example" aria-label="Copy heading and permalink for Subsection 3.3.4: A working example">🔗</a></div></section><section class="subsection" id="sec-arnoldi-7"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">3.3.5</span><span class="space"> </span><span class="title">GMRES</span>
+</h3>
+<div class="para" id="sec-arnoldi-7-2">Besides finding the eigenvalues of a matrix, the other main task in numerical linear algebra is solving a linear system <span class="process-math">\(A\xvec=\bvec\text{.}\)</span>  Once again, we imagine that <span class="process-math">\(A\)</span> is very large so that Gaussian elimination, or some variant, is not computationally feasible.  We will see how our understanding of Krylov subspaces and Arnoldi iteration provides an effective tool called GMRES or “generalized minimal residuals.”<div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-7-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-arnoldi-7-3">
+<div class="para">To approximate the solution to <span class="process-math">\(A\xvec=\bvec\text{,}\)</span> we construct the Krylov matrix</div>
+<div class="displaymath process-math">
+\begin{equation*}
+K_n = \begin{bmatrix}
+\bvec \amp A\vvec \amp A^2\bvec\amp\ldots\amp A^{n-1}\bvec
+\end{bmatrix}
+\end{equation*}
+</div>
+<div class="para">and the Krylov subspace <span class="process-math">\(\kcal_n=\col(K_n)\text{.}\)</span>  Once again, <span class="process-math">\(\kcal_n\)</span> contains information about the largest eigenvalues of <span class="process-math">\(A\text{,}\)</span> which are usually the most important.  The idea of GMRES is to approximate <span class="process-math">\(\xvec^*\text{,}\)</span> the solution to the equation <span class="process-math">\(A\xvec=\bvec\text{,}\)</span> by <span class="process-math">\(\xvec_n\text{,}\)</span> the vector in <span class="process-math">\(\kcal_n\)</span> that minimizes <span class="process-math">\(\len{A\xvec - \bvec}\text{.}\)</span> This is now a least squares problem.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-7-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-arnoldi-7-4">
+<div class="para">Arnoldi iteration begins with</div>
+<div class="displaymath process-math" id="equation-arnoldi-init">
+\begin{equation}
+\qvec_1 = \frac{1}{\len{\bvec}}\bvec\tag{3.3.3}
+\end{equation}
+</div>
+<div class="para">and constructs <span class="process-math">\(Q_n\)</span> and <span class="process-math">\(\widetilde{H}_n\)</span> so that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+AQ_n=Q_{n+1}\widetilde{H}_n\text{.}
+\end{equation*}
+</div>
+<div class="para">Remember that <span class="process-math">\(Q_n\)</span> is an orthonormal basis for <span class="process-math">\(\kcal_n\)</span> so that we can write</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\xvec_n = Q_n\yvec_n\text{.}
+\end{equation*}
+</div>
+<div class="para">It is worth noting the dimensions of these quantities:  <span class="process-math">\(Q_n\)</span> is an <span class="process-math">\(m\times n\)</span> matrix, which means that <span class="process-math">\(\xvec_n\)</span> is in <span class="process-math">\(\real^m\text{,}\)</span> as expected, and <span class="process-math">\(\yvec_n\)</span> is in <span class="process-math">\(\real^n\text{.}\)</span>  In other words, <span class="process-math">\(\yvec_n\)</span> is a low-dimensional vector.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-7-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-arnoldi-7-5">
+<div class="para">We make two observations:</div>
+<ul class="disc" id="sec-arnoldi-7-5-1">
+<li id="sec-arnoldi-7-5-1-1">
+<div class="para logical" id="sec-arnoldi-7-5-1-1-1">
+<div class="para">We recast the first step in the iteration, <span class="process-math">\(\qvec_1 =
+\frac{1}{\len{\bvec}}\bvec\text{,}\)</span> so that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\bvec = \len{\bvec}~\qvec_1 = \len{\bvec}~Q_{n+1}\evec_1
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(\evec_1\)</span> is the first <span class="process-math">\((n+1)\)</span>-dimensional standard basis vector.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-7-5-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-arnoldi-7-5-1-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-arnoldi-7-5-1-2">
+<div class="para logical" id="sec-arnoldi-7-5-1-2-1">
+<div class="para">Since the columns of <span class="process-math">\(Q_{n+1}\)</span> are orthonormal, we have the familiar fact:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\len{Q_{n+1}\zvec}^2 = (Q_{n+1}\zvec)\cdot(Q_{n+1}\zvec) =
+\zvec\cdot (Q_{n+1}^TQ_{n+1})\zvec = \zvec\cdot\zvec =
+\len{\zvec}^2\text{.}
+\end{equation*}
+</div>
+<div class="para">That is, multiplying by <span class="process-math">\(Q_{n+1}\)</span> does not change the length of a vector.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-7-5-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-arnoldi-7-5-1-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-7-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-arnoldi-7-6">
+<div class="para">We put these facts to use by noting that we want to find <span class="process-math">\(\yvec_n\)</span> that minimizes</div>
+<div class="displaymath process-math" id="sec-arnoldi-7-6-2">
+\begin{align*}
+\len{A\xvec-\bvec} \amp = \len{AQ_n\yvec - \bvec}\\
+\amp = \len{Q_{n+1}\widetilde{H}_n\yvec - \len{\bvec}~Q_{n+1}\evec_1}\\
+\amp = \len{\widetilde{H}_n\yvec -\len{\bvec}~\evec_1}\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-7-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-arnoldi-7-7">
+<div class="para">To summarize, our task is to find <span class="process-math">\(\yvec_n\)</span> that minimizes</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\len{\widetilde{H}_n\yvec -\len{\bvec}~\evec_1}\text{.}
+\end{equation*}
+</div>
+<div class="para">Recall that <span class="process-math">\(\widetilde{H}_n\)</span> is an <span class="process-math">\((n+1)\times n\)</span> matrix and <span class="process-math">\(\evec_1\)</span> is in <span class="process-math">\(\real^{n+1}\text{.}\)</span>  This is a tractable least squares problem since <span class="process-math">\(n\)</span> is assumed to be small.  In particular, we can find a <span class="process-math">\(QR\)</span> factorization of <span class="process-math">\(\widetilde{H}_n\)</span> so that <span class="process-math">\(\widetilde{H}_n = QR\)</span> and then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\yvec_n = R^{-1}Q^T\left(\len{b}~\evec_1\right)\text{.}
+\end{equation*}
+</div>
+<div class="para">(Of course, the <span class="process-math">\(Q\)</span> in this expression is not related to <span class="process-math">\(Q_n\text{,}\)</span> which is obtained from Arnoldi iteration.) Once we have <span class="process-math">\(\yvec_n\text{,}\)</span> we find <span class="process-math">\(\xvec_n=Q_{n}\yvec_n\text{,}\)</span> our approximation to <span class="process-math">\(\xvec^*\text{,}\)</span> the solution to the equation <span class="process-math">\(A\xvec=\bvec\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-7-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-arnoldi-7-8">The following cell will form a random <span class="process-math">\(200\times 200\)</span> matrix <span class="process-math">\(A\text{,}\)</span> a random vector <span class="process-math">\(\xvec^*\text{,}\)</span> and <span class="process-math">\(b=A\xvec^*\text{.}\)</span>  This means that <span class="process-math">\(\xvec^*\)</span> is the solution that we want to approximate.<div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-7-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-arnoldi-7-9" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">import numpy as np
+
+def arnoldi(A, v, n):
+    m = A.nrows()
+    q_list = []
+    h = np.zeros((n+1,n))
+    v = 1/v.norm() * v
+    q_list.append(v)
+    for col in range(n):
+        v = A*v
+        for j, q in enumerate(q_list):
+            h[j][col] = q * v
+            v = v - h[j][col] * q
+            v = vector(v)
+        h[col+1][col] = v.norm()
+        v = 1/v.norm() * v
+        q_list.append(v)
+    if len(q_list) > m:
+        q_list.pop(-1)
+        h = h[:-1]
+    return matrix(q_list).T, matrix(h)
+
+def e1(m):
+    v_entries = [0] * m
+    v_entries[0] = 1
+    v = vector(v_entries)
+    return v
+
+def build_random_A(m):
+    np.random.seed(1)
+    B = np.random.randn(m, m)/np.sqrt(m)
+    A = 0.5 * matrix(B) + 2 * identity_matrix(m)
+    return A
+
+def plot_eigenvalues(A):
+    ev = A.eigenvalues()
+    plt.scatter(ev.real, ev.imag)
+
+m = 200
+A = build_random_A(m)
+
+x_star = vector(np.random.randn(m))
+b = A*x_star
+print("A, x_star, and b are defined now.")
+</script></div>
+<div class="para" id="sec-arnoldi-7-10">Now we perform GMRES for <span class="process-math">\(n=1,2,\ldots,20\text{.}\)</span>  For each <span class="process-math">\(n\text{,}\)</span> we have an approximate solution <span class="process-math">\(\xvec_n\)</span> so we observe the error <span class="process-math">\(\len{\xvec^*-\xvec_n}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-7-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-arnoldi-7-11" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">for n in range(1,21):
+    Qnp1, Hn = arnoldi(A, b, n)
+    Qn = Qnp1.matrix_from_columns(range(n))
+    Q, R = Hn.QR()
+    Q = Q.matrix_from_columns(range(n))
+    R = R.matrix_from_rows(range(n))
+    yn = R.inverse() * Q.T * b.norm() * e1(n+1)
+    xn = Qn * yn
+    print('n =', n, ' Error =', (x_star-xn).norm())
+</script></div>
+<div class="para" id="sec-arnoldi-7-12">In the final step, we are approximating the solution to a <span class="process-math">\(200\times 200\)</span> system with the solution to a <span class="process-math">\(21\times
+20\)</span> least squares problem.  As you can see, the approximations are excellent.<div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-7-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-arnoldi-7-13">These Sage cells implement a simplistic version of GMRES in that it begins Arnoldi iteration from the beginning for each value of <span class="process-math">\(n\text{.}\)</span>  A better implementation would reuse the results of the previous iteration so that only one step of Arnoldi would be needed.<div class="autopermalink" data-description="Paragraph"><a href="#sec-arnoldi-7-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsection 3.3.5: GMRES"><a href="#sec-arnoldi-7" title="Copy heading and permalink for Subsection 3.3.5: GMRES" aria-label="Copy heading and permalink for Subsection 3.3.5: GMRES">🔗</a></div></section><div class="autopermalink" data-description="Section 3.3: Arnoldi iteration"><a href="#sec-arnoldi" title="Copy heading and permalink for Section 3.3: Arnoldi iteration" aria-label="Copy heading and permalink for Section 3.3: Arnoldi iteration">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="sec-qr.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
