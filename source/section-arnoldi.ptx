@@ -653,7 +653,7 @@ def buildA(m):
     A = matrix(A)
     return A
 
-def plot_eigenvalues(A, size=4, color='0'):
+def plot_eigenvalues(A, size=5, color='0'):
     ev = np.array(A.eigenvalues())
     plt.scatter(ev.real, ev.imag, s=size, c=color)
     
@@ -692,8 +692,8 @@ n = 3
 Q, H = arnoldi(A, e1(m), n)
 H = H.matrix_from_rows(range(n))
 fig, ax = plt.subplots()
+plot_eigenvalues(H, size=20, color="r")
 plot_eigenvalues(A)
-plot_eigenvalues(H, size=15, color="r")
 plt.show()
 
       </input>
@@ -701,11 +701,205 @@ plt.show()
 
     <p>To restate the main idea, we assume that <m>A</m> is so large
     that it is not possible to directly compute its eigenvalues.
-    Instead, we approximate <m>A</m> by <m>H_n</m> when <m>n</m> is
+    Instead, we approximate <m>A</m> by <m>H_n</m> where <m>n</m> is
     relatively small so that its eigenvalues can be computed through
     traditional means.  We see that the eigenvalues of <m>H_n</m>
     approximate the large eigenvalues of <m>A</m> and that the
     accuracy of the approximations improve as <m>n</m> grows.</p>
+    
+  </subsection>
+
+  <subsection>
+    <title>GMRES</title>
+
+    <p>Besides finding the eigenvalues of a matrix, the other main
+    task in numerical linear algebra is solving a linear system
+    <m>A\xvec=\bvec</m>.  Once again, we imagine that <m>A</m> is very
+    large so that Gaussian elimination, or some variant, is not
+    computationally feasible.  We will see how our understanding of
+    Krylov subspaces and Arnoldi iteration provides an effective
+    tool called GMRES or <q>generalized minimal residuals.</q></p>
+
+    <p>To approximate the solution to <m>A\xvec=\bvec</m>, we
+    construct the Krylov matrix
+    <me>
+      K_n = \begin{bmatrix}
+      \bvec \amp A\vvec \amp A^2\bvec\amp\ldots\amp A^{n-1}\bvec
+      \end{bmatrix}
+    </me>
+    and the Krylov subspace <m>\kcal_n=\col(K_n)</m>.  Once again,
+    <m>\kcal_n</m> contains information about the largest eigenvalues
+    of <m>A</m>, which are usually the most important.  The idea of
+    GMRES is to approximate <m>\xvec^*</m>, the solution to the equation
+    <m>A\xvec=\bvec</m>, by <m>\xvec_n</m>, the vector
+    in <m>\kcal_n</m> that minimizes <m>\len{A\xvec - \bvec}</m>.  
+    This is now a least squares problem.
+    </p>
+
+    <p>Arnoldi iteration begins with
+    <men xml:id="equation-arnoldi-init">
+      \qvec_1 = \frac{1}{\len{\bvec}}\bvec
+    </men>
+    and constructs <m>Q_n</m> and <m>\widetilde{H}_n</m> so that
+    <me>
+      AQ_n=Q_{n+1}\widetilde{H}_n
+    </me>.
+    Remember that <m>Q_n</m> is an orthonormal basis for
+    <m>\kcal_n</m> so that we can write
+    <me>
+      \xvec_n = Q_n\yvec_n
+    </me>.
+    It is worth noting the dimensions of these quantities:  <m>Q_n</m>
+    is an <m>m\times n</m> matrix, which means that <m>\xvec_n</m> is
+    in <m>\real^m</m>, as expected, and <m>\yvec_n</m> is in
+    <m>\real^n</m>.  In other words, <m>\yvec_n</m> is a low-dimensional
+    vector.
+    </p>
+
+    <p>We make two observations:
+    <ul>
+      <li><p>We recast the first step in the iteration, <m>\qvec_1 =
+      \frac{1}{\len{\bvec}}\bvec</m>, so that
+      <me>
+        \bvec = \len{\bvec}~\qvec_1 = \len{\bvec}~Q_{n+1}\evec_1
+      </me>
+      where <m>\evec_1</m> is the first <m>(n+1)</m>-dimensional
+      standard basis vector.
+      </p></li>
+
+      <li><p>Since the columns of <m>Q_{n+1}</m> are orthonormal, we
+      have the familiar fact:
+      <me>
+        \len{Q_{n+1}\zvec}^2 = (Q_{n+1}\zvec)\cdot(Q_{n+1}\zvec) =
+        \zvec\cdot (Q_{n+1}^TQ_{n+1})\zvec = \zvec\cdot\zvec =
+        \len{\zvec}^2
+      </me>.
+      That is, multiplying by <m>Q_{n+1}</m> does not change the
+      length of a vector.
+      </p></li>
+    </ul>
+    </p>
+    
+    <p>We put these facts to use by noting that we want to find
+    <m>\yvec_n</m> that minimizes
+    <md>
+      <mrow>
+        \len{A\xvec-\bvec} \amp = \len{AQ_n\yvec - \bvec}
+      </mrow>
+      <mrow>
+        \amp = \len{Q_{n+1}\widetilde{H}_n\yvec - \len{\bvec}~Q_{n+1}\evec_1}
+      </mrow>
+      <mrow>
+        \amp = \len{\widetilde{H}_n\yvec -\len{\bvec}~\evec_1}
+      </mrow>
+    </md>.
+    </p>
+
+    <p>To summarize, our task is to find <m>\yvec_n</m> that minimizes
+    <me>
+      \len{\widetilde{H}_n\yvec -\len{\bvec}~\evec_1}
+    </me>.
+    Recall that <m>\widetilde{H}_n</m> is an <m>(n+1)\times n</m>
+    matrix and <m>\evec_1</m> is in <m>\real^{n+1}</m>.  This is a
+    tractable least squares problem since <m>n</m> is assumed to be
+    small.  In particular, we can find a <m>QR</m> factorization of
+    <m>\widetilde{H}_n</m> so that <m>\widetilde{H}_n = QR</m> and
+    then
+    <me>
+      \yvec_n = R^{-1}Q^T\left(\len{b}~\evec_1\right)
+    </me>.
+    (Of course, the <m>Q</m> in this expression is not related to
+    <m>Q_n</m>, which is obtained from Arnoldi iteration.)
+    Once we have <m>\yvec_n</m>, we find <m>\xvec_n=Q_{n}\yvec_n</m>,
+    our approximation to <m>\xvec^*</m>, the solution to the equation
+    <m>A\xvec=\bvec</m>.
+    </p>
+
+    <p>The following cell will form a random <m>200\times 200</m>
+    matrix <m>A</m>, a random vector <m>\xvec^*</m>, and
+    <m>b=A\xvec^*</m>.  This means that
+    <m>\xvec^*</m> is the solution that we want to
+    approximate.</p> 
+
+    <sage>
+      <input>
+import numpy as np
+
+def arnoldi(A, v, n):
+    m = A.nrows()
+    q_list = []
+    h = np.zeros((n+1,n))
+    v = 1/v.norm() * v
+    q_list.append(v)
+    for col in range(n):
+        v = A*v
+        for j, q in enumerate(q_list):
+            h[j][col] = q * v
+            v = v - h[j][col] * q
+            v = vector(v)
+        h[col+1][col] = v.norm()
+        v = 1/v.norm() * v
+        q_list.append(v)
+    if len(q_list) > m:
+        q_list.pop(-1)
+        h = h[:-1]
+    return matrix(q_list).T, matrix(h)
+
+def e1(m):
+    v_entries = [0] * m
+    v_entries[0] = 1
+    v = vector(v_entries)
+    return v
+
+def build_random_A(m):
+    np.random.seed(1)
+    B = np.random.randn(m, m)/np.sqrt(m)
+    A = 0.5 * matrix(B) + 2 * identity_matrix(m)
+    return A
+
+def plot_eigenvalues(A):
+    ev = A.eigenvalues()
+    plt.scatter(ev.real, ev.imag)
+
+m = 200
+A = build_random_A(m)
+
+x_star = vector(np.random.randn(m))
+b = A*x_star
+print("A, x_star, and b are defined now.")
+      </input>
+    </sage>
+
+    <p>Now we perform GMRES for <m>n=1,2,\ldots,20</m>.  For each
+    <m>n</m>, we have an approximate solution <m>\xvec_n</m> so we
+    observe the error <m>\len{\xvec^*-\xvec_n}</m>.
+    </p>
+
+    <sage>
+      <input>
+for n in range(1,21):
+    Qnp1, Hn = arnoldi(A, b, n)
+    Qn = Qnp1.matrix_from_columns(range(n))
+    Q, R = Hn.QR()
+    Q = Q.matrix_from_columns(range(n))
+    R = R.matrix_from_rows(range(n))
+    yn = R.inverse() * Q.T * b.norm() * e1(n+1)
+    xn = Qn * yn
+    print('n =', n, ' Error =', (x_star-xn).norm())
+      </input>
+    </sage>
+
+    <p>In the final step, we are approximating the solution to a
+    <m>200\times 200</m> system with the solution to a <m>21\times
+    20</m> least squares problem.  As you can see, the approximations
+    are excellent.</p>
+
+    <p>These Sage cells implement a simplistic version of GMRES in
+    that it begins Arnoldi iteration from the beginning for each value
+    of <m>n</m>.  A better implementation would reuse the results of
+    the previous iteration so that only one step of Arnoldi would be
+    needed.</p>
+
     
   </subsection>
 
