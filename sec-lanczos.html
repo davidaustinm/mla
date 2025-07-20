@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: denver                         *-->
+<!--*  Palette: ice-fire                     *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Lanczos iteration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math",
+    "renderActions": {
+      "findScript": [
+        10,
+        function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        },
+        ""
+      ]
+    }
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Understanding More Linear Algebra">
+<meta property="book:author" content="David Austin">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.9.1';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.787a04695534ef1e.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.014cb392a13bd045.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.8141ae22fd347e48.css">
+<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script src="_static/pretext/js/lti_iframe_resizer.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><script>// Make *any* div with class 'sagecell-sage' an executable Sage cell
+// Their results will be linked, only within language type
+sagecell.makeSagecell({
+  "inputLocation": "div.sagecell-sage",
+  "linked": true,
+  "linkKey": "linked-sage",
+  "autoeval": false,
+  "languages": [
+    "sage"
+  ],
+  "evalButtonText": "Evaluate (Sage)"
+});
+</script>
+</head>
+<body id="umla" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner"><div class="title-container">
+<h1 class="heading"><a href="my-great-book.html"><span class="title">Understanding More Linear Algebra</span></a></h1>
+<p class="byline">David Austin</p>
+</div></div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
+<div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-arnoldi.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="chap-numerical.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\nul}{\operatorname{nul}}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\avec}{{\mathbf a}}
+\newcommand{\bvec}{{\mathbf b}}
+\newcommand{\cvec}{{\mathbf c}}
+\newcommand{\dvec}{{\mathbf d}}
+\newcommand{\dtil}{\widetilde{\mathbf d}}
+\newcommand{\evec}{{\mathbf e}}
+\newcommand{\fvec}{{\mathbf f}}
+\newcommand{\nvec}{{\mathbf n}}
+\newcommand{\pvec}{{\mathbf p}}
+\newcommand{\qvec}{{\mathbf q}}
+\newcommand{\svec}{{\mathbf s}}
+\newcommand{\tvec}{{\mathbf t}}
+\newcommand{\uvec}{{\mathbf u}}
+\newcommand{\vvec}{{\mathbf v}}
+\newcommand{\wvec}{{\mathbf w}}
+\newcommand{\xvec}{{\mathbf x}}
+\newcommand{\yvec}{{\mathbf y}}
+\newcommand{\zvec}{{\mathbf z}}
+\newcommand{\rvec}{{\mathbf r}}
+\newcommand{\mvec}{{\mathbf m}}
+\newcommand{\zerovec}{{\mathbf 0}}
+\newcommand{\onevec}{{\mathbf 1}}
+\newcommand{\real}{{\mathbb R}}
+\newcommand{\complex}{\mathbb C}
+\newcommand{\field}{\mathbb F}
+\newcommand{\pbb}{\mathbb P}
+\newcommand{\poly}{\mathbb P}
+\newcommand{\basis}[2]{#1_1,#1_2,\ldots,#1_{#2}}
+\newcommand{\conjugate}[1]{\overline{#1}}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
+\end{array}\right]}
+\newcommand{\ctwovec}[2]{\left[\begin{array}{c}#1 \\ #2
+\end{array}\right]}
+\newcommand{\threevec}[3]{\left[\begin{array}{r}#1 \\ #2 \\ #3
+\end{array}\right]}
+\newcommand{\cthreevec}[3]{\left[\begin{array}{c}#1 \\ #2 \\ #3
+\end{array}\right]}
+\newcommand{\fourvec}[4]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\ #4
+\end{array}\right]}
+\newcommand{\cfourvec}[4]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\ #4
+\end{array}\right]}
+\newcommand{\fivevec}[5]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\
+#4 \\ #5 \\ \end{array}\right]}
+\newcommand{\cfivevec}[5]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\
+#4 \\ #5 \\ \end{array}\right]}
+\newcommand{\mattwo}[4]{\left[\begin{array}{rr}#1 \amp #2 \\ #3 \amp #4 \\ \end{array}\right]}
+\newcommand{\laspan}[1]{\operatorname{Span}\{#1\}}
+\newcommand{\bcal}{{\cal B}}
+\newcommand{\ccal}{{\cal C}}
+\newcommand{\dcal}{{\cal D}}
+\newcommand{\ecal}{{\cal E}}
+\newcommand{\scal}{{\cal S}}
+\newcommand{\wcal}{{\cal W}}
+\newcommand{\ecal}{{\cal E}}
+\newcommand{\fcal}{{\cal F}}
+\newcommand{\kcal}{{\cal K}}
+\newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
+\newcommand{\gray}[1]{\color{gray}{#1}}
+\newcommand{\lgray}[1]{\color{lightgray}{#1}}
+\newcommand{\go}{\gray{1}}
+\newcommand{\gz}{\gray{0}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\row}{\operatorname{Row}}
+\newcommand{\col}{\operatorname{Col}}
+\renewcommand{\deg}{\operatorname{deg}}
+\newcommand{\range}{\operatorname{range}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\var}{\text{Var}}
+\newcommand{\corr}{\text{corr}}
+\newcommand{\len}[1]{\left|#1\right|}
+\newcommand{\bbar}{\overline{\bvec}}
+\newcommand{\bhat}{\widehat{\bvec}}
+\newcommand{\bperp}{\bvec^\perp}
+\newcommand{\xhat}{\widehat{\xvec}}
+\newcommand{\vhat}{\widehat{\vvec}}
+\newcommand{\uhat}{\widehat{\uvec}}
+\newcommand{\what}{\widehat{\wvec}}
+\newcommand{\Sighat}{\widehat{\Sigma}}
+\newcommand{\inner}[2]{\langle #1,#2\rangle}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="front-colophon.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="frontmatter-5.html" class="internal"><span class="title">Preface</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-vs.html" class="internal"><span class="codenumber">1</span> <span class="title">Vector spaces</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-vs-intro.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Vector spaces</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Vector spaces</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-4" class="internal"><span class="codenumber">1.1.2</span> <span class="title">Linear combinations</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-5" class="internal"><span class="codenumber">1.1.3</span> <span class="title">Bases</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vs-intro.html#sec-vs-intro-6" class="internal"><span class="codenumber">1.1.4</span> <span class="title">Sums of subspaces</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-lt-intro.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Linear transformations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-3" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Linear transformations</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-4" class="internal"><span class="codenumber">1.2.2</span> <span class="title">The null space and range</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-5" class="internal"><span class="codenumber">1.2.3</span> <span class="title">Vector space isomorphisms</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-6" class="internal"><span class="codenumber">1.2.4</span> <span class="title">Representing linear transformations with matrices</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lt-intro.html#sec-lt-intro-7" class="internal"><span class="codenumber">1.2.5</span> <span class="title">Dual spaces</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-orthogonal.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Inner products</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-3" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Inner products</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#sec-orthogonal-4" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Orthogonality</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#subsec-cauchy-schwarz" class="internal"><span class="codenumber">1.3.3</span> <span class="title">The Cauchy-Schwarz inequality</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-orthogonal.html#subsec-adjoint" class="internal"><span class="codenumber">1.3.4</span> <span class="title">The adjoint of a linear transformation</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-polys.html" class="internal"><span class="codenumber">1.4</span> <span class="title">The minimal polynomial</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-3" class="internal"><span class="codenumber">1.4.1</span> <span class="title">Properties of Polynomials</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-4" class="internal"><span class="codenumber">1.4.2</span> <span class="title">Invariant subspaces</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-5" class="internal"><span class="codenumber">1.4.3</span> <span class="title">The minimal polynomial of a vector</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-polys.html#sec-polys-6" class="internal"><span class="codenumber">1.4.4</span> <span class="title">The minimal polynomial of an operator</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap-std-forms.html" class="internal"><span class="codenumber">2</span> <span class="title">Standard forms</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-upper.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Upper triangular matrices</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-spectral.html" class="internal"><span class="codenumber">2.2</span> <span class="title">The Spectral Theorem</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-spectral.html#sec-spectral-3" class="internal"><span class="codenumber">2.2.1</span> <span class="title">The Schur decomposition</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-spectral.html#sec-spectral-4" class="internal"><span class="codenumber">2.2.2</span> <span class="title">Self-adjoint operators</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-nilpotent.html" class="internal"><span class="codenumber">2.3</span> <span class="title">Nilpotent operators</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-nilpotent.html#subsec-nul-powers" class="internal"><span class="codenumber">2.3.1</span> <span class="title">Null spaces of powers</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-nilpotent.html#sec-nilpotent-4" class="internal"><span class="codenumber">2.3.2</span> <span class="title">Nilpotent operators</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-jordan.html" class="internal"><span class="codenumber">2.4</span> <span class="title">Generalized eigenvectors</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-jordan.html#sec-jordan-3" class="internal"><span class="codenumber">2.4.1</span> <span class="title">Generalized eigenvectors</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-jordan.html#sec-jordan-4" class="internal"><span class="codenumber">2.4.2</span> <span class="title">Complex Vector Spaces</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-jordan.html#sec-jordan-5" class="internal"><span class="codenumber">2.4.3</span> <span class="title">Jordan form</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="chap-numerical.html" class="internal"><span class="codenumber">3</span> <span class="title">Numerical linear algebra</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-power.html" class="internal"><span class="codenumber">3.1</span> <span class="title">The power method</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-power.html#sec-power-3" class="internal"><span class="codenumber">3.1.1</span> <span class="title">The power method</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-power.html#sec-power-4" class="internal"><span class="codenumber">3.1.2</span> <span class="title">The inverse power method</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-power.html#sec-power-5" class="internal"><span class="codenumber">3.1.3</span> <span class="title">The shifted inverse power method</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-qr.html" class="internal"><span class="codenumber">3.2</span> <span class="title">QR methods</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-qr.html#sec-qr-3" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Using orthogonality</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-qr.html#sec-qr-4" class="internal"><span class="codenumber">3.2.2</span> <span class="title">The QR Method</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-qr.html#sec-qr-5" class="internal"><span class="codenumber">3.2.3</span> <span class="title">The shifted QR algorithm</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-arnoldi.html" class="internal"><span class="codenumber">3.3</span> <span class="title">Arnoldi iteration</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-arnoldi.html#sec-arnoldi-3" class="internal"><span class="codenumber">3.3.1</span> <span class="title">Arnoldi iteration</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-arnoldi.html#sec-arnoldi-4" class="internal"><span class="codenumber">3.3.2</span> <span class="title">Krylov subspaces</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-arnoldi.html#sec-arnoldi-5" class="internal"><span class="codenumber">3.3.3</span> <span class="title">Eigenvalues and Arnoldi iteration</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-arnoldi.html#sec-arnoldi-6" class="internal"><span class="codenumber">3.3.4</span> <span class="title">A working example</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-arnoldi.html#sec-arnoldi-7" class="internal"><span class="codenumber">3.3.5</span> <span class="title">GMRES</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec-lanczos.html" class="internal"><span class="codenumber">3.4</span> <span class="title">Lanczos iteration</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lanczos.html#sec-lanczos-3" class="internal"><span class="codenumber">3.4.1</span> <span class="title">Lanczos iteration</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lanczos.html#sec-lanczos-4" class="internal"><span class="codenumber">3.4.2</span> <span class="title">Legendre polynomials</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-lanczos.html#sec-lanczos-5" class="internal"><span class="codenumber">3.4.3</span> <span class="title">Gaussian quadrature</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-lanczos"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">3.4</span><span class="space"> </span><span class="title">Lanczos iteration</span>
+</h2>
+<section class="introduction" id="sec-lanczos-2"><div class="para" id="sec-lanczos-2-1">The <a href="sec-arnoldi.html" class="internal" title="Section 3.3: Arnoldi iteration">last section</a> showed us that Arnoldi iteration can be an effective technique for finding the large eigenvalues of a matrix <span class="process-math">\(A\)</span> and for approximating solutions to linear systems <span class="process-math">\(A\xvec=\bvec\text{.}\)</span>  We began our study of Arnoldi iteration by seeking the Hessenberg form of <span class="process-math">\(A\text{.}\)</span>  That is, we wanted to find an orthogonal matrix <span class="process-math">\(Q\)</span> and a Hessenberg matrix <span class="process-math">\(H\)</span> such that <span class="process-math">\(A=QHQ^T\text{.}\)</span>  Here we specialize to the case when <span class="process-math">\(A\)</span> is symmetric.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></section><section class="subsection" id="sec-lanczos-3"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">3.4.1</span><span class="space"> </span><span class="title">Lanczos iteration</span>
+</h3>
+<div class="para logical" id="sec-lanczos-3-2">
+<div class="para">When <span class="process-math">\(A\)</span> is symmetric, we see that <span class="process-math">\(H=Q^TAQ\)</span> is also symmetric.  This implies that it is tridiagonal so we denote it by <span class="process-math">\(T\)</span> rather than <span class="process-math">\(H\text{.}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+T=\begin{bmatrix}
+\alpha_1 \amp \beta_1 \amp 0 \amp \ldots \amp 0 \\
+\beta_1 \amp \alpha_2 \amp \beta_2 \amp \ldots \amp 0 \\
+0 \amp \beta_2 \amp \alpha_3 \amp \ddots \amp 0 \\
+\vdots \amp \vdots \amp \ddots \amp \ddots \amp \beta_{n-1} \\
+0 \amp 0 \amp \ldots \amp \beta_{n-1} \amp \alpha_{n} \\
+\end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">In this case, Arnoldi iteration simplifies because many terms in the iteration are zero.  This leads to a slight modification of the algorithm that we call <dfn class="terminology">Lanczos iteration.</dfn>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-lanczos-3-3">
+<div class="para">We have the relations</div>
+<div class="displaymath process-math" id="sec-lanczos-3-3-1">
+\begin{align*}
+A\qvec_1 \amp = \alpha_1\qvec_1 + \beta_1\qvec_2\\
+A\qvec_2 \amp = \beta_1\qvec_1 + \alpha_2\qvec_2 + \beta_2\qvec_3\\
+\vdots \amp = \vdots\\
+A\qvec_n \amp = \beta_{n-1}\qvec_{n-1} +
+\alpha_n\qvec_n + \beta_{n}\qvec_{n+1}\text{.}
+\end{align*}
+</div>
+<div class="para">Notice that we have</div>
+<div class="displaymath process-math" id="sec-lanczos-3-3-2">
+\begin{align*}
+\alpha_n \amp = \qvec_n\cdot(A\qvec_n)=r(A,\qvec_n)\\
+\beta_n \amp = \qvec_n\cdot(A\qvec_{n+1}) = \qvec_{n+1}\cdot(A\qvec_n)\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-lanczos-3-4">
+<div class="para">As before, we typically think of <span class="process-math">\(A\)</span> as an <span class="process-math">\(m\times
+m\)</span> matrix where <span class="process-math">\(m\)</span> is very large and that we perform <span class="process-math">\(n\)</span> steps of Lanczos iteration to obtain <span class="process-math">\(Q_n\)</span> and <span class="process-math">\(\widetilde{T}_n\)</span> such that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+AQ_{n} = Q_{n+1}\widetilde{T}_n\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-lanczos-3-5">The following cell defines a function that implements Lanczos iteration and returns <span class="process-math">\(Q_{n+1}\)</span> and <span class="process-math">\(\widetilde{T}_n\text{.}\)</span> It also defines a <span class="process-math">\(203\times 203\)</span> symmetric matrix <span class="process-math">\(A\text{.}\)</span> Evaluate this cell, and we will explore the results in the following cell.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-3-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-lanczos-3-6" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">import numpy as np
+
+def e1(m):
+    v_entries = [0] * m
+    v_entries[0] = 1
+    v = vector(v_entries)
+    return v
+        
+def lanczos(A, v, n):
+    T = []
+    for _ in range(n+1):
+        T.append([0.0] * n)
+
+    q_list = [1/v.norm() * v]
+    for col in range(n):
+        v = A*q_list[-1]
+        if col > 0: 
+            T[col-1][col] = v * q_list[-2]
+            v -= T[col-1][col] * q_list[-2]
+        T[col][col] = v * q_list[-1]
+        v -= T[col][col] * q_list[-1] 
+        v = vector(v)
+        T[col+1][col] = v.norm()
+        q_list.append(1/T[col+1][col] * v)
+    return matrix(q_list).T, matrix(T)
+
+
+np.random.seed(1)
+m = 203
+B = np.random.randn(m,m)/np.sqrt(m)
+B = B + B.T
+B = matrix(B)
+Q, R = B.QR()
+
+D = list(np.linspace(0,2,201))
+D.append(2.5)
+D.append(3.0)
+A = Q*matrix(np.diag(D))*Q.T
+
+print("Matrix A and lanczos(A, v, n) are defined")
+</script></div>
+<div class="para" id="sec-lanczos-3-7">Remember that the eigenvalues of the square matrix <span class="process-math">\(T_n\)</span> approximate the largest eigenvalues of <span class="process-math">\(A\text{.}\)</span>  The next cell defines a value for <span class="process-math">\(n\)</span> and performs <span class="process-math">\(n\)</span> steps of Lanczos iteration on the <span class="process-math">\(203\times203\)</span> matrix <span class="process-math">\(A\)</span> defined in the previous cell.  It will then print the largest eigenvalues of <span class="process-math">\(A\)</span> and <span class="process-math">\(T\)</span> side by side for comparison.  Explore what happens with <span class="process-math">\(n=10\text{,}\)</span> <span class="process-math">\(n=20\text{,}\)</span> <span class="process-math">\(n=40\text{,}\)</span> and <span class="process-math">\(n=80\)</span> and take note of what you observe.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-3-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-lanczos-3-8" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">n = 10
+        
+A_evs = A.eigenvalues()
+A_evs.sort(reverse=True)
+
+Q, T = lanczos(A, e1(A.nrows()), n)
+T = T.matrix_from_rows(range(n))
+T_evs = T.eigenvalues()
+T_evs.sort(reverse=True)
+
+num_evs = min(n, 10)
+for a, t in zip(A_evs[:num_evs], T_evs[:num_evs]):
+    print(N(a), N(t))
+</script></div>
+<div class="para" id="sec-lanczos-3-9">As <span class="process-math">\(n\)</span> grows, we eventually encounter a problem.  Because <span class="process-math">\(A\)</span> is symmetric, we know that the matrix <span class="process-math">\(T\)</span> is tridiagonal, which dramatically reduces the amount of computation we need to perform.  However, we do not explicitly enforce orthogonality between the last vector <span class="process-math">\(\qvec_k\)</span> created and the earlier ones.  Since we cannot perform exact arithmetic with a computer, round off error eventually means that <span class="process-math">\(\qvec_k\)</span> is not perfectly orthogonal to the earlier vectors.  Remembering that the power method underlies this technique, as we continue iterating, we reintroduce a nonzero contribution from the eigenvector associated to the largest eigenvalue.  Consequently, we find the largest eigenvalue a second, and then a third, time. This is a spooky situation so we call these “ghost eigenvalues.”  There is a rich theory that aims to exorcise them.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-3-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsection 3.4.1: Lanczos iteration"><a href="#sec-lanczos-3" title="Copy heading and permalink for Subsection 3.4.1: Lanczos iteration" aria-label="Copy heading and permalink for Subsection 3.4.1: Lanczos iteration">🔗</a></div></section><section class="subsection" id="sec-lanczos-4"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">3.4.2</span><span class="space"> </span><span class="title">Legendre polynomials</span>
+</h3>
+<div class="para logical" id="sec-lanczos-4-2">
+<div class="para">Let’s turn our attention to the inner product space of polynomials <span class="process-math">\(\pbb\)</span> with the inner product</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\inner{p}{q} = \int_{-1}^1 p(x)q(x)~dx\text{.}
+\end{equation*}
+</div>
+<div class="para">We also define the operator <span class="process-math">\(S:\pbb\to\pbb\)</span> by <span class="process-math">\(S(p)(x) =
+xp(x)\text{,}\)</span> that is, <span class="process-math">\(S\)</span> multiplies a polynomial by <span class="process-math">\(x\text{.}\)</span> This is a self-adjoint operator because</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\inner{xp(x)}{q(x)} = \int_{-1}^1 xp(x)q(x)~dx =
+\int_{-1}^1 p(x)\left(xq(x)\right)~dx = \inner{p(x)}{xq(x)}
+\end{equation*}
+</div>
+<div class="para">so we can apply Lanczos iteration to produce an orthogonal basis of <span class="process-math">\(\pbb_n\)</span> for some finite <span class="process-math">\(n\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-lanczos-4-3">
+<div class="para">We begin with <span class="process-math">\(p_0(x) = 1\text{,}\)</span> which defines <span class="process-math">\(q_0 =
+\frac1{\len{p_0}}~p_0 = \frac1{\sqrt{2}}\text{.}\)</span>  Our iterative steps have the form</div>
+<div class="displaymath process-math" id="sec-lanczos-4-3-3">
+\begin{align*}
+xq_0(x) \amp = \alpha_1 q_0(x) + \beta_1 q_1(x)\\
+xq_1(x) \amp = \beta_1 q_0(x) + \alpha_2 q_1(x) + \beta_2 q_2(x)\\
+\vdots \amp = \vdots\\
+xq_n(x) \amp = \beta_n q_{n-1}(x) + \alpha_{n+1} q_n(x) +
+\beta_{n+1} q_{n+1}(x)\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-4-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-lanczos-4-4">The following Sage cell implements this algorithm and displays the resulting polynomials with <span class="process-math">\(n=6\text{.}\)</span>  Sage does not do a particularly good job of simplifying and displaying the polynomials.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-4-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-lanczos-4-5" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">def inner(p, q):
+    return integrate(p*q, x, -1, 1)
+def norm(p):
+    return sqrt(inner(p,p))
+        
+def lanczos_poly(n):
+    T = []
+    for _ in range(n+1):
+        T.append([0]*n)
+    v = 1/sqrt(2)
+    q_list = [v]
+    for col in range(n):
+        v = x*v
+        if col > 0:
+            T[col-1][col] = simplify(inner(v, q_list[-2]))
+            v -= T[col-1][col]*q_list[-2]
+        T[col][col] = simplify(inner(v, q_list[-1]))
+        v -= T[col][col]*q_list[-1]
+        T[col+1][col] = simplify(norm(v))
+        v = 1/T[col+1][col] * v
+        v = simplify(v)
+        q_list.append(v)
+    return q_list, matrix(T)
+
+Q, T = lanczos_poly(6)    
+for i, q in enumerate(Q):
+    print(i, q)
+</script></div>
+<div class="para logical" id="sec-lanczos-4-6">
+<div class="para">You may notice that each polynomial <span class="process-math">\(q_k(x)\)</span> has only even powers of <span class="process-math">\(x\)</span> if <span class="process-math">\(k\)</span> is even and only odd powers if <span class="process-math">\(k\)</span> is odd.  For this reason,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\alpha_{k}=\inner{xq_{k-1}}{q_{k-1}} = 0
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(k\text{.}\)</span>  That is, the diagonal entries of <span class="process-math">\(T_n\)</span> are zero.  This can be used to simplify the computation further, but we will not explicitly make use of this fact since it does not hold in other, related situations.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-4-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-lanczos-4-7">The orthogonal polynomials we are creating are called <dfn class="terminology">Legendre polynomials</dfn>.  Technically speaking, they are scalar multiples of the Legendre polynomials <span class="process-math">\(P_k\text{.}\)</span>  Our polynomials <span class="process-math">\(q_k\)</span> are normalized to have unit length in the inner product space, while Legendre polynomials are usually normalized so that <span class="process-math">\(P_k(1)=1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-4-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsection 3.4.2: Legendre polynomials"><a href="#sec-lanczos-4" title="Copy heading and permalink for Subsection 3.4.2: Legendre polynomials" aria-label="Copy heading and permalink for Subsection 3.4.2: Legendre polynomials">🔗</a></div></section><section class="subsection" id="sec-lanczos-5"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">3.4.3</span><span class="space"> </span><span class="title">Gaussian quadrature</span>
+</h3>
+<div class="para logical" id="sec-lanczos-5-2">
+<div class="para">By a <dfn class="terminology">quadrature</dfn>, we mean a recipe for approximating a definite integral, such as</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int_{-1}^1 f(x) ~dx \approx \sum_{j=1}^n c_jf(x_j)
+\end{equation*}
+</div>
+<div class="para">for a set of weights <span class="process-math">\(c_j\)</span> and points <span class="process-math">\(x_j\)</span> called <dfn class="terminology">nodes</dfn>.  A simple quadrature is given by right endpoints, which is typically how a discussion of integrals begins:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int_{-1}^1 f(x) ~dx \approx \sum_{j=1}^n
+\frac1{2n}f\left(-1+2j/n\right)\text{.}
+\end{equation*}
+</div>
+<div class="para">It turns out that Legendre polynomials provide an excellent quadrature, as we will now explore.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-lanczos-5-3">In designing a quadrature, our goal is to create an accurate approximation for a large class of functions.  If we have <span class="process-math">\(n\)</span> nodes, <span class="process-math">\(\basis{x}{n}\text{,}\)</span> a natural criterion is that our quadrature be exact on all polynomials having degree less than <span class="process-math">\(n\text{.}\)</span>  We will see how to satisfy this criterion with an appropriate choice of weights <span class="process-math">\(c_j\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-lanczos-5-4">
+<div class="para">With a given set of nodes <span class="process-math">\(\basis{x}{n}\text{,}\)</span> we define the <dfn class="terminology">Lagrange interpolating polynomial</dfn>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+L_{n,j}(x) =
+\frac{(x-x_1)(x-x_2)\ldots\widehat{(x-x_j)}\ldots (x-x_n)}
+{(x_j-x_1)(x_j-x_2)\ldots\widehat{(x_j-x_j)}\ldots (x_j-x_n)}
+\end{equation*}
+</div>
+<div class="para">where the terms <span class="process-math">\(\widehat{(x-x_j)}\)</span> are removed.  Notice that <span class="process-math">\(\deg(L_{n,j}) = n-1\)</span> and that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+L_{n,j}(x_k) = \begin{cases}
+1 \amp \text{ if } j=k \\
+0 \amp \text{ if } j\neq k \\
+\end{cases}\text{.}
+\end{equation*}
+</div>
+<div class="para">This means that the polynomials <span class="process-math">\(L_{n,j}\)</span> form a basis for <span class="process-math">\(\pbb_{n-1}\text{.}\)</span>  If we define</div>
+<div class="displaymath process-math">
+\begin{equation*}
+c_j = \int_{-1}^1L_{n,j}(x)~dx\text{,}
+\end{equation*}
+</div>
+<div class="para">then the quadrature is exact on each <span class="process-math">\(L_{n,j}\)</span> and hence all of <span class="process-math">\(\pbb_{n-1}\)</span> by linearity.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-lanczos-5-5">This says that we can choose any set of nodes and find a quadrature that is exact on <span class="process-math">\(\pbb_{n-1}\text{.}\)</span>  The Legendre polynomials give us a particularly good choice of nodes if we choose <span class="process-math">\(\basis{x}{n}\)</span> to be the roots of the <span class="process-math">\(n^{th}\)</span> degree Legendre polynomial <span class="process-math">\(q_n\text{.}\)</span>  (These are also the roots of the classically defined Legendre polynomial <span class="process-math">\(P_n\)</span> since <span class="process-math">\(q_n\)</span> and <span class="process-math">\(P_n\)</span> differ by a scalar multiple.)<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-lanczos-5-6">
+<div class="para">Let’s explore why this is a good choice.  We choose the weights <span class="process-math">\(c_j\)</span> so that the quadrature is exact on <span class="process-math">\(\pbb_{n-1}\)</span> as just described. Suppose that <span class="process-math">\(p\)</span> is a polynomial whose degree is less than <span class="process-math">\(2n\text{.}\)</span>  By the <a href="sec-polys.html#prop-poly-division" class="xref" data-knowl="./knowl/xref/prop-poly-division.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.4.3: The Division Algorithm">Division Algorithm</a>, we have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-poly-division.html">
+\begin{equation*}
+p = sq_n + r
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(\deg(r)\lt n\)</span> so that <span class="process-math">\(r\)</span> is in <span class="process-math">\(\pbb_{n-1}\text{,}\)</span> which means that the quadrature is exact on <span class="process-math">\(r\text{.}\)</span>  In addition <span class="process-math">\(\deg(s)\lt n\)</span> so that <span class="process-math">\(s\)</span> can be written as a linear combination of <span class="process-math">\(\basis{q}{n-1}\text{,}\)</span> which means that <span class="process-math">\(s\)</span> is orthogonal to <span class="process-math">\(q_n\text{.}\)</span>  We then have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-poly-division.html" id="sec-lanczos-5-6-16">
+\begin{align*}
+\int_{-1}^1 p(x)~dx \amp =
+\int_{-1}^1 s(x)q_n(x)~dx +\int_{-1}^1 r(x)~dx\\
+\amp = \int_{-1}^1 r(x)~dx\\
+\amp = \sum_{j=1}^n c_jr(x_j)\\
+\amp = \sum_{j=1}^n c_j\left(s(x_j)q_n(x_j) + r(x_j)\right)\\
+\amp = \sum_{j=1}^n c_j p(x_j)\text{.}
+\end{align*}
+</div>
+<div class="para">The second equality is due to the fact that <span class="process-math">\(s\)</span> and <span class="process-math">\(q_n\)</span> are orthogonal, and the fourth equality follows from the fact that <span class="process-math">\(q_n(x_j) = 0\)</span> for all <span class="process-math">\(j\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-lanczos-5-7">This is remarkable because it says that the quadrature defined in this way is exact on polynomials whose degree is less than <span class="process-math">\(2n\text{.}\)</span>  In other words, the degree to which we obtain accuracy is double what we would naively expect.  This technique is called <dfn class="terminology">Gaussian quadrature.</dfn><div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-lanczos-5-8">
+<div class="para">Finding roots of polynomials is numerically unstable so we need a way to find the nodes <span class="process-math">\(x_j\text{,}\)</span> which are the roots of <span class="process-math">\(q_n\text{.}\)</span>  Lanczos iteration can help with that.  We will write out the steps in the iteration evaluating each of the polynomials at <span class="process-math">\(x_j\)</span> for one of the nodes.</div>
+<div class="displaymath process-math" id="sec-lanczos-5-8-4">
+\begin{align*}
+x_jq_0(x_j) \amp = \alpha_1 q_0(x_j) + \beta_1 q_1(x_j)\\
+x_jq_1(x_j) \amp = \beta_1 q_0(x_j) + \alpha_2 q_1(x_j) +
+\beta_2 q_2(x_j)\\
+\vdots \amp = \vdots\\
+x_jq_{n-1}(x_j) \amp = \beta_{n-1} q_{n-2}(x_j) + \alpha_{n}
+q_{n-1}(x_j) + \beta_{n} q_{n}(x_j)\text{.}
+\end{align*}
+</div>
+<div class="para">However, since <span class="process-math">\(q_n(x_j)=0\text{,}\)</span> the final expression reduces to</div>
+<div class="displaymath process-math">
+\begin{equation*}
+x_jq_{n-1}(x_j) = \beta_{n-1} q_{n-2}(x_j) + \alpha_{n}
+q_{n-1}(x_j)\text{.}
+\end{equation*}
+</div>
+<div class="para">This means that if we define the matrix and vector</div>
+<div class="displaymath process-math">
+\begin{equation*}
+T_n = \begin{bmatrix}
+\alpha_1 \amp \beta_1 \amp 0 \amp \ldots \amp 0 \\
+\beta_1 \amp \alpha_2 \amp \beta_2 \amp \ldots \amp 0 \\
+0 \amp \beta_2 \amp \alpha_3 \amp \ddots \amp 0 \\
+\vdots \amp \vdots \amp \ddots \amp \ddots \amp \beta_{n-1} \\
+0 \amp 0 \amp \ldots \amp \beta_{n-1} \amp \alpha_{n} \\
+\end{bmatrix},
+\hspace{12pt}
+\vvec_j = \cfourvec{q_0(x_j)}{q_1(x_j)}{\vdots}{q_{n-1}(x_j)}\text{,}
+\end{equation*}
+</div>
+<div class="para">then we have</div>
+<div class="displaymath process-math">
+\begin{equation*}
+T_n\vvec_j = x_j\vvec_j\text{.}
+\end{equation*}
+</div>
+<div class="para">In other words, the nodes <span class="process-math">\(x_j\)</span> are the eigenvalues of the tridiagonal matrix <span class="process-math">\(T\)</span> and can be found with, say, the shifted <span class="process-math">\(QR\)</span> algorithm.  In addition, the eigenvectors are given by evaluating the Legendre polynomials at the nodes.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="sec-lanczos-5-9"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">3.4.1</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-lanczos-5-9-1-1">If <span class="process-math">\(T_n\)</span> is the tridiagonal matrix that results from <span class="process-math">\(n\)</span> steps of Lanczos iteration, then the eigenvalues of <span class="process-math">\(T_n\)</span> are <span class="process-math">\(x_j\text{,}\)</span> the roots of the <span class="process-math">\(n^{th}\)</span> Legendre polynomial <span class="process-math">\(q_n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="sec-lanczos-5-9-1-2">
+<div class="para">Moreover, if we define eigenvectors <span class="process-math">\(\vvec_j =
+\cfourvec{q_0(x_j)}{q_1(x_j)}{\vdots}{q_{n-1}(x_j)}\text{,}\)</span> then the weights in the quadrature are given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+c_j=\frac{1}{\len{\vvec_j}^2}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-9-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 3.4.1"><a href="#sec-lanczos-5-9" title="Copy heading and permalink for Theorem 3.4.1" aria-label="Copy heading and permalink for Theorem 3.4.1">🔗</a></div></article><div class="para" id="sec-lanczos-5-10">We will not prove the statement about the weights in the quadrature, but this is again a remarkable turn of events since it implies that we can develop Gaussian quadrature using only numerically stable linear algebraic operations.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-lanczos-5-11">Evaluate the following cell to again define the function <code class="code-inline tex2jax_ignore">Q, T = lanczos(n)</code>.  We will use this in the next few cells.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-lanczos-5-12" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">def inner(p, q):
+    return integrate(p*q, x, -1, 1)
+def norm(p):
+    return sqrt(inner(p,p))
+
+def lanczos_poly(n):
+    T = []
+    for _ in range(n+1):
+        T.append([0]*n)
+    v = 1/sqrt(2)
+    q_list = [v]
+    for col in range(n):
+        v = x*v
+        if col > 0:
+            T[col-1][col] = simplify(inner(v, q_list[-2]))
+            v -= T[col-1][col]*q_list[-2]
+        T[col][col] = simplify(inner(v, q_list[-1]))
+        v -= T[col][col]*q_list[-1]
+        T[col+1][col] = simplify(norm(v))
+        v = 1/T[col+1][col] * v
+        v = simplify(v)
+        q_list.append(v)
+    return q_list, matrix(T)
+
+print("lanczos(n) is now defined.")
+</script></div>
+<div class="para" id="sec-lanczos-5-13">We now choose a value of <span class="process-math">\(n=6\)</span> and find the nodes and weights for the quadrature.  We also define a functionn <code class="code-inline tex2jax_ignore">quad(f)</code> that computes the quadrature applied to the function <span class="process-math">\(f(x)\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-lanczos-5-14" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">n = 6
+
+Q, T = lanczos_poly(n)
+Q.pop(-1)
+T = matrix(RDF, T.matrix_from_rows(range(n)))
+nodes = T.eigenvalues()
+weights = []
+for j in range(n):
+    v = vector([q.subs(x=nodes[j]) for q in Q])
+    weights.append(1/(v*v))
+weights = vector(weights)
+print('nodes   =', vector(nodes).numerical_approx(digits=6))
+print('weights =', weights.numerical_approx(digits=6))
+
+def quad(f):
+    return weights * vector([f.subs(x=n) for n in nodes])
+</script></div>
+<div class="para" id="sec-lanczos-5-15">Due to the symmetry of the weights and nodes, the quadrature should be zero on all odd powers of <span class="process-math">\(x\text{,}\)</span> which we expect since the integral of an odd power is zero by symmetry.  The following cell considers even powers <span class="process-math">\(0,2,4,\ldots,20\)</span> and compares the result of the quadrature to the exact value <span class="process-math">\(\int_{-1}^1x^{2j}~dx = 2/(2j+1)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-15" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-lanczos-5-16" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">for j in range(11):
+    print(2*j, quad(x^(2*j)), float(2/(2*j+1)))
+</script></div>
+<div class="para" id="sec-lanczos-5-17">Since <span class="process-math">\(n=6\text{,}\)</span> we expect the quadrature to be exact up to degree <span class="process-math">\(2n-1 = 11\text{,}\)</span> and this demonstration confirms our expectation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-17" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-lanczos-5-18">Finally, we compare the quadrature to the exact value for the function <span class="process-math">\(f(x)=e^{-x^2}\text{,}\)</span> which cannot be evaluated by antidifferentiation. This result has a relative error of less than <span class="process-math">\(10^{-6}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-18" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-lanczos-5-19" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">print('Quadrature =', quad(exp(-x^2)))
+print('Exact      =', integrate(exp(-x^2),x,-1,1).numerical_approx(digits=17))
+</script></div>
+<div class="autopermalink" data-description="Subsection 3.4.3: Gaussian quadrature"><a href="#sec-lanczos-5" title="Copy heading and permalink for Subsection 3.4.3: Gaussian quadrature" aria-label="Copy heading and permalink for Subsection 3.4.3: Gaussian quadrature">🔗</a></div></section><div class="autopermalink" data-description="Section 3.4: Lanczos iteration"><a href="#sec-lanczos" title="Copy heading and permalink for Section 3.4: Lanczos iteration" aria-label="Copy heading and permalink for Section 3.4: Lanczos iteration">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="sec-arnoldi.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>
