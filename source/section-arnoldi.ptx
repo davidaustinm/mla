@@ -900,6 +900,14 @@ for n in range(1,21):
     the previous iteration so that only one step of Arnoldi would be
     needed.</p>
 
+    <p>One possible problem with Arnoldi iteration, and therefore with
+    GMRES, is that we need to store all of the previous vectors
+    <m>\qvec_j</m> and these are <m>m</m>-dimensional vectors.  This
+    means that we may run out of memory before we have found a suitably
+    accurate approximation.  For this reason, there are several
+    strategies for <q>restarting</q> Arnoldi once we reach that
+    point.</p>
+
     
   </subsection>
 

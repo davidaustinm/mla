@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-lanczos" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Lanczos iteration</title>
+
+  <introduction>
+    <p>The <xref ref="sec-arnoldi" text="custom">last section</xref>
+    showed us that Arnoldi iteration can be an effective technique for
+    finding the large eigenvalues of a matrix <m>A</m> and for
+    approximating solutions to linear systems <m>A\xvec=\bvec</m>.  We
+    began our study of Arnoldi iteration by seeking the Hessenberg
+    form of <m>A</m>.  That is, we wanted to find an orthogonal matrix
+    <m>Q</m> and a Hessenberg matrix <m>H</m> such that
+    <m>A=QHQ^T</m>.  Here we specialize to the case when <m>A</m> is
+    symmetric.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>Lanczos iteration</title>
+
+    <p>When <m>A</m> is symmetric, we see that <m>H=Q^TAQ</m> is also
+    symmetric.  This implies that it is tridiagonal so we denote
+    it by <m>T</m> rather than <m>H</m>.
+    <me>
+      T=\begin{bmatrix}
+      \alpha_1 \amp \beta_1 \amp 0 \amp \ldots \amp 0 \\
+      \beta_1 \amp \alpha_2 \amp \beta_2 \amp \ldots \amp 0 \\
+      0 \amp \beta_2 \amp \alpha_3 \amp \ddots \amp 0 \\
+      \vdots \amp \vdots \amp \ddots \amp \ddots \amp \beta_{n-1} \\
+      0 \amp 0 \amp \ldots \amp \beta_{n-1} \amp \alpha_{n} \\
+      \end{bmatrix}
+    </me>.
+    In this case, Arnoldi iteration simplifies because many terms in
+    the iteration are zero.  This leads to a slight modification of
+    the algorithm that we call <term>Lanczos iteration.</term>
+    </p>
+
+    <p>We have the relations
+    <md>
+      <mrow>
+        A\qvec_1 \amp = \alpha_1\qvec_1 + \beta_1\qvec_2
+      </mrow>
+      <mrow>
+        A\qvec_2 \amp = \beta_1\qvec_1 + \alpha_2\qvec_2 + \beta_2\qvec_3
+      </mrow>
+      <mrow>
+        \vdots \amp = \vdots
+      </mrow>
+      <mrow>
+        A\qvec_n \amp = \beta_{n-1}\qvec_{n-1} +
+        \alpha_n\qvec_n + \beta_{n}\qvec_{n+1}
+      </mrow>
+    </md>.
+    Notice that we have
+    <md>
+      <mrow>
+        \alpha_n \amp = \qvec_n\cdot(A\qvec_n)=r(A,\qvec_n)
+      </mrow>
+      <mrow>
+        \beta_n \amp = \qvec_n\cdot(A\qvec_{n+1}) = \qvec_{n+1}\cdot(A\qvec_n)
+      </mrow>
+    </md>.
+    </p>
+
+    <p>As before, we typically think of <m>A</m> as an <m>m\times
+    m</m> matrix where <m>m</m> is very large and that we perform
+    <m>n</m> steps of Lanczos iteration to obtain <m>Q_n</m> and
+    <m>\widetilde{T}_n</m> such that
+    <me>
+      AQ_{n} = Q_{n+1}\widetilde{T}_n
+    </me>.
+    </p>
+    
+    <p>The following cell defines a function that implements Lanczos
+    iteration and returns <m>Q_{n+1}</m> and <m>\widetilde{T}_n</m>.
+    It also defines a <m>203\times 203</m> symmetric matrix <m>A</m>.
+    Evaluate this cell, and we will explore the results in the
+    following cell.
+    </p>
+
+    <sage>
+      <input>
+import numpy as np
+
+def e1(m):
+    v_entries = [0] * m
+    v_entries[0] = 1
+    v = vector(v_entries)
+    return v
+        
+def lanczos(A, v, n):
+    T = []
+    for _ in range(n+1):
+        T.append([0.0] * n)
+
+    q_list = [1/v.norm() * v]
+    for col in range(n):
+        v = A*q_list[-1]
+        if col > 0: 
+            T[col-1][col] = v * q_list[-2]
+            v -= T[col-1][col] * q_list[-2]
+        T[col][col] = v * q_list[-1]
+        v -= T[col][col] * q_list[-1] 
+        v = vector(v)
+        T[col+1][col] = v.norm()
+        q_list.append(1/T[col+1][col] * v)
+    return matrix(q_list).T, matrix(T)
+
+
+np.random.seed(1)
+m = 203
+B = np.random.randn(m,m)/np.sqrt(m)
+B = B + B.T
+B = matrix(B)
+Q, R = B.QR()
+
+D = list(np.linspace(0,2,201))
+D.append(2.5)
+D.append(3.0)
+A = Q*matrix(np.diag(D))*Q.T
+
+print("Matrix A and lanczos(A, v, n) are defined")
+      </input>
+    </sage>
+
+    <p>Remember that the eigenvalues of the square matrix <m>T_n</m>
+    approximate the largest eigenvalues of <m>A</m>.  The next cell
+    defines a value for <m>n</m> and performs
+    <m>n</m> steps of Lanczos iteration on the <m>203\times203</m>
+    matrix <m>A</m> defined in the previous cell.  It will then print
+    the largest eigenvalues of <m>A</m> and <m>T</m> side by side for
+    comparison.  Explore what happens with <m>n=10</m>, <m>n=20</m>,
+    <m>n=40</m>, and <m>n=80</m> and take note of what you observe.</p>
+
+    <sage>
+      <input>
+n = 10
+        
+A_evs = A.eigenvalues()
+A_evs.sort(reverse=True)
+
+Q, T = lanczos(A, e1(A.nrows()), n)
+T = T.matrix_from_rows(range(n))
+T_evs = T.eigenvalues()
+T_evs.sort(reverse=True)
+
+num_evs = min(n, 10)
+for a, t in zip(A_evs[:num_evs], T_evs[:num_evs]):
+    print(N(a), N(t))
+
+      </input>
+    </sage>
+
+    <p>As <m>n</m> grows, we eventually encounter a problem.  Because
+    <m>A</m> is symmetric, we know that the matrix <m>T</m> is
+    tridiagonal, which dramatically reduces the amount of computation
+    we need to perform.  However, we do not explicitly enforce
+    orthogonality between the last vector <m>\qvec_k</m> created and
+    the earlier ones.  Since we cannot perform exact arithmetic with a
+    computer, round off error eventually means that <m>\qvec_k</m> is
+    not perfectly orthogonal to the earlier vectors.  Remembering
+    that the power method underlies this technique, as we continue
+    iterating, we reintroduce a nonzero contribution from the
+    eigenvector associated to the largest eigenvalue.  Consequently,
+    we find the largest eigenvalue a second, and then a third, time.
+    This is a spooky situation so we call these <q>ghost
+    eigenvalues.</q>  There is a rich theory that aims to exorcise
+    them.</p>
+
+  </subsection>
+
+  <subsection>
+    <title>Legendre polynomials</title>
+
+    <p>Let's turn our attention to the inner product space of
+    polynomials <m>\pbb</m> with the inner product
+    <me>
+      \inner{p}{q} = \int_{-1}^1 p(x)q(x)~dx
+    </me>.
+    We also define the operator <m>S:\pbb\to\pbb</m> by <m>S(p)(x) =
+    xp(x)</m>, that is, <m>S</m> multiplies a polynomial by <m>x</m>.
+    This is a self-adjoint operator because
+    <me>
+      \inner{xp(x)}{q(x)} = \int_{-1}^1 xp(x)q(x)~dx =
+      \int_{-1}^1 p(x)\left(xq(x)\right)~dx = \inner{p(x)}{xq(x)}
+    </me>
+    so we can apply Lanczos iteration to produce an orthogonal basis
+    of <m>\pbb_n</m> for some finite <m>n</m>.</p>
+
+    <p>We begin with <m>p_0(x) = 1</m>, which defines <m>q_0 =
+    \frac1{\len{p_0}}~p_0 = \frac1{\sqrt{2}}</m>.  Our
+    iterative steps have the form
+    <md>
+      <mrow>
+        xq_0(x) \amp = \alpha_1 q_0(x) + \beta_1 q_1(x)
+      </mrow>
+      <mrow>
+        xq_1(x) \amp = \beta_1 q_0(x) + \alpha_2 q_1(x) + \beta_2 q_2(x)
+      </mrow>
+      <mrow>
+        \vdots \amp = \vdots
+      </mrow>
+      <mrow>
+        xq_n(x) \amp = \beta_n q_{n-1}(x) + \alpha_{n+1} q_n(x) +
+        \beta_{n+1} q_{n+1}(x)
+      </mrow>
+    </md>.
+    </p>
+
+    <p>The following Sage cell implements this algorithm and displays
+    the resulting polynomials with <m>n=6</m>.  Sage does not do a
+    particularly good job of simplifying and displaying the
+    polynomials.</p>
+
+    <sage>
+      <input>
+def inner(p, q):
+    return integrate(p*q, x, -1, 1)
+def norm(p):
+    return sqrt(inner(p,p))
+        
+def lanczos_poly(n):
+    T = []
+    for _ in range(n+1):
+        T.append([0]*n)
+    v = 1/sqrt(2)
+    q_list = [v]
+    for col in range(n):
+        v = x*v
+        if col > 0:
+            T[col-1][col] = simplify(inner(v, q_list[-2]))
+            v -= T[col-1][col]*q_list[-2]
+        T[col][col] = simplify(inner(v, q_list[-1]))
+        v -= T[col][col]*q_list[-1]
+        T[col+1][col] = simplify(norm(v))
+        v = 1/T[col+1][col] * v
+        v = simplify(v)
+        q_list.append(v)
+    return q_list, matrix(T)
+
+Q, T = lanczos_poly(6)    
+for i, q in enumerate(Q):
+    print(i, q)
+
+      </input>
+    </sage>
+
+    <p>You may notice that each polynomial <m>q_k(x)</m> has only even
+    powers of <m>x</m> if <m>k</m> is even and only odd powers if
+    <m>k</m> is odd.  For this reason,
+    <me>
+      \alpha_{k}=\inner{xq_{k-1}}{q_{k-1}} = 0
+    </me>
+    for all <m>k</m>.  That is, the diagonal entries of <m>T_n</m> are
+    zero.  This can be used to simplify the computation further, but
+    we will not explicitly make use of this fact since it does not
+    hold in other, related situations.</p>
+
+    <p>The orthogonal polynomials we are creating are called
+    <term>Legendre polynomials</term>.  Technically speaking, they are
+    scalar multiples of the Legendre polynomials <m>P_k</m>.  Our
+    polynomials <m>q_k</m> are normalized to have unit length in the
+    inner product space, while Legendre polynomials are usually
+    normalized so that <m>P_k(1)=1</m>.</p>
+  </subsection>
+
+  <subsection>
+    <title>Gaussian quadrature</title>
+    
+    <p>By a <term>quadrature</term>, we mean a recipe for
+    approximating a definite integral, such as
+    <me>
+      \int_{-1}^1 f(x) ~dx \approx \sum_{j=1}^n c_jf(x_j)
+    </me>
+    for a set of weights <m>c_j</m> and points <m>x_j</m> called
+    <term>nodes</term>.  A simple quadrature is given by right
+    endpoints, which is typically how a discussion of integrals
+    begins:
+    <me>
+      \int_{-1}^1 f(x) ~dx \approx \sum_{j=1}^n
+      \frac1{2n}f\left(-1+2j/n\right)
+    </me>.
+    It turns out that Legendre polynomials
+    provide an excellent quadrature, as we will now explore.
+    </p>
+    
+    <p>In designing a quadrature, our goal is to create an accurate
+    approximation for a large class of functions.  If we have
+    <m>n</m> nodes, <m>\basis{x}{n}</m>, a natural criterion is that
+    our quadrature be exact on all polynomials having degree less
+    than <m>n</m>.  We will see how to satisfy this criterion with an
+    appropriate choice of weights <m>c_j</m>.
+    </p>
+    
+    <p>With a given set of nodes <m>\basis{x}{n}</m>, we define the
+    <term>Lagrange interpolating polynomial</term>
+    <me>
+      L_{n,j}(x) =
+      \frac{(x-x_1)(x-x_2)\ldots\widehat{(x-x_j)}\ldots (x-x_n)}
+      {(x_j-x_1)(x_j-x_2)\ldots\widehat{(x_j-x_j)}\ldots (x_j-x_n)}
+    </me>
+    where the terms <m>\widehat{(x-x_j)}</m> are removed.  Notice that
+    <m>\deg(L_{n,j}) = n-1</m> and that
+    <me>
+      L_{n,j}(x_k) = \begin{cases}
+      1 \amp \text{ if } j=k \\
+      0 \amp \text{ if } j\neq k \\
+      \end{cases}
+    </me>.
+    This means that the polynomials <m>L_{n,j}</m> form a basis for
+    <m>\pbb_{n-1}</m>.  If we define
+    <me>
+      c_j = \int_{-1}^1L_{n,j}(x)~dx
+    </me>,
+    then the quadrature is exact on each <m>L_{n,j}</m> and hence all
+    of <m>\pbb_{n-1}</m> by linearity.
+    </p>
+
+    <p>This says that we can choose any set of nodes and find a
+    quadrature that is exact on <m>\pbb_{n-1}</m>.  The Legendre
+    polynomials give us a particularly good choice of nodes if we
+    choose <m>\basis{x}{n}</m> to be the roots of the <m>n^{th}</m>
+    degree Legendre polynomial <m>q_n</m>.  (These are also the roots
+    of the classically defined Legendre polynomial <m>P_n</m>
+    since <m>q_n</m> and <m>P_n</m> differ by a scalar multiple.)</p>
+
+    <p>Let's explore why this is a good choice.  We choose the weights
+    <m>c_j</m> so that the quadrature is exact on <m>\pbb_{n-1}</m> as
+    just described.
+    Suppose that <m>p</m> is a polynomial whose degree is less than
+    <m>2n</m>.  By the <xref ref="prop-poly-division"
+    text="custom">Division Algorithm</xref>, we have
+    <me>
+      p = sq_n + r
+    </me>
+    where <m>\deg(r)\lt n</m> so that <m>r</m> is in
+    <m>\pbb_{n-1}</m>, which means that the quadrature is exact on
+    <m>r</m>.  In addition <m>\deg(s)\lt n</m> so
+    that <m>s</m> can be written as a linear combination of
+    <m>\basis{q}{n-1}</m>, which means that <m>s</m> is orthogonal to
+    <m>q_n</m>.  We then have
+    <md>
+      <mrow>
+        \int_{-1}^1 p(x)~dx \amp =
+        \int_{-1}^1 s(x)q_n(x)~dx +\int_{-1}^1 r(x)~dx
+      </mrow>
+      <mrow>
+        \amp = \int_{-1}^1 r(x)~dx
+      </mrow>
+      <mrow>
+        \amp = \sum_{j=1}^n c_jr(x_j)
+      </mrow>
+      <mrow>
+        \amp = \sum_{j=1}^n c_j\left(s(x_j)q_n(x_j) + r(x_j)\right)
+      </mrow>
+      <mrow>
+        \amp = \sum_{j=1}^n c_j p(x_j)
+      </mrow>
+    </md>.
+    The second equality is due to the fact that <m>s</m> and
+    <m>q_n</m> are orthogonal, and the fourth equality follows from
+    the fact that <m>q_n(x_j) = 0</m> for all <m>j</m>.
+    </p>
+
+    <p>This is remarkable because it says that the quadrature defined
+    in this way is exact on polynomials whose degree is less than
+    <m>2n</m>.  In other words, the degree to which we obtain accuracy
+    is double what we would naively expect.  This technique is called
+    <term>Gaussian quadrature.</term></p>
+
+    <p>Finding roots of polynomials is numerically unstable so we need
+    a way to find the nodes <m>x_j</m>, which are the roots of
+    <m>q_n</m>.  Lanczos iteration can help with that.  We will write
+    out the steps in the iteration evaluating each of the polynomials
+    at <m>x_j</m> for one of the nodes.
+    <md>
+      <mrow>
+        x_jq_0(x_j) \amp = \alpha_1 q_0(x_j) + \beta_1 q_1(x_j)
+      </mrow>
+      <mrow>
+        x_jq_1(x_j) \amp = \beta_1 q_0(x_j) + \alpha_2 q_1(x_j) +
+        \beta_2 q_2(x_j)
+      </mrow>
+      <mrow>
+        \vdots \amp = \vdots
+      </mrow>
+      <mrow>
+        x_jq_{n-1}(x_j) \amp = \beta_{n-1} q_{n-2}(x_j) + \alpha_{n}
+        q_{n-1}(x_j) + \beta_{n} q_{n}(x_j)
+      </mrow>
+    </md>.
+    However, since <m>q_n(x_j)=0</m>, the final expression reduces to
+    <me>
+      x_jq_{n-1}(x_j) = \beta_{n-1} q_{n-2}(x_j) + \alpha_{n}
+      q_{n-1}(x_j)
+    </me>.
+    This means that if we define the matrix and vector
+    <me>
+      T_n = \begin{bmatrix}
+      \alpha_1 \amp \beta_1 \amp 0 \amp \ldots \amp 0 \\
+      \beta_1 \amp \alpha_2 \amp \beta_2 \amp \ldots \amp 0 \\
+      0 \amp \beta_2 \amp \alpha_3 \amp \ddots \amp 0 \\
+      \vdots \amp \vdots \amp \ddots \amp \ddots \amp \beta_{n-1} \\
+      0 \amp 0 \amp \ldots \amp \beta_{n-1} \amp \alpha_{n} \\
+      \end{bmatrix},
+      \hspace{12pt}
+      \vvec_j = \cfourvec{q_0(x_j)}{q_1(x_j)}{\vdots}{q_{n-1}(x_j)}
+    </me>,
+    then we have
+    <me>
+      T_n\vvec_j = x_j\vvec_j
+    </me>.
+    In other words, the nodes <m>x_j</m> are the eigenvalues of the
+    tridiagonal matrix <m>T</m> and can be found with, say, the
+    shifted <m>QR</m> algorithm.  In addition, the eigenvectors are
+    given by evaluating the Legendre polynomials at the nodes.
+    </p>
+
+    <theorem>
+      <statement>
+        <p>If <m>T_n</m> is the tridiagonal matrix that results from
+        <m>n</m> steps of Lanczos iteration, then the
+        eigenvalues of <m>T_n</m> are <m>x_j</m>, the roots of the
+        <m>n^{th}</m> Legendre polynomial <m>q_n</m>.
+        </p>
+
+        <p>Moreover, if we define eigenvectors
+        <m>\vvec_j =
+        \cfourvec{q_0(x_j)}{q_1(x_j)}{\vdots}{q_{n-1}(x_j)}</m>, then
+        the weights in the quadrature are given by
+        <me>
+          c_j=\frac{1}{\len{\vvec_j}^2}
+        </me>.
+        </p>
+      </statement>
+    </theorem>
+
+    <p>We will not prove the statement about the weights in the
+    quadrature, but this is again a remarkable turn of events since it
+    implies that we can develop Gaussian quadrature using only
+    numerically stable linear algebraic operations.
+    </p>
+
+    <p>Evaluate the following cell to again define the function <c>Q, T =
+    lanczos(n)</c>.  We will use this in the next few cells.</p>
+
+    <sage>
+      <input>
+def inner(p, q):
+    return integrate(p*q, x, -1, 1)
+def norm(p):
+    return sqrt(inner(p,p))
+
+def lanczos_poly(n):
+    T = []
+    for _ in range(n+1):
+        T.append([0]*n)
+    v = 1/sqrt(2)
+    q_list = [v]
+    for col in range(n):
+        v = x*v
+        if col > 0:
+            T[col-1][col] = simplify(inner(v, q_list[-2]))
+            v -= T[col-1][col]*q_list[-2]
+        T[col][col] = simplify(inner(v, q_list[-1]))
+        v -= T[col][col]*q_list[-1]
+        T[col+1][col] = simplify(norm(v))
+        v = 1/T[col+1][col] * v
+        v = simplify(v)
+        q_list.append(v)
+    return q_list, matrix(T)
+
+print("lanczos(n) is now defined.")
+      </input>
+    </sage>
+
+    <p>We now choose a value of <m>n=6</m> and find the nodes and
+    weights for the quadrature.  We also define a functionn
+    <c>quad(f)</c> that computes the quadrature applied to the function
+    <m>f(x)</m></p>
+    <sage>
+      <input>
+n = 6
+
+Q, T = lanczos_poly(n)
+Q.pop(-1)
+T = matrix(RDF, T.matrix_from_rows(range(n)))
+nodes = T.eigenvalues()
+weights = []
+for j in range(n):
+    v = vector([q.subs(x=nodes[j]) for q in Q])
+    weights.append(1/(v*v))
+weights = vector(weights)
+print('nodes   =', vector(nodes).numerical_approx(digits=6))
+print('weights =', weights.numerical_approx(digits=6))
+
+def quad(f):
+    return weights * vector([f.subs(x=n) for n in nodes])
+
+      </input>
+    </sage>
+
+    <p>Due to the symmetry of the weights and nodes, the quadrature
+    should be zero on all odd powers of <m>x</m>, which we expect
+    since the integral of an odd power is zero by symmetry.  The
+    following cell considers even powers <m>0,2,4,\ldots,20</m> and
+    compares the result of the quadrature to the exact value
+    <m>\int_{-1}^1x^{2j}~dx = 2/(2j+1)</m>.</p>
+    
+    <sage>
+      <input>
+for j in range(11):
+    print(2*j, quad(x^(2*j)), float(2/(2*j+1)))
+
+      </input>
+    </sage>
+
+    <p>Since <m>n=6</m>, we expect the quadrature to be exact up to
+    degree <m>2n-1 = 11</m>, and this demonstration confirms that
+    expectation. </p>
+
+    <p>Finally, we compare the quadrature to the exact value for the
+    function <m>f(x)=e^{-x^2}</m>, which cannot be evaluated by
+    antidifferentiation. This result has a relative error of less than
+    <m>10^{-6}</m>.</p>
+
+    <sage>
+      <input>
+print('Quadrature =', quad(exp(-x^2)))
+print('Exact      =', integrate(exp(-x^2),x,-1,1).numerical_approx(digits=17))
+
+      </input>
+    </sage>
+
+  </subsection>
+        
+      
+
+</section>
