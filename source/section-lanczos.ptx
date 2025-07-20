@@ -235,7 +235,7 @@ def lanczos_poly(n):
         v -= T[col][col]*q_list[-1]
         T[col+1][col] = simplify(norm(v))
         v = 1/T[col+1][col] * v
-        v = simplify(v)
+        v = v.expand().simplify()
         q_list.append(v)
     return q_list, matrix(T)
 
