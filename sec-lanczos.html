@@ -547,7 +547,7 @@ def lanczos_poly(n):
         v -= T[col][col]*q_list[-1]
         T[col+1][col] = simplify(norm(v))
         v = 1/T[col+1][col] * v
-        v = simplify(v)
+        v = v.expand().simplify()
         q_list.append(v)
     return q_list, matrix(T)
 
@@ -753,7 +753,7 @@ def quad(f):
 <div id="sec-lanczos-5-16" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">for j in range(11):
     print(2*j, quad(x^(2*j)), float(2/(2*j+1)))
 </script></div>
-<div class="para" id="sec-lanczos-5-17">Since <span class="process-math">\(n=6\text{,}\)</span> we expect the quadrature to be exact up to degree <span class="process-math">\(2n-1 = 11\text{,}\)</span> and this demonstration confirms our expectation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-17" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="sec-lanczos-5-17">Since <span class="process-math">\(n=6\text{,}\)</span> we expect the quadrature to be exact up to degree <span class="process-math">\(2n-1 = 11\text{,}\)</span> and this demonstration confirms that expectation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-17" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para" id="sec-lanczos-5-18">Finally, we compare the quadrature to the exact value for the function <span class="process-math">\(f(x)=e^{-x^2}\text{,}\)</span> which cannot be evaluated by antidifferentiation. This result has a relative error of less than <span class="process-math">\(10^{-6}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-lanczos-5-18" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
