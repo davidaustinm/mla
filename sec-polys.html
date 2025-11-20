@@ -119,15 +119,15 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.9.1';
+eBookConfig.runestone_version = '7.9.19';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.787a04695534ef1e.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.014cb392a13bd045.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.8141ae22fd347e48.css">
+<script src="_static/prefix-runtime.5c6d23c3bf7decb7.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.296eb9cf978e3bdb.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.557d81b04b3ec0e4.css">
 <script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script src="_static/pretext/js/lti_iframe_resizer.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
 </script>
 </head>
@@ -362,13 +362,13 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
 </ul></nav></div>
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-polys"><h2 class="heading hide-type">
-<span class="type">Section</span><span class="space"> </span><span class="codenumber">1.4</span><span class="space"> </span><span class="title">The minimal polynomial</span>
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The minimal polynomial</span>
 </h2>
 <section class="introduction" id="sec-polys-2"><div class="para" id="sec-polys-2-1">This section will describe some important properties of polynomials and demonstrate how they might help us understand linear transformations or, more accurately, <a href="sec-lt-intro.html#definition-operator" class="xref" data-knowl="./knowl/xref/definition-operator.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.2.32">operators,</a> which are linear transformations <span class="process-math">\(T:V\to V\)</span> from a vector space to itself.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para" id="sec-polys-2-2">We will begin by studying familiar polynomials, such as you saw in high school algebra.  For example, <span class="process-math">\(p(x)=2x^2 - 3x + 7\)</span> is a quadratic polynomial.  Eventually, we will consider polynomials evaluated on an operator <span class="process-math">\(T\text{.}\)</span>  For instance, evaluating <span class="process-math">\(p(x)\)</span> on the operator <span class="process-math">\(T\)</span> produces a new operator <span class="process-math">\(p(T) = 2T^2 - 3T + 7I\text{.}\)</span>  As a preview for how this may be useful, the polynomial <span class="process-math">\(p(x)=x-2\)</span> leads to the operator <span class="process-math">\(p(T) = T-2I\)</span> whose null space is the set of eigenvectors associated to the eigenvalue <span class="process-math">\(\lambda = 2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div></section><section class="subsection" id="sec-polys-3"><h3 class="heading hide-type">
-<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.4.1</span><span class="space"> </span><span class="title">Properties of Polynomials</span>
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Properties of Polynomials</span>
 </h3>
 <div class="para logical" id="sec-polys-3-2">
 <div class="para">We will be interested in polynomials that depend on a single variable, which will often be <span class="process-math">\(x\text{.}\)</span> A general polynomial has the form</div>
@@ -382,7 +382,7 @@ p(x)=a_nx^n + a_{n-1}x^{n-1}+\ldots + a_1x+a_0
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="definition-degree"><h4 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.4.1</span><span class="period">.</span>
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para logical" id="definition-degree-1-1">
 <div class="para">The <dfn class="terminology">degree</dfn> of a polynomial is the highest power of <span class="process-math">\(x\)</span> whose coefficient is nonzero.  For example, the degree of</div>
@@ -398,7 +398,7 @@ p(x)=-2x^7 + 4x^6 -x^5 + 4x^3-3x + 1
 <div class="autopermalink" data-description="Definition 1.4.1"><a href="#definition-degree" title="Copy heading and permalink for Definition 1.4.1" aria-label="Copy heading and permalink for Definition 1.4.1">🔗</a></div></article><div class="para" id="sec-polys-3-4">We have already seen that the set of polynomials form a vector space, which means we can multiply polynomials by scalars and we can add them.  An additional operation allows us to multiply two polynomials together.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="example-poly-product"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.2</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para logical" id="example-poly-product-1-1">
 <div class="para">Suppose that <span class="process-math">\(p(x)=3x^2-4x+2\)</span> and <span class="process-math">\(q(x)=8x-5\text{.}\)</span> We multiply polynomials term by term so that</div>
@@ -465,7 +465,7 @@ a = bq + r
 <div class="para" id="sec-polys-3-8">Polynomials satisfy a similar property also called the Division Algorithm as given in the following proposition.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-3-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-poly-division"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.4.3</span><span class="period">.</span><span class="space"> </span><span class="title">The Division Algorithm.</span>
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The Division Algorithm.</span>
 </h4>
 <div class="para logical" id="prop-poly-division-2-1">
 <div class="para">If <span class="process-math">\(p\)</span> and <span class="process-math">\(s\)</span> are polynomials, then there are unique polynomials <span class="process-math">\(q\)</span> and <span class="process-math">\(r\)</span> such that</div>
@@ -479,7 +479,7 @@ p = qs + r
 <div class="autopermalink" data-description="Paragraph"><a href="#prop-poly-division-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Proposition 1.4.3: The Division Algorithm"><a href="#prop-poly-division" title="Copy heading and permalink for Proposition 1.4.3: The Division Algorithm" aria-label="Copy heading and permalink for Proposition 1.4.3: The Division Algorithm">🔗</a></div></article><article class="example example-like" id="sec-polys-3-10"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.4</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="sec-polys-3-10-1-1">Rather than proving the Division Algorithm for polynomials, we will illustrate with an example.  Suppose that <span class="process-math">\(p(x)=6x^3 + x^2 - 17x + 8\)</span> and <span class="process-math">\(s(x)=2x^2 + 2x -
 1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-3-10-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
@@ -512,12 +512,12 @@ p(x) = (3x-4)s(x) + (-2x+4)
 <div class="autopermalink" data-description="Example 1.4.4"><a href="#sec-polys-3-10" title="Copy heading and permalink for Example 1.4.4" aria-label="Copy heading and permalink for Example 1.4.4">🔗</a></div></article><div class="para" id="sec-polys-3-11">One important implication of the Division Algorithm is the following fact that we will use quite a bit.  Remember that a root <span class="process-math">\(\lambda\)</span> of a polynomial is a value for which <span class="process-math">\(p(\lambda)=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-3-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-root-factor"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.4.5</span><span class="period">.</span>
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>If <span class="process-math">\(\lambda\)</span> is a root of the polynomial <span class="process-math">\(p(x)\text{,}\)</span> then<div class="displaymath process-math">
 \begin{equation*}
 p(x)=(x-\lambda)q(x)
 \end{equation*}
-</div>for some polynomial <span class="process-math">\(q\text{.}\)</span><div class="autopermalink" data-description="Proposition 1.4.5"><a href="#prop-root-factor" title="Copy heading and permalink for Proposition 1.4.5" aria-label="Copy heading and permalink for Proposition 1.4.5">🔗</a></div></article><article class="proof" id="prop-root-factor-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+</div>for some polynomial <span class="process-math">\(q\text{.}\)</span><div class="autopermalink" data-description="Proposition 1.4.5"><a href="#prop-root-factor" title="Copy heading and permalink for Proposition 1.4.5" aria-label="Copy heading and permalink for Proposition 1.4.5">🔗</a></div></article><article class="proof" id="prop-root-factor-2"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
 <div class="para logical" id="prop-root-factor-2-1">
 <div class="para">The Division Algorithm tells us that</div>
 <div class="displaymath process-math">
@@ -542,7 +542,7 @@ p(x)=(x-\lambda)q(x)\text{.}
 <div class="autopermalink" data-description="Proof 1.4.5.1"><a href="#prop-root-factor-2" title="Copy heading and permalink for Proof 1.4.5.1" aria-label="Copy heading and permalink for Proof 1.4.5.1">🔗</a></div></article><div class="para" id="sec-polys-3-13">This proposition shows that there is a relationship between the factors of a polynomial <span class="process-math">\(p(x)\)</span> and its roots.  Polynomials with <em class="emphasis">complex</em> coefficients are special because the Fundamental Theorem of Algebra tells us that every such polynomial has a root.  The proof of this theorem is outside the scope of our course, but is is usually included in a course in complex analysis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-3-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="theorem theorem-like" id="thm-fta"><h4 class="heading">
-<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.4.6</span><span class="period">.</span><span class="space"> </span><span class="title">Fundamental Theorem of Algebra.</span>
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.6</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Fundamental Theorem of Algebra.</span>
 </h4>
 <div class="para logical" id="thm-fta-2-1">
 <div class="para">If <span class="process-math">\(p(x)\)</span> is a degree <span class="process-math">\(n\)</span> polynomial having complex coefficients, then there are <span class="process-math">\(n\)</span> roots, <span class="process-math">\(\lambda_1, \lambda_2, \ldots, \lambda_n\text{,}\)</span> possibly with repetition.  This means that</div>
@@ -564,7 +564,7 @@ p(x)=a_n(x-\lambda_1)(x-\lambda_2)\ldots(x-\lambda_n)\text{.}
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-3-15" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="sec-polys-3-16"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.4.7</span><span class="period">.</span>
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.7</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para logical" id="sec-polys-3-16-1-1">
 <div class="para">If <span class="process-math">\(p(x)\)</span> is a polynomial with real coefficients, there are real roots <span class="process-math">\(\lambda_1,\ldots,\lambda_m\)</span> such that</div>
@@ -581,7 +581,7 @@ p(x)=a_n(x-\lambda_1)\ldots(x-\lambda_m)
 <div class="autopermalink" data-description="Proposition 1.4.7"><a href="#sec-polys-3-16" title="Copy heading and permalink for Proposition 1.4.7" aria-label="Copy heading and permalink for Proposition 1.4.7">🔗</a></div></article><div class="para" id="sec-polys-3-17">As mentioned in the introduction to this section, our interest in polynomials stems from the insights we gain when we evaluate a polynomial on an operator <span class="process-math">\(T\text{.}\)</span>  For instance, if <span class="process-math">\(p(x)=x^2+4x-5\text{,}\)</span> then <span class="process-math">\(p(T) = T^2 + 4T - 5I\)</span> a new operator.  Notice that we consider the constant term to be multiplied by the identify transformation <span class="process-math">\(I\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-3-17" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="sec-polys-3-18"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.8</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para logical" id="sec-polys-3-18-1-1">
 <div class="para">Consider the operator <span class="process-math">\(T:\real^2\to\real^2\)</span> by <span class="process-math">\(T(\xvec)
@@ -609,19 +609,19 @@ p(T)\xvec = (A^2 + 4A -5I)\xvec =
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-3-18-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Example 1.4.8"><a href="#sec-polys-3-18" title="Copy heading and permalink for Example 1.4.8" aria-label="Copy heading and permalink for Example 1.4.8">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.4.1: Properties of Polynomials"><a href="#sec-polys-3" title="Copy heading and permalink for Subsection 1.4.1: Properties of Polynomials" aria-label="Copy heading and permalink for Subsection 1.4.1: Properties of Polynomials">🔗</a></div></section><section class="subsection" id="sec-polys-4"><h3 class="heading hide-type">
-<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.4.2</span><span class="space"> </span><span class="title">Invariant subspaces</span>
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Invariant subspaces</span>
 </h3>
 <div class="para" id="sec-polys-4-2">As we begin to study operators, the concept of an <em class="emphasis">invariant</em> subspace will be helpful.  In particular, finding invariant subspaces will frequently help us reduce our focus from an entire vector space to a smaller subspace so that we can more easily draw conclusions.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-polys-4-3"><h4 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.4.9</span><span class="period">.</span>
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="sec-polys-4-3-1-1">If <span class="process-math">\(W\)</span> is a vector subspace of <span class="process-math">\(V\)</span> and <span class="process-math">\(T:V\to
 V\)</span> an operator, we say that <span class="process-math">\(W\)</span> is <em class="emphasis">invariant</em> under <span class="process-math">\(T\)</span> if <span class="process-math">\(T(\wvec)\in W\)</span> for all <span class="process-math">\(\wvec\in
 W\text{.}\)</span>  We frequently say that <span class="process-math">\(W\)</span> is <span class="process-math">\(T\)</span>-invariant.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-4-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Definition 1.4.9"><a href="#sec-polys-4-3" title="Copy heading and permalink for Definition 1.4.9" aria-label="Copy heading and permalink for Definition 1.4.9">🔗</a></div></article><article class="example example-like" id="sec-polys-4-4"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.10</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.10</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="sec-polys-4-4-1-1">If <span class="process-math">\(T\)</span> is an operator and <span class="process-math">\(T\vvec =
 \lambda\vvec\text{,}\)</span> we say that <span class="process-math">\(\vvec\)</span> is an <dfn class="terminology">eigenvector</dfn> of <span class="process-math">\(T\)</span> with associated <dfn class="terminology">eigenvalue</dfn> <span class="process-math">\(\lambda\text{.}\)</span>  This is the same concept that we explored with matrices.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-4-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
@@ -629,35 +629,35 @@ W\text{.}\)</span>  We frequently say that <span class="process-math">\(W\)</spa
 \lambda\vvec\text{,}\)</span> which is also in <span class="process-math">\(E_\lambda\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-4-4-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Example 1.4.10"><a href="#sec-polys-4-4" title="Copy heading and permalink for Example 1.4.10" aria-label="Copy heading and permalink for Example 1.4.10">🔗</a></div></article><article class="example example-like" id="sec-polys-4-5"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.11</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.11</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="sec-polys-4-5-1-1">Consider the operator <span class="process-math">\(T:\real^3\to\real^3\text{,}\)</span> which rotates vectors by <span class="process-math">\(90^\circ\)</span> around the <span class="process-math">\(z\)</span>-axis. The <span class="process-math">\(z\)</span>-axis forms an invariant subspace since it is equal to <span class="process-math">\(E_1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-4-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para" id="sec-polys-4-5-1-2">Moreover, the set of vectors <span class="process-math">\(\threevec xy0\)</span> forms a two-dimensional <span class="process-math">\(T\)</span>-invariant subspace since any vector in that plane is rotated to another vector in the same plane.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-4-5-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Example 1.4.11"><a href="#sec-polys-4-5" title="Copy heading and permalink for Example 1.4.11" aria-label="Copy heading and permalink for Example 1.4.11">🔗</a></div></article><article class="example example-like" id="sec-polys-4-6"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.12</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.12</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="sec-polys-4-6-1-1">Suppose that <span class="process-math">\(V=\pbb_8\text{,}\)</span> the vector space of polynomials of degree 8 or less, and that <span class="process-math">\(T:V\to V\)</span> by <span class="process-math">\(T(p) = p'\text{.}\)</span>  Then <span class="process-math">\(W=\pbb_5\)</span> is a <span class="process-math">\(T\)</span>-invariant subspace because the derivative of any degree five polynomial has a degree less than five.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-4-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Example 1.4.12"><a href="#sec-polys-4-6" title="Copy heading and permalink for Example 1.4.12" aria-label="Copy heading and permalink for Example 1.4.12">🔗</a></div></article><article class="example example-like" id="sec-polys-4-7"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.13</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.13</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="sec-polys-4-7-1-1">Suppose that <span class="process-math">\(T:V\to V\)</span> is an operator.  Then <span class="process-math">\(\nul(T)\)</span> is a <span class="process-math">\(T\)</span>-invariant subspace.  For example, if <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(\nul(T)\text{,}\)</span> then <span class="process-math">\(T\vvec=0\text{,}\)</span> which is also in <span class="process-math">\(\nul(T)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-4-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para" id="sec-polys-4-7-1-2">Furthermore, <span class="process-math">\(\range(T)\)</span> is also <span class="process-math">\(T\)</span>-invariant. If <span class="process-math">\(\wvec\in\range(T)\text{,}\)</span> then <span class="process-math">\(T\wvec\)</span> is in <span class="process-math">\(\range(T)\)</span> by the definition of <span class="process-math">\(\range(T)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-4-7-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Example 1.4.13"><a href="#sec-polys-4-7" title="Copy heading and permalink for Example 1.4.13" aria-label="Copy heading and permalink for Example 1.4.13">🔗</a></div></article><article class="example example-like" id="sec-polys-4-8"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.14</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.14</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="sec-polys-4-8-1-1">Any operator <span class="process-math">\(T:V\to V\)</span> will have two invariant subspaces, namely <span class="process-math">\(\{0\}\)</span> and <span class="process-math">\(V\)</span> itself.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-4-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Example 1.4.14"><a href="#sec-polys-4-8" title="Copy heading and permalink for Example 1.4.14" aria-label="Copy heading and permalink for Example 1.4.14">🔗</a></div></article><div class="para" id="sec-polys-4-9">Remember that the order in which we multiply polynomials is not important.  In particular, <span class="process-math">\(p(T)q(T)=q(T)p(T)\text{.}\)</span>  This leads to the following important proposition.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-4-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-poly-invariant-subspaces"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.4.15</span><span class="period">.</span>
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.15</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="prop-poly-invariant-subspaces-1-1">If <span class="process-math">\(p(x)\)</span> is a polynomial and <span class="process-math">\(T\)</span> an operator on a vector space <span class="process-math">\(V\text{,}\)</span> then both <span class="process-math">\(\nul(p(T))\)</span> and <span class="process-math">\(\range(p(T))\)</span> are <span class="process-math">\(T\)</span>-invariant subspaces of <span class="process-math">\(V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-poly-invariant-subspaces-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.4.15"><a href="#prop-poly-invariant-subspaces" title="Copy heading and permalink for Proposition 1.4.15" aria-label="Copy heading and permalink for Proposition 1.4.15">🔗</a></div></article><article class="proof" id="prop-poly-invariant-subspaces-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 1.4.15"><a href="#prop-poly-invariant-subspaces" title="Copy heading and permalink for Proposition 1.4.15" aria-label="Copy heading and permalink for Proposition 1.4.15">🔗</a></div></article><article class="proof" id="prop-poly-invariant-subspaces-2"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
 <div class="para" id="prop-poly-invariant-subspaces-2-1">Consider the polynomial <span class="process-math">\(q(x)=x\)</span> so that <span class="process-math">\((pq)(x)=xp(x)=p(x)x\text{.}\)</span>  This means that <span class="process-math">\(p(T)T=Tp(T)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-poly-invariant-subspaces-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-poly-invariant-subspaces-2-2">
@@ -681,7 +681,7 @@ T\vvec = Tp(T)\uvec = p(T)(T\uvec)\text{,}
 <div class="autopermalink" data-description="Paragraph"><a href="#prop-poly-invariant-subspaces-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Proof 1.4.15.1"><a href="#prop-poly-invariant-subspaces-2" title="Copy heading and permalink for Proof 1.4.15.1" aria-label="Copy heading and permalink for Proof 1.4.15.1">🔗</a></div></article><article class="example example-like" id="example-nul-range-invariant"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.16</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.16</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para logical" id="example-nul-range-invariant-1-1">
 <div class="para">Consider the operator <span class="process-math">\(T:\real^4\to\real^4\)</span> by <span class="process-math">\(T\xvec = A\xvec\)</span> with <span class="process-math">\(A=\begin{bmatrix}
@@ -752,16 +752,16 @@ T\uvec_2 \amp = -2\uvec_1-2\uvec_2\text{.}
 <div class="autopermalink" data-description="Paragraph"><a href="#example-nul-range-invariant-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Example 1.4.16"><a href="#example-nul-range-invariant" title="Copy heading and permalink for Example 1.4.16" aria-label="Copy heading and permalink for Example 1.4.16">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.4.2: Invariant subspaces"><a href="#sec-polys-4" title="Copy heading and permalink for Subsection 1.4.2: Invariant subspaces" aria-label="Copy heading and permalink for Subsection 1.4.2: Invariant subspaces">🔗</a></div></section><section class="subsection" id="sec-polys-5"><h3 class="heading hide-type">
-<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.4.3</span><span class="space"> </span><span class="title">The minimal polynomial of a vector</span>
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The minimal polynomial of a vector</span>
 </h3>
 <div class="para" id="sec-polys-5-2">We are approaching a result that will be crucial for our upcoming explorations. First, we need to make the following definition clear.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="sec-polys-5-3"><h4 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.4.17</span><span class="period">.</span>
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.17</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>A <em class="emphasis">monic</em> polynomial is a polynomial where the coefficient of the highest degree term is <span class="process-math">\(1\text{.}\)</span><div class="autopermalink" data-description="Definition 1.4.17"><a href="#sec-polys-5-3" title="Copy heading and permalink for Definition 1.4.17" aria-label="Copy heading and permalink for Definition 1.4.17">🔗</a></div></article><div class="para" id="sec-polys-5-4">For instance, <span class="process-math">\(x^5 - x^4 + 3x - 2\)</span> is a monic polynomial, but <span class="process-math">\(3x^3+2x-1\)</span> is not.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-5-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="theorem theorem-like" id="thm-minimal-polynomial-vector"><h4 class="heading">
-<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.4.18</span><span class="period">.</span><span class="space"> </span><span class="title">The minimal polynomial of an operator applied to a vector.</span>
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.18</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The minimal polynomial of an operator applied to a vector.</span>
 </h4>
 <div class="para logical" id="thm-minimal-polynomial-vector-2-1">
 <div class="para">Suppose that <span class="process-math">\(T:V\to V\)</span> is an operator on a finite dimensional vector space <span class="process-math">\(V\)</span> and that <span class="process-math">\(\vvec\)</span> is a vector in <span class="process-math">\(V\text{.}\)</span>  There is a unique monic polynomial <span class="process-math">\(p_\vvec\)</span> such that</div>
@@ -787,7 +787,7 @@ T\uvec_2 \amp = -2\uvec_1-2\uvec_2\text{.}
 </ul>
 <div class="autopermalink" data-description="Paragraph"><a href="#thm-minimal-polynomial-vector-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 1.4.18: The minimal polynomial of an operator applied to a vector"><a href="#thm-minimal-polynomial-vector" title="Copy heading and permalink for Theorem 1.4.18: The minimal polynomial of an operator applied to a vector" aria-label="Copy heading and permalink for Theorem 1.4.18: The minimal polynomial of an operator applied to a vector">🔗</a></div></article><article class="proof" id="thm-minimal-polynomial-vector-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Theorem 1.4.18: The minimal polynomial of an operator applied to a vector"><a href="#thm-minimal-polynomial-vector" title="Copy heading and permalink for Theorem 1.4.18: The minimal polynomial of an operator applied to a vector" aria-label="Copy heading and permalink for Theorem 1.4.18: The minimal polynomial of an operator applied to a vector">🔗</a></div></article><article class="proof" id="thm-minimal-polynomial-vector-3"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
 <div class="para logical" id="thm-minimal-polynomial-vector-3-1">
 <div class="para">Consider the sequence of vectors formed by repeatedly applying <span class="process-math">\(T\)</span> to <span class="process-math">\(\vvec\text{:}\)</span>
 </div>
@@ -816,12 +816,12 @@ a_{m-1}x^{m-1}+x^m\)</span> is a monic polynomial for which <span class="process
 <div class="para" id="thm-minimal-polynomial-vector-3-4">We must have <span class="process-math">\(\deg(p_\vvec)\leq \dim V\)</span> since if <span class="process-math">\(\dim V = n\text{,}\)</span> then the set of vectors <span class="process-math">\(\vvec,\ldots,T^n\vvec\)</span> has <span class="process-math">\(n+1\)</span> vectors and hence must be linearly dependent.<div class="autopermalink" data-description="Paragraph"><a href="#thm-minimal-polynomial-vector-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Proof 1.4.18.1"><a href="#thm-minimal-polynomial-vector-3" title="Copy heading and permalink for Proof 1.4.18.1" aria-label="Copy heading and permalink for Proof 1.4.18.1">🔗</a></div></article><article class="definition definition-like" id="sec-polys-5-6"><h4 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.4.19</span><span class="period">.</span>
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.19</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="sec-polys-5-6-1-1">The polynomial <span class="process-math">\(p_\vvec\)</span> is sometimes called the <dfn class="terminology">annihilating polynomial</dfn> of <span class="process-math">\(\vvec\text{,}\)</span> since <span class="process-math">\(p_\vvec(T)\vvec = 0\text{,}\)</span> or the <dfn class="terminology">minimal polynomial of <span class="process-math">\(T\)</span> applied to <span class="process-math">\(\vvec\text{.}\)</span></dfn><div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-5-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Definition 1.4.19"><a href="#sec-polys-5-6" title="Copy heading and permalink for Definition 1.4.19" aria-label="Copy heading and permalink for Definition 1.4.19">🔗</a></div></article><article class="example example-like" id="example-nul-range-invariant-2"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.20</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.20</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para logical" id="example-nul-range-invariant-2-1-1">
 <div class="para">We will revisit <a href="sec-polys.html#example-nul-range-invariant" class="xref" data-knowl="./knowl/xref/example-nul-range-invariant.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.4.16">Example 1.4.16</a> and the operator <span class="process-math">\(T:\real^4\to\real^4\)</span> defined by <span class="process-math">\(T\xvec=A\xvec\)</span> where <span class="process-math">\(A=\begin{bmatrix}
@@ -869,7 +869,7 @@ p_\vvec(x) = x^2 + 4x + 4\text{.}
 <div class="autopermalink" data-description="Paragraph"><a href="#example-nul-range-invariant-2-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Example 1.4.20"><a href="#example-nul-range-invariant-2" title="Copy heading and permalink for Example 1.4.20" aria-label="Copy heading and permalink for Example 1.4.20">🔗</a></div></article><article class="example example-like" id="sec-polys-5-8"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.21</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.21</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para logical" id="sec-polys-5-8-1-1">
 <div class="para">If <span class="process-math">\(\vvec\)</span> is an eigenvector of <span class="process-math">\(T\)</span> with associated eigenvalue <span class="process-math">\(\lambda\text{,}\)</span> then</div>
@@ -885,7 +885,7 @@ p_\vvec(x) = x^2 + 4x + 4\text{.}
 <div class="autopermalink" data-description="Example 1.4.21"><a href="#sec-polys-5-8" title="Copy heading and permalink for Example 1.4.21" aria-label="Copy heading and permalink for Example 1.4.21">🔗</a></div></article><div class="para" id="sec-polys-5-9">The construction in this proof will be important when we investigate numerical linear algebra later on this course.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-5-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="definition definition-like" id="definition-krylov"><h4 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.4.22</span><span class="period">.</span><span class="space"> </span><span class="title">Krylov subspace.</span>
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.22</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Krylov subspace.</span>
 </h4>
 <div class="para logical" id="definition-krylov-2-1">
 <div class="para">Given an operator <span class="process-math">\(T\)</span> on a finite dimensional vector space <span class="process-math">\(V\)</span> and a vector <span class="process-math">\(\vvec\text{,}\)</span> we define</div>
@@ -910,12 +910,12 @@ p_\vvec(x) = x^2 + 4x + 4\text{.}
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-5-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Subsection 1.4.3: The minimal polynomial of a vector"><a href="#sec-polys-5" title="Copy heading and permalink for Subsection 1.4.3: The minimal polynomial of a vector" aria-label="Copy heading and permalink for Subsection 1.4.3: The minimal polynomial of a vector">🔗</a></div></section><section class="subsection" id="sec-polys-6"><h3 class="heading hide-type">
-<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.4.4</span><span class="space"> </span><span class="title">The minimal polynomial of an operator</span>
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The minimal polynomial of an operator</span>
 </h3>
 <div class="para" id="sec-polys-6-2">While we will see that the minimal polynomial of a vector <span class="process-math">\(p_\vvec\)</span> is useful, we can take this idea a bit further and find a polynomial <span class="process-math">\(p\)</span> that annihilates every vector in <span class="process-math">\(V\text{.}\)</span>  This will be called the <em class="emphasis">minimal polynomial of the operator</em> <span class="process-math">\(T\text{.}\)</span>  Rather than starting with a proof of the theorem, let’s illustrate the idea by continuing our earlier example from <a href="sec-polys.html#example-nul-range-invariant-2" class="xref" data-knowl="./knowl/xref/example-nul-range-invariant-2.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.4.20">Example 1.4.20</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-6-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="example example-like" id="example-minimal-polynomial"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.23</span><span class="period">.</span><span class="space"> </span><span class="title">The minimal polynomial of an operator.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.23</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The minimal polynomial of an operator.</span>
 </h4>
 <div class="para" id="example-minimal-polynomial-2">Remember the setup from <a href="sec-polys.html#example-nul-range-invariant-2" class="xref" data-knowl="./knowl/xref/example-nul-range-invariant-2.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.4.20">Example 1.4.20</a>.  We have the operator <span class="process-math">\(T:\real^4\to\real^4\)</span> defined by <span class="process-math">\(T\xvec=A\xvec\)</span> where <span class="process-math">\(A=\begin{bmatrix}
 -10 \amp 16 \amp 5 \amp -9 \\
@@ -1040,11 +1040,11 @@ p(T)\wvec = p_\uvec(T)p_\vvec(T)\wvec\text{.}
 <div class="para" id="example-minimal-polynomial-9">In fact, this polynomial is what we will call the minimal polynomial of <span class="process-math">\(T\text{.}\)</span>  This example illustrates the proof of the theorem that we are about to give.<div class="autopermalink" data-description="Paragraph"><a href="#example-minimal-polynomial-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Example 1.4.23: The minimal polynomial of an operator"><a href="#example-minimal-polynomial" title="Copy heading and permalink for Example 1.4.23: The minimal polynomial of an operator" aria-label="Copy heading and permalink for Example 1.4.23: The minimal polynomial of an operator">🔗</a></div></article><article class="theorem theorem-like" id="thm-minimal-polynomial"><h4 class="heading">
-<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.4.24</span><span class="period">.</span><span class="space"> </span><span class="title">The minimal polynomial of an operator.</span>
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.24</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The minimal polynomial of an operator.</span>
 </h4>
 <div class="para" id="thm-minimal-polynomial-2-1">Suppose that <span class="process-math">\(V\)</span> is a finite-dimensional vector space over either <span class="process-math">\(\C\)</span> or <span class="process-math">\(\R\)</span> and that <span class="process-math">\(T\)</span> is an operator on <span class="process-math">\(V\text{.}\)</span>  There is a unique monic polynomial <span class="process-math">\(p\)</span> of smallest degree such that <span class="process-math">\(p(T)=0\text{.}\)</span>  Moreover, <span class="process-math">\(\deg(p)\leq \dim(V)\text{.}\)</span>  We call this polynomial the <em class="emphasis">minimal polynomial</em> of <span class="process-math">\(T\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#thm-minimal-polynomial-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 1.4.24: The minimal polynomial of an operator"><a href="#thm-minimal-polynomial" title="Copy heading and permalink for Theorem 1.4.24: The minimal polynomial of an operator" aria-label="Copy heading and permalink for Theorem 1.4.24: The minimal polynomial of an operator">🔗</a></div></article><article class="proof" id="thm-minimal-polynomial-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Theorem 1.4.24: The minimal polynomial of an operator"><a href="#thm-minimal-polynomial" title="Copy heading and permalink for Theorem 1.4.24: The minimal polynomial of an operator" aria-label="Copy heading and permalink for Theorem 1.4.24: The minimal polynomial of an operator">🔗</a></div></article><article class="proof" id="thm-minimal-polynomial-3"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
 <div class="para" id="thm-minimal-polynomial-3-1">Our proof proceeds by induction on the dimension of <span class="process-math">\(V\text{.}\)</span>  To begin, suppose that <span class="process-math">\(\dim(V) = 1\text{,}\)</span> which means that <span class="process-math">\(V=\laspan{\vvec}\)</span> for some vector <span class="process-math">\(\vvec\text{.}\)</span>  Then <span class="process-math">\(T\vvec = \lambda\vvec\)</span> for some <span class="process-math">\(\lambda\text{,}\)</span> which is possibly <span class="process-math">\(0\text{.}\)</span>  Then <span class="process-math">\((T-\lambda I)\vvec = \zerovec\text{,}\)</span> which means that <span class="process-math">\(T-\lambda I = 0\)</span> since <span class="process-math">\(\vvec\)</span> spans <span class="process-math">\(V\text{.}\)</span> Therefore, if <span class="process-math">\(p(x) = x-\lambda\text{,}\)</span> we have <span class="process-math">\(p(T)=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#thm-minimal-polynomial-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para" id="thm-minimal-polynomial-3-2">Now suppose that <span class="process-math">\(\dim(V)=n\)</span> and that the theorem has been verified for all operators on vector spaces of dimension less than <span class="process-math">\(n\text{.}\)</span>  Following our work in <a href="sec-polys.html#example-minimal-polynomial" class="xref" data-knowl="./knowl/xref/example-minimal-polynomial.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.4.23: The minimal polynomial of an operator">Example 1.4.23</a>, we choose a nonzero vector <span class="process-math">\(\vvec\)</span> and find its minimal polynomial <span class="process-math">\(p_\vvec\text{.}\)</span> This polynomial will have degree <span class="process-math">\(m\geq
@@ -1111,7 +1111,7 @@ p(T)\wvec = p_U(T)p_\vvec(T)\wvec = 0\text{.}
 <div class="autopermalink" data-description="Paragraph"><a href="#thm-minimal-polynomial-3-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Proof 1.4.24.1"><a href="#thm-minimal-polynomial-3" title="Copy heading and permalink for Proof 1.4.24.1" aria-label="Copy heading and permalink for Proof 1.4.24.1">🔗</a></div></article><article class="example example-like" id="sec-polys-6-5"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.25</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.25</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para logical" id="sec-polys-6-5-1-1">
 <div class="para">Returning to <a href="sec-polys.html#example-minimal-polynomial" class="xref" data-knowl="./knowl/xref/example-minimal-polynomial.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.4.23: The minimal polynomial of an operator">our earlier example</a> where <span class="process-math">\(T:\real^4\to\real^4\)</span> by <span class="process-math">\(T\xvec = A\xvec\)</span> with <span class="process-math">\(A=\begin{bmatrix}
@@ -1146,7 +1146,7 @@ p(x) = x^4-4x^3-12x^2+32x+64=(x+2)^2(x-4)^2\text{.}
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-6-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Example 1.4.25"><a href="#sec-polys-6-5" title="Copy heading and permalink for Example 1.4.25" aria-label="Copy heading and permalink for Example 1.4.25">🔗</a></div></article><article class="example example-like" id="example-min-poly-1"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.26</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.26</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="example-min-poly-1-1-1">Consider the <span class="process-math">\(2\times2\)</span> matrix <span class="process-math">\(A=\begin{bmatrix}
 2 \amp 0 \\
@@ -1156,7 +1156,7 @@ p(x) = x^4-4x^3-12x^2+32x+64=(x+2)^2(x-4)^2\text{.}
 I\text{,}\)</span> a multiple of the identity.<div class="autopermalink" data-description="Paragraph"><a href="#example-min-poly-1-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Example 1.4.26"><a href="#example-min-poly-1" title="Copy heading and permalink for Example 1.4.26" aria-label="Copy heading and permalink for Example 1.4.26">🔗</a></div></article><article class="example example-like" id="example-min-poly-2"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4.27</span><span class="period">.</span>
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.27</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="example-min-poly-2-1-1">By contrast, consider the <span class="process-math">\(2\times2\)</span> matrix <span class="process-math">\(B=\begin{bmatrix}
 2 &amp; 1 \\
@@ -1172,11 +1172,11 @@ I\text{,}\)</span> a multiple of the identity.<div class="autopermalink" data-de
 <div class="para" id="sec-polys-6-9">The fact that the minimal polynomial has the smallest degree among all polynomials for which <span class="process-math">\(p(T)=0\)</span> has some important consequences.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-6-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-min-poly-roots"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.4.28</span><span class="period">.</span>
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.28</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="prop-min-poly-roots-1-1">The set of roots of the minimal polynomial of <span class="process-math">\(T\)</span> equals the set of eigenvalues of <span class="process-math">\(T\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-min-poly-roots-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.4.28"><a href="#prop-min-poly-roots" title="Copy heading and permalink for Proposition 1.4.28" aria-label="Copy heading and permalink for Proposition 1.4.28">🔗</a></div></article><article class="proof" id="prop-min-poly-roots-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 1.4.28"><a href="#prop-min-poly-roots" title="Copy heading and permalink for Proposition 1.4.28" aria-label="Copy heading and permalink for Proposition 1.4.28">🔗</a></div></article><article class="proof" id="prop-min-poly-roots-2"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
 <div class="para" id="prop-min-poly-roots-2-1">Suppose that <span class="process-math">\(p\)</span> is the minimal polynomial of <span class="process-math">\(T\text{.}\)</span>  We need to explain two things: that any eigenvalue of <span class="process-math">\(T\)</span> is a root of <span class="process-math">\(p\)</span> and that any root of <span class="process-math">\(p\)</span> is an eigenvalue of <span class="process-math">\(T\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-min-poly-roots-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="prop-min-poly-roots-2-2">
@@ -1218,11 +1218,11 @@ p(x) = (x-\lambda)q(x)\text{.}
 <div class="autopermalink" data-description="Proof 1.4.28.1"><a href="#prop-min-poly-roots-2" title="Copy heading and permalink for Proof 1.4.28.1" aria-label="Copy heading and permalink for Proof 1.4.28.1">🔗</a></div></article><div class="para" id="sec-polys-6-11">This is the most significant fact about the minimal polynomial: that its roots are the eigenvalues of the operator.  We’ll put this to use in the next section.  Before that, however, here are two other useful facts.<div class="autopermalink" data-description="Paragraph"><a href="#sec-polys-6-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-min-poly-div"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.4.29</span><span class="period">.</span>
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.29</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="prop-min-poly-div-1-1">If <span class="process-math">\(s\)</span> is a polynomial for which <span class="process-math">\(s(T)=0\text{,}\)</span> then <span class="process-math">\(s\)</span> is a multiple of the minimal polynomial of <span class="process-math">\(T\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-min-poly-div-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.4.29"><a href="#prop-min-poly-div" title="Copy heading and permalink for Proposition 1.4.29" aria-label="Copy heading and permalink for Proposition 1.4.29">🔗</a></div></article><article class="proof" id="prop-min-poly-div-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 1.4.29"><a href="#prop-min-poly-div" title="Copy heading and permalink for Proposition 1.4.29" aria-label="Copy heading and permalink for Proposition 1.4.29">🔗</a></div></article><article class="proof" id="prop-min-poly-div-2"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
 <div class="para logical" id="prop-min-poly-div-2-1">
 <div class="para">If <span class="process-math">\(p\)</span> is the minimal polynomial of <span class="process-math">\(T\text{,}\)</span> then we can apply the Division Algorithm to write <span class="process-math">\(s = pq + r\)</span> where <span class="process-math">\(\deg(r) \lt \deg(p)\text{.}\)</span>  Furthermore,</div>
 <div class="displaymath process-math">
@@ -1235,11 +1235,11 @@ p(x) = (x-\lambda)q(x)\text{.}
 <div class="autopermalink" data-description="Paragraph"><a href="#prop-min-poly-div-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Proof 1.4.29.1"><a href="#prop-min-poly-div-2" title="Copy heading and permalink for Proof 1.4.29.1" aria-label="Copy heading and permalink for Proof 1.4.29.1">🔗</a></div></article><article class="proposition theorem-like" id="prop-min-poly-subspace"><h4 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.4.30</span><span class="period">.</span>
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.30</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="para" id="prop-min-poly-subspace-1-1">If <span class="process-math">\(T\)</span> is an operator on the vector space <span class="process-math">\(V\)</span> and <span class="process-math">\(W\)</span> is a subspace of <span class="process-math">\(V\)</span> that is invariant under <span class="process-math">\(T\text{,}\)</span> then the minimal polynomial of <span class="process-math">\(T\)</span> is a multiple of the minimal polynomial of <span class="process-math">\(T|_W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-min-poly-subspace-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proposition 1.4.30"><a href="#prop-min-poly-subspace" title="Copy heading and permalink for Proposition 1.4.30" aria-label="Copy heading and permalink for Proposition 1.4.30">🔗</a></div></article><article class="proof" id="prop-min-poly-subspace-2"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4>
+<div class="autopermalink" data-description="Proposition 1.4.30"><a href="#prop-min-poly-subspace" title="Copy heading and permalink for Proposition 1.4.30" aria-label="Copy heading and permalink for Proposition 1.4.30">🔗</a></div></article><article class="proof" id="prop-min-poly-subspace-2"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
 <div class="para" id="prop-min-poly-subspace-2-1">Suppose that <span class="process-math">\(s\)</span> is the minimal polynomial of <span class="process-math">\(T|_W\)</span> and <span class="process-math">\(p\)</span> is the minimal polynomial of <span class="process-math">\(T\)</span> on <span class="process-math">\(V\text{.}\)</span>  This means that <span class="process-math">\(p(T)\wvec=0\)</span> for every vector <span class="process-math">\(\wvec\)</span> in <span class="process-math">\(W\)</span> and so <span class="process-math">\(p(T|_W) =
 0\text{.}\)</span>  We also know that <span class="process-math">\(s\)</span> is the minimal polynomial of <span class="process-math">\(T|_W\)</span> so by <a href="sec-polys.html#prop-min-poly-div" class="xref" data-knowl="./knowl/xref/prop-min-poly-div.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.4.29">Proposition 1.4.29</a>, we know that <span class="process-math">\(p\)</span> is a multiple of <span class="process-math">\(s\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-min-poly-subspace-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
