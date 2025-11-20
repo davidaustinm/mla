@@ -136,7 +136,7 @@
 
           <li><p>Every element <m>\vvec</m> has an additive inverse
           <m>\wvec</m> such that <m>\vvec + \wvec = 0</m>.  We will
-          usually write the additive identity as <m>-\vvec</m>.
+          usually write the additive inverse as <m>-\vvec</m>.
           </p></li>
 
           <li><p>Addition is associative, which means that we can
